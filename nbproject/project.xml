@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>com.microchip.mplab.nbide.embedded.makeproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/make-project/1">
+            <name>EthernetDevBoard</name>
+            <creation-uuid>5b4c4574-414d-47dc-8555-8ab30351116e</creation-uuid>
+            <make-project-type>0</make-project-type>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
+            <asminc-extensions/>
+            <sourceEncoding>ISO-8859-1</sourceEncoding>
+            <make-dep-projects/>
+            <sourceRootList>
+                <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>src</sourceRootElem>
+                <sourceRootElem>src/enc424j600</sourceRootElem>
+                <sourceRootElem>src/eth</sourceRootElem>
+                <sourceRootElem>src/mem</sourceRootElem>
+                <sourceRootElem>src/stack</sourceRootElem>
+                <sourceRootElem>src/system</sourceRootElem>
+                <sourceRootElem>src/stack/protocols</sourceRootElem>
+            </sourceRootList>
+            <confList>
+                <confElem>
+                    <name>default</name>
+                    <type>2</type>
+                </confElem>
+            </confList>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
+        </data>
+    </configuration>
+</project>

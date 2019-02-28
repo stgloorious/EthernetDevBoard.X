@@ -1,0 +1,318 @@
+
+# 1 "src/mem/memoryController.c"
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 34 "src/mem/../mem/../mem/memoryTypes.h"
+typedef struct memoryField {
+uint16_t start;
+uint16_t end;
+uint16_t length;
+uint8_t fIsAssigned : 1;
+uint8_t fOutOfMemory : 1;
+uint8_t index;
+} memoryField_t;
+
+# 61 "src/mem/../mem/memoryController.h"
+memoryField_t memory_txFrameRequest(uint16_t length);
+
+# 67
+void memory_txFrameClear(uint8_t index);
+
+# 75
+uint8_t static checkForOverlap(memoryField_t a, memoryField_t b);
+
+# 84
+uint8_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b);
+
+# 26 "src/mem/memoryController.c"
+memoryField_t static occupiedMemory[8];
+uint8_t static numberOfOccupiedFields = 0;
+
+void initBuffer() {
+for (uint8_t i = 0; i < 8; i++) {
+occupiedMemory[i].fIsAssigned = 0;
+occupiedMemory[i].fOutOfMemory = 0;
+}
+}
+
+uint8_t entireMemoryEmpty() {
+for (uint8_t i = 0; i < 8;i++) {
+if (occupiedMemory[i].fIsAssigned)
+return 0;
+}
+return 1;
+}
+
+uint8_t entireMemoryFull() {
+for (uint8_t i = 0; i < 8;i++) {
+if (!occupiedMemory[i].fIsAssigned)
+return 0;
+}
+return 1;
+}
+
+uint8_t isOnlyOneAssigned(uint8_t index) {
+for (uint8_t i = 0; i < 8;i++) {
+if (i == index)
+continue;
+if (occupiedMemory[i].fIsAssigned)
+return 0;
+}
+return 1;
+}
+
+uint8_t static checkForOverlap(memoryField_t a, memoryField_t b) {
+if ((a.start == b.start) ||
+(a.end == b.end) ||
+(a.start == b.end) ||
+(a.end == b.start) ||
+(a.end > 0x3000) ||
+(a.start > 0x3000) ||
+(b.end > 0x3000) ||
+(b.start > 0x3000))
+return 1;
+
+
+if (a.start < a.end) {
+if (b.start < b.end) {
+
+if (a.start < b.start) {
+if (a.end > b.start) {
+return 1;
+}
+else {
+return 0;
+}
+}
+else {
+return checkForOverlapSwitched(b, a);
+}
+}
+else {
+if (b.end < a.start)
+return 0;
+else
+return 1;
+}
+}
+else {
+return checkForOverlapSwitched(b, a);
+}
+}
+
+uint8_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b){
+
+
+if ((a.start == b.start) ||
+(a.end == b.end) ||
+(a.start == b.end) ||
+(a.end == b.start) ||
+(a.end > 0x3000) ||
+(a.start > 0x3000) ||
+(b.end > 0x3000) ||
+(b.start > 0x3000))
+return 1;
+
+
+if (a.start < a.end) {
+if (b.start < b.end) {
+
+if (a.start < b.start) {
+if (a.end > b.start) {
+return 1;
+}
+else {
+return 0;
+}
+}
+}
+else {
+if (b.end < a.start)
+return 0;
+else
+return 1;
+}
+}
+}
+
+memoryField_t memory_txFrameRequest(uint16_t length) {
+memoryField_t field;
+uint8_t freeIndex = 0;
+
+if (length == 0) {
+field.fOutOfMemory = 1;
+return field;
+}
+
+if (entireMemoryFull()) {
+field.fOutOfMemory = 1;
+return field;
+}
+if (entireMemoryEmpty()) {
+
+if ((0x0000 + length) > 0x3000 - 1) {
+field.fOutOfMemory = 1;
+return field;
+}
+else {
+occupiedMemory[0].start = 0x0000;
+occupiedMemory[0].end = 0x0000 + length;
+occupiedMemory[0].length = length;
+occupiedMemory[0].fIsAssigned = 1;
+occupiedMemory[0].index=0;
+return occupiedMemory[0];
+}
+}
+
+while (freeIndex <= 8) {
+
+if (!occupiedMemory[freeIndex].fIsAssigned) {
+
+
+
+occupiedMemory[freeIndex].start = occupiedMemory[(freeIndex == 0) ? 8 - 1 : freeIndex - 1].end + 1;
+if (occupiedMemory[freeIndex].start + length > 0x3000) {
+if (freeIndex == 8 - 1 && !occupiedMemory[0].fIsAssigned) {
+occupiedMemory[freeIndex].length = length;
+occupiedMemory[freeIndex].end = occupiedMemory[freeIndex].length - ((0x3000 - 1) - occupiedMemory[freeIndex].start);
+for (uint8_t i = 0; i < 8;i++) {
+if (i == freeIndex)
+continue;
+if (checkForOverlap(occupiedMemory[freeIndex], occupiedMemory[i]) && occupiedMemory[i].fIsAssigned) {
+
+field.fOutOfMemory = 1;
+return field;
+}
+}
+occupiedMemory[freeIndex].fIsAssigned = 1;
+occupiedMemory[freeIndex].index=freeIndex;
+return occupiedMemory[freeIndex];
+}
+}
+
+uint8_t fNoOverlapMarker = 1;
+uint8_t i;
+occupiedMemory[freeIndex].end = occupiedMemory[freeIndex].start + length;
+for (i = 0; i < 8; i++) {
+if (i == freeIndex)
+continue;
+if (!occupiedMemory[i].fIsAssigned) {
+continue;
+
+}
+
+if (checkForOverlap(occupiedMemory[freeIndex], occupiedMemory[i]))
+fNoOverlapMarker = 0;
+
+}
+if (fNoOverlapMarker) {
+occupiedMemory[freeIndex].fIsAssigned = 1;
+occupiedMemory[freeIndex].end = occupiedMemory[freeIndex].start + length;
+occupiedMemory[freeIndex].fOutOfMemory = 0;
+occupiedMemory[freeIndex].length = length;
+occupiedMemory[freeIndex].index=freeIndex;
+return occupiedMemory[freeIndex];
+}
+}
+freeIndex++;
+if (freeIndex == 8) {
+
+field.fOutOfMemory = 1;
+return field;
+}
+}
+}
+
+void memory_txFrameClear(uint8_t index) {
+occupiedMemory[index].fIsAssigned = 0;
+}
+

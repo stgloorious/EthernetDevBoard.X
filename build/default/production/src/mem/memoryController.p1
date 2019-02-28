@@ -1,0 +1,746 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"34 src/mem/../mem/../mem/memoryTypes.h
+[s S1 `ui 1 `ui 1 `ui 1 :1 `uc 1 :1 `uc 1 `uc 1 ]
+[n S1 memoryField start end length fIsAssigned fOutOfMemory index ]
+"84 src/mem/../mem/memoryController.h
+[v _checkForOverlapSwitched `(uc ~T0 @X0 0 sf2`S1`S1 ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;memoryTypes.h: 34: typedef struct memoryField {
+[; ;memoryTypes.h: 35: uint16_t start;
+[; ;memoryTypes.h: 36: uint16_t end;
+[; ;memoryTypes.h: 37: uint16_t length;
+[; ;memoryTypes.h: 38: uint8_t fIsAssigned : 1;
+[; ;memoryTypes.h: 39: uint8_t fOutOfMemory : 1;
+[; ;memoryTypes.h: 40: uint8_t index;
+[; ;memoryTypes.h: 41: } memoryField_t;
+[; ;memoryController.h: 61: memoryField_t memory_txFrameRequest(uint16_t length);
+[; ;memoryController.h: 67: void memory_txFrameClear(uint8_t index);
+[; ;memoryController.h: 75: uint8_t static checkForOverlap(memoryField_t a, memoryField_t b);
+[; ;memoryController.h: 84: uint8_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b);
+"26 src/mem/memoryController.c
+[v _occupiedMemory `S1 ~T0 @X0 -> 8 `i s ]
+[; ;memoryController.c: 26: memoryField_t static occupiedMemory[8];
+"27
+[v _numberOfOccupiedFields `uc ~T0 @X0 1 s ]
+[i _numberOfOccupiedFields
+-> -> 0 `i `uc
+]
+[; ;memoryController.c: 27: uint8_t static numberOfOccupiedFields = 0;
+"29
+[v _initBuffer `(v ~T0 @X0 1 ef ]
+{
+[; ;memoryController.c: 29: void initBuffer() {
+[e :U _initBuffer ]
+[f ]
+[; ;memoryController.c: 30: for (uint8_t i = 0; i < 8; i++) {
+"30
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 3  ]
+[e $U 4  ]
+[e :U 3 ]
+{
+[; ;memoryController.c: 31: occupiedMemory[i].fIsAssigned = 0;
+"31
+[e = . *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux 3 -> -> 0 `i `uc ]
+[; ;memoryController.c: 32: occupiedMemory[i].fOutOfMemory = 0;
+"32
+[e = . *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux 4 -> -> 0 `i `uc ]
+"33
+}
+"30
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 3  ]
+[e :U 4 ]
+"33
+}
+[; ;memoryController.c: 33: }
+[; ;memoryController.c: 34: }
+"34
+[e :UE 2 ]
+}
+"36
+[v _entireMemoryEmpty `(uc ~T0 @X0 1 ef ]
+{
+[; ;memoryController.c: 36: uint8_t entireMemoryEmpty() {
+[e :U _entireMemoryEmpty ]
+[f ]
+[; ;memoryController.c: 37: for (uint8_t i = 0; i < 8;i++) {
+"37
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 7  ]
+[e $U 8  ]
+[e :U 7 ]
+{
+[; ;memoryController.c: 38: if (occupiedMemory[i].fIsAssigned)
+"38
+[e $ ! != -> . *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux 3 `i -> -> -> 0 `i `uc `i 10  ]
+[; ;memoryController.c: 39: return 0;
+"39
+[e ) -> -> 0 `i `uc ]
+[e $UE 6  ]
+[e :U 10 ]
+"40
+}
+"37
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 7  ]
+[e :U 8 ]
+"40
+}
+[; ;memoryController.c: 40: }
+[; ;memoryController.c: 41: return 1;
+"41
+[e ) -> -> 1 `i `uc ]
+[e $UE 6  ]
+[; ;memoryController.c: 42: }
+"42
+[e :UE 6 ]
+}
+"44
+[v _entireMemoryFull `(uc ~T0 @X0 1 ef ]
+{
+[; ;memoryController.c: 44: uint8_t entireMemoryFull() {
+[e :U _entireMemoryFull ]
+[f ]
+[; ;memoryController.c: 45: for (uint8_t i = 0; i < 8;i++) {
+"45
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 12  ]
+[e $U 13  ]
+[e :U 12 ]
+{
+[; ;memoryController.c: 46: if (!occupiedMemory[i].fIsAssigned)
+"46
+[e $ ! ! != -> . *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux 3 `i -> -> -> 0 `i `uc `i 15  ]
+[; ;memoryController.c: 47: return 0;
+"47
+[e ) -> -> 0 `i `uc ]
+[e $UE 11  ]
+[e :U 15 ]
+"48
+}
+"45
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 12  ]
+[e :U 13 ]
+"48
+}
+[; ;memoryController.c: 48: }
+[; ;memoryController.c: 49: return 1;
+"49
+[e ) -> -> 1 `i `uc ]
+[e $UE 11  ]
+[; ;memoryController.c: 50: }
+"50
+[e :UE 11 ]
+}
+"52
+[v _isOnlyOneAssigned `(uc ~T0 @X0 1 ef1`uc ]
+{
+[; ;memoryController.c: 52: uint8_t isOnlyOneAssigned(uint8_t index) {
+[e :U _isOnlyOneAssigned ]
+[v _index `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;memoryController.c: 53: for (uint8_t i = 0; i < 8;i++) {
+"53
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 17  ]
+[e $U 18  ]
+[e :U 17 ]
+{
+[; ;memoryController.c: 54: if (i == index)
+"54
+[e $ ! == -> _i `i -> _index `i 20  ]
+[; ;memoryController.c: 55: continue;
+"55
+[e $U 19  ]
+[e :U 20 ]
+[; ;memoryController.c: 56: if (occupiedMemory[i].fIsAssigned)
+"56
+[e $ ! != -> . *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux 3 `i -> -> -> 0 `i `uc `i 21  ]
+[; ;memoryController.c: 57: return 0;
+"57
+[e ) -> -> 0 `i `uc ]
+[e $UE 16  ]
+[e :U 21 ]
+"58
+}
+"53
+[e :U 19 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 17  ]
+[e :U 18 ]
+"58
+}
+[; ;memoryController.c: 58: }
+[; ;memoryController.c: 59: return 1;
+"59
+[e ) -> -> 1 `i `uc ]
+[e $UE 16  ]
+[; ;memoryController.c: 60: }
+"60
+[e :UE 16 ]
+}
+"62
+[v _checkForOverlap `(uc ~T0 @X0 1 sf2`S1`S1 ]
+{
+[; ;memoryController.c: 62: uint8_t static checkForOverlap(memoryField_t a, memoryField_t b) {
+[e :U _checkForOverlap ]
+[v _a `S1 ~T0 @X0 1 r1 ]
+[v _b `S1 ~T0 @X0 1 r2 ]
+[f ]
+[; ;memoryController.c: 63: if ((a.start == b.start) ||
+[; ;memoryController.c: 64: (a.end == b.end) ||
+[; ;memoryController.c: 65: (a.start == b.end) ||
+[; ;memoryController.c: 66: (a.end == b.start) ||
+[; ;memoryController.c: 67: (a.end > 0x3000) ||
+[; ;memoryController.c: 68: (a.start > 0x3000) ||
+[; ;memoryController.c: 69: (b.end > 0x3000) ||
+[; ;memoryController.c: 70: (b.start > 0x3000))
+"70
+[e $ ! || || || || || || || == . _a 0 . _b 0 == . _a 1 . _b 1 == . _a 0 . _b 1 == . _a 1 . _b 0 > . _a 1 -> -> 12288 `i `ui > . _a 0 -> -> 12288 `i `ui > . _b 1 -> -> 12288 `i `ui > . _b 0 -> -> 12288 `i `ui 23  ]
+[; ;memoryController.c: 71: return 1;
+"71
+[e ) -> -> 1 `i `uc ]
+[e $UE 22  ]
+[e :U 23 ]
+[; ;memoryController.c: 74: if (a.start < a.end) {
+"74
+[e $ ! < . _a 0 . _a 1 24  ]
+{
+[; ;memoryController.c: 75: if (b.start < b.end) {
+"75
+[e $ ! < . _b 0 . _b 1 25  ]
+{
+[; ;memoryController.c: 77: if (a.start < b.start) {
+"77
+[e $ ! < . _a 0 . _b 0 26  ]
+{
+[; ;memoryController.c: 78: if (a.end > b.start) {
+"78
+[e $ ! > . _a 1 . _b 0 27  ]
+{
+[; ;memoryController.c: 79: return 1;
+"79
+[e ) -> -> 1 `i `uc ]
+[e $UE 22  ]
+"80
+}
+[; ;memoryController.c: 80: }
+[e $U 28  ]
+"81
+[e :U 27 ]
+[; ;memoryController.c: 81: else {
+{
+[; ;memoryController.c: 82: return 0;
+"82
+[e ) -> -> 0 `i `uc ]
+[e $UE 22  ]
+"83
+}
+[e :U 28 ]
+"84
+}
+[; ;memoryController.c: 83: }
+[; ;memoryController.c: 84: }
+[e $U 29  ]
+"85
+[e :U 26 ]
+[; ;memoryController.c: 85: else {
+{
+[; ;memoryController.c: 86: return checkForOverlapSwitched(b, a);
+"86
+[e ) ( _checkForOverlapSwitched (2 , _b _a ]
+[e $UE 22  ]
+"87
+}
+[e :U 29 ]
+"88
+}
+[; ;memoryController.c: 87: }
+[; ;memoryController.c: 88: }
+[e $U 30  ]
+"89
+[e :U 25 ]
+[; ;memoryController.c: 89: else {
+{
+[; ;memoryController.c: 90: if (b.end < a.start)
+"90
+[e $ ! < . _b 1 . _a 0 31  ]
+[; ;memoryController.c: 91: return 0;
+"91
+[e ) -> -> 0 `i `uc ]
+[e $UE 22  ]
+[e $U 32  ]
+"92
+[e :U 31 ]
+[; ;memoryController.c: 92: else
+[; ;memoryController.c: 93: return 1;
+"93
+[e ) -> -> 1 `i `uc ]
+[e $UE 22  ]
+[e :U 32 ]
+"94
+}
+[e :U 30 ]
+"95
+}
+[; ;memoryController.c: 94: }
+[; ;memoryController.c: 95: }
+[e $U 33  ]
+"96
+[e :U 24 ]
+[; ;memoryController.c: 96: else {
+{
+[; ;memoryController.c: 97: return checkForOverlapSwitched(b, a);
+"97
+[e ) ( _checkForOverlapSwitched (2 , _b _a ]
+[e $UE 22  ]
+"98
+}
+[e :U 33 ]
+[; ;memoryController.c: 98: }
+[; ;memoryController.c: 99: }
+"99
+[e :UE 22 ]
+}
+"101
+[v _checkForOverlapSwitched `(uc ~T0 @X0 1 sf2`S1`S1 ]
+{
+[; ;memoryController.c: 101: uint8_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b){
+[e :U _checkForOverlapSwitched ]
+[v _a `S1 ~T0 @X0 1 r1 ]
+[v _b `S1 ~T0 @X0 1 r2 ]
+[f ]
+[; ;memoryController.c: 104: if ((a.start == b.start) ||
+[; ;memoryController.c: 105: (a.end == b.end) ||
+[; ;memoryController.c: 106: (a.start == b.end) ||
+[; ;memoryController.c: 107: (a.end == b.start) ||
+[; ;memoryController.c: 108: (a.end > 0x3000) ||
+[; ;memoryController.c: 109: (a.start > 0x3000) ||
+[; ;memoryController.c: 110: (b.end > 0x3000) ||
+[; ;memoryController.c: 111: (b.start > 0x3000))
+"111
+[e $ ! || || || || || || || == . _a 0 . _b 0 == . _a 1 . _b 1 == . _a 0 . _b 1 == . _a 1 . _b 0 > . _a 1 -> -> 12288 `i `ui > . _a 0 -> -> 12288 `i `ui > . _b 1 -> -> 12288 `i `ui > . _b 0 -> -> 12288 `i `ui 35  ]
+[; ;memoryController.c: 112: return 1;
+"112
+[e ) -> -> 1 `i `uc ]
+[e $UE 34  ]
+[e :U 35 ]
+[; ;memoryController.c: 115: if (a.start < a.end) {
+"115
+[e $ ! < . _a 0 . _a 1 36  ]
+{
+[; ;memoryController.c: 116: if (b.start < b.end) {
+"116
+[e $ ! < . _b 0 . _b 1 37  ]
+{
+[; ;memoryController.c: 118: if (a.start < b.start) {
+"118
+[e $ ! < . _a 0 . _b 0 38  ]
+{
+[; ;memoryController.c: 119: if (a.end > b.start) {
+"119
+[e $ ! > . _a 1 . _b 0 39  ]
+{
+[; ;memoryController.c: 120: return 1;
+"120
+[e ) -> -> 1 `i `uc ]
+[e $UE 34  ]
+"121
+}
+[; ;memoryController.c: 121: }
+[e $U 40  ]
+"122
+[e :U 39 ]
+[; ;memoryController.c: 122: else {
+{
+[; ;memoryController.c: 123: return 0;
+"123
+[e ) -> -> 0 `i `uc ]
+[e $UE 34  ]
+"124
+}
+[e :U 40 ]
+"125
+}
+[e :U 38 ]
+"126
+}
+[; ;memoryController.c: 124: }
+[; ;memoryController.c: 125: }
+[; ;memoryController.c: 126: }
+[e $U 41  ]
+"127
+[e :U 37 ]
+[; ;memoryController.c: 127: else {
+{
+[; ;memoryController.c: 128: if (b.end < a.start)
+"128
+[e $ ! < . _b 1 . _a 0 42  ]
+[; ;memoryController.c: 129: return 0;
+"129
+[e ) -> -> 0 `i `uc ]
+[e $UE 34  ]
+[e $U 43  ]
+"130
+[e :U 42 ]
+[; ;memoryController.c: 130: else
+[; ;memoryController.c: 131: return 1;
+"131
+[e ) -> -> 1 `i `uc ]
+[e $UE 34  ]
+[e :U 43 ]
+"132
+}
+[e :U 41 ]
+"133
+}
+[e :U 36 ]
+[; ;memoryController.c: 132: }
+[; ;memoryController.c: 133: }
+[; ;memoryController.c: 134: }
+"134
+[e :UE 34 ]
+}
+"136
+[v _memory_txFrameRequest `(S1 ~T0 @X0 1 ef1`ui ]
+{
+[; ;memoryController.c: 136: memoryField_t memory_txFrameRequest(uint16_t length) {
+[e :U _memory_txFrameRequest ]
+[v _length `ui ~T0 @X0 1 r1 ]
+[f ]
+"137
+[v _field `S1 ~T0 @X0 1 a ]
+"138
+[v _freeIndex `uc ~T0 @X0 1 a ]
+[; ;memoryController.c: 137: memoryField_t field;
+[; ;memoryController.c: 138: uint8_t freeIndex = 0;
+[e = _freeIndex -> -> 0 `i `uc ]
+[; ;memoryController.c: 140: if (length == 0) {
+"140
+[e $ ! == _length -> -> 0 `i `ui 45  ]
+{
+[; ;memoryController.c: 141: field.fOutOfMemory = 1;
+"141
+[e = . _field 4 -> -> 1 `i `uc ]
+[; ;memoryController.c: 142: return field;
+"142
+[e ) _field ]
+[e $UE 44  ]
+"143
+}
+[e :U 45 ]
+[; ;memoryController.c: 143: }
+[; ;memoryController.c: 145: if (entireMemoryFull()) {
+"145
+[e $ ! != -> ( _entireMemoryFull ..  `i -> -> -> 0 `i `uc `i 46  ]
+{
+[; ;memoryController.c: 146: field.fOutOfMemory = 1;
+"146
+[e = . _field 4 -> -> 1 `i `uc ]
+[; ;memoryController.c: 147: return field;
+"147
+[e ) _field ]
+[e $UE 44  ]
+"148
+}
+[e :U 46 ]
+[; ;memoryController.c: 148: }
+[; ;memoryController.c: 149: if (entireMemoryEmpty()) {
+"149
+[e $ ! != -> ( _entireMemoryEmpty ..  `i -> -> -> 0 `i `uc `i 47  ]
+{
+[; ;memoryController.c: 151: if ((0x0000 + length) > 0x3000 - 1) {
+"151
+[e $ ! > + -> -> 0 `i `ui _length -> - -> 12288 `i -> 1 `i `ui 48  ]
+{
+[; ;memoryController.c: 152: field.fOutOfMemory = 1;
+"152
+[e = . _field 4 -> -> 1 `i `uc ]
+[; ;memoryController.c: 153: return field;
+"153
+[e ) _field ]
+[e $UE 44  ]
+"154
+}
+[; ;memoryController.c: 154: }
+[e $U 49  ]
+"155
+[e :U 48 ]
+[; ;memoryController.c: 155: else {
+{
+[; ;memoryController.c: 156: occupiedMemory[0].start = 0x0000;
+"156
+[e = . *U + &U _occupiedMemory * -> -> -> 0 `i `ui `ux -> -> # *U &U _occupiedMemory `ui `ux 0 -> -> 0 `i `ui ]
+[; ;memoryController.c: 157: occupiedMemory[0].end = 0x0000 + length;
+"157
+[e = . *U + &U _occupiedMemory * -> -> -> 0 `i `ui `ux -> -> # *U &U _occupiedMemory `ui `ux 1 + -> -> 0 `i `ui _length ]
+[; ;memoryController.c: 158: occupiedMemory[0].length = length;
+"158
+[e = . *U + &U _occupiedMemory * -> -> -> 0 `i `ui `ux -> -> # *U &U _occupiedMemory `ui `ux 2 _length ]
+[; ;memoryController.c: 159: occupiedMemory[0].fIsAssigned = 1;
+"159
+[e = . *U + &U _occupiedMemory * -> -> -> 0 `i `ui `ux -> -> # *U &U _occupiedMemory `ui `ux 3 -> -> 1 `i `uc ]
+[; ;memoryController.c: 160: occupiedMemory[0].index=0;
+"160
+[e = . *U + &U _occupiedMemory * -> -> -> 0 `i `ui `ux -> -> # *U &U _occupiedMemory `ui `ux 5 -> -> 0 `i `uc ]
+[; ;memoryController.c: 161: return occupiedMemory[0];
+"161
+[e ) *U + &U _occupiedMemory * -> -> -> 0 `i `ui `ux -> -> # *U &U _occupiedMemory `ui `ux ]
+[e $UE 44  ]
+"162
+}
+[e :U 49 ]
+"163
+}
+[e :U 47 ]
+[; ;memoryController.c: 162: }
+[; ;memoryController.c: 163: }
+[; ;memoryController.c: 165: while (freeIndex <= 8) {
+"165
+[e $U 50  ]
+[e :U 51 ]
+{
+[; ;memoryController.c: 167: if (!occupiedMemory[freeIndex].fIsAssigned) {
+"167
+[e $ ! ! != -> . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 3 `i -> -> -> 0 `i `uc `i 53  ]
+{
+[; ;memoryController.c: 171: occupiedMemory[freeIndex].start = occupiedMemory[(freeIndex == 0) ? 8 - 1 : freeIndex - 1].end + 1;
+"171
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 0 + . *U + &U _occupiedMemory * -> -> ? == -> _freeIndex `i -> 0 `i : - -> 8 `i -> 1 `i - -> _freeIndex `i -> 1 `i `ui `ux -> -> # *U &U _occupiedMemory `ui `ux 1 -> -> 1 `i `ui ]
+[; ;memoryController.c: 172: if (occupiedMemory[freeIndex].start + length > 0x3000) {
+"172
+[e $ ! > + . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 0 _length -> -> 12288 `i `ui 54  ]
+{
+[; ;memoryController.c: 173: if (freeIndex == 8 - 1 && !occupiedMemory[0].fIsAssigned) {
+"173
+[e $ ! && == -> _freeIndex `i - -> 8 `i -> 1 `i ! != -> . *U + &U _occupiedMemory * -> -> -> 0 `i `ui `ux -> -> # *U &U _occupiedMemory `ui `ux 3 `i -> -> -> 0 `i `uc `i 55  ]
+{
+[; ;memoryController.c: 174: occupiedMemory[freeIndex].length = length;
+"174
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 2 _length ]
+[; ;memoryController.c: 175: occupiedMemory[freeIndex].end = occupiedMemory[freeIndex].length - ((0x3000 - 1) - occupiedMemory[freeIndex].start);
+"175
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 1 - . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 2 - -> - -> 12288 `i -> 1 `i `ui . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 0 ]
+[; ;memoryController.c: 176: for (uint8_t i = 0; i < 8;i++) {
+"176
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 56  ]
+[e $U 57  ]
+[e :U 56 ]
+{
+[; ;memoryController.c: 177: if (i == freeIndex)
+"177
+[e $ ! == -> _i `i -> _freeIndex `i 59  ]
+[; ;memoryController.c: 178: continue;
+"178
+[e $U 58  ]
+[e :U 59 ]
+[; ;memoryController.c: 179: if (checkForOverlap(occupiedMemory[freeIndex], occupiedMemory[i]) && occupiedMemory[i].fIsAssigned) {
+"179
+[e $ ! && != -> ( _checkForOverlap (2 , *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux `i -> -> -> 0 `i `uc `i != -> . *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux 3 `i -> -> -> 0 `i `uc `i 60  ]
+{
+[; ;memoryController.c: 181: field.fOutOfMemory = 1;
+"181
+[e = . _field 4 -> -> 1 `i `uc ]
+[; ;memoryController.c: 182: return field;
+"182
+[e ) _field ]
+[e $UE 44  ]
+"183
+}
+[e :U 60 ]
+"184
+}
+"176
+[e :U 58 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 56  ]
+[e :U 57 ]
+"184
+}
+[; ;memoryController.c: 183: }
+[; ;memoryController.c: 184: }
+[; ;memoryController.c: 185: occupiedMemory[freeIndex].fIsAssigned = 1;
+"185
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 3 -> -> 1 `i `uc ]
+[; ;memoryController.c: 186: occupiedMemory[freeIndex].index=freeIndex;
+"186
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 5 _freeIndex ]
+[; ;memoryController.c: 187: return occupiedMemory[freeIndex];
+"187
+[e ) *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux ]
+[e $UE 44  ]
+"188
+}
+[e :U 55 ]
+"189
+}
+[e :U 54 ]
+"191
+[v _fNoOverlapMarker `uc ~T0 @X0 1 a ]
+[; ;memoryController.c: 188: }
+[; ;memoryController.c: 189: }
+[; ;memoryController.c: 191: uint8_t fNoOverlapMarker = 1;
+[e = _fNoOverlapMarker -> -> 1 `i `uc ]
+"192
+[v _i `uc ~T0 @X0 1 a ]
+[; ;memoryController.c: 192: uint8_t i;
+[; ;memoryController.c: 193: occupiedMemory[freeIndex].end = occupiedMemory[freeIndex].start + length;
+"193
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 1 + . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 0 _length ]
+[; ;memoryController.c: 194: for (i = 0; i < 8; i++) {
+"194
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 61  ]
+[e $U 62  ]
+[e :U 61 ]
+{
+[; ;memoryController.c: 195: if (i == freeIndex)
+"195
+[e $ ! == -> _i `i -> _freeIndex `i 64  ]
+[; ;memoryController.c: 196: continue;
+"196
+[e $U 63  ]
+[e :U 64 ]
+[; ;memoryController.c: 197: if (!occupiedMemory[i].fIsAssigned) {
+"197
+[e $ ! ! != -> . *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux 3 `i -> -> -> 0 `i `uc `i 65  ]
+{
+[; ;memoryController.c: 198: continue;
+"198
+[e $U 63  ]
+"200
+}
+[e :U 65 ]
+[; ;memoryController.c: 200: }
+[; ;memoryController.c: 202: if (checkForOverlap(occupiedMemory[freeIndex], occupiedMemory[i]))
+"202
+[e $ ! != -> ( _checkForOverlap (2 , *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux *U + &U _occupiedMemory * -> _i `ux -> -> # *U &U _occupiedMemory `ui `ux `i -> -> -> 0 `i `uc `i 66  ]
+[; ;memoryController.c: 203: fNoOverlapMarker = 0;
+"203
+[e = _fNoOverlapMarker -> -> 0 `i `uc ]
+[e :U 66 ]
+"205
+}
+"194
+[e :U 63 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 61  ]
+[e :U 62 ]
+"205
+}
+[; ;memoryController.c: 205: }
+[; ;memoryController.c: 206: if (fNoOverlapMarker) {
+"206
+[e $ ! != -> _fNoOverlapMarker `i -> -> -> 0 `i `uc `i 67  ]
+{
+[; ;memoryController.c: 207: occupiedMemory[freeIndex].fIsAssigned = 1;
+"207
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 3 -> -> 1 `i `uc ]
+[; ;memoryController.c: 208: occupiedMemory[freeIndex].end = occupiedMemory[freeIndex].start + length;
+"208
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 1 + . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 0 _length ]
+[; ;memoryController.c: 209: occupiedMemory[freeIndex].fOutOfMemory = 0;
+"209
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 4 -> -> 0 `i `uc ]
+[; ;memoryController.c: 210: occupiedMemory[freeIndex].length = length;
+"210
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 2 _length ]
+[; ;memoryController.c: 211: occupiedMemory[freeIndex].index=freeIndex;
+"211
+[e = . *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux 5 _freeIndex ]
+[; ;memoryController.c: 212: return occupiedMemory[freeIndex];
+"212
+[e ) *U + &U _occupiedMemory * -> _freeIndex `ux -> -> # *U &U _occupiedMemory `ui `ux ]
+[e $UE 44  ]
+"213
+}
+[e :U 67 ]
+"214
+}
+[e :U 53 ]
+[; ;memoryController.c: 213: }
+[; ;memoryController.c: 214: }
+[; ;memoryController.c: 215: freeIndex++;
+"215
+[e ++ _freeIndex -> -> 1 `i `uc ]
+[; ;memoryController.c: 216: if (freeIndex == 8) {
+"216
+[e $ ! == -> _freeIndex `i -> 8 `i 68  ]
+{
+[; ;memoryController.c: 218: field.fOutOfMemory = 1;
+"218
+[e = . _field 4 -> -> 1 `i `uc ]
+[; ;memoryController.c: 219: return field;
+"219
+[e ) _field ]
+[e $UE 44  ]
+"220
+}
+[e :U 68 ]
+"221
+}
+[e :U 50 ]
+"165
+[e $ <= -> _freeIndex `i -> 8 `i 51  ]
+[e :U 52 ]
+[; ;memoryController.c: 220: }
+[; ;memoryController.c: 221: }
+[; ;memoryController.c: 222: }
+"222
+[e :UE 44 ]
+}
+"224
+[v _memory_txFrameClear `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;memoryController.c: 224: void memory_txFrameClear(uint8_t index) {
+[e :U _memory_txFrameClear ]
+[v _index `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;memoryController.c: 225: occupiedMemory[index].fIsAssigned = 0;
+"225
+[e = . *U + &U _occupiedMemory * -> _index `ux -> -> # *U &U _occupiedMemory `ui `ux 3 -> -> 0 `i `uc ]
+[; ;memoryController.c: 226: }
+"226
+[e :UE 69 ]
+}

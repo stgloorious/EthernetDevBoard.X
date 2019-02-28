@@ -1,0 +1,240 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"57 src/eth/ethernetTypes.h
+[s S3 `uc -> 6 `i ]
+[n S3 macaddress address ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;bool.h: 32: typedef bit bool_t;
+[; ;rsv.h: 33: typedef struct RSV {
+[; ;rsv.h: 39: uint16_t length;
+[; ;rsv.h: 40: uint8_t packetPreviouslyIgnored : 1;
+[; ;rsv.h: 47: uint8_t carrierEventPreviouslySeen : 1;
+[; ;rsv.h: 48: uint8_t CRCError : 1;
+[; ;rsv.h: 49: uint8_t lengthCheckError : 1;
+[; ;rsv.h: 50: uint8_t lengthOutOfRange : 1;
+[; ;rsv.h: 51: uint8_t receivedOk : 1;
+[; ;rsv.h: 52: uint8_t multicast : 1;
+[; ;rsv.h: 53: uint8_t broadcast : 1;
+[; ;rsv.h: 54: uint8_t dribbleNibble : 1;
+[; ;rsv.h: 55: uint8_t controlFrame : 1;
+[; ;rsv.h: 56: uint8_t pauseFrame : 1;
+[; ;rsv.h: 57: uint8_t unknownOpcode : 1;
+[; ;rsv.h: 58: uint8_t vlan : 1;
+[; ;rsv.h: 59: uint8_t runtFilter : 1;
+[; ;rsv.h: 60: uint8_t notMeFilter : 1;
+[; ;rsv.h: 61: uint8_t hashFilter : 1;
+[; ;rsv.h: 62: uint8_t magicFilter : 1;
+[; ;rsv.h: 63: uint8_t patternMatch : 1;
+[; ;rsv.h: 64: uint8_t unicast : 1;
+[; ;rsv.h: 65: } RSV_t;
+[; ;memoryTypes.h: 34: typedef struct memoryField {
+[; ;memoryTypes.h: 35: uint16_t start;
+[; ;memoryTypes.h: 36: uint16_t end;
+[; ;memoryTypes.h: 37: uint16_t length;
+[; ;memoryTypes.h: 38: uint8_t fIsAssigned : 1;
+[; ;memoryTypes.h: 39: uint8_t fOutOfMemory : 1;
+[; ;memoryTypes.h: 40: uint8_t index;
+[; ;memoryTypes.h: 41: } memoryField_t;
+[; ;ethernetTypes.h: 48: typedef enum etherTypes {
+[; ;ethernetTypes.h: 49: ETHERTYPE_IPv4 = 0x0800,
+[; ;ethernetTypes.h: 50: ETHERTYPE_ARP = 0x0806,
+[; ;ethernetTypes.h: 51: ETHERTYPE_WOL = 0x0842,
+[; ;ethernetTypes.h: 52: ETHERTYPE_FLOW_CONTROL = 0x8808
+[; ;ethernetTypes.h: 53: } etherType_t;
+[; ;ethernetTypes.h: 57: typedef struct macaddress {
+[; ;ethernetTypes.h: 58: uint8_t address[6];
+[; ;ethernetTypes.h: 59: } macaddress_t;
+[; ;ethernetTypes.h: 63: typedef enum linkStates {
+[; ;ethernetTypes.h: 64: NO_LINK, LINK_ESTABLISHED
+[; ;ethernetTypes.h: 65: } linkState_t;
+[; ;ethernetTypes.h: 69: typedef enum speeds {
+[; ;ethernetTypes.h: 70: TEN_MBIT, HUNDRED_MBIT
+[; ;ethernetTypes.h: 71: } speed_t;
+[; ;ethernetTypes.h: 75: typedef enum duplexStates {
+[; ;ethernetTypes.h: 76: HALF_DUPLEX, FULL_DUPLEX
+[; ;ethernetTypes.h: 77: } duplexState_t;
+[; ;ethernetTypes.h: 82: typedef struct ethernetFrame {
+[; ;ethernetTypes.h: 83: uint16_t length;
+[; ;ethernetTypes.h: 84: macaddress_t source;
+[; ;ethernetTypes.h: 85: macaddress_t destination;
+[; ;ethernetTypes.h: 86: etherType_t ethertype;
+[; ;ethernetTypes.h: 87: memoryField_t memory;
+[; ;ethernetTypes.h: 91: RSV_t receiveStatusVector;
+[; ;ethernetTypes.h: 92: } ethernetFrame_t;
+[; ;ethernetTypes.h: 97: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 98: linkState_t link;
+[; ;ethernetTypes.h: 99: speed_t speed;
+[; ;ethernetTypes.h: 100: duplexState_t duplex;
+[; ;ethernetTypes.h: 101: macaddress_t source;
+[; ;ethernetTypes.h: 102: macaddress_t destination;
+[; ;ethernetTypes.h: 103: } ethernetConnection_t;
+[; ;mac.h: 43: bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
+[; ;mac.h: 49: void mac_setToBroadcast(macaddress_t *mac);
+[; ;mac.h: 56: bool_t mac_isBroadcast(macaddress_t *mac);
+[; ;mac.h: 62: void mac_setAllZero(macaddress_t *mac);
+[; ;mac.h: 70: bool_t mac_isAllZero(macaddress_t *mac);
+"26 src/eth/mac.c
+[v _mac_setToBroadcast `(v ~T0 @X0 1 ef1`*S3 ]
+{
+[; ;mac.c: 26: void mac_setToBroadcast(macaddress_t *mac) {
+[e :U _mac_setToBroadcast ]
+[v _mac `*S3 ~T0 @X0 1 r1 ]
+[f ]
+[; ;mac.c: 27: for (uint8_t i = 0; i < 6; i++)
+"27
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 6 `i 7  ]
+[e $U 8  ]
+"28
+[e :U 7 ]
+[; ;mac.c: 28: mac->address[i] = 0xff;
+[e = *U + &U . *U _mac 0 * -> _i `ux -> -> # *U &U . *U _mac 0 `ui `ux -> -> 255 `i `uc ]
+"27
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 7  ]
+[e :U 8 ]
+"28
+}
+[; ;mac.c: 29: }
+"29
+[e :UE 6 ]
+}
+"31
+[v _mac_isAllZero `(b ~T0 @X0 1 ef1`*S3 ]
+{
+[; ;mac.c: 31: bool_t mac_isAllZero(macaddress_t* mac) {
+[e :U _mac_isAllZero ]
+[v _mac `*S3 ~T0 @X0 1 r1 ]
+[f ]
+[; ;mac.c: 32: for (uint8_t i = 0; i < 6; i++) {
+"32
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 6 `i 11  ]
+[e $U 12  ]
+[e :U 11 ]
+{
+[; ;mac.c: 33: if (mac->address[i] != 0x00)
+"33
+[e $ ! != -> *U + &U . *U _mac 0 * -> _i `ux -> -> # *U &U . *U _mac 0 `ui `ux `i -> 0 `i 14  ]
+[; ;mac.c: 34: return 0;
+"34
+[e ) -> -> 0 `i `b ]
+[e $UE 10  ]
+[e :U 14 ]
+"35
+}
+"32
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 11  ]
+[e :U 12 ]
+"35
+}
+[; ;mac.c: 35: }
+[; ;mac.c: 36: return 1;
+"36
+[e ) -> -> 1 `i `b ]
+[e $UE 10  ]
+[; ;mac.c: 37: }
+"37
+[e :UE 10 ]
+}
+"39
+[v _mac_cmp `(b ~T0 @X0 1 ef2`*S3`*S3 ]
+{
+[; ;mac.c: 39: bool_t mac_cmp(macaddress_t* a, macaddress_t* b) {
+[e :U _mac_cmp ]
+[v _a `*S3 ~T0 @X0 1 r1 ]
+[v _b `*S3 ~T0 @X0 1 r2 ]
+[f ]
+[; ;mac.c: 40: for (uint8_t i = 0; i < 6; i++) {
+"40
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 6 `i 16  ]
+[e $U 17  ]
+[e :U 16 ]
+{
+[; ;mac.c: 41: if (a->address[i] != b->address[i])
+"41
+[e $ ! != -> *U + &U . *U _a 0 * -> _i `ux -> -> # *U &U . *U _a 0 `ui `ux `i -> *U + &U . *U _b 0 * -> _i `ux -> -> # *U &U . *U _b 0 `ui `ux `i 19  ]
+[; ;mac.c: 42: return 0;
+"42
+[e ) -> -> 0 `i `b ]
+[e $UE 15  ]
+[e :U 19 ]
+"43
+}
+"40
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 16  ]
+[e :U 17 ]
+"43
+}
+[; ;mac.c: 43: }
+[; ;mac.c: 44: return 1;
+"44
+[e ) -> -> 1 `i `b ]
+[e $UE 15  ]
+[; ;mac.c: 45: }
+"45
+[e :UE 15 ]
+}
+"47
+[v _mac_setAllZero `(v ~T0 @X0 1 ef1`*S3 ]
+{
+[; ;mac.c: 47: void mac_setAllZero(macaddress_t* mac) {
+[e :U _mac_setAllZero ]
+[v _mac `*S3 ~T0 @X0 1 r1 ]
+[f ]
+[; ;mac.c: 48: for (uint8_t i = 0; i < 6; i++)
+"48
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 6 `i 21  ]
+[e $U 22  ]
+"49
+[e :U 21 ]
+[; ;mac.c: 49: mac->address[i] = 0x00;
+[e = *U + &U . *U _mac 0 * -> _i `ux -> -> # *U &U . *U _mac 0 `ui `ux -> -> 0 `i `uc ]
+"48
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 21  ]
+[e :U 22 ]
+"49
+}
+[; ;mac.c: 50: }
+"50
+[e :UE 20 ]
+}

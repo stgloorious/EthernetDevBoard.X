@@ -1,0 +1,46 @@
+ build/default/production/src/stack/backgroundTasks.d  \
+ build/default/production/src/stack/backgroundTasks.p1:  \
+ src/stack/backgroundTasks.c  \
+src/stack/../stack/../stack/protocols/../bool.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernet.h  \
+src/stack/../stack/../eth/ethernet.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/../mem/memoryController.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../system/../eth/mac.h  \
+src/stack/../stack/../stack/protocols/../protocols/../protocols/ipv4.h  \
+src/stack/../stack/../stack/protocols/../../stack/../stack/error.h  \
+src/stack/../stack/../stack/error.h  \
+src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h  \
+src/stack/../stack/../stack/backgroundTasksTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/arpTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../protocols/arpTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../error.h  \
+src/stack/../stack/../stack/protocols/../error.h  \
+src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../protocols/ipv4Types.h  \
+src/stack/../stack/backgroundTasks.h  \
+src/stack/../stack/../eth/../stack/error.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/../stack/error.h  \
+src/stack/../stack/../stack/protocols/ipv4.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/ipv4.h  \
+src/stack/../stack/../stack/protocols/../../stack/protocols/ipv4.h  \
+src/stack/../stack/../stack/stack.h  \
+src/stack/../stack/../eth/../eth/../enc424j600/rsv.h  \
+src/stack/../stack/../stack/protocols/../stack.h  \
+src/stack/../stack/../eth/../eth/ethernetTypes.h  \
+src/stack/../stack/../stack/protocols/../../eth/ethernetTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernetTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/../eth/ethernetTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../../eth/ethernetTypes.h  \
+src/stack/../stack/../eth/ethernetController.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernetController.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/../eth/ethernetController.h  \
+src/stack/../stack/../eth/../eth/../mem/memoryTypes.h  \
+src/stack/../stack/../eth/../mem/memoryTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../mem/memoryTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/../mem/../mem/memoryTypes.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../system/uart.h  \
+src/stack/../stack/../eth/../enc424j600/interrupt.h  \
+src/stack/../stack/../stack/protocols/../../stack/../enc424j600/interrupt.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/mac.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/../stack/bool.h  \
+src/stack/../stack/../stack/protocols/../protocols/arp.h 
