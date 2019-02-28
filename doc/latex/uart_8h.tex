@@ -22,7 +22,9 @@ void \mbox{\hyperlink{uart_8h_a8cd465006ed73cab2e273a815e264014}{D\+E\+B\+U\+G\+
 void \mbox{\hyperlink{uart_8h_a4a038b093e8e3fbeac77a3da95231e86}{U\+A\+R\+T\+Transmit\+Int}} (uint32\+\_\+t val)
 \begin{DoxyCompactList}\small\item\em Transmits a four-\/digit numerical value. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{uart_8h_abddf1626904c824d00f2be6b130500d3}{int\+To\+String}} (uint32\+\_\+t val)
-\begin{DoxyCompactList}\small\item\em Converts a numerical value into a string. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Converts a decimal numerical value into a string. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{uart_8h_a2b5ab32a5e424cca95e98f0034678c46}{hex\+To\+String}} (uint32\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em Converts a hexadecimal numerical value into a string. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{uart_8h_a1acf079e1ab6ae38ac7a05338a535cdd}{mac\+To\+String}} (\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} addr)
 \begin{DoxyCompactList}\small\item\em Takes a M\+AC address and translates it to a human-\/readable char string. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{uart_8h_af851eb2e51e81a23a50eb733ae02dc4e}{ether\+Type\+To\+String}} (\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} ethertype)
@@ -108,6 +110,24 @@ Takes the ether\+Type field value and converts it into human-\/readable string (
 \begin{DoxyReturn}{Returns}
 Char string 
 \end{DoxyReturn}
+\mbox{\Hypertarget{uart_8h_a2b5ab32a5e424cca95e98f0034678c46}\label{uart_8h_a2b5ab32a5e424cca95e98f0034678c46}} 
+\index{uart.h@{uart.h}!hexToString@{hexToString}}
+\index{hexToString@{hexToString}!uart.h@{uart.h}}
+\subsubsection{\texorpdfstring{hexToString()}{hexToString()}}
+{\footnotesize\ttfamily char$\ast$ hex\+To\+String (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{val }\end{DoxyParamCaption})}
+
+
+
+Converts a hexadecimal numerical value into a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char string 
+\end{DoxyReturn}
 \mbox{\Hypertarget{uart_8h_abddf1626904c824d00f2be6b130500d3}\label{uart_8h_abddf1626904c824d00f2be6b130500d3}} 
 \index{uart.h@{uart.h}!intToString@{intToString}}
 \index{intToString@{intToString}!uart.h@{uart.h}}
@@ -116,7 +136,7 @@ Char string
 
 
 
-Converts a numerical value into a string. 
+Converts a decimal numerical value into a string. 
 
 
 \begin{DoxyParams}{Parameters}

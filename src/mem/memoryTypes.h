@@ -26,18 +26,29 @@
 #define	MEMORYTYPES_H
 
 #include <stdint.h>
+#include "../stack/bool.h"
 
 /**
  * \brief Represents a part of memory where a packet is stored
  * \ingroup memory
  */
 typedef struct memoryField {
-    uint16_t start; ///< Memory start address
+    /**
+     * \brief Memory start address
+     * \note Please take note that this field includes the NextPacketPointer and the RSV.
+     * If you want to access the Dst Addr, you have to add an offset of 8 Bytes to the start address pointer.
+     * For the Src Addr it's 12 Bytes and so on.
+     */
+    uint16_t start;
     uint16_t end; ///< Memory end address
-    uint16_t length; ///< Length in bytes
-    uint8_t fIsAssigned : 1; ///< 1: In use, 0: Free
-    uint8_t fOutOfMemory : 1;///< Error flag if there is no more room in the buffer
-    uint8_t index;///< Index number of the field so it can be identified when freeing memory up
+    uint16_t length; ///< Length in bytes. The length does also include NextPacketPointer and RSV.
+    uint8_t fIsAssigned; ///< 1: In use, 0: Free
+    uint8_t fOutOfMemory;///< Error flag if there is no more room in the buffer
+    /**
+     * \brief Index number of the field so it can be identified when freeing memory up
+     * \note Range is 0..\ref ARP_TABLE_LENGTH - 1
+     */
+    uint8_t index;///< 
 } memoryField_t;
 
 #endif	/* MEMORYTYPES_H */

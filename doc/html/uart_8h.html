@@ -64,7 +64,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_8728bfbcad3965dd65251051af45af95.html">stefa</a></li><li class="navelem"><a class="el" href="dir_9d057343409aaa408b0039595518298f.html">Dropbox</a></li><li class="navelem"><a class="el" href="dir_9598fbecaf2fa92bbbe0d5f260813e4e.html">Documents</a></li><li class="navelem"><a class="el" href="dir_e4a36a788cd8c840cc6b155da283f877.html">Hobby</a></li><li class="navelem"><a class="el" href="dir_42309c5e3161771ee02d13293260af12.html">Elektronik</a></li><li class="navelem"><a class="el" href="dir_cd41252d021917946139a6a0c80eb710.html">EthernetDevBoard</a></li><li class="navelem"><a class="el" href="dir_8f21cc3fb881a270b7accb62d738bba1.html">Software</a></li><li class="navelem"><a class="el" href="dir_1a773b213c693c82474a88ecce702391.html">EthernetDevBoard.X</a></li><li class="navelem"><a class="el" href="dir_7b2c417819385228fab4e38a4b6479ec.html">src</a></li><li class="navelem"><a class="el" href="dir_d8fbec68f09d25eb2cd555d9d3e137d0.html">system</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -100,8 +100,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:a4a038b093e8e3fbeac77a3da95231e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmits a four-digit numerical value.  <a href="#a4a038b093e8e3fbeac77a3da95231e86">More...</a><br /></td></tr>
 <tr class="separator:a4a038b093e8e3fbeac77a3da95231e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abddf1626904c824d00f2be6b130500d3"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#abddf1626904c824d00f2be6b130500d3">intToString</a> (uint32_t val)</td></tr>
-<tr class="memdesc:abddf1626904c824d00f2be6b130500d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a numerical value into a string.  <a href="#abddf1626904c824d00f2be6b130500d3">More...</a><br /></td></tr>
+<tr class="memdesc:abddf1626904c824d00f2be6b130500d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a decimal numerical value into a string.  <a href="#abddf1626904c824d00f2be6b130500d3">More...</a><br /></td></tr>
 <tr class="separator:abddf1626904c824d00f2be6b130500d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b5ab32a5e424cca95e98f0034678c46"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a2b5ab32a5e424cca95e98f0034678c46">hexToString</a> (uint32_t val)</td></tr>
+<tr class="memdesc:a2b5ab32a5e424cca95e98f0034678c46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal numerical value into a string.  <a href="#a2b5ab32a5e424cca95e98f0034678c46">More...</a><br /></td></tr>
+<tr class="separator:a2b5ab32a5e424cca95e98f0034678c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1acf079e1ab6ae38ac7a05338a535cdd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a1acf079e1ab6ae38ac7a05338a535cdd">macToString</a> (<a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a> addr)</td></tr>
 <tr class="memdesc:a1acf079e1ab6ae38ac7a05338a535cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a MAC address and translates it to a human-readable char string.  <a href="#a1acf079e1ab6ae38ac7a05338a535cdd">More...</a><br /></td></tr>
 <tr class="separator:a1acf079e1ab6ae38ac7a05338a535cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,6 +209,33 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2b5ab32a5e424cca95e98f0034678c46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b5ab32a5e424cca95e98f0034678c46">&#9670;&nbsp;</a></span>hexToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* hexToString </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a hexadecimal numerical value into a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char string </dd></dl>
+
+</div>
+</div>
 <a id="abddf1626904c824d00f2be6b130500d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abddf1626904c824d00f2be6b130500d3">&#9670;&nbsp;</a></span>intToString()</h2>
 
@@ -222,7 +252,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Converts a numerical value into a string. </p>
+<p>Converts a decimal numerical value into a string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">val</td><td></td></tr>

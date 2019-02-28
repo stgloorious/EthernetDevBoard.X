@@ -167,13 +167,20 @@ uint8_t patternMatch : 1;
 uint8_t unicast : 1;
 } RSV_t;
 
-# 34 "src/stack/../stack/../eth/../eth/../mem/memoryTypes.h"
+# 32 "src/stack/../stack/../eth/../eth/../mem/../stack/bool.h"
+typedef bit bool_t;
+
+# 35 "src/stack/../stack/../eth/../eth/../mem/memoryTypes.h"
 typedef struct memoryField {
+
+# 42
 uint16_t start;
 uint16_t end;
 uint16_t length;
-uint8_t fIsAssigned : 1;
-uint8_t fOutOfMemory : 1;
+uint8_t fIsAssigned;
+uint8_t fOutOfMemory;
+
+# 51
 uint8_t index;
 } memoryField_t;
 
@@ -328,44 +335,44 @@ void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryFiel
 # 227
 void ethernetController_dropPacket(ethernetFrame_t *frame);
 
-# 237
-uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t *len, uint16_t offset);
+# 233
+void ethernetController_updateNextPacketPointer();
 
-# 244
+# 247
+uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+
+# 254
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 251
-macaddress_t ethernetController_getSourceMACAddress();
+# 261
+macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 258
-etherType_t ethernetController_getEtherTypeField();
+# 268
+etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 264
+# 274
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 270
+# 280
 uint8_t ethernetController_newPacketAvailable();
 
-# 276
+# 286
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 282
+# 292
 uint16_t ethernetController_getNextPacketPointer();
 
-# 288
+# 298
 macaddress_t ethernetController_getMacAddress();
 
-# 294
+# 304
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 308
+# 318
 void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
 
-# 315
+# 325
 void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
-
-# 32 "src/stack/../stack/../stack/protocols/../bool.h"
-typedef bit bool_t;
 
 # 40 "src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h"
 typedef enum ipv4_protocols {
@@ -7110,15 +7117,18 @@ void UARTTransmitInt(uint32_t val);
 char *intToString(uint32_t val);
 
 # 70
-char *macToString(macaddress_t addr);
+char *hexToString(uint32_t val);
 
 # 77
-char *etherTypeToString(etherType_t ethertype);
+char *macToString(macaddress_t addr);
 
 # 84
-char *ipAdressToString(ipv4_address_t ip);
+char *etherTypeToString(etherType_t ethertype);
 
 # 91
+char *ipAdressToString(ipv4_address_t ip);
+
+# 98
 char *arpEntryToString(ARP_tableEntry_t table);
 
 # 47 "src/stack/../stack/../stack/protocols/../protocols/arp.h"

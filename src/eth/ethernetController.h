@@ -227,35 +227,45 @@ void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryFiel
 void ethernetController_dropPacket(ethernetFrame_t *frame);
 
 /**
+ * \brief Reads the nextPacketPointer from the current packet and stores it.
+ * \note To be called right before the packet is going to be processed.
+ */
+void ethernetController_updateNextPacketPointer();
+
+/**
  * \brief This functions allows online transmission to the internal buffer of the Ethernet Controller. An additional buffer on the MCU is not needed.
  * \return data  Current byte to stream
- * \param [out] *len   Length of the received frame
  * \param startEnd Control number; Pass 0 at the first byte, then 1 and 2 at the last byte
- * \param offset   A memory read offset can be set when StartEnd=1
- * \todo implement memoryField support
+ * \param startAddress   Start address; \ref memoryField.start
+ * \warning Once a stream is openend no other function should be called that could access the data communication
+ * to the Ethernet controller. For maximum speed effiency, the read pointer is only set once (at the beginning of the stream).
+ * After that, the read operation relies on the automatic pointer increment of the Ethernet Controller. So before doing anything else
+ * this function has to be called with \ref startEnd equal to 2 to properly end the stream.
+ * \note If \ref startEnd != 1 the returned value is always 0.
+ * 
  */
-uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t *len, uint16_t offset);
+uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
 
 /**
  * \brief Parses the recently received frame and returns the Destination MAC address.
+ * \param field \ref memoryField_t structure indicating where the packet that should be parsed lies in memory
  * \return Destination MAC address
- * \todo implement memoryField support
  */
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
 /**
  * \brief Parses the recently received frame and returns the Source MAC address.
+ * \param field \ref memoryField_t structure indicating where the packet that should be parsed lies in memory
  * \return Source MAC address
- * \todo implement memoryField support
  */
-macaddress_t ethernetController_getSourceMACAddress();
+macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
 /**
  * \brief Parses the recently received frame and returns the EtherType field.
- * \todo implement memoryField support
+ * \param field \ref memoryField_t structure indicating where the packet that should be parsed lies in memory
  * \return EtherType field
  */
-etherType_t ethernetController_getEtherTypeField();
+etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
 /**
  * \brief Reads the Receive Status Vector from the recently received Packet and returns the address of the first element

@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"34 src/mem/../mem/../mem/memoryTypes.h
-[s S1 `ui 1 `ui 1 `ui 1 :1 `uc 1 :1 `uc 1 `uc 1 ]
+"35 src/mem/../mem/../mem/memoryTypes.h
+[s S1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S1 memoryField start end length fIsAssigned fOutOfMemory index ]
 "84 src/mem/../mem/memoryController.h
 [v _checkForOverlapSwitched `(uc ~T0 @X0 0 sf2`S1`S1 ]
@@ -32,14 +32,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;memoryTypes.h: 34: typedef struct memoryField {
-[; ;memoryTypes.h: 35: uint16_t start;
-[; ;memoryTypes.h: 36: uint16_t end;
-[; ;memoryTypes.h: 37: uint16_t length;
-[; ;memoryTypes.h: 38: uint8_t fIsAssigned : 1;
-[; ;memoryTypes.h: 39: uint8_t fOutOfMemory : 1;
-[; ;memoryTypes.h: 40: uint8_t index;
-[; ;memoryTypes.h: 41: } memoryField_t;
+[; ;bool.h: 32: typedef bit bool_t;
+[; ;memoryTypes.h: 35: typedef struct memoryField {
+[; ;memoryTypes.h: 42: uint16_t start;
+[; ;memoryTypes.h: 43: uint16_t end;
+[; ;memoryTypes.h: 44: uint16_t length;
+[; ;memoryTypes.h: 45: uint8_t fIsAssigned;
+[; ;memoryTypes.h: 46: uint8_t fOutOfMemory;
+[; ;memoryTypes.h: 51: uint8_t index;
+[; ;memoryTypes.h: 52: } memoryField_t;
 [; ;memoryController.h: 61: memoryField_t memory_txFrameRequest(uint16_t length);
 [; ;memoryController.h: 67: void memory_txFrameClear(uint8_t index);
 [; ;memoryController.h: 75: uint8_t static checkForOverlap(memoryField_t a, memoryField_t b);

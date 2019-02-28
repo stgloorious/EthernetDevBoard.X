@@ -6721,13 +6721,20 @@ uint8_t patternMatch : 1;
 uint8_t unicast : 1;
 } RSV_t;
 
-# 34 "src/system/../system/../stack/protocols/../../eth/../mem/memoryTypes.h"
+# 32 "src/system/../system/../stack/protocols/../../eth/../mem/../stack/bool.h"
+typedef bit bool_t;
+
+# 35 "src/system/../system/../stack/protocols/../../eth/../mem/memoryTypes.h"
 typedef struct memoryField {
+
+# 42
 uint16_t start;
 uint16_t end;
 uint16_t length;
-uint8_t fIsAssigned : 1;
-uint8_t fOutOfMemory : 1;
+uint8_t fIsAssigned;
+uint8_t fOutOfMemory;
+
+# 51
 uint8_t index;
 } memoryField_t;
 
@@ -6920,9 +6927,6 @@ macaddress_t mac;
 uint32_t secondsCreated;
 } ARP_tableEntry_t;
 
-# 32 "src/system/../system/../eth/../stack/bool.h"
-typedef bit bool_t;
-
 # 43 "src/system/../system/../eth/mac.h"
 bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 
@@ -7040,40 +7044,43 @@ void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryFiel
 # 227
 void ethernetController_dropPacket(ethernetFrame_t *frame);
 
-# 237
-uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t *len, uint16_t offset);
+# 233
+void ethernetController_updateNextPacketPointer();
 
-# 244
+# 247
+uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+
+# 254
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 251
-macaddress_t ethernetController_getSourceMACAddress();
+# 261
+macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 258
-etherType_t ethernetController_getEtherTypeField();
+# 268
+etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 264
+# 274
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 270
+# 280
 uint8_t ethernetController_newPacketAvailable();
 
-# 276
+# 286
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 282
+# 292
 uint16_t ethernetController_getNextPacketPointer();
 
-# 288
+# 298
 macaddress_t ethernetController_getMacAddress();
 
-# 294
+# 304
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 308
+# 318
 void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
 
-# 315
+# 325
 void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
 
 # 61 "src/system/../system/../stack/protocols/../protocols/../../eth/../mem/memoryController.h"
@@ -7197,15 +7204,18 @@ void UARTTransmitInt(uint32_t val);
 char *intToString(uint32_t val);
 
 # 70
-char *macToString(macaddress_t addr);
+char *hexToString(uint32_t val);
 
 # 77
-char *etherTypeToString(etherType_t ethertype);
+char *macToString(macaddress_t addr);
 
 # 84
-char *ipAdressToString(ipv4_address_t ip);
+char *etherTypeToString(etherType_t ethertype);
 
 # 91
+char *ipAdressToString(ipv4_address_t ip);
+
+# 98
 char *arpEntryToString(ARP_tableEntry_t table);
 
 # 26 "src/system/uart.c"
@@ -7262,6 +7272,29 @@ number[pointer++] = tens + 0x30u;
 number[pointer++] = ones + 0x30u;
 number[pointer++] = '\0';
 
+return number;
+}
+
+char hexToChar(uint8_t val) {
+if (val < 10) {
+return val + 0x30u;
+} else if (val < 16) {
+return val + 0x41u - 10;
+}
+return 0;
+}
+
+char *hexToString(uint32_t val) {
+char static number [10];
+uint8_t pointer = 0;
+if (val > 0xff) {
+number[pointer++] = hexToChar((val >> 12) & 0xf);
+number[pointer++] = hexToChar((val >> 8) & 0xf);
+}
+number[pointer++] = hexToChar((val >> 4) & 0xf);
+number[pointer++] = hexToChar(val & 0xf);
+
+number[pointer++] = '\0';
 return number;
 }
 

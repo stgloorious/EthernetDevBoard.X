@@ -18,6 +18,7 @@ src/stack/../stack/../stack/protocols/../error.h  \
 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../protocols/ipv4Types.h  \
 src/stack/../stack/backgroundTasks.h  \
+src/stack/../stack/../eth/../eth/../mem/../stack/bool.h  \
 src/stack/../stack/../eth/../stack/error.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/../stack/error.h  \
 src/stack/../stack/../stack/protocols/ipv4.h  \

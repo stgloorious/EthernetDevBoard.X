@@ -14,6 +14,7 @@ src/stack/protocols/../protocols/../error.h  \
 src/stack/protocols/../../system/../stack/protocols/../error.h  \
 src/stack/protocols/../protocols/../protocols/ipv4Types.h  \
 src/stack/protocols/../../system/../stack/protocols/../protocols/ipv4Types.h  \
+src/stack/protocols/../../eth/../eth/../mem/../stack/bool.h  \
 src/stack/protocols/../../eth/../stack/error.h  \
 src/stack/protocols/../protocols/../../stack/protocols/ipv4.h  \
 src/stack/protocols/../../system/../stack/protocols/ipv4.h  \

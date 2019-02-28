@@ -85,12 +85,12 @@ Data Fields</h2></td></tr>
 <tr class="memdesc:afbcd798d035e37e733b567c2b0cb96dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory end address.  <a href="#afbcd798d035e37e733b567c2b0cb96dc">More...</a><br /></td></tr>
 <tr class="separator:afbcd798d035e37e733b567c2b0cb96dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1892eba2086d12ac2b09005aeb09ea3b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemory_field.html#a1892eba2086d12ac2b09005aeb09ea3b">length</a></td></tr>
-<tr class="memdesc:a1892eba2086d12ac2b09005aeb09ea3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes.  <a href="#a1892eba2086d12ac2b09005aeb09ea3b">More...</a><br /></td></tr>
+<tr class="memdesc:a1892eba2086d12ac2b09005aeb09ea3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes. The length does also include NextPacketPointer and <a class="el" href="struct_r_s_v.html" title="This structure represents the Receive Status Vector in a nice way.">RSV</a>.  <a href="#a1892eba2086d12ac2b09005aeb09ea3b">More...</a><br /></td></tr>
 <tr class="separator:a1892eba2086d12ac2b09005aeb09ea3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36ed4d8e7e2e5f308044e7b422a80028"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemory_field.html#a36ed4d8e7e2e5f308044e7b422a80028">fIsAssigned</a>: 1</td></tr>
+<tr class="memitem:a36ed4d8e7e2e5f308044e7b422a80028"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemory_field.html#a36ed4d8e7e2e5f308044e7b422a80028">fIsAssigned</a></td></tr>
 <tr class="memdesc:a36ed4d8e7e2e5f308044e7b422a80028"><td class="mdescLeft">&#160;</td><td class="mdescRight">1: In use, 0: Free  <a href="#a36ed4d8e7e2e5f308044e7b422a80028">More...</a><br /></td></tr>
 <tr class="separator:a36ed4d8e7e2e5f308044e7b422a80028"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90bc80d5fb22db8fba7b5601b9336395"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemory_field.html#a90bc80d5fb22db8fba7b5601b9336395">fOutOfMemory</a>: 1</td></tr>
+<tr class="memitem:a90bc80d5fb22db8fba7b5601b9336395"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemory_field.html#a90bc80d5fb22db8fba7b5601b9336395">fOutOfMemory</a></td></tr>
 <tr class="memdesc:a90bc80d5fb22db8fba7b5601b9336395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error flag if there is no more room in the buffer.  <a href="#a90bc80d5fb22db8fba7b5601b9336395">More...</a><br /></td></tr>
 <tr class="separator:a90bc80d5fb22db8fba7b5601b9336395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae5a12e607d0f782506d9e6ec6179c64"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemory_field.html#aae5a12e607d0f782506d9e6ec6179c64">index</a></td></tr>
@@ -161,6 +161,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Index number of the field so it can be identified when freeing memory up. </p>
+<dl class="section note"><dt>Note</dt><dd>Range is 0..<a class="el" href="group__arp.html#gad4abd9ee89fa8a8ba4231b6d914b5e83">ARP_TABLE_LENGTH</a> - 1 </dd></dl>
 
 </div>
 </div>
@@ -176,7 +177,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Length in bytes. </p>
+<p>Length in bytes. The length does also include NextPacketPointer and <a class="el" href="struct_r_s_v.html" title="This structure represents the Receive Status Vector in a nice way.">RSV</a>. </p>
 
 </div>
 </div>
@@ -193,6 +194,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Memory start address. </p>
+<dl class="section note"><dt>Note</dt><dd>Please take note that this field includes the NextPacketPointer and the <a class="el" href="struct_r_s_v.html" title="This structure represents the Receive Status Vector in a nice way.">RSV</a>. If you want to access the Dst Addr, you have to add an offset of 8 Bytes to the start address pointer. For the Src Addr it's 12 Bytes and so on. </dd></dl>
 
 </div>
 </div>

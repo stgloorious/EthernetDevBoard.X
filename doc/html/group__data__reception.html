@@ -84,18 +84,21 @@ Functions</h2></td></tr>
 <tr class="memitem:gada8fcdc667d1800b5f963bfc8cea56c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#gada8fcdc667d1800b5f963bfc8cea56c2">ethernetController_dropPacket</a> (<a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a> *frame)</td></tr>
 <tr class="memdesc:gada8fcdc667d1800b5f963bfc8cea56c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discards a packet.  <a href="#gada8fcdc667d1800b5f963bfc8cea56c2">More...</a><br /></td></tr>
 <tr class="separator:gada8fcdc667d1800b5f963bfc8cea56c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5748b4be9f5e6936ab91753411a440d9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#ga5748b4be9f5e6936ab91753411a440d9">ethernetController_streamFromRXBuffer</a> (uint8_t startEnd, uint16_t *len, uint16_t offset)</td></tr>
-<tr class="memdesc:ga5748b4be9f5e6936ab91753411a440d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This functions allows online transmission to the internal buffer of the Ethernet Controller. An additional buffer on the MCU is not needed.  <a href="#ga5748b4be9f5e6936ab91753411a440d9">More...</a><br /></td></tr>
-<tr class="separator:ga5748b4be9f5e6936ab91753411a440d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d6d9257b64641f2120cb99f31d66a0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#ga9d6d9257b64641f2120cb99f31d66a0e">ethernetController_updateNextPacketPointer</a> ()</td></tr>
+<tr class="memdesc:ga9d6d9257b64641f2120cb99f31d66a0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the nextPacketPointer from the current packet and stores it.  <a href="#ga9d6d9257b64641f2120cb99f31d66a0e">More...</a><br /></td></tr>
+<tr class="separator:ga9d6d9257b64641f2120cb99f31d66a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga152b0e0b0d3ed72affb7feac14035b6e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#ga152b0e0b0d3ed72affb7feac14035b6e">ethernetController_streamFromRXBuffer</a> (uint8_t startEnd, uint16_t startAddress)</td></tr>
+<tr class="memdesc:ga152b0e0b0d3ed72affb7feac14035b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This functions allows online transmission to the internal buffer of the Ethernet Controller. An additional buffer on the MCU is not needed.  <a href="#ga152b0e0b0d3ed72affb7feac14035b6e">More...</a><br /></td></tr>
+<tr class="separator:ga152b0e0b0d3ed72affb7feac14035b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga29e5c29891e62206ceed99a6b15749a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#ga29e5c29891e62206ceed99a6b15749a0">ethernetController_getDestinationMACAddress</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> field)</td></tr>
 <tr class="memdesc:ga29e5c29891e62206ceed99a6b15749a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the recently received frame and returns the Destination MAC address.  <a href="#ga29e5c29891e62206ceed99a6b15749a0">More...</a><br /></td></tr>
 <tr class="separator:ga29e5c29891e62206ceed99a6b15749a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa299c646a9c07c0ee81e8c673acd56b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#gaa299c646a9c07c0ee81e8c673acd56b2">ethernetController_getSourceMACAddress</a> ()</td></tr>
-<tr class="memdesc:gaa299c646a9c07c0ee81e8c673acd56b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the recently received frame and returns the Source MAC address.  <a href="#gaa299c646a9c07c0ee81e8c673acd56b2">More...</a><br /></td></tr>
-<tr class="separator:gaa299c646a9c07c0ee81e8c673acd56b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae806930e1cc431f556f805fe1aef6355"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ethernet.html#ga467703afefdcaf7893a7da3eb63280ed">etherType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#gae806930e1cc431f556f805fe1aef6355">ethernetController_getEtherTypeField</a> ()</td></tr>
-<tr class="memdesc:gae806930e1cc431f556f805fe1aef6355"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the recently received frame and returns the EtherType field.  <a href="#gae806930e1cc431f556f805fe1aef6355">More...</a><br /></td></tr>
-<tr class="separator:gae806930e1cc431f556f805fe1aef6355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe0967f5f15ce26c4bb723036e566afe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#gabe0967f5f15ce26c4bb723036e566afe">ethernetController_getSourceMACAddress</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> field)</td></tr>
+<tr class="memdesc:gabe0967f5f15ce26c4bb723036e566afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the recently received frame and returns the Source MAC address.  <a href="#gabe0967f5f15ce26c4bb723036e566afe">More...</a><br /></td></tr>
+<tr class="separator:gabe0967f5f15ce26c4bb723036e566afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga84354a03e54526ac8a820650886458f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ethernet.html#ga467703afefdcaf7893a7da3eb63280ed">etherType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#ga84354a03e54526ac8a820650886458f4">ethernetController_getEtherTypeField</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> field)</td></tr>
+<tr class="memdesc:ga84354a03e54526ac8a820650886458f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the recently received frame and returns the EtherType field.  <a href="#ga84354a03e54526ac8a820650886458f4">More...</a><br /></td></tr>
+<tr class="separator:ga84354a03e54526ac8a820650886458f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1d8cfd56b6020b891ba408c18789129c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__rsv.html#gaf7fd94a9424fccb0aafa846f27a43099">RSV_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#ga1d8cfd56b6020b891ba408c18789129c">ethernetController_getRSV</a> (uint16_t address)</td></tr>
 <tr class="memdesc:ga1d8cfd56b6020b891ba408c18789129c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the Receive Status Vector from the recently received Packet and returns the address of the first element.  <a href="#ga1d8cfd56b6020b891ba408c18789129c">More...</a><br /></td></tr>
 <tr class="separator:ga1d8cfd56b6020b891ba408c18789129c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,13 +183,18 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Parses the recently received frame and returns the Destination MAC address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> structure indicating where the packet that should be parsed lies in memory </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Destination MAC address </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>implement <a class="el" href="structmemory_field.html" title="Represents a part of memory where a packet is stored.">memoryField</a> support </dd></dl>
 
 </div>
 </div>
-<a id="gae806930e1cc431f556f805fe1aef6355"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae806930e1cc431f556f805fe1aef6355">&#9670;&nbsp;</a></span>ethernetController_getEtherTypeField()</h2>
+<a id="ga84354a03e54526ac8a820650886458f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga84354a03e54526ac8a820650886458f4">&#9670;&nbsp;</a></span>ethernetController_getEtherTypeField()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,14 +202,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__ethernet.html#ga467703afefdcaf7893a7da3eb63280ed">etherType_t</a> ethernetController_getEtherTypeField </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>field</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Parses the recently received frame and returns the EtherType field. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>implement <a class="el" href="structmemory_field.html" title="Represents a part of memory where a packet is stored.">memoryField</a> support </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> structure indicating where the packet that should be parsed lies in memory </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>EtherType field </dd></dl>
 
 </div>
@@ -267,8 +281,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaa299c646a9c07c0ee81e8c673acd56b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa299c646a9c07c0ee81e8c673acd56b2">&#9670;&nbsp;</a></span>ethernetController_getSourceMACAddress()</h2>
+<a id="gabe0967f5f15ce26c4bb723036e566afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabe0967f5f15ce26c4bb723036e566afe">&#9670;&nbsp;</a></span>ethernetController_getSourceMACAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -276,15 +290,21 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a> ethernetController_getSourceMACAddress </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>field</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Parses the recently received frame and returns the Source MAC address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> structure indicating where the packet that should be parsed lies in memory </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Source MAC address </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>implement <a class="el" href="structmemory_field.html" title="Represents a part of memory where a packet is stored.">memoryField</a> support </dd></dl>
 
 </div>
 </div>
@@ -334,8 +354,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga5748b4be9f5e6936ab91753411a440d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5748b4be9f5e6936ab91753411a440d9">&#9670;&nbsp;</a></span>ethernetController_streamFromRXBuffer()</h2>
+<a id="ga152b0e0b0d3ed72affb7feac14035b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga152b0e0b0d3ed72affb7feac14035b6e">&#9670;&nbsp;</a></span>ethernetController_streamFromRXBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -349,14 +369,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t *&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>offset</em>&#160;</td>
+          <td class="paramname"><em>startAddress</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -370,13 +384,33 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>data Current byte to stream </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">*len</td><td>Length of the received frame </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">startEnd</td><td>Control number; Pass 0 at the first byte, then 1 and 2 at the last byte </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">offset</td><td>A memory read offset can be set when StartEnd=1 </td></tr>
+    <tr><td class="paramname">startEnd</td><td>Control number; Pass 0 at the first byte, then 1 and 2 at the last byte </td></tr>
+    <tr><td class="paramname">startAddress</td><td>Start address; <a class="el" href="structmemory_field.html#a171a2b5d11b1a5891c38a98ac731a161">memoryField::start</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>implement <a class="el" href="structmemory_field.html" title="Represents a part of memory where a packet is stored.">memoryField</a> support </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Once a stream is openend no other function should be called that could access the data communication to the Ethernet controller. For maximum speed effiency, the read pointer is only set once (at the beginning of the stream). After that, the read operation relies on the automatic pointer increment of the Ethernet Controller. So before doing anything else this function has to be called with startEnd equal to 2 to properly end the stream. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If startEnd != 1 the returned value is always 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga9d6d9257b64641f2120cb99f31d66a0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9d6d9257b64641f2120cb99f31d66a0e">&#9670;&nbsp;</a></span>ethernetController_updateNextPacketPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ethernetController_updateNextPacketPointer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the nextPacketPointer from the current packet and stores it. </p>
+<dl class="section note"><dt>Note</dt><dd>To be called right before the packet is going to be processed. </dd></dl>
 
 </div>
 </div>

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=EthMPU.X
+PROJECTNAME=EthernetDevBoard.X
 
 # Active Configuration
 DEFAULTCONF=default

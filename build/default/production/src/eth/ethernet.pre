@@ -167,13 +167,20 @@ uint8_t patternMatch : 1;
 uint8_t unicast : 1;
 } RSV_t;
 
-# 34 "src/eth/../eth/../eth/../eth/../mem/memoryTypes.h"
+# 32 "src/eth/../eth/../eth/../eth/../mem/../stack/bool.h"
+typedef bit bool_t;
+
+# 35 "src/eth/../eth/../eth/../eth/../mem/memoryTypes.h"
 typedef struct memoryField {
+
+# 42
 uint16_t start;
 uint16_t end;
 uint16_t length;
-uint8_t fIsAssigned : 1;
-uint8_t fOutOfMemory : 1;
+uint8_t fIsAssigned;
+uint8_t fOutOfMemory;
+
+# 51
 uint8_t index;
 } memoryField_t;
 
@@ -328,40 +335,43 @@ void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryFiel
 # 227
 void ethernetController_dropPacket(ethernetFrame_t *frame);
 
-# 237
-uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t *len, uint16_t offset);
+# 233
+void ethernetController_updateNextPacketPointer();
 
-# 244
+# 247
+uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+
+# 254
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 251
-macaddress_t ethernetController_getSourceMACAddress();
+# 261
+macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 258
-etherType_t ethernetController_getEtherTypeField();
+# 268
+etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 264
+# 274
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 270
+# 280
 uint8_t ethernetController_newPacketAvailable();
 
-# 276
+# 286
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 282
+# 292
 uint16_t ethernetController_getNextPacketPointer();
 
-# 288
+# 298
 macaddress_t ethernetController_getMacAddress();
 
-# 294
+# 304
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 308
+# 318
 void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
 
-# 315
+# 325
 void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
 
 # 61 "src/eth/../eth/../mem/memoryController.h"
@@ -7148,9 +7158,6 @@ macaddress_t mac;
 uint32_t secondsCreated;
 } ARP_tableEntry_t;
 
-# 32 "src/eth/../system/../eth/../stack/bool.h"
-typedef bit bool_t;
-
 # 43 "src/eth/../system/../eth/mac.h"
 bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 
@@ -7269,15 +7276,18 @@ void UARTTransmitInt(uint32_t val);
 char *intToString(uint32_t val);
 
 # 70
-char *macToString(macaddress_t addr);
+char *hexToString(uint32_t val);
 
 # 77
-char *etherTypeToString(etherType_t ethertype);
+char *macToString(macaddress_t addr);
 
 # 84
-char *ipAdressToString(ipv4_address_t ip);
+char *etherTypeToString(etherType_t ethertype);
 
 # 91
+char *ipAdressToString(ipv4_address_t ip);
+
+# 98
 char *arpEntryToString(ARP_tableEntry_t table);
 
 # 28 "src/eth/ethernet.c"
@@ -7307,13 +7317,25 @@ return err;
 }
 
 error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
+uint32_t static counter = 0;
 error_t err;
 err.module = ERROR_MODULE_ETHERNET;
 err.code = (uint16_t)0;
+
+
 frame->memory.start = ethernetController_getNextPacketPointer();
+
+ethernetController_updateNextPacketPointer();
+
+
+
+
 frame->memory.fIsAssigned = 1;
 frame->receiveStatusVector = ethernetController_getRSV(frame->memory.start);
 frame->memory.length = frame->receiveStatusVector.length;
+
+
+
 
 if (frame->memory.start + frame->memory.length > 0x5FFF) {
 
@@ -7321,7 +7343,11 @@ frame->memory.end = frame->memory.length - ((0x5FFF - 0x3000) - frame->memory.st
 } else {
 frame->memory.end = frame->memory.start + frame->memory.length;
 }
-frame->ethertype = ethernetController_getEtherTypeField();
+frame->ethertype = ethernetController_getEtherTypeField(frame->memory);
+
+UARTTransmitText("[");
+UARTTransmitText(intToString(counter++));
+UARTTransmitText("]");
 
 if (frame->receiveStatusVector.broadcast)
 UARTTransmitText("[Broadcast]");
@@ -7330,7 +7356,7 @@ UARTTransmitText("[Unicast]");
 if (!frame->receiveStatusVector.receivedOk)
 UARTTransmitText("[Symbol Errors]");
 
-switch ( frame->ethertype) {
+switch (frame->ethertype) {
 case ETHERTYPE_ARP:
 UARTTransmitText("[ARP]");
 ARP_handleNewPacket(frame);
@@ -7366,7 +7392,7 @@ UARTTransmitText(" (");
 UARTTransmitText(intToString(frame->memory.length));
 UARTTransmitText(")]");
 
-
+# 139
 UARTTransmitText("\n\r");
 }
 

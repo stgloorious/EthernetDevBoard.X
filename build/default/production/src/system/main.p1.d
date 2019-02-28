@@ -23,6 +23,7 @@ src/system/../system/../system/sevenseg.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/ipv4Types.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../protocols/ipv4Types.h  \
 src/system/../system/../stack/backgroundTasks.h  \
+src/system/../system/../eth/../eth/../mem/../stack/bool.h  \
 src/system/../system/../eth/../stack/error.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../../eth/../stack/error.h  \
 src/system/../enc424j600/../stack/error.h  \

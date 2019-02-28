@@ -65,13 +65,15 @@ void \mbox{\hyperlink{group__data__transmission_ga858fd557b9ef00b3fd8166381e415b
 \item 
 void \mbox{\hyperlink{group__data__reception_gada8fcdc667d1800b5f963bfc8cea56c2}{ethernet\+Controller\+\_\+drop\+Packet}} (\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$frame)
 \begin{DoxyCompactList}\small\item\em Discards a packet. \end{DoxyCompactList}\item 
-uint8\+\_\+t \mbox{\hyperlink{group__data__reception_ga5748b4be9f5e6936ab91753411a440d9}{ethernet\+Controller\+\_\+stream\+From\+R\+X\+Buffer}} (uint8\+\_\+t start\+End, uint16\+\_\+t $\ast$len, uint16\+\_\+t offset)
+void \mbox{\hyperlink{group__data__reception_ga9d6d9257b64641f2120cb99f31d66a0e}{ethernet\+Controller\+\_\+update\+Next\+Packet\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Reads the next\+Packet\+Pointer from the current packet and stores it. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__data__reception_ga152b0e0b0d3ed72affb7feac14035b6e}{ethernet\+Controller\+\_\+stream\+From\+R\+X\+Buffer}} (uint8\+\_\+t start\+End, uint16\+\_\+t start\+Address)
 \begin{DoxyCompactList}\small\item\em This functions allows online transmission to the internal buffer of the Ethernet Controller. An additional buffer on the M\+CU is not needed. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga29e5c29891e62206ceed99a6b15749a0}{ethernet\+Controller\+\_\+get\+Destination\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
 \begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Destination M\+AC address. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_gaa299c646a9c07c0ee81e8c673acd56b2}{ethernet\+Controller\+\_\+get\+Source\+M\+A\+C\+Address}} ()
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_gabe0967f5f15ce26c4bb723036e566afe}{ethernet\+Controller\+\_\+get\+Source\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
 \begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Source M\+AC address. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} \mbox{\hyperlink{group__data__reception_gae806930e1cc431f556f805fe1aef6355}{ethernet\+Controller\+\_\+get\+Ether\+Type\+Field}} ()
+\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga84354a03e54526ac8a820650886458f4}{ethernet\+Controller\+\_\+get\+Ether\+Type\+Field}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
 \begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Ether\+Type field. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{group__rsv_gaf7fd94a9424fccb0aafa846f27a43099}{R\+S\+V\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga1d8cfd56b6020b891ba408c18789129c}{ethernet\+Controller\+\_\+get\+R\+SV}} (uint16\+\_\+t address)
 \begin{DoxyCompactList}\small\item\em Reads the Receive Status Vector from the recently received Packet and returns the address of the first element. \end{DoxyCompactList}\item 

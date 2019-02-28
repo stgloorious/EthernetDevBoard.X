@@ -54,6 +54,7 @@ void main() {
 
     UARTInit();
     sevenSegmentInit();
+    __delay_ms(10);
     UARTTransmitText("FIRMWARE BUILD DATE IS ");
     UARTTransmitText(__DATE__);
     UARTTransmitText(" ");
@@ -129,8 +130,8 @@ void main() {
     IPdestination.address[2] = 108;
     IPdestination.address[3] = 135;
 
-   // ipv4_setIPDestinationAddress(IPdestination);
-   // ipv4_setIPSourceAddress(IPsource);
+    // ipv4_setIPDestinationAddress(IPdestination);
+    // ipv4_setIPSourceAddress(IPsource);
 
 
     //Now everything's set up, allow interrupts
@@ -149,7 +150,7 @@ void main() {
 
         if (buttonState) {
             buttonState = 0;
-            
+
             if (stack.ethernet.link == LINK_ESTABLISHED) {
 
                 //////////////////////////////////////////////

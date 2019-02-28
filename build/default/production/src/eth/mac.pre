@@ -122,13 +122,17 @@ uint8_t patternMatch : 1;
 uint8_t unicast : 1;
 } RSV_t;
 
-# 34 "src/eth/../mem/memoryTypes.h"
+# 35 "src/eth/../mem/memoryTypes.h"
 typedef struct memoryField {
+
+# 42
 uint16_t start;
 uint16_t end;
 uint16_t length;
-uint8_t fIsAssigned : 1;
-uint8_t fOutOfMemory : 1;
+uint8_t fIsAssigned;
+uint8_t fOutOfMemory;
+
+# 51
 uint8_t index;
 } memoryField_t;
 

@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 31. December 2018
+ * \todo Filter settings; not just unicast/broadcast but all packets visible
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -190,23 +191,6 @@ void ethernetController_sendPacket(memoryField_t field) {
     memory_txFrameClear(field.index);
 }
 
-//LEGACY
-
-/*void ethernetController_copyToTransmitBuffer(uint8_t* data, uint16_t len) {
-    ENC424J600_setTXLength(len);
-    ENC424J600_setTXStartAddress(TX_DATA_START_ADDRESS);
-    ENC424J600_setGPDATAWritePointer(TX_DATA_START_ADDRESS + 0x0008); //payload data offset (2x 6 Byte MAC address + 2 Byte EtherType)
-
-    uint8_t opcode = 0x2A; //EGPDATA opcode
-    CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
-    for (uint16_t i = 0; i < len; i++) {
-        ENC424J600_writeSPI(data++);
-    }
-    CS_PIN_HIGH;
-
-}*/
-
 void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len) {
     uint8_t opcode;
     uint16_t static pointer = 0;
@@ -262,8 +246,7 @@ void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryF
 
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
     macaddress_t destinationAddress;
-    uint32_t nextPktPointer = ENC424J600_getNextPacketPointer();
-    ENC424J600_setERXDATAReadPointer(nextPktPointer + 8); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV
+    ENC424J600_setERXDATAReadPointer(field.start + 8); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV
     uint8_t opcode = 0x2C; //ERXDATA Read opcode
     CS_PIN_LOW; //Start the read operation
     ENC424J600_writeSPI(&opcode);
@@ -276,10 +259,9 @@ macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
     return destinationAddress;
 }
 
-macaddress_t ethernetController_getSourceMACAddress() {
+macaddress_t ethernetController_getSourceMACAddress(memoryField_t field) {
     macaddress_t sourceAddress;
-    uint32_t nextPktPointer = ENC424J600_getNextPacketPointer();
-    ENC424J600_setERXDATAReadPointer(nextPktPointer + 14); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV, 6 Bytes Destination MAC address
+    ENC424J600_setERXDATAReadPointer(field.start + 14); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV, 6 Bytes Destination MAC address
     uint8_t opcode = 0x2C; //ERXDATA Read opcode
     CS_PIN_LOW; //Start the read operation
     ENC424J600_writeSPI(&opcode);
@@ -292,10 +274,9 @@ macaddress_t ethernetController_getSourceMACAddress() {
     return sourceAddress;
 }
 
-etherType_t ethernetController_getEtherTypeField() {
+etherType_t ethernetController_getEtherTypeField(memoryField_t field) {
     etherType_t ethertype = 0x0000;
-    uint32_t nextPktPointer = ENC424J600_getNextPacketPointer();
-    ENC424J600_setERXDATAReadPointer(nextPktPointer + 20); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV, 12 Bytes MAC addresses
+    ENC424J600_setERXDATAReadPointer(field.start + 20); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV, 12 Bytes MAC addresses
     uint8_t opcode = 0x2C; //ERXDATA Read opcode
     CS_PIN_LOW; //Start the read operation
     ENC424J600_writeSPI(&opcode);
@@ -344,60 +325,53 @@ void ethernetController_clearInterruptFlag(uint8_t flag) {
     ENC424J600_clearInterruptFlag(flag);
 }
 
-uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t *len, uint16_t offset) {
-    uint32_t nextPktPointer;
-    uint8_t newPointerL, newPointerH;
+void ethernetController_updateNextPacketPointer() {
+    uint16_t nextPktPointer;
     uint8_t opcode;
-    uint8_t rsvBytes[6];
-    uint16_t lengthOfReceivedFrame = 0;
-    if (startEnd == 0) {
-        nextPktPointer = ENC424J600_getNextPacketPointer();
-        ENC424J600_setERXDATAReadPointer(nextPktPointer);
-        opcode = 0x2C; //ERXDATA Read opcode
-        CS_PIN_LOW; //Start the read operation
-        ENC424J600_writeSPI(&opcode);
-        ENC424J600_readSPI(&newPointerL); //first field is the new nextPacketPointer
-        ENC424J600_readSPI(&newPointerH);
-        //update nextPacketPointer
-        ENC424J600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
-        //Read the Receive Status Vector
-        for (uint8_t i = 0; i < 6; i++) {
-            ENC424J600_readSPI(&rsvBytes[i]);
-        }
-        //Read the length field of the Receive Status Vector to know how long the frame is
-        lengthOfReceivedFrame = (uint16_t) ((rsvBytes[0]&(unsigned) 0x00ff) | ((unsigned) (rsvBytes[1] << 8)&(unsigned) 0xff00)); //value is stored in little endian format
-        *len = lengthOfReceivedFrame;
+    uint8_t newPointerL, newPointerH;
+    nextPktPointer = ENC424J600_getNextPacketPointer();
+    ENC424J600_setERXDATAReadPointer(nextPktPointer);
+    opcode = 0x2C; //ERXDATA Read opcode
+    CS_PIN_LOW; //Start the read operation
+    ENC424J600_writeSPI(&opcode);
+    ENC424J600_readSPI(&newPointerL); //first field is the new nextPacketPointer
+    ENC424J600_readSPI(&newPointerH);
+    CS_PIN_HIGH;
+    //update nextPacketPointer
+    ENC424J600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
+}
 
-        for (uint16_t i = 0; i < offset; i++) {//This is stupid, fix later
-            uint8_t foo;
-            ENC424J600_readSPI(&foo);
-        }
-        return 0;
-    }
-    if (startEnd == 1) {
-        uint8_t temp;
-        ENC424J600_readSPI(&temp); //Read the whole frame
-        return temp;
-    }
+uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress) {
+    uint8_t temp;
+    uint8_t opcode;
+    switch (startEnd) {
+        case 0://Begin data streaming
+            ENC424J600_setERXDATAReadPointer(startAddress);
+            opcode = 0x2C; //ERXDATA Read opcode
+            CS_PIN_LOW; //Start the read operation
+            ENC424J600_writeSPI(&opcode);
+            return 0;
+        case 1://Real data is being read
+            ENC424J600_readSPI(&temp); //Read the whole frame
+            return temp;
+        case 2:
+            CS_PIN_HIGH; //End the read operation
+            //free up memory by updating the tail pointer to the point where the data has already been processed
+            if (ethernetController_getNextPacketPointer() == RX_DATA_START_ADDRESS) {//wrap around 
+                ENC424J600_setRXTailPointer(0x55FE);
+            } else {
+                ENC424J600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
+            }
 
-    if (startEnd == 2) {//last byte read
-        CS_PIN_HIGH; //End the read operation
-        //free up memory by updating the tail pointer to the point where the data has already been processed
-        if (nextPktPointer == RX_DATA_START_ADDRESS) {//wrap around 
-            ENC424J600_setRXTailPointer(0x55FE);
-        } else {
-            ENC424J600_setRXTailPointer(nextPktPointer - 2);
-        }
-
-        //Set PKTDEC bit so the PKTCNT gets decremented
-        ENC424J600_writeSingleByte(SETPKTDEC);
-        return 0;
+            //Set PKTDEC bit so the PKTCNT gets decremented
+            ENC424J600_writeSingleByte(SETPKTDEC);
+            return 0;
     }
-    return 0; //never reached
+    return 0; //never reached (or when an invalid startEnd is passed)
 }
 
 void ethernetController_dropPacket(ethernetFrame_t *frame) {
-    uint32_t nextPktPointer;
+  /*  uint32_t nextPktPointer;
     uint8_t newPointerL, newPointerH;
     uint8_t opcode;
     nextPktPointer = ENC424J600_getNextPacketPointer();
@@ -409,12 +383,12 @@ void ethernetController_dropPacket(ethernetFrame_t *frame) {
     ENC424J600_readSPI(&newPointerH);
     //update nextPacketPointer
     ENC424J600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
-    CS_PIN_HIGH; //End the read operation
+    CS_PIN_HIGH; //End the read operation*/
     //free up memory
-    if (nextPktPointer == RX_DATA_START_ADDRESS) {//wrap around 
+    if (ethernetController_getNextPacketPointer() == RX_DATA_START_ADDRESS) {//wrap around 
         ENC424J600_setRXTailPointer(END_OF_MEMORY_ADDRESS - 1); //-1 because we need the last *even* memory address
     } else {
-        ENC424J600_setRXTailPointer(nextPktPointer - 2);
+        ENC424J600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
     }
     //Set PKTDEC bit so the PKTCNT gets decremented
     ENC424J600_writeSingleByte(SETPKTDEC);
@@ -736,7 +710,6 @@ void static ENC424J600_clearInterruptFlag(uint8_t flag) {
         ENC424J600_writeControlRegisterUnbanked(EIRH + BANK_0_OFFSET, &temp);
     }
 }
-
 
 RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv) {
     RSV_t receiveStatusVector;

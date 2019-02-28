@@ -10,13 +10,15 @@
 \item 
 void \mbox{\hyperlink{group__data__reception_gada8fcdc667d1800b5f963bfc8cea56c2}{ethernet\+Controller\+\_\+drop\+Packet}} (\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$frame)
 \begin{DoxyCompactList}\small\item\em Discards a packet. \end{DoxyCompactList}\item 
-uint8\+\_\+t \mbox{\hyperlink{group__data__reception_ga5748b4be9f5e6936ab91753411a440d9}{ethernet\+Controller\+\_\+stream\+From\+R\+X\+Buffer}} (uint8\+\_\+t start\+End, uint16\+\_\+t $\ast$len, uint16\+\_\+t offset)
+void \mbox{\hyperlink{group__data__reception_ga9d6d9257b64641f2120cb99f31d66a0e}{ethernet\+Controller\+\_\+update\+Next\+Packet\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Reads the next\+Packet\+Pointer from the current packet and stores it. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__data__reception_ga152b0e0b0d3ed72affb7feac14035b6e}{ethernet\+Controller\+\_\+stream\+From\+R\+X\+Buffer}} (uint8\+\_\+t start\+End, uint16\+\_\+t start\+Address)
 \begin{DoxyCompactList}\small\item\em This functions allows online transmission to the internal buffer of the Ethernet Controller. An additional buffer on the M\+CU is not needed. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga29e5c29891e62206ceed99a6b15749a0}{ethernet\+Controller\+\_\+get\+Destination\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
 \begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Destination M\+AC address. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_gaa299c646a9c07c0ee81e8c673acd56b2}{ethernet\+Controller\+\_\+get\+Source\+M\+A\+C\+Address}} ()
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_gabe0967f5f15ce26c4bb723036e566afe}{ethernet\+Controller\+\_\+get\+Source\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
 \begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Source M\+AC address. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} \mbox{\hyperlink{group__data__reception_gae806930e1cc431f556f805fe1aef6355}{ethernet\+Controller\+\_\+get\+Ether\+Type\+Field}} ()
+\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga84354a03e54526ac8a820650886458f4}{ethernet\+Controller\+\_\+get\+Ether\+Type\+Field}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
 \begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Ether\+Type field. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{group__rsv_gaf7fd94a9424fccb0aafa846f27a43099}{R\+S\+V\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga1d8cfd56b6020b891ba408c18789129c}{ethernet\+Controller\+\_\+get\+R\+SV}} (uint16\+\_\+t address)
 \begin{DoxyCompactList}\small\item\em Reads the Receive Status Vector from the recently received Packet and returns the address of the first element. \end{DoxyCompactList}\item 
@@ -74,23 +76,29 @@ Number of packets
 
 Parses the recently received frame and returns the Destination M\+AC address. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em field} & \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} structure indicating where the packet that should be parsed lies in memory \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Destination M\+AC address 
 \end{DoxyReturn}
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000010}{Todo}}]implement \mbox{\hyperlink{structmemory_field}{memory\+Field}} support \end{DoxyRefDesc}
-\mbox{\Hypertarget{group__data__reception_gae806930e1cc431f556f805fe1aef6355}\label{group__data__reception_gae806930e1cc431f556f805fe1aef6355}} 
+\mbox{\Hypertarget{group__data__reception_ga84354a03e54526ac8a820650886458f4}\label{group__data__reception_ga84354a03e54526ac8a820650886458f4}} 
 \index{Data Reception@{Data Reception}!ethernetController\_getEtherTypeField@{ethernetController\_getEtherTypeField}}
 \index{ethernetController\_getEtherTypeField@{ethernetController\_getEtherTypeField}!Data Reception@{Data Reception}}
 \subsubsection{\texorpdfstring{ethernetController\_getEtherTypeField()}{ethernetController\_getEtherTypeField()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} ethernet\+Controller\+\_\+get\+Ether\+Type\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} ethernet\+Controller\+\_\+get\+Ether\+Type\+Field (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}}}]{field }\end{DoxyParamCaption})}
 
 
 
 Parses the recently received frame and returns the Ether\+Type field. 
 
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000012}{Todo}}]implement \mbox{\hyperlink{structmemory_field}{memory\+Field}} support \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em field} & \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} structure indicating where the packet that should be parsed lies in memory \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Ether\+Type field 
 \end{DoxyReturn}
@@ -133,21 +141,24 @@ Reads the Receive Status Vector from the recently received Packet and returns th
 \begin{DoxyReturn}{Returns}
 Pointer to \mbox{\hyperlink{struct_r_s_v}{R\+SV}}\mbox{[}0\mbox{]} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__data__reception_gaa299c646a9c07c0ee81e8c673acd56b2}\label{group__data__reception_gaa299c646a9c07c0ee81e8c673acd56b2}} 
+\mbox{\Hypertarget{group__data__reception_gabe0967f5f15ce26c4bb723036e566afe}\label{group__data__reception_gabe0967f5f15ce26c4bb723036e566afe}} 
 \index{Data Reception@{Data Reception}!ethernetController\_getSourceMACAddress@{ethernetController\_getSourceMACAddress}}
 \index{ethernetController\_getSourceMACAddress@{ethernetController\_getSourceMACAddress}!Data Reception@{Data Reception}}
 \subsubsection{\texorpdfstring{ethernetController\_getSourceMACAddress()}{ethernetController\_getSourceMACAddress()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} ethernet\+Controller\+\_\+get\+Source\+M\+A\+C\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} ethernet\+Controller\+\_\+get\+Source\+M\+A\+C\+Address (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}}}]{field }\end{DoxyParamCaption})}
 
 
 
 Parses the recently received frame and returns the Source M\+AC address. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em field} & \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} structure indicating where the packet that should be parsed lies in memory \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Source M\+AC address 
 \end{DoxyReturn}
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000011}{Todo}}]implement \mbox{\hyperlink{structmemory_field}{memory\+Field}} support \end{DoxyRefDesc}
 \mbox{\Hypertarget{group__data__reception_gae030bd0d97a72b4c38d3ac55132dd7f3}\label{group__data__reception_gae030bd0d97a72b4c38d3ac55132dd7f3}} 
 \index{Data Reception@{Data Reception}!ethernetController\_newPacketAvailable@{ethernetController\_newPacketAvailable}}
 \index{ethernetController\_newPacketAvailable@{ethernetController\_newPacketAvailable}!Data Reception@{Data Reception}}
@@ -176,11 +187,11 @@ Sets a M\+AC source address. Has to be set after every P\+OR, because it gets ov
 {\em mac} & M\+AC source address \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{group__data__reception_ga5748b4be9f5e6936ab91753411a440d9}\label{group__data__reception_ga5748b4be9f5e6936ab91753411a440d9}} 
+\mbox{\Hypertarget{group__data__reception_ga152b0e0b0d3ed72affb7feac14035b6e}\label{group__data__reception_ga152b0e0b0d3ed72affb7feac14035b6e}} 
 \index{Data Reception@{Data Reception}!ethernetController\_streamFromRXBuffer@{ethernetController\_streamFromRXBuffer}}
 \index{ethernetController\_streamFromRXBuffer@{ethernetController\_streamFromRXBuffer}!Data Reception@{Data Reception}}
 \subsubsection{\texorpdfstring{ethernetController\_streamFromRXBuffer()}{ethernetController\_streamFromRXBuffer()}}
-{\footnotesize\ttfamily uint8\+\_\+t ethernet\+Controller\+\_\+stream\+From\+R\+X\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{start\+End,  }\item[{uint16\+\_\+t $\ast$}]{len,  }\item[{uint16\+\_\+t}]{offset }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t ethernet\+Controller\+\_\+stream\+From\+R\+X\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{start\+End,  }\item[{uint16\+\_\+t}]{start\+Address }\end{DoxyParamCaption})}
 
 
 
@@ -190,13 +201,28 @@ This functions allows online transmission to the internal buffer of the Ethernet
 data Current byte to stream 
 \end{DoxyReturn}
 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ out}}  & {\em $\ast$len} & Length of the received frame \\
+\begin{DoxyParams}{Parameters}
+{\em start\+End} & Control number; Pass 0 at the first byte, then 1 and 2 at the last byte \\
 \hline
- & {\em start\+End} & Control number; Pass 0 at the first byte, then 1 and 2 at the last byte \\
-\hline
- & {\em offset} & A memory read offset can be set when Start\+End=1 \\
+{\em start\+Address} & Start address; \mbox{\hyperlink{structmemory_field_a171a2b5d11b1a5891c38a98ac731a161}{memory\+Field\+::start}} \\
 \hline
 \end{DoxyParams}
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000009}{Todo}}]implement \mbox{\hyperlink{structmemory_field}{memory\+Field}} support \end{DoxyRefDesc}
+\begin{DoxyWarning}{Warning}
+Once a stream is openend no other function should be called that could access the data communication to the Ethernet controller. For maximum speed effiency, the read pointer is only set once (at the beginning of the stream). After that, the read operation relies on the automatic pointer increment of the Ethernet Controller. So before doing anything else this function has to be called with start\+End equal to 2 to properly end the stream. 
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+If start\+End != 1 the returned value is always 0. 
+\end{DoxyNote}
+\mbox{\Hypertarget{group__data__reception_ga9d6d9257b64641f2120cb99f31d66a0e}\label{group__data__reception_ga9d6d9257b64641f2120cb99f31d66a0e}} 
+\index{Data Reception@{Data Reception}!ethernetController\_updateNextPacketPointer@{ethernetController\_updateNextPacketPointer}}
+\index{ethernetController\_updateNextPacketPointer@{ethernetController\_updateNextPacketPointer}!Data Reception@{Data Reception}}
+\subsubsection{\texorpdfstring{ethernetController\_updateNextPacketPointer()}{ethernetController\_updateNextPacketPointer()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+update\+Next\+Packet\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads the next\+Packet\+Pointer from the current packet and stores it. 
+
+\begin{DoxyNote}{Note}
+To be called right before the packet is going to be processed. 
+\end{DoxyNote}

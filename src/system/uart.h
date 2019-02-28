@@ -56,11 +56,18 @@ void DEBUG_MSG(char *text);
 void UARTTransmitInt(uint32_t val);
 
 /**
- * \brief Converts a numerical value into a string
+ * \brief Converts a decimal numerical value into a string
  * \param val
  * \return char string
  */
 char *intToString(uint32_t val);
+
+/**
+ * \brief Converts a hexadecimal numerical value into a string
+ * \param val
+ * \return char string
+ */
+char *hexToString(uint32_t val);
 
 /**
  * \brief Takes a MAC address and translates it to a human-readable char string

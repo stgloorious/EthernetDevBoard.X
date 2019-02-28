@@ -51,13 +51,25 @@ error_t ethernet_txFrameRequest(ethernetFrame_t *frame) {
 }
 
 error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
+    uint32_t static counter = 0;
     error_t err;
     err.module = ERROR_MODULE_ETHERNET;
     err.code = ERROR_CODE_SUCCESSFUL;
+    //  UARTTransmitText("Old nextPacketPointer: ");
+    //  UARTTransmitText(intToString(ethernetController_getNextPacketPointer()));
     frame->memory.start = ethernetController_getNextPacketPointer(); //Get the address of the packet that should be processed next
+
+    ethernetController_updateNextPacketPointer();
+    // UARTTransmitText("\n\rNew nextPacketPointer: ");
+    // UARTTransmitText(intToString(ethernetController_getNextPacketPointer()));
+
+
     frame->memory.fIsAssigned = 1; //Not really needed, for completeness
     frame->receiveStatusVector = ethernetController_getRSV(frame->memory.start); //get the RSV for that packet
     frame->memory.length = frame->receiveStatusVector.length;
+    // UARTTransmitText("Length according to RSV: ");
+    // UARTTransmitText(intToString(frame->memory.length));
+    // UARTTransmitText("\n\r");
     //Now that we have the packets length we can work out where it ends
     if (frame->memory.start + frame->memory.length > END_OF_MEMORY_ADDRESS) {//Does it wrap around?
         //Work out the wrapped-around address
@@ -65,7 +77,11 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     } else {//Packet does not wrap around in memory
         frame->memory.end = frame->memory.start + frame->memory.length;
     }
-    frame->ethertype = ethernetController_getEtherTypeField();
+    frame->ethertype = ethernetController_getEtherTypeField(frame->memory);
+
+    UARTTransmitText("[");
+    UARTTransmitText(intToString(counter++));
+    UARTTransmitText("]");
 
     if (frame->receiveStatusVector.broadcast)
         UARTTransmitText("[Broadcast]");
@@ -74,33 +90,33 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     if (!frame->receiveStatusVector.receivedOk)
         UARTTransmitText("[Symbol Errors]");
 
-    switch ( frame->ethertype) {
-         case ETHERTYPE_ARP:
-             UARTTransmitText("[ARP]");
-             ARP_handleNewPacket(frame);
-             break;
-         case ETHERTYPE_FLOW_CONTROL:
-             break;
-         case ETHERTYPE_IPv4:
-             UARTTransmitText("[IPv4]");
-             ipv4_handleNewPacket(frame);
-             break;
-         case ETHERTYPE_WOL:
-             break;
-         default:
-             UARTTransmitText("[");
-             UARTTransmitText(macToString(frame->source));
-             UARTTransmitText("->");
-             UARTTransmitText(macToString(frame->destination));
-             UARTTransmitText("][");
-             UARTTransmitText(etherTypeToString(frame->ethertype));
-             UARTTransmitText("][L=");
-             UARTTransmitInt(frame->length);
-             UARTTransmitText("]");
-             ethernetController_dropPacket(frame);
-             break;
-             return err;
-     }
+    switch (frame->ethertype) {
+        case ETHERTYPE_ARP:
+            UARTTransmitText("[ARP]");
+            ARP_handleNewPacket(frame);
+            break;
+        case ETHERTYPE_FLOW_CONTROL:
+            break;
+        case ETHERTYPE_IPv4:
+            UARTTransmitText("[IPv4]");
+            ipv4_handleNewPacket(frame);
+            break;
+        case ETHERTYPE_WOL:
+            break;
+        default:
+            UARTTransmitText("[");
+            UARTTransmitText(macToString(frame->source));
+            UARTTransmitText("->");
+            UARTTransmitText(macToString(frame->destination));
+            UARTTransmitText("][");
+            UARTTransmitText(etherTypeToString(frame->ethertype));
+            UARTTransmitText("][L=");
+            UARTTransmitInt(frame->length);
+            UARTTransmitText("]");
+            ethernetController_dropPacket(frame);
+            break;
+            return err;
+    }
 
     UARTTransmitText("[");
     UARTTransmitText(intToString(frame->memory.start));
@@ -109,6 +125,15 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     UARTTransmitText(" (");
     UARTTransmitText(intToString(frame->memory.length));
     UARTTransmitText(")]");
+
+    /* UARTTransmitText("Starting to read at ");
+     UARTTransmitText(hexToString(frame->memory.start));
+     ethernetController_streamFromRXBuffer(0, frame->memory.start);
+     for (uint16_t i = 0; i < frame->memory.length; i++) {
+         UARTTransmitText(hexToString(ethernetController_streamFromRXBuffer(1, frame->memory.start)));
+         UARTTransmitText(" ");
+     }
+     ethernetController_streamFromRXBuffer(2, frame->memory.start);*/
 
 
     UARTTransmitText("\n\r");

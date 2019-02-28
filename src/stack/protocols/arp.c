@@ -57,37 +57,35 @@ void ARP_handleNewPacket(ethernetFrame_t *frame) {
 
 ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
     ARP_message_t arp;
-    uint16_t static dataPointer = 0;
-    uint16_t static length = 0; //Length of the Received Packet
-    uint16_t const offset = 14; //skip 2 MAC addresses and EtherType 
+    uint16_t const offset = 22; //skip 2 MAC addresses and EtherType 
 
-    ethernetController_streamFromRXBuffer(0, &length, offset); //Prepare stream
+    ethernetController_streamFromRXBuffer(0, frame->memory.start + offset); //Prepare stream
 
     //Word 0
-    arp.htype = (ethernetController_streamFromRXBuffer(1, &length, offset) << 8);
-    arp.htype |= ethernetController_streamFromRXBuffer(1, &length, offset);
+    arp.htype = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+    arp.htype |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
     //Word 1
-    arp.ptype = (ethernetController_streamFromRXBuffer(1, &length, offset) << 8);
-    arp.ptype |= ethernetController_streamFromRXBuffer(1, &length, offset);
+    arp.ptype = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+    arp.ptype |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
     //Word 2
-    arp.hlen = ethernetController_streamFromRXBuffer(1, &length, offset);
-    arp.plen = ethernetController_streamFromRXBuffer(1, &length, offset);
+    arp.hlen = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+    arp.plen = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
     //Word 3
-    arp.operation = (ethernetController_streamFromRXBuffer(1, &length, offset) << 8);
-    arp.operation |= ethernetController_streamFromRXBuffer(1, &length, offset);
+    arp.operation = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+    arp.operation |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 
     // Sender Addresses
     for (uint8_t i = 0; i < arp.hlen; i++)
-        arp.senderMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, &length, offset);
+        arp.senderMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
     for (uint8_t i = 0; i < arp.plen; i++)
-        arp.senderIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, &length, offset);
+        arp.senderIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
     //Target Addresses
     for (uint8_t i = 0; i < arp.hlen; i++)
-        arp.targetMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, &length, offset);
+        arp.targetMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
     for (uint8_t i = 0; i < arp.plen; i++)
-        arp.targetIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, &length, offset);
+        arp.targetIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 
-    ethernetController_streamFromRXBuffer(2, &length, offset); //Close stream
+    ethernetController_streamFromRXBuffer(2, frame->memory.start + offset); //Close stream
 
     if (ipv4_isAllZero(&arp.senderIPAddress)) {//Is it an ARP Probe?
         arp.fIsProbe = 1;
@@ -131,7 +129,7 @@ void ARP_replyIfNeeded(ARP_message_t request) {
     if (request.operation != ARP_REQUEST)//is it a request?
         return;
     //IPv4Address myIP = ipv4_getIPSourceAddress();/** \todo this */
-   // if (!(ipv4_cmp(&request.targetIPAddress, &myIP))) //For my IP Address?
+    // if (!(ipv4_cmp(&request.targetIPAddress, &myIP))) //For my IP Address?
     //    return;
 
     ARP_message_t reply;
@@ -172,7 +170,7 @@ void ARP_send(ARP_message_t arp) {
 
     ethFrame.length = 36;
     ethFrame.destination = arp.targetMACAddress;
-    ethFrame.source = ethernetController_getSourceMACAddress();
+    ethFrame.source = ethernetController_getSourceMACAddress(field);
     ethFrame.ethertype = ETHERTYPE_ARP;
 
     ethernet_txFrameRequest(&ethFrame);

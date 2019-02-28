@@ -167,13 +167,20 @@ uint8_t patternMatch : 1;
 uint8_t unicast : 1;
 } RSV_t;
 
-# 34 "src/stack/protocols/../../eth/../eth/../mem/memoryTypes.h"
+# 32 "src/stack/protocols/../../eth/../eth/../mem/../stack/bool.h"
+typedef bit bool_t;
+
+# 35 "src/stack/protocols/../../eth/../eth/../mem/memoryTypes.h"
 typedef struct memoryField {
+
+# 42
 uint16_t start;
 uint16_t end;
 uint16_t length;
-uint8_t fIsAssigned : 1;
-uint8_t fOutOfMemory : 1;
+uint8_t fIsAssigned;
+uint8_t fOutOfMemory;
+
+# 51
 uint8_t index;
 } memoryField_t;
 
@@ -328,44 +335,44 @@ void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryFiel
 # 227
 void ethernetController_dropPacket(ethernetFrame_t *frame);
 
-# 237
-uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t *len, uint16_t offset);
+# 233
+void ethernetController_updateNextPacketPointer();
 
-# 244
+# 247
+uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+
+# 254
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 251
-macaddress_t ethernetController_getSourceMACAddress();
+# 261
+macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 258
-etherType_t ethernetController_getEtherTypeField();
+# 268
+etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 264
+# 274
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 270
+# 280
 uint8_t ethernetController_newPacketAvailable();
 
-# 276
+# 286
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 282
+# 292
 uint16_t ethernetController_getNextPacketPointer();
 
-# 288
+# 298
 macaddress_t ethernetController_getMacAddress();
 
-# 294
+# 304
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 308
+# 318
 void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
 
-# 315
+# 325
 void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
-
-# 32 "src/stack/protocols/../../eth/../stack/bool.h"
-typedef bit bool_t;
 
 # 43 "src/stack/protocols/../../eth/mac.h"
 bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
@@ -7164,15 +7171,18 @@ void UARTTransmitInt(uint32_t val);
 char *intToString(uint32_t val);
 
 # 70
-char *macToString(macaddress_t addr);
+char *hexToString(uint32_t val);
 
 # 77
-char *etherTypeToString(etherType_t ethertype);
+char *macToString(macaddress_t addr);
 
 # 84
-char *ipAdressToString(ipv4_address_t ip);
+char *etherTypeToString(etherType_t ethertype);
 
 # 91
+char *ipAdressToString(ipv4_address_t ip);
+
+# 98
 char *arpEntryToString(ARP_tableEntry_t table);
 
 # 47 "src/stack/protocols/arp.h"
@@ -7243,37 +7253,35 @@ ARP_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getSeconds());
 
 ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
 ARP_message_t arp;
-uint16_t static dataPointer = 0;
-uint16_t static length = 0;
-uint16_t const offset = 14;
+uint16_t const offset = 22;
 
-ethernetController_streamFromRXBuffer(0, &length, offset);
+ethernetController_streamFromRXBuffer(0, frame->memory.start + offset);
 
 
-arp.htype = (ethernetController_streamFromRXBuffer(1, &length, offset) << 8);
-arp.htype |= ethernetController_streamFromRXBuffer(1, &length, offset);
+arp.htype = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+arp.htype |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 
-arp.ptype = (ethernetController_streamFromRXBuffer(1, &length, offset) << 8);
-arp.ptype |= ethernetController_streamFromRXBuffer(1, &length, offset);
+arp.ptype = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+arp.ptype |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 
-arp.hlen = ethernetController_streamFromRXBuffer(1, &length, offset);
-arp.plen = ethernetController_streamFromRXBuffer(1, &length, offset);
+arp.hlen = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+arp.plen = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 
-arp.operation = (ethernetController_streamFromRXBuffer(1, &length, offset) << 8);
-arp.operation |= ethernetController_streamFromRXBuffer(1, &length, offset);
+arp.operation = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+arp.operation |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 
 
 for (uint8_t i = 0; i < arp.hlen; i++)
-arp.senderMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, &length, offset);
+arp.senderMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 for (uint8_t i = 0; i < arp.plen; i++)
-arp.senderIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, &length, offset);
+arp.senderIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 
 for (uint8_t i = 0; i < arp.hlen; i++)
-arp.targetMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, &length, offset);
+arp.targetMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 for (uint8_t i = 0; i < arp.plen; i++)
-arp.targetIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, &length, offset);
+arp.targetIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
 
-ethernetController_streamFromRXBuffer(2, &length, offset);
+ethernetController_streamFromRXBuffer(2, frame->memory.start + offset);
 
 if (ipv4_isAllZero(&arp.senderIPAddress)) {
 arp.fIsProbe = 1;
@@ -7358,7 +7366,7 @@ mac_setToBroadcast(&destination);
 
 ethFrame.length = 36;
 ethFrame.destination = arp.targetMACAddress;
-ethFrame.source = ethernetController_getSourceMACAddress();
+ethFrame.source = ethernetController_getSourceMACAddress(field);
 ethFrame.ethertype = ETHERTYPE_ARP;
 
 ethernet_txFrameRequest(&ethFrame);

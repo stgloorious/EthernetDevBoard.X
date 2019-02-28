@@ -6769,13 +6769,20 @@ uint8_t patternMatch : 1;
 uint8_t unicast : 1;
 } RSV_t;
 
-# 34 "src/enc424j600/../enc424j600/../eth/../eth/../mem/memoryTypes.h"
+# 32 "src/enc424j600/../enc424j600/../eth/../eth/../mem/../stack/bool.h"
+typedef bit bool_t;
+
+# 35 "src/enc424j600/../enc424j600/../eth/../eth/../mem/memoryTypes.h"
 typedef struct memoryField {
+
+# 42
 uint16_t start;
 uint16_t end;
 uint16_t length;
-uint8_t fIsAssigned : 1;
-uint8_t fOutOfMemory : 1;
+uint8_t fIsAssigned;
+uint8_t fOutOfMemory;
+
+# 51
 uint8_t index;
 } memoryField_t;
 
@@ -6930,40 +6937,43 @@ void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryFiel
 # 227
 void ethernetController_dropPacket(ethernetFrame_t *frame);
 
-# 237
-uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t *len, uint16_t offset);
+# 233
+void ethernetController_updateNextPacketPointer();
 
-# 244
+# 247
+uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+
+# 254
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 251
-macaddress_t ethernetController_getSourceMACAddress();
+# 261
+macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 258
-etherType_t ethernetController_getEtherTypeField();
+# 268
+etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 264
+# 274
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 270
+# 280
 uint8_t ethernetController_newPacketAvailable();
 
-# 276
+# 286
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 282
+# 292
 uint16_t ethernetController_getNextPacketPointer();
 
-# 288
+# 298
 macaddress_t ethernetController_getMacAddress();
 
-# 294
+# 304
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 308
+# 318
 void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
 
-# 315
+# 325
 void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
 
 # 61 "src/enc424j600/../enc424j600/../mem/memoryController.h"
@@ -7142,9 +7152,6 @@ macaddress_t mac;
 uint32_t secondsCreated;
 } ARP_tableEntry_t;
 
-# 32 "src/enc424j600/../system/../eth/../stack/bool.h"
-typedef bit bool_t;
-
 # 43 "src/enc424j600/../system/../eth/mac.h"
 bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 
@@ -7269,15 +7276,18 @@ void UARTTransmitInt(uint32_t val);
 char *intToString(uint32_t val);
 
 # 70
-char *macToString(macaddress_t addr);
+char *hexToString(uint32_t val);
 
 # 77
-char *etherTypeToString(etherType_t ethertype);
+char *macToString(macaddress_t addr);
 
 # 84
-char *ipAdressToString(ipv4_address_t ip);
+char *etherTypeToString(etherType_t ethertype);
 
 # 91
+char *ipAdressToString(ipv4_address_t ip);
+
+# 98
 char *arpEntryToString(ARP_tableEntry_t table);
 
 # 28 "src/enc424j600/ENC424J600.c"
@@ -7415,13 +7425,12 @@ ENC424J600_writeSingleByte(0b11010100);
 memory_txFrameClear(field.index);
 }
 
-# 210
 void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len) {
 uint8_t opcode;
 uint16_t static pointer = 0;
 if (pointer == 0) {
 
-# 223
+# 206
 opcode = 0x2A;
 PORTBbits.RB4=0;
 ENC424J600_writeSPI(&opcode);
@@ -7464,8 +7473,7 @@ PORTBbits.RB4=1;
 
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
 macaddress_t destinationAddress;
-uint32_t nextPktPointer = ENC424J600_getNextPacketPointer();
-ENC424J600_setERXDATAReadPointer(nextPktPointer + 8);
+ENC424J600_setERXDATAReadPointer(field.start + 8);
 uint8_t opcode = 0x2C;
 PORTBbits.RB4=0;
 ENC424J600_writeSPI(&opcode);
@@ -7478,10 +7486,9 @@ PORTBbits.RB4=1;
 return destinationAddress;
 }
 
-macaddress_t ethernetController_getSourceMACAddress() {
+macaddress_t ethernetController_getSourceMACAddress(memoryField_t field) {
 macaddress_t sourceAddress;
-uint32_t nextPktPointer = ENC424J600_getNextPacketPointer();
-ENC424J600_setERXDATAReadPointer(nextPktPointer + 14);
+ENC424J600_setERXDATAReadPointer(field.start + 14);
 uint8_t opcode = 0x2C;
 PORTBbits.RB4=0;
 ENC424J600_writeSPI(&opcode);
@@ -7494,10 +7501,9 @@ PORTBbits.RB4=1;
 return sourceAddress;
 }
 
-etherType_t ethernetController_getEtherTypeField() {
+etherType_t ethernetController_getEtherTypeField(memoryField_t field) {
 etherType_t ethertype = 0x0000;
-uint32_t nextPktPointer = ENC424J600_getNextPacketPointer();
-ENC424J600_setERXDATAReadPointer(nextPktPointer + 20);
+ENC424J600_setERXDATAReadPointer(field.start + 20);
 uint8_t opcode = 0x2C;
 PORTBbits.RB4=0;
 ENC424J600_writeSPI(&opcode);
@@ -7546,13 +7552,10 @@ void ethernetController_clearInterruptFlag(uint8_t flag) {
 ENC424J600_clearInterruptFlag(flag);
 }
 
-uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t *len, uint16_t offset) {
-uint32_t nextPktPointer;
-uint8_t newPointerL, newPointerH;
+void ethernetController_updateNextPacketPointer() {
+uint16_t nextPktPointer;
 uint8_t opcode;
-uint8_t rsvBytes[6];
-uint16_t lengthOfReceivedFrame = 0;
-if (startEnd == 0) {
+uint8_t newPointerL, newPointerH;
 nextPktPointer = ENC424J600_getNextPacketPointer();
 ENC424J600_setERXDATAReadPointer(nextPktPointer);
 opcode = 0x2C;
@@ -7560,35 +7563,31 @@ PORTBbits.RB4=0;
 ENC424J600_writeSPI(&opcode);
 ENC424J600_readSPI(&newPointerL);
 ENC424J600_readSPI(&newPointerH);
-
-ENC424J600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
-
-for (uint8_t i = 0; i < 6; i++) {
-ENC424J600_readSPI(&rsvBytes[i]);
-}
-
-lengthOfReceivedFrame = (uint16_t) ((rsvBytes[0]&(unsigned) 0x00ff) | ((unsigned) (rsvBytes[1] << 8)&(unsigned) 0xff00));
-*len = lengthOfReceivedFrame;
-
-for (uint16_t i = 0; i < offset; i++) {
-uint8_t foo;
-ENC424J600_readSPI(&foo);
-}
-return 0;
-}
-if (startEnd == 1) {
-uint8_t temp;
-ENC424J600_readSPI(&temp);
-return temp;
-}
-
-if (startEnd == 2) {
 PORTBbits.RB4=1;
 
-if (nextPktPointer == 0x3000) {
+ENC424J600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
+}
+
+uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress) {
+uint8_t temp;
+uint8_t opcode;
+switch (startEnd) {
+case 0:
+ENC424J600_setERXDATAReadPointer(startAddress);
+opcode = 0x2C;
+PORTBbits.RB4=0;
+ENC424J600_writeSPI(&opcode);
+return 0;
+case 1:
+ENC424J600_readSPI(&temp);
+return temp;
+case 2:
+PORTBbits.RB4=1;
+
+if (ethernetController_getNextPacketPointer() == 0x3000) {
 ENC424J600_setRXTailPointer(0x55FE);
 } else {
-ENC424J600_setRXTailPointer(nextPktPointer - 2);
+ENC424J600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
 }
 
 
@@ -7599,24 +7598,12 @@ return 0;
 }
 
 void ethernetController_dropPacket(ethernetFrame_t *frame) {
-uint32_t nextPktPointer;
-uint8_t newPointerL, newPointerH;
-uint8_t opcode;
-nextPktPointer = ENC424J600_getNextPacketPointer();
-ENC424J600_setERXDATAReadPointer(nextPktPointer);
-opcode = 0x2C;
-PORTBbits.RB4=0;
-ENC424J600_writeSPI(&opcode);
-ENC424J600_readSPI(&newPointerL);
-ENC424J600_readSPI(&newPointerH);
 
-ENC424J600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
-PORTBbits.RB4=1;
-
-if (nextPktPointer == 0x3000) {
+# 387
+if (ethernetController_getNextPacketPointer() == 0x3000) {
 ENC424J600_setRXTailPointer(0x5FFF - 1);
 } else {
-ENC424J600_setRXTailPointer(nextPktPointer - 2);
+ENC424J600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
 }
 
 ENC424J600_writeSingleByte(0b11001100);
@@ -7938,7 +7925,6 @@ temp &= ~(1 << flag);
 ENC424J600_writeControlRegisterUnbanked(0x1D + 0x00, &temp);
 }
 }
-
 
 RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv) {
 RSV_t receiveStatusVector;

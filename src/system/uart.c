@@ -121,6 +121,29 @@ char *intToString(uint32_t val) {
     return number;
 }
 
+char hexToChar(uint8_t val) {
+    if (val < 10) {
+        return val + 0x30u;
+    } else if (val < 16) {
+        return val + 0x41u - 10;
+    }
+    return 0;
+}
+
+char *hexToString(uint32_t val) {
+    char static number [10];
+    uint8_t pointer = 0;
+    if (val > 0xff) {
+        number[pointer++] = hexToChar((val >> 12) & 0xf);
+        number[pointer++] = hexToChar((val >> 8) & 0xf);
+    }
+    number[pointer++] = hexToChar((val >> 4) & 0xf);
+    number[pointer++] = hexToChar(val & 0xf);
+
+    number[pointer++] = '\0';
+    return number;
+}
+
 char *macToString(macaddress_t addr) {
     char address[] = "??:??:??:??:??:??";
     uint8_t j = 0;
