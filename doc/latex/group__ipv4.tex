@@ -1,0 +1,207 @@
+\hypertarget{group__ipv4}{}\section{I\+Pv4}
+\label{group__ipv4}\index{IPv4@{IPv4}}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__ip__operations}{I\+Pv4 Address operations}}
+\end{DoxyCompactItemize}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structipv4__address}{ipv4\+\_\+address}}
+\item 
+struct \mbox{\hyperlink{structipv4__header}{ipv4\+\_\+header}}
+\item 
+struct \mbox{\hyperlink{structipv4__packet}{ipv4\+\_\+packet}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{group__ipv4_gacbfe55abe1d01bf1da8b66868f8135aa}{ipv4\+\_\+protocols}} \mbox{\hyperlink{group__ipv4_gaf689af7304e282d1606e70bf56cbc3d4}{ipv4\+\_\+protocol\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Currrently supported protocols embedded in I\+Pv4. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structipv4__address}{ipv4\+\_\+address}} \mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structipv4__header}{ipv4\+\_\+header}} \mbox{\hyperlink{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}{ipv4\+\_\+header\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structipv4__packet}{ipv4\+\_\+packet}} \mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__ipv4_gacbfe55abe1d01bf1da8b66868f8135aa}{ipv4\+\_\+protocols}} \{ \mbox{\hyperlink{group__ipv4_ggacbfe55abe1d01bf1da8b66868f8135aaa9190ff825ad5c7929c62ed0ce199fc19}{I\+Pv4\+\_\+\+P\+R\+O\+T\+O\+C\+O\+L\+\_\+\+I\+C\+MP}} = 0x01
+ \}
+\begin{DoxyCompactList}\small\item\em Currrently supported protocols embedded in I\+Pv4. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__ipv4_ga1bf24e45bf60a70b43ea1f1738c9a4c5}{ipv4\+\_\+tx\+Frame\+Request}} (\mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}} $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Requests a memory field and prepares the transmission of an I\+Pv4 Packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ipv4_gabf86b43adee57be777cf22f4cddc0b38}{ipv4\+\_\+calculate\+Header\+Checksum}} (\mbox{\hyperlink{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}{ipv4\+\_\+header\+\_\+t}} $\ast$header)
+\begin{DoxyCompactList}\small\item\em Call this function after everything in the header has been filled in. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ipv4_gacfb15ed3a5d68caffefbb0605e94b61d}{ipv4\+\_\+write\+Header\+Into\+Buffer}} (\mbox{\hyperlink{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}{ipv4\+\_\+header\+\_\+t}} header, uint8\+\_\+t $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em Assembles the I\+Pv4 Header and writes it into a buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ipv4_ga9b32058fa6f24f692e0915345b3373b2}{ipv4\+\_\+stream\+To\+Transmission\+Buffer}} (uint8\+\_\+t data, \mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}} packet)
+\begin{DoxyCompactList}\small\item\em Streams data to the memory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__ipv4_ga1837c9c3c1856f57fe1d5ec5008015a2}{ipv4\+\_\+send\+Frame}} (\mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}} ip\+Packet)
+\begin{DoxyCompactList}\small\item\em Sends the prepared I\+Pv4 Packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ipv4_ga7f96d526bafe55783b675597634d87ae}{ipv4\+\_\+handle\+New\+Packet}} (\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$frame)
+\begin{DoxyCompactList}\small\item\em Does all the necessary things to process a new packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group__ipv4_gad9df0882950e70d0587a4b423beb261a}\label{group__ipv4_gad9df0882950e70d0587a4b423beb261a}} 
+\index{IPv4@{IPv4}!ipv4\_address\_t@{ipv4\_address\_t}}
+\index{ipv4\_address\_t@{ipv4\_address\_t}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_address\_t}{ipv4\_address\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structipv4__address}{ipv4\+\_\+address}}  \mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}}}
+
+\mbox{\Hypertarget{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}\label{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}} 
+\index{IPv4@{IPv4}!ipv4\_header\_t@{ipv4\_header\_t}}
+\index{ipv4\_header\_t@{ipv4\_header\_t}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_header\_t}{ipv4\_header\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structipv4__header}{ipv4\+\_\+header}}  \mbox{\hyperlink{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}{ipv4\+\_\+header\+\_\+t}}}
+
+\mbox{\Hypertarget{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}\label{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}} 
+\index{IPv4@{IPv4}!ipv4\_packet\_t@{ipv4\_packet\_t}}
+\index{ipv4\_packet\_t@{ipv4\_packet\_t}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_packet\_t}{ipv4\_packet\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structipv4__packet}{ipv4\+\_\+packet}}  \mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}}}
+
+\mbox{\Hypertarget{group__ipv4_gaf689af7304e282d1606e70bf56cbc3d4}\label{group__ipv4_gaf689af7304e282d1606e70bf56cbc3d4}} 
+\index{IPv4@{IPv4}!ipv4\_protocol\_t@{ipv4\_protocol\_t}}
+\index{ipv4\_protocol\_t@{ipv4\_protocol\_t}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_protocol\_t}{ipv4\_protocol\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{group__ipv4_gacbfe55abe1d01bf1da8b66868f8135aa}{ipv4\+\_\+protocols}} \mbox{\hyperlink{group__ipv4_gaf689af7304e282d1606e70bf56cbc3d4}{ipv4\+\_\+protocol\+\_\+t}}}
+
+
+
+Currrently supported protocols embedded in I\+Pv4. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group__ipv4_gacbfe55abe1d01bf1da8b66868f8135aa}\label{group__ipv4_gacbfe55abe1d01bf1da8b66868f8135aa}} 
+\index{IPv4@{IPv4}!ipv4\_protocols@{ipv4\_protocols}}
+\index{ipv4\_protocols@{ipv4\_protocols}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_protocols}{ipv4\_protocols}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__ipv4_gacbfe55abe1d01bf1da8b66868f8135aa}{ipv4\+\_\+protocols}}}
+
+
+
+Currrently supported protocols embedded in I\+Pv4. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IPv4\_PROTOCOL\_ICMP@{IPv4\_PROTOCOL\_ICMP}!IPv4@{IPv4}}\index{IPv4@{IPv4}!IPv4\_PROTOCOL\_ICMP@{IPv4\_PROTOCOL\_ICMP}}}\mbox{\Hypertarget{group__ipv4_ggacbfe55abe1d01bf1da8b66868f8135aaa9190ff825ad5c7929c62ed0ce199fc19}\label{group__ipv4_ggacbfe55abe1d01bf1da8b66868f8135aaa9190ff825ad5c7929c62ed0ce199fc19}} 
+I\+Pv4\+\_\+\+P\+R\+O\+T\+O\+C\+O\+L\+\_\+\+I\+C\+MP&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__ipv4_gabf86b43adee57be777cf22f4cddc0b38}\label{group__ipv4_gabf86b43adee57be777cf22f4cddc0b38}} 
+\index{IPv4@{IPv4}!ipv4\_calculateHeaderChecksum@{ipv4\_calculateHeaderChecksum}}
+\index{ipv4\_calculateHeaderChecksum@{ipv4\_calculateHeaderChecksum}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_calculateHeaderChecksum()}{ipv4\_calculateHeaderChecksum()}}
+{\footnotesize\ttfamily void ipv4\+\_\+calculate\+Header\+Checksum (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}{ipv4\+\_\+header\+\_\+t}} $\ast$}]{header }\end{DoxyParamCaption})}
+
+
+
+Call this function after everything in the header has been filled in. 
+
+\mbox{\Hypertarget{group__ipv4_ga7f96d526bafe55783b675597634d87ae}\label{group__ipv4_ga7f96d526bafe55783b675597634d87ae}} 
+\index{IPv4@{IPv4}!ipv4\_handleNewPacket@{ipv4\_handleNewPacket}}
+\index{ipv4\_handleNewPacket@{ipv4\_handleNewPacket}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_handleNewPacket()}{ipv4\_handleNewPacket()}}
+{\footnotesize\ttfamily void ipv4\+\_\+handle\+New\+Packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$}]{frame }\end{DoxyParamCaption})}
+
+
+
+Does all the necessary things to process a new packet. 
+
+\begin{DoxyNote}{Note}
+To be called if a received packet is identified as an I\+Pv4 packet 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em $\ast$frame} & The received packet \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__ipv4_ga1837c9c3c1856f57fe1d5ec5008015a2}\label{group__ipv4_ga1837c9c3c1856f57fe1d5ec5008015a2}} 
+\index{IPv4@{IPv4}!ipv4\_sendFrame@{ipv4\_sendFrame}}
+\index{ipv4\_sendFrame@{ipv4\_sendFrame}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_sendFrame()}{ipv4\_sendFrame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} ipv4\+\_\+send\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}}}]{ip\+Packet }\end{DoxyParamCaption})}
+
+
+
+Sends the prepared I\+Pv4 Packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ip\+Packet} & Packet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__ipv4_ga9b32058fa6f24f692e0915345b3373b2}\label{group__ipv4_ga9b32058fa6f24f692e0915345b3373b2}} 
+\index{IPv4@{IPv4}!ipv4\_streamToTransmissionBuffer@{ipv4\_streamToTransmissionBuffer}}
+\index{ipv4\_streamToTransmissionBuffer@{ipv4\_streamToTransmissionBuffer}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_streamToTransmissionBuffer()}{ipv4\_streamToTransmissionBuffer()}}
+{\footnotesize\ttfamily void ipv4\+\_\+stream\+To\+Transmission\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data,  }\item[{\mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}}}]{packet }\end{DoxyParamCaption})}
+
+
+
+Streams data to the memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+{\em packet} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000015}{Todo}}]Fragmenting \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__ipv4_ga1bf24e45bf60a70b43ea1f1738c9a4c5}\label{group__ipv4_ga1bf24e45bf60a70b43ea1f1738c9a4c5}} 
+\index{IPv4@{IPv4}!ipv4\_txFrameRequest@{ipv4\_txFrameRequest}}
+\index{ipv4\_txFrameRequest@{ipv4\_txFrameRequest}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_txFrameRequest()}{ipv4\_txFrameRequest()}}
+{\footnotesize\ttfamily void ipv4\+\_\+tx\+Frame\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}} $\ast$}]{packet }\end{DoxyParamCaption})}
+
+
+
+Requests a memory field and prepares the transmission of an I\+Pv4 Packet. 
+
+\begin{DoxyNote}{Note}
+To be called every time when an I\+Pv4 Packet should be sent 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em $\ast$packet} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__ipv4_gacfb15ed3a5d68caffefbb0605e94b61d}\label{group__ipv4_gacfb15ed3a5d68caffefbb0605e94b61d}} 
+\index{IPv4@{IPv4}!ipv4\_writeHeaderIntoBuffer@{ipv4\_writeHeaderIntoBuffer}}
+\index{ipv4\_writeHeaderIntoBuffer@{ipv4\_writeHeaderIntoBuffer}!IPv4@{IPv4}}
+\subsubsection{\texorpdfstring{ipv4\_writeHeaderIntoBuffer()}{ipv4\_writeHeaderIntoBuffer()}}
+{\footnotesize\ttfamily void ipv4\+\_\+write\+Header\+Into\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}{ipv4\+\_\+header\+\_\+t}}}]{header,  }\item[{uint8\+\_\+t $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Assembles the I\+Pv4 Header and writes it into a buffer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em header} & Header that gets written to the buffer \\
+\hline
+\mbox{\texttt{ out}}  & {\em $\ast$ptr} & Pointer to the first element of the buffer array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Always make sure the array which ptr points to is big enough! 
+\end{DoxyWarning}

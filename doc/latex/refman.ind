@@ -1,0 +1,14 @@
+\begin{theindex}
+
+  \item {LEDs}
+    \subitem {System}, \hyperpage{9}
+  \item {LEDState}
+    \subitem {System}, \hyperpage{9}
+
+  \indexspace
+
+  \item {System}, \hyperpage{9}
+    \subitem {LEDs}, \hyperpage{9}
+    \subitem {LEDState}, \hyperpage{9}
+
+\end{theindex}

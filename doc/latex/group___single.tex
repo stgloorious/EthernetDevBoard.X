@@ -1,0 +1,174 @@
+\hypertarget{group___single}{}\section{Byte Instructions}
+\label{group___single}\index{Byte Instructions@{Byte Instructions}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___single_ga6239793585f937e37e61eda071508b40}{B0\+S\+EL}}~0b11000000 /$\ast$ Selects S\+F\+R Bank 0 $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_gab360ee4ad696c1bdd05618a6fb93747b}{B1\+S\+EL}}~0b11000010 /$\ast$ Selects S\+F\+R Bank 1 $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga0c5d34eed61b9f41eb229d1296553fa3}{B2\+S\+EL}}~0b11000100 /$\ast$ Selects S\+F\+R Bank 2 $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga3f5b541c613dad477a8d90e10a7b8a55}{B3\+S\+EL}}~0b11000110 /$\ast$ Selects S\+F\+R Bank 3 $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga8763648ea939c9f6494cca43828dcc0c}{S\+E\+T\+E\+T\+H\+R\+ST}}~0b11001010 /$\ast$ Issues System Reset by setting E\+T\+H\+R\+S\+T (\+E\+C\+O\+N2$<$4$>$) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga1acab7510b4236c7e4376439a8ffe154}{F\+C\+D\+I\+S\+A\+B\+LE}}~0b11100000 /$\ast$ Disables flow control (sets E\+C\+O\+N1$<$7\+:6$>$ = 00) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga2d69e97099b83953d2e87b73f1b892cd}{F\+C\+S\+I\+N\+G\+LE}}~0b11100100 /$\ast$ Transmits a single pause frame (sets E\+C\+O\+N1$<$7\+:6$>$ = 01) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_gac545b2d639c3967af4c1150334952fb4}{F\+C\+M\+U\+L\+T\+I\+P\+LE}}~0b11100100 /$\ast$ Enables flow control with periodic pause frames (sets E\+C\+O\+N1$<$7\+:6$>$ = 10) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga9d7f9a8ede2963dbd00699d9244fd18a}{F\+C\+C\+L\+E\+AR}}~0b11100110 /$\ast$ Terminates flow control with a final pause frame (sets E\+C\+O\+N1$<$7\+:6$>$ = 11) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_gab4cdb8940073f2025cab184a4215510f}{S\+E\+T\+P\+K\+T\+D\+EC}}~0b11001100 /$\ast$ Decrements P\+K\+T\+C\+N\+T by setting P\+K\+T\+D\+E\+C (\+E\+C\+O\+N1$<$8$>$) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga6cda58c4a10d34c851230fc3ea7eaf1a}{D\+M\+A\+S\+T\+OP}}~0b11010010 /$\ast$ Stops current D\+M\+A operation by clearing D\+M\+A\+S\+T (\+E\+C\+O\+N1$<$5$>$) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga129e533bb06e3aa1641c9172edb56494}{D\+M\+A\+C\+K\+S\+UM}}~0b11011000 /$\ast$ Starts D\+M\+A and checksum operation (sets E\+C\+O\+N1$<$5\+:2$>$ = 1000) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga4c98f8a75ecaf7988fd864f65ee89c00}{D\+M\+A\+C\+K\+S\+U\+MS}}~0b11011010 /$\ast$ Starts D\+M\+A checksum operation with seed (sets E\+C\+O\+N1$<$5\+:2$>$ = 1010) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga907bfb223f682a2f91b6007155a0adac}{D\+M\+A\+C\+O\+PY}}~0b11011100 /$\ast$ Starts D\+M\+A copy and checksum operation (sets E\+C\+O\+N1$<$5\+:2$>$ = 1100) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga05a3e15f88f8e268907b2ec12420433a}{D\+M\+A\+C\+O\+P\+YS}}~0b11011110 /$\ast$ Starts D\+M\+A copy and checksum operation with seed (sets E\+C\+O\+N1$<$5\+:2$>$ = 1110) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga889d3bef89093b4c5a113384ed539052}{S\+E\+T\+T\+X\+R\+TS}}~0b11010100 /$\ast$ Sets T\+X\+R\+T\+S (\+E\+C\+O\+N1$<$1$>$), sends an Ethernet packet $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga54713734b9ae7ae4e95e8a9e41a2a2cf}{E\+N\+A\+B\+L\+E\+RX}}~0b11101000 /$\ast$ Enables packet reception by setting R\+X\+E\+N (\+E\+C\+O\+N1$<$0$>$) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga71b0c6c4ecdcb0051588c13101e9b282}{D\+I\+S\+A\+B\+L\+E\+RX}}~0b11101010 /$\ast$ Disables packet reception by clearing R\+X\+E\+N (\+E\+C\+O\+N1$<$0$>$) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_ga18fb24806c923f20700c651f0db72a57}{S\+E\+T\+E\+IE}}~0b11101100 /$\ast$ Enable Ethernet Interrupts by setting I\+N\+T (\+E\+S\+T\+A\+T$<$15$>$) $\ast$/
+\item 
+\#define \mbox{\hyperlink{group___single_gaefaf2ed14e418c07c6587043c0ecd0f9}{C\+L\+R\+E\+IE}}~0b11101110 /$\ast$ Disable Ethernet Interrupts by clearing I\+N\+T (\+E\+S\+T\+A\+T$<$15$>$) $\ast$/
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Use with \mbox{\hyperlink{group__readwrite_ga1f1a557c3d9bef8fbcc879b9f668a4d0}{E\+N\+C424\+J600\+\_\+write\+Single\+Byte}} () \begin{DoxySeeAlso}{See also}
+Table 4-\/2, Page 44 in E\+N\+C424\+J600\textquotesingle{}s datasheet. 
+\end{DoxySeeAlso}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___single_ga6239793585f937e37e61eda071508b40}\label{group___single_ga6239793585f937e37e61eda071508b40}} 
+\index{Byte Instructions@{Byte Instructions}!B0SEL@{B0SEL}}
+\index{B0SEL@{B0SEL}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{B0SEL}{B0SEL}}
+{\footnotesize\ttfamily \#define B0\+S\+EL~0b11000000 /$\ast$ Selects S\+F\+R Bank 0 $\ast$/}
+
+\mbox{\Hypertarget{group___single_gab360ee4ad696c1bdd05618a6fb93747b}\label{group___single_gab360ee4ad696c1bdd05618a6fb93747b}} 
+\index{Byte Instructions@{Byte Instructions}!B1SEL@{B1SEL}}
+\index{B1SEL@{B1SEL}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{B1SEL}{B1SEL}}
+{\footnotesize\ttfamily \#define B1\+S\+EL~0b11000010 /$\ast$ Selects S\+F\+R Bank 1 $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga0c5d34eed61b9f41eb229d1296553fa3}\label{group___single_ga0c5d34eed61b9f41eb229d1296553fa3}} 
+\index{Byte Instructions@{Byte Instructions}!B2SEL@{B2SEL}}
+\index{B2SEL@{B2SEL}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{B2SEL}{B2SEL}}
+{\footnotesize\ttfamily \#define B2\+S\+EL~0b11000100 /$\ast$ Selects S\+F\+R Bank 2 $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga3f5b541c613dad477a8d90e10a7b8a55}\label{group___single_ga3f5b541c613dad477a8d90e10a7b8a55}} 
+\index{Byte Instructions@{Byte Instructions}!B3SEL@{B3SEL}}
+\index{B3SEL@{B3SEL}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{B3SEL}{B3SEL}}
+{\footnotesize\ttfamily \#define B3\+S\+EL~0b11000110 /$\ast$ Selects S\+F\+R Bank 3 $\ast$/}
+
+\mbox{\Hypertarget{group___single_gaefaf2ed14e418c07c6587043c0ecd0f9}\label{group___single_gaefaf2ed14e418c07c6587043c0ecd0f9}} 
+\index{Byte Instructions@{Byte Instructions}!CLREIE@{CLREIE}}
+\index{CLREIE@{CLREIE}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{CLREIE}{CLREIE}}
+{\footnotesize\ttfamily \#define C\+L\+R\+E\+IE~0b11101110 /$\ast$ Disable Ethernet Interrupts by clearing I\+N\+T (\+E\+S\+T\+A\+T$<$15$>$) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga71b0c6c4ecdcb0051588c13101e9b282}\label{group___single_ga71b0c6c4ecdcb0051588c13101e9b282}} 
+\index{Byte Instructions@{Byte Instructions}!DISABLERX@{DISABLERX}}
+\index{DISABLERX@{DISABLERX}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{DISABLERX}{DISABLERX}}
+{\footnotesize\ttfamily \#define D\+I\+S\+A\+B\+L\+E\+RX~0b11101010 /$\ast$ Disables packet reception by clearing R\+X\+E\+N (\+E\+C\+O\+N1$<$0$>$) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga129e533bb06e3aa1641c9172edb56494}\label{group___single_ga129e533bb06e3aa1641c9172edb56494}} 
+\index{Byte Instructions@{Byte Instructions}!DMACKSUM@{DMACKSUM}}
+\index{DMACKSUM@{DMACKSUM}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{DMACKSUM}{DMACKSUM}}
+{\footnotesize\ttfamily \#define D\+M\+A\+C\+K\+S\+UM~0b11011000 /$\ast$ Starts D\+M\+A and checksum operation (sets E\+C\+O\+N1$<$5\+:2$>$ = 1000) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga4c98f8a75ecaf7988fd864f65ee89c00}\label{group___single_ga4c98f8a75ecaf7988fd864f65ee89c00}} 
+\index{Byte Instructions@{Byte Instructions}!DMACKSUMS@{DMACKSUMS}}
+\index{DMACKSUMS@{DMACKSUMS}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{DMACKSUMS}{DMACKSUMS}}
+{\footnotesize\ttfamily \#define D\+M\+A\+C\+K\+S\+U\+MS~0b11011010 /$\ast$ Starts D\+M\+A checksum operation with seed (sets E\+C\+O\+N1$<$5\+:2$>$ = 1010) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga907bfb223f682a2f91b6007155a0adac}\label{group___single_ga907bfb223f682a2f91b6007155a0adac}} 
+\index{Byte Instructions@{Byte Instructions}!DMACOPY@{DMACOPY}}
+\index{DMACOPY@{DMACOPY}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{DMACOPY}{DMACOPY}}
+{\footnotesize\ttfamily \#define D\+M\+A\+C\+O\+PY~0b11011100 /$\ast$ Starts D\+M\+A copy and checksum operation (sets E\+C\+O\+N1$<$5\+:2$>$ = 1100) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga05a3e15f88f8e268907b2ec12420433a}\label{group___single_ga05a3e15f88f8e268907b2ec12420433a}} 
+\index{Byte Instructions@{Byte Instructions}!DMACOPYS@{DMACOPYS}}
+\index{DMACOPYS@{DMACOPYS}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{DMACOPYS}{DMACOPYS}}
+{\footnotesize\ttfamily \#define D\+M\+A\+C\+O\+P\+YS~0b11011110 /$\ast$ Starts D\+M\+A copy and checksum operation with seed (sets E\+C\+O\+N1$<$5\+:2$>$ = 1110) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga6cda58c4a10d34c851230fc3ea7eaf1a}\label{group___single_ga6cda58c4a10d34c851230fc3ea7eaf1a}} 
+\index{Byte Instructions@{Byte Instructions}!DMASTOP@{DMASTOP}}
+\index{DMASTOP@{DMASTOP}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{DMASTOP}{DMASTOP}}
+{\footnotesize\ttfamily \#define D\+M\+A\+S\+T\+OP~0b11010010 /$\ast$ Stops current D\+M\+A operation by clearing D\+M\+A\+S\+T (\+E\+C\+O\+N1$<$5$>$) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga54713734b9ae7ae4e95e8a9e41a2a2cf}\label{group___single_ga54713734b9ae7ae4e95e8a9e41a2a2cf}} 
+\index{Byte Instructions@{Byte Instructions}!ENABLERX@{ENABLERX}}
+\index{ENABLERX@{ENABLERX}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{ENABLERX}{ENABLERX}}
+{\footnotesize\ttfamily \#define E\+N\+A\+B\+L\+E\+RX~0b11101000 /$\ast$ Enables packet reception by setting R\+X\+E\+N (\+E\+C\+O\+N1$<$0$>$) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga9d7f9a8ede2963dbd00699d9244fd18a}\label{group___single_ga9d7f9a8ede2963dbd00699d9244fd18a}} 
+\index{Byte Instructions@{Byte Instructions}!FCCLEAR@{FCCLEAR}}
+\index{FCCLEAR@{FCCLEAR}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{FCCLEAR}{FCCLEAR}}
+{\footnotesize\ttfamily \#define F\+C\+C\+L\+E\+AR~0b11100110 /$\ast$ Terminates flow control with a final pause frame (sets E\+C\+O\+N1$<$7\+:6$>$ = 11) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga1acab7510b4236c7e4376439a8ffe154}\label{group___single_ga1acab7510b4236c7e4376439a8ffe154}} 
+\index{Byte Instructions@{Byte Instructions}!FCDISABLE@{FCDISABLE}}
+\index{FCDISABLE@{FCDISABLE}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{FCDISABLE}{FCDISABLE}}
+{\footnotesize\ttfamily \#define F\+C\+D\+I\+S\+A\+B\+LE~0b11100000 /$\ast$ Disables flow control (sets E\+C\+O\+N1$<$7\+:6$>$ = 00) $\ast$/}
+
+\mbox{\Hypertarget{group___single_gac545b2d639c3967af4c1150334952fb4}\label{group___single_gac545b2d639c3967af4c1150334952fb4}} 
+\index{Byte Instructions@{Byte Instructions}!FCMULTIPLE@{FCMULTIPLE}}
+\index{FCMULTIPLE@{FCMULTIPLE}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{FCMULTIPLE}{FCMULTIPLE}}
+{\footnotesize\ttfamily \#define F\+C\+M\+U\+L\+T\+I\+P\+LE~0b11100100 /$\ast$ Enables flow control with periodic pause frames (sets E\+C\+O\+N1$<$7\+:6$>$ = 10) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga2d69e97099b83953d2e87b73f1b892cd}\label{group___single_ga2d69e97099b83953d2e87b73f1b892cd}} 
+\index{Byte Instructions@{Byte Instructions}!FCSINGLE@{FCSINGLE}}
+\index{FCSINGLE@{FCSINGLE}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{FCSINGLE}{FCSINGLE}}
+{\footnotesize\ttfamily \#define F\+C\+S\+I\+N\+G\+LE~0b11100100 /$\ast$ Transmits a single pause frame (sets E\+C\+O\+N1$<$7\+:6$>$ = 01) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga18fb24806c923f20700c651f0db72a57}\label{group___single_ga18fb24806c923f20700c651f0db72a57}} 
+\index{Byte Instructions@{Byte Instructions}!SETEIE@{SETEIE}}
+\index{SETEIE@{SETEIE}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{SETEIE}{SETEIE}}
+{\footnotesize\ttfamily \#define S\+E\+T\+E\+IE~0b11101100 /$\ast$ Enable Ethernet Interrupts by setting I\+N\+T (\+E\+S\+T\+A\+T$<$15$>$) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga8763648ea939c9f6494cca43828dcc0c}\label{group___single_ga8763648ea939c9f6494cca43828dcc0c}} 
+\index{Byte Instructions@{Byte Instructions}!SETETHRST@{SETETHRST}}
+\index{SETETHRST@{SETETHRST}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{SETETHRST}{SETETHRST}}
+{\footnotesize\ttfamily \#define S\+E\+T\+E\+T\+H\+R\+ST~0b11001010 /$\ast$ Issues System Reset by setting E\+T\+H\+R\+S\+T (\+E\+C\+O\+N2$<$4$>$) $\ast$/}
+
+\mbox{\Hypertarget{group___single_gab4cdb8940073f2025cab184a4215510f}\label{group___single_gab4cdb8940073f2025cab184a4215510f}} 
+\index{Byte Instructions@{Byte Instructions}!SETPKTDEC@{SETPKTDEC}}
+\index{SETPKTDEC@{SETPKTDEC}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{SETPKTDEC}{SETPKTDEC}}
+{\footnotesize\ttfamily \#define S\+E\+T\+P\+K\+T\+D\+EC~0b11001100 /$\ast$ Decrements P\+K\+T\+C\+N\+T by setting P\+K\+T\+D\+E\+C (\+E\+C\+O\+N1$<$8$>$) $\ast$/}
+
+\mbox{\Hypertarget{group___single_ga889d3bef89093b4c5a113384ed539052}\label{group___single_ga889d3bef89093b4c5a113384ed539052}} 
+\index{Byte Instructions@{Byte Instructions}!SETTXRTS@{SETTXRTS}}
+\index{SETTXRTS@{SETTXRTS}!Byte Instructions@{Byte Instructions}}
+\subsubsection{\texorpdfstring{SETTXRTS}{SETTXRTS}}
+{\footnotesize\ttfamily \#define S\+E\+T\+T\+X\+R\+TS~0b11010100 /$\ast$ Sets T\+X\+R\+T\+S (\+E\+C\+O\+N1$<$1$>$), sends an Ethernet packet $\ast$/}
+

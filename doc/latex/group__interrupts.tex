@@ -1,0 +1,146 @@
+\hypertarget{group__interrupts}{}\section{Interrupts}
+\label{group__interrupts}\index{Interrupts@{Interrupts}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structinterrupt_flags}{interrupt\+Flags}}
+\begin{DoxyCompactList}\small\item\em This structure represents the E\+IR Interrupt flag register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structinterrupt_flags}{interrupt\+Flags}} \mbox{\hyperlink{group__interrupts_ga337298055be267e726930c9fc6b2d4eb}{interrupt\+Flags\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em This structure represents the E\+IR Interrupt flag register. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{group__interrupts_gaf692e993b72f242633eee1b443276547}{interrupt\+Flags\+Names}} \mbox{\hyperlink{group__interrupts_gaa2c8c63912e19f8bccebc09dfc23023a}{interrupt\+Flag\+Name\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Contains the interrupt flag names of the E\+IR Interrupt Flag register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__interrupts_gaf692e993b72f242633eee1b443276547}{interrupt\+Flags\+Names}} \{ \newline
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547a763a1fb486fd541369f9f91f63d11b2f}{P\+C\+F\+U\+L\+IF}} = 0, 
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547a12b452970825109f1b21fccae81f8f55}{R\+X\+A\+B\+T\+IF}} = 1, 
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547abfa00fdc147b153f1960d9f5d2fceb3c}{T\+X\+A\+B\+T\+IF}} = 2, 
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547aac1a991d894a8d498f3acdade862ed91}{T\+X\+D\+IF}} = 3, 
+\newline
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547ac04c287b57604b5412cf577e2eea905d}{D\+M\+A\+IF}} = 5, 
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547aecae98f658eb2390e4b15d4090cfeeca}{P\+K\+T\+IF}} = 6, 
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547a5ab1928649db29845f7a4babb4ac77f7}{L\+I\+N\+K\+IF}} = 11, 
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547a9b506f9b2df930e94292700edcb2ffd9}{A\+E\+S\+IF}} = 12, 
+\newline
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547ac37501e8ba38e4372e96790a31789343}{H\+A\+S\+H\+IF}} = 13, 
+\mbox{\hyperlink{group__interrupts_ggaf692e993b72f242633eee1b443276547af47f70f60bd411fd450248cb098df3b4}{M\+O\+D\+E\+X\+IF}} = 14
+ \}
+\begin{DoxyCompactList}\small\item\em Contains the interrupt flag names of the E\+IR Interrupt Flag register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{group__interrupts_ga624b3a45566e56aa688ebb70ad4387da}{E\+N\+C424\+J600\+\_\+get\+Interrupt\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Reads out the Interrupt Flag Register E\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group__interrupts_gaa2c8c63912e19f8bccebc09dfc23023a}\label{group__interrupts_gaa2c8c63912e19f8bccebc09dfc23023a}} 
+\index{Interrupts@{Interrupts}!interruptFlagName\_t@{interruptFlagName\_t}}
+\index{interruptFlagName\_t@{interruptFlagName\_t}!Interrupts@{Interrupts}}
+\subsubsection{\texorpdfstring{interruptFlagName\_t}{interruptFlagName\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{group__interrupts_gaf692e993b72f242633eee1b443276547}{interrupt\+Flags\+Names}}  \mbox{\hyperlink{group__interrupts_gaa2c8c63912e19f8bccebc09dfc23023a}{interrupt\+Flag\+Name\+\_\+t}}}
+
+
+
+Contains the interrupt flag names of the E\+IR Interrupt Flag register. 
+
+The numbers represent the bit numbers. To be used with E\+N\+C424\+J600\+\_\+clear\+Interrupt\+Flag () \begin{DoxyNote}{Note}
+The flag names represent bit numbers, not masks. 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+Register 13-\/1, Page 120 of E\+N\+C424\+J600\textquotesingle{}s data sheet. 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{group__interrupts_ga337298055be267e726930c9fc6b2d4eb}\label{group__interrupts_ga337298055be267e726930c9fc6b2d4eb}} 
+\index{Interrupts@{Interrupts}!interruptFlags\_t@{interruptFlags\_t}}
+\index{interruptFlags\_t@{interruptFlags\_t}!Interrupts@{Interrupts}}
+\subsubsection{\texorpdfstring{interruptFlags\_t}{interruptFlags\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structinterrupt_flags}{interrupt\+Flags}}  \mbox{\hyperlink{group__interrupts_ga337298055be267e726930c9fc6b2d4eb}{interrupt\+Flags\+\_\+t}}}
+
+
+
+This structure represents the E\+IR Interrupt flag register. 
+
+Note that the M\+SB (Bit 15) is not implemented here because it is not an interrupt flag 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group__interrupts_gaf692e993b72f242633eee1b443276547}\label{group__interrupts_gaf692e993b72f242633eee1b443276547}} 
+\index{Interrupts@{Interrupts}!interruptFlagsNames@{interruptFlagsNames}}
+\index{interruptFlagsNames@{interruptFlagsNames}!Interrupts@{Interrupts}}
+\subsubsection{\texorpdfstring{interruptFlagsNames}{interruptFlagsNames}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__interrupts_gaf692e993b72f242633eee1b443276547}{interrupt\+Flags\+Names}}}
+
+
+
+Contains the interrupt flag names of the E\+IR Interrupt Flag register. 
+
+The numbers represent the bit numbers. To be used with E\+N\+C424\+J600\+\_\+clear\+Interrupt\+Flag () \begin{DoxyNote}{Note}
+The flag names represent bit numbers, not masks. 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+Register 13-\/1, Page 120 of E\+N\+C424\+J600\textquotesingle{}s data sheet. 
+\end{DoxySeeAlso}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PCFULIF@{PCFULIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!PCFULIF@{PCFULIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547a763a1fb486fd541369f9f91f63d11b2f}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547a763a1fb486fd541369f9f91f63d11b2f}} 
+P\+C\+F\+U\+L\+IF&Packet Counter Full Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RXABTIF@{RXABTIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!RXABTIF@{RXABTIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547a12b452970825109f1b21fccae81f8f55}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547a12b452970825109f1b21fccae81f8f55}} 
+R\+X\+A\+B\+T\+IF&Receive Abort Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TXABTIF@{TXABTIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!TXABTIF@{TXABTIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547abfa00fdc147b153f1960d9f5d2fceb3c}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547abfa00fdc147b153f1960d9f5d2fceb3c}} 
+T\+X\+A\+B\+T\+IF&Transmit Abort Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TXDIF@{TXDIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!TXDIF@{TXDIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547aac1a991d894a8d498f3acdade862ed91}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547aac1a991d894a8d498f3acdade862ed91}} 
+T\+X\+D\+IF&Transmit Done Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DMAIF@{DMAIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!DMAIF@{DMAIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547ac04c287b57604b5412cf577e2eea905d}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547ac04c287b57604b5412cf577e2eea905d}} 
+D\+M\+A\+IF&D\+MA Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PKTIF@{PKTIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!PKTIF@{PKTIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547aecae98f658eb2390e4b15d4090cfeeca}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547aecae98f658eb2390e4b15d4090cfeeca}} 
+P\+K\+T\+IF&RX Packet Pending Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINKIF@{LINKIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!LINKIF@{LINKIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547a5ab1928649db29845f7a4babb4ac77f7}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547a5ab1928649db29845f7a4babb4ac77f7}} 
+L\+I\+N\+K\+IF&P\+HY Link Status Change Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AESIF@{AESIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!AESIF@{AESIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547a9b506f9b2df930e94292700edcb2ffd9}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547a9b506f9b2df930e94292700edcb2ffd9}} 
+A\+E\+S\+IF&A\+ES Encrypt/\+Decrypt Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HASHIF@{HASHIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!HASHIF@{HASHIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547ac37501e8ba38e4372e96790a31789343}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547ac37501e8ba38e4372e96790a31789343}} 
+H\+A\+S\+H\+IF&M\+D5/\+S\+H\+A-\/1 Hash Interrupt Flag bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODEXIF@{MODEXIF}!Interrupts@{Interrupts}}\index{Interrupts@{Interrupts}!MODEXIF@{MODEXIF}}}\mbox{\Hypertarget{group__interrupts_ggaf692e993b72f242633eee1b443276547af47f70f60bd411fd450248cb098df3b4}\label{group__interrupts_ggaf692e993b72f242633eee1b443276547af47f70f60bd411fd450248cb098df3b4}} 
+M\+O\+D\+E\+X\+IF&Modular Exponentiation Interrupt Flag bit. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__interrupts_ga624b3a45566e56aa688ebb70ad4387da}\label{group__interrupts_ga624b3a45566e56aa688ebb70ad4387da}} 
+\index{Interrupts@{Interrupts}!ENC424J600\_getInterruptFlags@{ENC424J600\_getInterruptFlags}}
+\index{ENC424J600\_getInterruptFlags@{ENC424J600\_getInterruptFlags}!Interrupts@{Interrupts}}
+\subsubsection{\texorpdfstring{ENC424J600\_getInterruptFlags()}{ENC424J600\_getInterruptFlags()}}
+{\footnotesize\ttfamily uint16\+\_\+t E\+N\+C424\+J600\+\_\+get\+Interrupt\+Flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads out the Interrupt Flag Register E\+IR. 
+
+Note that these flags are always valid, no matter if the interrupt is enabled or not. This way the interrupt flags can be polled periodically for low priority stuff. Note that the M\+SB is not an interrupt flag (it is returned, too). \begin{DoxyReturn}{Returns}
+The value of the Interrupt F\+Lag Register E\+IR 
+\end{DoxyReturn}

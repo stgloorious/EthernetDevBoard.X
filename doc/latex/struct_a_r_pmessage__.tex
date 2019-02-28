@@ -1,0 +1,169 @@
+\hypertarget{struct_a_r_pmessage__}{}\section{A\+R\+Pmessage\+\_\+ Struct Reference}
+\label{struct_a_r_pmessage__}\index{ARPmessage\_@{ARPmessage\_}}
+
+
+Contains all information which makes up an A\+RP message.  
+
+
+
+
+{\ttfamily \#include $<$arp\+Types.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned short \mbox{\hyperlink{struct_a_r_pmessage___a46715ba000c9a625f4b6310f1f09afc7}{htype}}
+\begin{DoxyCompactList}\small\item\em Hardware yype. Ethernet is 1. \end{DoxyCompactList}\item 
+unsigned short \mbox{\hyperlink{struct_a_r_pmessage___a141d5699e3106d94bee5842b6b0d3e14}{ptype}}
+\begin{DoxyCompactList}\small\item\em Protocol type. For I\+Pv4 it\textquotesingle{}s 0x0800. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{struct_a_r_pmessage___a02328684750d50e609a16de43cbd46a7}{hlen}}
+\begin{DoxyCompactList}\small\item\em Hardware address length in bytes. Ethernet addresses have 6 Bytes. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{struct_a_r_pmessage___a3bdad4fbaa0d1a8b657090905c7b58ed}{plen}}
+\begin{DoxyCompactList}\small\item\em Protocol address length in bytes. I\+Pv4 has 4 byte wide addresses. \end{DoxyCompactList}\item 
+unsigned short \mbox{\hyperlink{struct_a_r_pmessage___a9d6488f4b1701ea19f48f8c589c525cc}{operation}}
+\begin{DoxyCompactList}\small\item\em Request or Reply; use \mbox{\hyperlink{group__arp_ga051b3dc0fecaa617590192d2fb74688a}{A\+R\+Poperation}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ethernet_types_8h_a7fed77396097fa92ca5f4b185844244c}{Mac\+Address}} \mbox{\hyperlink{struct_a_r_pmessage___a373dc2ffcc6b2a5b9a8682478906c256}{sender\+M\+A\+C\+Address}}
+\begin{DoxyCompactList}\small\item\em Sender hardware address (S\+HA) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ipv4_gac3530474aec32033cd4709abdc7bded7}{I\+Pv4\+Address}} \mbox{\hyperlink{struct_a_r_pmessage___a327239df3565c3a31da48f74b65e15b1}{sender\+I\+P\+Address}}
+\begin{DoxyCompactList}\small\item\em Sender protocol address (S\+PA) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ethernet_types_8h_a7fed77396097fa92ca5f4b185844244c}{Mac\+Address}} \mbox{\hyperlink{struct_a_r_pmessage___a2502d1b812373dc5a0de1647165b40ea}{target\+M\+A\+C\+Address}}
+\begin{DoxyCompactList}\small\item\em Target hardware address (T\+HA) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ipv4_gac3530474aec32033cd4709abdc7bded7}{I\+Pv4\+Address}} \mbox{\hyperlink{struct_a_r_pmessage___a810f2c0c6e91e68940dbf87740664f0f}{target\+I\+P\+Address}}
+\begin{DoxyCompactList}\small\item\em Target protocol address (T\+PA) \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{struct_a_r_pmessage___abf4812a73fd577ace2b9fc876deb3a41}{f\+Is\+Gratuitous}}\+: 1
+\begin{DoxyCompactList}\small\item\em Flag indicating if the message is gratuitous. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{struct_a_r_pmessage___acfb90603349e0df772a79dae542dfa7c}{f\+Is\+Probe}}\+: 1
+\begin{DoxyCompactList}\small\item\em Flag indicating if the message is an announcement. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gada9d6bcf34dabaf048e197cb7b69fa6a}{Error}} \mbox{\hyperlink{struct_a_r_pmessage___a9078d3b85b5a7c46fc5c80899bd3b6b3}{err}}
+\begin{DoxyCompactList}\small\item\em Error code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains all information which makes up an A\+RP message. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_a_r_pmessage___a9078d3b85b5a7c46fc5c80899bd3b6b3}\label{struct_a_r_pmessage___a9078d3b85b5a7c46fc5c80899bd3b6b3}} 
+\index{ARPmessage\_@{ARPmessage\_}!err@{err}}
+\index{err@{err}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__error_gada9d6bcf34dabaf048e197cb7b69fa6a}{Error}} err}
+
+
+
+Error code. 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___abf4812a73fd577ace2b9fc876deb3a41}\label{struct_a_r_pmessage___abf4812a73fd577ace2b9fc876deb3a41}} 
+\index{ARPmessage\_@{ARPmessage\_}!fIsGratuitous@{fIsGratuitous}}
+\index{fIsGratuitous@{fIsGratuitous}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{fIsGratuitous}{fIsGratuitous}}
+{\footnotesize\ttfamily unsigned char f\+Is\+Gratuitous}
+
+
+
+Flag indicating if the message is gratuitous. 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___acfb90603349e0df772a79dae542dfa7c}\label{struct_a_r_pmessage___acfb90603349e0df772a79dae542dfa7c}} 
+\index{ARPmessage\_@{ARPmessage\_}!fIsProbe@{fIsProbe}}
+\index{fIsProbe@{fIsProbe}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{fIsProbe}{fIsProbe}}
+{\footnotesize\ttfamily unsigned char f\+Is\+Probe}
+
+
+
+Flag indicating if the message is an announcement. 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a02328684750d50e609a16de43cbd46a7}\label{struct_a_r_pmessage___a02328684750d50e609a16de43cbd46a7}} 
+\index{ARPmessage\_@{ARPmessage\_}!hlen@{hlen}}
+\index{hlen@{hlen}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{hlen}{hlen}}
+{\footnotesize\ttfamily unsigned char hlen}
+
+
+
+Hardware address length in bytes. Ethernet addresses have 6 Bytes. 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a46715ba000c9a625f4b6310f1f09afc7}\label{struct_a_r_pmessage___a46715ba000c9a625f4b6310f1f09afc7}} 
+\index{ARPmessage\_@{ARPmessage\_}!htype@{htype}}
+\index{htype@{htype}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{htype}{htype}}
+{\footnotesize\ttfamily unsigned short htype}
+
+
+
+Hardware yype. Ethernet is 1. 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a9d6488f4b1701ea19f48f8c589c525cc}\label{struct_a_r_pmessage___a9d6488f4b1701ea19f48f8c589c525cc}} 
+\index{ARPmessage\_@{ARPmessage\_}!operation@{operation}}
+\index{operation@{operation}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{operation}{operation}}
+{\footnotesize\ttfamily unsigned short operation}
+
+
+
+Request or Reply; use \mbox{\hyperlink{group__arp_ga051b3dc0fecaa617590192d2fb74688a}{A\+R\+Poperation}}. 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a3bdad4fbaa0d1a8b657090905c7b58ed}\label{struct_a_r_pmessage___a3bdad4fbaa0d1a8b657090905c7b58ed}} 
+\index{ARPmessage\_@{ARPmessage\_}!plen@{plen}}
+\index{plen@{plen}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{plen}{plen}}
+{\footnotesize\ttfamily unsigned char plen}
+
+
+
+Protocol address length in bytes. I\+Pv4 has 4 byte wide addresses. 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a141d5699e3106d94bee5842b6b0d3e14}\label{struct_a_r_pmessage___a141d5699e3106d94bee5842b6b0d3e14}} 
+\index{ARPmessage\_@{ARPmessage\_}!ptype@{ptype}}
+\index{ptype@{ptype}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{ptype}{ptype}}
+{\footnotesize\ttfamily unsigned short ptype}
+
+
+
+Protocol type. For I\+Pv4 it\textquotesingle{}s 0x0800. 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a327239df3565c3a31da48f74b65e15b1}\label{struct_a_r_pmessage___a327239df3565c3a31da48f74b65e15b1}} 
+\index{ARPmessage\_@{ARPmessage\_}!senderIPAddress@{senderIPAddress}}
+\index{senderIPAddress@{senderIPAddress}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{senderIPAddress}{senderIPAddress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ipv4_gac3530474aec32033cd4709abdc7bded7}{I\+Pv4\+Address}} sender\+I\+P\+Address}
+
+
+
+Sender protocol address (S\+PA) 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a373dc2ffcc6b2a5b9a8682478906c256}\label{struct_a_r_pmessage___a373dc2ffcc6b2a5b9a8682478906c256}} 
+\index{ARPmessage\_@{ARPmessage\_}!senderMACAddress@{senderMACAddress}}
+\index{senderMACAddress@{senderMACAddress}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{senderMACAddress}{senderMACAddress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ethernet_types_8h_a7fed77396097fa92ca5f4b185844244c}{Mac\+Address}} sender\+M\+A\+C\+Address}
+
+
+
+Sender hardware address (S\+HA) 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a810f2c0c6e91e68940dbf87740664f0f}\label{struct_a_r_pmessage___a810f2c0c6e91e68940dbf87740664f0f}} 
+\index{ARPmessage\_@{ARPmessage\_}!targetIPAddress@{targetIPAddress}}
+\index{targetIPAddress@{targetIPAddress}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{targetIPAddress}{targetIPAddress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ipv4_gac3530474aec32033cd4709abdc7bded7}{I\+Pv4\+Address}} target\+I\+P\+Address}
+
+
+
+Target protocol address (T\+PA) 
+
+\mbox{\Hypertarget{struct_a_r_pmessage___a2502d1b812373dc5a0de1647165b40ea}\label{struct_a_r_pmessage___a2502d1b812373dc5a0de1647165b40ea}} 
+\index{ARPmessage\_@{ARPmessage\_}!targetMACAddress@{targetMACAddress}}
+\index{targetMACAddress@{targetMACAddress}!ARPmessage\_@{ARPmessage\_}}
+\subsubsection{\texorpdfstring{targetMACAddress}{targetMACAddress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ethernet_types_8h_a7fed77396097fa92ca5f4b185844244c}{Mac\+Address}} target\+M\+A\+C\+Address}
+
+
+
+Target hardware address (T\+HA) 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Eth\+M\+P\+U.\+X/src/stack/protocols/\mbox{\hyperlink{arp_types_8h}{arp\+Types.\+h}}\end{DoxyCompactItemize}

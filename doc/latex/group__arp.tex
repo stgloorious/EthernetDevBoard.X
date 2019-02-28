@@ -1,0 +1,420 @@
+\hypertarget{group__arp}{}\section{Address Resolution Protocol}
+\label{group__arp}\index{Address Resolution Protocol@{Address Resolution Protocol}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_a_r_p__message}{A\+R\+P\+\_\+message}}
+\begin{DoxyCompactList}\small\item\em Contains all information which makes up an A\+RP message. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_r_p__table_entry}{A\+R\+P\+\_\+table\+Entry}}
+\begin{DoxyCompactList}\small\item\em One entry in the A\+RP table consists out of one hardware and one protocol address and a timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_a_r_p__message}{A\+R\+P\+\_\+message}} \mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Contains all information which makes up an A\+RP message. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{group__arp_ga403f6527e9ff615efd0c8ed05790fde3}{A\+R\+P\+\_\+operation}} \mbox{\hyperlink{group__arp_ga3aca071e2781c5efead1609fcbb58ad3}{A\+R\+P\+\_\+operation\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Data types for \mbox{\hyperlink{struct_a_r_p__message_ad21c763fa2f80cb8649108b759113b54}{A\+R\+P\+\_\+message\+\_\+t\+::operation}}. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{group__arp_gad603463074b00d9c86a9cdb23083f37d}{A\+R\+P\+\_\+htype}} \mbox{\hyperlink{group__arp_gafa7086c12e44433aa82abcac54e74242}{A\+R\+P\+\_\+htype\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Data type for \mbox{\hyperlink{struct_a_r_p__message_aaf87c38602b614bc7896cf7a5a90d372}{A\+R\+P\+\_\+message\+\_\+t\+::htype}}. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{group__arp_gaeae5f5d6313cd707dd97fa24dbab569c}{A\+R\+P\+\_\+ptype}} \mbox{\hyperlink{group__arp_gab3358c917e9f326ba4187aed82248923}{A\+R\+P\+\_\+ptype\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Data type for \mbox{\hyperlink{struct_a_r_p__message_ab4891e9b77eb26f33d21cfde982564cb}{A\+R\+P\+\_\+message\+\_\+t\+::ptype}}. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_a_r_p__table_entry}{A\+R\+P\+\_\+table\+Entry}} \mbox{\hyperlink{group__arp_gab5d4ef9cd020c5de772f55549aa70716}{A\+R\+P\+\_\+table\+Entry\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em One entry in the A\+RP table consists out of one hardware and one protocol address and a timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__arp_ga403f6527e9ff615efd0c8ed05790fde3}{A\+R\+P\+\_\+operation}} \{ \mbox{\hyperlink{group__arp_gga403f6527e9ff615efd0c8ed05790fde3afb58ccf8b7b11505ff2117a10bf6ff61}{A\+R\+P\+\_\+\+R\+E\+Q\+U\+E\+ST}} = 1, 
+\mbox{\hyperlink{group__arp_gga403f6527e9ff615efd0c8ed05790fde3a8bb24a026264a5b22435864179f874d9}{A\+R\+P\+\_\+\+R\+E\+P\+LY}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Data types for \mbox{\hyperlink{struct_a_r_p__message_ad21c763fa2f80cb8649108b759113b54}{A\+R\+P\+\_\+message\+\_\+t\+::operation}}. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__arp_gad603463074b00d9c86a9cdb23083f37d}{A\+R\+P\+\_\+htype}} \{ \mbox{\hyperlink{group__arp_ggad603463074b00d9c86a9cdb23083f37da832f2b0d1c3af55f4a4bbe2aa90da148}{A\+R\+P\+\_\+\+H\+T\+Y\+P\+E\+\_\+\+E\+T\+H\+E\+R\+N\+ET}} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em Data type for \mbox{\hyperlink{struct_a_r_p__message_aaf87c38602b614bc7896cf7a5a90d372}{A\+R\+P\+\_\+message\+\_\+t\+::htype}}. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__arp_gaeae5f5d6313cd707dd97fa24dbab569c}{A\+R\+P\+\_\+ptype}} \{ \mbox{\hyperlink{group__arp_ggaeae5f5d6313cd707dd97fa24dbab569cada8f134c523d1516f6a63d6d475c7bd8}{A\+R\+P\+\_\+\+P\+T\+Y\+P\+E\+\_\+\+I\+Pv4}} = 0x0800
+ \}
+\begin{DoxyCompactList}\small\item\em Data type for \mbox{\hyperlink{struct_a_r_p__message_ab4891e9b77eb26f33d21cfde982564cb}{A\+R\+P\+\_\+message\+\_\+t\+::ptype}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__arp_ga35f276b970aa00ca18990c7ddc63a65e}{A\+R\+P\+\_\+init\+Table}} ()
+\begin{DoxyCompactList}\small\item\em Initialises the A\+RP table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__arp_ga1ba858e52bf34bca0e5260f0dc0e4641}{A\+R\+P\+\_\+handle\+New\+Packet}} (\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$frame)
+\begin{DoxyCompactList}\small\item\em Takes a received A\+RP packet and does the necessary steps. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}} \mbox{\hyperlink{group__arp_gaa4326b29383563a2d0bae66883d2aeb6}{A\+R\+P\+\_\+parse\+From\+R\+X\+Buffer}} (\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$frame)
+\begin{DoxyCompactList}\small\item\em Takes the received packet and puts it into a more readable format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__arp_gae3e5d52fa89b91d6552cb328b8b6ec81}{A\+R\+P\+\_\+reply\+If\+Needed}} (\mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}} request)
+\begin{DoxyCompactList}\small\item\em If the A\+R\+Pmessage contains a request for my address, this function replies accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__arp_gabce5812c383f7e08c3a83c6db7f2f029}{A\+R\+P\+\_\+send}} (\mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}} arp)
+\begin{DoxyCompactList}\small\item\em Sends the given message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__arp_ga1b3f3b5557d3cabb25df6b8f2af655bd}{A\+R\+P\+\_\+send\+Request}} (\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} ip)
+\begin{DoxyCompactList}\small\item\em Sends an A\+RP request to a given I\+Pv4 address. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__arp_gaa50891c65dcfb449eb93a4d5aed366f5}{A\+R\+P\+\_\+check\+For\+Entry}} (\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} ip, uint8\+\_\+t $\ast$index)
+\begin{DoxyCompactList}\small\item\em Checks for an entry in the A\+RP table. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__arp_ga31f6f62d984dfbf0fb3791452a0f09e2}{A\+R\+P\+\_\+get\+Entry\+From\+Table}} (uint8\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Gets an entry from the A\+RP table if there is one (check prior to calling this function) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__arp_gab2b7bec25bda36bd23dc59cfe7353e66}{A\+R\+P\+\_\+set\+New\+Entry}} (\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} mac, \mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} ip, uint32\+\_\+t timestamp)
+\begin{DoxyCompactList}\small\item\em Creates a new entry in the A\+RP table. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__arp_ga050b0c9b4cc725837f257ab6f576df31}{A\+R\+P\+\_\+resolve\+Address}} (\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} ip)
+\begin{DoxyCompactList}\small\item\em Resolves a M\+AC address to a given IP address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__arp_gad629320d0e251b055167216baa76aff3}{print\+Arp\+Table}} ()
+\begin{DoxyCompactList}\small\item\em Used for debugging. Prints out A\+RP table via U\+A\+RT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__arp_gad4abd9ee89fa8a8ba4231b6d914b5e83}{A\+R\+P\+\_\+\+T\+A\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH}}~8
+\begin{DoxyCompactList}\small\item\em Number of entries in the A\+RP table. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__arp_ga9b6d09f1eb065d812b3cdb5f6cc2f68d}{A\+R\+P\+\_\+\+T\+A\+B\+L\+E\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+T\+TL}}~300
+\begin{DoxyCompactList}\small\item\em Time to live for an A\+RP Entry in seconds. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__arp_gacadcd25bea19657185a5fcb4f65a7669}{A\+R\+P\+\_\+\+T\+I\+M\+E\+O\+UT}}~2
+\begin{DoxyCompactList}\small\item\em How long to wait after request for a reply in seconds. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__arp_gaf171df407fe6f40b73e3d6d7407a994f}{A\+R\+P\+\_\+\+I\+Pv4\+\_\+\+P\+L\+EN}}~4
+\begin{DoxyCompactList}\small\item\em Number of bytes in an I\+Pv4 address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__arp_ga2fda3c8f5c96e205a993efb5cfb4f297}{A\+R\+P\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+H\+L\+EN}}~6
+\begin{DoxyCompactList}\small\item\em Number of bytes in a M\+AC address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__arp_ga2fda3c8f5c96e205a993efb5cfb4f297}\label{group__arp_ga2fda3c8f5c96e205a993efb5cfb4f297}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_ETHERNET\_HLEN@{ARP\_ETHERNET\_HLEN}}
+\index{ARP\_ETHERNET\_HLEN@{ARP\_ETHERNET\_HLEN}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_ETHERNET\_HLEN}{ARP\_ETHERNET\_HLEN}}
+{\footnotesize\ttfamily \#define A\+R\+P\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+H\+L\+EN~6}
+
+
+
+Number of bytes in a M\+AC address. 
+
+\mbox{\Hypertarget{group__arp_gaf171df407fe6f40b73e3d6d7407a994f}\label{group__arp_gaf171df407fe6f40b73e3d6d7407a994f}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_IPv4\_PLEN@{ARP\_IPv4\_PLEN}}
+\index{ARP\_IPv4\_PLEN@{ARP\_IPv4\_PLEN}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_IPv4\_PLEN}{ARP\_IPv4\_PLEN}}
+{\footnotesize\ttfamily \#define A\+R\+P\+\_\+\+I\+Pv4\+\_\+\+P\+L\+EN~4}
+
+
+
+Number of bytes in an I\+Pv4 address. 
+
+\mbox{\Hypertarget{group__arp_ga9b6d09f1eb065d812b3cdb5f6cc2f68d}\label{group__arp_ga9b6d09f1eb065d812b3cdb5f6cc2f68d}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_TABLE\_ENTRY\_TTL@{ARP\_TABLE\_ENTRY\_TTL}}
+\index{ARP\_TABLE\_ENTRY\_TTL@{ARP\_TABLE\_ENTRY\_TTL}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_TABLE\_ENTRY\_TTL}{ARP\_TABLE\_ENTRY\_TTL}}
+{\footnotesize\ttfamily \#define A\+R\+P\+\_\+\+T\+A\+B\+L\+E\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+T\+TL~300}
+
+
+
+Time to live for an A\+RP Entry in seconds. 
+
+\mbox{\Hypertarget{group__arp_gad4abd9ee89fa8a8ba4231b6d914b5e83}\label{group__arp_gad4abd9ee89fa8a8ba4231b6d914b5e83}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_TABLE\_LENGTH@{ARP\_TABLE\_LENGTH}}
+\index{ARP\_TABLE\_LENGTH@{ARP\_TABLE\_LENGTH}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_TABLE\_LENGTH}{ARP\_TABLE\_LENGTH}}
+{\footnotesize\ttfamily \#define A\+R\+P\+\_\+\+T\+A\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH~8}
+
+
+
+Number of entries in the A\+RP table. 
+
+\mbox{\Hypertarget{group__arp_gacadcd25bea19657185a5fcb4f65a7669}\label{group__arp_gacadcd25bea19657185a5fcb4f65a7669}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_TIMEOUT@{ARP\_TIMEOUT}}
+\index{ARP\_TIMEOUT@{ARP\_TIMEOUT}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_TIMEOUT}{ARP\_TIMEOUT}}
+{\footnotesize\ttfamily \#define A\+R\+P\+\_\+\+T\+I\+M\+E\+O\+UT~2}
+
+
+
+How long to wait after request for a reply in seconds. 
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group__arp_gafa7086c12e44433aa82abcac54e74242}\label{group__arp_gafa7086c12e44433aa82abcac54e74242}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_htype\_t@{ARP\_htype\_t}}
+\index{ARP\_htype\_t@{ARP\_htype\_t}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_htype\_t}{ARP\_htype\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{group__arp_gad603463074b00d9c86a9cdb23083f37d}{A\+R\+P\+\_\+htype}}  \mbox{\hyperlink{group__arp_gafa7086c12e44433aa82abcac54e74242}{A\+R\+P\+\_\+htype\+\_\+t}}}
+
+
+
+Data type for \mbox{\hyperlink{struct_a_r_p__message_aaf87c38602b614bc7896cf7a5a90d372}{A\+R\+P\+\_\+message\+\_\+t\+::htype}}. 
+
+\mbox{\Hypertarget{group__arp_ga1708785291f10e8cc257efe2b769ba4c}\label{group__arp_ga1708785291f10e8cc257efe2b769ba4c}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_message\_t@{ARP\_message\_t}}
+\index{ARP\_message\_t@{ARP\_message\_t}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_message\_t}{ARP\_message\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_a_r_p__message}{A\+R\+P\+\_\+message}}  \mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}}}
+
+
+
+Contains all information which makes up an A\+RP message. 
+
+\mbox{\Hypertarget{group__arp_ga3aca071e2781c5efead1609fcbb58ad3}\label{group__arp_ga3aca071e2781c5efead1609fcbb58ad3}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_operation\_t@{ARP\_operation\_t}}
+\index{ARP\_operation\_t@{ARP\_operation\_t}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_operation\_t}{ARP\_operation\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{group__arp_ga403f6527e9ff615efd0c8ed05790fde3}{A\+R\+P\+\_\+operation}}  \mbox{\hyperlink{group__arp_ga3aca071e2781c5efead1609fcbb58ad3}{A\+R\+P\+\_\+operation\+\_\+t}}}
+
+
+
+Data types for \mbox{\hyperlink{struct_a_r_p__message_ad21c763fa2f80cb8649108b759113b54}{A\+R\+P\+\_\+message\+\_\+t\+::operation}}. 
+
+\mbox{\Hypertarget{group__arp_gab3358c917e9f326ba4187aed82248923}\label{group__arp_gab3358c917e9f326ba4187aed82248923}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_ptype\_t@{ARP\_ptype\_t}}
+\index{ARP\_ptype\_t@{ARP\_ptype\_t}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_ptype\_t}{ARP\_ptype\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{group__arp_gaeae5f5d6313cd707dd97fa24dbab569c}{A\+R\+P\+\_\+ptype}}  \mbox{\hyperlink{group__arp_gab3358c917e9f326ba4187aed82248923}{A\+R\+P\+\_\+ptype\+\_\+t}}}
+
+
+
+Data type for \mbox{\hyperlink{struct_a_r_p__message_ab4891e9b77eb26f33d21cfde982564cb}{A\+R\+P\+\_\+message\+\_\+t\+::ptype}}. 
+
+\mbox{\Hypertarget{group__arp_gab5d4ef9cd020c5de772f55549aa70716}\label{group__arp_gab5d4ef9cd020c5de772f55549aa70716}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_tableEntry\_t@{ARP\_tableEntry\_t}}
+\index{ARP\_tableEntry\_t@{ARP\_tableEntry\_t}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_tableEntry\_t}{ARP\_tableEntry\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_a_r_p__table_entry}{A\+R\+P\+\_\+table\+Entry}}  \mbox{\hyperlink{group__arp_gab5d4ef9cd020c5de772f55549aa70716}{A\+R\+P\+\_\+table\+Entry\+\_\+t}}}
+
+
+
+One entry in the A\+RP table consists out of one hardware and one protocol address and a timestamp. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group__arp_gad603463074b00d9c86a9cdb23083f37d}\label{group__arp_gad603463074b00d9c86a9cdb23083f37d}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_htype@{ARP\_htype}}
+\index{ARP\_htype@{ARP\_htype}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_htype}{ARP\_htype}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__arp_gad603463074b00d9c86a9cdb23083f37d}{A\+R\+P\+\_\+htype}}}
+
+
+
+Data type for \mbox{\hyperlink{struct_a_r_p__message_aaf87c38602b614bc7896cf7a5a90d372}{A\+R\+P\+\_\+message\+\_\+t\+::htype}}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARP\_HTYPE\_ETHERNET@{ARP\_HTYPE\_ETHERNET}!Address Resolution Protocol@{Address Resolution Protocol}}\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_HTYPE\_ETHERNET@{ARP\_HTYPE\_ETHERNET}}}\mbox{\Hypertarget{group__arp_ggad603463074b00d9c86a9cdb23083f37da832f2b0d1c3af55f4a4bbe2aa90da148}\label{group__arp_ggad603463074b00d9c86a9cdb23083f37da832f2b0d1c3af55f4a4bbe2aa90da148}} 
+A\+R\+P\+\_\+\+H\+T\+Y\+P\+E\+\_\+\+E\+T\+H\+E\+R\+N\+ET&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{group__arp_ga403f6527e9ff615efd0c8ed05790fde3}\label{group__arp_ga403f6527e9ff615efd0c8ed05790fde3}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_operation@{ARP\_operation}}
+\index{ARP\_operation@{ARP\_operation}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_operation}{ARP\_operation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__arp_ga403f6527e9ff615efd0c8ed05790fde3}{A\+R\+P\+\_\+operation}}}
+
+
+
+Data types for \mbox{\hyperlink{struct_a_r_p__message_ad21c763fa2f80cb8649108b759113b54}{A\+R\+P\+\_\+message\+\_\+t\+::operation}}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARP\_REQUEST@{ARP\_REQUEST}!Address Resolution Protocol@{Address Resolution Protocol}}\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_REQUEST@{ARP\_REQUEST}}}\mbox{\Hypertarget{group__arp_gga403f6527e9ff615efd0c8ed05790fde3afb58ccf8b7b11505ff2117a10bf6ff61}\label{group__arp_gga403f6527e9ff615efd0c8ed05790fde3afb58ccf8b7b11505ff2117a10bf6ff61}} 
+A\+R\+P\+\_\+\+R\+E\+Q\+U\+E\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARP\_REPLY@{ARP\_REPLY}!Address Resolution Protocol@{Address Resolution Protocol}}\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_REPLY@{ARP\_REPLY}}}\mbox{\Hypertarget{group__arp_gga403f6527e9ff615efd0c8ed05790fde3a8bb24a026264a5b22435864179f874d9}\label{group__arp_gga403f6527e9ff615efd0c8ed05790fde3a8bb24a026264a5b22435864179f874d9}} 
+A\+R\+P\+\_\+\+R\+E\+P\+LY&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{group__arp_gaeae5f5d6313cd707dd97fa24dbab569c}\label{group__arp_gaeae5f5d6313cd707dd97fa24dbab569c}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_ptype@{ARP\_ptype}}
+\index{ARP\_ptype@{ARP\_ptype}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_ptype}{ARP\_ptype}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__arp_gaeae5f5d6313cd707dd97fa24dbab569c}{A\+R\+P\+\_\+ptype}}}
+
+
+
+Data type for \mbox{\hyperlink{struct_a_r_p__message_ab4891e9b77eb26f33d21cfde982564cb}{A\+R\+P\+\_\+message\+\_\+t\+::ptype}}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARP\_PTYPE\_IPv4@{ARP\_PTYPE\_IPv4}!Address Resolution Protocol@{Address Resolution Protocol}}\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_PTYPE\_IPv4@{ARP\_PTYPE\_IPv4}}}\mbox{\Hypertarget{group__arp_ggaeae5f5d6313cd707dd97fa24dbab569cada8f134c523d1516f6a63d6d475c7bd8}\label{group__arp_ggaeae5f5d6313cd707dd97fa24dbab569cada8f134c523d1516f6a63d6d475c7bd8}} 
+A\+R\+P\+\_\+\+P\+T\+Y\+P\+E\+\_\+\+I\+Pv4&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__arp_gaa50891c65dcfb449eb93a4d5aed366f5}\label{group__arp_gaa50891c65dcfb449eb93a4d5aed366f5}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_checkForEntry@{ARP\_checkForEntry}}
+\index{ARP\_checkForEntry@{ARP\_checkForEntry}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_checkForEntry()}{ARP\_checkForEntry()}}
+{\footnotesize\ttfamily uint8\+\_\+t A\+R\+P\+\_\+check\+For\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}}}]{ip,  }\item[{uint8\+\_\+t $\ast$}]{index }\end{DoxyParamCaption})}
+
+
+
+Checks for an entry in the A\+RP table. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em ip} & IP Address to check \\
+\hline
+\mbox{\texttt{ out}}  & {\em $\ast$index} & Index of the entry if one was found \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Wheter or not there is a valid (non-\/expired) entry in the table 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__arp_ga31f6f62d984dfbf0fb3791452a0f09e2}\label{group__arp_ga31f6f62d984dfbf0fb3791452a0f09e2}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_getEntryFromTable@{ARP\_getEntryFromTable}}
+\index{ARP\_getEntryFromTable@{ARP\_getEntryFromTable}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_getEntryFromTable()}{ARP\_getEntryFromTable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} A\+R\+P\+\_\+get\+Entry\+From\+Table (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+Gets an entry from the A\+RP table if there is one (check prior to calling this function) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the entry whose M\+AC address should be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+M\+AC address of the desired entry 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__arp_ga1ba858e52bf34bca0e5260f0dc0e4641}\label{group__arp_ga1ba858e52bf34bca0e5260f0dc0e4641}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_handleNewPacket@{ARP\_handleNewPacket}}
+\index{ARP\_handleNewPacket@{ARP\_handleNewPacket}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_handleNewPacket()}{ARP\_handleNewPacket()}}
+{\footnotesize\ttfamily void A\+R\+P\+\_\+handle\+New\+Packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$}]{frame }\end{DoxyParamCaption})}
+
+
+
+Takes a received A\+RP packet and does the necessary steps. 
+
+\begin{DoxyNote}{Note}
+To be called after a new packet was identified as an A\+RP message. 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em $\ast$frame} & Pointer to the received Ethernet Packet \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__arp_ga35f276b970aa00ca18990c7ddc63a65e}\label{group__arp_ga35f276b970aa00ca18990c7ddc63a65e}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_initTable@{ARP\_initTable}}
+\index{ARP\_initTable@{ARP\_initTable}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_initTable()}{ARP\_initTable()}}
+{\footnotesize\ttfamily void A\+R\+P\+\_\+init\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialises the A\+RP table. 
+
+\begin{DoxyNote}{Note}
+To be called after reset.
+\end{DoxyNote}
+IP and M\+AC addresses are set to 0\+:0\+:0\+:0 / 00\+:00\+:00\+:00\+:00\+:00, respectively. The timestamp is set to a maximum value so it will always be consired expired. \mbox{\Hypertarget{group__arp_gaa4326b29383563a2d0bae66883d2aeb6}\label{group__arp_gaa4326b29383563a2d0bae66883d2aeb6}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_parseFromRXBuffer@{ARP\_parseFromRXBuffer}}
+\index{ARP\_parseFromRXBuffer@{ARP\_parseFromRXBuffer}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_parseFromRXBuffer()}{ARP\_parseFromRXBuffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}} A\+R\+P\+\_\+parse\+From\+R\+X\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$}]{frame }\end{DoxyParamCaption})}
+
+
+
+Takes the received packet and puts it into a more readable format. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em $\ast$frame} & Pointer to the received Ethernet Packet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A\+R\+Pmessage data structure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__arp_gae3e5d52fa89b91d6552cb328b8b6ec81}\label{group__arp_gae3e5d52fa89b91d6552cb328b8b6ec81}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_replyIfNeeded@{ARP\_replyIfNeeded}}
+\index{ARP\_replyIfNeeded@{ARP\_replyIfNeeded}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_replyIfNeeded()}{ARP\_replyIfNeeded()}}
+{\footnotesize\ttfamily void A\+R\+P\+\_\+reply\+If\+Needed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}}}]{request }\end{DoxyParamCaption})}
+
+
+
+If the A\+R\+Pmessage contains a request for my address, this function replies accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & New message (parse\+From\+R\+X\+Buffer() first). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__arp_ga050b0c9b4cc725837f257ab6f576df31}\label{group__arp_ga050b0c9b4cc725837f257ab6f576df31}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_resolveAddress@{ARP\_resolveAddress}}
+\index{ARP\_resolveAddress@{ARP\_resolveAddress}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_resolveAddress()}{ARP\_resolveAddress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} A\+R\+P\+\_\+resolve\+Address (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}}}]{ip }\end{DoxyParamCaption})}
+
+
+
+Resolves a M\+AC address to a given IP address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ip} & Given IP address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Desired M\+AC address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__arp_gabce5812c383f7e08c3a83c6db7f2f029}\label{group__arp_gabce5812c383f7e08c3a83c6db7f2f029}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_send@{ARP\_send}}
+\index{ARP\_send@{ARP\_send}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_send()}{ARP\_send()}}
+{\footnotesize\ttfamily void A\+R\+P\+\_\+send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}}}]{arp }\end{DoxyParamCaption})}
+
+
+
+Sends the given message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arp} & message to send \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__arp_ga1b3f3b5557d3cabb25df6b8f2af655bd}\label{group__arp_ga1b3f3b5557d3cabb25df6b8f2af655bd}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_sendRequest@{ARP\_sendRequest}}
+\index{ARP\_sendRequest@{ARP\_sendRequest}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_sendRequest()}{ARP\_sendRequest()}}
+{\footnotesize\ttfamily void A\+R\+P\+\_\+send\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}}}]{ip }\end{DoxyParamCaption})}
+
+
+
+Sends an A\+RP request to a given I\+Pv4 address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ip} & IP Address that should be resolved \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__arp_gab2b7bec25bda36bd23dc59cfe7353e66}\label{group__arp_gab2b7bec25bda36bd23dc59cfe7353e66}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!ARP\_setNewEntry@{ARP\_setNewEntry}}
+\index{ARP\_setNewEntry@{ARP\_setNewEntry}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{ARP\_setNewEntry()}{ARP\_setNewEntry()}}
+{\footnotesize\ttfamily void A\+R\+P\+\_\+set\+New\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}}}]{mac,  }\item[{\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}}}]{ip,  }\item[{uint32\+\_\+t}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Creates a new entry in the A\+RP table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mac} & M\+AC address of the new entry \\
+\hline
+{\em ip} & IP address of the new entry \\
+\hline
+{\em timestamp} & Current time (use \mbox{\hyperlink{group__stack_ga232391229213d278f429714a9b551db5}{get\+Seconds()}}) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__arp_gad629320d0e251b055167216baa76aff3}\label{group__arp_gad629320d0e251b055167216baa76aff3}} 
+\index{Address Resolution Protocol@{Address Resolution Protocol}!printArpTable@{printArpTable}}
+\index{printArpTable@{printArpTable}!Address Resolution Protocol@{Address Resolution Protocol}}
+\subsubsection{\texorpdfstring{printArpTable()}{printArpTable()}}
+{\footnotesize\ttfamily void print\+Arp\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used for debugging. Prints out A\+RP table via U\+A\+RT. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000014}{Todo}}]Remove this later \end{DoxyRefDesc}

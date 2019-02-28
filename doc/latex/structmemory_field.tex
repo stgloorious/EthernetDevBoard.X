@@ -1,0 +1,97 @@
+\hypertarget{structmemory_field}{}\section{memory\+Field Struct Reference}
+\label{structmemory_field}\index{memoryField@{memoryField}}
+
+
+Represents a part of memory where a packet is stored.  
+
+
+
+
+{\ttfamily \#include $<$memory\+Types.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structmemory_field_a171a2b5d11b1a5891c38a98ac731a161}{start}}
+\begin{DoxyCompactList}\small\item\em Memory start address. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structmemory_field_afbcd798d035e37e733b567c2b0cb96dc}{end}}
+\begin{DoxyCompactList}\small\item\em Memory end address. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structmemory_field_a1892eba2086d12ac2b09005aeb09ea3b}{length}}
+\begin{DoxyCompactList}\small\item\em Length in bytes. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmemory_field_a36ed4d8e7e2e5f308044e7b422a80028}{f\+Is\+Assigned}}\+: 1
+\begin{DoxyCompactList}\small\item\em 1\+: In use, 0\+: Free \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmemory_field_a90bc80d5fb22db8fba7b5601b9336395}{f\+Out\+Of\+Memory}}\+: 1
+\begin{DoxyCompactList}\small\item\em Error flag if there is no more room in the buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmemory_field_aae5a12e607d0f782506d9e6ec6179c64}{index}}
+\begin{DoxyCompactList}\small\item\em Index number of the field so it can be identified when freeing memory up. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a part of memory where a packet is stored. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structmemory_field_afbcd798d035e37e733b567c2b0cb96dc}\label{structmemory_field_afbcd798d035e37e733b567c2b0cb96dc}} 
+\index{memoryField@{memoryField}!end@{end}}
+\index{end@{end}!memoryField@{memoryField}}
+\subsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily uint16\+\_\+t end}
+
+
+
+Memory end address. 
+
+\mbox{\Hypertarget{structmemory_field_a36ed4d8e7e2e5f308044e7b422a80028}\label{structmemory_field_a36ed4d8e7e2e5f308044e7b422a80028}} 
+\index{memoryField@{memoryField}!fIsAssigned@{fIsAssigned}}
+\index{fIsAssigned@{fIsAssigned}!memoryField@{memoryField}}
+\subsubsection{\texorpdfstring{fIsAssigned}{fIsAssigned}}
+{\footnotesize\ttfamily uint8\+\_\+t f\+Is\+Assigned}
+
+
+
+1\+: In use, 0\+: Free 
+
+\mbox{\Hypertarget{structmemory_field_a90bc80d5fb22db8fba7b5601b9336395}\label{structmemory_field_a90bc80d5fb22db8fba7b5601b9336395}} 
+\index{memoryField@{memoryField}!fOutOfMemory@{fOutOfMemory}}
+\index{fOutOfMemory@{fOutOfMemory}!memoryField@{memoryField}}
+\subsubsection{\texorpdfstring{fOutOfMemory}{fOutOfMemory}}
+{\footnotesize\ttfamily uint8\+\_\+t f\+Out\+Of\+Memory}
+
+
+
+Error flag if there is no more room in the buffer. 
+
+\mbox{\Hypertarget{structmemory_field_aae5a12e607d0f782506d9e6ec6179c64}\label{structmemory_field_aae5a12e607d0f782506d9e6ec6179c64}} 
+\index{memoryField@{memoryField}!index@{index}}
+\index{index@{index}!memoryField@{memoryField}}
+\subsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily uint8\+\_\+t index}
+
+
+
+Index number of the field so it can be identified when freeing memory up. 
+
+\mbox{\Hypertarget{structmemory_field_a1892eba2086d12ac2b09005aeb09ea3b}\label{structmemory_field_a1892eba2086d12ac2b09005aeb09ea3b}} 
+\index{memoryField@{memoryField}!length@{length}}
+\index{length@{length}!memoryField@{memoryField}}
+\subsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily uint16\+\_\+t length}
+
+
+
+Length in bytes. 
+
+\mbox{\Hypertarget{structmemory_field_a171a2b5d11b1a5891c38a98ac731a161}\label{structmemory_field_a171a2b5d11b1a5891c38a98ac731a161}} 
+\index{memoryField@{memoryField}!start@{start}}
+\index{start@{start}!memoryField@{memoryField}}
+\subsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily uint16\+\_\+t start}
+
+
+
+Memory start address. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.\+X/src/mem/\mbox{\hyperlink{memory_types_8h}{memory\+Types.\+h}}\end{DoxyCompactItemize}

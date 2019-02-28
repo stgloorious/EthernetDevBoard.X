@@ -1,0 +1,203 @@
+\hypertarget{structipv4__header}{}\section{ipv4\+\_\+header Struct Reference}
+\label{structipv4__header}\index{ipv4\_header@{ipv4\_header}}
+
+
+{\ttfamily \#include $<$ipv4\+Types.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{Indent}\textbf{ Byte 0}\par
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structipv4__header_ab22abc2906422da61885ac6c8e6a1a59}{version}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}4 Bits wide\mbox{]} Normally 4. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structipv4__header_abf2b1d816d4e2e459b2ed1bda26cb904}{header\+Length}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}4 Bits wide\mbox{]} Length in 32 bit words; Normally 5. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 1}\par
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structipv4__header_af6c1c78d408e91d2916add663a491623}{dscp}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}6 Bits wide\mbox{]} Differentiated Services Code Point \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structipv4__header_afaf0e7ded50820ba5d7d11464707ce4c}{ecn}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}2 Bits wide\mbox{]} Explicit Congestion Notification \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 2 \& 3}\par
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structipv4__header_a46d6b08cf598408355fa1fc5c1de902a}{total\+Length}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}16 Bits wide\mbox{]} Total length of the packet (including header) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 4 \& 5}\par
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structipv4__header_a25149d6d32f9e5329672a7aa41b8e690}{identification}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}16 Bits wide\mbox{]} Unique identification of a packet, used for reassembly after fragmenting \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 6 \& 7}\par
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structipv4__header_aa2585d779da0ab21273a8d92de9a0ebe}{flags}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}3 Bits wide\mbox{]} \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structipv4__header_ae22098bdeb322947eb09ccba4e276b1e}{fragment\+Offset}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}13 Bits wide\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 8}\par
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structipv4__header_a1c954c79d7e772d87d708498a586f206}{time\+To\+Live}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}8 Bits wide\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 9}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__ipv4_gaf689af7304e282d1606e70bf56cbc3d4}{ipv4\+\_\+protocol\+\_\+t}} \mbox{\hyperlink{structipv4__header_a7de5f6a405a2303535b5d9ce543854ab}{protocol}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}8 Bits wide\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 10 \& 11}\par
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structipv4__header_a6796c847bbd16253ce2538754c250bd6}{checksum}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}16 Bits wide\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 12..15}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} \mbox{\hyperlink{structipv4__header_af8fb03a8846d0d2ee53e316a7d548a8f}{source}}
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Byte 16..19}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} \mbox{\hyperlink{structipv4__header_af22742f606b58c8db77e85c968629914}{destination}}
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structipv4__header_a6796c847bbd16253ce2538754c250bd6}\label{structipv4__header_a6796c847bbd16253ce2538754c250bd6}} 
+\index{ipv4\_header@{ipv4\_header}!checksum@{checksum}}
+\index{checksum@{checksum}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{checksum}{checksum}}
+{\footnotesize\ttfamily uint16\+\_\+t checksum}
+
+
+
+\mbox{[}16 Bits wide\mbox{]} 
+
+\mbox{\Hypertarget{structipv4__header_af22742f606b58c8db77e85c968629914}\label{structipv4__header_af22742f606b58c8db77e85c968629914}} 
+\index{ipv4\_header@{ipv4\_header}!destination@{destination}}
+\index{destination@{destination}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{destination}{destination}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} destination}
+
+\mbox{\Hypertarget{structipv4__header_af6c1c78d408e91d2916add663a491623}\label{structipv4__header_af6c1c78d408e91d2916add663a491623}} 
+\index{ipv4\_header@{ipv4\_header}!dscp@{dscp}}
+\index{dscp@{dscp}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{dscp}{dscp}}
+{\footnotesize\ttfamily uint8\+\_\+t dscp}
+
+
+
+\mbox{[}6 Bits wide\mbox{]} Differentiated Services Code Point 
+
+\mbox{\Hypertarget{structipv4__header_afaf0e7ded50820ba5d7d11464707ce4c}\label{structipv4__header_afaf0e7ded50820ba5d7d11464707ce4c}} 
+\index{ipv4\_header@{ipv4\_header}!ecn@{ecn}}
+\index{ecn@{ecn}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{ecn}{ecn}}
+{\footnotesize\ttfamily uint8\+\_\+t ecn}
+
+
+
+\mbox{[}2 Bits wide\mbox{]} Explicit Congestion Notification 
+
+\mbox{\Hypertarget{structipv4__header_aa2585d779da0ab21273a8d92de9a0ebe}\label{structipv4__header_aa2585d779da0ab21273a8d92de9a0ebe}} 
+\index{ipv4\_header@{ipv4\_header}!flags@{flags}}
+\index{flags@{flags}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily uint8\+\_\+t flags}
+
+
+
+\mbox{[}3 Bits wide\mbox{]} 
+
+\mbox{\Hypertarget{structipv4__header_ae22098bdeb322947eb09ccba4e276b1e}\label{structipv4__header_ae22098bdeb322947eb09ccba4e276b1e}} 
+\index{ipv4\_header@{ipv4\_header}!fragmentOffset@{fragmentOffset}}
+\index{fragmentOffset@{fragmentOffset}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{fragmentOffset}{fragmentOffset}}
+{\footnotesize\ttfamily uint16\+\_\+t fragment\+Offset}
+
+
+
+\mbox{[}13 Bits wide\mbox{]} 
+
+\mbox{\Hypertarget{structipv4__header_abf2b1d816d4e2e459b2ed1bda26cb904}\label{structipv4__header_abf2b1d816d4e2e459b2ed1bda26cb904}} 
+\index{ipv4\_header@{ipv4\_header}!headerLength@{headerLength}}
+\index{headerLength@{headerLength}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{headerLength}{headerLength}}
+{\footnotesize\ttfamily uint8\+\_\+t header\+Length}
+
+
+
+\mbox{[}4 Bits wide\mbox{]} Length in 32 bit words; Normally 5. 
+
+\mbox{\Hypertarget{structipv4__header_a25149d6d32f9e5329672a7aa41b8e690}\label{structipv4__header_a25149d6d32f9e5329672a7aa41b8e690}} 
+\index{ipv4\_header@{ipv4\_header}!identification@{identification}}
+\index{identification@{identification}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{identification}{identification}}
+{\footnotesize\ttfamily uint16\+\_\+t identification}
+
+
+
+\mbox{[}16 Bits wide\mbox{]} Unique identification of a packet, used for reassembly after fragmenting 
+
+\mbox{\Hypertarget{structipv4__header_a7de5f6a405a2303535b5d9ce543854ab}\label{structipv4__header_a7de5f6a405a2303535b5d9ce543854ab}} 
+\index{ipv4\_header@{ipv4\_header}!protocol@{protocol}}
+\index{protocol@{protocol}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{protocol}{protocol}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ipv4_gaf689af7304e282d1606e70bf56cbc3d4}{ipv4\+\_\+protocol\+\_\+t}} protocol}
+
+
+
+\mbox{[}8 Bits wide\mbox{]} 
+
+\mbox{\Hypertarget{structipv4__header_af8fb03a8846d0d2ee53e316a7d548a8f}\label{structipv4__header_af8fb03a8846d0d2ee53e316a7d548a8f}} 
+\index{ipv4\_header@{ipv4\_header}!source@{source}}
+\index{source@{source}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{source}{source}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} source}
+
+\mbox{\Hypertarget{structipv4__header_a1c954c79d7e772d87d708498a586f206}\label{structipv4__header_a1c954c79d7e772d87d708498a586f206}} 
+\index{ipv4\_header@{ipv4\_header}!timeToLive@{timeToLive}}
+\index{timeToLive@{timeToLive}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{timeToLive}{timeToLive}}
+{\footnotesize\ttfamily uint8\+\_\+t time\+To\+Live}
+
+
+
+\mbox{[}8 Bits wide\mbox{]} 
+
+\mbox{\Hypertarget{structipv4__header_a46d6b08cf598408355fa1fc5c1de902a}\label{structipv4__header_a46d6b08cf598408355fa1fc5c1de902a}} 
+\index{ipv4\_header@{ipv4\_header}!totalLength@{totalLength}}
+\index{totalLength@{totalLength}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{totalLength}{totalLength}}
+{\footnotesize\ttfamily uint16\+\_\+t total\+Length}
+
+
+
+\mbox{[}16 Bits wide\mbox{]} Total length of the packet (including header) 
+
+\mbox{\Hypertarget{structipv4__header_ab22abc2906422da61885ac6c8e6a1a59}\label{structipv4__header_ab22abc2906422da61885ac6c8e6a1a59}} 
+\index{ipv4\_header@{ipv4\_header}!version@{version}}
+\index{version@{version}!ipv4\_header@{ipv4\_header}}
+\subsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily uint8\+\_\+t version}
+
+
+
+\mbox{[}4 Bits wide\mbox{]} Normally 4. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.\+X/src/stack/protocols/\mbox{\hyperlink{ipv4_types_8h}{ipv4\+Types.\+h}}\end{DoxyCompactItemize}

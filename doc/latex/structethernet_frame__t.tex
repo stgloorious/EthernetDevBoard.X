@@ -1,0 +1,76 @@
+\hypertarget{structethernet_frame__t}{}\section{ethernet\+Frame\+\_\+t Struct Reference}
+\label{structethernet_frame__t}\index{ethernetFrame\_t@{ethernetFrame\_t}}
+
+
+Represents a complete Ethernet Frame.  
+
+
+
+
+{\ttfamily \#include $<$ethernet\+Types.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structethernet_frame__t_a1892eba2086d12ac2b09005aeb09ea3b}{length}}
+\item 
+\mbox{\hyperlink{ethernet_types_8h_ae4e06476597d217d540a5e2b2d699649}{Mac\+Address}} \mbox{\hyperlink{structethernet_frame__t_ad921b9c440e49b18b551c1c6bda03dcc}{source}}
+\item 
+\mbox{\hyperlink{ethernet_types_8h_ae4e06476597d217d540a5e2b2d699649}{Mac\+Address}} \mbox{\hyperlink{structethernet_frame__t_a55c89de46e499edcb53dcccd41f5618a}{destination}}
+\item 
+\mbox{\hyperlink{group__ethernet_ga0720c9698bc7cdca5ef5923dad3eafe8}{Ether\+Type}} \mbox{\hyperlink{structethernet_frame__t_ad76bb4c877e40cfcd1182e3dc0e912d4}{ethertype}}
+\item 
+\mbox{\hyperlink{structmemory_field__t}{memory\+Field\+\_\+t}} \mbox{\hyperlink{structethernet_frame__t_ad8f3b87ff206655025f5734f21bce6e7}{memory}}
+\item 
+\mbox{\hyperlink{struct_r_s_v__t}{R\+S\+V\+\_\+t}} \mbox{\hyperlink{structethernet_frame__t_af988d23e385885326b7d93809d51bc30}{receive\+Status\+Vector}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a complete Ethernet Frame. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structethernet_frame__t_a55c89de46e499edcb53dcccd41f5618a}\label{structethernet_frame__t_a55c89de46e499edcb53dcccd41f5618a}} 
+\index{ethernetFrame\_t@{ethernetFrame\_t}!destination@{destination}}
+\index{destination@{destination}!ethernetFrame\_t@{ethernetFrame\_t}}
+\subsubsection{\texorpdfstring{destination}{destination}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ethernet_types_8h_ae4e06476597d217d540a5e2b2d699649}{Mac\+Address}} destination}
+
+\mbox{\Hypertarget{structethernet_frame__t_ad76bb4c877e40cfcd1182e3dc0e912d4}\label{structethernet_frame__t_ad76bb4c877e40cfcd1182e3dc0e912d4}} 
+\index{ethernetFrame\_t@{ethernetFrame\_t}!ethertype@{ethertype}}
+\index{ethertype@{ethertype}!ethernetFrame\_t@{ethernetFrame\_t}}
+\subsubsection{\texorpdfstring{ethertype}{ethertype}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ethernet_ga0720c9698bc7cdca5ef5923dad3eafe8}{Ether\+Type}} ethertype}
+
+\mbox{\Hypertarget{structethernet_frame__t_a1892eba2086d12ac2b09005aeb09ea3b}\label{structethernet_frame__t_a1892eba2086d12ac2b09005aeb09ea3b}} 
+\index{ethernetFrame\_t@{ethernetFrame\_t}!length@{length}}
+\index{length@{length}!ethernetFrame\_t@{ethernetFrame\_t}}
+\subsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily uint16\+\_\+t length}
+
+\mbox{\Hypertarget{structethernet_frame__t_ad8f3b87ff206655025f5734f21bce6e7}\label{structethernet_frame__t_ad8f3b87ff206655025f5734f21bce6e7}} 
+\index{ethernetFrame\_t@{ethernetFrame\_t}!memory@{memory}}
+\index{memory@{memory}!ethernetFrame\_t@{ethernetFrame\_t}}
+\subsubsection{\texorpdfstring{memory}{memory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmemory_field__t}{memory\+Field\+\_\+t}} memory}
+
+\mbox{\Hypertarget{structethernet_frame__t_af988d23e385885326b7d93809d51bc30}\label{structethernet_frame__t_af988d23e385885326b7d93809d51bc30}} 
+\index{ethernetFrame\_t@{ethernetFrame\_t}!receiveStatusVector@{receiveStatusVector}}
+\index{receiveStatusVector@{receiveStatusVector}!ethernetFrame\_t@{ethernetFrame\_t}}
+\subsubsection{\texorpdfstring{receiveStatusVector}{receiveStatusVector}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_s_v__t}{R\+S\+V\+\_\+t}} receive\+Status\+Vector}
+
+\begin{DoxyNote}{Note}
+The R\+SV is unused if this structure is used for transmission 
+\end{DoxyNote}
+\mbox{\Hypertarget{structethernet_frame__t_ad921b9c440e49b18b551c1c6bda03dcc}\label{structethernet_frame__t_ad921b9c440e49b18b551c1c6bda03dcc}} 
+\index{ethernetFrame\_t@{ethernetFrame\_t}!source@{source}}
+\index{source@{source}!ethernetFrame\_t@{ethernetFrame\_t}}
+\subsubsection{\texorpdfstring{source}{source}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ethernet_types_8h_ae4e06476597d217d540a5e2b2d699649}{Mac\+Address}} source}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Eth\+M\+P\+U.\+X/src/eth/\mbox{\hyperlink{ethernet_types_8h}{ethernet\+Types.\+h}}\end{DoxyCompactItemize}

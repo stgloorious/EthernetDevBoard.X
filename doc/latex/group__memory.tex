@@ -1,0 +1,125 @@
+\hypertarget{group__memory}{}\section{Memory}
+\label{group__memory}\index{Memory@{Memory}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmemory_field}{memory\+Field}}
+\begin{DoxyCompactList}\small\item\em Represents a part of memory where a packet is stored. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__memory_ga31efd827f5e76320608065c79fc29e00}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+F\+I\+E\+L\+DS}}~8
+\begin{DoxyCompactList}\small\item\em Maximum number of packet memory fields that can be simultaneously assigned. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__memory_gaf952470b2ca20106b4998e400ac4236e}{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+SS}}~0x0000
+\begin{DoxyCompactList}\small\item\em The transmission buffer starts at this address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__memory_gab75619e07ad50e2b4b78684bd3dc81df}{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+SS}}~0x3000
+\begin{DoxyCompactList}\small\item\em The reception buffer ranges from this address to the end of the memory. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__memory_gad2770fc418de68b3967d98142954405a}{E\+N\+D\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+E\+SS}}~0x5\+F\+FF
+\begin{DoxyCompactList}\small\item\em Size of the memory buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structmemory_field}{memory\+Field}} \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Represents a part of memory where a packet is stored. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} \mbox{\hyperlink{group__memory_ga8efe1d17c78d178ef11effad448b1041}{memory\+\_\+tx\+Frame\+Request}} (uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Returns an address where data of the given length can be stored. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__memory_ga8b2a265d683cd262c1a0aa1fcb847f75}{memory\+\_\+tx\+Frame\+Clear}} (uint8\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Free up a \mbox{\hyperlink{structmemory_field}{memory\+Field}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__memory_gad2770fc418de68b3967d98142954405a}\label{group__memory_gad2770fc418de68b3967d98142954405a}} 
+\index{Memory@{Memory}!END\_OF\_MEMORY\_ADDRESS@{END\_OF\_MEMORY\_ADDRESS}}
+\index{END\_OF\_MEMORY\_ADDRESS@{END\_OF\_MEMORY\_ADDRESS}!Memory@{Memory}}
+\subsubsection{\texorpdfstring{END\_OF\_MEMORY\_ADDRESS}{END\_OF\_MEMORY\_ADDRESS}}
+{\footnotesize\ttfamily \#define E\+N\+D\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+E\+SS~0x5\+F\+FF}
+
+
+
+Size of the memory buffer. 
+
+\mbox{\Hypertarget{group__memory_ga31efd827f5e76320608065c79fc29e00}\label{group__memory_ga31efd827f5e76320608065c79fc29e00}} 
+\index{Memory@{Memory}!NUMBER\_OF\_MEMORY\_FIELDS@{NUMBER\_OF\_MEMORY\_FIELDS}}
+\index{NUMBER\_OF\_MEMORY\_FIELDS@{NUMBER\_OF\_MEMORY\_FIELDS}!Memory@{Memory}}
+\subsubsection{\texorpdfstring{NUMBER\_OF\_MEMORY\_FIELDS}{NUMBER\_OF\_MEMORY\_FIELDS}}
+{\footnotesize\ttfamily \#define N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+F\+I\+E\+L\+DS~8}
+
+
+
+Maximum number of packet memory fields that can be simultaneously assigned. 
+
+\mbox{\Hypertarget{group__memory_gab75619e07ad50e2b4b78684bd3dc81df}\label{group__memory_gab75619e07ad50e2b4b78684bd3dc81df}} 
+\index{Memory@{Memory}!RX\_DATA\_START\_ADDRESS@{RX\_DATA\_START\_ADDRESS}}
+\index{RX\_DATA\_START\_ADDRESS@{RX\_DATA\_START\_ADDRESS}!Memory@{Memory}}
+\subsubsection{\texorpdfstring{RX\_DATA\_START\_ADDRESS}{RX\_DATA\_START\_ADDRESS}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+SS~0x3000}
+
+
+
+The reception buffer ranges from this address to the end of the memory. 
+
+\mbox{\Hypertarget{group__memory_gaf952470b2ca20106b4998e400ac4236e}\label{group__memory_gaf952470b2ca20106b4998e400ac4236e}} 
+\index{Memory@{Memory}!TX\_DATA\_START\_ADDRESS@{TX\_DATA\_START\_ADDRESS}}
+\index{TX\_DATA\_START\_ADDRESS@{TX\_DATA\_START\_ADDRESS}!Memory@{Memory}}
+\subsubsection{\texorpdfstring{TX\_DATA\_START\_ADDRESS}{TX\_DATA\_START\_ADDRESS}}
+{\footnotesize\ttfamily \#define T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+SS~0x0000}
+
+
+
+The transmission buffer starts at this address. 
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group__memory_ga1d04d80fae40964f55d2df46b5d64785}\label{group__memory_ga1d04d80fae40964f55d2df46b5d64785}} 
+\index{Memory@{Memory}!memoryField\_t@{memoryField\_t}}
+\index{memoryField\_t@{memoryField\_t}!Memory@{Memory}}
+\subsubsection{\texorpdfstring{memoryField\_t}{memoryField\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structmemory_field}{memory\+Field}}  \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}}}
+
+
+
+Represents a part of memory where a packet is stored. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__memory_ga8b2a265d683cd262c1a0aa1fcb847f75}\label{group__memory_ga8b2a265d683cd262c1a0aa1fcb847f75}} 
+\index{Memory@{Memory}!memory\_txFrameClear@{memory\_txFrameClear}}
+\index{memory\_txFrameClear@{memory\_txFrameClear}!Memory@{Memory}}
+\subsubsection{\texorpdfstring{memory\_txFrameClear()}{memory\_txFrameClear()}}
+{\footnotesize\ttfamily void memory\+\_\+tx\+Frame\+Clear (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+Free up a \mbox{\hyperlink{structmemory_field}{memory\+Field}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the \mbox{\hyperlink{structmemory_field}{memory\+Field}} that should be cleared up \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__memory_ga8efe1d17c78d178ef11effad448b1041}\label{group__memory_ga8efe1d17c78d178ef11effad448b1041}} 
+\index{Memory@{Memory}!memory\_txFrameRequest@{memory\_txFrameRequest}}
+\index{memory\_txFrameRequest@{memory\_txFrameRequest}!Memory@{Memory}}
+\subsubsection{\texorpdfstring{memory\_txFrameRequest()}{memory\_txFrameRequest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} memory\+\_\+tx\+Frame\+Request (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Returns an address where data of the given length can be stored. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & Length of the packet to be sent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Memory\+Field where the packet can be written to 
+\end{DoxyReturn}

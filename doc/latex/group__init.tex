@@ -1,0 +1,236 @@
+\hypertarget{group__init}{}\section{Initialisation}
+\label{group__init}\index{Initialisation@{Initialisation}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga440a9f27fc612a678d3d17eb5983c977}{ethernet\+Controller\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initialises the ethernet controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga06ef512fd11e36bbefaad96993875d2b}{ethernet\+Controller\+\_\+enable\+Ethernet}} ()
+\begin{DoxyCompactList}\small\item\em Enables ethernet functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_gaadd13e81fe0097411b3aae2f6810bbe1}{ethernet\+Controller\+\_\+disable\+Ethernet}} ()
+\begin{DoxyCompactList}\small\item\em Disables ethernet functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga0aef586bd9434125367071595a794806}{ethernet\+Controller\+\_\+enable\+Transmission}} ()
+\begin{DoxyCompactList}\small\item\em Enables transmission module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga7cb7d48ac9c1a7bd6393c95e6e07dcee}{ethernet\+Controller\+\_\+disable\+Transmission}} ()
+\begin{DoxyCompactList}\small\item\em Disables transmission module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga203eb473ea1d221ffe97839b16e74565}{ethernet\+Controller\+\_\+enable\+Reception}} ()
+\begin{DoxyCompactList}\small\item\em Enables reception module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga9cb4657907d3985ecf5b867f7a8a9304}{ethernet\+Controller\+\_\+disable\+Reception}} ()
+\begin{DoxyCompactList}\small\item\em Disables reception module \textbackslash{}\+Todo This. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga6a772ec407e60e921bad4db7a2be2676}{ethernet\+Controller\+\_\+soft\+Reset}} ()
+\begin{DoxyCompactList}\small\item\em Performs a software reset of the Ethernet controller according to the suggested write-\/and-\/verify approach recommended in the datasheet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga67521cdab8bfce49cee40d037a888793}{ethernet\+Controller\+\_\+check\+Device\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the device ID equals the expected value. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__init_gaa3396c9822f00c6519a0e7a421048a71}{ethernet\+Controller\+\_\+get\+Silicon\+Revision}} ()
+\begin{DoxyCompactList}\small\item\em Checks the silicion revision of the ethernet controller. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{group__init_gae396f51c0fdba634e4e84b5f2b5d9416}{ethernet\+Controller\+\_\+get\+Device\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get device name as a string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_gab294a8fbc5b11d40a5da5e769110f6ca}{ethernet\+Controller\+\_\+update\+Link\+Status}} (\mbox{\hyperlink{group__ethernet_gae7b6008a02816680c2e3a1e3d2451a60}{ethernet\+Connection\+\_\+t}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Intended to be called when an interrupt indicates that a link change as occured. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group__init_gabb37702e7cfbd10dc932ca6502fd7bae}{ethernet\+Controller\+\_\+get\+M\+TU}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Maximum Transmission Unit of the Medium (normally 1500 bytes) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__interrupts_ga337298055be267e726930c9fc6b2d4eb}{interrupt\+Flags\+\_\+t}} \mbox{\hyperlink{group__init_ga5cdd5a8c6a5ceab1292643f291137bd1}{ethernet\+Controller\+\_\+poll\+Interrupt\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Checks the Interrupt flags and returns the status in a structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga472d2ba5053ebbb349e514699adfcde3}{ethernet\+Controller\+\_\+clear\+Interrupt\+Flag}} (uint8\+\_\+t flag)
+\begin{DoxyCompactList}\small\item\em Clears a single interrupt flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__init_ga67521cdab8bfce49cee40d037a888793}\label{group__init_ga67521cdab8bfce49cee40d037a888793}} 
+\index{Initialisation@{Initialisation}!ethernetController\_checkDeviceId@{ethernetController\_checkDeviceId}}
+\index{ethernetController\_checkDeviceId@{ethernetController\_checkDeviceId}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_checkDeviceId()}{ethernetController\_checkDeviceId()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} ethernet\+Controller\+\_\+check\+Device\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the device ID equals the expected value. 
+
+\begin{DoxyReturn}{Returns}
+Error code if device ID is correct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__init_ga472d2ba5053ebbb349e514699adfcde3}\label{group__init_ga472d2ba5053ebbb349e514699adfcde3}} 
+\index{Initialisation@{Initialisation}!ethernetController\_clearInterruptFlag@{ethernetController\_clearInterruptFlag}}
+\index{ethernetController\_clearInterruptFlag@{ethernetController\_clearInterruptFlag}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_clearInterruptFlag()}{ethernetController\_clearInterruptFlag()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+clear\+Interrupt\+Flag (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{flag }\end{DoxyParamCaption})}
+
+
+
+Clears a single interrupt flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & Bit number of the flag; use \mbox{\hyperlink{group__interrupts_gaf692e993b72f242633eee1b443276547}{interrupt\+Flags\+Names}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__init_gaadd13e81fe0097411b3aae2f6810bbe1}\label{group__init_gaadd13e81fe0097411b3aae2f6810bbe1}} 
+\index{Initialisation@{Initialisation}!ethernetController\_disableEthernet@{ethernetController\_disableEthernet}}
+\index{ethernetController\_disableEthernet@{ethernetController\_disableEthernet}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_disableEthernet()}{ethernetController\_disableEthernet()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+disable\+Ethernet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disables ethernet functionality. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000006}{Todo}}]This \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__init_ga9cb4657907d3985ecf5b867f7a8a9304}\label{group__init_ga9cb4657907d3985ecf5b867f7a8a9304}} 
+\index{Initialisation@{Initialisation}!ethernetController\_disableReception@{ethernetController\_disableReception}}
+\index{ethernetController\_disableReception@{ethernetController\_disableReception}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_disableReception()}{ethernetController\_disableReception()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+disable\+Reception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disables reception module \textbackslash{}\+Todo This. 
+
+\mbox{\Hypertarget{group__init_ga7cb7d48ac9c1a7bd6393c95e6e07dcee}\label{group__init_ga7cb7d48ac9c1a7bd6393c95e6e07dcee}} 
+\index{Initialisation@{Initialisation}!ethernetController\_disableTransmission@{ethernetController\_disableTransmission}}
+\index{ethernetController\_disableTransmission@{ethernetController\_disableTransmission}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_disableTransmission()}{ethernetController\_disableTransmission()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+disable\+Transmission (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disables transmission module. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000008}{Todo}}]This \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__init_ga06ef512fd11e36bbefaad96993875d2b}\label{group__init_ga06ef512fd11e36bbefaad96993875d2b}} 
+\index{Initialisation@{Initialisation}!ethernetController\_enableEthernet@{ethernetController\_enableEthernet}}
+\index{ethernetController\_enableEthernet@{ethernetController\_enableEthernet}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_enableEthernet()}{ethernetController\_enableEthernet()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+enable\+Ethernet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables ethernet functionality. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000005}{Todo}}]This \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__init_ga203eb473ea1d221ffe97839b16e74565}\label{group__init_ga203eb473ea1d221ffe97839b16e74565}} 
+\index{Initialisation@{Initialisation}!ethernetController\_enableReception@{ethernetController\_enableReception}}
+\index{ethernetController\_enableReception@{ethernetController\_enableReception}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_enableReception()}{ethernetController\_enableReception()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+enable\+Reception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables reception module. 
+
+\mbox{\Hypertarget{group__init_ga0aef586bd9434125367071595a794806}\label{group__init_ga0aef586bd9434125367071595a794806}} 
+\index{Initialisation@{Initialisation}!ethernetController\_enableTransmission@{ethernetController\_enableTransmission}}
+\index{ethernetController\_enableTransmission@{ethernetController\_enableTransmission}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_enableTransmission()}{ethernetController\_enableTransmission()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+enable\+Transmission (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables transmission module. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000007}{Todo}}]This \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__init_gae396f51c0fdba634e4e84b5f2b5d9416}\label{group__init_gae396f51c0fdba634e4e84b5f2b5d9416}} 
+\index{Initialisation@{Initialisation}!ethernetController\_getDeviceName@{ethernetController\_getDeviceName}}
+\index{ethernetController\_getDeviceName@{ethernetController\_getDeviceName}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_getDeviceName()}{ethernetController\_getDeviceName()}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ ethernet\+Controller\+\_\+get\+Device\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get device name as a string. 
+
+\begin{DoxyReturn}{Returns}
+String of device name, e.\+g. \char`\"{}\+E\+N\+C424\+J600\char`\"{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__init_gabb37702e7cfbd10dc932ca6502fd7bae}\label{group__init_gabb37702e7cfbd10dc932ca6502fd7bae}} 
+\index{Initialisation@{Initialisation}!ethernetController\_getMTU@{ethernetController\_getMTU}}
+\index{ethernetController\_getMTU@{ethernetController\_getMTU}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_getMTU()}{ethernetController\_getMTU()}}
+{\footnotesize\ttfamily uint16\+\_\+t ethernet\+Controller\+\_\+get\+M\+TU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the Maximum Transmission Unit of the Medium (normally 1500 bytes) 
+
+\begin{DoxyReturn}{Returns}
+Maximum Transmission Unit\+: Max. number of bytes per packet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__init_gaa3396c9822f00c6519a0e7a421048a71}\label{group__init_gaa3396c9822f00c6519a0e7a421048a71}} 
+\index{Initialisation@{Initialisation}!ethernetController\_getSiliconRevision@{ethernetController\_getSiliconRevision}}
+\index{ethernetController\_getSiliconRevision@{ethernetController\_getSiliconRevision}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_getSiliconRevision()}{ethernetController\_getSiliconRevision()}}
+{\footnotesize\ttfamily uint8\+\_\+t ethernet\+Controller\+\_\+get\+Silicon\+Revision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks the silicion revision of the ethernet controller. 
+
+\begin{DoxyReturn}{Returns}
+Numerical value of the silicion revision 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__init_ga440a9f27fc612a678d3d17eb5983c977}\label{group__init_ga440a9f27fc612a678d3d17eb5983c977}} 
+\index{Initialisation@{Initialisation}!ethernetController\_init@{ethernetController\_init}}
+\index{ethernetController\_init@{ethernetController\_init}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_init()}{ethernetController\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} ethernet\+Controller\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialises the ethernet controller. 
+
+Does a soft reset and checks the device ID. Then, various things are initialised and the pointer are set up. \begin{DoxyNote}{Note}
+To be called after power up 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Error state of the initialisation process 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__init_ga5cdd5a8c6a5ceab1292643f291137bd1}\label{group__init_ga5cdd5a8c6a5ceab1292643f291137bd1}} 
+\index{Initialisation@{Initialisation}!ethernetController\_pollInterruptFlags@{ethernetController\_pollInterruptFlags}}
+\index{ethernetController\_pollInterruptFlags@{ethernetController\_pollInterruptFlags}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_pollInterruptFlags()}{ethernetController\_pollInterruptFlags()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__interrupts_ga337298055be267e726930c9fc6b2d4eb}{interrupt\+Flags\+\_\+t}} ethernet\+Controller\+\_\+poll\+Interrupt\+Flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks the Interrupt flags and returns the status in a structure. 
+
+\begin{DoxyNote}{Note}
+In the current configuration, the interrupts are not real interrupts. Instead, the flags are polled periodically with this function 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Data structure of all interrupt flags 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__init_ga6a772ec407e60e921bad4db7a2be2676}\label{group__init_ga6a772ec407e60e921bad4db7a2be2676}} 
+\index{Initialisation@{Initialisation}!ethernetController\_softReset@{ethernetController\_softReset}}
+\index{ethernetController\_softReset@{ethernetController\_softReset}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_softReset()}{ethernetController\_softReset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} ethernet\+Controller\+\_\+soft\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Performs a software reset of the Ethernet controller according to the suggested write-\/and-\/verify approach recommended in the datasheet. 
+
+\begin{DoxyReturn}{Returns}
+Error state of the reset process 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__init_gab294a8fbc5b11d40a5da5e769110f6ca}\label{group__init_gab294a8fbc5b11d40a5da5e769110f6ca}} 
+\index{Initialisation@{Initialisation}!ethernetController\_updateLinkStatus@{ethernetController\_updateLinkStatus}}
+\index{ethernetController\_updateLinkStatus@{ethernetController\_updateLinkStatus}!Initialisation@{Initialisation}}
+\subsubsection{\texorpdfstring{ethernetController\_updateLinkStatus()}{ethernetController\_updateLinkStatus()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+update\+Link\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_gae7b6008a02816680c2e3a1e3d2451a60}{ethernet\+Connection\+\_\+t}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Intended to be called when an interrupt indicates that a link change as occured. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em $\ast$state} & \\
+\hline
+\end{DoxyParams}

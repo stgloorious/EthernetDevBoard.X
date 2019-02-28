@@ -1,0 +1,517 @@
+\hypertarget{group___b_a_n_k__0}{}\section{Bank 0 Instructions}
+\label{group___b_a_n_k__0}\index{Bank 0 Instructions@{Bank 0 Instructions}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga66d34711bf1b18dddae4db092c250451}{B\+A\+N\+K\+\_\+0\+\_\+\+O\+F\+F\+S\+ET}}~0x00
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga45a38712c4d618bb5cb013e3d781db46}{E\+T\+X\+S\+TL}}~0x00
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gadfc695618aa5a32160cc9e2b0234c714}{E\+T\+X\+S\+TH}}~0x01
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gaabce294609dfd914fcc09bbe4c4dcf75}{E\+T\+X\+L\+E\+NL}}~0x02
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga0b19f954414d0b99eac5e44f9f6b7ffd}{E\+T\+X\+L\+E\+NH}}~0x03
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga387e1ac675539e1c0c7f158f59eafd51}{E\+R\+X\+S\+TL}}~0x04
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gad4c2a40d74ded1e155f7eb18effb76ba}{E\+R\+X\+S\+TH}}~0x05
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gaf3b3b39a7b4d282655be48a7d6644b16}{E\+R\+X\+T\+A\+I\+LL}}~0x06
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga5dc63cf151dc56e1c6dffbac3e33a6b9}{E\+R\+X\+T\+A\+I\+LH}}~0x07
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gae2bce69021e980e000c605b1c891a957}{E\+R\+X\+H\+E\+A\+DL}}~0x08
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga1ed2ae5dd309b9fb325be27aec0d5da4}{E\+R\+X\+H\+E\+A\+DH}}~0x09
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gae7f7aba80e78f4086dc761608c2da2c4}{E\+D\+M\+A\+S\+TL}}~0x0A
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga0b279b45e0cfbc32896ec3b68694cf71}{E\+D\+M\+A\+S\+TH}}~0x0B
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gaf30be38cc1ed90a3709b0f11535a8dc9}{E\+D\+M\+A\+L\+E\+NL}}~0x0C
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gafd6cf76dfdc8103ae66eba29abfcf3d4}{E\+D\+M\+A\+L\+E\+NH}}~0x0D
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga6959cbf10d897b0eac13a15928f87cac}{E\+D\+M\+A\+D\+S\+TL}}~0x0E
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gab24279deee959774407b010264cb700a}{E\+D\+M\+A\+D\+S\+TH}}~0x0F
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga9008ca9117933ffaed4f71a0c467ae07}{E\+D\+M\+A\+C\+SL}}~0x10
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga8db6aa7fd9a0f04a045c04f67523621d}{E\+D\+M\+A\+C\+SH}}~0x11
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gafd8436b80e3fa21cdca1e6d5ce11f4dc}{E\+T\+X\+S\+T\+A\+TL}}~0x12
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga5fbc1912d7029d08bdb8791ffbc802c4}{E\+T\+X\+S\+T\+A\+TH}}~0x13
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gaa853fd92f9994d3231ed888c11ea9a29}{E\+T\+X\+W\+I\+R\+EL}}~0x14
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga7accec460eb38894636cfa7da5717252}{E\+T\+X\+W\+I\+R\+EH}}~0x15
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}{E\+U\+D\+A\+S\+TL}}~0x16
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}{E\+U\+D\+A\+S\+TL}}~0x16
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}{E\+U\+D\+A\+S\+TL}}~0x16
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}{E\+U\+D\+A\+S\+TL}}~0x16
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}{E\+U\+D\+A\+S\+TH}}~0x17
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}{E\+U\+D\+A\+S\+TH}}~0x17
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}{E\+U\+D\+A\+S\+TH}}~0x17
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}{E\+U\+D\+A\+S\+TH}}~0x17
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}{E\+U\+D\+A\+N\+DL}}~0x18
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}{E\+U\+D\+A\+N\+DL}}~0x18
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}{E\+U\+D\+A\+N\+DL}}~0x18
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}{E\+U\+D\+A\+N\+DL}}~0x18
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}{E\+U\+D\+A\+N\+DH}}~0x19
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}{E\+U\+D\+A\+N\+DH}}~0x19
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}{E\+U\+D\+A\+N\+DH}}~0x19
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}{E\+U\+D\+A\+N\+DH}}~0x19
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}{E\+S\+T\+A\+TL}}~0x1A
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}{E\+S\+T\+A\+TL}}~0x1A
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}{E\+S\+T\+A\+TL}}~0x1A
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}{E\+S\+T\+A\+TL}}~0x1A
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}{E\+S\+T\+A\+TH}}~0x1B
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}{E\+S\+T\+A\+TH}}~0x1B
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}{E\+S\+T\+A\+TH}}~0x1B
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}{E\+S\+T\+A\+TH}}~0x1B
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}{E\+I\+RL}}~0x1C
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}{E\+I\+RL}}~0x1C
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}{E\+I\+RL}}~0x1C
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}{E\+I\+RL}}~0x1C
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}{E\+I\+RH}}~0x1D
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}{E\+I\+RH}}~0x1D
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}{E\+I\+RH}}~0x1D
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}{E\+I\+RH}}~0x1D
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}{E\+C\+O\+N1L}}~0x1E
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}{E\+C\+O\+N1L}}~0x1E
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}{E\+C\+O\+N1L}}~0x1E
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}{E\+C\+O\+N1L}}~0x1E
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}{E\+C\+O\+N1H}}~0x1F
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}{E\+C\+O\+N1H}}~0x1F
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}{E\+C\+O\+N1H}}~0x1F
+\item 
+\#define \mbox{\hyperlink{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}{E\+C\+O\+N1H}}~0x1F
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]It may be nice to add the full register names\end{DoxyRefDesc}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___b_a_n_k__0_ga66d34711bf1b18dddae4db092c250451}\label{group___b_a_n_k__0_ga66d34711bf1b18dddae4db092c250451}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!BANK\_0\_OFFSET@{BANK\_0\_OFFSET}}
+\index{BANK\_0\_OFFSET@{BANK\_0\_OFFSET}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{BANK\_0\_OFFSET}{BANK\_0\_OFFSET}}
+{\footnotesize\ttfamily \#define B\+A\+N\+K\+\_\+0\+\_\+\+O\+F\+F\+S\+ET~0x00}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}\label{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ECON1H@{ECON1H}}
+\index{ECON1H@{ECON1H}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ECON1H}{ECON1H}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N1H~0x1F}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}\label{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ECON1H@{ECON1H}}
+\index{ECON1H@{ECON1H}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ECON1H}{ECON1H}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N1H~0x1F}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}\label{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ECON1H@{ECON1H}}
+\index{ECON1H@{ECON1H}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ECON1H}{ECON1H}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N1H~0x1F}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}\label{group___b_a_n_k__0_ga2f5fa37a9f050116da15bf29f34308a1}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ECON1H@{ECON1H}}
+\index{ECON1H@{ECON1H}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ECON1H}{ECON1H}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N1H~0x1F}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}\label{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ECON1L@{ECON1L}}
+\index{ECON1L@{ECON1L}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ECON1L}{ECON1L}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N1L~0x1E}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}\label{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ECON1L@{ECON1L}}
+\index{ECON1L@{ECON1L}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ECON1L}{ECON1L}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N1L~0x1E}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}\label{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ECON1L@{ECON1L}}
+\index{ECON1L@{ECON1L}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ECON1L}{ECON1L}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N1L~0x1E}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}\label{group___b_a_n_k__0_ga86f1c532ca33c5b3310b32ae5065af31}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ECON1L@{ECON1L}}
+\index{ECON1L@{ECON1L}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ECON1L}{ECON1L}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+C\+O\+N1L~0x1E}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga8db6aa7fd9a0f04a045c04f67523621d}\label{group___b_a_n_k__0_ga8db6aa7fd9a0f04a045c04f67523621d}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EDMACSH@{EDMACSH}}
+\index{EDMACSH@{EDMACSH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EDMACSH}{EDMACSH}}
+{\footnotesize\ttfamily \#define E\+D\+M\+A\+C\+SH~0x11}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga9008ca9117933ffaed4f71a0c467ae07}\label{group___b_a_n_k__0_ga9008ca9117933ffaed4f71a0c467ae07}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EDMACSL@{EDMACSL}}
+\index{EDMACSL@{EDMACSL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EDMACSL}{EDMACSL}}
+{\footnotesize\ttfamily \#define E\+D\+M\+A\+C\+SL~0x10}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gab24279deee959774407b010264cb700a}\label{group___b_a_n_k__0_gab24279deee959774407b010264cb700a}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EDMADSTH@{EDMADSTH}}
+\index{EDMADSTH@{EDMADSTH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EDMADSTH}{EDMADSTH}}
+{\footnotesize\ttfamily \#define E\+D\+M\+A\+D\+S\+TH~0x0F}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga6959cbf10d897b0eac13a15928f87cac}\label{group___b_a_n_k__0_ga6959cbf10d897b0eac13a15928f87cac}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EDMADSTL@{EDMADSTL}}
+\index{EDMADSTL@{EDMADSTL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EDMADSTL}{EDMADSTL}}
+{\footnotesize\ttfamily \#define E\+D\+M\+A\+D\+S\+TL~0x0E}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gafd6cf76dfdc8103ae66eba29abfcf3d4}\label{group___b_a_n_k__0_gafd6cf76dfdc8103ae66eba29abfcf3d4}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EDMALENH@{EDMALENH}}
+\index{EDMALENH@{EDMALENH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EDMALENH}{EDMALENH}}
+{\footnotesize\ttfamily \#define E\+D\+M\+A\+L\+E\+NH~0x0D}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gaf30be38cc1ed90a3709b0f11535a8dc9}\label{group___b_a_n_k__0_gaf30be38cc1ed90a3709b0f11535a8dc9}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EDMALENL@{EDMALENL}}
+\index{EDMALENL@{EDMALENL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EDMALENL}{EDMALENL}}
+{\footnotesize\ttfamily \#define E\+D\+M\+A\+L\+E\+NL~0x0C}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga0b279b45e0cfbc32896ec3b68694cf71}\label{group___b_a_n_k__0_ga0b279b45e0cfbc32896ec3b68694cf71}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EDMASTH@{EDMASTH}}
+\index{EDMASTH@{EDMASTH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EDMASTH}{EDMASTH}}
+{\footnotesize\ttfamily \#define E\+D\+M\+A\+S\+TH~0x0B}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gae7f7aba80e78f4086dc761608c2da2c4}\label{group___b_a_n_k__0_gae7f7aba80e78f4086dc761608c2da2c4}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EDMASTL@{EDMASTL}}
+\index{EDMASTL@{EDMASTL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EDMASTL}{EDMASTL}}
+{\footnotesize\ttfamily \#define E\+D\+M\+A\+S\+TL~0x0A}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}\label{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EIRH@{EIRH}}
+\index{EIRH@{EIRH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EIRH}{EIRH}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+I\+RH~0x1D}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}\label{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EIRH@{EIRH}}
+\index{EIRH@{EIRH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EIRH}{EIRH}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+I\+RH~0x1D}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}\label{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EIRH@{EIRH}}
+\index{EIRH@{EIRH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EIRH}{EIRH}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+I\+RH~0x1D}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}\label{group___b_a_n_k__0_ga93ae3cd8715af8b617af2a957b117dbc}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EIRH@{EIRH}}
+\index{EIRH@{EIRH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EIRH}{EIRH}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+I\+RH~0x1D}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}\label{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EIRL@{EIRL}}
+\index{EIRL@{EIRL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EIRL}{EIRL}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+I\+RL~0x1C}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}\label{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EIRL@{EIRL}}
+\index{EIRL@{EIRL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EIRL}{EIRL}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+I\+RL~0x1C}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}\label{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EIRL@{EIRL}}
+\index{EIRL@{EIRL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EIRL}{EIRL}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+I\+RL~0x1C}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}\label{group___b_a_n_k__0_ga2bbf74cf1cb5367d111476ffd5fcdd33}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EIRL@{EIRL}}
+\index{EIRL@{EIRL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EIRL}{EIRL}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+I\+RL~0x1C}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga1ed2ae5dd309b9fb325be27aec0d5da4}\label{group___b_a_n_k__0_ga1ed2ae5dd309b9fb325be27aec0d5da4}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ERXHEADH@{ERXHEADH}}
+\index{ERXHEADH@{ERXHEADH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ERXHEADH}{ERXHEADH}}
+{\footnotesize\ttfamily \#define E\+R\+X\+H\+E\+A\+DH~0x09}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gae2bce69021e980e000c605b1c891a957}\label{group___b_a_n_k__0_gae2bce69021e980e000c605b1c891a957}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ERXHEADL@{ERXHEADL}}
+\index{ERXHEADL@{ERXHEADL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ERXHEADL}{ERXHEADL}}
+{\footnotesize\ttfamily \#define E\+R\+X\+H\+E\+A\+DL~0x08}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gad4c2a40d74ded1e155f7eb18effb76ba}\label{group___b_a_n_k__0_gad4c2a40d74ded1e155f7eb18effb76ba}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ERXSTH@{ERXSTH}}
+\index{ERXSTH@{ERXSTH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ERXSTH}{ERXSTH}}
+{\footnotesize\ttfamily \#define E\+R\+X\+S\+TH~0x05}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga387e1ac675539e1c0c7f158f59eafd51}\label{group___b_a_n_k__0_ga387e1ac675539e1c0c7f158f59eafd51}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ERXSTL@{ERXSTL}}
+\index{ERXSTL@{ERXSTL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ERXSTL}{ERXSTL}}
+{\footnotesize\ttfamily \#define E\+R\+X\+S\+TL~0x04}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga5dc63cf151dc56e1c6dffbac3e33a6b9}\label{group___b_a_n_k__0_ga5dc63cf151dc56e1c6dffbac3e33a6b9}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ERXTAILH@{ERXTAILH}}
+\index{ERXTAILH@{ERXTAILH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ERXTAILH}{ERXTAILH}}
+{\footnotesize\ttfamily \#define E\+R\+X\+T\+A\+I\+LH~0x07}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gaf3b3b39a7b4d282655be48a7d6644b16}\label{group___b_a_n_k__0_gaf3b3b39a7b4d282655be48a7d6644b16}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ERXTAILL@{ERXTAILL}}
+\index{ERXTAILL@{ERXTAILL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ERXTAILL}{ERXTAILL}}
+{\footnotesize\ttfamily \#define E\+R\+X\+T\+A\+I\+LL~0x06}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}\label{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ESTATH@{ESTATH}}
+\index{ESTATH@{ESTATH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ESTATH}{ESTATH}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+TH~0x1B}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}\label{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ESTATH@{ESTATH}}
+\index{ESTATH@{ESTATH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ESTATH}{ESTATH}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+TH~0x1B}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}\label{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ESTATH@{ESTATH}}
+\index{ESTATH@{ESTATH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ESTATH}{ESTATH}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+TH~0x1B}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}\label{group___b_a_n_k__0_ga13d1af7417b869b95d04712f64fa0272}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ESTATH@{ESTATH}}
+\index{ESTATH@{ESTATH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ESTATH}{ESTATH}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+TH~0x1B}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}\label{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ESTATL@{ESTATL}}
+\index{ESTATL@{ESTATL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ESTATL}{ESTATL}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+TL~0x1A}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}\label{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ESTATL@{ESTATL}}
+\index{ESTATL@{ESTATL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ESTATL}{ESTATL}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+TL~0x1A}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}\label{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ESTATL@{ESTATL}}
+\index{ESTATL@{ESTATL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ESTATL}{ESTATL}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+TL~0x1A}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}\label{group___b_a_n_k__0_ga4b079f3e571c8f57eb82838f969bb918}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ESTATL@{ESTATL}}
+\index{ESTATL@{ESTATL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ESTATL}{ESTATL}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+S\+T\+A\+TL~0x1A}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga0b19f954414d0b99eac5e44f9f6b7ffd}\label{group___b_a_n_k__0_ga0b19f954414d0b99eac5e44f9f6b7ffd}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ETXLENH@{ETXLENH}}
+\index{ETXLENH@{ETXLENH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ETXLENH}{ETXLENH}}
+{\footnotesize\ttfamily \#define E\+T\+X\+L\+E\+NH~0x03}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gaabce294609dfd914fcc09bbe4c4dcf75}\label{group___b_a_n_k__0_gaabce294609dfd914fcc09bbe4c4dcf75}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ETXLENL@{ETXLENL}}
+\index{ETXLENL@{ETXLENL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ETXLENL}{ETXLENL}}
+{\footnotesize\ttfamily \#define E\+T\+X\+L\+E\+NL~0x02}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga5fbc1912d7029d08bdb8791ffbc802c4}\label{group___b_a_n_k__0_ga5fbc1912d7029d08bdb8791ffbc802c4}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ETXSTATH@{ETXSTATH}}
+\index{ETXSTATH@{ETXSTATH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ETXSTATH}{ETXSTATH}}
+{\footnotesize\ttfamily \#define E\+T\+X\+S\+T\+A\+TH~0x13}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gafd8436b80e3fa21cdca1e6d5ce11f4dc}\label{group___b_a_n_k__0_gafd8436b80e3fa21cdca1e6d5ce11f4dc}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ETXSTATL@{ETXSTATL}}
+\index{ETXSTATL@{ETXSTATL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ETXSTATL}{ETXSTATL}}
+{\footnotesize\ttfamily \#define E\+T\+X\+S\+T\+A\+TL~0x12}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gadfc695618aa5a32160cc9e2b0234c714}\label{group___b_a_n_k__0_gadfc695618aa5a32160cc9e2b0234c714}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ETXSTH@{ETXSTH}}
+\index{ETXSTH@{ETXSTH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ETXSTH}{ETXSTH}}
+{\footnotesize\ttfamily \#define E\+T\+X\+S\+TH~0x01}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga45a38712c4d618bb5cb013e3d781db46}\label{group___b_a_n_k__0_ga45a38712c4d618bb5cb013e3d781db46}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ETXSTL@{ETXSTL}}
+\index{ETXSTL@{ETXSTL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ETXSTL}{ETXSTL}}
+{\footnotesize\ttfamily \#define E\+T\+X\+S\+TL~0x00}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga7accec460eb38894636cfa7da5717252}\label{group___b_a_n_k__0_ga7accec460eb38894636cfa7da5717252}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ETXWIREH@{ETXWIREH}}
+\index{ETXWIREH@{ETXWIREH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ETXWIREH}{ETXWIREH}}
+{\footnotesize\ttfamily \#define E\+T\+X\+W\+I\+R\+EH~0x15}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gaa853fd92f9994d3231ed888c11ea9a29}\label{group___b_a_n_k__0_gaa853fd92f9994d3231ed888c11ea9a29}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!ETXWIREL@{ETXWIREL}}
+\index{ETXWIREL@{ETXWIREL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{ETXWIREL}{ETXWIREL}}
+{\footnotesize\ttfamily \#define E\+T\+X\+W\+I\+R\+EL~0x14}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}\label{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDANDH@{EUDANDH}}
+\index{EUDANDH@{EUDANDH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDANDH}{EUDANDH}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+N\+DH~0x19}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}\label{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDANDH@{EUDANDH}}
+\index{EUDANDH@{EUDANDH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDANDH}{EUDANDH}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+N\+DH~0x19}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}\label{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDANDH@{EUDANDH}}
+\index{EUDANDH@{EUDANDH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDANDH}{EUDANDH}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+N\+DH~0x19}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}\label{group___b_a_n_k__0_ga15380652ec098bda9a52836c9dae9a6d}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDANDH@{EUDANDH}}
+\index{EUDANDH@{EUDANDH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDANDH}{EUDANDH}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+N\+DH~0x19}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}\label{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDANDL@{EUDANDL}}
+\index{EUDANDL@{EUDANDL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDANDL}{EUDANDL}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+N\+DL~0x18}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}\label{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDANDL@{EUDANDL}}
+\index{EUDANDL@{EUDANDL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDANDL}{EUDANDL}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+N\+DL~0x18}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}\label{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDANDL@{EUDANDL}}
+\index{EUDANDL@{EUDANDL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDANDL}{EUDANDL}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+N\+DL~0x18}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}\label{group___b_a_n_k__0_ga177907282eb8c3ffd068ebf7dd9504da}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDANDL@{EUDANDL}}
+\index{EUDANDL@{EUDANDL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDANDL}{EUDANDL}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+N\+DL~0x18}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}\label{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDASTH@{EUDASTH}}
+\index{EUDASTH@{EUDASTH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDASTH}{EUDASTH}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+S\+TH~0x17}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}\label{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDASTH@{EUDASTH}}
+\index{EUDASTH@{EUDASTH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDASTH}{EUDASTH}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+S\+TH~0x17}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}\label{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDASTH@{EUDASTH}}
+\index{EUDASTH@{EUDASTH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDASTH}{EUDASTH}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+S\+TH~0x17}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}\label{group___b_a_n_k__0_gae43040f2f496d1a975d51379d4ce5817}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDASTH@{EUDASTH}}
+\index{EUDASTH@{EUDASTH}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDASTH}{EUDASTH}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+S\+TH~0x17}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}\label{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDASTL@{EUDASTL}}
+\index{EUDASTL@{EUDASTL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDASTL}{EUDASTL}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+S\+TL~0x16}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}\label{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDASTL@{EUDASTL}}
+\index{EUDASTL@{EUDASTL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDASTL}{EUDASTL}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+S\+TL~0x16}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}\label{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDASTL@{EUDASTL}}
+\index{EUDASTL@{EUDASTL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDASTL}{EUDASTL}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+S\+TL~0x16}
+
+\mbox{\Hypertarget{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}\label{group___b_a_n_k__0_ga65db9065d0ca31bfd917b1433675fc5f}} 
+\index{Bank 0 Instructions@{Bank 0 Instructions}!EUDASTL@{EUDASTL}}
+\index{EUDASTL@{EUDASTL}!Bank 0 Instructions@{Bank 0 Instructions}}
+\subsubsection{\texorpdfstring{EUDASTL}{EUDASTL}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \#define E\+U\+D\+A\+S\+TL~0x16}
+
