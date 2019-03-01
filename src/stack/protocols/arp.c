@@ -54,11 +54,14 @@ void ARP_handleNewPacket(ethernetFrame_t *frame) {
 
     ARP_replyIfNeeded(arp);
     ARP_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getSeconds());
+    /**
+     * \todo where does the tail pointer get updated
+     */
 }
 
 ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
     ARP_message_t arp;
-    uint16_t const offset = 22; //skip 2 MAC addresses and EtherType 
+    uint16_t const offset = 22; //skip NextPacketPointer (2 Bytes), RSV (6 Bytes), 2 MAC addresses (12 Bytes) and EtherType (2 Bytes)
 
     ethernetController_streamFromRXBuffer(0, frame->memory.start + offset); //Prepare stream
 
@@ -129,9 +132,10 @@ ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
 void static ARP_replyIfNeeded(ARP_message_t request) {
     if (request.operation != ARP_REQUEST)//is it a request?
         return;
-    //IPv4Address myIP = ipv4_getIPSourceAddress();/** \todo this */
-    // if (!(ipv4_cmp(&request.targetIPAddress, &myIP))) //For my IP Address?
-    //    return;
+
+    ipv4_address_t myIP = ipv4_getIPSourceAddress();
+    if (!(ipv4_cmp(&request.targetIPAddress, &myIP))) //For my IP Address?
+        return;
 
     ARP_message_t reply;
     ipv4_address_t senderIP;
@@ -141,7 +145,7 @@ void static ARP_replyIfNeeded(ARP_message_t request) {
 
     senderMAC = ethernetController_getMacAddress();
     targetMAC = request.senderMACAddress; //send it back
-    //senderIP = ipv4_getIPSourceAddress(); /** \todo this */
+    senderIP = ipv4_getIPSourceAddress(); /** \todo this */
     targetIP = request.senderIPAddress; //send it back
 
     reply.hlen = ARP_ETHERNET_HLEN;
@@ -215,10 +219,7 @@ void ARP_sendRequest(ipv4_address_t ip) {
 
     senderMAC = ethernetController_getMacAddress();
     mac_setToBroadcast(&targetMAC);
-    //senderIP = ipv4_getIPSourceAddress(); 
-    /**
-     *  \todo this 
-     */
+    senderIP = ipv4_getIPSourceAddress(); 
     targetIP = ip;
 
     request.hlen = ARP_ETHERNET_HLEN;

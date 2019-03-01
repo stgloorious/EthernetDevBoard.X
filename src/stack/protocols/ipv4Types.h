@@ -38,8 +38,11 @@
  * \brief Currrently supported protocols embedded in IPv4
  */
 typedef enum ipv4_protocols {
-    IPv4_PROTOCOL_ICMP = 0x01
-}ipv4_protocol_t;
+    IPv4_PROTOCOL_ICMP = 1,
+    IPv4_PROTOCOL_TCP = 6,
+    IPv4_PROTOCOL_UDP = 17
+
+} ipv4_protocol_t;
 
 typedef struct ipv4_address {
     uint8_t address[4];
@@ -122,8 +125,17 @@ typedef struct ipv4_header {
 } ipv4_header_t;
 
 typedef struct ipv4_packet {
+    /**
+     * \brief Contains information about the header of this packet
+     */
     ipv4_header_t ipv4Header;
+    /**
+     * \brief Where this ipv4 packet is stored in memory
+     */
     memoryField_t memory;
+    /**
+     * \brief Information about the ethernet frame that was used to transmit/receive this ip packet
+     */
     ethernetFrame_t ethernet;
 } ipv4_packet_t;
 

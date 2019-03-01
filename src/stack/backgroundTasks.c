@@ -37,11 +37,14 @@ void handleStackBackgroundTasks(stack_t* stack) {
         stack->background.err = ipv4_sendFrame(stack->pendingPacketToSend);
         if (stack->background.err.module == ERROR_MODULE_ARP &&
                 stack->background.err.code == ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED) {
+            UARTTransmitText("Could not resolve ");
             UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
+            UARTTransmitText("\n\r");
             stack->background.fPacketPending = 0;
         }
         if (stack->background.err.module == ERROR_MODULE_ARP &&
                 stack->background.err.code == ERROR_CODE_SUCCESSFUL) {
+            UARTTransmitText("IP packet sent.");
             //address resolution is completed
             stack->background.fPacketPending = 0;
         }

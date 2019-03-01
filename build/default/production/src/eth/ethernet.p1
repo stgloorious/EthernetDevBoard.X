@@ -43,7 +43,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _intToString `(*uc ~T0 @X0 0 ef1`ul ]
 "55 src/eth/../system/../stack/protocols/../protocols/arp.h
 [v _ARP_handleNewPacket `(v ~T0 @X0 0 ef1`*S5 ]
-"79 src/eth/../system/../stack/protocols/ipv4.h
+"86 src/eth/../system/../stack/protocols/ipv4.h
 [v _ipv4_handleNewPacket `(v ~T0 @X0 0 ef1`*S5 ]
 "77 src/eth/../system/uart.h
 [v _macToString `(*uc ~T0 @X0 0 ef1`S4 ]
@@ -5277,31 +5277,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.h: 302: void static ENC424J600_clearInterruptFlag(uint8_t flag);
 [; ;ENC424J600.h: 319: RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv);
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
-[; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 0x01
-[; ;ipv4Types.h: 42: }ipv4_protocol_t;
-[; ;ipv4Types.h: 44: typedef struct ipv4_address {
-[; ;ipv4Types.h: 45: uint8_t address[4];
-[; ;ipv4Types.h: 46: } ipv4_address_t;
-[; ;ipv4Types.h: 48: typedef struct ipv4_header {
-[; ;ipv4Types.h: 53: uint8_t version;
-[; ;ipv4Types.h: 54: uint8_t headerLength;
-[; ;ipv4Types.h: 61: uint8_t dscp;
-[; ;ipv4Types.h: 62: uint8_t ecn;
-[; ;ipv4Types.h: 69: uint16_t totalLength;
-[; ;ipv4Types.h: 76: uint16_t identification;
-[; ;ipv4Types.h: 83: uint8_t flags;
-[; ;ipv4Types.h: 84: uint16_t fragmentOffset;
-[; ;ipv4Types.h: 91: uint8_t timeToLive;
-[; ;ipv4Types.h: 98: ipv4_protocol_t protocol;
-[; ;ipv4Types.h: 105: uint16_t checksum;
-[; ;ipv4Types.h: 112: ipv4_address_t source;
-[; ;ipv4Types.h: 119: ipv4_address_t destination;
-[; ;ipv4Types.h: 122: } ipv4_header_t;
-[; ;ipv4Types.h: 124: typedef struct ipv4_packet {
-[; ;ipv4Types.h: 125: ipv4_header_t ipv4Header;
-[; ;ipv4Types.h: 126: memoryField_t memory;
-[; ;ipv4Types.h: 127: ethernetFrame_t ethernet;
-[; ;ipv4Types.h: 128: } ipv4_packet_t;
+[; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
+[; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
+[; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17
+[; ;ipv4Types.h: 45: } ipv4_protocol_t;
+[; ;ipv4Types.h: 47: typedef struct ipv4_address {
+[; ;ipv4Types.h: 48: uint8_t address[4];
+[; ;ipv4Types.h: 49: } ipv4_address_t;
+[; ;ipv4Types.h: 51: typedef struct ipv4_header {
+[; ;ipv4Types.h: 56: uint8_t version;
+[; ;ipv4Types.h: 57: uint8_t headerLength;
+[; ;ipv4Types.h: 64: uint8_t dscp;
+[; ;ipv4Types.h: 65: uint8_t ecn;
+[; ;ipv4Types.h: 72: uint16_t totalLength;
+[; ;ipv4Types.h: 79: uint16_t identification;
+[; ;ipv4Types.h: 86: uint8_t flags;
+[; ;ipv4Types.h: 87: uint16_t fragmentOffset;
+[; ;ipv4Types.h: 94: uint8_t timeToLive;
+[; ;ipv4Types.h: 101: ipv4_protocol_t protocol;
+[; ;ipv4Types.h: 108: uint16_t checksum;
+[; ;ipv4Types.h: 115: ipv4_address_t source;
+[; ;ipv4Types.h: 122: ipv4_address_t destination;
+[; ;ipv4Types.h: 125: } ipv4_header_t;
+[; ;ipv4Types.h: 127: typedef struct ipv4_packet {
+[; ;ipv4Types.h: 131: ipv4_header_t ipv4Header;
+[; ;ipv4Types.h: 135: memoryField_t memory;
+[; ;ipv4Types.h: 139: ethernetFrame_t ethernet;
+[; ;ipv4Types.h: 140: } ipv4_packet_t;
 [; ;arpTypes.h: 54: typedef struct ARP_message {
 [; ;arpTypes.h: 55: uint16_t htype;
 [; ;arpTypes.h: 56: uint16_t ptype;
@@ -5361,13 +5363,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stack.h: 59: uint32_t getSeconds();
 [; ;ipv4.h: 45: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 50: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
-[; ;ipv4.h: 58: void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
-[; ;ipv4.h: 65: void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
-[; ;ipv4.h: 72: error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
-[; ;ipv4.h: 79: void ipv4_handleNewPacket(ethernetFrame_t *frame);
-[; ;ipv4.h: 94: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
-[; ;ipv4.h: 101: bool_t ipv4_isAllZero(ipv4_address_t *ip);
-[; ;ipv4.h: 107: void ipv4_setToAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 57: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
+[; ;ipv4.h: 65: void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
+[; ;ipv4.h: 72: void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
+[; ;ipv4.h: 79: error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
+[; ;ipv4.h: 86: void ipv4_handleNewPacket(ethernetFrame_t *frame);
+[; ;ipv4.h: 93: ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
+[; ;ipv4.h: 99: ipv4_address_t ipv4_getIPSourceAddress();
+[; ;ipv4.h: 105: void ipv4_setIPSourceAddress(ipv4_address_t ip);
+[; ;ipv4.h: 120: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
+[; ;ipv4.h: 127: bool_t ipv4_isAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 133: void ipv4_setToAllZero(ipv4_address_t *ip);
 [; ;uart.h: 38: void UARTInit(void);
 [; ;uart.h: 44: void UARTTransmitText(const char *str);
 [; ;uart.h: 50: void DEBUG_MSG(char *text);
@@ -5376,8 +5382,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 70: char *hexToString(uint32_t val);
 [; ;uart.h: 77: char *macToString(macaddress_t addr);
 [; ;uart.h: 84: char *etherTypeToString(etherType_t ethertype);
-[; ;uart.h: 91: char *ipAdressToString(ipv4_address_t ip);
-[; ;uart.h: 98: char *arpEntryToString(ARP_tableEntry_t table);
+[; ;uart.h: 91: char *ipProtocolToString(ipv4_protocol_t protocol);
+[; ;uart.h: 98: char *ipAdressToString(ipv4_address_t ip);
+[; ;uart.h: 105: char *arpEntryToString(ARP_tableEntry_t table);
 "28 src/eth/ethernet.c
 [v _ethernet_txFrameRequest `(S1 ~T0 @X0 1 ef1`*S5 ]
 {
@@ -5455,8 +5462,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _frame `*S5 ~T0 @X0 1 r1 ]
 [f ]
 "54
-[v F5823 `ul ~T0 @X0 1 s counter ]
-[i F5823
+[v F5834 `ul ~T0 @X0 1 s counter ]
+[i F5834
 -> -> -> 0 `i `l `ul
 ]
 "55
@@ -5512,7 +5519,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _UARTTransmitText (1 :s 1C ]
 [; ;ethernet.c: 77: UARTTransmitText(intToString(counter++));
 "77
-[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5823 -> -> -> 1 `i `l `ul `*Cuc ]
+[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5834 -> -> -> 1 `i `l `ul `*Cuc ]
 [; ;ethernet.c: 78: UARTTransmitText("]");
 "78
 [e ( _UARTTransmitText (1 :s 2C ]

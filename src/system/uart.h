@@ -84,6 +84,13 @@ char *macToString(macaddress_t addr);
 char *etherTypeToString(etherType_t ethertype);
 
 /**
+ * \brief Takes the protocol field of an ipv4 header and returns the protocol name (e.g. "TCP")
+ * \param protocol
+ * \return Char string
+ */
+char *ipProtocolToString(ipv4_protocol_t protocol);
+
+/**
  * \brief Takes an IPv4 Address and converts it into string (decimal notation)
  * \param IP address
  * \return char string

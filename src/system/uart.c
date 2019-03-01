@@ -186,6 +186,19 @@ char *etherTypeToString(etherType_t ethertype) {
     }
 }
 
+char *ipProtocolToString(ipv4_protocol_t protocol) {
+    switch (protocol) {
+        case IPv4_PROTOCOL_ICMP:
+            return "ICMP";
+        case IPv4_PROTOCOL_TCP:
+            return "TCP";
+        case IPv4_PROTOCOL_UDP:
+            return "UDP";
+        default:
+            return "Unknown Protocol";
+    }
+}
+
 char *ipAdressToString(ipv4_address_t ip) {
     char static address [] = "???.???.???.???";
     uint8_t hundreds[4];

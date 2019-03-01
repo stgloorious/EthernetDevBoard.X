@@ -91,9 +91,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gaf689af7304e282d1606e70bf56cbc3d4"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">ipv4_protocols</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gaf689af7304e282d1606e70bf56cbc3d4">ipv4_protocol_t</a></td></tr>
-<tr class="memdesc:gaf689af7304e282d1606e70bf56cbc3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currrently supported protocols embedded in IPv4.  <a href="#gaf689af7304e282d1606e70bf56cbc3d4">More...</a><br /></td></tr>
-<tr class="separator:gaf689af7304e282d1606e70bf56cbc3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab04cc76a064d21f3a4d7b28a8f3af1a9"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">ipv4_protocols</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gab04cc76a064d21f3a4d7b28a8f3af1a9">ipv4_protocol_t</a></td></tr>
+<tr class="memdesc:gab04cc76a064d21f3a4d7b28a8f3af1a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currrently supported protocols embedded in IPv4.  <a href="#gab04cc76a064d21f3a4d7b28a8f3af1a9">More...</a><br /></td></tr>
+<tr class="separator:gab04cc76a064d21f3a4d7b28a8f3af1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9df0882950e70d0587a4b423beb261a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structipv4__address.html">ipv4_address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a></td></tr>
 <tr class="separator:gad9df0882950e70d0587a4b423beb261a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf4f2c6743b9fb1ea3c69734612ce41de"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structipv4__header.html">ipv4_header</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a></td></tr>
@@ -103,7 +103,9 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gacbfe55abe1d01bf1da8b66868f8135aa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">ipv4_protocols</a> { <a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa9190ff825ad5c7929c62ed0ce199fc19">IPv4_PROTOCOL_ICMP</a> = 0x01
+<tr class="memitem:gacbfe55abe1d01bf1da8b66868f8135aa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">ipv4_protocols</a> { <a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa9190ff825ad5c7929c62ed0ce199fc19">IPv4_PROTOCOL_ICMP</a> = 1, 
+<a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa37d4986151ba77ba46990335720292a8">IPv4_PROTOCOL_TCP</a> = 6, 
+<a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa30bfead257188a4e50767a41e4af353b">IPv4_PROTOCOL_UDP</a> = 17
  }</td></tr>
 <tr class="memdesc:gacbfe55abe1d01bf1da8b66868f8135aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currrently supported protocols embedded in IPv4.  <a href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">More...</a><br /></td></tr>
 <tr class="separator:gacbfe55abe1d01bf1da8b66868f8135aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,6 +130,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ga7f96d526bafe55783b675597634d87ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga7f96d526bafe55783b675597634d87ae">ipv4_handleNewPacket</a> (<a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a> *frame)</td></tr>
 <tr class="memdesc:ga7f96d526bafe55783b675597634d87ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does all the necessary things to process a new packet.  <a href="#ga7f96d526bafe55783b675597634d87ae">More...</a><br /></td></tr>
 <tr class="separator:ga7f96d526bafe55783b675597634d87ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaace46bc098160cc06288e80390dc855a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gaace46bc098160cc06288e80390dc855a">ipv4_getIPSourceAddress</a> ()</td></tr>
+<tr class="separator:gaace46bc098160cc06288e80390dc855a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a9ec06886de83e5c5cc133871d2b250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga8a9ec06886de83e5c5cc133871d2b250">ipv4_setIPSourceAddress</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
+<tr class="separator:ga8a9ec06886de83e5c5cc133871d2b250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -173,14 +179,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaf689af7304e282d1606e70bf56cbc3d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf689af7304e282d1606e70bf56cbc3d4">&#9670;&nbsp;</a></span>ipv4_protocol_t</h2>
+<a id="gab04cc76a064d21f3a4d7b28a8f3af1a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab04cc76a064d21f3a4d7b28a8f3af1a9">&#9670;&nbsp;</a></span>ipv4_protocol_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef enum <a class="el" href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">ipv4_protocols</a> <a class="el" href="group__ipv4.html#gaf689af7304e282d1606e70bf56cbc3d4">ipv4_protocol_t</a></td>
+          <td class="memname">typedef enum <a class="el" href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">ipv4_protocols</a>  <a class="el" href="group__ipv4.html#gab04cc76a064d21f3a4d7b28a8f3af1a9">ipv4_protocol_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -205,6 +211,8 @@ Functions</h2></td></tr>
 <p>Currrently supported protocols embedded in IPv4. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggacbfe55abe1d01bf1da8b66868f8135aaa9190ff825ad5c7929c62ed0ce199fc19"></a>IPv4_PROTOCOL_ICMP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggacbfe55abe1d01bf1da8b66868f8135aaa37d4986151ba77ba46990335720292a8"></a>IPv4_PROTOCOL_TCP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggacbfe55abe1d01bf1da8b66868f8135aaa30bfead257188a4e50767a41e4af353b"></a>IPv4_PROTOCOL_UDP&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -227,6 +235,24 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Call this function after everything in the header has been filled in. </p>
+
+</div>
+</div>
+<a id="gaace46bc098160cc06288e80390dc855a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaace46bc098160cc06288e80390dc855a">&#9670;&nbsp;</a></span>ipv4_getIPSourceAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipv4_getIPSourceAddress </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -254,7 +280,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>ipv4 packet reception </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>ipv4 packet reception </dd></dl>
 
 </div>
 </div>
@@ -282,6 +308,30 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Error code </dd></dl>
+
+</div>
+</div>
+<a id="ga8a9ec06886de83e5c5cc133871d2b250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8a9ec06886de83e5c5cc133871d2b250">&#9670;&nbsp;</a></span>ipv4_setIPSourceAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ipv4_setIPSourceAddress </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td>
+          <td class="paramname"><em>ip</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -319,7 +369,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Fragmenting </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>Fragmenting </dd></dl>
 
 </div>
 </div>

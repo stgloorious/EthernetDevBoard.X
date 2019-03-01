@@ -124,13 +124,13 @@ void main() {
     IPsource.address[3] = 4;
 
     ipv4_address_t IPdestination;
-    IPdestination.address[0] = 169;
-    IPdestination.address[1] = 254;
-    IPdestination.address[2] = 108;
-    IPdestination.address[3] = 135;
+    IPdestination.address[0] = 192;
+    IPdestination.address[1] = 168;
+    IPdestination.address[2] = 0;
+    IPdestination.address[3] = 5;
 
     // ipv4_setIPDestinationAddress(IPdestination);
-    // ipv4_setIPSourceAddress(IPsource);
+     ipv4_setIPSourceAddress(IPsource);
 
 
     //Now everything's set up, allow interrupts
@@ -168,10 +168,9 @@ void main() {
                     if (i < stack.pendingPacketToSend.ipv4Header.headerLength * 4) {
                         ipv4_streamToTransmissionBuffer(headerBuf[i], stack.pendingPacketToSend);
                     } else
-                        ipv4_streamToTransmissionBuffer(1, stack.pendingPacketToSend);
+                        ipv4_streamToTransmissionBuffer(0, stack.pendingPacketToSend);
                 }
                 //////////////////////////////////////////////      
-                
                 stack.background.fPacketPending = 1;
             }
         }
@@ -231,6 +230,8 @@ void printErrorMessage(error_t err) {
         case ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID:
             UARTTransmitText("Ethernet controller has returned an unknown device ID.");
             break;
+        case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
+            UARTTransmitText("IP address could not be resolved.");
         default:
         case ERROR_ETHERNET_CONTROLLER_UNKNOWN:
             UARTTransmitText("An unknown error has occured.");

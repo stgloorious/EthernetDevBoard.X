@@ -388,8 +388,11 @@ bool_t mac_isAllZero(macaddress_t *mac);
 
 # 40 "src/stack/protocols/../protocols/../protocols/ipv4Types.h"
 typedef enum ipv4_protocols {
-IPv4_PROTOCOL_ICMP = 0x01
-}ipv4_protocol_t;
+IPv4_PROTOCOL_ICMP = 1,
+IPv4_PROTOCOL_TCP = 6,
+IPv4_PROTOCOL_UDP = 17
+
+} ipv4_protocol_t;
 
 typedef struct ipv4_address {
 uint8_t address[4];
@@ -397,45 +400,51 @@ uint8_t address[4];
 
 typedef struct ipv4_header {
 
-# 53
+# 56
 uint8_t version;
 uint8_t headerLength;
 
-# 61
+# 64
 uint8_t dscp;
 uint8_t ecn;
 
-# 69
+# 72
 uint16_t totalLength;
 
-# 76
+# 79
 uint16_t identification;
 
-# 83
+# 86
 uint8_t flags;
 uint16_t fragmentOffset;
 
-# 91
+# 94
 uint8_t timeToLive;
 
-# 98
+# 101
 ipv4_protocol_t protocol;
 
-# 105
+# 108
 uint16_t checksum;
 
-# 112
+# 115
 ipv4_address_t source;
 
-# 119
+# 122
 ipv4_address_t destination;
 
 
 } ipv4_header_t;
 
 typedef struct ipv4_packet {
+
+# 131
 ipv4_header_t ipv4Header;
+
+# 135
 memoryField_t memory;
+
+# 139
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
@@ -472,25 +481,37 @@ void ipv4_txFrameRequest(ipv4_packet_t *packet);
 # 50
 void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 
-# 58
-void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
+# 57
+bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
 
 # 65
-void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
+void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
 
 # 72
-error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
+void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
 
 # 79
+error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
+
+# 86
 void ipv4_handleNewPacket(ethernetFrame_t *frame);
 
-# 94
+# 93
+ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
+
+# 99
+ipv4_address_t ipv4_getIPSourceAddress();
+
+# 105
+void ipv4_setIPSourceAddress(ipv4_address_t ip);
+
+# 120
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 
-# 101
+# 127
 bool_t ipv4_isAllZero(ipv4_address_t *ip);
 
-# 107
+# 133
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
 # 61 "src/stack/protocols/../../eth/../mem/memoryController.h"
@@ -7177,9 +7198,12 @@ char *macToString(macaddress_t addr);
 char *etherTypeToString(etherType_t ethertype);
 
 # 91
-char *ipAdressToString(ipv4_address_t ip);
+char *ipProtocolToString(ipv4_protocol_t protocol);
 
 # 98
+char *ipAdressToString(ipv4_address_t ip);
+
+# 105
 char *arpEntryToString(ARP_tableEntry_t table);
 
 # 47 "src/stack/protocols/arp.h"
@@ -7244,6 +7268,8 @@ UARTTransmitText("[IsGratuitous]");
 
 ARP_replyIfNeeded(arp);
 ARP_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getSeconds());
+
+# 60
 }
 
 ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
@@ -7320,8 +7346,9 @@ void static ARP_replyIfNeeded(ARP_message_t request) {
 if (request.operation != ARP_REQUEST)
 return;
 
-
-
+ipv4_address_t myIP = ipv4_getIPSourceAddress();
+if (!(ipv4_cmp(&request.targetIPAddress, &myIP)))
+return;
 
 ARP_message_t reply;
 ipv4_address_t senderIP;
@@ -7331,7 +7358,7 @@ macaddress_t targetMAC;
 
 senderMAC = ethernetController_getMacAddress();
 targetMAC = request.senderMACAddress;
-
+senderIP = ipv4_getIPSourceAddress();
 targetIP = request.senderIPAddress;
 
 reply.hlen = 6;
@@ -7405,8 +7432,7 @@ macaddress_t targetMAC;
 
 senderMAC = ethernetController_getMacAddress();
 mac_setToBroadcast(&targetMAC);
-
-# 222
+senderIP = ipv4_getIPSourceAddress();
 targetIP = ip;
 
 request.hlen = 6;

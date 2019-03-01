@@ -52,12 +52,8 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
     if (ARP_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
         //There is a non-expired entry of the IP address
         ipPacket.ethernet.destination = ARP_getEntryFromTable(index);
-        UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
-        UARTTransmitText(" is at ");
-        UARTTransmitText(macToString(ipPacket.ethernet.destination));
-        UARTTransmitText(".\n\r");
         //The source address is always stored in the Ethernet controller:
-        ipPacket.ethernet.source = ethernetController_getMacAddress(); 
+        ipPacket.ethernet.source = ethernetController_getMacAddress();
         //Fill the new information in memory and send the packet
         ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipPacket.ethernet.memory);
         ethernetController_sendPacket(ipPacket.ethernet.memory);
@@ -88,22 +84,10 @@ void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet) {
 
     /**\todo Fragmenting */
 
-    uint16_t static dataPointer = 0;
-    //ethernetController_streamToTransmitBuffer(data, ethernetPacketLength);
-    if (dataPointer == ethernetPacketLength - 1) {
-        dataPointer = 0;
-    } else {
-        dataPointer++;
-    }
+    ethernetController_streamToTransmitBuffer(data, packet.memory);
 }
 
 void ipv4_calculateHeaderChecksum(ipv4_header_t * header) {
-    header->headerLength = 5;
-    header->dscp = 0;
-    header->ecn = 0;
-    header->flags = 0x00;
-    header->fragmentOffset = 0x00;
-    header->identification = 0x00;
     //Sum up all 16-Bit words of the header:
     uint32_t sum = 0;
     sum = ((header->version << 12) | (header->headerLength << 8) | (header->dscp << 2) | (header->ecn))&0xffff; //Word 0
@@ -147,28 +131,106 @@ void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
 }
 
 void ipv4_handleNewPacket(ethernetFrame_t *frame) {
-    UARTTransmitText("[PACKET DROPPED]");
+    ipv4_header_t ip;
+    memoryField_t headerField;
+    if (frame->ethertype != ETHERTYPE_IPv4) {
+        ethernetController_dropPacket(frame);
+        return;
+    }
+    headerField = frame->memory;
+    headerField.start = frame->memory.start + 22; //skip NextPacketPointer (2 Bytes), RSV (6 Bytes), 2 MAC addresses (12 Bytes) and EtherType (2 Bytes)
+
+    ip = ipv4_parseHeader(&headerField);
+    UARTTransmitText("[");
+    UARTTransmitText(ipAdressToString(ip.source));
+    UARTTransmitText(" -> ");
+    UARTTransmitText(ipAdressToString(ip.destination));
+    UARTTransmitText("][");
+    UARTTransmitText((ipProtocolToString(ip.protocol)));
+    UARTTransmitText("][");
+    UARTTransmitText(intToString(ip.totalLength));
+    UARTTransmitText("][");
+    UARTTransmitText(intToString(ip.version));
+    UARTTransmitText(", ");
+    UARTTransmitText(intToString(ip.headerLength));
+    UARTTransmitText("]");
+    if (!ipv4_checkHeaderChecksum(&ip))
+        UARTTransmitText("[INVALID CHECKSUM]");
+
+
     ethernetController_dropPacket(frame);
     /**
      * \todo ipv4 packet reception
      */
 }
 
-/*void ipv4_setIPSourceAddress(IPv4Address newSourceAddress) {
-    sourceIPAddress = newSourceAddress;
-}*/
+ipv4_header_t static ipv4_parseHeader(memoryField_t *field) {
+    ipv4_header_t ip;
+    uint8_t temp;
 
-/*void ipv4_setIPDestinationAddress(IPv4Address newDestinationAddress) {
-    destinationIPAddress = newDestinationAddress;
+    ethernetController_streamFromRXBuffer(0, field->start); //prepare stream
+    //BYTE 0
+    temp = ethernetController_streamFromRXBuffer(1, field->start);
+    ip.version = (temp & 0xf0) >> 4;
+    ip.headerLength = temp & 0x0f;
+    //BYTE 1
+    temp = ethernetController_streamFromRXBuffer(1, field->start);
+    ip.dscp = (temp & 0x1f);
+    ip.ecn = (temp & 0xC0) >> 6;
+    //BYTE 2 & 3
+    ip.totalLength = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+    ip.totalLength |= ethernetController_streamFromRXBuffer(1, field->start);
+    //BYTE 4 & 5
+    ip.identification = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+    ip.identification |= ethernetController_streamFromRXBuffer(1, field->start);
+    //BYTE 6
+    temp = ethernetController_streamFromRXBuffer(1, field->start);
+    ip.flags = ((temp & 0xC0) >> 6);
+    ip.fragmentOffset = ((temp & 0x1f) << 8);
+    //BYTE 7
+    ip.fragmentOffset |= ethernetController_streamFromRXBuffer(1, field->start);
+    //BYTE 8
+    ip.timeToLive = ethernetController_streamFromRXBuffer(1, field->start);
+    //BYTE 9
+    ip.protocol = ethernetController_streamFromRXBuffer(1, field->start);
+    //BYTE 10 & 11
+    ip.checksum = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+    ip.checksum |= ethernetController_streamFromRXBuffer(1, field->start);
+    //BYTE 12..15
+    for (uint8_t i = 0; i < 4; i++)//Number of bytes in an ip address
+        ip.source.address[i] = ethernetController_streamFromRXBuffer(1, field->start);
+    //BYTE 16..19
+    for (uint8_t i = 0; i < 4; i++)
+        ip.destination.address[i] = ethernetController_streamFromRXBuffer(1, field->start);
+
+    ethernetController_streamFromRXBuffer(2, field->start); //end stream
+
+    return ip;
 }
 
-IPv4Address ipv4_getIPSourceAddress() {
+bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header) {
+    ipv4_header_t testHeader;
+    testHeader = *header;
+    testHeader.checksum = 0x0000;
+    ipv4_calculateHeaderChecksum(&testHeader);
+    if (testHeader.checksum == header->checksum) {
+        return true;
+    }
+    UARTTransmitText("[Expected ");
+    UARTTransmitText(hexToString(testHeader.checksum));
+    UARTTransmitText(", got ");
+    UARTTransmitText(hexToString(header->checksum));
+    UARTTransmitText("]");
+    return false;
+}
+
+ipv4_address_t ipv4_getIPSourceAddress() {
     return sourceIPAddress;
 }
 
-IPv4Address ipv4_getIPDestinationAddress() {
-    return destinationIPAddress;
-}*/
+void ipv4_setIPSourceAddress(ipv4_address_t ip) {
+    sourceIPAddress = ip;
+}
 
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t * b) {
     for (uint8_t i = 0; i < 4; i++) {

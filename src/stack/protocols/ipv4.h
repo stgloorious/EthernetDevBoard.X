@@ -50,6 +50,13 @@ void ipv4_txFrameRequest(ipv4_packet_t *packet);
 void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 
 /**
+ * \brief Checks if the received checksum is correct using \ref ipv4_calculateHeaderChecksum()
+ * \param [in] header ipv4 header
+ * \return True if correct, false if incorrect
+ */
+bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
+
+/**
  * \brief Assembles the IPv4 Header and writes it into a buffer
  * \param header Header that gets written to the buffer
  * \param [out] *ptr Pointer to the first element of the buffer array
@@ -77,6 +84,25 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
  * \param [in] *frame The received packet
  */
 void ipv4_handleNewPacket(ethernetFrame_t *frame);
+
+/**
+ * \brief Reads a field in memory where an ip header lies and puts the information in a nice structure
+ * \param [in] field Memory field where the header is
+ * \return ip header
+ */
+ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
+
+/**
+ * 
+ * @return 
+ */
+ipv4_address_t ipv4_getIPSourceAddress();
+
+/**
+ * 
+ * @param ip
+ */
+void ipv4_setIPSourceAddress(ipv4_address_t ip);
 
 /**\}*/
 

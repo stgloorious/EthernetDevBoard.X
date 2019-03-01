@@ -5213,31 +5213,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 51: uint8_t fPacketPending : 1;
 [; ;backgroundTasksTypes.h: 52: } backgroundTaskHandler_t;
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
-[; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 0x01
-[; ;ipv4Types.h: 42: }ipv4_protocol_t;
-[; ;ipv4Types.h: 44: typedef struct ipv4_address {
-[; ;ipv4Types.h: 45: uint8_t address[4];
-[; ;ipv4Types.h: 46: } ipv4_address_t;
-[; ;ipv4Types.h: 48: typedef struct ipv4_header {
-[; ;ipv4Types.h: 53: uint8_t version;
-[; ;ipv4Types.h: 54: uint8_t headerLength;
-[; ;ipv4Types.h: 61: uint8_t dscp;
-[; ;ipv4Types.h: 62: uint8_t ecn;
-[; ;ipv4Types.h: 69: uint16_t totalLength;
-[; ;ipv4Types.h: 76: uint16_t identification;
-[; ;ipv4Types.h: 83: uint8_t flags;
-[; ;ipv4Types.h: 84: uint16_t fragmentOffset;
-[; ;ipv4Types.h: 91: uint8_t timeToLive;
-[; ;ipv4Types.h: 98: ipv4_protocol_t protocol;
-[; ;ipv4Types.h: 105: uint16_t checksum;
-[; ;ipv4Types.h: 112: ipv4_address_t source;
-[; ;ipv4Types.h: 119: ipv4_address_t destination;
-[; ;ipv4Types.h: 122: } ipv4_header_t;
-[; ;ipv4Types.h: 124: typedef struct ipv4_packet {
-[; ;ipv4Types.h: 125: ipv4_header_t ipv4Header;
-[; ;ipv4Types.h: 126: memoryField_t memory;
-[; ;ipv4Types.h: 127: ethernetFrame_t ethernet;
-[; ;ipv4Types.h: 128: } ipv4_packet_t;
+[; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
+[; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
+[; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17
+[; ;ipv4Types.h: 45: } ipv4_protocol_t;
+[; ;ipv4Types.h: 47: typedef struct ipv4_address {
+[; ;ipv4Types.h: 48: uint8_t address[4];
+[; ;ipv4Types.h: 49: } ipv4_address_t;
+[; ;ipv4Types.h: 51: typedef struct ipv4_header {
+[; ;ipv4Types.h: 56: uint8_t version;
+[; ;ipv4Types.h: 57: uint8_t headerLength;
+[; ;ipv4Types.h: 64: uint8_t dscp;
+[; ;ipv4Types.h: 65: uint8_t ecn;
+[; ;ipv4Types.h: 72: uint16_t totalLength;
+[; ;ipv4Types.h: 79: uint16_t identification;
+[; ;ipv4Types.h: 86: uint8_t flags;
+[; ;ipv4Types.h: 87: uint16_t fragmentOffset;
+[; ;ipv4Types.h: 94: uint8_t timeToLive;
+[; ;ipv4Types.h: 101: ipv4_protocol_t protocol;
+[; ;ipv4Types.h: 108: uint16_t checksum;
+[; ;ipv4Types.h: 115: ipv4_address_t source;
+[; ;ipv4Types.h: 122: ipv4_address_t destination;
+[; ;ipv4Types.h: 125: } ipv4_header_t;
+[; ;ipv4Types.h: 127: typedef struct ipv4_packet {
+[; ;ipv4Types.h: 131: ipv4_header_t ipv4Header;
+[; ;ipv4Types.h: 135: memoryField_t memory;
+[; ;ipv4Types.h: 139: ethernetFrame_t ethernet;
+[; ;ipv4Types.h: 140: } ipv4_packet_t;
 [; ;mac.h: 43: bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 [; ;mac.h: 49: void mac_setToBroadcast(macaddress_t *mac);
 [; ;mac.h: 56: bool_t mac_isBroadcast(macaddress_t *mac);
@@ -5282,8 +5284,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 70: char *hexToString(uint32_t val);
 [; ;uart.h: 77: char *macToString(macaddress_t addr);
 [; ;uart.h: 84: char *etherTypeToString(etherType_t ethertype);
-[; ;uart.h: 91: char *ipAdressToString(ipv4_address_t ip);
-[; ;uart.h: 98: char *arpEntryToString(ARP_tableEntry_t table);
+[; ;uart.h: 91: char *ipProtocolToString(ipv4_protocol_t protocol);
+[; ;uart.h: 98: char *ipAdressToString(ipv4_address_t ip);
+[; ;uart.h: 105: char *arpEntryToString(ARP_tableEntry_t table);
 [; ;arp.h: 47: void ARP_initTable();
 [; ;arp.h: 55: void ARP_handleNewPacket(ethernetFrame_t *frame);
 [; ;arp.h: 63: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
@@ -5296,13 +5299,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.h: 117: void printArpTable();
 [; ;ipv4.h: 45: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 50: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
-[; ;ipv4.h: 58: void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
-[; ;ipv4.h: 65: void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
-[; ;ipv4.h: 72: error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
-[; ;ipv4.h: 79: void ipv4_handleNewPacket(ethernetFrame_t *frame);
-[; ;ipv4.h: 94: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
-[; ;ipv4.h: 101: bool_t ipv4_isAllZero(ipv4_address_t *ip);
-[; ;ipv4.h: 107: void ipv4_setToAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 57: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
+[; ;ipv4.h: 65: void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
+[; ;ipv4.h: 72: void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
+[; ;ipv4.h: 79: error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
+[; ;ipv4.h: 86: void ipv4_handleNewPacket(ethernetFrame_t *frame);
+[; ;ipv4.h: 93: ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
+[; ;ipv4.h: 99: ipv4_address_t ipv4_getIPSourceAddress();
+[; ;ipv4.h: 105: void ipv4_setIPSourceAddress(ipv4_address_t ip);
+[; ;ipv4.h: 120: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
+[; ;ipv4.h: 127: bool_t ipv4_isAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 133: void ipv4_setToAllZero(ipv4_address_t *ip);
 [; ;stack.h: 41: typedef struct stack {
 [; ;stack.h: 42: ethernetConnection_t ethernet;
 [; ;stack.h: 43: backgroundTaskHandler_t volatile background;
@@ -5481,13 +5488,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _numberToDisplay `ui ~T0 @X0 1 r1 ]
 [f ]
 "43
-[v F5791 `uc ~T0 @X0 1 s digitPointer ]
-[i F5791
+[v F5802 `uc ~T0 @X0 1 s digitPointer ]
+[i F5802
 -> -> 0 `i `uc
 ]
 "44
-[v F5792 `uc ~T0 @X0 -> 3 `i s digitsToDisplay ]
-[i F5792
+[v F5803 `uc ~T0 @X0 -> 3 `i s digitsToDisplay ]
+[i F5803
 :U ..
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -5498,13 +5505,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 44: uint8_t static digitsToDisplay[3] = {0, 0, 0};
 [; ;sevenseg.c: 45: PORTC &= ~(unsigned)(1 << digitPointer);
 "45
-[e =& _PORTC -> ~ -> << -> 1 `i F5791 `ui `uc ]
+[e =& _PORTC -> ~ -> << -> 1 `i F5802 `ui `uc ]
 [; ;sevenseg.c: 46: PORTA = 0x00;
 "46
 [e = _PORTA -> -> 0 `i `uc ]
 [; ;sevenseg.c: 47: digitPointer = (unsigned)((digitPointer >= 2) ? 0 : digitPointer + 1);
 "47
-[e = F5791 -> -> ? >= -> F5791 `i -> 2 `i : -> 0 `i + -> F5791 `i -> 1 `i `ui `uc ]
+[e = F5802 -> -> ? >= -> F5802 `i -> 2 `i : -> 0 `i + -> F5802 `i -> 1 `i `ui `uc ]
 [; ;sevenseg.c: 49: if (numberToDisplay > 999) {
 "49
 [e $ ! > _numberToDisplay -> -> 999 `i `ui 619  ]
@@ -5527,7 +5534,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;sevenseg.c: 53: digitsToDisplay[i] = parseNumber(numberToDisplay, i);
 "53
-[e = *U + &U F5792 * -> _i `ux -> -> # *U &U F5792 `ui `ux ( _parseNumber (2 , _numberToDisplay _i ]
+[e = *U + &U F5803 * -> _i `ux -> -> # *U &U F5803 `ui `ux ( _parseNumber (2 , _numberToDisplay _i ]
 "54
 }
 "52
@@ -5539,10 +5546,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 54: }
 [; ;sevenseg.c: 55: PORTC |= (unsigned)(1 << digitPointer);
 "55
-[e =| _PORTC -> -> << -> 1 `i F5791 `ui `uc ]
+[e =| _PORTC -> -> << -> 1 `i F5802 `ui `uc ]
 [; ;sevenseg.c: 56: PORTA = (sevenSegCharacters[digitsToDisplay[digitPointer]]);
 "56
-[e = _PORTA *U + &U _sevenSegCharacters * -> *U + &U F5792 * -> F5791 `ux -> -> # *U &U F5792 `ui `ux `ux -> -> # *U &U _sevenSegCharacters `ui `ux ]
+[e = _PORTA *U + &U _sevenSegCharacters * -> *U + &U F5803 * -> F5802 `ux -> -> # *U &U F5803 `ui `ux `ux -> -> # *U &U _sevenSegCharacters `ui `ux ]
 [; ;sevenseg.c: 57: }
 "57
 [e :UE 618 ]

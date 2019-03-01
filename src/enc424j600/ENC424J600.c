@@ -709,11 +709,11 @@ void static ENC424J600_disableAutoMACInsertion() {
 }
 
 void static ENC424J600_enableReception() {
-    ENC424J600_writeSingleByte(DISABLERX);
+    ENC424J600_writeSingleByte(ENABLERX);
 }
 
 void static ENC424J600_disableReception() {
-    ENC424J600_writeSingleByte(ENABLERX);
+    ENC424J600_writeSingleByte(DISABLERX);
 }
 
 void static ENC424J600_enable() {

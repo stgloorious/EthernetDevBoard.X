@@ -187,8 +187,11 @@ macaddress_t destination;
 
 # 40 "src/stack/protocols/../protocols/ipv4Types.h"
 typedef enum ipv4_protocols {
-IPv4_PROTOCOL_ICMP = 0x01
-}ipv4_protocol_t;
+IPv4_PROTOCOL_ICMP = 1,
+IPv4_PROTOCOL_TCP = 6,
+IPv4_PROTOCOL_UDP = 17
+
+} ipv4_protocol_t;
 
 typedef struct ipv4_address {
 uint8_t address[4];
@@ -196,45 +199,51 @@ uint8_t address[4];
 
 typedef struct ipv4_header {
 
-# 53
+# 56
 uint8_t version;
 uint8_t headerLength;
 
-# 61
+# 64
 uint8_t dscp;
 uint8_t ecn;
 
-# 69
+# 72
 uint16_t totalLength;
 
-# 76
+# 79
 uint16_t identification;
 
-# 83
+# 86
 uint8_t flags;
 uint16_t fragmentOffset;
 
-# 91
+# 94
 uint8_t timeToLive;
 
-# 98
+# 101
 ipv4_protocol_t protocol;
 
-# 105
+# 108
 uint16_t checksum;
 
-# 112
+# 115
 ipv4_address_t source;
 
-# 119
+# 122
 ipv4_address_t destination;
 
 
 } ipv4_header_t;
 
 typedef struct ipv4_packet {
+
+# 131
 ipv4_header_t ipv4Header;
+
+# 135
 memoryField_t memory;
+
+# 139
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
@@ -7123,9 +7132,12 @@ char *macToString(macaddress_t addr);
 char *etherTypeToString(etherType_t ethertype);
 
 # 91
-char *ipAdressToString(ipv4_address_t ip);
+char *ipProtocolToString(ipv4_protocol_t protocol);
 
 # 98
+char *ipAdressToString(ipv4_address_t ip);
+
+# 105
 char *arpEntryToString(ARP_tableEntry_t table);
 
 # 47 "src/stack/protocols/../protocols/arp.h"
@@ -7191,25 +7203,37 @@ void ipv4_txFrameRequest(ipv4_packet_t *packet);
 # 50
 void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 
-# 58
-void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
+# 57
+bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
 
 # 65
-void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
+void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
 
 # 72
-error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
+void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
 
 # 79
+error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
+
+# 86
 void ipv4_handleNewPacket(ethernetFrame_t *frame);
 
-# 94
+# 93
+ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
+
+# 99
+ipv4_address_t ipv4_getIPSourceAddress();
+
+# 105
+void ipv4_setIPSourceAddress(ipv4_address_t ip);
+
+# 120
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 
-# 101
+# 127
 bool_t ipv4_isAllZero(ipv4_address_t *ip);
 
-# 107
+# 133
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
 # 26 "src/stack/protocols/ipv4.c"
@@ -7242,10 +7266,6 @@ uint32_t static oldTime = 0;
 if (ARP_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
 
 ipPacket.ethernet.destination = ARP_getEntryFromTable(index);
-UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
-UARTTransmitText(" is at ");
-UARTTransmitText(macToString(ipPacket.ethernet.destination));
-UARTTransmitText(".\n\r");
 
 ipPacket.ethernet.source = ethernetController_getMacAddress();
 
@@ -7278,22 +7298,10 @@ uint16_t remainingLength;
 
 
 
-uint16_t static dataPointer = 0;
-
-if (dataPointer == ethernetPacketLength - 1) {
-dataPointer = 0;
-} else {
-dataPointer++;
-}
+ethernetController_streamToTransmitBuffer(data, packet.memory);
 }
 
 void ipv4_calculateHeaderChecksum(ipv4_header_t * header) {
-header->headerLength = 5;
-header->dscp = 0;
-header->ecn = 0;
-header->flags = 0x00;
-header->fragmentOffset = 0x00;
-header->identification = 0x00;
 
 uint32_t sum = 0;
 sum = ((header->version << 12) | (header->headerLength << 8) | (header->dscp << 2) | (header->ecn))&0xffff;
@@ -7337,11 +7345,106 @@ void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
 }
 
 void ipv4_handleNewPacket(ethernetFrame_t *frame) {
-UARTTransmitText("[PACKET DROPPED]");
+ipv4_header_t ip;
+memoryField_t headerField;
+if (frame->ethertype != ETHERTYPE_IPv4) {
 ethernetController_dropPacket(frame);
+return;
+}
+headerField = frame->memory;
+headerField.start = frame->memory.start + 22;
+
+ip = ipv4_parseHeader(&headerField);
+UARTTransmitText("[");
+UARTTransmitText(ipAdressToString(ip.source));
+UARTTransmitText(" -> ");
+UARTTransmitText(ipAdressToString(ip.destination));
+UARTTransmitText("][");
+UARTTransmitText((ipProtocolToString(ip.protocol)));
+UARTTransmitText("][");
+UARTTransmitText(intToString(ip.totalLength));
+UARTTransmitText("][");
+UARTTransmitText(intToString(ip.version));
+UARTTransmitText(", ");
+UARTTransmitText(intToString(ip.headerLength));
+UARTTransmitText("]");
+if (!ipv4_checkHeaderChecksum(&ip))
+UARTTransmitText("[INVALID CHECKSUM]");
+
+
+ethernetController_dropPacket(frame);
+
+# 165
 }
 
-# 170
+ipv4_header_t static ipv4_parseHeader(memoryField_t *field) {
+ipv4_header_t ip;
+uint8_t temp;
+
+ethernetController_streamFromRXBuffer(0, field->start);
+
+temp = ethernetController_streamFromRXBuffer(1, field->start);
+ip.version = (temp & 0xf0) >> 4;
+ip.headerLength = temp & 0x0f;
+
+temp = ethernetController_streamFromRXBuffer(1, field->start);
+ip.dscp = (temp & 0x1f);
+ip.ecn = (temp & 0xC0) >> 6;
+
+ip.totalLength = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+ip.totalLength |= ethernetController_streamFromRXBuffer(1, field->start);
+
+ip.identification = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+ip.identification |= ethernetController_streamFromRXBuffer(1, field->start);
+
+temp = ethernetController_streamFromRXBuffer(1, field->start);
+ip.flags = ((temp & 0xC0) >> 6);
+ip.fragmentOffset = ((temp & 0x1f) << 8);
+
+ip.fragmentOffset |= ethernetController_streamFromRXBuffer(1, field->start);
+
+ip.timeToLive = ethernetController_streamFromRXBuffer(1, field->start);
+
+ip.protocol = ethernetController_streamFromRXBuffer(1, field->start);
+
+ip.checksum = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+ip.checksum |= ethernetController_streamFromRXBuffer(1, field->start);
+
+for (uint8_t i = 0; i < 4; i++)
+ip.source.address[i] = ethernetController_streamFromRXBuffer(1, field->start);
+
+for (uint8_t i = 0; i < 4; i++)
+ip.destination.address[i] = ethernetController_streamFromRXBuffer(1, field->start);
+
+ethernetController_streamFromRXBuffer(2, field->start);
+
+return ip;
+}
+
+bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header) {
+ipv4_header_t testHeader;
+testHeader = *header;
+testHeader.checksum = 0x0000;
+ipv4_calculateHeaderChecksum(&testHeader);
+if (testHeader.checksum == header->checksum) {
+return 1;
+}
+UARTTransmitText("[Expected ");
+UARTTransmitText(hexToString(testHeader.checksum));
+UARTTransmitText(", got ");
+UARTTransmitText(hexToString(header->checksum));
+UARTTransmitText("]");
+return 0;
+}
+
+ipv4_address_t ipv4_getIPSourceAddress() {
+return sourceIPAddress;
+}
+
+void ipv4_setIPSourceAddress(ipv4_address_t ip) {
+sourceIPAddress = ip;
+}
+
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t * b) {
 for (uint8_t i = 0; i < 4; i++) {
 if (a->address[i] != b->address[i])
