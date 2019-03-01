@@ -37,13 +37,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S5 `ui 1 `S4 1 `S4 1 `E91 1 `S3 1 `S2 1 ]
 [n S5 ethernetFrame length source destination ethertype memory receiveStatusVector ]
 "26 src/stack/backgroundTasks.c
-[c E212 1 .. ]
-[n E212 ipv4_protocols IPv4_PROTOCOL_ICMP  ]
+[c E211 1 .. ]
+[n E211 ipv4_protocols IPv4_PROTOCOL_ICMP  ]
 "44 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h
 [s S8 `uc -> 4 `i ]
 [n S8 ipv4_address address ]
 "48
-[s S9 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `uc 1 `E212 1 `ui 1 `S8 1 `S8 1 ]
+[s S9 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `uc 1 `E211 1 `ui 1 `S8 1 `S8 1 ]
 [n S9 ipv4_header version headerLength dscp ecn totalLength identification flags fragmentOffset timeToLive protocol checksum source destination ]
 "124
 [s S10 `S9 1 `S3 1 `S5 1 ]
@@ -51,9 +51,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "41 src/stack/../stack/../stack/protocols/../stack.h
 [s S616 `S6 1 `VS615 1 `S5 1 `S10 1 ]
 [n S616 stack ethernet background newReceivedFrame pendingPacketToSend ]
-"171 src/stack/../stack/../eth/ethernetController.h
+"166 src/stack/../stack/../eth/ethernetController.h
 [v _ethernetController_pollInterruptFlags `(S7 ~T0 @X0 0 ef ]
-"280
+"279
 [v _ethernetController_newPacketAvailable `(uc ~T0 @X0 0 ef ]
 "64 src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernet.h
 [v _ethernet_rxGetNewFrame `(S1 ~T0 @X0 0 ef1`*S5 ]
@@ -66,18 +66,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _UARTTransmitText `(v ~T0 @X0 0 ef1`*Cuc ]
 "91
 [v _ipAdressToString `(*uc ~T0 @X0 0 ef1`S8 ]
-"157 src/stack/../stack/../eth/ethernetController.h
+"152 src/stack/../stack/../eth/ethernetController.h
 [v _ethernetController_updateLinkStatus `(v ~T0 @X0 0 ef1`*S6 ]
-"318
-[v _ethernetController_setLEDStatus `(v ~T0 @X0 0 ef2`uc`uc ]
 "53 src/stack/backgroundTasks.c
 [c E151 0 1 .. ]
 [n E151 LEDs LEDA LEDB  ]
-[c E154 0 1 2 .. ]
-[n E154 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
-"325 src/stack/../stack/../eth/ethernetController.h
-[v _ethernetController_setLEDConfiguration `(v ~T0 @X0 0 ef2`uc`uc ]
-"177
+[c E155 0 1 2 .. ]
+[n E155 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
+"324 src/stack/../stack/../eth/ethernetController.h
+[v _ethernetController_setLEDConfig `(v ~T0 @X0 0 ef2`E151`E155 ]
+"172
 [v _ethernetController_clearInterruptFlag `(v ~T0 @X0 0 ef1`uc ]
 "59 src/stack/backgroundTasks.c
 [c E139 0 1 2 3 5 6 11 12 13 14 .. ]
@@ -234,47 +232,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt.h: 65: HASHIF = 13,
 [; ;interrupt.h: 66: MODEXIF = 14
 [; ;interrupt.h: 67: } interruptFlagName_t;
-[; ;ethernetController.h: 52: enum LEDs {
+[; ;ethernetController.h: 52: typedef enum LEDs {
 [; ;ethernetController.h: 53: LEDA, LEDB
-[; ;ethernetController.h: 54: };
-[; ;ethernetController.h: 60: enum LEDStates {
+[; ;ethernetController.h: 54: } LEDs_t;
+[; ;ethernetController.h: 60: typedef enum LEDStates {
 [; ;ethernetController.h: 61: LED_ON,
 [; ;ethernetController.h: 62: LED_OFF,
 [; ;ethernetController.h: 63: LED_TRANSMIT_RECEIVE_EVENTS
-[; ;ethernetController.h: 64: };
+[; ;ethernetController.h: 64: } LEDStates_t;
 [; ;ethernetController.h: 84: error_t ethernetController_init();
-[; ;ethernetController.h: 98: void ethernetController_enableEthernet();
-[; ;ethernetController.h: 104: void ethernetController_disableEthernet();
-[; ;ethernetController.h: 110: void ethernetController_enableTransmission();
-[; ;ethernetController.h: 116: void ethernetController_disableTransmission();
-[; ;ethernetController.h: 121: void ethernetController_enableReception();
-[; ;ethernetController.h: 127: void ethernetController_disableReception();
-[; ;ethernetController.h: 133: error_t ethernetController_softReset();
-[; ;ethernetController.h: 139: error_t ethernetController_checkDeviceId();
-[; ;ethernetController.h: 145: uint8_t ethernetController_getSiliconRevision();
-[; ;ethernetController.h: 151: uint8_t *ethernetController_getDeviceName();
-[; ;ethernetController.h: 157: void ethernetController_updateLinkStatus(ethernetConnection_t *state);
-[; ;ethernetController.h: 163: uint16_t ethernetController_getMTU();
-[; ;ethernetController.h: 171: interruptFlags_t ethernetController_pollInterruptFlags();
-[; ;ethernetController.h: 177: void ethernetController_clearInterruptFlag(uint8_t flag);
-[; ;ethernetController.h: 191: void ethernetController_sendPacket(memoryField_t field);
-[; ;ethernetController.h: 199: void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len);
-[; ;ethernetController.h: 205: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
-[; ;ethernetController.h: 211: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
-[; ;ethernetController.h: 227: void ethernetController_dropPacket(ethernetFrame_t *frame);
-[; ;ethernetController.h: 233: void ethernetController_updateNextPacketPointer();
-[; ;ethernetController.h: 247: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
-[; ;ethernetController.h: 254: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
-[; ;ethernetController.h: 261: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
-[; ;ethernetController.h: 268: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
-[; ;ethernetController.h: 274: RSV_t ethernetController_getRSV(uint16_t address);
-[; ;ethernetController.h: 280: uint8_t ethernetController_newPacketAvailable();
-[; ;ethernetController.h: 286: uint8_t ethernetController_getCurrentPacketCount();
-[; ;ethernetController.h: 292: uint16_t ethernetController_getNextPacketPointer();
-[; ;ethernetController.h: 298: macaddress_t ethernetController_getMacAddress();
-[; ;ethernetController.h: 304: void ethernetController_setMacAddress(macaddress_t mac);
-[; ;ethernetController.h: 318: void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
-[; ;ethernetController.h: 325: void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
+[; ;ethernetController.h: 97: void ethernetController_enableEthernet();
+[; ;ethernetController.h: 102: void ethernetController_disableEthernet();
+[; ;ethernetController.h: 107: void ethernetController_enableTransmission();
+[; ;ethernetController.h: 112: void ethernetController_disableTransmission();
+[; ;ethernetController.h: 117: void ethernetController_enableReception();
+[; ;ethernetController.h: 122: void ethernetController_disableReception();
+[; ;ethernetController.h: 128: error_t ethernetController_softReset();
+[; ;ethernetController.h: 134: error_t ethernetController_checkDeviceId();
+[; ;ethernetController.h: 140: uint8_t ethernetController_getSiliconRevision();
+[; ;ethernetController.h: 146: uint8_t *ethernetController_getDeviceName();
+[; ;ethernetController.h: 152: void ethernetController_updateLinkStatus(ethernetConnection_t *state);
+[; ;ethernetController.h: 158: uint16_t ethernetController_getMTU();
+[; ;ethernetController.h: 166: interruptFlags_t ethernetController_pollInterruptFlags();
+[; ;ethernetController.h: 172: void ethernetController_clearInterruptFlag(uint8_t flag);
+[; ;ethernetController.h: 186: void ethernetController_sendPacket(memoryField_t field);
+[; ;ethernetController.h: 198: void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
+[; ;ethernetController.h: 204: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
+[; ;ethernetController.h: 210: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
+[; ;ethernetController.h: 226: void ethernetController_dropPacket(ethernetFrame_t *frame);
+[; ;ethernetController.h: 232: void ethernetController_updateNextPacketPointer();
+[; ;ethernetController.h: 246: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+[; ;ethernetController.h: 253: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
+[; ;ethernetController.h: 260: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
+[; ;ethernetController.h: 267: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
+[; ;ethernetController.h: 273: RSV_t ethernetController_getRSV(uint16_t address);
+[; ;ethernetController.h: 279: uint8_t ethernetController_newPacketAvailable();
+[; ;ethernetController.h: 285: uint8_t ethernetController_getCurrentPacketCount();
+[; ;ethernetController.h: 291: uint16_t ethernetController_getNextPacketPointer();
+[; ;ethernetController.h: 297: macaddress_t ethernetController_getMacAddress();
+[; ;ethernetController.h: 303: void ethernetController_setMacAddress(macaddress_t mac);
+[; ;ethernetController.h: 324: void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 0x01
 [; ;ipv4Types.h: 42: }ipv4_protocol_t;
@@ -5351,15 +5348,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 98: char *arpEntryToString(ARP_tableEntry_t table);
 [; ;arp.h: 47: void ARP_initTable();
 [; ;arp.h: 55: void ARP_handleNewPacket(ethernetFrame_t *frame);
-[; ;arp.h: 63: ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame);
+[; ;arp.h: 63: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
 [; ;arp.h: 70: void ARP_replyIfNeeded(ARP_message_t request);
-[; ;arp.h: 77: void ARP_send(ARP_message_t arp);
+[; ;arp.h: 77: void static ARP_send(ARP_message_t arp);
 [; ;arp.h: 84: void ARP_sendRequest(ipv4_address_t ip);
 [; ;arp.h: 93: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
 [; ;arp.h: 101: macaddress_t ARP_getEntryFromTable(uint8_t index);
-[; ;arp.h: 110: void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 118: macaddress_t ARP_resolveAddress(ipv4_address_t ip);
-[; ;arp.h: 125: void printArpTable();
+[; ;arp.h: 110: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 117: void printArpTable();
 [; ;backgroundTasksTypes.h: 37: typedef struct backgroundTaskHandler {
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
@@ -5461,24 +5457,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 "52
 [e $ ! == -> . . *U _stack 0 0 `i -> . `E100 1 `i 624  ]
 {
-[; ;backgroundTasks.c: 53: ethernetController_setLEDStatus(LEDA, LED_ON);
+[; ;backgroundTasks.c: 53: ethernetController_setLEDConfig(LEDA, LED_ON);
 "53
-[e ( _ethernetController_setLEDStatus (2 , -> . `E151 0 `uc -> . `E154 0 `uc ]
-[; ;backgroundTasks.c: 54: ethernetController_setLEDConfiguration(LEDB, LED_TRANSMIT_RECEIVE_EVENTS);
+[e ( _ethernetController_setLEDConfig (2 , . `E151 0 . `E155 0 ]
+[; ;backgroundTasks.c: 54: ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS);
 "54
-[e ( _ethernetController_setLEDConfiguration (2 , -> . `E151 1 `uc -> . `E154 2 `uc ]
+[e ( _ethernetController_setLEDConfig (2 , . `E151 1 . `E155 2 ]
 "55
 }
 [; ;backgroundTasks.c: 55: } else {
 [e $U 625  ]
 [e :U 624 ]
 {
-[; ;backgroundTasks.c: 56: ethernetController_setLEDStatus(LEDA, LED_OFF);
+[; ;backgroundTasks.c: 56: ethernetController_setLEDConfig(LEDA, LED_OFF);
 "56
-[e ( _ethernetController_setLEDStatus (2 , -> . `E151 0 `uc -> . `E154 1 `uc ]
-[; ;backgroundTasks.c: 57: ethernetController_setLEDStatus(LEDB, LED_OFF);
+[e ( _ethernetController_setLEDConfig (2 , . `E151 0 . `E155 1 ]
+[; ;backgroundTasks.c: 57: ethernetController_setLEDConfig(LEDB, LED_OFF);
 "57
-[e ( _ethernetController_setLEDStatus (2 , -> . `E151 1 `uc -> . `E154 1 `uc ]
+[e ( _ethernetController_setLEDConfig (2 , . `E151 1 . `E155 1 ]
 "58
 }
 [e :U 625 ]

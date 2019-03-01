@@ -6866,115 +6866,112 @@ MODEXIF = 14
 } interruptFlagName_t;
 
 # 52 "src/enc424j600/../enc424j600/../eth/ethernetController.h"
-enum LEDs {
+typedef enum LEDs {
 LEDA, LEDB
-};
+} LEDs_t;
 
 # 60
-enum LEDStates {
+typedef enum LEDStates {
 LED_ON,
 LED_OFF,
 LED_TRANSMIT_RECEIVE_EVENTS
-};
+} LEDStates_t;
 
 # 84
 error_t ethernetController_init();
 
-# 98
+# 97
 void ethernetController_enableEthernet();
 
-# 104
+# 102
 void ethernetController_disableEthernet();
 
-# 110
+# 107
 void ethernetController_enableTransmission();
 
-# 116
+# 112
 void ethernetController_disableTransmission();
 
-# 121
+# 117
 void ethernetController_enableReception();
 
-# 127
+# 122
 void ethernetController_disableReception();
 
-# 133
+# 128
 error_t ethernetController_softReset();
 
-# 139
+# 134
 error_t ethernetController_checkDeviceId();
 
-# 145
+# 140
 uint8_t ethernetController_getSiliconRevision();
 
-# 151
+# 146
 uint8_t *ethernetController_getDeviceName();
 
-# 157
+# 152
 void ethernetController_updateLinkStatus(ethernetConnection_t *state);
 
-# 163
+# 158
 uint16_t ethernetController_getMTU();
 
-# 171
+# 166
 interruptFlags_t ethernetController_pollInterruptFlags();
 
-# 177
+# 172
 void ethernetController_clearInterruptFlag(uint8_t flag);
 
-# 191
+# 186
 void ethernetController_sendPacket(memoryField_t field);
 
-# 199
-void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len);
+# 198
+void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
 
-# 205
+# 204
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 
-# 211
+# 210
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
-# 227
+# 226
 void ethernetController_dropPacket(ethernetFrame_t *frame);
 
-# 233
+# 232
 void ethernetController_updateNextPacketPointer();
 
-# 247
+# 246
 uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
 
-# 254
+# 253
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 261
+# 260
 macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 268
+# 267
 etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 274
+# 273
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 280
+# 279
 uint8_t ethernetController_newPacketAvailable();
 
-# 286
+# 285
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 292
+# 291
 uint16_t ethernetController_getNextPacketPointer();
 
-# 298
+# 297
 macaddress_t ethernetController_getMacAddress();
 
-# 304
+# 303
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 318
-void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
-
-# 325
-void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
+# 324
+void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 
 # 61 "src/enc424j600/../enc424j600/../mem/memoryController.h"
 memoryField_t memory_txFrameRequest(uint16_t length);
@@ -7042,22 +7039,31 @@ void static ENC424J600_setRXBufferStartAddress(uint16_t addr);
 # 234
 void static ENC424J600_setRXTailPointer(uint16_t addr);
 
-# 247
+# 249
+void static ENC424J600_enable();
+
+# 255
+void static ENC424J600_enable();
+
+# 260
 void static ENC424J600_enableReception();
 
-# 252
+# 267
+void static ENC424J600_disableReception();
+
+# 272
 void static ENC424J600_enableAutoMACInsertion();
 
-# 257
+# 277
 void static ENC424J600_disableAutoMACInsertion();
 
-# 274
+# 294
 uint16_t ENC424J600_getInterruptFlags();
 
-# 282
+# 302
 void static ENC424J600_clearInterruptFlag(uint8_t flag);
 
-# 299
+# 319
 RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv);
 
 # 40 "src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h"
@@ -7180,13 +7186,13 @@ void ARP_initTable();
 void ARP_handleNewPacket(ethernetFrame_t *frame);
 
 # 63
-ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame);
+ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
 
 # 70
 void ARP_replyIfNeeded(ARP_message_t request);
 
 # 77
-void ARP_send(ARP_message_t arp);
+void static ARP_send(ARP_message_t arp);
 
 # 84
 void ARP_sendRequest(ipv4_address_t ip);
@@ -7198,12 +7204,9 @@ uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
 macaddress_t ARP_getEntryFromTable(uint8_t index);
 
 # 110
-void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
-# 118
-macaddress_t ARP_resolveAddress(ipv4_address_t ip);
-
-# 125
+# 117
 void printArpTable();
 
 # 37 "src/enc424j600/../system/../stack/protocols/../../stack/backgroundTasksTypes.h"
@@ -7290,8 +7293,10 @@ char *ipAdressToString(ipv4_address_t ip);
 # 98
 char *arpEntryToString(ARP_tableEntry_t table);
 
-# 28 "src/enc424j600/ENC424J600.c"
+# 29 "src/enc424j600/ENC424J600.c"
 static uint16_t nextPacketPointer = 0x0000;
+
+
 
 error_t ethernetController_init() {
 error_t err;
@@ -7305,13 +7310,12 @@ if (err.code != (uint16_t)0) {
 
 }
 
-# 59
+# 62
 ENC424J600_setRXBufferStartAddress(0x3000);
 ENC424J600_setNextPacketPointer(0x3000);
 ENC424J600_setRXTailPointer(0x5FFE);
 
 ENC424J600_enableReception();
-
 ENC424J600_enableAutoMACInsertion();
 
 err.module = ERROR_MODULE_ETHERNET_CONTROLLER;
@@ -7321,7 +7325,7 @@ return err;
 
 error_t ethernetController_softReset() {
 
-# 90
+# 92
 uint8_t comFailCount = 0;
 uint8_t dataToSend[2] = {0x12, 0x34};
 uint8_t receivedData[2] = {0, 0};
@@ -7418,6 +7422,22 @@ void ethernetController_enableReception() {
 ENC424J600_enableReception();
 }
 
+void ethernetController_disableReception() {
+ENC424J600_disableReception();
+}
+
+void ethernetController_enableTransmission() {
+
+}
+
+void ethernetController_enableEthernet() {
+
+}
+
+void ethernetController_disableEthernet() {
+
+}
+
 void ethernetController_sendPacket(memoryField_t field) {
 ENC424J600_setTXStartAddress(field.start);
 ENC424J600_setTXLength(field.length);
@@ -7425,12 +7445,11 @@ ENC424J600_writeSingleByte(0b11010100);
 memory_txFrameClear(field.index);
 }
 
-void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len) {
+void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field) {
 uint8_t opcode;
 uint16_t static pointer = 0;
 if (pointer == 0) {
-
-# 206
+ENC424J600_setGPDATAWritePointer(field.start);
 opcode = 0x2A;
 PORTBbits.RB4=0;
 ENC424J600_writeSPI(&opcode);
@@ -7438,7 +7457,7 @@ ENC424J600_writeSPI(&opcode);
 
 ENC424J600_writeSPI(&data);
 
-if (pointer == len - 1) {
+if (pointer == field.length - 1) {
 PORTBbits.RB4=1;
 pointer = 0;
 } else {
@@ -7599,7 +7618,7 @@ return 0;
 
 void ethernetController_dropPacket(ethernetFrame_t *frame) {
 
-# 387
+# 397
 if (ethernetController_getNextPacketPointer() == 0x3000) {
 ENC424J600_setRXTailPointer(0x5FFF - 1);
 } else {
@@ -7637,32 +7656,8 @@ state->duplex = HALF_DUPLEX;
 }
 }
 
-void ethernetController_setLEDStatus(uint8_t LED, uint8_t status) {
-uint8_t data;
-ENC424J600_readControlRegisterUnbanked(0x15 + 0x60, &data);
-if (LED == LEDB) {
-
-if (status == LED_ON) {
-data &= ~0x0f;
-} else if (status == LED_OFF) {
-
-data &= ~0x0f;
-data |= 0x01;
-}
-} else if (LED == LEDA) {
-
-if (status == LED_ON) {
-data &= ~(0x0f << 4);
-} else if (status == LED_OFF) {
-
-data &= ~(0x0f << 4);
-data |= (0x01 << 4);
-}
-}
-ENC424J600_writeControlRegisterUnbanked(0x15 + 0x60, &data);
-}
-
-void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf) {
+# 459
+void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf) {
 uint8_t data;
 ENC424J600_readControlRegisterUnbanked(0x15 + 0x60, &data);
 if (LED == LEDB) {
@@ -7710,9 +7705,114 @@ return ENC424J600_getNextPacketPointer();
 
 
 
-void static ENC424J600_enableReception() {
-ENC424J600_writeSingleByte(0b11101000);
+
+void static ENC424J600_initSPI() {
+SSP1CON1bits.SSPEN = 0;
+SSP1STATbits.CKE = 1;
+
+TRISBbits.TRISB0 = 1;
+ANSELBbits.ANSB0 = 0;
+TRISBbits.TRISB1 = 0;
+ANSELBbits.ANSB1 = 0;
+TRISBbits.TRISB3 = 0;
+ANSELBbits.ANSB3 = 0;
+TRISBbits.TRISB4 = 0;
+ANSELBbits.ANSB4 = 0;
+PORTBbits.RB4=1;
+SSP1CON1bits.SSPEN = 1;
 }
+
+
+
+void static ENC424J600_writeSPI(uint8_t *data) {
+
+uint32_t timeoutCounter = 0;
+SSP1BUF = *data;
+while ((!SSP1STATbits.BF) && (timeoutCounter++ < 0xfff));
+if (timeoutCounter >= 0xfff) {
+PORTBbits.RB4=1;
+ENC424J600_initSPI();
+return;
+}
+}
+
+void static ENC424J600_readSPI(uint8_t *data) {
+
+uint32_t timeoutCounter = 0;
+SSP1BUF = 0x00;
+while ((!SSP1STATbits.BF) && (timeoutCounter++ < 0xfff));
+if (timeoutCounter >= 0xfff) {
+PORTBbits.RB4=1;
+ENC424J600_initSPI();
+return;
+}
+*data = SSP1BUF;
+}
+
+void static ENC424J600_writeSingleByte(uint8_t opcode) {
+PORTBbits.RB4=0;
+ENC424J600_writeSPI(&opcode);
+PORTBbits.RB4=1;
+}
+
+void static ENC424J600_writeControlRegisterUnbanked(uint8_t addr, uint8_t *data) {
+uint8_t opcode = 0x22;
+PORTBbits.RB4=0;
+ENC424J600_writeSPI(&opcode);
+ENC424J600_writeSPI(&addr);
+ENC424J600_writeSPI(data);
+PORTBbits.RB4=1;
+}
+
+void static ENC424J600_readControlRegisterUnbanked(uint8_t addr, uint8_t *data) {
+uint8_t opcode = 0x20;
+PORTBbits.RB4=0;
+ENC424J600_writeSPI(&opcode);
+ENC424J600_writeSPI(&addr);
+ENC424J600_readSPI(data);
+PORTBbits.RB4=1;
+}
+
+
+
+void static ENC424J600_readPHYRegister(uint8_t addr, uint16_t *data) {
+
+uint8_t PHYaddress = addr & 0x1F;
+uint8_t unusedBits = 0x01;
+uint8_t temp;
+uint8_t lowByte;
+uint8_t highByte;
+uint32_t timeoutCounter = 0;
+
+ENC424J600_writeControlRegisterUnbanked(0x14 + 0x40, &PHYaddress);
+ENC424J600_writeControlRegisterUnbanked(0x15 + 0x40, &unusedBits);
+
+
+ENC424J600_readControlRegisterUnbanked(0x12 + 0x40, &temp);
+temp |= 0x01;
+ENC424J600_writeControlRegisterUnbanked(0x12 + 0x40, &temp);
+
+_delay((unsigned long)((26)*(32000000UL/4000000.0)));
+
+do {
+ENC424J600_readControlRegisterUnbanked(0x0A + 0x60, &temp);
+timeoutCounter++;
+} while ((temp & 0x01) && (timeoutCounter < 0xfff));
+if (timeoutCounter >= 0xfff)
+return;
+
+
+ENC424J600_readControlRegisterUnbanked(0x12 + 0x40, &temp);
+temp &= ~0x01;
+ENC424J600_writeControlRegisterUnbanked(0x12 + 0x40, &temp);
+
+
+ENC424J600_readControlRegisterUnbanked(0x08 + 0x60, &lowByte);
+ENC424J600_readControlRegisterUnbanked(0x09 + 0x60, &highByte);
+*data = (lowByte | ((highByte << 8)&0xff00));
+}
+
+
 
 void static ENC424J600_setTXLength(uint16_t len) {
 uint8_t lowByte = len & 0x00ff;
@@ -7720,6 +7820,24 @@ uint8_t highByte = len >> 8;
 ENC424J600_writeControlRegisterUnbanked(0x02 + 0x00, &lowByte);
 ENC424J600_writeControlRegisterUnbanked(0x03 + 0x00, &highByte);
 }
+
+
+
+void static ENC424J600_setNextPacketPointer(uint16_t ptr) {
+nextPacketPointer = ptr;
+}
+
+uint16_t static ENC424J600_getNextPacketPointer() {
+return nextPacketPointer;
+}
+
+uint8_t static ENC424J600_getPacketCount() {
+uint8_t lowByte = 0;
+ENC424J600_readControlRegisterUnbanked(0x1A + 0x00, &lowByte);
+return (uint32_t) lowByte;
+}
+
+
 
 void static ENC424J600_setTXStartAddress(uint16_t addr) {
 uint8_t lowByte = addr & 0xff;
@@ -7775,19 +7893,7 @@ ENC424J600_writeControlRegisterUnbanked(0x06 + 0x00, &lowByte);
 ENC424J600_writeControlRegisterUnbanked(0x07 + 0x00, &highByte);
 }
 
-void static ENC424J600_setNextPacketPointer(uint16_t ptr) {
-nextPacketPointer = ptr;
-}
 
-uint16_t static ENC424J600_getNextPacketPointer() {
-return nextPacketPointer;
-}
-
-uint8_t static ENC424J600_getPacketCount() {
-uint8_t lowByte = 0;
-ENC424J600_readControlRegisterUnbanked(0x1A + 0x00, &lowByte);
-return (uint32_t) lowByte;
-}
 
 void static ENC424J600_enableAutoMACInsertion() {
 uint8_t temp = 0;
@@ -7803,107 +7909,29 @@ temp &= ~(1 << 5);
 ENC424J600_writeControlRegisterUnbanked(0x0F + 0x60, &temp);
 }
 
-void static ENC424J600_writeControlRegisterUnbanked(uint8_t addr, uint8_t *data) {
-uint8_t opcode = 0x22;
-PORTBbits.RB4=0;
-ENC424J600_writeSPI(&opcode);
-ENC424J600_writeSPI(&addr);
-ENC424J600_writeSPI(data);
-PORTBbits.RB4=1;
+void static ENC424J600_enableReception() {
+ENC424J600_writeSingleByte(0b11101010);
 }
 
-void static ENC424J600_readControlRegisterUnbanked(uint8_t addr, uint8_t *data) {
-uint8_t opcode = 0x20;
-PORTBbits.RB4=0;
-ENC424J600_writeSPI(&opcode);
-ENC424J600_writeSPI(&addr);
-ENC424J600_readSPI(data);
-PORTBbits.RB4=1;
+void static ENC424J600_disableReception() {
+ENC424J600_writeSingleByte(0b11101000);
 }
 
-void static ENC424J600_initSPI() {
-SSP1CON1bits.SSPEN = 0;
-SSP1STATbits.CKE = 1;
-
-TRISBbits.TRISB0 = 1;
-ANSELBbits.ANSB0 = 0;
-TRISBbits.TRISB1 = 0;
-ANSELBbits.ANSB1 = 0;
-TRISBbits.TRISB3 = 0;
-ANSELBbits.ANSB3 = 0;
-TRISBbits.TRISB4 = 0;
-ANSELBbits.ANSB4 = 0;
-PORTBbits.RB4=1;
-SSP1CON1bits.SSPEN = 1;
-}
-
-void static ENC424J600_writeSPI(uint8_t *data) {
-
-uint32_t timeoutCounter = 0;
-SSP1BUF = *data;
-while ((!SSP1STATbits.BF) && (timeoutCounter++ < 0xfff));
-if (timeoutCounter >= 0xfff) {
-PORTBbits.RB4=1;
-ENC424J600_initSPI();
-return;
-}
-}
-
-void static ENC424J600_readSPI(uint8_t *data) {
-
-uint32_t timeoutCounter = 0;
-SSP1BUF = 0x00;
-while ((!SSP1STATbits.BF) && (timeoutCounter++ < 0xfff));
-if (timeoutCounter >= 0xfff) {
-PORTBbits.RB4=1;
-ENC424J600_initSPI();
-return;
-}
-*data = SSP1BUF;
-}
-
-void static ENC424J600_writeSingleByte(uint8_t opcode) {
-PORTBbits.RB4=0;
-ENC424J600_writeSPI(&opcode);
-PORTBbits.RB4=1;
-}
-
-void static ENC424J600_readPHYRegister(uint8_t addr, uint16_t *data) {
-
-uint8_t PHYaddress = addr & 0x1F;
-uint8_t unusedBits = 0x01;
+void static ENC424J600_enable() {
 uint8_t temp;
-uint8_t lowByte;
-uint8_t highByte;
-uint32_t timeoutCounter = 0;
-
-ENC424J600_writeControlRegisterUnbanked(0x14 + 0x40, &PHYaddress);
-ENC424J600_writeControlRegisterUnbanked(0x15 + 0x40, &unusedBits);
-
-
-ENC424J600_readControlRegisterUnbanked(0x12 + 0x40, &temp);
-temp |= 0x01;
-ENC424J600_writeControlRegisterUnbanked(0x12 + 0x40, &temp);
-
-_delay((unsigned long)((26)*(32000000UL/4000000.0)));
-
-do {
-ENC424J600_readControlRegisterUnbanked(0x0A + 0x60, &temp);
-timeoutCounter++;
-} while ((temp & 0x01) && (timeoutCounter < 0xfff));
-if (timeoutCounter >= 0xfff)
-return;
-
-
-ENC424J600_readControlRegisterUnbanked(0x12 + 0x40, &temp);
-temp &= ~0x01;
-ENC424J600_writeControlRegisterUnbanked(0x12 + 0x40, &temp);
-
-
-ENC424J600_readControlRegisterUnbanked(0x08 + 0x60, &lowByte);
-ENC424J600_readControlRegisterUnbanked(0x09 + 0x60, &highByte);
-*data = (lowByte | ((highByte << 8)&0xff00));
+ENC424J600_readControlRegisterUnbanked(0x0F + 0x60, &temp);
+temp |= (1 << 7);
+ENC424J600_writeControlRegisterUnbanked(0x0F + 0x60, &temp);
 }
+
+void static ENC424J600_disable() {
+uint8_t temp;
+ENC424J600_readControlRegisterUnbanked(0x0F + 0x60, &temp);
+temp &= ~(1 << 7);
+ENC424J600_writeControlRegisterUnbanked(0x0F + 0x60, &temp);
+}
+
+
 
 uint16_t ENC424J600_getInterruptFlags() {
 uint8_t low, high;
@@ -7925,6 +7953,8 @@ temp &= ~(1 << flag);
 ENC424J600_writeControlRegisterUnbanked(0x1D + 0x00, &temp);
 }
 }
+
+
 
 RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv) {
 RSV_t receiveStatusVector;

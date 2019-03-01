@@ -81,13 +81,12 @@ void main() {
 
     ARP_initTable();
 
-
-    ethernetController_setLEDStatus(LEDA, LED_ON);
-    ethernetController_setLEDStatus(LEDB, LED_ON);
+    ethernetController_setLEDConfig(LEDA, LED_ON);
+    ethernetController_setLEDConfig(LEDA, LED_ON);
     __delay_ms(500);
 
-    ethernetController_setLEDStatus(LEDA, LED_OFF);
-    ethernetController_setLEDStatus(LEDB, LED_OFF);
+    ethernetController_setLEDConfig(LEDA, LED_OFF);
+    ethernetController_setLEDConfig(LEDA, LED_OFF);
 
 
     uint32_t prescaler = 0;
@@ -172,6 +171,7 @@ void main() {
                         ipv4_streamToTransmissionBuffer(1, stack.pendingPacketToSend);
                 }
                 //////////////////////////////////////////////      
+                
                 stack.background.fPacketPending = 1;
             }
         }

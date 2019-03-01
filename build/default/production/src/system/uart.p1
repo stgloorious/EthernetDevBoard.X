@@ -5284,47 +5284,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt.h: 65: HASHIF = 13,
 [; ;interrupt.h: 66: MODEXIF = 14
 [; ;interrupt.h: 67: } interruptFlagName_t;
-[; ;ethernetController.h: 52: enum LEDs {
+[; ;ethernetController.h: 52: typedef enum LEDs {
 [; ;ethernetController.h: 53: LEDA, LEDB
-[; ;ethernetController.h: 54: };
-[; ;ethernetController.h: 60: enum LEDStates {
+[; ;ethernetController.h: 54: } LEDs_t;
+[; ;ethernetController.h: 60: typedef enum LEDStates {
 [; ;ethernetController.h: 61: LED_ON,
 [; ;ethernetController.h: 62: LED_OFF,
 [; ;ethernetController.h: 63: LED_TRANSMIT_RECEIVE_EVENTS
-[; ;ethernetController.h: 64: };
+[; ;ethernetController.h: 64: } LEDStates_t;
 [; ;ethernetController.h: 84: error_t ethernetController_init();
-[; ;ethernetController.h: 98: void ethernetController_enableEthernet();
-[; ;ethernetController.h: 104: void ethernetController_disableEthernet();
-[; ;ethernetController.h: 110: void ethernetController_enableTransmission();
-[; ;ethernetController.h: 116: void ethernetController_disableTransmission();
-[; ;ethernetController.h: 121: void ethernetController_enableReception();
-[; ;ethernetController.h: 127: void ethernetController_disableReception();
-[; ;ethernetController.h: 133: error_t ethernetController_softReset();
-[; ;ethernetController.h: 139: error_t ethernetController_checkDeviceId();
-[; ;ethernetController.h: 145: uint8_t ethernetController_getSiliconRevision();
-[; ;ethernetController.h: 151: uint8_t *ethernetController_getDeviceName();
-[; ;ethernetController.h: 157: void ethernetController_updateLinkStatus(ethernetConnection_t *state);
-[; ;ethernetController.h: 163: uint16_t ethernetController_getMTU();
-[; ;ethernetController.h: 171: interruptFlags_t ethernetController_pollInterruptFlags();
-[; ;ethernetController.h: 177: void ethernetController_clearInterruptFlag(uint8_t flag);
-[; ;ethernetController.h: 191: void ethernetController_sendPacket(memoryField_t field);
-[; ;ethernetController.h: 199: void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len);
-[; ;ethernetController.h: 205: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
-[; ;ethernetController.h: 211: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
-[; ;ethernetController.h: 227: void ethernetController_dropPacket(ethernetFrame_t *frame);
-[; ;ethernetController.h: 233: void ethernetController_updateNextPacketPointer();
-[; ;ethernetController.h: 247: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
-[; ;ethernetController.h: 254: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
-[; ;ethernetController.h: 261: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
-[; ;ethernetController.h: 268: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
-[; ;ethernetController.h: 274: RSV_t ethernetController_getRSV(uint16_t address);
-[; ;ethernetController.h: 280: uint8_t ethernetController_newPacketAvailable();
-[; ;ethernetController.h: 286: uint8_t ethernetController_getCurrentPacketCount();
-[; ;ethernetController.h: 292: uint16_t ethernetController_getNextPacketPointer();
-[; ;ethernetController.h: 298: macaddress_t ethernetController_getMacAddress();
-[; ;ethernetController.h: 304: void ethernetController_setMacAddress(macaddress_t mac);
-[; ;ethernetController.h: 318: void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
-[; ;ethernetController.h: 325: void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
+[; ;ethernetController.h: 97: void ethernetController_enableEthernet();
+[; ;ethernetController.h: 102: void ethernetController_disableEthernet();
+[; ;ethernetController.h: 107: void ethernetController_enableTransmission();
+[; ;ethernetController.h: 112: void ethernetController_disableTransmission();
+[; ;ethernetController.h: 117: void ethernetController_enableReception();
+[; ;ethernetController.h: 122: void ethernetController_disableReception();
+[; ;ethernetController.h: 128: error_t ethernetController_softReset();
+[; ;ethernetController.h: 134: error_t ethernetController_checkDeviceId();
+[; ;ethernetController.h: 140: uint8_t ethernetController_getSiliconRevision();
+[; ;ethernetController.h: 146: uint8_t *ethernetController_getDeviceName();
+[; ;ethernetController.h: 152: void ethernetController_updateLinkStatus(ethernetConnection_t *state);
+[; ;ethernetController.h: 158: uint16_t ethernetController_getMTU();
+[; ;ethernetController.h: 166: interruptFlags_t ethernetController_pollInterruptFlags();
+[; ;ethernetController.h: 172: void ethernetController_clearInterruptFlag(uint8_t flag);
+[; ;ethernetController.h: 186: void ethernetController_sendPacket(memoryField_t field);
+[; ;ethernetController.h: 198: void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
+[; ;ethernetController.h: 204: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
+[; ;ethernetController.h: 210: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
+[; ;ethernetController.h: 226: void ethernetController_dropPacket(ethernetFrame_t *frame);
+[; ;ethernetController.h: 232: void ethernetController_updateNextPacketPointer();
+[; ;ethernetController.h: 246: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+[; ;ethernetController.h: 253: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
+[; ;ethernetController.h: 260: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
+[; ;ethernetController.h: 267: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
+[; ;ethernetController.h: 273: RSV_t ethernetController_getRSV(uint16_t address);
+[; ;ethernetController.h: 279: uint8_t ethernetController_newPacketAvailable();
+[; ;ethernetController.h: 285: uint8_t ethernetController_getCurrentPacketCount();
+[; ;ethernetController.h: 291: uint16_t ethernetController_getNextPacketPointer();
+[; ;ethernetController.h: 297: macaddress_t ethernetController_getMacAddress();
+[; ;ethernetController.h: 303: void ethernetController_setMacAddress(macaddress_t mac);
+[; ;ethernetController.h: 324: void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 [; ;memoryController.h: 61: memoryField_t memory_txFrameRequest(uint16_t length);
 [; ;memoryController.h: 67: void memory_txFrameClear(uint8_t index);
 [; ;memoryController.h: 75: uint8_t static checkForOverlap(memoryField_t a, memoryField_t b);
@@ -5333,15 +5332,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernet.h: 64: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
 [; ;arp.h: 47: void ARP_initTable();
 [; ;arp.h: 55: void ARP_handleNewPacket(ethernetFrame_t *frame);
-[; ;arp.h: 63: ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame);
+[; ;arp.h: 63: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
 [; ;arp.h: 70: void ARP_replyIfNeeded(ARP_message_t request);
-[; ;arp.h: 77: void ARP_send(ARP_message_t arp);
+[; ;arp.h: 77: void static ARP_send(ARP_message_t arp);
 [; ;arp.h: 84: void ARP_sendRequest(ipv4_address_t ip);
 [; ;arp.h: 93: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
 [; ;arp.h: 101: macaddress_t ARP_getEntryFromTable(uint8_t index);
-[; ;arp.h: 110: void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 118: macaddress_t ARP_resolveAddress(ipv4_address_t ip);
-[; ;arp.h: 125: void printArpTable();
+[; ;arp.h: 110: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 117: void printArpTable();
 [; ;backgroundTasksTypes.h: 37: typedef struct backgroundTaskHandler {
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
@@ -5457,7 +5455,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _val `ul ~T0 @X0 1 r1 ]
 [f ]
 "93
-[v F5780 `uc ~T0 @X0 -> 10 `i s number ]
+[v F5777 `uc ~T0 @X0 -> 10 `i s number ]
 "94
 [v _pointer `uc ~T0 @X0 1 a ]
 [; ;uart.c: 93: char static number [10];
@@ -5489,7 +5487,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 103: number[pointer++] = tenthousands + 0x30u;
 "103
-[e = *U + &U F5780 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5780 `ui `ux -> + -> _tenthousands `ui -> 48 `ui `uc ]
+[e = *U + &U F5777 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5777 `ui `ux -> + -> _tenthousands `ui -> 48 `ui `uc ]
 "104
 }
 [e :U 627 ]
@@ -5500,7 +5498,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 107: number[pointer++] = thousands + 0x30u;
 "107
-[e = *U + &U F5780 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5780 `ui `ux -> + -> _thousands `ui -> 48 `ui `uc ]
+[e = *U + &U F5777 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5777 `ui `ux -> + -> _thousands `ui -> 48 `ui `uc ]
 "108
 }
 [e :U 628 ]
@@ -5511,7 +5509,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 111: number[pointer++] = hundreds + 0x30u;
 "111
-[e = *U + &U F5780 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5780 `ui `ux -> + -> _hundreds `ui -> 48 `ui `uc ]
+[e = *U + &U F5777 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5777 `ui `ux -> + -> _hundreds `ui -> 48 `ui `uc ]
 "112
 }
 [e :U 629 ]
@@ -5522,20 +5520,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 115: number[pointer++] = tens + 0x30u;
 "115
-[e = *U + &U F5780 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5780 `ui `ux -> + -> _tens `ui -> 48 `ui `uc ]
+[e = *U + &U F5777 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5777 `ui `ux -> + -> _tens `ui -> 48 `ui `uc ]
 "116
 }
 [e :U 630 ]
 [; ;uart.c: 116: }
 [; ;uart.c: 118: number[pointer++] = ones + 0x30u;
 "118
-[e = *U + &U F5780 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5780 `ui `ux -> + -> _ones `ui -> 48 `ui `uc ]
+[e = *U + &U F5777 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5777 `ui `ux -> + -> _ones `ui -> 48 `ui `uc ]
 [; ;uart.c: 119: number[pointer++] = '\0';
 "119
-[e = *U + &U F5780 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5780 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5777 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5777 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 121: return number;
 "121
-[e ) &U F5780 ]
+[e ) &U F5777 ]
 [e $UE 626  ]
 [; ;uart.c: 122: }
 "122
@@ -5588,7 +5586,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _val `ul ~T0 @X0 1 r1 ]
 [f ]
 "134
-[v F5790 `uc ~T0 @X0 -> 10 `i s number ]
+[v F5787 `uc ~T0 @X0 -> 10 `i s number ]
 "135
 [v _pointer `uc ~T0 @X0 1 a ]
 [; ;uart.c: 134: char static number [10];
@@ -5600,26 +5598,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 137: number[pointer++] = hexToChar((val >> 12) & 0xf);
 "137
-[e = *U + &U F5790 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5790 `ui `ux ( _hexToChar (1 -> & >> _val -> 12 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5787 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5787 `ui `ux ( _hexToChar (1 -> & >> _val -> 12 `i -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 138: number[pointer++] = hexToChar((val >> 8) & 0xf);
 "138
-[e = *U + &U F5790 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5790 `ui `ux ( _hexToChar (1 -> & >> _val -> 8 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5787 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5787 `ui `ux ( _hexToChar (1 -> & >> _val -> 8 `i -> -> -> 15 `i `l `ul `uc ]
 "139
 }
 [e :U 636 ]
 [; ;uart.c: 139: }
 [; ;uart.c: 140: number[pointer++] = hexToChar((val >> 4) & 0xf);
 "140
-[e = *U + &U F5790 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5790 `ui `ux ( _hexToChar (1 -> & >> _val -> 4 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5787 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5787 `ui `ux ( _hexToChar (1 -> & >> _val -> 4 `i -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 141: number[pointer++] = hexToChar(val & 0xf);
 "141
-[e = *U + &U F5790 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5790 `ui `ux ( _hexToChar (1 -> & _val -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5787 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5787 `ui `ux ( _hexToChar (1 -> & _val -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 143: number[pointer++] = '\0';
 "143
-[e = *U + &U F5790 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5790 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5787 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5787 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 144: return number;
 "144
-[e ) &U F5790 ]
+[e ) &U F5787 ]
 [e $UE 635  ]
 [; ;uart.c: 145: }
 "145
@@ -5632,8 +5630,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _macToString ]
 [v _addr `S605 ~T0 @X0 1 r1 ]
 [f ]
-[v F5794 `uc ~T0 @X0 -> 0 `x s ]
-[i F5794
+[v F5791 `uc ~T0 @X0 -> 0 `x s ]
+[i F5791
 :U ..
 -> 63 `c
 -> 63 `c
@@ -5658,7 +5656,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "148
 [v _address `uc ~T0 @X0 18  a ]
 [; ;uart.c: 148: char address[] = "??:??:??:??:??:??";
-[e = _address F5794 ]
+[e = _address F5791 ]
 "149
 [v _j `uc ~T0 @X0 1 a ]
 [; ;uart.c: 149: uint8_t j = 0;
@@ -5813,8 +5811,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ip `S608 ~T0 @X0 1 r1 ]
 [f ]
 "190
-[v F5801 `uc ~T0 @X0 -> 0 `x s address ]
-[i F5801
+[v F5798 `uc ~T0 @X0 -> 0 `x s address ]
+[i F5798
 :U ..
 -> 63 `c
 -> 63 `c
@@ -5871,24 +5869,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! > -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 0 `i 656  ]
 [; ;uart.c: 203: address[pointer++] = hundreds[i] + 0x30;
 "203
-[e = *U + &U F5801 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5801 `ui `ux -> + -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux -> + -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 48 `i `uc ]
 [e :U 656 ]
 [; ;uart.c: 204: if ((tens[i] > 0) || hundreds[i] > 0)
 "204
 [e $ ! || > -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 0 `i > -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 0 `i 657  ]
 [; ;uart.c: 205: address[pointer++] = tens[i] + 0x30;
 "205
-[e = *U + &U F5801 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5801 `ui `ux -> + -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux -> + -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 48 `i `uc ]
 [e :U 657 ]
 [; ;uart.c: 206: address[pointer++] = ones[i] + 0x30;
 "206
-[e = *U + &U F5801 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5801 `ui `ux -> + -> *U + &U _ones * -> _i `ux -> -> # *U &U _ones `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux -> + -> *U + &U _ones * -> _i `ux -> -> # *U &U _ones `ui `ux `i -> 48 `i `uc ]
 [; ;uart.c: 207: if (i != 3)
 "207
 [e $ ! != -> _i `i -> 3 `i 658  ]
 [; ;uart.c: 208: address[pointer++] = '.';
 "208
-[e = *U + &U F5801 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5801 `ui `ux -> -> 46 `ui `uc ]
+[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux -> -> 46 `ui `uc ]
 [e :U 658 ]
 "209
 }
@@ -5901,10 +5899,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.c: 209: }
 [; ;uart.c: 210: address[pointer] = '\0';
 "210
-[e = *U + &U F5801 * -> _pointer `ux -> -> # *U &U F5801 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5798 * -> _pointer `ux -> -> # *U &U F5798 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 211: return address;
 "211
-[e ) &U F5801 ]
+[e ) &U F5798 ]
 [e $UE 652  ]
 [; ;uart.c: 212: }
 "212
@@ -5918,7 +5916,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _table `S613 ~T0 @X0 1 r1 ]
 [f ]
 "215
-[v F5808 `uc ~T0 @X0 -> 50 `i s string ]
+[v F5805 `uc ~T0 @X0 -> 50 `i s string ]
 "216
 [v _pointer `uc ~T0 @X0 1 a ]
 [; ;uart.c: 215: char static string [50];
@@ -5936,14 +5934,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 661 ]
 [; ;uart.c: 221: string[pointer++] = *(tempAddr++);
 "221
-[e = *U + &U F5808 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5808 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5805 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5805 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 660 ]
 "220
 [e $ != -> *U _tempAddr `ui -> 0 `ui 661  ]
 [e :U 662 ]
 [; ;uart.c: 223: string[pointer++] = ' ';
 "223
-[e = *U + &U F5808 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5808 `ui `ux -> -> 32 `ui `uc ]
+[e = *U + &U F5805 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5805 `ui `ux -> -> 32 `ui `uc ]
 [; ;uart.c: 225: tempAddr = macToString(table.mac);
 "225
 [e = _tempAddr ( _macToString (1 . _table 1 ]
@@ -5953,14 +5951,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 664 ]
 [; ;uart.c: 227: string[pointer++] = *(tempAddr++);
 "227
-[e = *U + &U F5808 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5808 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5805 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5805 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 663 ]
 "226
 [e $ != -> *U _tempAddr `ui -> 0 `ui 664  ]
 [e :U 665 ]
 [; ;uart.c: 229: string[pointer++] = ' ';
 "229
-[e = *U + &U F5808 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5808 `ui `ux -> -> 32 `ui `uc ]
+[e = *U + &U F5805 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5805 `ui `ux -> -> 32 `ui `uc ]
 [; ;uart.c: 231: tempAddr = intToString(table.secondsCreated % 0xffff);
 "231
 [e = _tempAddr ( _intToString (1 % . _table 2 -> -> 65535 `ui `ul ]
@@ -5970,17 +5968,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 667 ]
 [; ;uart.c: 233: string[pointer++] = *(tempAddr++);
 "233
-[e = *U + &U F5808 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5808 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5805 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5805 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 666 ]
 "232
 [e $ != -> *U _tempAddr `ui -> 0 `ui 667  ]
 [e :U 668 ]
 [; ;uart.c: 235: string[pointer] = '\0';
 "235
-[e = *U + &U F5808 * -> _pointer `ux -> -> # *U &U F5808 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5805 * -> _pointer `ux -> -> # *U &U F5805 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 237: return string;
 "237
-[e ) &U F5808 ]
+[e ) &U F5805 ]
 [e $UE 659  ]
 [; ;uart.c: 238: }
 "238

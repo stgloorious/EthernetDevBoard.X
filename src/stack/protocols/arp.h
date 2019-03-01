@@ -60,7 +60,7 @@ void ARP_handleNewPacket(ethernetFrame_t *frame);
  * \param [in] *frame Pointer to the received Ethernet Packet
  * \return ARPmessage data structure 
  */
-ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame);
+ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
 
 /**
  * \brief If the ARPmessage contains a request for my address, this function replies accordingly
@@ -74,7 +74,7 @@ void ARP_replyIfNeeded(ARP_message_t request);
  * \ingroup arp
  * \param arp message to send
  */
-void ARP_send(ARP_message_t arp);
+void static ARP_send(ARP_message_t arp);
 
 /**
  * \brief Sends an ARP request to a given IPv4 address
@@ -107,15 +107,7 @@ macaddress_t ARP_getEntryFromTable(uint8_t index);
  * \param ip IP address of the new entry
  * \param timestamp Current time (use getSeconds())
  */
-void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-
-/**
- * \brief Resolves a MAC address to a given IP address
- * \ingroup arp
- * \param ip Given IP address
- * \return Desired MAC address
- */
-macaddress_t ARP_resolveAddress(ipv4_address_t ip);
+void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
 /**
  * \brief Used for debugging. Prints out ARP table via UART.

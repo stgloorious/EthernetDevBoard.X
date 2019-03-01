@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 18F25K50 ]
 [d frameptr 4065 ]
-"30 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"33 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [e E5436 error_modules `uc
 ERROR_MODULE_MEMORY 0
 ERROR_MODULE_ETHERNET_CONTROLLER 1
@@ -11,21 +11,21 @@ ERROR_MODULE_ETHERNET 2
 ERROR_MODULE_ARP 3
 ERROR_MODULE_IPv4 4
 ]
-"120
+"122
 [e E5454 errors_ethernetController `ui
 ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID 301
 ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE 302
 ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW 303
 ERROR_ETHERNET_CONTROLLER_UNKNOWN 399
 ]
-"234
+"244
 [e E5498 etherTypes `ui
 ETHERTYPE_IPv4 2048
 ETHERTYPE_ARP 2054
 ETHERTYPE_WOL 2114
 ETHERTYPE_FLOW_CONTROL -30712
 ]
-"400
+"410
 [e E5507 linkStates `uc
 NO_LINK 0
 LINK_ESTABLISHED 1
@@ -38,13 +38,12 @@ HUNDRED_MBIT 1
 HALF_DUPLEX 0
 FULL_DUPLEX 1
 ]
-"427
+"459
 [e E5558 LEDs `uc
 LEDA 0
 LEDB 1
 ]
-"429
-[e E5561 LEDStates `uc
+[e E5562 LEDStates `uc
 LED_ON 0
 LED_OFF 1
 LED_TRANSMIT_RECEIVE_EVENTS 2
@@ -94,7 +93,7 @@ ETHERTYPE_ARP 2054
 ETHERTYPE_WOL 2114
 ETHERTYPE_FLOW_CONTROL -30712
 ]
-[e E212 ipv4_protocols `uc
+[e E211 ipv4_protocols `uc
 IPv4_PROTOCOL_ICMP 1
 ]
 "39
@@ -108,7 +107,7 @@ ERROR_ARP_INVALID_VALUES 403
 LEDA 0
 LEDB 1
 ]
-[e E154 LEDStates `uc
+[e E155 LEDStates `uc
 LED_ON 0
 LED_OFF 1
 LED_TRANSMIT_RECEIVE_EVENTS 2
@@ -152,20 +151,20 @@ ETHERTYPE_ARP 2054
 ETHERTYPE_WOL 2114
 ETHERTYPE_FLOW_CONTROL -30712
 ]
-[e E5634 ipv4_protocols `uc
+[e E5633 ipv4_protocols `uc
 IPv4_PROTOCOL_ICMP 1
 ]
-"85
+"84
 [e E5558 LEDs `uc
 LEDA 0
 LEDB 1
 ]
-[e E5561 LEDStates `uc
+[e E5562 LEDStates `uc
 LED_ON 0
 LED_OFF 1
 LED_TRANSMIT_RECEIVE_EVENTS 2
 ]
-"227
+"226
 [e E5454 errors_ethernetController `ui
 ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID 301
 ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE 302
@@ -194,19 +193,19 @@ ERROR_MODULE_ETHERNET 2
 ERROR_MODULE_ARP 3
 ERROR_MODULE_IPv4 4
 ]
-"98
-[e E5718 ARP_operation `uc
+"99
+[e E5717 ARP_operation `uc
 ARP_REQUEST 1
 ARP_REPLY 2
 ]
-"117
-[e E5722 ARP_htype `uc
+"118
+[e E5721 ARP_htype `uc
 ARP_HTYPE_ETHERNET 1
 ]
-[e E5725 ARP_ptype `ui
+[e E5724 ARP_ptype `ui
 ARP_PTYPE_IPv4 2048
 ]
-"118
+"119
 [e E52 errors_arp `ui
 ERROR_ARP_WAITING_FOR_REPLY 401
 ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED 402
@@ -269,40 +268,40 @@ ERROR_ARP_INVALID_VALUES 403
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"30 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"33 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_init ethernetController_init `(S27  1 e 3 0 ]
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"72 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"74 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_softReset ethernetController_softReset `(S27  1 e 3 0 ]
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"133 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"135 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_checkDeviceId ethernetController_checkDeviceId `(S27  1 e 3 0 ]
-"146
+"148
 [v _ethernetController_getDeviceName ethernetController_getDeviceName `(*.39uc  1 e 2 0 ]
-"151
+"153
 [v _ethernetController_getSiliconRevision ethernetController_getSiliconRevision `(uc  1 e 1 0 ]
 "57 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"158 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"160 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_getMacAddress ethernetController_getMacAddress `(S98  1 e 6 0 ]
-"186
+"204
 [v _ethernetController_sendPacket ethernetController_sendPacket `(v  1 e 1 0 ]
-"193
+"211
 [v _ethernetController_streamToTransmitBuffer ethernetController_streamToTransmitBuffer `(v  1 e 1 0 ]
-"221
+"231
 [v _ethernetController_writeDestinationMACAddress ethernetController_writeDestinationMACAddress `(v  1 e 1 0 ]
-"234
+"244
 [v _ethernetController_writeEtherTypeFieldToBuffer ethernetController_writeEtherTypeFieldToBuffer `(v  1 e 1 0 ]
 "57 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"261 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"271 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_getSourceMACAddress ethernetController_getSourceMACAddress `(S98  1 e 6 0 ]
-"276
+"286
 [v _ethernetController_getEtherTypeField ethernetController_getEtherTypeField `(E5498  1 e 2 0 ]
 "33 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/rsv.h
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -322,10 +321,10 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-"292 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
-[v _ethernetController_getRSV ethernetController_getRSV `(S192  1 e 5 0 ]
+"302 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+[v _ethernetController_getRSV ethernetController_getRSV `(S196  1 e 5 0 ]
 "34 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/interrupt.h
-[s S218 interruptFlags 2 `uc 1 MODEXIF 1 0 :1:0 
+[s S222 interruptFlags 2 `uc 1 MODEXIF 1 0 :1:0 
 `uc 1 HASHIF 1 0 :1:1 
 `uc 1 AESIF 1 0 :1:2 
 `uc 1 LINKIF 1 0 :1:3 
@@ -336,70 +335,70 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 RXABTIF 1 1 :1:0 
 `uc 1 PCFULIF 1 1 :1:1 
 ]
-"305 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
-[v _ethernetController_pollInterruptFlags ethernetController_pollInterruptFlags `(S218  1 e 2 0 ]
-"323
+"315 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+[v _ethernetController_pollInterruptFlags ethernetController_pollInterruptFlags `(S222  1 e 2 0 ]
+"333
 [v _ethernetController_clearInterruptFlag ethernetController_clearInterruptFlag `(v  1 e 1 0 ]
-"327
+"337
 [v _ethernetController_updateNextPacketPointer ethernetController_updateNextPacketPointer `(v  1 e 1 0 ]
-"343
+"353
 [v _ethernetController_streamFromRXBuffer ethernetController_streamFromRXBuffer `(uc  1 e 1 0 ]
-"372
+"382
 [v _ethernetController_dropPacket ethernetController_dropPacket `(v  1 e 1 0 ]
-"396
+"406
 [v _ethernetController_newPacketAvailable ethernetController_newPacketAvailable `(uc  1 e 1 0 ]
-"400
+"410
 [v _ethernetController_updateLinkStatus ethernetController_updateLinkStatus `(v  1 e 1 0 ]
-"424
-[v _ethernetController_setLEDStatus ethernetController_setLEDStatus `(v  1 e 1 0 ]
-"449
-[v _ethernetController_setLEDConfiguration ethernetController_setLEDConfiguration `(v  1 e 1 0 ]
-"487
-[v _ethernetController_getCurrentPacketCount ethernetController_getCurrentPacketCount `(uc  1 e 1 0 ]
-"491
-[v _ethernetController_getNextPacketPointer ethernetController_getNextPacketPointer `(ui  1 e 2 0 ]
+"459
+[v _ethernetController_setLEDConfig ethernetController_setLEDConfig `(v  1 e 1 0 ]
 "497
-[v _ENC424J600_enableReception ENC424J600_enableReception `(v  1 s 1 ENC424J600_enableReception ]
+[v _ethernetController_getCurrentPacketCount ethernetController_getCurrentPacketCount `(uc  1 e 1 0 ]
 "501
-[v _ENC424J600_setTXLength ENC424J600_setTXLength `(v  1 s 1 ENC424J600_setTXLength ]
+[v _ethernetController_getNextPacketPointer ethernetController_getNextPacketPointer `(ui  1 e 2 0 ]
 "508
-[v _ENC424J600_setTXStartAddress ENC424J600_setTXStartAddress `(v  1 s 1 ENC424J600_setTXStartAddress ]
-"515
-[v _ENC424J600_setGPDATAWritePointer ENC424J600_setGPDATAWritePointer `(v  1 s 1 ENC424J600_setGPDATAWritePointer ]
-"537
-[v _ENC424J600_setERXDATAReadPointer ENC424J600_setERXDATAReadPointer `(v  1 s 1 ENC424J600_setERXDATAReadPointer ]
-"548
-[v _ENC424J600_setRXBufferStartAddress ENC424J600_setRXBufferStartAddress `(v  1 s 1 ENC424J600_setRXBufferStartAddress ]
-"555
-[v _ENC424J600_setRXTailPointer ENC424J600_setRXTailPointer `(v  1 s 1 ENC424J600_setRXTailPointer ]
-"562
-[v _ENC424J600_setNextPacketPointer ENC424J600_setNextPacketPointer `(v  1 s 1 ENC424J600_setNextPacketPointer ]
-"566
-[v _ENC424J600_getNextPacketPointer ENC424J600_getNextPacketPointer `(ui  1 s 2 ENC424J600_getNextPacketPointer ]
-"570
-[v _ENC424J600_getPacketCount ENC424J600_getPacketCount `(uc  1 s 1 ENC424J600_getPacketCount ]
-"576
-[v _ENC424J600_enableAutoMACInsertion ENC424J600_enableAutoMACInsertion `(v  1 s 1 ENC424J600_enableAutoMACInsertion ]
-"590
-[v _ENC424J600_writeControlRegisterUnbanked ENC424J600_writeControlRegisterUnbanked `(v  1 s 1 ENC424J600_writeControlRegisterUnbanked ]
-"599
-[v _ENC424J600_readControlRegisterUnbanked ENC424J600_readControlRegisterUnbanked `(v  1 s 1 ENC424J600_readControlRegisterUnbanked ]
-"608
 [v _ENC424J600_initSPI ENC424J600_initSPI `(v  1 s 1 ENC424J600_initSPI ]
-"624
+"526
 [v _ENC424J600_writeSPI ENC424J600_writeSPI `(v  1 s 1 ENC424J600_writeSPI ]
-"636
+"538
 [v _ENC424J600_readSPI ENC424J600_readSPI `(v  1 s 1 ENC424J600_readSPI ]
-"649
+"551
 [v _ENC424J600_writeSingleByte ENC424J600_writeSingleByte `(v  1 s 1 ENC424J600_writeSingleByte ]
-"655
+"557
+[v _ENC424J600_writeControlRegisterUnbanked ENC424J600_writeControlRegisterUnbanked `(v  1 s 1 ENC424J600_writeControlRegisterUnbanked ]
+"566
+[v _ENC424J600_readControlRegisterUnbanked ENC424J600_readControlRegisterUnbanked `(v  1 s 1 ENC424J600_readControlRegisterUnbanked ]
+"577
 [v _ENC424J600_readPHYRegister ENC424J600_readPHYRegister `(v  1 s 1 ENC424J600_readPHYRegister ]
-"692
+"616
+[v _ENC424J600_setTXLength ENC424J600_setTXLength `(v  1 s 1 ENC424J600_setTXLength ]
+"625
+[v _ENC424J600_setNextPacketPointer ENC424J600_setNextPacketPointer `(v  1 s 1 ENC424J600_setNextPacketPointer ]
+"629
+[v _ENC424J600_getNextPacketPointer ENC424J600_getNextPacketPointer `(ui  1 s 2 ENC424J600_getNextPacketPointer ]
+"633
+[v _ENC424J600_getPacketCount ENC424J600_getPacketCount `(uc  1 s 1 ENC424J600_getPacketCount ]
+"641
+[v _ENC424J600_setTXStartAddress ENC424J600_setTXStartAddress `(v  1 s 1 ENC424J600_setTXStartAddress ]
+"648
+[v _ENC424J600_setGPDATAWritePointer ENC424J600_setGPDATAWritePointer `(v  1 s 1 ENC424J600_setGPDATAWritePointer ]
+"670
+[v _ENC424J600_setERXDATAReadPointer ENC424J600_setERXDATAReadPointer `(v  1 s 1 ENC424J600_setERXDATAReadPointer ]
+"681
+[v _ENC424J600_setRXBufferStartAddress ENC424J600_setRXBufferStartAddress `(v  1 s 1 ENC424J600_setRXBufferStartAddress ]
+"688
+[v _ENC424J600_setRXTailPointer ENC424J600_setRXTailPointer `(v  1 s 1 ENC424J600_setRXTailPointer ]
+"697
+[v _ENC424J600_enableAutoMACInsertion ENC424J600_enableAutoMACInsertion `(v  1 s 1 ENC424J600_enableAutoMACInsertion ]
+"711
+[v _ENC424J600_enableReception ENC424J600_enableReception `(v  1 s 1 ENC424J600_enableReception ]
+"715
+[v _ENC424J600_disableReception ENC424J600_disableReception `(v  1 s 1 ENC424J600_disableReception ]
+"735
 [v _ENC424J600_getInterruptFlags ENC424J600_getInterruptFlags `(ui  1 e 2 0 ]
-"699
+"742
 [v _ENC424J600_clearInterruptFlag ENC424J600_clearInterruptFlag `(v  1 s 1 ENC424J600_clearInterruptFlag ]
 "33 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/rsv.h
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -419,8 +418,8 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-"713 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
-[v _ENC424J600_updateReceiveStatusVector ENC424J600_updateReceiveStatusVector `(S192  1 s 5 ENC424J600_updateReceiveStatusVector ]
+"758 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+[v _ENC424J600_updateReceiveStatusVector ENC424J600_updateReceiveStatusVector `(S196  1 s 5 ENC424J600_updateReceiveStatusVector ]
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
 "28 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernet.c
@@ -446,9 +445,9 @@ ERROR_ARP_INVALID_VALUES 403
 "101
 [v _checkForOverlapSwitched checkForOverlapSwitched `(uc  1 s 1 checkForOverlapSwitched ]
 "35 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/mem/memoryTypes.h
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
 "136 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/mem/memoryController.c
-[v _memory_txFrameRequest memory_txFrameRequest `(S100  1 e 9 0 ]
+[v _memory_txFrameRequest memory_txFrameRequest `(S104  1 e 9 0 ]
 "224
 [v _memory_txFrameClear memory_txFrameClear `(v  1 e 1 0 ]
 "26 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/backgroundTasks.c
@@ -458,32 +457,32 @@ ERROR_ARP_INVALID_VALUES 403
 "54 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arpTypes.h
 "57 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"58 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"59 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 "44 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4Types.h
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"58 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"59 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"58 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
-[s S2351 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1233 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1233 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
+"59 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[s S2364 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1248 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1248 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
 `uc 1 fIsProbe 1 28 :1:1 
 `S27 1 err 3 29 ]
-[v _ARP_parseFromRXBuffer ARP_parseFromRXBuffer `(S2351  1 e 32 0 ]
-"128
+[v _ARP_parseFromRXBuffer ARP_parseFromRXBuffer `(S2364  1 s 32 ARP_parseFromRXBuffer ]
+"129
 [v _ARP_replyIfNeeded ARP_replyIfNeeded `(v  1 e 1 0 ]
-"165
-[v _ARP_send ARP_send `(v  1 e 1 0 ]
-"208
+"166
+[v _ARP_send ARP_send `(v  1 s 1 ARP_send ]
+"209
 [v _ARP_sendRequest ARP_sendRequest `(v  1 e 1 0 ]
-"233
+"237
 [v _ARP_checkForEntry ARP_checkForEntry `(uc  1 e 1 0 ]
 "57 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"246 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"250 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _ARP_getEntryFromTable ARP_getEntryFromTable `(S98  1 e 6 0 ]
-"250
-[v _ARP_setNewEntry ARP_setNewEntry `(v  1 e 1 0 ]
-"266
+"254
+[v _ARP_setNewEntry ARP_setNewEntry `(v  1 s 1 ARP_setNewEntry ]
+"270
 [v _ARP_initTable ARP_initTable `(v  1 e 1 0 ]
 "29 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
 [v _ipv4_txFrameRequest ipv4_txFrameRequest `(v  1 e 1 0 ]
@@ -511,13 +510,13 @@ ERROR_ARP_INVALID_VALUES 403
 [v _getSeconds getSeconds `(ul  1 e 4 0 ]
 "32 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/main.c
 [v _main main `(v  1 e 1 0 ]
-"181
+"180
 [v _printEthernetState printEthernetState `(v  1 e 1 0 ]
-"207
+"206
 [v _printErrorMessage printErrorMessage `(v  1 e 1 0 ]
-"245
+"244
 [v _buttonHandler buttonHandler `(v  1 e 1 0 ]
-"266
+"265
 [v _ISR ISR `II(v  1 e 1 0 ]
 "28 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/sevenseg.c
 [v _sevenSegmentInit sevenSegmentInit `(v  1 e 1 0 ]
@@ -547,7 +546,7 @@ ERROR_ARP_INVALID_VALUES 403
 [v _ANSELA ANSELA `VEuc  1 e 1 @3931 ]
 "275
 [v _ANSELB ANSELB `VEuc  1 e 1 @3932 ]
-[s S533 . 1 `uc 1 ANSB0 1 0 :1:0 
+[s S537 . 1 `uc 1 ANSB0 1 0 :1:0 
 `uc 1 ANSB1 1 0 :1:1 
 `uc 1 ANSB2 1 0 :1:2 
 `uc 1 ANSB3 1 0 :1:3 
@@ -555,15 +554,15 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 ANSB5 1 0 :1:5 
 ]
 "290
-[u S540 . 1 `S533 1 . 1 0 ]
-[v _ANSELBbits ANSELBbits `VES540  1 e 1 @3932 ]
+[u S544 . 1 `S537 1 . 1 0 ]
+[v _ANSELBbits ANSELBbits `VES544  1 e 1 @3932 ]
 "325
 [v _ANSELC ANSELC `VEuc  1 e 1 @3933 ]
 "2793
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "2945
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S122 . 1 `uc 1 RB0 1 0 :1:0 
+[s S131 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -573,7 +572,7 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 RB7 1 0 :1:7 
 ]
 "2975
-[s S131 . 1 `uc 1 INT0 1 0 :1:0 
+[s S140 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
@@ -581,18 +580,18 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S139 . 1 `uc 1 . 1 0 :3:0 
+[s S148 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S142 . 1 `S122 1 . 1 0 `S131 1 . 1 0 `S139 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES142  1 e 1 @3969 ]
+[u S151 . 1 `S131 1 . 1 0 `S140 1 . 1 0 `S148 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES151  1 e 1 @3969 ]
 "3055
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
 "4153
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "4375
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-[s S493 . 1 `uc 1 TRISB0 1 0 :1:0 
+[s S497 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -602,11 +601,11 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "4407
-[u S511 . 1 `S493 1 . 1 0 `S122 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES511  1 e 1 @3987 ]
+[u S515 . 1 `S497 1 . 1 0 `S131 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES515  1 e 1 @3987 ]
 "4597
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
-[s S2150 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S2163 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -616,22 +615,22 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 SPEN 1 0 :1:7 
 ]
 "6279
-[s S2159 . 1 `uc 1 . 1 0 :3:0 
+[s S2172 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S2162 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S2175 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S2166 . 1 `uc 1 . 1 0 :6:0 
+[s S2179 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S2169 . 1 `uc 1 . 1 0 :5:0 
+[s S2182 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[u S2172 . 1 `S2150 1 . 1 0 `S2159 1 . 1 0 `S2162 1 . 1 0 `S2166 1 . 1 0 `S2169 1 . 1 0 ]
-[v _RCSTA1bits RCSTA1bits `VES2172  1 e 1 @4011 ]
-[s S2066 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S2185 . 1 `S2163 1 . 1 0 `S2172 1 . 1 0 `S2175 1 . 1 0 `S2179 1 . 1 0 `S2182 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES2185  1 e 1 @4011 ]
+[s S2079 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -641,52 +640,52 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 CSRC 1 0 :1:7 
 ]
 "6504
-[s S2075 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S2088 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S2079 . 1 `uc 1 . 1 0 :2:0 
+[s S2092 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 BRGH1 1 0 :1:2 
 ]
-[s S2082 . 1 `uc 1 . 1 0 :7:0 
+[s S2095 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S2085 . 1 `uc 1 . 1 0 :3:0 
+[s S2098 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SENDB1 1 0 :1:3 
 ]
-[s S2088 . 1 `uc 1 . 1 0 :4:0 
+[s S2101 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SYNC1 1 0 :1:4 
 ]
-[s S2091 . 1 `uc 1 . 1 0 :1:0 
+[s S2104 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 ]
-[s S2094 . 1 `uc 1 . 1 0 :6:0 
+[s S2107 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX91 1 0 :1:6 
 ]
-[s S2097 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S2110 . 1 `uc 1 TX9D1 1 0 :1:0 
 ]
-[s S2099 . 1 `uc 1 . 1 0 :5:0 
+[s S2112 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 TXEN1 1 0 :1:5 
 ]
-[u S2102 . 1 `S2066 1 . 1 0 `S2075 1 . 1 0 `S2079 1 . 1 0 `S2082 1 . 1 0 `S2085 1 . 1 0 `S2088 1 . 1 0 `S2091 1 . 1 0 `S2094 1 . 1 0 `S2097 1 . 1 0 `S2099 1 . 1 0 ]
-[v _TXSTA1bits TXSTA1bits `VES2102  1 e 1 @4012 ]
+[u S2115 . 1 `S2079 1 . 1 0 `S2088 1 . 1 0 `S2092 1 . 1 0 `S2095 1 . 1 0 `S2098 1 . 1 0 `S2101 1 . 1 0 `S2104 1 . 1 0 `S2107 1 . 1 0 `S2110 1 . 1 0 `S2112 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES2115  1 e 1 @4012 ]
 "6740
 [v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
 "6821
 [v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
-[s S285 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S289 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "9466
-[s S291 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S295 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S296 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S300 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -695,16 +694,16 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S305 . 1 `S285 1 . 1 0 `S291 1 . 1 0 `S296 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES305  1 e 1 @4038 ]
-[s S330 . 1 `uc 1 . 1 0 :2:0 
+[u S309 . 1 `S289 1 . 1 0 `S295 1 . 1 0 `S300 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES309  1 e 1 @4038 ]
+[s S334 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "9881
-[s S333 . 1 `uc 1 . 1 0 :5:0 
+[s S337 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S336 . 1 `uc 1 BF 1 0 :1:0 
+[s S340 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -713,7 +712,7 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S345 . 1 `uc 1 BF1 1 0 :1:0 
+[s S349 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
@@ -722,60 +721,60 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S354 . 1 `uc 1 . 1 0 :2:0 
+[s S358 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
 `uc 1 STOP 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S360 . 1 `uc 1 . 1 0 :2:0 
+[s S364 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S366 . 1 `uc 1 . 1 0 :2:0 
+[s S370 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S371 . 1 `uc 1 . 1 0 :2:0 
+[s S375 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S376 . 1 `uc 1 . 1 0 :2:0 
+[s S380 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S381 . 1 `uc 1 . 1 0 :2:0 
+[s S385 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S386 . 1 `uc 1 . 1 0 :2:0 
+[s S390 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S389 . 1 `uc 1 . 1 0 :5:0 
+[s S393 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S392 . 1 `uc 1 . 1 0 :2:0 
+[s S396 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S397 . 1 `uc 1 . 1 0 :2:0 
+[s S401 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 ]
-[s S400 . 1 `uc 1 . 1 0 :5:0 
+[s S404 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S403 . 1 `S330 1 . 1 0 `S333 1 . 1 0 `S336 1 . 1 0 `S345 1 . 1 0 `S354 1 . 1 0 `S360 1 . 1 0 `S366 1 . 1 0 `S371 1 . 1 0 `S376 1 . 1 0 `S381 1 . 1 0 `S386 1 . 1 0 `S389 1 . 1 0 `S392 1 . 1 0 `S397 1 . 1 0 `S400 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES403  1 e 1 @4039 ]
+[u S407 . 1 `S334 1 . 1 0 `S337 1 . 1 0 `S340 1 . 1 0 `S349 1 . 1 0 `S358 1 . 1 0 `S364 1 . 1 0 `S370 1 . 1 0 `S375 1 . 1 0 `S380 1 . 1 0 `S385 1 . 1 0 `S390 1 . 1 0 `S393 1 . 1 0 `S396 1 . 1 0 `S401 1 . 1 0 `S404 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES407  1 e 1 @4039 ]
 "10717
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @4041 ]
-[s S1569 . 1 `uc 1 LFIOFS 1 0 :1:0 
+[s S1582 . 1 `uc 1 LFIOFS 1 0 :1:0 
 `uc 1 HFIOFR 1 0 :1:1 
 `uc 1 PRISD 1 0 :1:2 
 `uc 1 SOSCGO 1 0 :1:3 
@@ -785,16 +784,16 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 PLLRDY 1 0 :1:7 
 ]
 "11500
-[u S1578 . 1 `S1569 1 . 1 0 ]
-[v _OSCCON2bits OSCCON2bits `VES1578  1 e 1 @4050 ]
-[s S1537 . 1 `uc 1 SCS 1 0 :2:0 
+[u S1591 . 1 `S1582 1 . 1 0 ]
+[v _OSCCON2bits OSCCON2bits `VES1591  1 e 1 @4050 ]
+[s S1550 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 HFIOFS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 `uc 1 IDLEN 1 0 :1:7 
 ]
 "11568
-[s S1543 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S1556 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 FLTS 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -802,9 +801,9 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S1551 . 1 `S1537 1 . 1 0 `S1543 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES1551  1 e 1 @4051 ]
-[s S1681 . 1 `uc 1 T0PS 1 0 :3:0 
+[u S1564 . 1 `S1550 1 . 1 0 `S1556 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES1564  1 e 1 @4051 ]
+[s S1694 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -812,13 +811,13 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "11648
-[s S1688 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S1701 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 ]
-[u S1692 . 1 `S1681 1 . 1 0 `S1688 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES1692  1 e 1 @4053 ]
-[s S1639 . 1 `uc 1 INT1IF 1 0 :1:0 
+[u S1705 . 1 `S1694 1 . 1 0 `S1701 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES1705  1 e 1 @4053 ]
+[s S1652 . 1 `uc 1 INT1IF 1 0 :1:0 
 `uc 1 INT2IF 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1IE 1 0 :1:3 
@@ -828,7 +827,7 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 INT2IP 1 0 :1:7 
 ]
 "12272
-[s S1648 . 1 `uc 1 INT1F 1 0 :1:0 
+[s S1661 . 1 `uc 1 INT1F 1 0 :1:0 
 `uc 1 INT2F 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1E 1 0 :1:3 
@@ -837,9 +836,9 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 INT1P 1 0 :1:6 
 `uc 1 INT2P 1 0 :1:7 
 ]
-[u S1657 . 1 `S1639 1 . 1 0 `S1648 1 . 1 0 ]
-[v _INTCON3bits INTCON3bits `VES1657  1 e 1 @4080 ]
-[s S1590 . 1 `uc 1 IOCIF 1 0 :1:0 
+[u S1670 . 1 `S1652 1 . 1 0 `S1661 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES1670  1 e 1 @4080 ]
+[s S1603 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -849,7 +848,7 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "12446
-[s S1599 . 1 `uc 1 . 1 0 :1:0 
+[s S1612 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -858,12 +857,12 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S1608 . 1 `uc 1 . 1 0 :6:0 
+[s S1621 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S1612 . 1 `S1590 1 . 1 0 `S1599 1 . 1 0 `S1608 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES1612  1 e 1 @4082 ]
+[u S1625 . 1 `S1603 1 . 1 0 `S1612 1 . 1 0 `S1621 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES1625  1 e 1 @4082 ]
 "14120
 [v _RCIE RCIE `VEb  1 e 0 @31981 ]
 "14122
@@ -872,16 +871,16 @@ ERROR_ARP_INVALID_VALUES 403
 [v _RCIP RCIP `VEb  1 e 0 @31997 ]
 "14648
 [v _TRMT TRMT `VEb  1 e 0 @32097 ]
-"28 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"29 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _nextPacketPointer nextPacketPointer `ui  1 s 2 nextPacketPointer ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
 "26 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/mem/memoryController.c
-[v _occupiedMemory occupiedMemory `[8]S100  1 s 72 occupiedMemory ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[v _occupiedMemory occupiedMemory `[8]S104  1 s 72 occupiedMemory ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "26 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-[s S2214 ARP_tableEntry 14 `S1233 1 ip 4 0 `S98 1 mac 6 4 `ul 1 secondsCreated 4 10 ]
-[v _ARP_table ARP_table `[8]S2214  1 s 112 ARP_table ]
+[s S2227 ARP_tableEntry 14 `S1248 1 ip 4 0 `S98 1 mac 6 4 `ul 1 secondsCreated 4 10 ]
+[v _ARP_table ARP_table `[8]S2227  1 s 112 ARP_table ]
 "26 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/stack.c
 [v _seconds seconds `ul  1 s 4 seconds ]
 "43 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/sevenseg.h
@@ -891,9 +890,9 @@ ERROR_ARP_INVALID_VALUES 403
 "28
 [v _buttonState buttonState `VEuc  1 e 1 0 ]
 "30
-[s S266 ethernetConnection 15 `E5507 1 link 1 0 `E5511 1 speed 1 1 `E5515 1 duplex 1 2 `S98 1 source 6 3 `S98 1 destination 6 9 ]
+[s S270 ethernetConnection 15 `E5507 1 link 1 0 `E5511 1 speed 1 1 `E5515 1 duplex 1 2 `S98 1 source 6 3 `S98 1 destination 6 9 ]
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-[s S218 interruptFlags 2 `uc 1 MODEXIF 1 0 :1:0 
+[s S222 interruptFlags 2 `uc 1 MODEXIF 1 0 :1:0 
 `uc 1 HASHIF 1 0 :1:1 
 `uc 1 AESIF 1 0 :1:2 
 `uc 1 LINKIF 1 0 :1:3 
@@ -904,9 +903,9 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 RXABTIF 1 1 :1:0 
 `uc 1 PCFULIF 1 1 :1:1 
 ]
-[s S1187 backgroundTaskHandler 6 `S27 1 err 3 0 `S218 1 interruptFlags 2 3 `uc 1 fPacketPending 1 5 :1:0 
+[s S1202 backgroundTaskHandler 6 `S27 1 err 3 0 `S222 1 interruptFlags 2 3 `uc 1 fPacketPending 1 5 :1:0 
 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -926,69 +925,69 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[s S1235 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E212 1 protocol 1 12 `ui 1 checksum 2 13 `S1233 1 source 4 15 `S1233 1 destination 4 19 ]
-[s S1249 ipv4_packet 62 `S1235 1 ipv4Header 23 0 `S100 1 memory 9 23 `S246 1 ethernet 30 32 ]
-[s S1253 stack 113 `S266 1 ethernet 15 0 `VES1187 1 background 6 15 `S246 1 newReceivedFrame 30 21 `S1249 1 pendingPacketToSend 62 51 ]
-[v _stack stack `VES1253  1 s 113 stack ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[s S1250 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E211 1 protocol 1 12 `ui 1 checksum 2 13 `S1248 1 source 4 15 `S1248 1 destination 4 19 ]
+[s S1264 ipv4_packet 62 `S1250 1 ipv4Header 23 0 `S104 1 memory 9 23 `S250 1 ethernet 30 32 ]
+[s S1268 stack 113 `S270 1 ethernet 15 0 `VES1202 1 background 6 15 `S250 1 newReceivedFrame 30 21 `S1264 1 pendingPacketToSend 62 51 ]
+[v _stack stack `VES1268  1 s 113 stack ]
 "32
 [v _main main `(v  1 e 1 0 ]
 {
-"168
+"167
 [v main@i i `uc  1 a 1 38 ]
-"157
+"156
 [v main@headerBuf headerBuf `[32]uc  1 a 32 4 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"127
-[v main@IPdestination IPdestination `S1233  1 a 4 46 ]
-"121
-[v main@IPsource IPsource `S1233  1 a 4 42 ]
-"93
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"126
+[v main@IPdestination IPdestination `S1248  1 a 4 46 ]
+"120
+[v main@IPsource IPsource `S1248  1 a 4 42 ]
+"92
 [v main@prescaler prescaler `ul  1 a 4 0 ]
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
 "64
 [v main@err err `S27  1 a 3 39 ]
-"179
+"178
 } 0
 "28 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/sevenseg.c
 [v _sevenSegmentInit sevenSegmentInit `(v  1 e 1 0 ]
 {
 "39
 } 0
-"181 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/main.c
+"180 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/main.c
 [v _printEthernetState printEthernetState `(v  1 e 1 0 ]
 {
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-[s S266 ethernetConnection 15 `E5507 1 link 1 0 `E5511 1 speed 1 1 `E5515 1 duplex 1 2 `S98 1 source 6 3 `S98 1 destination 6 9 ]
-[v printEthernetState@state state `S266  1 p 15 58 ]
-"182
-[v printEthernetState@oldState oldState `S266  1 s 15 oldState ]
-"205
+[s S270 ethernetConnection 15 `E5507 1 link 1 0 `E5511 1 speed 1 1 `E5515 1 duplex 1 2 `S98 1 source 6 3 `S98 1 destination 6 9 ]
+[v printEthernetState@state state `S270  1 p 15 58 ]
+"181
+[v printEthernetState@oldState oldState `S270  1 s 15 oldState ]
+"204
 } 0
-"207
+"206
 [v _printErrorMessage printErrorMessage `(v  1 e 1 0 ]
 {
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
 [v printErrorMessage@err err `S27  1 p 3 58 ]
-"243
+"242
 } 0
 "126 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
 [v _ipv4_writeHeaderIntoBuffer ipv4_writeHeaderIntoBuffer `(v  1 e 1 0 ]
 {
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-[s S1235 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E212 1 protocol 1 12 `ui 1 checksum 2 13 `S1233 1 source 4 15 `S1233 1 destination 4 19 ]
-[v ipv4_writeHeaderIntoBuffer@header header `S1235  1 p 23 0 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1250 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E211 1 protocol 1 12 `ui 1 checksum 2 13 `S1248 1 source 4 15 `S1248 1 destination 4 19 ]
+[v ipv4_writeHeaderIntoBuffer@header header `S1250  1 p 23 0 ]
 [v ipv4_writeHeaderIntoBuffer@ptr ptr `*.39uc  1 p 2 23 ]
 "147
 } 0
 "29
 [v _ipv4_txFrameRequest ipv4_txFrameRequest `(v  1 e 1 0 ]
 {
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-[s S1235 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E212 1 protocol 1 12 `ui 1 checksum 2 13 `S1233 1 source 4 15 `S1233 1 destination 4 19 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1250 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E211 1 protocol 1 12 `ui 1 checksum 2 13 `S1248 1 source 4 15 `S1248 1 destination 4 19 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1008,24 +1007,22 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[s S1249 ipv4_packet 62 `S1235 1 ipv4Header 23 0 `S100 1 memory 9 23 `S246 1 ethernet 30 32 ]
-[v ipv4_txFrameRequest@packet packet `*.39S1249  1 p 2 71 ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[s S1264 ipv4_packet 62 `S1250 1 ipv4Header 23 0 `S104 1 memory 9 23 `S250 1 ethernet 30 32 ]
+[v ipv4_txFrameRequest@packet packet `*.39S1264  1 p 2 71 ]
 "40
 } 0
 "85
 [v _ipv4_streamToTransmissionBuffer ipv4_streamToTransmissionBuffer `(v  1 e 1 0 ]
 {
-[v ipv4_streamToTransmissionBuffer@data data `uc  1 a 1 wreg ]
 "86
-[v ipv4_streamToTransmissionBuffer@ethernetPacketLength ethernetPacketLength `ui  1 a 2 85 ]
+[v ipv4_streamToTransmissionBuffer@ethernetPacketLength ethernetPacketLength `ui  1 a 2 66 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "85
-[v ipv4_streamToTransmissionBuffer@data data `uc  1 a 1 wreg ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-[s S1235 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E212 1 protocol 1 12 `ui 1 checksum 2 13 `S1233 1 source 4 15 `S1233 1 destination 4 19 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S1250 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E211 1 protocol 1 12 `ui 1 checksum 2 13 `S1248 1 source 4 15 `S1248 1 destination 4 19 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1045,13 +1042,11 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[s S1249 ipv4_packet 62 `S1235 1 ipv4Header 23 0 `S100 1 memory 9 23 `S246 1 ethernet 30 32 ]
-[v ipv4_streamToTransmissionBuffer@packet packet `S1249  1 p 62 18 ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[s S1264 ipv4_packet 62 `S1250 1 ipv4Header 23 0 `S104 1 memory 9 23 `S250 1 ethernet 30 32 ]
+[v ipv4_streamToTransmissionBuffer@packet packet `S1264  1 p 62 0 ]
 "91
 [v ipv4_streamToTransmissionBuffer@dataPointer dataPointer `ui  1 s 2 dataPointer ]
-"86
-[v ipv4_streamToTransmissionBuffer@data data `uc  1 a 1 84 ]
 "98
 } 0
 "100
@@ -1059,19 +1054,19 @@ ERROR_ARP_INVALID_VALUES 403
 {
 "108
 [v ipv4_calculateHeaderChecksum@sum sum `ul  1 a 4 14 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "100
-[s S1235 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E212 1 protocol 1 12 `ui 1 checksum 2 13 `S1233 1 source 4 15 `S1233 1 destination 4 19 ]
-[v ipv4_calculateHeaderChecksum@header header `*.39S1235  1 p 2 0 ]
+[s S1250 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E211 1 protocol 1 12 `ui 1 checksum 2 13 `S1248 1 source 4 15 `S1248 1 destination 4 19 ]
+[v ipv4_calculateHeaderChecksum@header header `*.39S1250  1 p 2 0 ]
 "124
 } 0
 "26 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/backgroundTasks.c
 [v _handleStackBackgroundTasks handleStackBackgroundTasks `(v  1 e 1 0 ]
 {
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-[s S266 ethernetConnection 15 `E5507 1 link 1 0 `E5511 1 speed 1 1 `E5515 1 duplex 1 2 `S98 1 source 6 3 `S98 1 destination 6 9 ]
+[s S270 ethernetConnection 15 `E5507 1 link 1 0 `E5511 1 speed 1 1 `E5515 1 duplex 1 2 `S98 1 source 6 3 `S98 1 destination 6 9 ]
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-[s S218 interruptFlags 2 `uc 1 MODEXIF 1 0 :1:0 
+[s S222 interruptFlags 2 `uc 1 MODEXIF 1 0 :1:0 
 `uc 1 HASHIF 1 0 :1:1 
 `uc 1 AESIF 1 0 :1:2 
 `uc 1 LINKIF 1 0 :1:3 
@@ -1082,10 +1077,10 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 RXABTIF 1 1 :1:0 
 `uc 1 PCFULIF 1 1 :1:1 
 ]
-[s S1187 backgroundTaskHandler 6 `S27 1 err 3 0 `S218 1 interruptFlags 2 3 `uc 1 fPacketPending 1 5 :1:0 
+[s S1202 backgroundTaskHandler 6 `S27 1 err 3 0 `S222 1 interruptFlags 2 3 `uc 1 fPacketPending 1 5 :1:0 
 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1105,12 +1100,12 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-[s S1235 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E212 1 protocol 1 12 `ui 1 checksum 2 13 `S1233 1 source 4 15 `S1233 1 destination 4 19 ]
-[s S1249 ipv4_packet 62 `S1235 1 ipv4Header 23 0 `S100 1 memory 9 23 `S246 1 ethernet 30 32 ]
-[s S1253 stack 113 `S266 1 ethernet 15 0 `VES1187 1 background 6 15 `S246 1 newReceivedFrame 30 21 `S1249 1 pendingPacketToSend 62 51 ]
-[v handleStackBackgroundTasks@stack stack `*.39VES1253  1 p 2 132 ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1250 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E211 1 protocol 1 12 `ui 1 checksum 2 13 `S1248 1 source 4 15 `S1248 1 destination 4 19 ]
+[s S1264 ipv4_packet 62 `S1250 1 ipv4Header 23 0 `S104 1 memory 9 23 `S250 1 ethernet 30 32 ]
+[s S1268 stack 113 `S270 1 ethernet 15 0 `VES1202 1 background 6 15 `S250 1 newReceivedFrame 30 21 `S1264 1 pendingPacketToSend 62 51 ]
+[v handleStackBackgroundTasks@stack stack `*.39VES1268  1 p 2 132 ]
 "61
 } 0
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
@@ -1126,12 +1121,12 @@ ERROR_ARP_INVALID_VALUES 403
 [v ipv4_sendFrame@requestTimeout requestTimeout `Cuc  1 a 1 127 ]
 "47
 [v ipv4_sendFrame@numberOfRequests numberOfRequests `Cuc  1 a 1 126 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "42
-[s S1235 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E212 1 protocol 1 12 `ui 1 checksum 2 13 `S1233 1 source 4 15 `S1233 1 destination 4 19 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S1250 ipv4_header 23 `uc 1 version 1 0 `uc 1 headerLength 1 1 `uc 1 dscp 1 2 `uc 1 ecn 1 3 `ui 1 totalLength 2 4 `ui 1 identification 2 6 `uc 1 flags 1 8 `ui 1 fragmentOffset 2 9 `uc 1 timeToLive 1 11 `E211 1 protocol 1 12 `ui 1 checksum 2 13 `S1248 1 source 4 15 `S1248 1 destination 4 19 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1151,58 +1146,58 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[s S1249 ipv4_packet 62 `S1235 1 ipv4Header 23 0 `S100 1 memory 9 23 `S246 1 ethernet 30 32 ]
-[v ipv4_sendFrame@ipPacket ipPacket `S1249  1 p 62 52 ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[s S1264 ipv4_packet 62 `S1250 1 ipv4Header 23 0 `S104 1 memory 9 23 `S250 1 ethernet 30 32 ]
+[v ipv4_sendFrame@ipPacket ipPacket `S1264  1 p 62 52 ]
 "46
 [v ipv4_sendFrame@requestCounter requestCounter `uc  1 s 1 requestCounter ]
 "49
 [v ipv4_sendFrame@oldTime oldTime `ul  1 s 4 oldTime ]
 "83
 } 0
-"208 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"209 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _ARP_sendRequest ARP_sendRequest `(v  1 e 1 0 ]
 {
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"209
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"210
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-[s S2351 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1233 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1233 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
+[s S2364 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1248 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1248 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
 `uc 1 fIsProbe 1 28 :1:1 
 `S27 1 err 3 29 ]
-[v ARP_sendRequest@request request `S2351  1 a 32 20 ]
-"213
+[v ARP_sendRequest@request request `S2364  1 a 32 20 ]
+"214
 [v ARP_sendRequest@targetMAC targetMAC `S98  1 a 6 14 ]
-"212
+"213
 [v ARP_sendRequest@senderMAC senderMAC `S98  1 a 6 4 ]
+"212
+[v ARP_sendRequest@targetIP targetIP `S1248  1 a 4 10 ]
 "211
-[v ARP_sendRequest@targetIP targetIP `S1233  1 a 4 10 ]
-"210
-[v ARP_sendRequest@senderIP senderIP `S1233  1 a 4 0 ]
-"208
-[v ARP_sendRequest@ip ip `S1233  1 p 4 152 ]
-"231
+[v ARP_sendRequest@senderIP senderIP `S1248  1 a 4 0 ]
+"209
+[v ARP_sendRequest@ip ip `S1248  1 p 4 152 ]
+"235
 } 0
 "57 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"246 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"250 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _ARP_getEntryFromTable ARP_getEntryFromTable `(S98  1 e 6 0 ]
 {
 [v ARP_getEntryFromTable@index index `uc  1 a 1 wreg ]
 [v ARP_getEntryFromTable@index index `uc  1 a 1 wreg ]
 [v ARP_getEntryFromTable@index index `uc  1 a 1 7 ]
-"248
+"252
 } 0
-"233
+"237
 [v _ARP_checkForEntry ARP_checkForEntry `(uc  1 e 1 0 ]
 {
-"234
+"238
 [v ARP_checkForEntry@i i `uc  1 a 1 21 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"233
-[v ARP_checkForEntry@ip ip `S1233  1 p 4 7 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"237
+[v ARP_checkForEntry@ip ip `S1248  1 p 4 7 ]
 [v ARP_checkForEntry@index index `*.39uc  1 p 2 11 ]
-"244
+"248
 } 0
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
@@ -1213,8 +1208,8 @@ ERROR_ARP_INVALID_VALUES 403
 [v ethernet_rxGetNewFrame@err err `S27  1 a 3 156 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
 "53
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1234,18 +1229,18 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[v ethernet_rxGetNewFrame@frame frame `*.39S246  1 p 2 116 ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[v ethernet_rxGetNewFrame@frame frame `*.39S250  1 p 2 116 ]
 "54
 [v ethernet_rxGetNewFrame@counter counter `ul  1 s 4 counter ]
-"140
+"125
 } 0
 "149 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
 [v _ipv4_handleNewPacket ipv4_handleNewPacket `(v  1 e 1 0 ]
 {
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1265,24 +1260,24 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[v ipv4_handleNewPacket@frame frame `*.39S246  1 p 2 58 ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[v ipv4_handleNewPacket@frame frame `*.39S250  1 p 2 58 ]
 "152
 } 0
-"327 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"337 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_updateNextPacketPointer ethernetController_updateNextPacketPointer `(v  1 e 1 0 ]
 {
-"328
+"338
 [v ethernetController_updateNextPacketPointer@nextPktPointer nextPktPointer `ui  1 a 2 21 ]
-"330
+"340
 [v ethernetController_updateNextPacketPointer@newPointerH newPointerH `uc  1 a 1 25 ]
 [v ethernetController_updateNextPacketPointer@newPointerL newPointerL `uc  1 a 1 24 ]
-"329
+"339
 [v ethernetController_updateNextPacketPointer@opcode opcode `uc  1 a 1 23 ]
-"341
+"351
 } 0
 "33 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/rsv.h
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1302,21 +1297,21 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-"292 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
-[v _ethernetController_getRSV ethernetController_getRSV `(S192  1 e 5 0 ]
+"302 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+[v _ethernetController_getRSV ethernetController_getRSV `(S196  1 e 5 0 ]
 {
-"298
+"308
 [v ethernetController_getRSV@i i `uc  1 a 1 23 ]
-"295
+"305
 [v ethernetController_getRSV@opcode opcode `uc  1 a 1 22 ]
-"292
+"302
 [v ethernetController_getRSV@address address `ui  1 p 2 17 ]
-"293
-[v ethernetController_getRSV@temp temp `[6]uc  1 s 6 temp ]
 "303
+[v ethernetController_getRSV@temp temp `[6]uc  1 s 6 temp ]
+"313
 } 0
 "33 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/rsv.h
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1336,30 +1331,30 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-"713 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
-[v _ENC424J600_updateReceiveStatusVector ENC424J600_updateReceiveStatusVector `(S192  1 s 5 ENC424J600_updateReceiveStatusVector ]
+"758 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+[v _ENC424J600_updateReceiveStatusVector ENC424J600_updateReceiveStatusVector `(S196  1 s 5 ENC424J600_updateReceiveStatusVector ]
 {
-"714
-[v ENC424J600_updateReceiveStatusVector@receiveStatusVector receiveStatusVector `S192  1 a 5 12 ]
-"713
+"759
+[v ENC424J600_updateReceiveStatusVector@receiveStatusVector receiveStatusVector `S196  1 a 5 12 ]
+"758
 [v ENC424J600_updateReceiveStatusVector@rsv rsv `*.39uc  1 p 2 0 ]
-"741
+"786
 } 0
-"276
+"286
 [v _ethernetController_getEtherTypeField ethernetController_getEtherTypeField `(E5498  1 e 2 0 ]
 {
-"277
+"287
 [v ethernetController_getEtherTypeField@ethertype ethertype `E5498  1 a 2 28 ]
-"284
+"294
 [v ethernetController_getEtherTypeField@highByte highByte `uc  1 a 1 32 ]
-"283
+"293
 [v ethernetController_getEtherTypeField@lowByte lowByte `uc  1 a 1 31 ]
-"279
+"289
 [v ethernetController_getEtherTypeField@opcode opcode `uc  1 a 1 30 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-"276
-[v ethernetController_getEtherTypeField@field field `S100  1 p 9 15 ]
-"290
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+"286
+[v ethernetController_getEtherTypeField@field field `S104  1 p 9 15 ]
+"300
 } 0
 "178 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/uart.c
 [v _etherTypeToString etherTypeToString `(*.25uc  1 e 2 0 ]
@@ -1421,15 +1416,15 @@ ERROR_ARP_INVALID_VALUES 403
 {
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
 "29
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-[s S2351 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1233 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1233 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
+[s S2364 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1248 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1248 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
 `uc 1 fIsProbe 1 28 :1:1 
 `S27 1 err 3 29 ]
-[v ARP_handleNewPacket@arp arp `S2351  1 a 32 84 ]
+[v ARP_handleNewPacket@arp arp `S2364  1 a 32 84 ]
 "28
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1449,21 +1444,21 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[v ARP_handleNewPacket@frame frame `*.39S246  1 p 2 152 ]
-"56
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[v ARP_handleNewPacket@frame frame `*.39S250  1 p 2 152 ]
+"57
 } 0
 "41 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/stack.c
 [v _getSeconds getSeconds `(ul  1 e 4 0 ]
 {
 "43
 } 0
-"372 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"382 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_dropPacket ethernetController_dropPacket `(v  1 e 1 0 ]
 {
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1483,32 +1478,32 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[v ethernetController_dropPacket@frame frame `*.39S246  1 p 2 18 ]
-"394
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[v ethernetController_dropPacket@frame frame `*.39S250  1 p 2 18 ]
+"404
 } 0
-"128 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"129 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _ARP_replyIfNeeded ARP_replyIfNeeded `(v  1 e 1 0 ]
 {
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"135
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"136
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-[s S2351 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1233 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1233 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
+[s S2364 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1248 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1248 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
 `uc 1 fIsProbe 1 28 :1:1 
 `S27 1 err 3 29 ]
-[v ARP_replyIfNeeded@reply reply `S2351  1 a 32 52 ]
-"139
+[v ARP_replyIfNeeded@reply reply `S2364  1 a 32 52 ]
+"140
 [v ARP_replyIfNeeded@targetMAC targetMAC `S98  1 a 6 42 ]
-"138
+"139
 [v ARP_replyIfNeeded@senderMAC senderMAC `S98  1 a 6 36 ]
+"138
+[v ARP_replyIfNeeded@targetIP targetIP `S1248  1 a 4 48 ]
 "137
-[v ARP_replyIfNeeded@targetIP targetIP `S1233  1 a 4 48 ]
-"136
-[v ARP_replyIfNeeded@senderIP senderIP `S1233  1 a 4 32 ]
-"128
-[v ARP_replyIfNeeded@request request `S2351  1 p 32 0 ]
-"163
+[v ARP_replyIfNeeded@senderIP senderIP `S1248  1 a 4 32 ]
+"129
+[v ARP_replyIfNeeded@request request `S2364  1 p 32 0 ]
+"164
 } 0
 "147 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/uart.c
 [v _macToString macToString `(*.39uc  1 e 2 0 ]
@@ -1526,7 +1521,7 @@ ERROR_ARP_INVALID_VALUES 403
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
 "147
 [v macToString@addr addr `S98  1 p 6 26 ]
-[v macToString@F5794 F5794 `[18]uc  1 s 18 F5794 ]
+[v macToString@F5791 F5791 `[18]uc  1 s 18 F5791 ]
 "176
 } 0
 "189
@@ -1542,9 +1537,9 @@ ERROR_ARP_INVALID_VALUES 403
 [v ipAdressToString@ones ones `[4]uc  1 a 4 15 ]
 "194
 [v ipAdressToString@pointer pointer `uc  1 a 1 27 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "189
-[v ipAdressToString@ip ip `S1233  1 p 4 7 ]
+[v ipAdressToString@ip ip `S1248  1 p 4 7 ]
 "190
 [v ipAdressToString@address address `[16]uc  1 s 16 address ]
 "212
@@ -1573,28 +1568,28 @@ ERROR_ARP_INVALID_VALUES 403
 } 0
 "57 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"158 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"160 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_getMacAddress ethernetController_getMacAddress `(S98  1 e 6 0 ]
 {
-"159
+"161
 [v ethernetController_getMacAddress@mac mac `S98  1 a 6 20 ]
-"167
+"169
 } 0
-"165 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
-[v _ARP_send ARP_send `(v  1 e 1 0 ]
+"166 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[v _ARP_send ARP_send `(v  1 s 1 ARP_send ]
 {
-"202
-[v ARP_send@i_2682 i `uc  1 a 1 112 ]
-"199
-[v ARP_send@i_2681 i `uc  1 a 1 111 ]
-"197
-[v ARP_send@i_2680 i `uc  1 a 1 110 ]
-"195
+"203
+[v ARP_send@i_2695 i `uc  1 a 1 112 ]
+"200
+[v ARP_send@i_2694 i `uc  1 a 1 111 ]
+"198
+[v ARP_send@i_2693 i `uc  1 a 1 110 ]
+"196
 [v ARP_send@i i `uc  1 a 1 109 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"168
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+"169
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1614,20 +1609,20 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[v ARP_send@ethFrame ethFrame `S246  1 a 30 113 ]
-"166
-[v ARP_send@field field `S100  1 a 9 143 ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[v ARP_send@ethFrame ethFrame `S250  1 a 30 113 ]
 "167
+[v ARP_send@field field `S104  1 a 9 143 ]
+"168
 [v ARP_send@destination destination `S98  1 a 6 103 ]
-"165
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"166
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-[s S2351 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1233 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1233 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
+[s S2364 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1248 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1248 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
 `uc 1 fIsProbe 1 28 :1:1 
 `S27 1 err 3 29 ]
-[v ARP_send@arp arp `S2351  1 p 32 71 ]
-"206
+[v ARP_send@arp arp `S2364  1 p 32 71 ]
+"207
 } 0
 "26 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/mac.c
 [v _mac_setToBroadcast mac_setToBroadcast `(v  1 e 1 0 ]
@@ -1648,8 +1643,8 @@ ERROR_ARP_INVALID_VALUES 403
 [v ethernet_txFrameRequest@err err `S27  1 a 3 68 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
 "28
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1669,23 +1664,23 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[v ethernet_txFrameRequest@frame frame `*.39S246  1 p 2 66 ]
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[v ethernet_txFrameRequest@frame frame `*.39S250  1 p 2 66 ]
 "51
 } 0
 "35 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/mem/memoryTypes.h
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
 "136 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/mem/memoryController.c
-[v _memory_txFrameRequest memory_txFrameRequest `(S100  1 e 9 0 ]
+[v _memory_txFrameRequest memory_txFrameRequest `(S104  1 e 9 0 ]
 {
 "176
 [v memory_txFrameRequest@i i `uc  1 a 1 54 ]
 "192
-[v memory_txFrameRequest@i_1147 i `uc  1 a 1 55 ]
+[v memory_txFrameRequest@i_1162 i `uc  1 a 1 55 ]
 "191
 [v memory_txFrameRequest@fNoOverlapMarker fNoOverlapMarker `uc  1 a 1 53 ]
 "137
-[v memory_txFrameRequest@field field `S100  1 a 9 56 ]
+[v memory_txFrameRequest@field field `S104  1 a 9 56 ]
 "138
 [v memory_txFrameRequest@freeIndex freeIndex `uc  1 a 1 65 ]
 "136
@@ -1709,17 +1704,17 @@ ERROR_ARP_INVALID_VALUES 403
 "62
 [v _checkForOverlap checkForOverlap `(uc  1 s 1 checkForOverlap ]
 {
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[v checkForOverlap@a a `S100  1 p 9 18 ]
-[v checkForOverlap@b b `S100  1 p 9 27 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[v checkForOverlap@a a `S104  1 p 9 18 ]
+[v checkForOverlap@b b `S104  1 p 9 27 ]
 "99
 } 0
 "101
 [v _checkForOverlapSwitched checkForOverlapSwitched `(uc  1 s 1 checkForOverlapSwitched ]
 {
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[v checkForOverlapSwitched@a a `S100  1 p 9 0 ]
-[v checkForOverlapSwitched@b b `S100  1 p 9 9 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[v checkForOverlapSwitched@a a `S104  1 p 9 0 ]
+[v checkForOverlapSwitched@b b `S104  1 p 9 9 ]
 "134
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
@@ -1732,72 +1727,73 @@ ERROR_ARP_INVALID_VALUES 403
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
-"234 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"244 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_writeEtherTypeFieldToBuffer ethernetController_writeEtherTypeFieldToBuffer `(v  1 e 1 0 ]
 {
-"238
+"248
 [v ethernetController_writeEtherTypeFieldToBuffer@opcode opcode `uc  1 a 1 28 ]
-"237
+"247
 [v ethernetController_writeEtherTypeFieldToBuffer@highByte highByte `uc  1 a 1 27 ]
-"236
+"246
 [v ethernetController_writeEtherTypeFieldToBuffer@lowByte lowByte `uc  1 a 1 26 ]
-"234
-[v ethernetController_writeEtherTypeFieldToBuffer@ethtype ethtype `E5498  1 p 2 15 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[v ethernetController_writeEtherTypeFieldToBuffer@field field `S100  1 p 9 17 ]
 "244
+[v ethernetController_writeEtherTypeFieldToBuffer@ethtype ethtype `E5498  1 p 2 15 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[v ethernetController_writeEtherTypeFieldToBuffer@field field `S104  1 p 9 17 ]
+"254
 } 0
-"221
+"231
 [v _ethernetController_writeDestinationMACAddress ethernetController_writeDestinationMACAddress `(v  1 e 1 0 ]
 {
-"229
-[v ethernetController_writeDestinationMACAddress@i_624 i `uc  1 a 1 37 ]
-"224
+"239
+[v ethernetController_writeDestinationMACAddress@i_638 i `uc  1 a 1 37 ]
+"234
 [v ethernetController_writeDestinationMACAddress@i i `uc  1 a 1 38 ]
-"223
+"233
 [v ethernetController_writeDestinationMACAddress@data data `[6]uc  1 a 6 30 ]
-"226
+"236
 [v ethernetController_writeDestinationMACAddress@opcode opcode `uc  1 a 1 36 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"221
+"231
 [v ethernetController_writeDestinationMACAddress@addr addr `S98  1 p 6 15 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[v ethernetController_writeDestinationMACAddress@field field `S100  1 p 9 21 ]
-"232
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[v ethernetController_writeDestinationMACAddress@field field `S104  1 p 9 21 ]
+"242
 } 0
-"515
-[v _ENC424J600_setGPDATAWritePointer ENC424J600_setGPDATAWritePointer `(v  1 s 1 ENC424J600_setGPDATAWritePointer ]
-{
-"518
-[v ENC424J600_setGPDATAWritePointer@highByte highByte `uc  1 a 1 14 ]
-"517
-[v ENC424J600_setGPDATAWritePointer@lowByte lowByte `uc  1 a 1 13 ]
-"516
-[v ENC424J600_setGPDATAWritePointer@opcode opcode `uc  1 a 1 12 ]
-"515
-[v ENC424J600_setGPDATAWritePointer@addr addr `ui  1 p 2 10 ]
-"524
-} 0
-"193
+"211
 [v _ethernetController_streamToTransmitBuffer ethernetController_streamToTransmitBuffer `(v  1 e 1 0 ]
 {
 [v ethernetController_streamToTransmitBuffer@data data `uc  1 a 1 wreg ]
-"194
-[v ethernetController_streamToTransmitBuffer@opcode opcode `uc  1 a 1 17 ]
-"193
+"212
+[v ethernetController_streamToTransmitBuffer@opcode opcode `uc  1 a 1 29 ]
+"211
 [v ethernetController_streamToTransmitBuffer@data data `uc  1 a 1 wreg ]
-[v ethernetController_streamToTransmitBuffer@len len `ui  1 p 2 10 ]
-"195
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[v ethernetController_streamToTransmitBuffer@field field `S104  1 p 9 15 ]
+"213
 [v ethernetController_streamToTransmitBuffer@pointer pointer `ui  1 s 2 pointer ]
-[v ethernetController_streamToTransmitBuffer@data data `uc  1 a 1 16 ]
-"219
+[v ethernetController_streamToTransmitBuffer@data data `uc  1 a 1 28 ]
+"229
 } 0
-"186
+"648
+[v _ENC424J600_setGPDATAWritePointer ENC424J600_setGPDATAWritePointer `(v  1 s 1 ENC424J600_setGPDATAWritePointer ]
+{
+"651
+[v ENC424J600_setGPDATAWritePointer@highByte highByte `uc  1 a 1 14 ]
+"650
+[v ENC424J600_setGPDATAWritePointer@lowByte lowByte `uc  1 a 1 13 ]
+"649
+[v ENC424J600_setGPDATAWritePointer@opcode opcode `uc  1 a 1 12 ]
+"648
+[v ENC424J600_setGPDATAWritePointer@addr addr `ui  1 p 2 10 ]
+"657
+} 0
+"204
 [v _ethernetController_sendPacket ethernetController_sendPacket `(v  1 e 1 0 ]
 {
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[v ethernetController_sendPacket@field field `S100  1 p 9 18 ]
-"191
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[v ethernetController_sendPacket@field field `S104  1 p 9 18 ]
+"209
 } 0
 "224 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/mem/memoryController.c
 [v _memory_txFrameClear memory_txFrameClear `(v  1 e 1 0 ]
@@ -1807,76 +1803,76 @@ ERROR_ARP_INVALID_VALUES 403
 [v memory_txFrameClear@index index `uc  1 a 1 0 ]
 "226
 } 0
-"508 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"641 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ENC424J600_setTXStartAddress ENC424J600_setTXStartAddress `(v  1 s 1 ENC424J600_setTXStartAddress ]
 {
-"510
+"643
 [v ENC424J600_setTXStartAddress@highByte highByte `uc  1 a 1 17 ]
-"509
+"642
 [v ENC424J600_setTXStartAddress@lowByte lowByte `uc  1 a 1 16 ]
-"508
+"641
 [v ENC424J600_setTXStartAddress@addr addr `ui  1 p 2 14 ]
-"513
+"646
 } 0
-"501
+"616
 [v _ENC424J600_setTXLength ENC424J600_setTXLength `(v  1 s 1 ENC424J600_setTXLength ]
 {
-"503
+"618
 [v ENC424J600_setTXLength@highByte highByte `uc  1 a 1 17 ]
-"502
+"617
 [v ENC424J600_setTXLength@lowByte lowByte `uc  1 a 1 16 ]
-"501
+"616
 [v ENC424J600_setTXLength@len len `ui  1 p 2 14 ]
-"506
+"621
 } 0
 "57 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"261 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"271 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_getSourceMACAddress ethernetController_getSourceMACAddress `(S98  1 e 6 0 ]
 {
-"268
+"278
 [v ethernetController_getSourceMACAddress@temp temp `uc  1 a 1 31 ]
-"267
+"277
 [v ethernetController_getSourceMACAddress@i i `uc  1 a 1 32 ]
-"262
+"272
 [v ethernetController_getSourceMACAddress@sourceAddress sourceAddress `S98  1 a 6 25 ]
-"264
-[v ethernetController_getSourceMACAddress@opcode opcode `uc  1 a 1 24 ]
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-"261
-[v ethernetController_getSourceMACAddress@field field `S100  1 p 9 15 ]
 "274
+[v ethernetController_getSourceMACAddress@opcode opcode `uc  1 a 1 24 ]
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+"271
+[v ethernetController_getSourceMACAddress@field field `S104  1 p 9 15 ]
+"284
 } 0
 "54 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arpTypes.h
 "57 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"58 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"59 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 "44 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4Types.h
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"58 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"59 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"58 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
-[s S2351 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1233 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1233 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
+"59 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[s S2364 ARP_message 32 `ui 1 htype 2 0 `ui 1 ptype 2 2 `uc 1 hlen 1 4 `uc 1 plen 1 5 `ui 1 operation 2 6 `S98 1 senderMACAddress 6 8 `S1248 1 senderIPAddress 4 14 `S98 1 targetMACAddress 6 18 `S1248 1 targetIPAddress 4 24 `uc 1 fIsGratuitous 1 28 :1:0 
 `uc 1 fIsProbe 1 28 :1:1 
 `S27 1 err 3 29 ]
-[v _ARP_parseFromRXBuffer ARP_parseFromRXBuffer `(S2351  1 e 32 0 ]
+[v _ARP_parseFromRXBuffer ARP_parseFromRXBuffer `(S2364  1 s 32 ARP_parseFromRXBuffer ]
 {
-"85
-[v ARP_parseFromRXBuffer@i_2558 i `uc  1 a 1 61 ]
-"83
-[v ARP_parseFromRXBuffer@i_2557 i `uc  1 a 1 60 ]
-"80
-[v ARP_parseFromRXBuffer@i_2556 i `uc  1 a 1 59 ]
-"78
+"86
+[v ARP_parseFromRXBuffer@i_2571 i `uc  1 a 1 61 ]
+"84
+[v ARP_parseFromRXBuffer@i_2570 i `uc  1 a 1 60 ]
+"81
+[v ARP_parseFromRXBuffer@i_2569 i `uc  1 a 1 59 ]
+"79
 [v ARP_parseFromRXBuffer@i i `uc  1 a 1 58 ]
-"59
-[v ARP_parseFromRXBuffer@arp arp `S2351  1 a 32 64 ]
 "60
+[v ARP_parseFromRXBuffer@arp arp `S2364  1 a 32 64 ]
+"61
 [v ARP_parseFromRXBuffer@offset offset `Cui  1 a 2 62 ]
-"58
-[s S100 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
-[s S192 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
+"59
+[s S104 memoryField 9 `ui 1 start 2 0 `ui 1 end 2 2 `ui 1 length 2 4 `uc 1 fIsAssigned 1 6 `uc 1 fOutOfMemory 1 7 `uc 1 index 1 8 ]
+[s S196 RSV 5 `ui 1 length 2 0 `uc 1 packetPreviouslyIgnored 1 2 :1:0 
 `uc 1 carrierEventPreviouslySeen 1 2 :1:1 
 `uc 1 CRCError 1 2 :1:2 
 `uc 1 lengthCheckError 1 2 :1:3 
@@ -1896,9 +1892,9 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 patternMatch 1 4 :1:1 
 `uc 1 unicast 1 4 :1:2 
 ]
-[s S246 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S100 1 memory 9 16 `S192 1 receiveStatusVector 5 25 ]
-[v ARP_parseFromRXBuffer@frame frame `*.39S246  1 p 2 23 ]
-"126
+[s S250 ethernetFrame 30 `ui 1 length 2 0 `S98 1 source 6 2 `S98 1 destination 6 8 `E5498 1 ethertype 2 14 `S104 1 memory 9 16 `S196 1 receiveStatusVector 5 25 ]
+[v ARP_parseFromRXBuffer@frame frame `*.39S250  1 p 2 23 ]
+"127
 } 0
 "31 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/mac.c
 [v _mac_isAllZero mac_isAllZero `(b  1 e 0 0 ]
@@ -1926,9 +1922,9 @@ ERROR_ARP_INVALID_VALUES 403
 {
 "179
 [v ipv4_isAllZero@i i `uc  1 a 1 2 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "178
-[v ipv4_isAllZero@ip ip `*.39S1233  1 p 2 0 ]
+[v ipv4_isAllZero@ip ip `*.39S1248  1 p 2 0 ]
 "184
 } 0
 "170
@@ -1936,112 +1932,99 @@ ERROR_ARP_INVALID_VALUES 403
 {
 "171
 [v ipv4_cmp@i i `uc  1 a 1 6 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "170
-[v ipv4_cmp@a a `*.39S1233  1 p 2 0 ]
-[v ipv4_cmp@b b `*.39S1233  1 p 2 2 ]
+[v ipv4_cmp@a a `*.39S1248  1 p 2 0 ]
+[v ipv4_cmp@b b `*.39S1248  1 p 2 2 ]
 "176
 } 0
-"343 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"353 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_streamFromRXBuffer ethernetController_streamFromRXBuffer `(uc  1 e 1 0 ]
 {
 [v ethernetController_streamFromRXBuffer@startEnd startEnd `uc  1 a 1 wreg ]
-"344
+"354
 [v ethernetController_streamFromRXBuffer@temp temp `uc  1 a 1 22 ]
-"345
+"355
 [v ethernetController_streamFromRXBuffer@opcode opcode `uc  1 a 1 21 ]
-"343
+"353
 [v ethernetController_streamFromRXBuffer@startEnd startEnd `uc  1 a 1 wreg ]
 [v ethernetController_streamFromRXBuffer@startAddress startAddress `ui  1 p 2 18 ]
 [v ethernetController_streamFromRXBuffer@startEnd startEnd `uc  1 a 1 20 ]
-"370
+"380
 } 0
-"491
+"501
 [v _ethernetController_getNextPacketPointer ethernetController_getNextPacketPointer `(ui  1 e 2 0 ]
 {
-"493
+"503
 } 0
-"566
+"629
 [v _ENC424J600_getNextPacketPointer ENC424J600_getNextPacketPointer `(ui  1 s 2 ENC424J600_getNextPacketPointer ]
 {
-"568
+"631
 } 0
-"537
+"670
 [v _ENC424J600_setERXDATAReadPointer ENC424J600_setERXDATAReadPointer `(v  1 s 1 ENC424J600_setERXDATAReadPointer ]
 {
-"540
+"673
 [v ENC424J600_setERXDATAReadPointer@highByte highByte `uc  1 a 1 14 ]
-"539
+"672
 [v ENC424J600_setERXDATAReadPointer@lowByte lowByte `uc  1 a 1 13 ]
-"538
+"671
 [v ENC424J600_setERXDATAReadPointer@opcode opcode `uc  1 a 1 12 ]
-"537
+"670
 [v ENC424J600_setERXDATAReadPointer@addr addr `ui  1 p 2 10 ]
-"546
+"679
 } 0
-"400
+"410
 [v _ethernetController_updateLinkStatus ethernetController_updateLinkStatus `(v  1 e 1 0 ]
 {
-"401
+"411
 [v ethernetController_updateLinkStatus@temp16 temp16 `uc  1 a 1 35 ]
 [v ethernetController_updateLinkStatus@temp temp `uc  1 a 1 34 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"400
-[s S266 ethernetConnection 15 `E5507 1 link 1 0 `E5511 1 speed 1 1 `E5515 1 duplex 1 2 `S98 1 source 6 3 `S98 1 destination 6 9 ]
-[v ethernetController_updateLinkStatus@state state `*.39S266  1 p 2 32 ]
-"422
+"410
+[s S270 ethernetConnection 15 `E5507 1 link 1 0 `E5511 1 speed 1 1 `E5515 1 duplex 1 2 `S98 1 source 6 3 `S98 1 destination 6 9 ]
+[v ethernetController_updateLinkStatus@state state `*.39S270  1 p 2 32 ]
+"432
 } 0
-"655
+"577
 [v _ENC424J600_readPHYRegister ENC424J600_readPHYRegister `(v  1 s 1 ENC424J600_readPHYRegister ]
 {
 [v ENC424J600_readPHYRegister@addr addr `uc  1 a 1 wreg ]
-"662
+"584
 [v ENC424J600_readPHYRegister@timeoutCounter timeoutCounter `ul  1 a 4 25 ]
-"659
+"581
 [v ENC424J600_readPHYRegister@temp temp `uc  1 a 1 31 ]
-"661
+"583
 [v ENC424J600_readPHYRegister@highByte highByte `uc  1 a 1 30 ]
-"660
+"582
 [v ENC424J600_readPHYRegister@lowByte lowByte `uc  1 a 1 29 ]
-"658
+"580
 [v ENC424J600_readPHYRegister@unusedBits unusedBits `uc  1 a 1 24 ]
-"657
+"579
 [v ENC424J600_readPHYRegister@PHYaddress PHYaddress `uc  1 a 1 23 ]
-"655
+"577
 [v ENC424J600_readPHYRegister@addr addr `uc  1 a 1 wreg ]
 [v ENC424J600_readPHYRegister@data data `*.39ui  1 p 2 14 ]
-"657
+"579
 [v ENC424J600_readPHYRegister@addr addr `uc  1 a 1 22 ]
-"690
+"612
 } 0
-"424
-[v _ethernetController_setLEDStatus ethernetController_setLEDStatus `(v  1 e 1 0 ]
+"459
+[v _ethernetController_setLEDConfig ethernetController_setLEDConfig `(v  1 e 1 0 ]
 {
-[v ethernetController_setLEDStatus@LED LED `uc  1 a 1 wreg ]
-"425
-[v ethernetController_setLEDStatus@data data `uc  1 a 1 16 ]
-"424
-[v ethernetController_setLEDStatus@LED LED `uc  1 a 1 wreg ]
-[v ethernetController_setLEDStatus@status status `uc  1 p 1 14 ]
-"426
-[v ethernetController_setLEDStatus@LED LED `uc  1 a 1 15 ]
-"447
-} 0
-"449
-[v _ethernetController_setLEDConfiguration ethernetController_setLEDConfiguration `(v  1 e 1 0 ]
-{
-[v ethernetController_setLEDConfiguration@LED LED `uc  1 a 1 wreg ]
-"450
-[v ethernetController_setLEDConfiguration@data data `uc  1 a 1 16 ]
-"449
-[v ethernetController_setLEDConfiguration@LED LED `uc  1 a 1 wreg ]
-[v ethernetController_setLEDConfiguration@conf conf `uc  1 p 1 14 ]
-"451
-[v ethernetController_setLEDConfiguration@LED LED `uc  1 a 1 15 ]
-"485
+[v ethernetController_setLEDConfig@LED LED `E5558  1 a 1 wreg ]
+"460
+[v ethernetController_setLEDConfig@data data `uc  1 a 1 16 ]
+"459
+[v ethernetController_setLEDConfig@LED LED `E5558  1 a 1 wreg ]
+[v ethernetController_setLEDConfig@conf conf `E5562  1 p 1 14 ]
+"461
+[v ethernetController_setLEDConfig@LED LED `E5558  1 a 1 15 ]
+"495
 } 0
 "34 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/interrupt.h
-[s S218 interruptFlags 2 `uc 1 MODEXIF 1 0 :1:0 
+[s S222 interruptFlags 2 `uc 1 MODEXIF 1 0 :1:0 
 `uc 1 HASHIF 1 0 :1:1 
 `uc 1 AESIF 1 0 :1:2 
 `uc 1 LINKIF 1 0 :1:3 
@@ -2052,74 +2035,74 @@ ERROR_ARP_INVALID_VALUES 403
 `uc 1 RXABTIF 1 1 :1:0 
 `uc 1 PCFULIF 1 1 :1:1 
 ]
-"305 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
-[v _ethernetController_pollInterruptFlags ethernetController_pollInterruptFlags `(S218  1 e 2 0 ]
+"315 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+[v _ethernetController_pollInterruptFlags ethernetController_pollInterruptFlags `(S222  1 e 2 0 ]
 {
-"307
+"317
 [v ethernetController_pollInterruptFlags@reg reg `ui  1 a 2 29 ]
-"306
-[v ethernetController_pollInterruptFlags@flags flags `S218  1 a 2 27 ]
-"321
+"316
+[v ethernetController_pollInterruptFlags@flags flags `S222  1 a 2 27 ]
+"331
 } 0
-"692
+"735
 [v _ENC424J600_getInterruptFlags ENC424J600_getInterruptFlags `(ui  1 e 2 0 ]
 {
-"693
+"736
 [v ENC424J600_getInterruptFlags@high high `uc  1 a 1 23 ]
 [v ENC424J600_getInterruptFlags@low low `uc  1 a 1 22 ]
-"697
+"740
 } 0
-"396
+"406
 [v _ethernetController_newPacketAvailable ethernetController_newPacketAvailable `(uc  1 e 1 0 ]
 {
-"398
+"408
 } 0
-"323
+"333
 [v _ethernetController_clearInterruptFlag ethernetController_clearInterruptFlag `(v  1 e 1 0 ]
 {
 [v ethernetController_clearInterruptFlag@flag flag `uc  1 a 1 wreg ]
 [v ethernetController_clearInterruptFlag@flag flag `uc  1 a 1 wreg ]
 [v ethernetController_clearInterruptFlag@flag flag `uc  1 a 1 18 ]
-"325
+"335
 } 0
-"699
+"742
 [v _ENC424J600_clearInterruptFlag ENC424J600_clearInterruptFlag `(v  1 s 1 ENC424J600_clearInterruptFlag ]
 {
 [v ENC424J600_clearInterruptFlag@flag flag `uc  1 a 1 wreg ]
-"700
+"743
 [v ENC424J600_clearInterruptFlag@temp temp `uc  1 a 1 17 ]
-"699
+"742
 [v ENC424J600_clearInterruptFlag@flag flag `uc  1 a 1 wreg ]
-"701
+"744
 [v ENC424J600_clearInterruptFlag@flag flag `uc  1 a 1 16 ]
-"711
+"754
 } 0
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"30 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"33 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_init ethernetController_init `(S27  1 e 3 0 ]
 {
-"31
+"34
 [v ethernetController_init@err err `S27  1 a 3 73 ]
-"70
+"72
 } 0
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"72 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"74 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_softReset ethernetController_softReset `(S27  1 e 3 0 ]
 {
-"93
+"95
 [v ethernetController_softReset@err err `S27  1 a 3 67 ]
-"92
+"94
 [v ethernetController_softReset@receivedData receivedData `[2]uc  1 a 2 65 ]
-"91
+"93
 [v ethernetController_softReset@dataToSend dataToSend `[2]uc  1 a 2 63 ]
-"90
+"92
 [v ethernetController_softReset@comFailCount comFailCount `uc  1 a 1 62 ]
-[v ethernetController_softReset@F5827 F5827 `[2]uc  1 s 2 F5827 ]
-"91
-[v ethernetController_softReset@F5829 F5829 `[2]uc  1 s 2 F5829 ]
-"131
+[v ethernetController_softReset@F5826 F5826 `[2]uc  1 s 2 F5826 ]
+"93
+[v ethernetController_softReset@F5828 F5828 `[2]uc  1 s 2 F5828 ]
+"133
 } 0
 "53 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/uart.c
 [v _UARTTransmitText UARTTransmitText `(v  1 e 1 0 ]
@@ -2129,155 +2112,155 @@ ERROR_ARP_INVALID_VALUES 403
 } 0
 "80 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S27 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"133 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
+"135 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_checkDeviceId ethernetController_checkDeviceId `(S27  1 e 3 0 ]
 {
-"134
+"136
 [v ethernetController_checkDeviceId@err err `S27  1 a 3 18 ]
-"137
+"139
 [v ethernetController_checkDeviceId@data data `uc  1 a 1 17 ]
-"144
+"146
 } 0
-"555
+"688
 [v _ENC424J600_setRXTailPointer ENC424J600_setRXTailPointer `(v  1 s 1 ENC424J600_setRXTailPointer ]
 {
-"557
+"690
 [v ENC424J600_setRXTailPointer@highByte highByte `uc  1 a 1 17 ]
-"556
+"689
 [v ENC424J600_setRXTailPointer@lowByte lowByte `uc  1 a 1 16 ]
-"555
+"688
 [v ENC424J600_setRXTailPointer@addr addr `ui  1 p 2 14 ]
-"560
+"693
 } 0
-"548
+"681
 [v _ENC424J600_setRXBufferStartAddress ENC424J600_setRXBufferStartAddress `(v  1 s 1 ENC424J600_setRXBufferStartAddress ]
 {
-"550
+"683
 [v ENC424J600_setRXBufferStartAddress@highByte highByte `uc  1 a 1 17 ]
-"549
+"682
 [v ENC424J600_setRXBufferStartAddress@lowByte lowByte `uc  1 a 1 16 ]
-"548
+"681
 [v ENC424J600_setRXBufferStartAddress@addr addr `ui  1 p 2 14 ]
-"553
+"686
 } 0
-"562
+"625
 [v _ENC424J600_setNextPacketPointer ENC424J600_setNextPacketPointer `(v  1 s 1 ENC424J600_setNextPacketPointer ]
 {
 [v ENC424J600_setNextPacketPointer@ptr ptr `ui  1 p 2 0 ]
-"564
+"627
 } 0
-"497
+"711
 [v _ENC424J600_enableReception ENC424J600_enableReception `(v  1 s 1 ENC424J600_enableReception ]
 {
-"499
+"713
 } 0
-"649
+"551
 [v _ENC424J600_writeSingleByte ENC424J600_writeSingleByte `(v  1 s 1 ENC424J600_writeSingleByte ]
 {
 [v ENC424J600_writeSingleByte@opcode opcode `uc  1 a 1 wreg ]
 [v ENC424J600_writeSingleByte@opcode opcode `uc  1 a 1 wreg ]
 [v ENC424J600_writeSingleByte@opcode opcode `uc  1 a 1 10 ]
-"653
+"555
 } 0
-"576
+"697
 [v _ENC424J600_enableAutoMACInsertion ENC424J600_enableAutoMACInsertion `(v  1 s 1 ENC424J600_enableAutoMACInsertion ]
 {
-"577
+"698
 [v ENC424J600_enableAutoMACInsertion@temp temp `uc  1 a 1 14 ]
-"581
+"702
 } 0
-"590
+"557
 [v _ENC424J600_writeControlRegisterUnbanked ENC424J600_writeControlRegisterUnbanked `(v  1 s 1 ENC424J600_writeControlRegisterUnbanked ]
 {
 [v ENC424J600_writeControlRegisterUnbanked@addr addr `uc  1 a 1 wreg ]
-"591
+"558
 [v ENC424J600_writeControlRegisterUnbanked@opcode opcode `uc  1 a 1 13 ]
-"590
+"557
 [v ENC424J600_writeControlRegisterUnbanked@addr addr `uc  1 a 1 wreg ]
 [v ENC424J600_writeControlRegisterUnbanked@data data `*.39uc  1 p 2 10 ]
 [v ENC424J600_writeControlRegisterUnbanked@addr addr `uc  1 a 1 12 ]
-"597
+"564
 } 0
-"151
+"153
 [v _ethernetController_getSiliconRevision ethernetController_getSiliconRevision `(uc  1 e 1 0 ]
 {
-"152
+"154
 [v ethernetController_getSiliconRevision@data data `uc  1 a 1 14 ]
-"156
+"158
 } 0
-"146
+"148
 [v _ethernetController_getDeviceName ethernetController_getDeviceName `(*.39uc  1 e 2 0 ]
 {
-"147
-[v ethernetController_getDeviceName@string string `C[11]uc  1 a 11 2 ]
-"146
-[v ethernetController_getDeviceName@F5839 F5839 `C[11]uc  1 s 11 F5839 ]
 "149
+[v ethernetController_getDeviceName@string string `C[11]uc  1 a 11 2 ]
+"148
+[v ethernetController_getDeviceName@F5838 F5838 `C[11]uc  1 s 11 F5838 ]
+"151
 } 0
-"487
+"497
 [v _ethernetController_getCurrentPacketCount ethernetController_getCurrentPacketCount `(uc  1 e 1 0 ]
 {
-"489
+"499
 } 0
-"570
+"633
 [v _ENC424J600_getPacketCount ENC424J600_getPacketCount `(uc  1 s 1 ENC424J600_getPacketCount ]
 {
-"571
+"634
 [v ENC424J600_getPacketCount@lowByte lowByte `uc  1 a 1 14 ]
-"574
+"637
 } 0
-"599
+"566
 [v _ENC424J600_readControlRegisterUnbanked ENC424J600_readControlRegisterUnbanked `(v  1 s 1 ENC424J600_readControlRegisterUnbanked ]
 {
 [v ENC424J600_readControlRegisterUnbanked@addr addr `uc  1 a 1 wreg ]
-"600
+"567
 [v ENC424J600_readControlRegisterUnbanked@opcode opcode `uc  1 a 1 13 ]
-"599
+"566
 [v ENC424J600_readControlRegisterUnbanked@addr addr `uc  1 a 1 wreg ]
 [v ENC424J600_readControlRegisterUnbanked@data data `*.39uc  1 p 2 10 ]
 [v ENC424J600_readControlRegisterUnbanked@addr addr `uc  1 a 1 12 ]
-"606
+"573
 } 0
-"624
+"526
 [v _ENC424J600_writeSPI ENC424J600_writeSPI `(v  1 s 1 ENC424J600_writeSPI ]
 {
-"626
+"528
 [v ENC424J600_writeSPI@timeoutCounter timeoutCounter `ul  1 a 4 6 ]
-"624
+"526
 [v ENC424J600_writeSPI@data data `*.39uc  1 p 2 0 ]
-"634
+"536
 } 0
-"636
+"538
 [v _ENC424J600_readSPI ENC424J600_readSPI `(v  1 s 1 ENC424J600_readSPI ]
 {
-"638
+"540
 [v ENC424J600_readSPI@timeoutCounter timeoutCounter `ul  1 a 4 6 ]
-"636
+"538
 [v ENC424J600_readSPI@data data `*.39uc  1 p 2 0 ]
-"647
+"549
 } 0
-"608
+"508
 [v _ENC424J600_initSPI ENC424J600_initSPI `(v  1 s 1 ENC424J600_initSPI ]
 {
-"622
+"522
 } 0
 "26 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/uart.c
 [v _UARTInit UARTInit `(v  1 e 1 0 ]
 {
 "34
 } 0
-"266 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"270 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _ARP_initTable ARP_initTable `(v  1 e 1 0 ]
 {
-"271
+"275
 [v ARP_initTable@i i `uc  1 a 1 38 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"267
+"271
 [v ARP_initTable@mac mac `S98  1 a 6 28 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"268
-[v ARP_initTable@ip ip `S1233  1 a 4 34 ]
-"273
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"272
+[v ARP_initTable@ip ip `S1248  1 a 4 34 ]
+"277
 } 0
 "47 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/mac.c
 [v _mac_setAllZero mac_setAllZero `(v  1 e 1 0 ]
@@ -2294,32 +2277,32 @@ ERROR_ARP_INVALID_VALUES 403
 {
 "187
 [v ipv4_setToAllZero@i i `uc  1 a 1 2 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "186
-[v ipv4_setToAllZero@ip ip `*.39S1233  1 p 2 0 ]
+[v ipv4_setToAllZero@ip ip `*.39S1248  1 p 2 0 ]
 "190
 } 0
-"250 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
-[v _ARP_setNewEntry ARP_setNewEntry `(v  1 e 1 0 ]
+"254 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[v _ARP_setNewEntry ARP_setNewEntry `(v  1 s 1 ARP_setNewEntry ]
 {
-"254
+"258
 [v ARP_setNewEntry@i i `uc  1 a 1 27 ]
-"251
+"255
 [v ARP_setNewEntry@maxSeconds maxSeconds `ul  1 a 4 22 ]
-"252
+"256
 [v ARP_setNewEntry@oldestIndex oldestIndex `uc  1 a 1 26 ]
 [s S98 macaddress 6 `[6]uc 1 address 6 0 ]
-"250
+"254
 [v ARP_setNewEntry@mac mac `S98  1 p 6 4 ]
-[s S1233 ipv4_address 4 `[4]uc 1 address 4 0 ]
-[v ARP_setNewEntry@ip ip `S1233  1 p 4 10 ]
+[s S1248 ipv4_address 4 `[4]uc 1 address 4 0 ]
+[v ARP_setNewEntry@ip ip `S1248  1 p 4 10 ]
 [v ARP_setNewEntry@timestamp timestamp `ul  1 p 4 14 ]
-"264
+"268
 } 0
-"266 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/main.c
+"265 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"286
+"285
 } 0
 "28 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/stack.c
 [v _updateSeconds updateSeconds `(v  1 e 1 0 ]
@@ -2364,18 +2347,18 @@ ERROR_ARP_INVALID_VALUES 403
 [v i2___lwdiv@divisor divisor `ui  1 p 2 2 ]
 "31
 } 0
-"245 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/main.c
+"244 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/main.c
 [v _buttonHandler buttonHandler `(v  1 e 1 0 ]
 {
-"249
-[v buttonHandler@debounceValue debounceValue `Cul  1 a 4 2 ]
-"245
-[v buttonHandler@state state `*.39VEuc  1 p 2 0 ]
-"246
-[v buttonHandler@oldState oldState `uc  1 s 1 oldState ]
-"247
-[v buttonHandler@newState newState `uc  1 s 1 newState ]
 "248
+[v buttonHandler@debounceValue debounceValue `Cul  1 a 4 2 ]
+"244
+[v buttonHandler@state state `*.39VEuc  1 p 2 0 ]
+"245
+[v buttonHandler@oldState oldState `uc  1 s 1 oldState ]
+"246
+[v buttonHandler@newState newState `uc  1 s 1 newState ]
+"247
 [v buttonHandler@debounceCounter debounceCounter `ul  1 s 4 debounceCounter ]
-"264
+"263
 } 0

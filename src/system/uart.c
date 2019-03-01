@@ -1,5 +1,5 @@
 /**
- * \file ENC424J600.c
+ * \file uart.c
  * \brief Basic UART functions
  * \author Stefan Gloor
  * \version 1.0

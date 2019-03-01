@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
   </td>
  </tr>
  </tbody>
@@ -76,11 +76,14 @@ Functions</h2></td></tr>
 <tr class="memitem:gacab51e5c9afa0f0b90e6694bcfc7d936"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#gacab51e5c9afa0f0b90e6694bcfc7d936">ethernetController_sendPacket</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> field)</td></tr>
 <tr class="memdesc:gacab51e5c9afa0f0b90e6694bcfc7d936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the data in the SRAM buffer.  <a href="#gacab51e5c9afa0f0b90e6694bcfc7d936">More...</a><br /></td></tr>
 <tr class="separator:gacab51e5c9afa0f0b90e6694bcfc7d936"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9c0d9b39642cf6b7e220b9f0b44e3e02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#ga9c0d9b39642cf6b7e220b9f0b44e3e02">ethernetController_streamToTransmitBuffer</a> (uint8_t data, uint16_t len)</td></tr>
-<tr class="separator:ga9c0d9b39642cf6b7e220b9f0b44e3e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafbd607d1cd5a22cb0cacf7a4fe698bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#gafbd607d1cd5a22cb0cacf7a4fe698bac">ethernetController_streamToTransmitBuffer</a> (uint8_t data, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> field)</td></tr>
+<tr class="memdesc:gafbd607d1cd5a22cb0cacf7a4fe698bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Streams data online to the internal memory of the Ethernet Controller. An additonal buffer on the MCU is not needed.  <a href="#gafbd607d1cd5a22cb0cacf7a4fe698bac">More...</a><br /></td></tr>
+<tr class="separator:gafbd607d1cd5a22cb0cacf7a4fe698bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8fa7a1c372901218a6c545df21fc9ef3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#ga8fa7a1c372901218a6c545df21fc9ef3">ethernetController_writeEtherTypeFieldToBuffer</a> (<a class="el" href="group__ethernet.html#ga467703afefdcaf7893a7da3eb63280ed">etherType_t</a> ethtype, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> f)</td></tr>
+<tr class="memdesc:ga8fa7a1c372901218a6c545df21fc9ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the EtherType field in the SRAM buffer.  <a href="#ga8fa7a1c372901218a6c545df21fc9ef3">More...</a><br /></td></tr>
 <tr class="separator:ga8fa7a1c372901218a6c545df21fc9ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga858fd557b9ef00b3fd8166381e415bec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#ga858fd557b9ef00b3fd8166381e415bec">ethernetController_writeDestinationMACAddress</a> (<a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a> addr, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> f)</td></tr>
+<tr class="memdesc:ga858fd557b9ef00b3fd8166381e415bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the destination MAC address in the SRAM buffer.  <a href="#ga858fd557b9ef00b3fd8166381e415bec">More...</a><br /></td></tr>
 <tr class="separator:ga858fd557b9ef00b3fd8166381e415bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -105,8 +108,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga9c0d9b39642cf6b7e220b9f0b44e3e02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9c0d9b39642cf6b7e220b9f0b44e3e02">&#9670;&nbsp;</a></span>ethernetController_streamToTransmitBuffer()</h2>
+<a id="gafbd607d1cd5a22cb0cacf7a4fe698bac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafbd607d1cd5a22cb0cacf7a4fe698bac">&#9670;&nbsp;</a></span>ethernetController_streamToTransmitBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -120,8 +123,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>field</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -130,14 +133,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Streams data online to the internal memory of the Ethernet Controller. An additonal buffer on the MCU is not needed. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Streams data online to the internal memory of the Ethernet Controller. An additonal buffer on the MCU is not needed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>Byte to stream </td></tr>
-    <tr><td class="paramname">len</td><td>Total length to stream </td></tr>
+    <tr><td class="paramname">field</td><td>Field that should be read </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Fix memory address mess. I think the data is now always written to the same address and not to the one that was allocated by the memory controller. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Note that the field is only refering to what you want to stream just now. This is not necessarily the same as the whole memory field that was reserved in memory. Don't do anything else if you haven't finished the number of bytes given in field.length because otherwise the data transmission is not properly terminated which could lead to weird stuff. \ </dd></dl>
 
 </div>
 </div>
@@ -166,7 +171,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fills in the destination MAC address in the SRAM buffer </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Fills in the destination MAC address in the SRAM buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mac</td><td>Destination MAC address </td></tr>
   </table>
@@ -200,7 +207,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fills in the EtherType field in the SRAM buffer </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Fills in the EtherType field in the SRAM buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>EtherType </td></tr>
   </table>

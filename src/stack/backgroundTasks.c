@@ -50,11 +50,11 @@ void handleStackBackgroundTasks(stack_t* stack) {
         ethernetController_updateLinkStatus(&(stack->ethernet)); //save current status
         //Set up the LEDs manually at every link change because of hardware mistake (LEDs are wired up inverted)
         if (stack->ethernet.link == LINK_ESTABLISHED) {//is another ethernet partner present?
-            ethernetController_setLEDStatus(LEDA, LED_ON); //LED A indicates the link
-            ethernetController_setLEDConfiguration(LEDB, LED_TRANSMIT_RECEIVE_EVENTS); //LED B is switched off when a packet is on the wire
+            ethernetController_setLEDConfig(LEDA, LED_ON); //LED A indicates the link
+            ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS); //LED B is switched off when a packet is on the wire
         } else {
-            ethernetController_setLEDStatus(LEDA, LED_OFF); //LED A indicates the link
-            ethernetController_setLEDStatus(LEDB, LED_OFF); //Turn LED B off, indicating there are no packets
+            ethernetController_setLEDConfig(LEDA, LED_OFF); //LED A indicates the link
+            ethernetController_setLEDConfig(LEDB, LED_OFF); //Turn LED B off, indicating there are no packets
         }
         ethernetController_clearInterruptFlag(LINKIF);
     }

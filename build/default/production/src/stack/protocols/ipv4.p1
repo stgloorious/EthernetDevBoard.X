@@ -44,11 +44,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ipAdressToString `(*uc ~T0 @X0 0 ef1`S6 ]
 "77
 [v _macToString `(*uc ~T0 @X0 0 ef1`S3 ]
-"298 src/stack/protocols/../protocols/../../eth/ethernetController.h
+"297 src/stack/protocols/../protocols/../../eth/ethernetController.h
 [v _ethernetController_getMacAddress `(S3 ~T0 @X0 0 ef ]
-"211
+"210
 [v _ethernetController_writeDestinationMACAddress `(v ~T0 @X0 0 ef2`S3`S2 ]
-"191
+"186
 [v _ethernetController_sendPacket `(v ~T0 @X0 0 ef1`S2 ]
 "59 src/stack/protocols/../stack.h
 [v _getSeconds `(ul ~T0 @X0 0 ef ]
@@ -57,9 +57,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "76 src/stack/protocols/ipv4.c
 [c E145 401 402 403 .. ]
 [n E145 errors_arp ERROR_ARP_WAITING_FOR_REPLY ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED ERROR_ARP_INVALID_VALUES  ]
-"199 src/stack/protocols/../protocols/../../eth/ethernetController.h
-[v _ethernetController_streamToTransmitBuffer `(v ~T0 @X0 0 ef2`uc`ui ]
-"227
+"226 src/stack/protocols/../protocols/../../eth/ethernetController.h
 [v _ethernetController_dropPacket `(v ~T0 @X0 0 ef1`*S4 ]
 [; ;bool.h: 32: typedef bit bool_t;
 [; ;stdint.h: 13: typedef signed char int8_t;
@@ -239,47 +237,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt.h: 65: HASHIF = 13,
 [; ;interrupt.h: 66: MODEXIF = 14
 [; ;interrupt.h: 67: } interruptFlagName_t;
-[; ;ethernetController.h: 52: enum LEDs {
+[; ;ethernetController.h: 52: typedef enum LEDs {
 [; ;ethernetController.h: 53: LEDA, LEDB
-[; ;ethernetController.h: 54: };
-[; ;ethernetController.h: 60: enum LEDStates {
+[; ;ethernetController.h: 54: } LEDs_t;
+[; ;ethernetController.h: 60: typedef enum LEDStates {
 [; ;ethernetController.h: 61: LED_ON,
 [; ;ethernetController.h: 62: LED_OFF,
 [; ;ethernetController.h: 63: LED_TRANSMIT_RECEIVE_EVENTS
-[; ;ethernetController.h: 64: };
+[; ;ethernetController.h: 64: } LEDStates_t;
 [; ;ethernetController.h: 84: error_t ethernetController_init();
-[; ;ethernetController.h: 98: void ethernetController_enableEthernet();
-[; ;ethernetController.h: 104: void ethernetController_disableEthernet();
-[; ;ethernetController.h: 110: void ethernetController_enableTransmission();
-[; ;ethernetController.h: 116: void ethernetController_disableTransmission();
-[; ;ethernetController.h: 121: void ethernetController_enableReception();
-[; ;ethernetController.h: 127: void ethernetController_disableReception();
-[; ;ethernetController.h: 133: error_t ethernetController_softReset();
-[; ;ethernetController.h: 139: error_t ethernetController_checkDeviceId();
-[; ;ethernetController.h: 145: uint8_t ethernetController_getSiliconRevision();
-[; ;ethernetController.h: 151: uint8_t *ethernetController_getDeviceName();
-[; ;ethernetController.h: 157: void ethernetController_updateLinkStatus(ethernetConnection_t *state);
-[; ;ethernetController.h: 163: uint16_t ethernetController_getMTU();
-[; ;ethernetController.h: 171: interruptFlags_t ethernetController_pollInterruptFlags();
-[; ;ethernetController.h: 177: void ethernetController_clearInterruptFlag(uint8_t flag);
-[; ;ethernetController.h: 191: void ethernetController_sendPacket(memoryField_t field);
-[; ;ethernetController.h: 199: void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len);
-[; ;ethernetController.h: 205: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
-[; ;ethernetController.h: 211: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
-[; ;ethernetController.h: 227: void ethernetController_dropPacket(ethernetFrame_t *frame);
-[; ;ethernetController.h: 233: void ethernetController_updateNextPacketPointer();
-[; ;ethernetController.h: 247: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
-[; ;ethernetController.h: 254: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
-[; ;ethernetController.h: 261: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
-[; ;ethernetController.h: 268: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
-[; ;ethernetController.h: 274: RSV_t ethernetController_getRSV(uint16_t address);
-[; ;ethernetController.h: 280: uint8_t ethernetController_newPacketAvailable();
-[; ;ethernetController.h: 286: uint8_t ethernetController_getCurrentPacketCount();
-[; ;ethernetController.h: 292: uint16_t ethernetController_getNextPacketPointer();
-[; ;ethernetController.h: 298: macaddress_t ethernetController_getMacAddress();
-[; ;ethernetController.h: 304: void ethernetController_setMacAddress(macaddress_t mac);
-[; ;ethernetController.h: 318: void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
-[; ;ethernetController.h: 325: void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
+[; ;ethernetController.h: 97: void ethernetController_enableEthernet();
+[; ;ethernetController.h: 102: void ethernetController_disableEthernet();
+[; ;ethernetController.h: 107: void ethernetController_enableTransmission();
+[; ;ethernetController.h: 112: void ethernetController_disableTransmission();
+[; ;ethernetController.h: 117: void ethernetController_enableReception();
+[; ;ethernetController.h: 122: void ethernetController_disableReception();
+[; ;ethernetController.h: 128: error_t ethernetController_softReset();
+[; ;ethernetController.h: 134: error_t ethernetController_checkDeviceId();
+[; ;ethernetController.h: 140: uint8_t ethernetController_getSiliconRevision();
+[; ;ethernetController.h: 146: uint8_t *ethernetController_getDeviceName();
+[; ;ethernetController.h: 152: void ethernetController_updateLinkStatus(ethernetConnection_t *state);
+[; ;ethernetController.h: 158: uint16_t ethernetController_getMTU();
+[; ;ethernetController.h: 166: interruptFlags_t ethernetController_pollInterruptFlags();
+[; ;ethernetController.h: 172: void ethernetController_clearInterruptFlag(uint8_t flag);
+[; ;ethernetController.h: 186: void ethernetController_sendPacket(memoryField_t field);
+[; ;ethernetController.h: 198: void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
+[; ;ethernetController.h: 204: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
+[; ;ethernetController.h: 210: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
+[; ;ethernetController.h: 226: void ethernetController_dropPacket(ethernetFrame_t *frame);
+[; ;ethernetController.h: 232: void ethernetController_updateNextPacketPointer();
+[; ;ethernetController.h: 246: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+[; ;ethernetController.h: 253: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
+[; ;ethernetController.h: 260: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
+[; ;ethernetController.h: 267: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
+[; ;ethernetController.h: 273: RSV_t ethernetController_getRSV(uint16_t address);
+[; ;ethernetController.h: 279: uint8_t ethernetController_newPacketAvailable();
+[; ;ethernetController.h: 285: uint8_t ethernetController_getCurrentPacketCount();
+[; ;ethernetController.h: 291: uint16_t ethernetController_getNextPacketPointer();
+[; ;ethernetController.h: 297: macaddress_t ethernetController_getMacAddress();
+[; ;ethernetController.h: 303: void ethernetController_setMacAddress(macaddress_t mac);
+[; ;ethernetController.h: 324: void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 [; ;mac.h: 43: bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 [; ;mac.h: 49: void mac_setToBroadcast(macaddress_t *mac);
 [; ;mac.h: 56: bool_t mac_isBroadcast(macaddress_t *mac);
@@ -5330,15 +5327,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 98: char *arpEntryToString(ARP_tableEntry_t table);
 [; ;arp.h: 47: void ARP_initTable();
 [; ;arp.h: 55: void ARP_handleNewPacket(ethernetFrame_t *frame);
-[; ;arp.h: 63: ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame);
+[; ;arp.h: 63: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
 [; ;arp.h: 70: void ARP_replyIfNeeded(ARP_message_t request);
-[; ;arp.h: 77: void ARP_send(ARP_message_t arp);
+[; ;arp.h: 77: void static ARP_send(ARP_message_t arp);
 [; ;arp.h: 84: void ARP_sendRequest(ipv4_address_t ip);
 [; ;arp.h: 93: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
 [; ;arp.h: 101: macaddress_t ARP_getEntryFromTable(uint8_t index);
-[; ;arp.h: 110: void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 118: macaddress_t ARP_resolveAddress(ipv4_address_t ip);
-[; ;arp.h: 125: void printArpTable();
+[; ;arp.h: 110: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 117: void printArpTable();
 [; ;backgroundTasksTypes.h: 37: typedef struct backgroundTaskHandler {
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
@@ -5421,8 +5417,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "45
 [v _index `uc ~T0 @X0 1 a ]
 "46
-[v F5782 `uc ~T0 @X0 1 s requestCounter ]
-[i F5782
+[v F5779 `uc ~T0 @X0 1 s requestCounter ]
+[i F5779
 -> -> 0 `i `uc
 ]
 "47
@@ -5436,8 +5432,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.c: 48: uint8_t const requestTimeout = 2;
 [e = _requestTimeout -> -> 2 `i `uc ]
 "49
-[v F5785 `ul ~T0 @X0 1 s oldTime ]
-[i F5785
+[v F5782 `ul ~T0 @X0 1 s oldTime ]
+[i F5782
 -> -> -> 0 `i `l `ul
 ]
 [; ;ipv4.c: 49: uint32_t static oldTime = 0;
@@ -5484,18 +5480,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;ipv4.c: 68: if (getSeconds() - oldTime >= requestTimeout) {
 "68
-[e $ ! >= - ( _getSeconds ..  F5785 -> _requestTimeout `ul 621  ]
+[e $ ! >= - ( _getSeconds ..  F5782 -> _requestTimeout `ul 621  ]
 {
 [; ;ipv4.c: 69: oldTime = getSeconds();
 "69
-[e = F5785 ( _getSeconds ..  ]
+[e = F5782 ( _getSeconds ..  ]
 [; ;ipv4.c: 70: if (requestCounter < numberOfRequests) {
 "70
-[e $ ! < -> F5782 `i -> _numberOfRequests `i 622  ]
+[e $ ! < -> F5779 `i -> _numberOfRequests `i 622  ]
 {
 [; ;ipv4.c: 71: requestCounter++;
 "71
-[e ++ F5782 -> -> 1 `i `uc ]
+[e ++ F5779 -> -> 1 `i `uc ]
 [; ;ipv4.c: 72: ARP_sendRequest(ipPacket.ipv4Header.destination);
 "72
 [e ( _ARP_sendRequest (1 . . _ipPacket 0 12 ]
@@ -5507,7 +5503,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;ipv4.c: 75: requestCounter = 0;
 "75
-[e = F5782 -> -> 0 `i `uc ]
+[e = F5779 -> -> 0 `i `uc ]
 [; ;ipv4.c: 76: err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED;
 "76
 [e = . _err 1 -> . `E145 1 `ui ]
@@ -5553,22 +5549,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "87
 [v _remainingLength `ui ~T0 @X0 1 a ]
 "91
-[v F5791 `ui ~T0 @X0 1 s dataPointer ]
-[i F5791
+[v F5788 `ui ~T0 @X0 1 s dataPointer ]
+[i F5788
 -> -> 0 `i `ui
 ]
 [; ;ipv4.c: 87: uint16_t remainingLength;
 [; ;ipv4.c: 91: uint16_t static dataPointer = 0;
-[; ;ipv4.c: 92: ethernetController_streamToTransmitBuffer(data, ethernetPacketLength);
-"92
-[e ( _ethernetController_streamToTransmitBuffer (2 , _data _ethernetPacketLength ]
 [; ;ipv4.c: 93: if (dataPointer == ethernetPacketLength - 1) {
 "93
-[e $ ! == F5791 - _ethernetPacketLength -> -> 1 `i `ui 625  ]
+[e $ ! == F5788 - _ethernetPacketLength -> -> 1 `i `ui 625  ]
 {
 [; ;ipv4.c: 94: dataPointer = 0;
 "94
-[e = F5791 -> -> 0 `i `ui ]
+[e = F5788 -> -> 0 `i `ui ]
 "95
 }
 [; ;ipv4.c: 95: } else {
@@ -5577,7 +5570,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;ipv4.c: 96: dataPointer++;
 "96
-[e ++ F5791 -> -> 1 `i `ui ]
+[e ++ F5788 -> -> 1 `i `ui ]
 "97
 }
 [e :U 626 ]

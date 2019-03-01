@@ -89,7 +89,7 @@ void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet) {
     /**\todo Fragmenting */
 
     uint16_t static dataPointer = 0;
-    ethernetController_streamToTransmitBuffer(data, ethernetPacketLength);
+    //ethernetController_streamToTransmitBuffer(data, ethernetPacketLength);
     if (dataPointer == ethernetPacketLength - 1) {
         dataPointer = 0;
     } else {
@@ -149,6 +149,9 @@ void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
 void ipv4_handleNewPacket(ethernetFrame_t *frame) {
     UARTTransmitText("[PACKET DROPPED]");
     ethernetController_dropPacket(frame);
+    /**
+     * \todo ipv4 packet reception
+     */
 }
 
 /*void ipv4_setIPSourceAddress(IPv4Address newSourceAddress) {

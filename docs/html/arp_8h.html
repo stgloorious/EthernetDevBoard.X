@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
   </td>
  </tr>
  </tbody>
@@ -95,15 +95,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga1ba858e52bf34bca0e5260f0dc0e4641">ARP_handleNewPacket</a> (<a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a> *frame)</td></tr>
 <tr class="memdesc:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a received ARP packet and does the necessary steps.  <a href="group__arp.html#ga1ba858e52bf34bca0e5260f0dc0e4641">More...</a><br /></td></tr>
 <tr class="separator:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa4326b29383563a2d0bae66883d2aeb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__arp.html#ga1708785291f10e8cc257efe2b769ba4c">ARP_message_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gaa4326b29383563a2d0bae66883d2aeb6">ARP_parseFromRXBuffer</a> (<a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a> *frame)</td></tr>
-<tr class="memdesc:gaa4326b29383563a2d0bae66883d2aeb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the received packet and puts it into a more readable format.  <a href="group__arp.html#gaa4326b29383563a2d0bae66883d2aeb6">More...</a><br /></td></tr>
-<tr class="separator:gaa4326b29383563a2d0bae66883d2aeb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gae3e5d52fa89b91d6552cb328b8b6ec81">ARP_replyIfNeeded</a> (<a class="el" href="group__arp.html#ga1708785291f10e8cc257efe2b769ba4c">ARP_message_t</a> request)</td></tr>
 <tr class="memdesc:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the ARPmessage contains a request for my address, this function replies accordingly.  <a href="group__arp.html#gae3e5d52fa89b91d6552cb328b8b6ec81">More...</a><br /></td></tr>
 <tr class="separator:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabce5812c383f7e08c3a83c6db7f2f029"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gabce5812c383f7e08c3a83c6db7f2f029">ARP_send</a> (<a class="el" href="group__arp.html#ga1708785291f10e8cc257efe2b769ba4c">ARP_message_t</a> arp)</td></tr>
-<tr class="memdesc:gabce5812c383f7e08c3a83c6db7f2f029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the given message.  <a href="group__arp.html#gabce5812c383f7e08c3a83c6db7f2f029">More...</a><br /></td></tr>
-<tr class="separator:gabce5812c383f7e08c3a83c6db7f2f029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga1b3f3b5557d3cabb25df6b8f2af655bd">ARP_sendRequest</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
 <tr class="memdesc:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an ARP request to a given IPv4 address.  <a href="group__arp.html#ga1b3f3b5557d3cabb25df6b8f2af655bd">More...</a><br /></td></tr>
 <tr class="separator:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,12 +107,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga31f6f62d984dfbf0fb3791452a0f09e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga31f6f62d984dfbf0fb3791452a0f09e2">ARP_getEntryFromTable</a> (uint8_t index)</td></tr>
 <tr class="memdesc:ga31f6f62d984dfbf0fb3791452a0f09e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an entry from the ARP table if there is one (check prior to calling this function)  <a href="group__arp.html#ga31f6f62d984dfbf0fb3791452a0f09e2">More...</a><br /></td></tr>
 <tr class="separator:ga31f6f62d984dfbf0fb3791452a0f09e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab2b7bec25bda36bd23dc59cfe7353e66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gab2b7bec25bda36bd23dc59cfe7353e66">ARP_setNewEntry</a> (<a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a> mac, <a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip, uint32_t timestamp)</td></tr>
-<tr class="memdesc:gab2b7bec25bda36bd23dc59cfe7353e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new entry in the ARP table.  <a href="group__arp.html#gab2b7bec25bda36bd23dc59cfe7353e66">More...</a><br /></td></tr>
-<tr class="separator:gab2b7bec25bda36bd23dc59cfe7353e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga050b0c9b4cc725837f257ab6f576df31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga050b0c9b4cc725837f257ab6f576df31">ARP_resolveAddress</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
-<tr class="memdesc:ga050b0c9b4cc725837f257ab6f576df31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves a MAC address to a given IP address.  <a href="group__arp.html#ga050b0c9b4cc725837f257ab6f576df31">More...</a><br /></td></tr>
-<tr class="separator:ga050b0c9b4cc725837f257ab6f576df31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad629320d0e251b055167216baa76aff3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gad629320d0e251b055167216baa76aff3">printArpTable</a> ()</td></tr>
 <tr class="memdesc:gad629320d0e251b055167216baa76aff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for debugging. Prints out ARP table via UART.  <a href="group__arp.html#gad629320d0e251b055167216baa76aff3">More...</a><br /></td></tr>
 <tr class="separator:gad629320d0e251b055167216baa76aff3"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
   </td>
  </tr>
  </tbody>
@@ -65,6 +65,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -75,6 +76,15 @@ $(function() {
 <p>Status LEDs in the RJ45 Receptacle. Usually they show Link/Unlinked Status and activity.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga8ef3296ee64cd1095b361874ca9e9607"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__leds.html#gab6831a7d06c0a2bc69f9b024f6445a80">LEDs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__leds.html#ga8ef3296ee64cd1095b361874ca9e9607">LEDs_t</a></td></tr>
+<tr class="memdesc:ga8ef3296ee64cd1095b361874ca9e9607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to differentiate between the Status/Link LEDs on the RJ45 receptacle.  <a href="#ga8ef3296ee64cd1095b361874ca9e9607">More...</a><br /></td></tr>
+<tr class="separator:ga8ef3296ee64cd1095b361874ca9e9607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97711e6b776162e8a69a07c2957023f0"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__leds.html#gadb7024cd315c36db7da7879b037a2e21">LEDStates</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__leds.html#ga97711e6b776162e8a69a07c2957023f0">LEDStates_t</a></td></tr>
+<tr class="memdesc:ga97711e6b776162e8a69a07c2957023f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">States of the LEDs in the RJ45 receptacle.  <a href="#ga97711e6b776162e8a69a07c2957023f0">More...</a><br /></td></tr>
+<tr class="separator:ga97711e6b776162e8a69a07c2957023f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:gab6831a7d06c0a2bc69f9b024f6445a80"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__leds.html#gab6831a7d06c0a2bc69f9b024f6445a80">LEDs</a> { <a class="el" href="group__leds.html#ggab6831a7d06c0a2bc69f9b024f6445a80a511e0f56399fbaa806332616cfbb5c89">LEDA</a>, 
@@ -91,15 +101,45 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga88905c196e37262340f8404fcb61ecf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__leds.html#ga88905c196e37262340f8404fcb61ecf9">ethernetController_setLEDStatus</a> (uint8_t LED, uint8_t status)</td></tr>
-<tr class="memdesc:ga88905c196e37262340f8404fcb61ecf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the LEDs in the RJ45 receptacle to a given status (ON or OFF).  <a href="#ga88905c196e37262340f8404fcb61ecf9">More...</a><br /></td></tr>
-<tr class="separator:ga88905c196e37262340f8404fcb61ecf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3ec0343a266cb8a4925097d708dd96f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__leds.html#ga3ec0343a266cb8a4925097d708dd96f4">ethernetController_setLEDConfiguration</a> (uint8_t LED, uint8_t conf)</td></tr>
-<tr class="memdesc:ga3ec0343a266cb8a4925097d708dd96f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the LEDs in the RJ45 receptacle to a given configuration (ON, OFF or an 'automatic' mode).  <a href="#ga3ec0343a266cb8a4925097d708dd96f4">More...</a><br /></td></tr>
-<tr class="separator:ga3ec0343a266cb8a4925097d708dd96f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b4fefc44ec4a3491276c943388fe0a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">ethernetController_setLEDConfig</a> (<a class="el" href="group__leds.html#ga8ef3296ee64cd1095b361874ca9e9607">LEDs_t</a> LED, <a class="el" href="group__leds.html#ga97711e6b776162e8a69a07c2957023f0">LEDStates_t</a> conf)</td></tr>
+<tr class="memdesc:ga6b4fefc44ec4a3491276c943388fe0a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the LEDs in the RJ45 receptacle to a given status (ON or OFF).  <a href="#ga6b4fefc44ec4a3491276c943388fe0a9">More...</a><br /></td></tr>
+<tr class="separator:ga6b4fefc44ec4a3491276c943388fe0a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Status LEDs in the RJ45 Receptacle. Usually they show Link/Unlinked Status and activity. </p>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ga8ef3296ee64cd1095b361874ca9e9607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8ef3296ee64cd1095b361874ca9e9607">&#9670;&nbsp;</a></span>LEDs_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="group__leds.html#gab6831a7d06c0a2bc69f9b024f6445a80">LEDs</a>  <a class="el" href="group__leds.html#ga8ef3296ee64cd1095b361874ca9e9607">LEDs_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Used to differentiate between the Status/Link LEDs on the RJ45 receptacle. </p>
+
+</div>
+</div>
+<a id="ga97711e6b776162e8a69a07c2957023f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga97711e6b776162e8a69a07c2957023f0">&#9670;&nbsp;</a></span>LEDStates_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="group__leds.html#gadb7024cd315c36db7da7879b037a2e21">LEDStates</a>  <a class="el" href="group__leds.html#ga97711e6b776162e8a69a07c2957023f0">LEDStates_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>States of the LEDs in the RJ45 receptacle. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="gab6831a7d06c0a2bc69f9b024f6445a80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab6831a7d06c0a2bc69f9b024f6445a80">&#9670;&nbsp;</a></span>LEDs</h2>
@@ -144,60 +184,23 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga3ec0343a266cb8a4925097d708dd96f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3ec0343a266cb8a4925097d708dd96f4">&#9670;&nbsp;</a></span>ethernetController_setLEDConfiguration()</h2>
+<a id="ga6b4fefc44ec4a3491276c943388fe0a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6b4fefc44ec4a3491276c943388fe0a9">&#9670;&nbsp;</a></span>ethernetController_setLEDConfig()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ethernetController_setLEDConfiguration </td>
+          <td class="memname">void ethernetController_setLEDConfig </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__leds.html#ga8ef3296ee64cd1095b361874ca9e9607">LEDs_t</a>&#160;</td>
           <td class="paramname"><em>LED</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__leds.html#ga97711e6b776162e8a69a07c2957023f0">LEDStates_t</a>&#160;</td>
           <td class="paramname"><em>conf</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the LEDs in the RJ45 receptacle to a given configuration (ON, OFF or an 'automatic' mode). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">LED</td><td>Which LED; use LEDs_ </td></tr>
-    <tr><td class="paramname">status</td><td>Status of the LED; use LEDState_ </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ga88905c196e37262340f8404fcb61ecf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga88905c196e37262340f8404fcb61ecf9">&#9670;&nbsp;</a></span>ethernetController_setLEDStatus()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ethernetController_setLEDStatus </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>LED</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>status</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -210,12 +213,19 @@ Functions</h2></td></tr>
 <p>Sets the LEDs in the RJ45 receptacle to a given status (ON or OFF). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">LED</td><td>Which LED; use LEDs_ </td></tr>
-    <tr><td class="paramname">status</td><td>Status of the LED; use LEDState_ </td></tr>
+    <tr><td class="paramname">LED</td><td>Which LED; use <a class="el" href="group__leds.html#ga8ef3296ee64cd1095b361874ca9e9607">LEDs_t</a> </td></tr>
+    <tr><td class="paramname">status</td><td>Status of the LED; use <a class="el" href="group__leds.html#ga97711e6b776162e8a69a07c2957023f0">LEDStates_t</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>remove this and use only <a class="el" href="group__leds.html#ga3ec0343a266cb8a4925097d708dd96f4">ethernetController_setLEDConfiguration()</a> </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>remove this and use only ethernetController_setLEDConfiguration() </dd></dl>
+<p>Sets the LEDs in the RJ45 receptacle to a given configuration (ON, OFF or an 'automatic' mode). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">LED</td><td>Which LED; use <a class="el" href="group__leds.html#ga8ef3296ee64cd1095b361874ca9e9607">LEDs_t</a> </td></tr>
+    <tr><td class="paramname">status</td><td>Status of the LED; use <a class="el" href="group__leds.html#ga97711e6b776162e8a69a07c2957023f0">LEDStates_t</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -34,6 +34,7 @@ void ARP_handleNewPacket(ethernetFrame_t *frame) {
 
     arp = ARP_parseFromRXBuffer(frame);
     if (arp.err.code != ERROR_CODE_SUCCESSFUL) {
+        ethernetController_dropPacket(frame);
         UARTTransmitText("[Invalid ARP Message was discarded.]\r\n");
         return;
     }
@@ -55,7 +56,7 @@ void ARP_handleNewPacket(ethernetFrame_t *frame) {
     ARP_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getSeconds());
 }
 
-ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
+ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
     ARP_message_t arp;
     uint16_t const offset = 22; //skip 2 MAC addresses and EtherType 
 
@@ -125,7 +126,7 @@ ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
     return arp;
 }
 
-void ARP_replyIfNeeded(ARP_message_t request) {
+void static ARP_replyIfNeeded(ARP_message_t request) {
     if (request.operation != ARP_REQUEST)//is it a request?
         return;
     //IPv4Address myIP = ipv4_getIPSourceAddress();/** \todo this */
@@ -162,7 +163,7 @@ void ARP_replyIfNeeded(ARP_message_t request) {
     UARTTransmitText("]");
 }
 
-void ARP_send(ARP_message_t arp) {
+void static ARP_send(ARP_message_t arp) {
     memoryField_t field;
     macaddress_t destination;
     ethernetFrame_t ethFrame;
@@ -184,23 +185,23 @@ void ARP_send(ARP_message_t arp) {
     field.length = 28;
 
 
-    ethernetController_streamToTransmitBuffer((arp.htype & 0xff00) >> 8, field.length);
-    ethernetController_streamToTransmitBuffer(arp.htype & 0x00ff, field.length);
-    ethernetController_streamToTransmitBuffer((arp.ptype & 0xff00) >> 8, field.length);
-    ethernetController_streamToTransmitBuffer(arp.ptype & 0x00ff, field.length);
-    ethernetController_streamToTransmitBuffer(arp.hlen, field.length);
-    ethernetController_streamToTransmitBuffer(arp.plen, field.length);
-    ethernetController_streamToTransmitBuffer((arp.operation & 0xff00) >> 8, field.length);
-    ethernetController_streamToTransmitBuffer(arp.operation & 0x00ff, field.length);
+    ethernetController_streamToTransmitBuffer((arp.htype & 0xff00) >> 8, field);
+    ethernetController_streamToTransmitBuffer(arp.htype & 0x00ff, field);
+    ethernetController_streamToTransmitBuffer((arp.ptype & 0xff00) >> 8, field);
+    ethernetController_streamToTransmitBuffer(arp.ptype & 0x00ff, field);
+    ethernetController_streamToTransmitBuffer(arp.hlen, field);
+    ethernetController_streamToTransmitBuffer(arp.plen, field);
+    ethernetController_streamToTransmitBuffer((arp.operation & 0xff00) >> 8, field);
+    ethernetController_streamToTransmitBuffer(arp.operation & 0x00ff, field);
     for (uint8_t i = 0; i < arp.hlen; i++)
-        ethernetController_streamToTransmitBuffer(arp.senderMACAddress.address[i], field.length);
+        ethernetController_streamToTransmitBuffer(arp.senderMACAddress.address[i], field);
     for (uint8_t i = 0; i < arp.plen; i++)
-        ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field.length);
+        ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field);
     for (uint8_t i = 0; i < arp.hlen; i++)
-        ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field.length);
+        ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field);
 
     for (uint8_t i = 0; i < arp.plen; i++)
-        ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field.length);
+        ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field);
 
     ethernetController_sendPacket(ethFrame.memory);
 }
@@ -214,7 +215,10 @@ void ARP_sendRequest(ipv4_address_t ip) {
 
     senderMAC = ethernetController_getMacAddress();
     mac_setToBroadcast(&targetMAC);
-    //senderIP = ipv4_getIPSourceAddress(); /** \todo this */
+    //senderIP = ipv4_getIPSourceAddress(); 
+    /**
+     *  \todo this 
+     */
     targetIP = ip;
 
     request.hlen = ARP_ETHERNET_HLEN;
@@ -247,7 +251,7 @@ macaddress_t ARP_getEntryFromTable(uint8_t index) {
     return ARP_table[index].mac;
 }
 
-void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp) {
+void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp) {
     uint32_t maxSeconds = 0;
     uint8_t oldestIndex = 0;
     //Loop through table to find oldest entry

@@ -241,10 +241,30 @@ void static ENC424J600_setRXTailPointer(uint16_t addr);
  * \ingroup enc424j600_module
  * \{
  */
+
+/**
+ * \brief Enables the Ethernet module
+ * \details Works by setting the ETHEN<15> bit in the ECON2 register (\ref ECON2H)
+ */
+void static ENC424J600_enable();
+/**
+ * \brief Disables the Ethernet module
+ * \details Works by clearing the ETHEN<15> bit in the ECON2 register (\ref ECON2H)
+ * If the controller is disabled, it uses less power.
+ */
+void static ENC424J600_enable();
 /**
  * \brief Enables the ethernet connection to receive packets
+ * \details It uses the dedicated single byte command \ref ENABLERX
  */
 void static ENC424J600_enableReception();
+
+/**
+ * \brief Disables the ethernet connection to receive packets
+ * \details It uses the dedicated single byte command \ref DISABLERX
+ * \todo test this
+ */
+void static ENC424J600_disableReception();
 
 /**
  * \brief Enables the auto-hardware-insertion of the MAC source address. The MAC address is unique and hardwired into the ENC424J600

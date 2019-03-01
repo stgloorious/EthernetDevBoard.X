@@ -25,17 +25,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 "38 src/eth/ethernet.c
 [c E41 101 199 .. ]
 [n E41 errors_memory ERROR_MEMORY_OUT_OF_MEMORY ERROR_MEMORY_UNKNOWN  ]
-"211 src/eth/../eth/../eth/ethernetController.h
+"210 src/eth/../eth/../eth/ethernetController.h
 [v _ethernetController_writeDestinationMACAddress `(v ~T0 @X0 0 ef2`S4`S3 ]
-"205
+"204
 [v _ethernetController_writeEtherTypeFieldToBuffer `(v ~T0 @X0 0 ef2`E91`S3 ]
-"292
+"291
 [v _ethernetController_getNextPacketPointer `(ui ~T0 @X0 0 ef ]
-"233
+"232
 [v _ethernetController_updateNextPacketPointer `(v ~T0 @X0 0 ef ]
-"274
+"273
 [v _ethernetController_getRSV `(S2 ~T0 @X0 0 ef1`ui ]
-"268
+"267
 [v _ethernetController_getEtherTypeField `(E91 ~T0 @X0 0 ef1`S3 ]
 "44 src/eth/../system/uart.h
 [v _UARTTransmitText `(v ~T0 @X0 0 ef1`*Cuc ]
@@ -51,7 +51,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _etherTypeToString `(*uc ~T0 @X0 0 ef1`E91 ]
 "56
 [v _UARTTransmitInt `(v ~T0 @X0 0 ef1`ul ]
-"227 src/eth/../eth/../eth/ethernetController.h
+"226 src/eth/../eth/../eth/ethernetController.h
 [v _ethernetController_dropPacket `(v ~T0 @X0 0 ef1`*S5 ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
@@ -205,47 +205,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt.h: 65: HASHIF = 13,
 [; ;interrupt.h: 66: MODEXIF = 14
 [; ;interrupt.h: 67: } interruptFlagName_t;
-[; ;ethernetController.h: 52: enum LEDs {
+[; ;ethernetController.h: 52: typedef enum LEDs {
 [; ;ethernetController.h: 53: LEDA, LEDB
-[; ;ethernetController.h: 54: };
-[; ;ethernetController.h: 60: enum LEDStates {
+[; ;ethernetController.h: 54: } LEDs_t;
+[; ;ethernetController.h: 60: typedef enum LEDStates {
 [; ;ethernetController.h: 61: LED_ON,
 [; ;ethernetController.h: 62: LED_OFF,
 [; ;ethernetController.h: 63: LED_TRANSMIT_RECEIVE_EVENTS
-[; ;ethernetController.h: 64: };
+[; ;ethernetController.h: 64: } LEDStates_t;
 [; ;ethernetController.h: 84: error_t ethernetController_init();
-[; ;ethernetController.h: 98: void ethernetController_enableEthernet();
-[; ;ethernetController.h: 104: void ethernetController_disableEthernet();
-[; ;ethernetController.h: 110: void ethernetController_enableTransmission();
-[; ;ethernetController.h: 116: void ethernetController_disableTransmission();
-[; ;ethernetController.h: 121: void ethernetController_enableReception();
-[; ;ethernetController.h: 127: void ethernetController_disableReception();
-[; ;ethernetController.h: 133: error_t ethernetController_softReset();
-[; ;ethernetController.h: 139: error_t ethernetController_checkDeviceId();
-[; ;ethernetController.h: 145: uint8_t ethernetController_getSiliconRevision();
-[; ;ethernetController.h: 151: uint8_t *ethernetController_getDeviceName();
-[; ;ethernetController.h: 157: void ethernetController_updateLinkStatus(ethernetConnection_t *state);
-[; ;ethernetController.h: 163: uint16_t ethernetController_getMTU();
-[; ;ethernetController.h: 171: interruptFlags_t ethernetController_pollInterruptFlags();
-[; ;ethernetController.h: 177: void ethernetController_clearInterruptFlag(uint8_t flag);
-[; ;ethernetController.h: 191: void ethernetController_sendPacket(memoryField_t field);
-[; ;ethernetController.h: 199: void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len);
-[; ;ethernetController.h: 205: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
-[; ;ethernetController.h: 211: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
-[; ;ethernetController.h: 227: void ethernetController_dropPacket(ethernetFrame_t *frame);
-[; ;ethernetController.h: 233: void ethernetController_updateNextPacketPointer();
-[; ;ethernetController.h: 247: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
-[; ;ethernetController.h: 254: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
-[; ;ethernetController.h: 261: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
-[; ;ethernetController.h: 268: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
-[; ;ethernetController.h: 274: RSV_t ethernetController_getRSV(uint16_t address);
-[; ;ethernetController.h: 280: uint8_t ethernetController_newPacketAvailable();
-[; ;ethernetController.h: 286: uint8_t ethernetController_getCurrentPacketCount();
-[; ;ethernetController.h: 292: uint16_t ethernetController_getNextPacketPointer();
-[; ;ethernetController.h: 298: macaddress_t ethernetController_getMacAddress();
-[; ;ethernetController.h: 304: void ethernetController_setMacAddress(macaddress_t mac);
-[; ;ethernetController.h: 318: void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
-[; ;ethernetController.h: 325: void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
+[; ;ethernetController.h: 97: void ethernetController_enableEthernet();
+[; ;ethernetController.h: 102: void ethernetController_disableEthernet();
+[; ;ethernetController.h: 107: void ethernetController_enableTransmission();
+[; ;ethernetController.h: 112: void ethernetController_disableTransmission();
+[; ;ethernetController.h: 117: void ethernetController_enableReception();
+[; ;ethernetController.h: 122: void ethernetController_disableReception();
+[; ;ethernetController.h: 128: error_t ethernetController_softReset();
+[; ;ethernetController.h: 134: error_t ethernetController_checkDeviceId();
+[; ;ethernetController.h: 140: uint8_t ethernetController_getSiliconRevision();
+[; ;ethernetController.h: 146: uint8_t *ethernetController_getDeviceName();
+[; ;ethernetController.h: 152: void ethernetController_updateLinkStatus(ethernetConnection_t *state);
+[; ;ethernetController.h: 158: uint16_t ethernetController_getMTU();
+[; ;ethernetController.h: 166: interruptFlags_t ethernetController_pollInterruptFlags();
+[; ;ethernetController.h: 172: void ethernetController_clearInterruptFlag(uint8_t flag);
+[; ;ethernetController.h: 186: void ethernetController_sendPacket(memoryField_t field);
+[; ;ethernetController.h: 198: void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
+[; ;ethernetController.h: 204: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
+[; ;ethernetController.h: 210: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
+[; ;ethernetController.h: 226: void ethernetController_dropPacket(ethernetFrame_t *frame);
+[; ;ethernetController.h: 232: void ethernetController_updateNextPacketPointer();
+[; ;ethernetController.h: 246: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+[; ;ethernetController.h: 253: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
+[; ;ethernetController.h: 260: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
+[; ;ethernetController.h: 267: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
+[; ;ethernetController.h: 273: RSV_t ethernetController_getRSV(uint16_t address);
+[; ;ethernetController.h: 279: uint8_t ethernetController_newPacketAvailable();
+[; ;ethernetController.h: 285: uint8_t ethernetController_getCurrentPacketCount();
+[; ;ethernetController.h: 291: uint16_t ethernetController_getNextPacketPointer();
+[; ;ethernetController.h: 297: macaddress_t ethernetController_getMacAddress();
+[; ;ethernetController.h: 303: void ethernetController_setMacAddress(macaddress_t mac);
+[; ;ethernetController.h: 324: void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 [; ;memoryController.h: 61: memoryField_t memory_txFrameRequest(uint16_t length);
 [; ;memoryController.h: 67: void memory_txFrameClear(uint8_t index);
 [; ;memoryController.h: 75: uint8_t static checkForOverlap(memoryField_t a, memoryField_t b);
@@ -5268,12 +5267,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.h: 219: void static ENC424J600_setERXDATAReadPointer(uint16_t addr);
 [; ;ENC424J600.h: 225: void static ENC424J600_setRXBufferStartAddress(uint16_t addr);
 [; ;ENC424J600.h: 234: void static ENC424J600_setRXTailPointer(uint16_t addr);
-[; ;ENC424J600.h: 247: void static ENC424J600_enableReception();
-[; ;ENC424J600.h: 252: void static ENC424J600_enableAutoMACInsertion();
-[; ;ENC424J600.h: 257: void static ENC424J600_disableAutoMACInsertion();
-[; ;ENC424J600.h: 274: uint16_t ENC424J600_getInterruptFlags();
-[; ;ENC424J600.h: 282: void static ENC424J600_clearInterruptFlag(uint8_t flag);
-[; ;ENC424J600.h: 299: RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv);
+[; ;ENC424J600.h: 249: void static ENC424J600_enable();
+[; ;ENC424J600.h: 255: void static ENC424J600_enable();
+[; ;ENC424J600.h: 260: void static ENC424J600_enableReception();
+[; ;ENC424J600.h: 267: void static ENC424J600_disableReception();
+[; ;ENC424J600.h: 272: void static ENC424J600_enableAutoMACInsertion();
+[; ;ENC424J600.h: 277: void static ENC424J600_disableAutoMACInsertion();
+[; ;ENC424J600.h: 294: uint16_t ENC424J600_getInterruptFlags();
+[; ;ENC424J600.h: 302: void static ENC424J600_clearInterruptFlag(uint8_t flag);
+[; ;ENC424J600.h: 319: RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv);
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 0x01
 [; ;ipv4Types.h: 42: }ipv4_protocol_t;
@@ -5336,15 +5338,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mac.h: 70: bool_t mac_isAllZero(macaddress_t *mac);
 [; ;arp.h: 47: void ARP_initTable();
 [; ;arp.h: 55: void ARP_handleNewPacket(ethernetFrame_t *frame);
-[; ;arp.h: 63: ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame);
+[; ;arp.h: 63: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
 [; ;arp.h: 70: void ARP_replyIfNeeded(ARP_message_t request);
-[; ;arp.h: 77: void ARP_send(ARP_message_t arp);
+[; ;arp.h: 77: void static ARP_send(ARP_message_t arp);
 [; ;arp.h: 84: void ARP_sendRequest(ipv4_address_t ip);
 [; ;arp.h: 93: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
 [; ;arp.h: 101: macaddress_t ARP_getEntryFromTable(uint8_t index);
-[; ;arp.h: 110: void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 118: macaddress_t ARP_resolveAddress(ipv4_address_t ip);
-[; ;arp.h: 125: void printArpTable();
+[; ;arp.h: 110: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 117: void printArpTable();
 [; ;backgroundTasksTypes.h: 37: typedef struct backgroundTaskHandler {
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
@@ -5454,8 +5455,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _frame `*S5 ~T0 @X0 1 r1 ]
 [f ]
 "54
-[v F5824 `ul ~T0 @X0 1 s counter ]
-[i F5824
+[v F5823 `ul ~T0 @X0 1 s counter ]
+[i F5823
 -> -> -> 0 `i `l `ul
 ]
 "55
@@ -5468,193 +5469,193 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernet.c: 57: err.code = (uint16_t)0;
 "57
 [e = . _err 1 -> -> 0 `i `ui ]
-[; ;ethernet.c: 60: frame->memory.start = ethernetController_getNextPacketPointer();
-"60
+[; ;ethernet.c: 58: frame->memory.start = ethernetController_getNextPacketPointer();
+"58
 [e = . . *U _frame 4 0 ( _ethernetController_getNextPacketPointer ..  ]
-[; ;ethernet.c: 62: ethernetController_updateNextPacketPointer();
-"62
+[; ;ethernet.c: 60: ethernetController_updateNextPacketPointer();
+"60
 [e ( _ethernetController_updateNextPacketPointer ..  ]
-[; ;ethernet.c: 67: frame->memory.fIsAssigned = 1;
-"67
+[; ;ethernet.c: 63: frame->memory.fIsAssigned = 1;
+"63
 [e = . . *U _frame 4 3 -> -> 1 `i `uc ]
-[; ;ethernet.c: 68: frame->receiveStatusVector = ethernetController_getRSV(frame->memory.start);
-"68
+[; ;ethernet.c: 64: frame->receiveStatusVector = ethernetController_getRSV(frame->memory.start);
+"64
 [e = . *U _frame 5 ( _ethernetController_getRSV (1 . . *U _frame 4 0 ]
-[; ;ethernet.c: 69: frame->memory.length = frame->receiveStatusVector.length;
-"69
+[; ;ethernet.c: 65: frame->memory.length = frame->receiveStatusVector.length;
+"65
 [e = . . *U _frame 4 2 . . *U _frame 5 0 ]
-[; ;ethernet.c: 74: if (frame->memory.start + frame->memory.length > 0x5FFF) {
-"74
+[; ;ethernet.c: 68: if (frame->memory.start + frame->memory.length > 0x5FFF) {
+"68
 [e $ ! > + . . *U _frame 4 0 . . *U _frame 4 2 -> -> 24575 `i `ui 621  ]
 {
-[; ;ethernet.c: 76: frame->memory.end = frame->memory.length - ((0x5FFF - 0x3000) - frame->memory.start) + 0x3000;
-"76
+[; ;ethernet.c: 70: frame->memory.end = frame->memory.length - ((0x5FFF - 0x3000) - frame->memory.start) + 0x3000;
+"70
 [e = . . *U _frame 4 1 + - . . *U _frame 4 2 - -> - -> 24575 `i -> 12288 `i `ui . . *U _frame 4 0 -> -> 12288 `i `ui ]
-"77
+"71
 }
-[; ;ethernet.c: 77: } else {
+[; ;ethernet.c: 71: } else {
 [e $U 622  ]
 [e :U 621 ]
 {
-[; ;ethernet.c: 78: frame->memory.end = frame->memory.start + frame->memory.length;
-"78
+[; ;ethernet.c: 72: frame->memory.end = frame->memory.start + frame->memory.length;
+"72
 [e = . . *U _frame 4 1 + . . *U _frame 4 0 . . *U _frame 4 2 ]
-"79
+"73
 }
 [e :U 622 ]
-[; ;ethernet.c: 79: }
-[; ;ethernet.c: 80: frame->ethertype = ethernetController_getEtherTypeField(frame->memory);
-"80
+[; ;ethernet.c: 73: }
+[; ;ethernet.c: 74: frame->ethertype = ethernetController_getEtherTypeField(frame->memory);
+"74
 [e = . *U _frame 3 ( _ethernetController_getEtherTypeField (1 . *U _frame 4 ]
-[; ;ethernet.c: 82: UARTTransmitText("[");
-"82
+[; ;ethernet.c: 76: UARTTransmitText("[");
+"76
 [e ( _UARTTransmitText (1 :s 1C ]
-[; ;ethernet.c: 83: UARTTransmitText(intToString(counter++));
-"83
-[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5824 -> -> -> 1 `i `l `ul `*Cuc ]
-[; ;ethernet.c: 84: UARTTransmitText("]");
-"84
+[; ;ethernet.c: 77: UARTTransmitText(intToString(counter++));
+"77
+[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5823 -> -> -> 1 `i `l `ul `*Cuc ]
+[; ;ethernet.c: 78: UARTTransmitText("]");
+"78
 [e ( _UARTTransmitText (1 :s 2C ]
-[; ;ethernet.c: 86: if (frame->receiveStatusVector.broadcast)
-"86
+[; ;ethernet.c: 80: if (frame->receiveStatusVector.broadcast)
+"80
 [e $ ! != -> . . *U _frame 5 8 `i -> -> -> 0 `i `uc `i 623  ]
-[; ;ethernet.c: 87: UARTTransmitText("[Broadcast]");
-"87
+[; ;ethernet.c: 81: UARTTransmitText("[Broadcast]");
+"81
 [e ( _UARTTransmitText (1 :s 3C ]
 [e :U 623 ]
-[; ;ethernet.c: 88: if (frame->receiveStatusVector.unicast)
-"88
+[; ;ethernet.c: 82: if (frame->receiveStatusVector.unicast)
+"82
 [e $ ! != -> . . *U _frame 5 19 `i -> -> -> 0 `i `uc `i 624  ]
-[; ;ethernet.c: 89: UARTTransmitText("[Unicast]");
-"89
+[; ;ethernet.c: 83: UARTTransmitText("[Unicast]");
+"83
 [e ( _UARTTransmitText (1 :s 4C ]
 [e :U 624 ]
-[; ;ethernet.c: 90: if (!frame->receiveStatusVector.receivedOk)
-"90
+[; ;ethernet.c: 84: if (!frame->receiveStatusVector.receivedOk)
+"84
 [e $ ! ! != -> . . *U _frame 5 6 `i -> -> -> 0 `i `uc `i 625  ]
-[; ;ethernet.c: 91: UARTTransmitText("[Symbol Errors]");
-"91
+[; ;ethernet.c: 85: UARTTransmitText("[Symbol Errors]");
+"85
 [e ( _UARTTransmitText (1 :s 5C ]
 [e :U 625 ]
-[; ;ethernet.c: 93: switch (frame->ethertype) {
-"93
+[; ;ethernet.c: 87: switch (frame->ethertype) {
+"87
 [e $U 627  ]
 {
-[; ;ethernet.c: 94: case ETHERTYPE_ARP:
-"94
+[; ;ethernet.c: 88: case ETHERTYPE_ARP:
+"88
 [e :U 628 ]
-[; ;ethernet.c: 95: UARTTransmitText("[ARP]");
-"95
+[; ;ethernet.c: 89: UARTTransmitText("[ARP]");
+"89
 [e ( _UARTTransmitText (1 :s 6C ]
-[; ;ethernet.c: 96: ARP_handleNewPacket(frame);
-"96
+[; ;ethernet.c: 90: ARP_handleNewPacket(frame);
+"90
 [e ( _ARP_handleNewPacket (1 _frame ]
+[; ;ethernet.c: 91: break;
+"91
+[e $U 626  ]
+[; ;ethernet.c: 92: case ETHERTYPE_FLOW_CONTROL:
+"92
+[e :U 629 ]
+[; ;ethernet.c: 93: break;
+"93
+[e $U 626  ]
+[; ;ethernet.c: 94: case ETHERTYPE_IPv4:
+"94
+[e :U 630 ]
+[; ;ethernet.c: 95: UARTTransmitText("[IPv4]");
+"95
+[e ( _UARTTransmitText (1 :s 7C ]
+[; ;ethernet.c: 96: ipv4_handleNewPacket(frame);
+"96
+[e ( _ipv4_handleNewPacket (1 _frame ]
 [; ;ethernet.c: 97: break;
 "97
 [e $U 626  ]
-[; ;ethernet.c: 98: case ETHERTYPE_FLOW_CONTROL:
+[; ;ethernet.c: 98: case ETHERTYPE_WOL:
 "98
-[e :U 629 ]
+[e :U 631 ]
 [; ;ethernet.c: 99: break;
 "99
 [e $U 626  ]
-[; ;ethernet.c: 100: case ETHERTYPE_IPv4:
+[; ;ethernet.c: 100: default:
 "100
-[e :U 630 ]
-[; ;ethernet.c: 101: UARTTransmitText("[IPv4]");
-"101
-[e ( _UARTTransmitText (1 :s 7C ]
-[; ;ethernet.c: 102: ipv4_handleNewPacket(frame);
-"102
-[e ( _ipv4_handleNewPacket (1 _frame ]
-[; ;ethernet.c: 103: break;
-"103
-[e $U 626  ]
-[; ;ethernet.c: 104: case ETHERTYPE_WOL:
-"104
-[e :U 631 ]
-[; ;ethernet.c: 105: break;
-"105
-[e $U 626  ]
-[; ;ethernet.c: 106: default:
-"106
 [e :U 632 ]
-[; ;ethernet.c: 107: UARTTransmitText("[");
-"107
+[; ;ethernet.c: 101: UARTTransmitText("[");
+"101
 [e ( _UARTTransmitText (1 :s 8C ]
-[; ;ethernet.c: 108: UARTTransmitText(macToString(frame->source));
-"108
+[; ;ethernet.c: 102: UARTTransmitText(macToString(frame->source));
+"102
 [e ( _UARTTransmitText (1 -> ( _macToString (1 . *U _frame 1 `*Cuc ]
-[; ;ethernet.c: 109: UARTTransmitText("->");
-"109
+[; ;ethernet.c: 103: UARTTransmitText("->");
+"103
 [e ( _UARTTransmitText (1 :s 9C ]
-[; ;ethernet.c: 110: UARTTransmitText(macToString(frame->destination));
-"110
+[; ;ethernet.c: 104: UARTTransmitText(macToString(frame->destination));
+"104
 [e ( _UARTTransmitText (1 -> ( _macToString (1 . *U _frame 2 `*Cuc ]
-[; ;ethernet.c: 111: UARTTransmitText("][");
-"111
+[; ;ethernet.c: 105: UARTTransmitText("][");
+"105
 [e ( _UARTTransmitText (1 :s 10C ]
-[; ;ethernet.c: 112: UARTTransmitText(etherTypeToString(frame->ethertype));
-"112
+[; ;ethernet.c: 106: UARTTransmitText(etherTypeToString(frame->ethertype));
+"106
 [e ( _UARTTransmitText (1 -> ( _etherTypeToString (1 . *U _frame 3 `*Cuc ]
-[; ;ethernet.c: 113: UARTTransmitText("][L=");
-"113
+[; ;ethernet.c: 107: UARTTransmitText("][L=");
+"107
 [e ( _UARTTransmitText (1 :s 11C ]
-[; ;ethernet.c: 114: UARTTransmitInt(frame->length);
-"114
+[; ;ethernet.c: 108: UARTTransmitInt(frame->length);
+"108
 [e ( _UARTTransmitInt (1 -> . *U _frame 0 `ul ]
-[; ;ethernet.c: 115: UARTTransmitText("]");
-"115
+[; ;ethernet.c: 109: UARTTransmitText("]");
+"109
 [e ( _UARTTransmitText (1 :s 12C ]
-[; ;ethernet.c: 116: ethernetController_dropPacket(frame);
-"116
+[; ;ethernet.c: 110: ethernetController_dropPacket(frame);
+"110
 [e ( _ethernetController_dropPacket (1 _frame ]
-[; ;ethernet.c: 117: break;
-"117
+[; ;ethernet.c: 111: break;
+"111
 [e $U 626  ]
-[; ;ethernet.c: 118: return err;
-"118
+[; ;ethernet.c: 112: return err;
+"112
 [e ) _err ]
 [e $UE 620  ]
-"119
+"113
 }
-[; ;ethernet.c: 119: }
+[; ;ethernet.c: 113: }
 [e $U 626  ]
-"93
+"87
 [e :U 627 ]
 [e [\ . *U _frame 3 , $ . `E91 1 628
  , $ . `E91 3 629
  , $ . `E91 0 630
  , $ . `E91 2 631
  632 ]
-"119
+"113
 [e :U 626 ]
-[; ;ethernet.c: 121: UARTTransmitText("[");
-"121
+[; ;ethernet.c: 115: UARTTransmitText("[");
+"115
 [e ( _UARTTransmitText (1 :s 13C ]
-[; ;ethernet.c: 122: UARTTransmitText(intToString(frame->memory.start));
-"122
+[; ;ethernet.c: 116: UARTTransmitText(intToString(frame->memory.start));
+"116
 [e ( _UARTTransmitText (1 -> ( _intToString (1 -> . . *U _frame 4 0 `ul `*Cuc ]
-[; ;ethernet.c: 123: UARTTransmitText(" to ");
-"123
+[; ;ethernet.c: 117: UARTTransmitText(" to ");
+"117
 [e ( _UARTTransmitText (1 :s 14C ]
-[; ;ethernet.c: 124: UARTTransmitText(intToString(frame->memory.end));
-"124
+[; ;ethernet.c: 118: UARTTransmitText(intToString(frame->memory.end));
+"118
 [e ( _UARTTransmitText (1 -> ( _intToString (1 -> . . *U _frame 4 1 `ul `*Cuc ]
-[; ;ethernet.c: 125: UARTTransmitText(" (");
-"125
+[; ;ethernet.c: 119: UARTTransmitText(" (");
+"119
 [e ( _UARTTransmitText (1 :s 15C ]
-[; ;ethernet.c: 126: UARTTransmitText(intToString(frame->memory.length));
-"126
+[; ;ethernet.c: 120: UARTTransmitText(intToString(frame->memory.length));
+"120
 [e ( _UARTTransmitText (1 -> ( _intToString (1 -> . . *U _frame 4 2 `ul `*Cuc ]
-[; ;ethernet.c: 127: UARTTransmitText(")]");
-"127
+[; ;ethernet.c: 121: UARTTransmitText(")]");
+"121
 [e ( _UARTTransmitText (1 :s 16C ]
-[; ;ethernet.c: 139: UARTTransmitText("\n\r");
-"139
+[; ;ethernet.c: 124: UARTTransmitText("\n\r");
+"124
 [e ( _UARTTransmitText (1 :s 17C ]
-[; ;ethernet.c: 140: }
-"140
+[; ;ethernet.c: 125: }
+"125
 [e :UE 620 ]
 }
 [a 4C 91 85 110 105 99 97 115 116 93 0 ]

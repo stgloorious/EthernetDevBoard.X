@@ -264,115 +264,112 @@ MODEXIF = 14
 } interruptFlagName_t;
 
 # 52 "src/stack/protocols/../../eth/ethernetController.h"
-enum LEDs {
+typedef enum LEDs {
 LEDA, LEDB
-};
+} LEDs_t;
 
 # 60
-enum LEDStates {
+typedef enum LEDStates {
 LED_ON,
 LED_OFF,
 LED_TRANSMIT_RECEIVE_EVENTS
-};
+} LEDStates_t;
 
 # 84
 error_t ethernetController_init();
 
-# 98
+# 97
 void ethernetController_enableEthernet();
 
-# 104
+# 102
 void ethernetController_disableEthernet();
 
-# 110
+# 107
 void ethernetController_enableTransmission();
 
-# 116
+# 112
 void ethernetController_disableTransmission();
 
-# 121
+# 117
 void ethernetController_enableReception();
 
-# 127
+# 122
 void ethernetController_disableReception();
 
-# 133
+# 128
 error_t ethernetController_softReset();
 
-# 139
+# 134
 error_t ethernetController_checkDeviceId();
 
-# 145
+# 140
 uint8_t ethernetController_getSiliconRevision();
 
-# 151
+# 146
 uint8_t *ethernetController_getDeviceName();
 
-# 157
+# 152
 void ethernetController_updateLinkStatus(ethernetConnection_t *state);
 
-# 163
+# 158
 uint16_t ethernetController_getMTU();
 
-# 171
+# 166
 interruptFlags_t ethernetController_pollInterruptFlags();
 
-# 177
+# 172
 void ethernetController_clearInterruptFlag(uint8_t flag);
 
-# 191
+# 186
 void ethernetController_sendPacket(memoryField_t field);
 
-# 199
-void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len);
+# 198
+void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
 
-# 205
+# 204
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 
-# 211
+# 210
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
-# 227
+# 226
 void ethernetController_dropPacket(ethernetFrame_t *frame);
 
-# 233
+# 232
 void ethernetController_updateNextPacketPointer();
 
-# 247
+# 246
 uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
 
-# 254
+# 253
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 261
+# 260
 macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 268
+# 267
 etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 274
+# 273
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 280
+# 279
 uint8_t ethernetController_newPacketAvailable();
 
-# 286
+# 285
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 292
+# 291
 uint16_t ethernetController_getNextPacketPointer();
 
-# 298
+# 297
 macaddress_t ethernetController_getMacAddress();
 
-# 304
+# 303
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 318
-void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
-
-# 325
-void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
+# 324
+void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 
 # 43 "src/stack/protocols/../../eth/mac.h"
 bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
@@ -7192,13 +7189,13 @@ void ARP_initTable();
 void ARP_handleNewPacket(ethernetFrame_t *frame);
 
 # 63
-ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame);
+ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
 
 # 70
 void ARP_replyIfNeeded(ARP_message_t request);
 
 # 77
-void ARP_send(ARP_message_t arp);
+void static ARP_send(ARP_message_t arp);
 
 # 84
 void ARP_sendRequest(ipv4_address_t ip);
@@ -7210,12 +7207,9 @@ uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
 macaddress_t ARP_getEntryFromTable(uint8_t index);
 
 # 110
-void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
-# 118
-macaddress_t ARP_resolveAddress(ipv4_address_t ip);
-
-# 125
+# 117
 void printArpTable();
 
 # 26 "src/stack/protocols/arp.c"
@@ -7230,6 +7224,7 @@ return;
 
 arp = ARP_parseFromRXBuffer(frame);
 if (arp.err.code != (uint16_t)0) {
+ethernetController_dropPacket(frame);
 UARTTransmitText("[Invalid ARP Message was discarded.]\r\n");
 return;
 }
@@ -7251,7 +7246,7 @@ ARP_replyIfNeeded(arp);
 ARP_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getSeconds());
 }
 
-ARP_message_t ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
+ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
 ARP_message_t arp;
 uint16_t const offset = 22;
 
@@ -7321,7 +7316,7 @@ arp.err.module = ERROR_MODULE_ARP;
 return arp;
 }
 
-void ARP_replyIfNeeded(ARP_message_t request) {
+void static ARP_replyIfNeeded(ARP_message_t request) {
 if (request.operation != ARP_REQUEST)
 return;
 
@@ -7358,7 +7353,7 @@ UARTTransmitText(ipAdressToString(reply.targetIPAddress));
 UARTTransmitText("]");
 }
 
-void ARP_send(ARP_message_t arp) {
+void static ARP_send(ARP_message_t arp) {
 memoryField_t field;
 macaddress_t destination;
 ethernetFrame_t ethFrame;
@@ -7380,23 +7375,23 @@ field.end = ethFrame.memory.end;
 field.length = 28;
 
 
-ethernetController_streamToTransmitBuffer((arp.htype & 0xff00) >> 8, field.length);
-ethernetController_streamToTransmitBuffer(arp.htype & 0x00ff, field.length);
-ethernetController_streamToTransmitBuffer((arp.ptype & 0xff00) >> 8, field.length);
-ethernetController_streamToTransmitBuffer(arp.ptype & 0x00ff, field.length);
-ethernetController_streamToTransmitBuffer(arp.hlen, field.length);
-ethernetController_streamToTransmitBuffer(arp.plen, field.length);
-ethernetController_streamToTransmitBuffer((arp.operation & 0xff00) >> 8, field.length);
-ethernetController_streamToTransmitBuffer(arp.operation & 0x00ff, field.length);
+ethernetController_streamToTransmitBuffer((arp.htype & 0xff00) >> 8, field);
+ethernetController_streamToTransmitBuffer(arp.htype & 0x00ff, field);
+ethernetController_streamToTransmitBuffer((arp.ptype & 0xff00) >> 8, field);
+ethernetController_streamToTransmitBuffer(arp.ptype & 0x00ff, field);
+ethernetController_streamToTransmitBuffer(arp.hlen, field);
+ethernetController_streamToTransmitBuffer(arp.plen, field);
+ethernetController_streamToTransmitBuffer((arp.operation & 0xff00) >> 8, field);
+ethernetController_streamToTransmitBuffer(arp.operation & 0x00ff, field);
 for (uint8_t i = 0; i < arp.hlen; i++)
-ethernetController_streamToTransmitBuffer(arp.senderMACAddress.address[i], field.length);
+ethernetController_streamToTransmitBuffer(arp.senderMACAddress.address[i], field);
 for (uint8_t i = 0; i < arp.plen; i++)
-ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field.length);
+ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field);
 for (uint8_t i = 0; i < arp.hlen; i++)
-ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field.length);
+ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field);
 
 for (uint8_t i = 0; i < arp.plen; i++)
-ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field.length);
+ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field);
 
 ethernetController_sendPacket(ethFrame.memory);
 }
@@ -7411,6 +7406,7 @@ macaddress_t targetMAC;
 senderMAC = ethernetController_getMacAddress();
 mac_setToBroadcast(&targetMAC);
 
+# 222
 targetIP = ip;
 
 request.hlen = 6;
@@ -7443,7 +7439,7 @@ macaddress_t ARP_getEntryFromTable(uint8_t index) {
 return ARP_table[index].mac;
 }
 
-void ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp) {
+void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp) {
 uint32_t maxSeconds = 0;
 uint8_t oldestIndex = 0;
 

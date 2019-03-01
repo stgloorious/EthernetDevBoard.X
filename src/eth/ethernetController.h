@@ -49,19 +49,19 @@
  * \brief Used to differentiate between the Status/Link LEDs on the RJ45 receptacle
  * \ingroup leds
  */
-enum LEDs {
+typedef enum LEDs {
     LEDA, LEDB
-};
+} LEDs_t;
 
 /**
  * \brief States of the LEDs in the RJ45 receptacle
  * \ingroup leds
  */
- enum LEDStates {
+typedef enum LEDStates {
     LED_ON,
     LED_OFF,
     LED_TRANSMIT_RECEIVE_EVENTS ///< LED flashes for every packet received and transmitted (Status LED)
-};
+} LEDStates_t;
 
 /**
  * \defgroup ethernetController Ethernet Controller
@@ -93,25 +93,21 @@ error_t ethernetController_init();
  */
 /**
  * \brief Enables ethernet functionality
- * \todo This
  */
 void ethernetController_enableEthernet();
 
 /**
  * \brief Disables ethernet functionality
- * \todo This
  */
 void ethernetController_disableEthernet();
 
 /**
  * \brief Enables transmission module
- * \todo This
  */
 void ethernetController_enableTransmission();
 
 /**
  * \brief Disables transmission module
- * \todo This
  */
 void ethernetController_disableTransmission();
 
@@ -122,7 +118,6 @@ void ethernetController_enableReception();
 
 /**
  * \brief Disables reception module
- * \Todo This
  */
 void ethernetController_disableReception();
 
@@ -192,21 +187,25 @@ void ethernetController_sendPacket(memoryField_t field);
 
 
 /**
- * Streams data online to the internal memory of the Ethernet Controller. An additonal buffer on the MCU is not needed.
- * @param data  Byte to stream
- * @param len   Total length to stream
+ * \brief Streams data online to the internal memory of the Ethernet Controller. An additonal buffer on the MCU is not needed.
+ * \param data  Byte to stream
+ * \param field   Field that should be read
+ * \warning Note that the field is only refering to what you want to stream just now. This is not necessarily the same as the whole
+ * memory field that was reserved in memory. Don't do anything else if you haven't finished the number of bytes given in field.length because
+ * otherwise the data transmission is not properly terminated which could lead to weird stuff.
+ * \
  */
-void ethernetController_streamToTransmitBuffer(uint8_t data, uint16_t len);
+void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
 
 /**
- * Fills in the EtherType field in the SRAM buffer
- * @param data EtherType
+ * \brief Fills in the EtherType field in the SRAM buffer
+ * \param data EtherType
  */
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 
 /**
- * Fills in the destination MAC address in the SRAM buffer
- * @param mac Destination MAC address
+ * \brief Fills in the destination MAC address in the SRAM buffer
+ * \param mac Destination MAC address
  */
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
@@ -311,18 +310,18 @@ void ethernetController_setMacAddress(macaddress_t mac);
  */
 /**
  * \brief Sets the LEDs in the RJ45 receptacle to a given status (ON or OFF). 
- * \param LED Which LED; use \ref LEDs_ 
- * \param status Status of the LED; use \ref LEDState_
+ * \param LED Which LED; use \ref LEDs_t 
+ * \param status Status of the LED; use \ref LEDStates_t
  * \todo remove this and use only \ref ethernetController_setLEDConfiguration()
  */
-void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
+//void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
 
 /**
  * \brief Sets the LEDs in the RJ45 receptacle to a given configuration (ON, OFF or an 'automatic' mode).
- * \param LED Which LED; use \ref LEDs_ 
- * \param status Status of the LED; use \ref LEDState_
+ * \param LED Which LED; use \ref LEDs_t
+ * \param status Status of the LED; use \ref LEDStates_t
  */
-void ethernetController_setLEDConfiguration(uint8_t LED, uint8_t conf);
+void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 
 /**\}*/
 
