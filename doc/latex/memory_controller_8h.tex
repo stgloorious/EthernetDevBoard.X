@@ -1,0 +1,51 @@
+\hypertarget{memory_controller_8h}{}\section{C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.X/src/mem/memory\+Controller.h File Reference}
+\label{memory_controller_8h}\index{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/mem/memoryController.h@{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/mem/memoryController.h}}
+
+
+Function definitions for memory operations.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../mem/memory\+Types.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__memory_ga31efd827f5e76320608065c79fc29e00}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+F\+I\+E\+L\+DS}}~8
+\begin{DoxyCompactList}\small\item\em Maximum number of packet memory fields that can be simultaneously assigned. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__memory_gaf952470b2ca20106b4998e400ac4236e}{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+SS}}~0x0000
+\begin{DoxyCompactList}\small\item\em The transmission buffer starts at this address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__memory_gab75619e07ad50e2b4b78684bd3dc81df}{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+SS}}~0x3000
+\begin{DoxyCompactList}\small\item\em The reception buffer ranges from this address to the end of the memory. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__memory_gad2770fc418de68b3967d98142954405a}{E\+N\+D\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+E\+SS}}~0x5\+F\+FF
+\begin{DoxyCompactList}\small\item\em Size of the memory buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} \mbox{\hyperlink{group__memory_ga8efe1d17c78d178ef11effad448b1041}{memory\+\_\+tx\+Frame\+Request}} (uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Returns an address where data of the given length can be stored. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__memory_ga8b2a265d683cd262c1a0aa1fcb847f75}{memory\+\_\+tx\+Frame\+Clear}} (uint8\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Free up a \mbox{\hyperlink{structmemory_field}{memory\+Field}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Function definitions for memory operations. 
+
+\begin{DoxyAuthor}{Author}
+Stefan Gloor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+3. Februar 2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+
+\end{DoxyCopyright}
+Copyright (C) 2019 Stefan Gloor
+
+This program is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\texttt{ http\+://www.\+gnu.\+org/licenses/}}. 

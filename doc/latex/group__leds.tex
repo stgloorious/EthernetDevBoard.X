@@ -1,0 +1,117 @@
+\hypertarget{group__leds}{}\section{L\+E\+Ds}
+\label{group__leds}\index{LEDs@{LEDs}}
+
+
+Status L\+E\+Ds in the R\+J45 Receptacle. Usually they show Link/\+Unlinked Status and activity.  
+
+
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__leds_gab6831a7d06c0a2bc69f9b024f6445a80}{L\+E\+Ds}} \{ \mbox{\hyperlink{group__leds_ggab6831a7d06c0a2bc69f9b024f6445a80a511e0f56399fbaa806332616cfbb5c89}{L\+E\+DA}}, 
+\mbox{\hyperlink{group__leds_ggab6831a7d06c0a2bc69f9b024f6445a80a6b84a5ce4060faf1567b08a007809c19}{L\+E\+DB}}
+ \}
+\begin{DoxyCompactList}\small\item\em Used to differentiate between the Status/\+Link L\+E\+Ds on the R\+J45 receptacle. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__leds_gadb7024cd315c36db7da7879b037a2e21}{L\+E\+D\+States}} \{ \mbox{\hyperlink{group__leds_ggadb7024cd315c36db7da7879b037a2e21add01b80eb93658fb4cf7eb9aceb89a1d}{L\+E\+D\+\_\+\+ON}}, 
+\mbox{\hyperlink{group__leds_ggadb7024cd315c36db7da7879b037a2e21afc0ca8cc6cbe215fd3f1ae6d40255b40}{L\+E\+D\+\_\+\+O\+FF}}, 
+\mbox{\hyperlink{group__leds_ggadb7024cd315c36db7da7879b037a2e21ad40236117a0954a381c6e300bda11ed3}{L\+E\+D\+\_\+\+T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+R\+E\+C\+E\+I\+V\+E\+\_\+\+E\+V\+E\+N\+TS}}
+ \}
+\begin{DoxyCompactList}\small\item\em States of the L\+E\+Ds in the R\+J45 receptacle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__leds_ga88905c196e37262340f8404fcb61ecf9}{ethernet\+Controller\+\_\+set\+L\+E\+D\+Status}} (uint8\+\_\+t L\+ED, uint8\+\_\+t status)
+\begin{DoxyCompactList}\small\item\em Sets the L\+E\+Ds in the R\+J45 receptacle to a given status (ON or O\+FF). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__leds_ga3ec0343a266cb8a4925097d708dd96f4}{ethernet\+Controller\+\_\+set\+L\+E\+D\+Configuration}} (uint8\+\_\+t L\+ED, uint8\+\_\+t conf)
+\begin{DoxyCompactList}\small\item\em Sets the L\+E\+Ds in the R\+J45 receptacle to a given configuration (ON, O\+FF or an \textquotesingle{}automatic\textquotesingle{} mode). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Status L\+E\+Ds in the R\+J45 Receptacle. Usually they show Link/\+Unlinked Status and activity. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group__leds_gab6831a7d06c0a2bc69f9b024f6445a80}\label{group__leds_gab6831a7d06c0a2bc69f9b024f6445a80}} 
+\index{LEDs@{LEDs}!LEDs@{LEDs}}
+\index{LEDs@{LEDs}!LEDs@{LEDs}}
+\subsubsection{\texorpdfstring{LEDs}{LEDs}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__leds_gab6831a7d06c0a2bc69f9b024f6445a80}{L\+E\+Ds}}}
+
+
+
+Used to differentiate between the Status/\+Link L\+E\+Ds on the R\+J45 receptacle. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEDA@{LEDA}!LEDs@{LEDs}}\index{LEDs@{LEDs}!LEDA@{LEDA}}}\mbox{\Hypertarget{group__leds_ggab6831a7d06c0a2bc69f9b024f6445a80a511e0f56399fbaa806332616cfbb5c89}\label{group__leds_ggab6831a7d06c0a2bc69f9b024f6445a80a511e0f56399fbaa806332616cfbb5c89}} 
+L\+E\+DA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEDB@{LEDB}!LEDs@{LEDs}}\index{LEDs@{LEDs}!LEDB@{LEDB}}}\mbox{\Hypertarget{group__leds_ggab6831a7d06c0a2bc69f9b024f6445a80a6b84a5ce4060faf1567b08a007809c19}\label{group__leds_ggab6831a7d06c0a2bc69f9b024f6445a80a6b84a5ce4060faf1567b08a007809c19}} 
+L\+E\+DB&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{group__leds_gadb7024cd315c36db7da7879b037a2e21}\label{group__leds_gadb7024cd315c36db7da7879b037a2e21}} 
+\index{LEDs@{LEDs}!LEDStates@{LEDStates}}
+\index{LEDStates@{LEDStates}!LEDs@{LEDs}}
+\subsubsection{\texorpdfstring{LEDStates}{LEDStates}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__leds_gadb7024cd315c36db7da7879b037a2e21}{L\+E\+D\+States}}}
+
+
+
+States of the L\+E\+Ds in the R\+J45 receptacle. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_ON@{LED\_ON}!LEDs@{LEDs}}\index{LEDs@{LEDs}!LED\_ON@{LED\_ON}}}\mbox{\Hypertarget{group__leds_ggadb7024cd315c36db7da7879b037a2e21add01b80eb93658fb4cf7eb9aceb89a1d}\label{group__leds_ggadb7024cd315c36db7da7879b037a2e21add01b80eb93658fb4cf7eb9aceb89a1d}} 
+L\+E\+D\+\_\+\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_OFF@{LED\_OFF}!LEDs@{LEDs}}\index{LEDs@{LEDs}!LED\_OFF@{LED\_OFF}}}\mbox{\Hypertarget{group__leds_ggadb7024cd315c36db7da7879b037a2e21afc0ca8cc6cbe215fd3f1ae6d40255b40}\label{group__leds_ggadb7024cd315c36db7da7879b037a2e21afc0ca8cc6cbe215fd3f1ae6d40255b40}} 
+L\+E\+D\+\_\+\+O\+FF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_TRANSMIT\_RECEIVE\_EVENTS@{LED\_TRANSMIT\_RECEIVE\_EVENTS}!LEDs@{LEDs}}\index{LEDs@{LEDs}!LED\_TRANSMIT\_RECEIVE\_EVENTS@{LED\_TRANSMIT\_RECEIVE\_EVENTS}}}\mbox{\Hypertarget{group__leds_ggadb7024cd315c36db7da7879b037a2e21ad40236117a0954a381c6e300bda11ed3}\label{group__leds_ggadb7024cd315c36db7da7879b037a2e21ad40236117a0954a381c6e300bda11ed3}} 
+L\+E\+D\+\_\+\+T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+R\+E\+C\+E\+I\+V\+E\+\_\+\+E\+V\+E\+N\+TS&L\+ED flashes for every packet received and transmitted (Status L\+ED) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__leds_ga3ec0343a266cb8a4925097d708dd96f4}\label{group__leds_ga3ec0343a266cb8a4925097d708dd96f4}} 
+\index{LEDs@{LEDs}!ethernetController\_setLEDConfiguration@{ethernetController\_setLEDConfiguration}}
+\index{ethernetController\_setLEDConfiguration@{ethernetController\_setLEDConfiguration}!LEDs@{LEDs}}
+\subsubsection{\texorpdfstring{ethernetController\_setLEDConfiguration()}{ethernetController\_setLEDConfiguration()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+set\+L\+E\+D\+Configuration (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{L\+ED,  }\item[{uint8\+\_\+t}]{conf }\end{DoxyParamCaption})}
+
+
+
+Sets the L\+E\+Ds in the R\+J45 receptacle to a given configuration (ON, O\+FF or an \textquotesingle{}automatic\textquotesingle{} mode). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L\+ED} & Which L\+ED; use L\+E\+Ds\+\_\+ \\
+\hline
+{\em status} & Status of the L\+ED; use L\+E\+D\+State\+\_\+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__leds_ga88905c196e37262340f8404fcb61ecf9}\label{group__leds_ga88905c196e37262340f8404fcb61ecf9}} 
+\index{LEDs@{LEDs}!ethernetController\_setLEDStatus@{ethernetController\_setLEDStatus}}
+\index{ethernetController\_setLEDStatus@{ethernetController\_setLEDStatus}!LEDs@{LEDs}}
+\subsubsection{\texorpdfstring{ethernetController\_setLEDStatus()}{ethernetController\_setLEDStatus()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+set\+L\+E\+D\+Status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{L\+ED,  }\item[{uint8\+\_\+t}]{status }\end{DoxyParamCaption})}
+
+
+
+Sets the L\+E\+Ds in the R\+J45 receptacle to a given status (ON or O\+FF). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L\+ED} & Which L\+ED; use L\+E\+Ds\+\_\+ \\
+\hline
+{\em status} & Status of the L\+ED; use L\+E\+D\+State\+\_\+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000010}{Todo}}]remove this and use only \mbox{\hyperlink{group__leds_ga3ec0343a266cb8a4925097d708dd96f4}{ethernet\+Controller\+\_\+set\+L\+E\+D\+Configuration()}} \end{DoxyRefDesc}

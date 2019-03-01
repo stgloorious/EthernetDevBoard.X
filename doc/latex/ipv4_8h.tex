@@ -1,0 +1,29 @@
+\hypertarget{ipv4_8h}{}\section{C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.X/src/stack/protocols/ipv4.h File Reference}
+\label{ipv4_8h}\index{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/stack/protocols/ipv4.h@{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/stack/protocols/ipv4.h}}
+{\ttfamily \#include \char`\"{}../bool.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../eth/ethernet\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../protocols/ipv4\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../protocols/arp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../stack.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__ipv4_ga1bf24e45bf60a70b43ea1f1738c9a4c5}{ipv4\+\_\+tx\+Frame\+Request}} (\mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}} $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Requests a memory field and prepares the transmission of an I\+Pv4 Packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ipv4_gabf86b43adee57be777cf22f4cddc0b38}{ipv4\+\_\+calculate\+Header\+Checksum}} (\mbox{\hyperlink{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}{ipv4\+\_\+header\+\_\+t}} $\ast$header)
+\begin{DoxyCompactList}\small\item\em Call this function after everything in the header has been filled in. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ipv4_gacfb15ed3a5d68caffefbb0605e94b61d}{ipv4\+\_\+write\+Header\+Into\+Buffer}} (\mbox{\hyperlink{group__ipv4_gaf4f2c6743b9fb1ea3c69734612ce41de}{ipv4\+\_\+header\+\_\+t}} header, uint8\+\_\+t $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em Assembles the I\+Pv4 Header and writes it into a buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ipv4_ga9b32058fa6f24f692e0915345b3373b2}{ipv4\+\_\+stream\+To\+Transmission\+Buffer}} (uint8\+\_\+t data, \mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}} packet)
+\begin{DoxyCompactList}\small\item\em Streams data to the memory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__ipv4_ga1837c9c3c1856f57fe1d5ec5008015a2}{ipv4\+\_\+send\+Frame}} (\mbox{\hyperlink{group__ipv4_ga68ea36d252d9332fd5e37d9aaedd06af}{ipv4\+\_\+packet\+\_\+t}} ip\+Packet)
+\begin{DoxyCompactList}\small\item\em Sends the prepared I\+Pv4 Packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ipv4_ga7f96d526bafe55783b675597634d87ae}{ipv4\+\_\+handle\+New\+Packet}} (\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$frame)
+\begin{DoxyCompactList}\small\item\em Does all the necessary things to process a new packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{bool_8h_a449976458a084f880dc8e3d29e7eb6f5}{bool\+\_\+t}} \mbox{\hyperlink{group__ip__operations_gad9c08409a635759d19d5118a29baec3d}{ipv4\+\_\+cmp}} (\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} $\ast$a, \mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Compares two I\+Pv4 addresses and checks if they are equal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{bool_8h_a449976458a084f880dc8e3d29e7eb6f5}{bool\+\_\+t}} \mbox{\hyperlink{group__ip__operations_gaa00ec29f5a104d77f8f61f47da1fa9b6}{ipv4\+\_\+is\+All\+Zero}} (\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} $\ast$ip)
+\begin{DoxyCompactList}\small\item\em Checks if the IP Address is 0.\+0.\+0.\+0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ip__operations_gac5383f68f84a2968218c92812354512a}{ipv4\+\_\+set\+To\+All\+Zero}} (\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} $\ast$ip)
+\begin{DoxyCompactList}\small\item\em Sets the IP address to 0.\+0.\+0.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}

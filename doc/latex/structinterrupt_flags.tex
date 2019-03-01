@@ -1,0 +1,147 @@
+\hypertarget{structinterrupt_flags}{}\section{interrupt\+Flags Struct Reference}
+\label{structinterrupt_flags}\index{interruptFlags@{interruptFlags}}
+
+
+This structure represents the E\+IR Interrupt flag register.  
+
+
+
+
+{\ttfamily \#include $<$interrupt.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_ad01e267d93eace1bc14b2e98c7a6e23b}{M\+O\+D\+E\+X\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 14\mbox{]} Modular Exponentiation Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_a083a2864d9aeecec83f03864835afd68}{H\+A\+S\+H\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 13\mbox{]} M\+D5/\+S\+H\+A-\/1 Hash Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_a710067270606b70dbaf2bbb5aadb5ce9}{A\+E\+S\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 12\mbox{]} A\+ES Encrypt/\+Decrypt Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_a4f301cfd9cfc49b105a5f703947a2298}{L\+I\+N\+K\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 11\mbox{]} P\+HY Link Status Change Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_a4bfff8bb603cb3baf42fabe79d5e0a39}{P\+K\+T\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 6\mbox{]} RX Packet Pending Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_ac03ab9621d33c1e860f64dbcf0fa2a3e}{D\+M\+A\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 5\mbox{]} D\+MA Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_a8ac6b64dff7b25ddf36cea5543329e56}{T\+X\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 3\mbox{]} Transmit Done Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_aef79dc4f43ab3844327f963cedfc3a57}{T\+X\+A\+B\+T\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 2\mbox{]} Transmit Abort Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_adfd2bd74bfbf9d086ac5364f2c2bc420}{R\+X\+A\+B\+T\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 1\mbox{]} Receive Abort Interrupt Flag bit \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structinterrupt_flags_a54ca36edd15d3a43ea58c44c9b4632d1}{P\+C\+F\+U\+L\+IF}}\+: 1
+\begin{DoxyCompactList}\small\item\em \mbox{[}Bit 0\mbox{]} Packet Counter Full Interrupt Flag bit \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This structure represents the E\+IR Interrupt flag register. 
+
+Note that the M\+SB (Bit 15) is not implemented here because it is not an interrupt flag 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structinterrupt_flags_a710067270606b70dbaf2bbb5aadb5ce9}\label{structinterrupt_flags_a710067270606b70dbaf2bbb5aadb5ce9}} 
+\index{interruptFlags@{interruptFlags}!AESIF@{AESIF}}
+\index{AESIF@{AESIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{AESIF}{AESIF}}
+{\footnotesize\ttfamily uint8\+\_\+t A\+E\+S\+IF}
+
+
+
+\mbox{[}Bit 12\mbox{]} A\+ES Encrypt/\+Decrypt Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_ac03ab9621d33c1e860f64dbcf0fa2a3e}\label{structinterrupt_flags_ac03ab9621d33c1e860f64dbcf0fa2a3e}} 
+\index{interruptFlags@{interruptFlags}!DMAIF@{DMAIF}}
+\index{DMAIF@{DMAIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{DMAIF}{DMAIF}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+M\+A\+IF}
+
+
+
+\mbox{[}Bit 5\mbox{]} D\+MA Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_a083a2864d9aeecec83f03864835afd68}\label{structinterrupt_flags_a083a2864d9aeecec83f03864835afd68}} 
+\index{interruptFlags@{interruptFlags}!HASHIF@{HASHIF}}
+\index{HASHIF@{HASHIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{HASHIF}{HASHIF}}
+{\footnotesize\ttfamily uint8\+\_\+t H\+A\+S\+H\+IF}
+
+
+
+\mbox{[}Bit 13\mbox{]} M\+D5/\+S\+H\+A-\/1 Hash Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_a4f301cfd9cfc49b105a5f703947a2298}\label{structinterrupt_flags_a4f301cfd9cfc49b105a5f703947a2298}} 
+\index{interruptFlags@{interruptFlags}!LINKIF@{LINKIF}}
+\index{LINKIF@{LINKIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{LINKIF}{LINKIF}}
+{\footnotesize\ttfamily uint8\+\_\+t L\+I\+N\+K\+IF}
+
+
+
+\mbox{[}Bit 11\mbox{]} P\+HY Link Status Change Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_ad01e267d93eace1bc14b2e98c7a6e23b}\label{structinterrupt_flags_ad01e267d93eace1bc14b2e98c7a6e23b}} 
+\index{interruptFlags@{interruptFlags}!MODEXIF@{MODEXIF}}
+\index{MODEXIF@{MODEXIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{MODEXIF}{MODEXIF}}
+{\footnotesize\ttfamily uint8\+\_\+t M\+O\+D\+E\+X\+IF}
+
+
+
+\mbox{[}Bit 14\mbox{]} Modular Exponentiation Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_a54ca36edd15d3a43ea58c44c9b4632d1}\label{structinterrupt_flags_a54ca36edd15d3a43ea58c44c9b4632d1}} 
+\index{interruptFlags@{interruptFlags}!PCFULIF@{PCFULIF}}
+\index{PCFULIF@{PCFULIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{PCFULIF}{PCFULIF}}
+{\footnotesize\ttfamily uint8\+\_\+t P\+C\+F\+U\+L\+IF}
+
+
+
+\mbox{[}Bit 0\mbox{]} Packet Counter Full Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_a4bfff8bb603cb3baf42fabe79d5e0a39}\label{structinterrupt_flags_a4bfff8bb603cb3baf42fabe79d5e0a39}} 
+\index{interruptFlags@{interruptFlags}!PKTIF@{PKTIF}}
+\index{PKTIF@{PKTIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{PKTIF}{PKTIF}}
+{\footnotesize\ttfamily uint8\+\_\+t P\+K\+T\+IF}
+
+
+
+\mbox{[}Bit 6\mbox{]} RX Packet Pending Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_adfd2bd74bfbf9d086ac5364f2c2bc420}\label{structinterrupt_flags_adfd2bd74bfbf9d086ac5364f2c2bc420}} 
+\index{interruptFlags@{interruptFlags}!RXABTIF@{RXABTIF}}
+\index{RXABTIF@{RXABTIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{RXABTIF}{RXABTIF}}
+{\footnotesize\ttfamily uint8\+\_\+t R\+X\+A\+B\+T\+IF}
+
+
+
+\mbox{[}Bit 1\mbox{]} Receive Abort Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_aef79dc4f43ab3844327f963cedfc3a57}\label{structinterrupt_flags_aef79dc4f43ab3844327f963cedfc3a57}} 
+\index{interruptFlags@{interruptFlags}!TXABTIF@{TXABTIF}}
+\index{TXABTIF@{TXABTIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{TXABTIF}{TXABTIF}}
+{\footnotesize\ttfamily uint8\+\_\+t T\+X\+A\+B\+T\+IF}
+
+
+
+\mbox{[}Bit 2\mbox{]} Transmit Abort Interrupt Flag bit 
+
+\mbox{\Hypertarget{structinterrupt_flags_a8ac6b64dff7b25ddf36cea5543329e56}\label{structinterrupt_flags_a8ac6b64dff7b25ddf36cea5543329e56}} 
+\index{interruptFlags@{interruptFlags}!TXIF@{TXIF}}
+\index{TXIF@{TXIF}!interruptFlags@{interruptFlags}}
+\subsubsection{\texorpdfstring{TXIF}{TXIF}}
+{\footnotesize\ttfamily uint8\+\_\+t T\+X\+IF}
+
+
+
+\mbox{[}Bit 3\mbox{]} Transmit Done Interrupt Flag bit 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.\+X/src/enc424j600/\mbox{\hyperlink{interrupt_8h}{interrupt.\+h}}\end{DoxyCompactItemize}

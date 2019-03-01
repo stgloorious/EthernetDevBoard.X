@@ -1,0 +1,183 @@
+\hypertarget{uart_8c}{}\section{C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.X/src/system/uart.c File Reference}
+\label{uart_8c}\index{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/system/uart.c@{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/system/uart.c}}
+{\ttfamily \#include \char`\"{}../system/uart.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{uart_8c_a2208c97c21ded3ef393bd94a27509b69}{U\+A\+R\+T\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialises the U\+A\+RT module and sets up baud rate and other settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8c_aededddacce8a1f56d58e40654babcc83}{U\+A\+R\+T\+Transmit\+Text}} (const char $\ast$str)
+\begin{DoxyCompactList}\small\item\em Transmits a char string over the U\+A\+RT interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8c_a4a038b093e8e3fbeac77a3da95231e86}{U\+A\+R\+T\+Transmit\+Int}} (uint32\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em Transmits a four-\/digit numerical value. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{uart_8c_abddf1626904c824d00f2be6b130500d3}{int\+To\+String}} (uint32\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em Converts a decimal numerical value into a string. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{uart_8c_a9043978129a5348725b0a915fe74f08f}{hex\+To\+Char}} (uint8\+\_\+t val)
+\item 
+char $\ast$ \mbox{\hyperlink{uart_8c_a2b5ab32a5e424cca95e98f0034678c46}{hex\+To\+String}} (uint32\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em Converts a hexadecimal numerical value into a string. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{uart_8c_a1acf079e1ab6ae38ac7a05338a535cdd}{mac\+To\+String}} (\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} addr)
+\begin{DoxyCompactList}\small\item\em Takes a M\+AC address and translates it to a human-\/readable char string. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{uart_8c_af851eb2e51e81a23a50eb733ae02dc4e}{ether\+Type\+To\+String}} (\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} ethertype)
+\begin{DoxyCompactList}\small\item\em Takes the ether\+Type field value and converts it into human-\/readable string (e.\+g. \char`\"{}\+I\+Pv4\char`\"{}) \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{uart_8c_a313a7ba72fc63857f535add533ae0717}{ip\+Adress\+To\+String}} (\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}} ip)
+\begin{DoxyCompactList}\small\item\em Takes an I\+Pv4 Address and converts it into string (decimal notation) \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{uart_8c_ae61e874d3d9829abc7d8a4804c79592b}{arp\+Entry\+To\+String}} (\mbox{\hyperlink{group__arp_gab5d4ef9cd020c5de772f55549aa70716}{A\+R\+P\+\_\+table\+Entry\+\_\+t}} table)
+\begin{DoxyCompactList}\small\item\em Converts an A\+RP entry to a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{uart_8c_ae61e874d3d9829abc7d8a4804c79592b}\label{uart_8c_ae61e874d3d9829abc7d8a4804c79592b}} 
+\index{uart.c@{uart.c}!arpEntryToString@{arpEntryToString}}
+\index{arpEntryToString@{arpEntryToString}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{arpEntryToString()}{arpEntryToString()}}
+{\footnotesize\ttfamily char$\ast$ arp\+Entry\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__arp_gab5d4ef9cd020c5de772f55549aa70716}{A\+R\+P\+\_\+table\+Entry\+\_\+t}}}]{table }\end{DoxyParamCaption})}
+
+
+
+Converts an A\+RP entry to a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8c_af851eb2e51e81a23a50eb733ae02dc4e}\label{uart_8c_af851eb2e51e81a23a50eb733ae02dc4e}} 
+\index{uart.c@{uart.c}!etherTypeToString@{etherTypeToString}}
+\index{etherTypeToString@{etherTypeToString}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{etherTypeToString()}{etherTypeToString()}}
+{\footnotesize\ttfamily char$\ast$ ether\+Type\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}}}]{ethertype }\end{DoxyParamCaption})}
+
+
+
+Takes the ether\+Type field value and converts it into human-\/readable string (e.\+g. \char`\"{}\+I\+Pv4\char`\"{}) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ethertype} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Char string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8c_a9043978129a5348725b0a915fe74f08f}\label{uart_8c_a9043978129a5348725b0a915fe74f08f}} 
+\index{uart.c@{uart.c}!hexToChar@{hexToChar}}
+\index{hexToChar@{hexToChar}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{hexToChar()}{hexToChar()}}
+{\footnotesize\ttfamily char hex\+To\+Char (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{val }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{uart_8c_a2b5ab32a5e424cca95e98f0034678c46}\label{uart_8c_a2b5ab32a5e424cca95e98f0034678c46}} 
+\index{uart.c@{uart.c}!hexToString@{hexToString}}
+\index{hexToString@{hexToString}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{hexToString()}{hexToString()}}
+{\footnotesize\ttfamily char$\ast$ hex\+To\+String (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{val }\end{DoxyParamCaption})}
+
+
+
+Converts a hexadecimal numerical value into a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8c_abddf1626904c824d00f2be6b130500d3}\label{uart_8c_abddf1626904c824d00f2be6b130500d3}} 
+\index{uart.c@{uart.c}!intToString@{intToString}}
+\index{intToString@{intToString}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{intToString()}{intToString()}}
+{\footnotesize\ttfamily char$\ast$ int\+To\+String (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{val }\end{DoxyParamCaption})}
+
+
+
+Converts a decimal numerical value into a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8c_a313a7ba72fc63857f535add533ae0717}\label{uart_8c_a313a7ba72fc63857f535add533ae0717}} 
+\index{uart.c@{uart.c}!ipAdressToString@{ipAdressToString}}
+\index{ipAdressToString@{ipAdressToString}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{ipAdressToString()}{ipAdressToString()}}
+{\footnotesize\ttfamily char$\ast$ ip\+Adress\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ipv4_gad9df0882950e70d0587a4b423beb261a}{ipv4\+\_\+address\+\_\+t}}}]{ip }\end{DoxyParamCaption})}
+
+
+
+Takes an I\+Pv4 Address and converts it into string (decimal notation) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em IP} & address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8c_a1acf079e1ab6ae38ac7a05338a535cdd}\label{uart_8c_a1acf079e1ab6ae38ac7a05338a535cdd}} 
+\index{uart.c@{uart.c}!macToString@{macToString}}
+\index{macToString@{macToString}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{macToString()}{macToString()}}
+{\footnotesize\ttfamily char$\ast$ mac\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}}}]{addr }\end{DoxyParamCaption})}
+
+
+
+Takes a M\+AC address and translates it to a human-\/readable char string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mac} & M\+AC address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Char string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8c_a2208c97c21ded3ef393bd94a27509b69}\label{uart_8c_a2208c97c21ded3ef393bd94a27509b69}} 
+\index{uart.c@{uart.c}!UARTInit@{UARTInit}}
+\index{UARTInit@{UARTInit}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{UARTInit()}{UARTInit()}}
+{\footnotesize\ttfamily void U\+A\+R\+T\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialises the U\+A\+RT module and sets up baud rate and other settings. 
+
+\mbox{\Hypertarget{uart_8c_a4a038b093e8e3fbeac77a3da95231e86}\label{uart_8c_a4a038b093e8e3fbeac77a3da95231e86}} 
+\index{uart.c@{uart.c}!UARTTransmitInt@{UARTTransmitInt}}
+\index{UARTTransmitInt@{UARTTransmitInt}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{UARTTransmitInt()}{UARTTransmitInt()}}
+{\footnotesize\ttfamily void U\+A\+R\+T\+Transmit\+Int (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{val }\end{DoxyParamCaption})}
+
+
+
+Transmits a four-\/digit numerical value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Number to be transmitted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{uart_8c_aededddacce8a1f56d58e40654babcc83}\label{uart_8c_aededddacce8a1f56d58e40654babcc83}} 
+\index{uart.c@{uart.c}!UARTTransmitText@{UARTTransmitText}}
+\index{UARTTransmitText@{UARTTransmitText}!uart.c@{uart.c}}
+\subsubsection{\texorpdfstring{UARTTransmitText()}{UARTTransmitText()}}
+{\footnotesize\ttfamily void U\+A\+R\+T\+Transmit\+Text (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Transmits a char string over the U\+A\+RT interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Char string to be transmitted \\
+\hline
+\end{DoxyParams}

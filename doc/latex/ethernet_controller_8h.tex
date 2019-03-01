@@ -1,0 +1,117 @@
+\hypertarget{ethernet_controller_8h}{}\section{C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.X/src/eth/ethernet\+Controller.h File Reference}
+\label{ethernet_controller_8h}\index{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/eth/ethernetController.h@{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/eth/ethernetController.h}}
+
+
+Interfaces an ethernet controller device.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../stack/error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../eth/ethernet\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../mem/memory\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../enc424j600/interrupt.\+h\char`\"{}}\newline
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__leds_gab6831a7d06c0a2bc69f9b024f6445a80}{L\+E\+Ds}} \{ \mbox{\hyperlink{group__leds_ggab6831a7d06c0a2bc69f9b024f6445a80a511e0f56399fbaa806332616cfbb5c89}{L\+E\+DA}}, 
+\mbox{\hyperlink{group__leds_ggab6831a7d06c0a2bc69f9b024f6445a80a6b84a5ce4060faf1567b08a007809c19}{L\+E\+DB}}
+ \}
+\begin{DoxyCompactList}\small\item\em Used to differentiate between the Status/\+Link L\+E\+Ds on the R\+J45 receptacle. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__leds_gadb7024cd315c36db7da7879b037a2e21}{L\+E\+D\+States}} \{ \mbox{\hyperlink{group__leds_ggadb7024cd315c36db7da7879b037a2e21add01b80eb93658fb4cf7eb9aceb89a1d}{L\+E\+D\+\_\+\+ON}}, 
+\mbox{\hyperlink{group__leds_ggadb7024cd315c36db7da7879b037a2e21afc0ca8cc6cbe215fd3f1ae6d40255b40}{L\+E\+D\+\_\+\+O\+FF}}, 
+\mbox{\hyperlink{group__leds_ggadb7024cd315c36db7da7879b037a2e21ad40236117a0954a381c6e300bda11ed3}{L\+E\+D\+\_\+\+T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+R\+E\+C\+E\+I\+V\+E\+\_\+\+E\+V\+E\+N\+TS}}
+ \}
+\begin{DoxyCompactList}\small\item\em States of the L\+E\+Ds in the R\+J45 receptacle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga440a9f27fc612a678d3d17eb5983c977}{ethernet\+Controller\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initialises the ethernet controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga06ef512fd11e36bbefaad96993875d2b}{ethernet\+Controller\+\_\+enable\+Ethernet}} ()
+\begin{DoxyCompactList}\small\item\em Enables ethernet functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_gaadd13e81fe0097411b3aae2f6810bbe1}{ethernet\+Controller\+\_\+disable\+Ethernet}} ()
+\begin{DoxyCompactList}\small\item\em Disables ethernet functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga0aef586bd9434125367071595a794806}{ethernet\+Controller\+\_\+enable\+Transmission}} ()
+\begin{DoxyCompactList}\small\item\em Enables transmission module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga7cb7d48ac9c1a7bd6393c95e6e07dcee}{ethernet\+Controller\+\_\+disable\+Transmission}} ()
+\begin{DoxyCompactList}\small\item\em Disables transmission module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga203eb473ea1d221ffe97839b16e74565}{ethernet\+Controller\+\_\+enable\+Reception}} ()
+\begin{DoxyCompactList}\small\item\em Enables reception module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga9cb4657907d3985ecf5b867f7a8a9304}{ethernet\+Controller\+\_\+disable\+Reception}} ()
+\begin{DoxyCompactList}\small\item\em Disables reception module \textbackslash{}\+Todo This. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga6a772ec407e60e921bad4db7a2be2676}{ethernet\+Controller\+\_\+soft\+Reset}} ()
+\begin{DoxyCompactList}\small\item\em Performs a software reset of the Ethernet controller according to the suggested write-\/and-\/verify approach recommended in the datasheet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga67521cdab8bfce49cee40d037a888793}{ethernet\+Controller\+\_\+check\+Device\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the device ID equals the expected value. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__init_gaa3396c9822f00c6519a0e7a421048a71}{ethernet\+Controller\+\_\+get\+Silicon\+Revision}} ()
+\begin{DoxyCompactList}\small\item\em Checks the silicion revision of the ethernet controller. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{group__init_gae396f51c0fdba634e4e84b5f2b5d9416}{ethernet\+Controller\+\_\+get\+Device\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get device name as a string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_gab294a8fbc5b11d40a5da5e769110f6ca}{ethernet\+Controller\+\_\+update\+Link\+Status}} (\mbox{\hyperlink{group__ethernet_gae7b6008a02816680c2e3a1e3d2451a60}{ethernet\+Connection\+\_\+t}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Intended to be called when an interrupt indicates that a link change as occured. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group__init_gabb37702e7cfbd10dc932ca6502fd7bae}{ethernet\+Controller\+\_\+get\+M\+TU}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Maximum Transmission Unit of the Medium (normally 1500 bytes) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__interrupts_ga337298055be267e726930c9fc6b2d4eb}{interrupt\+Flags\+\_\+t}} \mbox{\hyperlink{group__init_ga5cdd5a8c6a5ceab1292643f291137bd1}{ethernet\+Controller\+\_\+poll\+Interrupt\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Checks the Interrupt flags and returns the status in a structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga472d2ba5053ebbb349e514699adfcde3}{ethernet\+Controller\+\_\+clear\+Interrupt\+Flag}} (uint8\+\_\+t flag)
+\begin{DoxyCompactList}\small\item\em Clears a single interrupt flag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__transmission_gacab51e5c9afa0f0b90e6694bcfc7d936}{ethernet\+Controller\+\_\+send\+Packet}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Sends the data in the S\+R\+AM buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__transmission_ga9c0d9b39642cf6b7e220b9f0b44e3e02}{ethernet\+Controller\+\_\+stream\+To\+Transmit\+Buffer}} (uint8\+\_\+t data, uint16\+\_\+t len)
+\item 
+void \mbox{\hyperlink{group__data__transmission_ga8fa7a1c372901218a6c545df21fc9ef3}{ethernet\+Controller\+\_\+write\+Ether\+Type\+Field\+To\+Buffer}} (\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} ethtype, \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} f)
+\item 
+void \mbox{\hyperlink{group__data__transmission_ga858fd557b9ef00b3fd8166381e415bec}{ethernet\+Controller\+\_\+write\+Destination\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} addr, \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} f)
+\item 
+void \mbox{\hyperlink{group__data__reception_gada8fcdc667d1800b5f963bfc8cea56c2}{ethernet\+Controller\+\_\+drop\+Packet}} (\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$frame)
+\begin{DoxyCompactList}\small\item\em Discards a packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__reception_ga9d6d9257b64641f2120cb99f31d66a0e}{ethernet\+Controller\+\_\+update\+Next\+Packet\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Reads the next\+Packet\+Pointer from the current packet and stores it. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__data__reception_ga152b0e0b0d3ed72affb7feac14035b6e}{ethernet\+Controller\+\_\+stream\+From\+R\+X\+Buffer}} (uint8\+\_\+t start\+End, uint16\+\_\+t start\+Address)
+\begin{DoxyCompactList}\small\item\em This functions allows online transmission to the internal buffer of the Ethernet Controller. An additional buffer on the M\+CU is not needed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga29e5c29891e62206ceed99a6b15749a0}{ethernet\+Controller\+\_\+get\+Destination\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Destination M\+AC address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_gabe0967f5f15ce26c4bb723036e566afe}{ethernet\+Controller\+\_\+get\+Source\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Source M\+AC address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga84354a03e54526ac8a820650886458f4}{ethernet\+Controller\+\_\+get\+Ether\+Type\+Field}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Ether\+Type field. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__rsv_gaf7fd94a9424fccb0aafa846f27a43099}{R\+S\+V\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga1d8cfd56b6020b891ba408c18789129c}{ethernet\+Controller\+\_\+get\+R\+SV}} (uint16\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Reads the Receive Status Vector from the recently received Packet and returns the address of the first element. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__data__reception_gae030bd0d97a72b4c38d3ac55132dd7f3}{ethernet\+Controller\+\_\+new\+Packet\+Available}} ()
+\begin{DoxyCompactList}\small\item\em Checks if there is a new frame ready for processing. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__data__reception_ga0ab2398cb48efd9a8943a5c5b2872b0c}{ethernet\+Controller\+\_\+get\+Current\+Packet\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Get the total number of unprocessed packets. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group__data__reception_ga6155805a8511681932051b00a0032f9f}{ethernet\+Controller\+\_\+get\+Next\+Packet\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Get the address where the next packet starts. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_gae3335ee23b52ab5086b95f83127b755c}{ethernet\+Controller\+\_\+get\+Mac\+Address}} ()
+\begin{DoxyCompactList}\small\item\em Gets unique M\+AC address that is currently used as source address. After P\+OR it is set to a hardwired unique address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__reception_ga4856965b47df99d3532a7d1cbb494e02}{ethernet\+Controller\+\_\+set\+Mac\+Address}} (\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} mac)
+\begin{DoxyCompactList}\small\item\em Sets a M\+AC source address. Has to be set after every P\+OR, because it gets overwritten with a hardwired unique address after power-\/up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__leds_ga88905c196e37262340f8404fcb61ecf9}{ethernet\+Controller\+\_\+set\+L\+E\+D\+Status}} (uint8\+\_\+t L\+ED, uint8\+\_\+t status)
+\begin{DoxyCompactList}\small\item\em Sets the L\+E\+Ds in the R\+J45 receptacle to a given status (ON or O\+FF). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__leds_ga3ec0343a266cb8a4925097d708dd96f4}{ethernet\+Controller\+\_\+set\+L\+E\+D\+Configuration}} (uint8\+\_\+t L\+ED, uint8\+\_\+t conf)
+\begin{DoxyCompactList}\small\item\em Sets the L\+E\+Ds in the R\+J45 receptacle to a given configuration (ON, O\+FF or an \textquotesingle{}automatic\textquotesingle{} mode). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interfaces an ethernet controller device. 
+
+Ethernet controller functions that are really device-\/specific (like a soft reset sequence) are found in their own file. This file should only contain more general \char`\"{}\+Ethernet Controller\char`\"{} functions which would be compatible with different physical Ethernet Controller chips. \begin{DoxyAuthor}{Author}
+Stefan Gloor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+31. December 2018, 17\+:30 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+
+\end{DoxyCopyright}
+Copyright (C) 2019 Stefan Gloor
+
+This program is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\texttt{ http\+://www.\+gnu.\+org/licenses/}}. 

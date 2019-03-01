@@ -1,0 +1,257 @@
+\hypertarget{struct_r_s_v}{}\section{R\+SV Struct Reference}
+\label{struct_r_s_v}\index{RSV@{RSV}}
+
+
+This structure represents the Receive Status Vector in a nice way.  
+
+
+
+
+{\ttfamily \#include $<$rsv.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{struct_r_s_v_a1892eba2086d12ac2b09005aeb09ea3b}{length}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a91c26b9645e5edca1e4c4f13c76631a2}{packet\+Previously\+Ignored}}\+: 1
+\begin{DoxyCompactList}\small\item\em A frame larger than 50,000 bit times occurred or a packet has been dropped since the last receive. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a009a3b631b303f95d25e18876d2bcf6c}{carrier\+Event\+Previously\+Seen}}\+: 1
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a331925f67a8efb3a251601448de7b1eb}{C\+R\+C\+Error}}\+: 1
+\begin{DoxyCompactList}\small\item\em Frame C\+RC field value does not match the C\+RC calculated by the M\+AC. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_aa1ee2560cad39e2579609aa0bbe23622}{length\+Check\+Error}}\+: 1
+\begin{DoxyCompactList}\small\item\em Frame length field value in the packet does not match the actual byte length and specifies a valid length. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_addceef1c25a3a79f0809d2088d7fad31}{length\+Out\+Of\+Range}}\+: 1
+\begin{DoxyCompactList}\small\item\em Frame type/length field was larger than 1500 bytes (type field). \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a864bac3376c79921741bdde1db0d7570}{received\+Ok}}\+: 1
+\begin{DoxyCompactList}\small\item\em Received packet had a valid C\+RC and no symbol errors. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_ab40062c1424a2dfaf51425eb5f3ebb6e}{multicast}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame has a valid Multicast address. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a6e3870c14f08dc47009ee5358a0f06bb}{broadcast}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame has a valid Broadcast address. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a907e981c9915dc72df656689b5ff1f62}{dribble\+Nibble}}\+: 1
+\begin{DoxyCompactList}\small\item\em Indicates that after the end of this packet, an additional 1 to 7 bits were received. The extra bits were thrown away. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_aa35d3ed42d81d27aa06f55388ac07d2d}{control\+Frame}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame was recognized as a control frame for having a valid type/length designating it as a control frame. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a1a7098c480755c10613115cc181aa126}{pause\+Frame}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame was recognized as a control frame containing a valid pause frame opcode and a valid destination address. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a57538bc935cb3aac5c51829f01b013af}{unknown\+Opcode}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame was recognized as a control frame but it contained an unknown opcode. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a1658beabbd0704b4ab87c15e91efe371}{vlan}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame was recognized as a V\+L\+AN tagged frame. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a27d64356a19179a097c7973f7d7a46a5}{runt\+Filter}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame met criteria for the Runt Packet Receive filter. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a3c6d714f4e9f6e6a8f1d5ab5cf3d4b58}{not\+Me\+Filter}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame met criteria for the Not-\/\+Me Receive filter. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a4ebbb06c87ec613dd00b55ed91c67535}{hash\+Filter}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame met criteria for the Hash Receive filter as configured when the packet was received. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a1369352b01723f3fe85ae1504216e1fa}{magic\+Filter}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame met criteria for the Magic Packet Receive filter as configured when the packet was received. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_a0b0c5f947dcfec316373912a9d8afad0}{pattern\+Match}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame met criteria for the Pattern Match Receive filter as configured when the packet was received. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_r_s_v_ab2a20bde35ec4242bf38d69c8277114a}{unicast}}\+: 1
+\begin{DoxyCompactList}\small\item\em Current frame met criteria for the Unicast Receive filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This structure represents the Receive Status Vector in a nice way. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_r_s_v_a6e3870c14f08dc47009ee5358a0f06bb}\label{struct_r_s_v_a6e3870c14f08dc47009ee5358a0f06bb}} 
+\index{RSV@{RSV}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{broadcast}{broadcast}}
+{\footnotesize\ttfamily uint8\+\_\+t broadcast}
+
+
+
+Current frame has a valid Broadcast address. 
+
+\mbox{\Hypertarget{struct_r_s_v_a009a3b631b303f95d25e18876d2bcf6c}\label{struct_r_s_v_a009a3b631b303f95d25e18876d2bcf6c}} 
+\index{RSV@{RSV}!carrierEventPreviouslySeen@{carrierEventPreviouslySeen}}
+\index{carrierEventPreviouslySeen@{carrierEventPreviouslySeen}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{carrierEventPreviouslySeen}{carrierEventPreviouslySeen}}
+{\footnotesize\ttfamily uint8\+\_\+t carrier\+Event\+Previously\+Seen}
+
+A carrier event was detected at some time since the last receive. The carrier event is not associated with this packet. A carrier event is activity on the receive channel that does not result in a packet receive attempt being made. \mbox{\Hypertarget{struct_r_s_v_aa35d3ed42d81d27aa06f55388ac07d2d}\label{struct_r_s_v_aa35d3ed42d81d27aa06f55388ac07d2d}} 
+\index{RSV@{RSV}!controlFrame@{controlFrame}}
+\index{controlFrame@{controlFrame}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{controlFrame}{controlFrame}}
+{\footnotesize\ttfamily uint8\+\_\+t control\+Frame}
+
+
+
+Current frame was recognized as a control frame for having a valid type/length designating it as a control frame. 
+
+\mbox{\Hypertarget{struct_r_s_v_a331925f67a8efb3a251601448de7b1eb}\label{struct_r_s_v_a331925f67a8efb3a251601448de7b1eb}} 
+\index{RSV@{RSV}!CRCError@{CRCError}}
+\index{CRCError@{CRCError}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{CRCError}{CRCError}}
+{\footnotesize\ttfamily uint8\+\_\+t C\+R\+C\+Error}
+
+
+
+Frame C\+RC field value does not match the C\+RC calculated by the M\+AC. 
+
+\mbox{\Hypertarget{struct_r_s_v_a907e981c9915dc72df656689b5ff1f62}\label{struct_r_s_v_a907e981c9915dc72df656689b5ff1f62}} 
+\index{RSV@{RSV}!dribbleNibble@{dribbleNibble}}
+\index{dribbleNibble@{dribbleNibble}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{dribbleNibble}{dribbleNibble}}
+{\footnotesize\ttfamily uint8\+\_\+t dribble\+Nibble}
+
+
+
+Indicates that after the end of this packet, an additional 1 to 7 bits were received. The extra bits were thrown away. 
+
+\mbox{\Hypertarget{struct_r_s_v_a4ebbb06c87ec613dd00b55ed91c67535}\label{struct_r_s_v_a4ebbb06c87ec613dd00b55ed91c67535}} 
+\index{RSV@{RSV}!hashFilter@{hashFilter}}
+\index{hashFilter@{hashFilter}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{hashFilter}{hashFilter}}
+{\footnotesize\ttfamily uint8\+\_\+t hash\+Filter}
+
+
+
+Current frame met criteria for the Hash Receive filter as configured when the packet was received. 
+
+\mbox{\Hypertarget{struct_r_s_v_a1892eba2086d12ac2b09005aeb09ea3b}\label{struct_r_s_v_a1892eba2086d12ac2b09005aeb09ea3b}} 
+\index{RSV@{RSV}!length@{length}}
+\index{length@{length}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily uint16\+\_\+t length}
+
+Length of the received frame in bytes. This includes the destination address, source address, type/length, data, padding and C\+RC fields. This field is stored in little-\/endian format. \mbox{\Hypertarget{struct_r_s_v_aa1ee2560cad39e2579609aa0bbe23622}\label{struct_r_s_v_aa1ee2560cad39e2579609aa0bbe23622}} 
+\index{RSV@{RSV}!lengthCheckError@{lengthCheckError}}
+\index{lengthCheckError@{lengthCheckError}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{lengthCheckError}{lengthCheckError}}
+{\footnotesize\ttfamily uint8\+\_\+t length\+Check\+Error}
+
+
+
+Frame length field value in the packet does not match the actual byte length and specifies a valid length. 
+
+\mbox{\Hypertarget{struct_r_s_v_addceef1c25a3a79f0809d2088d7fad31}\label{struct_r_s_v_addceef1c25a3a79f0809d2088d7fad31}} 
+\index{RSV@{RSV}!lengthOutOfRange@{lengthOutOfRange}}
+\index{lengthOutOfRange@{lengthOutOfRange}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{lengthOutOfRange}{lengthOutOfRange}}
+{\footnotesize\ttfamily uint8\+\_\+t length\+Out\+Of\+Range}
+
+
+
+Frame type/length field was larger than 1500 bytes (type field). 
+
+\mbox{\Hypertarget{struct_r_s_v_a1369352b01723f3fe85ae1504216e1fa}\label{struct_r_s_v_a1369352b01723f3fe85ae1504216e1fa}} 
+\index{RSV@{RSV}!magicFilter@{magicFilter}}
+\index{magicFilter@{magicFilter}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{magicFilter}{magicFilter}}
+{\footnotesize\ttfamily uint8\+\_\+t magic\+Filter}
+
+
+
+Current frame met criteria for the Magic Packet Receive filter as configured when the packet was received. 
+
+\mbox{\Hypertarget{struct_r_s_v_ab40062c1424a2dfaf51425eb5f3ebb6e}\label{struct_r_s_v_ab40062c1424a2dfaf51425eb5f3ebb6e}} 
+\index{RSV@{RSV}!multicast@{multicast}}
+\index{multicast@{multicast}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{multicast}{multicast}}
+{\footnotesize\ttfamily uint8\+\_\+t multicast}
+
+
+
+Current frame has a valid Multicast address. 
+
+\mbox{\Hypertarget{struct_r_s_v_a3c6d714f4e9f6e6a8f1d5ab5cf3d4b58}\label{struct_r_s_v_a3c6d714f4e9f6e6a8f1d5ab5cf3d4b58}} 
+\index{RSV@{RSV}!notMeFilter@{notMeFilter}}
+\index{notMeFilter@{notMeFilter}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{notMeFilter}{notMeFilter}}
+{\footnotesize\ttfamily uint8\+\_\+t not\+Me\+Filter}
+
+
+
+Current frame met criteria for the Not-\/\+Me Receive filter. 
+
+\mbox{\Hypertarget{struct_r_s_v_a91c26b9645e5edca1e4c4f13c76631a2}\label{struct_r_s_v_a91c26b9645e5edca1e4c4f13c76631a2}} 
+\index{RSV@{RSV}!packetPreviouslyIgnored@{packetPreviouslyIgnored}}
+\index{packetPreviouslyIgnored@{packetPreviouslyIgnored}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{packetPreviouslyIgnored}{packetPreviouslyIgnored}}
+{\footnotesize\ttfamily uint8\+\_\+t packet\+Previously\+Ignored}
+
+
+
+A frame larger than 50,000 bit times occurred or a packet has been dropped since the last receive. 
+
+\mbox{\Hypertarget{struct_r_s_v_a0b0c5f947dcfec316373912a9d8afad0}\label{struct_r_s_v_a0b0c5f947dcfec316373912a9d8afad0}} 
+\index{RSV@{RSV}!patternMatch@{patternMatch}}
+\index{patternMatch@{patternMatch}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{patternMatch}{patternMatch}}
+{\footnotesize\ttfamily uint8\+\_\+t pattern\+Match}
+
+
+
+Current frame met criteria for the Pattern Match Receive filter as configured when the packet was received. 
+
+\mbox{\Hypertarget{struct_r_s_v_a1a7098c480755c10613115cc181aa126}\label{struct_r_s_v_a1a7098c480755c10613115cc181aa126}} 
+\index{RSV@{RSV}!pauseFrame@{pauseFrame}}
+\index{pauseFrame@{pauseFrame}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{pauseFrame}{pauseFrame}}
+{\footnotesize\ttfamily uint8\+\_\+t pause\+Frame}
+
+
+
+Current frame was recognized as a control frame containing a valid pause frame opcode and a valid destination address. 
+
+\mbox{\Hypertarget{struct_r_s_v_a864bac3376c79921741bdde1db0d7570}\label{struct_r_s_v_a864bac3376c79921741bdde1db0d7570}} 
+\index{RSV@{RSV}!receivedOk@{receivedOk}}
+\index{receivedOk@{receivedOk}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{receivedOk}{receivedOk}}
+{\footnotesize\ttfamily uint8\+\_\+t received\+Ok}
+
+
+
+Received packet had a valid C\+RC and no symbol errors. 
+
+\mbox{\Hypertarget{struct_r_s_v_a27d64356a19179a097c7973f7d7a46a5}\label{struct_r_s_v_a27d64356a19179a097c7973f7d7a46a5}} 
+\index{RSV@{RSV}!runtFilter@{runtFilter}}
+\index{runtFilter@{runtFilter}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{runtFilter}{runtFilter}}
+{\footnotesize\ttfamily uint8\+\_\+t runt\+Filter}
+
+
+
+Current frame met criteria for the Runt Packet Receive filter. 
+
+\mbox{\Hypertarget{struct_r_s_v_ab2a20bde35ec4242bf38d69c8277114a}\label{struct_r_s_v_ab2a20bde35ec4242bf38d69c8277114a}} 
+\index{RSV@{RSV}!unicast@{unicast}}
+\index{unicast@{unicast}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{unicast}{unicast}}
+{\footnotesize\ttfamily uint8\+\_\+t unicast}
+
+
+
+Current frame met criteria for the Unicast Receive filter. 
+
+\mbox{\Hypertarget{struct_r_s_v_a57538bc935cb3aac5c51829f01b013af}\label{struct_r_s_v_a57538bc935cb3aac5c51829f01b013af}} 
+\index{RSV@{RSV}!unknownOpcode@{unknownOpcode}}
+\index{unknownOpcode@{unknownOpcode}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{unknownOpcode}{unknownOpcode}}
+{\footnotesize\ttfamily uint8\+\_\+t unknown\+Opcode}
+
+
+
+Current frame was recognized as a control frame but it contained an unknown opcode. 
+
+\mbox{\Hypertarget{struct_r_s_v_a1658beabbd0704b4ab87c15e91efe371}\label{struct_r_s_v_a1658beabbd0704b4ab87c15e91efe371}} 
+\index{RSV@{RSV}!vlan@{vlan}}
+\index{vlan@{vlan}!RSV@{RSV}}
+\subsubsection{\texorpdfstring{vlan}{vlan}}
+{\footnotesize\ttfamily uint8\+\_\+t vlan}
+
+
+
+Current frame was recognized as a V\+L\+AN tagged frame. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.\+X/src/enc424j600/\mbox{\hyperlink{rsv_8h}{rsv.\+h}}\end{DoxyCompactItemize}

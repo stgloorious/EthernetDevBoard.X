@@ -1,0 +1,83 @@
+\hypertarget{arp_types_8h}{}\section{C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.X/src/stack/protocols/arp\+Types.h File Reference}
+\label{arp_types_8h}\index{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/stack/protocols/arpTypes.h@{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/stack/protocols/arpTypes.h}}
+
+
+Data types used for the Address Resolution Protocol (A\+RP)  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../../eth/ethernet\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../protocols/ipv4\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../error.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_a_r_p__message}{A\+R\+P\+\_\+message}}
+\begin{DoxyCompactList}\small\item\em Contains all information which makes up an A\+RP message. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_r_p__table_entry}{A\+R\+P\+\_\+table\+Entry}}
+\begin{DoxyCompactList}\small\item\em One entry in the A\+RP table consists out of one hardware and one protocol address and a timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__arp_gad4abd9ee89fa8a8ba4231b6d914b5e83}{A\+R\+P\+\_\+\+T\+A\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH}}~8
+\begin{DoxyCompactList}\small\item\em Number of entries in the A\+RP table. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__arp_ga9b6d09f1eb065d812b3cdb5f6cc2f68d}{A\+R\+P\+\_\+\+T\+A\+B\+L\+E\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+T\+TL}}~300
+\begin{DoxyCompactList}\small\item\em Time to live for an A\+RP Entry in seconds. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__arp_gacadcd25bea19657185a5fcb4f65a7669}{A\+R\+P\+\_\+\+T\+I\+M\+E\+O\+UT}}~2
+\begin{DoxyCompactList}\small\item\em How long to wait after request for a reply in seconds. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__arp_gaf171df407fe6f40b73e3d6d7407a994f}{A\+R\+P\+\_\+\+I\+Pv4\+\_\+\+P\+L\+EN}}~4
+\begin{DoxyCompactList}\small\item\em Number of bytes in an I\+Pv4 address. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__arp_ga2fda3c8f5c96e205a993efb5cfb4f297}{A\+R\+P\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+H\+L\+EN}}~6
+\begin{DoxyCompactList}\small\item\em Number of bytes in a M\+AC address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_a_r_p__message}{A\+R\+P\+\_\+message}} \mbox{\hyperlink{group__arp_ga1708785291f10e8cc257efe2b769ba4c}{A\+R\+P\+\_\+message\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Contains all information which makes up an A\+RP message. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{group__arp_ga403f6527e9ff615efd0c8ed05790fde3}{A\+R\+P\+\_\+operation}} \mbox{\hyperlink{group__arp_ga3aca071e2781c5efead1609fcbb58ad3}{A\+R\+P\+\_\+operation\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Data types for \mbox{\hyperlink{struct_a_r_p__message_ad21c763fa2f80cb8649108b759113b54}{A\+R\+P\+\_\+message\+\_\+t\+::operation}}. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{group__arp_gad603463074b00d9c86a9cdb23083f37d}{A\+R\+P\+\_\+htype}} \mbox{\hyperlink{group__arp_gafa7086c12e44433aa82abcac54e74242}{A\+R\+P\+\_\+htype\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Data type for \mbox{\hyperlink{struct_a_r_p__message_aaf87c38602b614bc7896cf7a5a90d372}{A\+R\+P\+\_\+message\+\_\+t\+::htype}}. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{group__arp_gaeae5f5d6313cd707dd97fa24dbab569c}{A\+R\+P\+\_\+ptype}} \mbox{\hyperlink{group__arp_gab3358c917e9f326ba4187aed82248923}{A\+R\+P\+\_\+ptype\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Data type for \mbox{\hyperlink{struct_a_r_p__message_ab4891e9b77eb26f33d21cfde982564cb}{A\+R\+P\+\_\+message\+\_\+t\+::ptype}}. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_a_r_p__table_entry}{A\+R\+P\+\_\+table\+Entry}} \mbox{\hyperlink{group__arp_gab5d4ef9cd020c5de772f55549aa70716}{A\+R\+P\+\_\+table\+Entry\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em One entry in the A\+RP table consists out of one hardware and one protocol address and a timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__arp_ga403f6527e9ff615efd0c8ed05790fde3}{A\+R\+P\+\_\+operation}} \{ \mbox{\hyperlink{group__arp_gga403f6527e9ff615efd0c8ed05790fde3afb58ccf8b7b11505ff2117a10bf6ff61}{A\+R\+P\+\_\+\+R\+E\+Q\+U\+E\+ST}} = 1, 
+\mbox{\hyperlink{group__arp_gga403f6527e9ff615efd0c8ed05790fde3a8bb24a026264a5b22435864179f874d9}{A\+R\+P\+\_\+\+R\+E\+P\+LY}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Data types for \mbox{\hyperlink{struct_a_r_p__message_ad21c763fa2f80cb8649108b759113b54}{A\+R\+P\+\_\+message\+\_\+t\+::operation}}. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__arp_gad603463074b00d9c86a9cdb23083f37d}{A\+R\+P\+\_\+htype}} \{ \mbox{\hyperlink{group__arp_ggad603463074b00d9c86a9cdb23083f37da832f2b0d1c3af55f4a4bbe2aa90da148}{A\+R\+P\+\_\+\+H\+T\+Y\+P\+E\+\_\+\+E\+T\+H\+E\+R\+N\+ET}} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em Data type for \mbox{\hyperlink{struct_a_r_p__message_aaf87c38602b614bc7896cf7a5a90d372}{A\+R\+P\+\_\+message\+\_\+t\+::htype}}. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__arp_gaeae5f5d6313cd707dd97fa24dbab569c}{A\+R\+P\+\_\+ptype}} \{ \mbox{\hyperlink{group__arp_ggaeae5f5d6313cd707dd97fa24dbab569cada8f134c523d1516f6a63d6d475c7bd8}{A\+R\+P\+\_\+\+P\+T\+Y\+P\+E\+\_\+\+I\+Pv4}} = 0x0800
+ \}
+\begin{DoxyCompactList}\small\item\em Data type for \mbox{\hyperlink{struct_a_r_p__message_ab4891e9b77eb26f33d21cfde982564cb}{A\+R\+P\+\_\+message\+\_\+t\+::ptype}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data types used for the Address Resolution Protocol (A\+RP) 
+
+\begin{DoxyAuthor}{Author}
+Stefan Gloor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19. February 2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+
+\end{DoxyCopyright}
+Copyright (C) 2019 Stefan Gloor
+
+This program is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\texttt{ http\+://www.\+gnu.\+org/licenses/}}. 

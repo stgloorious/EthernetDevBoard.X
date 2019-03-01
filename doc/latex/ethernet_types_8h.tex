@@ -1,0 +1,88 @@
+\hypertarget{ethernet_types_8h}{}\section{C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.X/src/eth/ethernet\+Types.h File Reference}
+\label{ethernet_types_8h}\index{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/eth/ethernetTypes.h@{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/eth/ethernetTypes.h}}
+
+
+Data types used for Ethernet.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../enc424j600/rsv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../mem/memory\+Types.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmacaddress}{macaddress}}
+\item 
+struct \mbox{\hyperlink{structethernet_frame}{ethernet\+Frame}}
+\begin{DoxyCompactList}\small\item\em Represents a complete Ethernet Frame. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structethernet_connection}{ethernet\+Connection}}
+\begin{DoxyCompactList}\small\item\em Represents a complete Ethernet connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__ethernet_ga7e41863aa11f513f9f3e6f29535b56e3}{M\+A\+X\+\_\+\+D\+A\+T\+A\+\_\+\+F\+I\+E\+L\+D\+\_\+\+L\+E\+N\+G\+TH}}~1500
+\begin{DoxyCompactList}\small\item\em Normal value is 1500; Values greater than 1500 are not compliant to the Ethernet standard. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ethernet_gaecae779890dfc6b313fe2854369e5497}{M\+A\+X\+\_\+\+F\+R\+A\+M\+E\+\_\+\+L\+E\+N\+G\+TH}}~\mbox{\hyperlink{group__ethernet_ga7e41863aa11f513f9f3e6f29535b56e3}{M\+A\+X\+\_\+\+D\+A\+T\+A\+\_\+\+F\+I\+E\+L\+D\+\_\+\+L\+E\+N\+G\+TH}}+18
+\begin{DoxyCompactList}\small\item\em Source M\+AC Addr (6 Bytes), Destination M\+AC Addr (6 Bytes), Ether\+Type (2 Bytes), C\+RC (4 Bytes) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ethernet_ga828c657a62d97cb7339451fc46589c6e}{M\+A\+X\+\_\+\+F\+R\+A\+M\+E\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+W\+I\+T\+H\+\_\+\+V\+L\+AN}}~\mbox{\hyperlink{group__ethernet_gaecae779890dfc6b313fe2854369e5497}{M\+A\+X\+\_\+\+F\+R\+A\+M\+E\+\_\+\+L\+E\+N\+G\+TH}}+4
+\begin{DoxyCompactList}\small\item\em Additional 4 Bytes for V\+L\+AN\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__ethernet_gae9b220b061a72fe29cc1e3913a1f73cb}{ether\+Types}} \{ \mbox{\hyperlink{group__ethernet_ggae9b220b061a72fe29cc1e3913a1f73cbab2b889adbcd85458d549249e8f1d3bcd}{E\+T\+H\+E\+R\+T\+Y\+P\+E\+\_\+\+I\+Pv4}} = 0x0800, 
+\mbox{\hyperlink{group__ethernet_ggae9b220b061a72fe29cc1e3913a1f73cbab78454b9340abb34bd92a17f01a8060d}{E\+T\+H\+E\+R\+T\+Y\+P\+E\+\_\+\+A\+RP}} = 0x0806, 
+\mbox{\hyperlink{group__ethernet_ggae9b220b061a72fe29cc1e3913a1f73cba421e1f3ba7f0c80d1e22742b7ab7dc56}{E\+T\+H\+E\+R\+T\+Y\+P\+E\+\_\+\+W\+OL}} = 0x0842, 
+\mbox{\hyperlink{group__ethernet_ggae9b220b061a72fe29cc1e3913a1f73cba2a2f46cbbd4ecefb4d852d7ca0579f19}{E\+T\+H\+E\+R\+T\+Y\+P\+E\+\_\+\+F\+L\+O\+W\+\_\+\+C\+O\+N\+T\+R\+OL}} = 0x8808
+ \}
+\item 
+enum \mbox{\hyperlink{group__ethernet_gad146c3b2a237ecd80026880aef2cbb7e}{link\+States}} \{ \mbox{\hyperlink{group__ethernet_gad146c3b2a237ecd80026880aef2cbb7eaba43fad8ee5185f12ea31f7dcb843709}{N\+O\+\_\+\+L\+I\+NK}}, 
+\mbox{\hyperlink{group__ethernet_gad146c3b2a237ecd80026880aef2cbb7eae089385bb92f30d1c9c6cb4f1fb1d226}{L\+I\+N\+K\+\_\+\+E\+S\+T\+A\+B\+L\+I\+S\+H\+ED}}
+ \}
+\item 
+enum \mbox{\hyperlink{group__ethernet_gad51ff69ce00ee5c869723c572db0eefd}{speeds}} \{ \mbox{\hyperlink{group__ethernet_gad51ff69ce00ee5c869723c572db0eefda283ccbbfdcfbf2e40a4a0f49f94d24ec}{T\+E\+N\+\_\+\+M\+B\+IT}}, 
+\mbox{\hyperlink{group__ethernet_gad51ff69ce00ee5c869723c572db0eefdad16b512761cace49b5a8f574629747f0}{H\+U\+N\+D\+R\+E\+D\+\_\+\+M\+B\+IT}}
+ \}
+\item 
+enum \mbox{\hyperlink{group__ethernet_ga07afd358acdd48dc34d82f6ed379316f}{duplex\+States}} \{ \mbox{\hyperlink{group__ethernet_ga07afd358acdd48dc34d82f6ed379316faea07ca15f5869b4c98b70763be15f6d8}{H\+A\+L\+F\+\_\+\+D\+U\+P\+L\+EX}}, 
+\mbox{\hyperlink{group__ethernet_ga07afd358acdd48dc34d82f6ed379316fa7dee6a082d2fe35451a6727e3585e499}{F\+U\+L\+L\+\_\+\+D\+U\+P\+L\+EX}}
+ \}
+\item 
+typedef enum \mbox{\hyperlink{group__ethernet_gae9b220b061a72fe29cc1e3913a1f73cb}{ether\+Types}} \mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structmacaddress}{macaddress}} \mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{group__ethernet_gad146c3b2a237ecd80026880aef2cbb7e}{link\+States}} \mbox{\hyperlink{group__ethernet_ga0e02d2c1291711df8a3ffc6f5c8aab98}{link\+State\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{group__ethernet_gad51ff69ce00ee5c869723c572db0eefd}{speeds}} \mbox{\hyperlink{group__ethernet_gaf44917bbf64327b78826bc2f74266af8}{speed\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{group__ethernet_ga07afd358acdd48dc34d82f6ed379316f}{duplex\+States}} \mbox{\hyperlink{group__ethernet_gaf88782ec3aef6eb80f7fb5bcc4fb1401}{duplex\+State\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structethernet_frame}{ethernet\+Frame}} \mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Represents a complete Ethernet Frame. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structethernet_connection}{ethernet\+Connection}} \mbox{\hyperlink{group__ethernet_gae7b6008a02816680c2e3a1e3d2451a60}{ethernet\+Connection\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Represents a complete Ethernet connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data types used for Ethernet. 
+
+\begin{DoxyAuthor}{Author}
+Stefan Gloor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19. February 2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+
+\end{DoxyCopyright}
+Copyright (C) 2019 Stefan Gloor
+
+This program is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\texttt{ http\+://www.\+gnu.\+org/licenses/}}. 

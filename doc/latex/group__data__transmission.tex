@@ -1,0 +1,66 @@
+\hypertarget{group__data__transmission}{}\section{Data Transmission}
+\label{group__data__transmission}\index{Data Transmission@{Data Transmission}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__data__transmission_gacab51e5c9afa0f0b90e6694bcfc7d936}{ethernet\+Controller\+\_\+send\+Packet}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Sends the data in the S\+R\+AM buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__transmission_ga9c0d9b39642cf6b7e220b9f0b44e3e02}{ethernet\+Controller\+\_\+stream\+To\+Transmit\+Buffer}} (uint8\+\_\+t data, uint16\+\_\+t len)
+\item 
+void \mbox{\hyperlink{group__data__transmission_ga8fa7a1c372901218a6c545df21fc9ef3}{ethernet\+Controller\+\_\+write\+Ether\+Type\+Field\+To\+Buffer}} (\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} ethtype, \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} f)
+\item 
+void \mbox{\hyperlink{group__data__transmission_ga858fd557b9ef00b3fd8166381e415bec}{ethernet\+Controller\+\_\+write\+Destination\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} addr, \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} f)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__data__transmission_gacab51e5c9afa0f0b90e6694bcfc7d936}\label{group__data__transmission_gacab51e5c9afa0f0b90e6694bcfc7d936}} 
+\index{Data Transmission@{Data Transmission}!ethernetController\_sendPacket@{ethernetController\_sendPacket}}
+\index{ethernetController\_sendPacket@{ethernetController\_sendPacket}!Data Transmission@{Data Transmission}}
+\subsubsection{\texorpdfstring{ethernetController\_sendPacket()}{ethernetController\_sendPacket()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+send\+Packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}}}]{field }\end{DoxyParamCaption})}
+
+
+
+Sends the data in the S\+R\+AM buffer. 
+
+\mbox{\Hypertarget{group__data__transmission_ga9c0d9b39642cf6b7e220b9f0b44e3e02}\label{group__data__transmission_ga9c0d9b39642cf6b7e220b9f0b44e3e02}} 
+\index{Data Transmission@{Data Transmission}!ethernetController\_streamToTransmitBuffer@{ethernetController\_streamToTransmitBuffer}}
+\index{ethernetController\_streamToTransmitBuffer@{ethernetController\_streamToTransmitBuffer}!Data Transmission@{Data Transmission}}
+\subsubsection{\texorpdfstring{ethernetController\_streamToTransmitBuffer()}{ethernetController\_streamToTransmitBuffer()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+stream\+To\+Transmit\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data,  }\item[{uint16\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Streams data online to the internal memory of the Ethernet Controller. An additonal buffer on the M\+CU is not needed. 
+\begin{DoxyParams}{Parameters}
+{\em data} & Byte to stream \\
+\hline
+{\em len} & Total length to stream \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]Fix memory address mess. I think the data is now always written to the same address and not to the one that was allocated by the memory controller. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__data__transmission_ga858fd557b9ef00b3fd8166381e415bec}\label{group__data__transmission_ga858fd557b9ef00b3fd8166381e415bec}} 
+\index{Data Transmission@{Data Transmission}!ethernetController\_writeDestinationMACAddress@{ethernetController\_writeDestinationMACAddress}}
+\index{ethernetController\_writeDestinationMACAddress@{ethernetController\_writeDestinationMACAddress}!Data Transmission@{Data Transmission}}
+\subsubsection{\texorpdfstring{ethernetController\_writeDestinationMACAddress()}{ethernetController\_writeDestinationMACAddress()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+write\+Destination\+M\+A\+C\+Address (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}}}]{addr,  }\item[{\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}}}]{f }\end{DoxyParamCaption})}
+
+Fills in the destination M\+AC address in the S\+R\+AM buffer 
+\begin{DoxyParams}{Parameters}
+{\em mac} & Destination M\+AC address \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__data__transmission_ga8fa7a1c372901218a6c545df21fc9ef3}\label{group__data__transmission_ga8fa7a1c372901218a6c545df21fc9ef3}} 
+\index{Data Transmission@{Data Transmission}!ethernetController\_writeEtherTypeFieldToBuffer@{ethernetController\_writeEtherTypeFieldToBuffer}}
+\index{ethernetController\_writeEtherTypeFieldToBuffer@{ethernetController\_writeEtherTypeFieldToBuffer}!Data Transmission@{Data Transmission}}
+\subsubsection{\texorpdfstring{ethernetController\_writeEtherTypeFieldToBuffer()}{ethernetController\_writeEtherTypeFieldToBuffer()}}
+{\footnotesize\ttfamily void ethernet\+Controller\+\_\+write\+Ether\+Type\+Field\+To\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}}}]{ethtype,  }\item[{\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}}}]{f }\end{DoxyParamCaption})}
+
+Fills in the Ether\+Type field in the S\+R\+AM buffer 
+\begin{DoxyParams}{Parameters}
+{\em data} & Ether\+Type \\
+\hline
+\end{DoxyParams}

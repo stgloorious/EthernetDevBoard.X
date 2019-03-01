@@ -1,0 +1,86 @@
+\hypertarget{error_8h}{}\section{C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.X/src/stack/error.h File Reference}
+\label{error_8h}\index{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/stack/error.h@{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/stack/error.h}}
+
+
+Defines all error messages.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structerror}{error}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__error_gacdd581bef905616f588f5be6b5a5bae3}{E\+R\+R\+O\+R\+\_\+\+C\+O\+D\+E\+\_\+\+S\+U\+C\+C\+E\+S\+S\+F\+UL}}~(uint16\+\_\+t)0
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{group__error_ga8a4a6940eb9ce245840c7e0af23a8b7c}{error\+\_\+modules}} \mbox{\hyperlink{group__error_ga07aaf66e281b4d8635efe00e6402f4a3}{error\+\_\+module\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structerror}{error}} \mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__error_ga8a4a6940eb9ce245840c7e0af23a8b7c}{error\+\_\+modules}} \{ \newline
+\mbox{\hyperlink{group__error_gga8a4a6940eb9ce245840c7e0af23a8b7ca504b049962309efd98dee14dda54f9f4}{E\+R\+R\+O\+R\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+M\+E\+M\+O\+RY}}, 
+\mbox{\hyperlink{group__error_gga8a4a6940eb9ce245840c7e0af23a8b7ca4d8fe7644a01433cb7e74049ff61a0be}{E\+R\+R\+O\+R\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+ER}}, 
+\mbox{\hyperlink{group__error_gga8a4a6940eb9ce245840c7e0af23a8b7cadf89fcb92dd25f9bb6df61655f6b0579}{E\+R\+R\+O\+R\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+T\+H\+E\+R\+N\+ET}}, 
+\mbox{\hyperlink{group__error_gga8a4a6940eb9ce245840c7e0af23a8b7ca4fdef38b73a058c8d9f8ce55bad1883a}{E\+R\+R\+O\+R\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+A\+RP}}, 
+\newline
+\mbox{\hyperlink{group__error_gga8a4a6940eb9ce245840c7e0af23a8b7ca5a3ae39ad1e6d703df19baff7e84be22}{E\+R\+R\+O\+R\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+I\+Pv4}}
+ \}
+\item 
+enum \mbox{\hyperlink{group__error_ga98346c8114f5ad4aa5cf0a2f11c15aee}{module\+\_\+offsets}} \{ \mbox{\hyperlink{group__error_gga98346c8114f5ad4aa5cf0a2f11c15aeea9868f185ecc8fb5c406ef53baad4e400}{E\+R\+R\+O\+R\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+O\+F\+F\+S\+ET}} = 100, 
+\mbox{\hyperlink{group__error_gga98346c8114f5ad4aa5cf0a2f11c15aeeafde2d106522594f6c42922fa38a9a211}{E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+O\+F\+F\+S\+ET}} = 200, 
+\mbox{\hyperlink{group__error_gga98346c8114f5ad4aa5cf0a2f11c15aeeaff9cbe74fe91ea06386fd8b3d3aca4f0}{E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+O\+F\+F\+S\+ET}} = 300, 
+\mbox{\hyperlink{group__error_gga98346c8114f5ad4aa5cf0a2f11c15aeea8ea12ec718bd76d494f71875fbb7d6a7}{E\+R\+R\+O\+R\+\_\+\+A\+R\+P\+\_\+\+O\+F\+F\+S\+ET}} = 400
+ \}
+\item 
+enum \mbox{\hyperlink{group__error_ga4d2300fd6df4ff42db6d34ca3bd63ea2}{errors\+\_\+memory}} \{ \mbox{\hyperlink{group__error_gga4d2300fd6df4ff42db6d34ca3bd63ea2a253569fc8cba5b5218d36e4e044c30cf}{E\+R\+R\+O\+R\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+RY}} = E\+R\+R\+O\+R\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+O\+F\+F\+S\+ET + 1, 
+\mbox{\hyperlink{group__error_gga4d2300fd6df4ff42db6d34ca3bd63ea2a6496299e8c486deb9954e3b03b7ba1a6}{E\+R\+R\+O\+R\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+U\+N\+K\+N\+O\+WN}} = E\+R\+R\+O\+R\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+O\+F\+F\+S\+ET + 99
+ \}
+\item 
+enum \mbox{\hyperlink{group__error_gabd4054d37209b93794967dfe37ef2588}{error\+\_\+ethernet}} \{ \mbox{\hyperlink{group__error_ggabd4054d37209b93794967dfe37ef2588a3bc5b7fc971ced9dccd076ce4a3dd1e3}{E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+S\+Y\+M\+B\+O\+L\+\_\+\+E\+R\+R\+O\+RS}} = E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+O\+F\+F\+S\+ET + 1, 
+\mbox{\hyperlink{group__error_ggabd4054d37209b93794967dfe37ef2588a0c34c074cc52d07009c8c7c34b7b7b70}{E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+R\+C\+\_\+\+E\+R\+R\+OR}} = E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+O\+F\+F\+S\+ET + 2
+ \}
+\item 
+enum \mbox{\hyperlink{group__error_gae82d87a039b0b080f43f6d790fe642e9}{errors\+\_\+ethernet\+Controller}} \{ \mbox{\hyperlink{group__error_ggae82d87a039b0b080f43f6d790fe642e9adbb4de8c31875d6b09862bd6f9cfbc51}{E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+ID}} = E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+O\+F\+F\+S\+ET + 1, 
+\mbox{\hyperlink{group__error_ggae82d87a039b0b080f43f6d790fe642e9a597a00d37e6a842f7d2d72124ffdb3b4}{E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+U\+N\+R\+E\+S\+P\+O\+N\+S\+I\+VE}} = E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+O\+F\+F\+S\+ET + 2, 
+\mbox{\hyperlink{group__error_ggae82d87a039b0b080f43f6d790fe642e9a70b6f3c0286930f7f579bf81515bab6f}{E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+O\+V\+E\+R\+F\+L\+OW}} = E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+O\+F\+F\+S\+ET + 3, 
+\mbox{\hyperlink{group__error_ggae82d87a039b0b080f43f6d790fe642e9a17c6e8431d659771c9cca7693f6eb592}{E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+U\+N\+K\+N\+O\+WN}} = E\+R\+R\+O\+R\+\_\+\+E\+T\+H\+E\+R\+N\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+O\+F\+F\+S\+ET + 99
+ \}
+\item 
+enum \mbox{\hyperlink{group__error_gadc6f7acf887618df05bc50c50fee037b}{errors\+\_\+arp}} \{ \mbox{\hyperlink{group__error_ggadc6f7acf887618df05bc50c50fee037bac9e5c709706b773c6e42660a7720b716}{E\+R\+R\+O\+R\+\_\+\+A\+R\+P\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+R\+E\+P\+LY}} = E\+R\+R\+O\+R\+\_\+\+A\+R\+P\+\_\+\+O\+F\+F\+S\+ET + 1, 
+\mbox{\hyperlink{group__error_ggadc6f7acf887618df05bc50c50fee037ba1de61ce85d3e162bfa397bdbe9919114}{E\+R\+R\+O\+R\+\_\+\+A\+R\+P\+\_\+\+M\+A\+X\+I\+M\+U\+M\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+S\+\_\+\+R\+E\+A\+C\+H\+ED}} = E\+R\+R\+O\+R\+\_\+\+A\+R\+P\+\_\+\+O\+F\+F\+S\+ET + 2, 
+\mbox{\hyperlink{group__error_ggadc6f7acf887618df05bc50c50fee037ba9b91278de8312021b894a38f98265320}{E\+R\+R\+O\+R\+\_\+\+A\+R\+P\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+V\+A\+L\+U\+ES}} = E\+R\+R\+O\+R\+\_\+\+A\+R\+P\+\_\+\+O\+F\+F\+S\+ET + 3
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines all error messages. 
+
+\begin{DoxyAuthor}{Author}
+Stefan Gloor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+17. February 2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+
+\end{DoxyCopyright}
+Copyright (C) 2019 Stefan Gloor
+
+This program is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\texttt{ http\+://www.\+gnu.\+org/licenses/}}. 

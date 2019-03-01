@@ -1,0 +1,156 @@
+\hypertarget{_e_n_c424_j600_8c}{}\section{C\+:/\+Users/stefa/\+Dropbox/\+Documents/\+Hobby/\+Elektronik/\+Ethernet\+Dev\+Board/\+Software/\+Ethernet\+Dev\+Board.X/src/enc424j600/\+E\+N\+C424\+J600.c File Reference}
+\label{_e_n_c424_j600_8c}\index{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/enc424j600/ENC424J600.c@{C:/Users/stefa/Dropbox/Documents/Hobby/Elektronik/EthernetDevBoard/Software/EthernetDevBoard.X/src/enc424j600/ENC424J600.c}}
+
+
+Drives Microchip\textquotesingle{}s Ethernet Controller E\+N\+C424\+J600 via S\+PI interface. Parallel interfacing is not supported.  
+
+
+{\ttfamily \#include \char`\"{}../enc424j600/\+E\+N\+C424\+J600.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../system/uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../enc424j600/interrupt.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_e_n_c424_j600_8c_a865b01101d5270f7ed56217e3201a1c1}{M\+A\+X\+\_\+\+C\+O\+U\+N\+T\+\_\+\+C\+O\+M\+M\+U\+N\+I\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+IL}}~5
+\item 
+\#define \mbox{\hyperlink{_e_n_c424_j600_8c_a0131f2774f4e3dd71567400683b60405}{S\+P\+I\+\_\+\+T\+I\+M\+E\+O\+UT}}~0xfff
+\item 
+\#define \mbox{\hyperlink{_e_n_c424_j600_8c_a0131f2774f4e3dd71567400683b60405}{S\+P\+I\+\_\+\+T\+I\+M\+E\+O\+UT}}~0xfff
+\item 
+\#define \mbox{\hyperlink{_e_n_c424_j600_8c_a45ba202b05caf39795aeca91b0ae547e}{T\+I\+M\+E\+O\+UT}}~0xfff
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga440a9f27fc612a678d3d17eb5983c977}{ethernet\+Controller\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initialises the ethernet controller. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga6a772ec407e60e921bad4db7a2be2676}{ethernet\+Controller\+\_\+soft\+Reset}} ()
+\begin{DoxyCompactList}\small\item\em Performs a software reset of the Ethernet controller according to the suggested write-\/and-\/verify approach recommended in the datasheet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__error_gad3ae44be85fe6952dcaed425499e8f6b}{error\+\_\+t}} \mbox{\hyperlink{group__init_ga67521cdab8bfce49cee40d037a888793}{ethernet\+Controller\+\_\+check\+Device\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the device ID equals the expected value. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{group__init_gae396f51c0fdba634e4e84b5f2b5d9416}{ethernet\+Controller\+\_\+get\+Device\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get device name as a string. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__init_gaa3396c9822f00c6519a0e7a421048a71}{ethernet\+Controller\+\_\+get\+Silicon\+Revision}} ()
+\begin{DoxyCompactList}\small\item\em Checks the silicion revision of the ethernet controller. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_gae3335ee23b52ab5086b95f83127b755c}{ethernet\+Controller\+\_\+get\+Mac\+Address}} ()
+\begin{DoxyCompactList}\small\item\em Gets unique M\+AC address that is currently used as source address. After P\+OR it is set to a hardwired unique address. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group__init_gabb37702e7cfbd10dc932ca6502fd7bae}{ethernet\+Controller\+\_\+get\+M\+TU}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Maximum Transmission Unit of the Medium (normally 1500 bytes) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__reception_ga4856965b47df99d3532a7d1cbb494e02}{ethernet\+Controller\+\_\+set\+Mac\+Address}} (\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} mac)
+\begin{DoxyCompactList}\small\item\em Sets a M\+AC source address. Has to be set after every P\+OR, because it gets overwritten with a hardwired unique address after power-\/up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga203eb473ea1d221ffe97839b16e74565}{ethernet\+Controller\+\_\+enable\+Reception}} ()
+\begin{DoxyCompactList}\small\item\em Enables reception module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__transmission_gacab51e5c9afa0f0b90e6694bcfc7d936}{ethernet\+Controller\+\_\+send\+Packet}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Sends the data in the S\+R\+AM buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__transmission_ga9c0d9b39642cf6b7e220b9f0b44e3e02}{ethernet\+Controller\+\_\+stream\+To\+Transmit\+Buffer}} (uint8\+\_\+t data, uint16\+\_\+t len)
+\item 
+void \mbox{\hyperlink{group__data__transmission_ga858fd557b9ef00b3fd8166381e415bec}{ethernet\+Controller\+\_\+write\+Destination\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} addr, \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\item 
+void \mbox{\hyperlink{group__data__transmission_ga8fa7a1c372901218a6c545df21fc9ef3}{ethernet\+Controller\+\_\+write\+Ether\+Type\+Field\+To\+Buffer}} (\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} ethtype, \mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\item 
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga29e5c29891e62206ceed99a6b15749a0}{ethernet\+Controller\+\_\+get\+Destination\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Destination M\+AC address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_gacb865bcbf50a6c8cef05581bfabff373}{macaddress\+\_\+t}} \mbox{\hyperlink{group__data__reception_gabe0967f5f15ce26c4bb723036e566afe}{ethernet\+Controller\+\_\+get\+Source\+M\+A\+C\+Address}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Source M\+AC address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ethernet_ga467703afefdcaf7893a7da3eb63280ed}{ether\+Type\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga84354a03e54526ac8a820650886458f4}{ethernet\+Controller\+\_\+get\+Ether\+Type\+Field}} (\mbox{\hyperlink{group__memory_ga1d04d80fae40964f55d2df46b5d64785}{memory\+Field\+\_\+t}} field)
+\begin{DoxyCompactList}\small\item\em Parses the recently received frame and returns the Ether\+Type field. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__rsv_gaf7fd94a9424fccb0aafa846f27a43099}{R\+S\+V\+\_\+t}} \mbox{\hyperlink{group__data__reception_ga1d8cfd56b6020b891ba408c18789129c}{ethernet\+Controller\+\_\+get\+R\+SV}} (uint16\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Reads the Receive Status Vector from the recently received Packet and returns the address of the first element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__interrupts_ga337298055be267e726930c9fc6b2d4eb}{interrupt\+Flags\+\_\+t}} \mbox{\hyperlink{group__init_ga5cdd5a8c6a5ceab1292643f291137bd1}{ethernet\+Controller\+\_\+poll\+Interrupt\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Checks the Interrupt flags and returns the status in a structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_ga472d2ba5053ebbb349e514699adfcde3}{ethernet\+Controller\+\_\+clear\+Interrupt\+Flag}} (uint8\+\_\+t flag)
+\begin{DoxyCompactList}\small\item\em Clears a single interrupt flag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__reception_ga9d6d9257b64641f2120cb99f31d66a0e}{ethernet\+Controller\+\_\+update\+Next\+Packet\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Reads the next\+Packet\+Pointer from the current packet and stores it. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__data__reception_ga152b0e0b0d3ed72affb7feac14035b6e}{ethernet\+Controller\+\_\+stream\+From\+R\+X\+Buffer}} (uint8\+\_\+t start\+End, uint16\+\_\+t start\+Address)
+\begin{DoxyCompactList}\small\item\em This functions allows online transmission to the internal buffer of the Ethernet Controller. An additional buffer on the M\+CU is not needed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__data__reception_gada8fcdc667d1800b5f963bfc8cea56c2}{ethernet\+Controller\+\_\+drop\+Packet}} (\mbox{\hyperlink{group__ethernet_ga7519a7ae14b490659069435698d28a25}{ethernet\+Frame\+\_\+t}} $\ast$frame)
+\begin{DoxyCompactList}\small\item\em Discards a packet. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__data__reception_gae030bd0d97a72b4c38d3ac55132dd7f3}{ethernet\+Controller\+\_\+new\+Packet\+Available}} ()
+\begin{DoxyCompactList}\small\item\em Checks if there is a new frame ready for processing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__init_gab294a8fbc5b11d40a5da5e769110f6ca}{ethernet\+Controller\+\_\+update\+Link\+Status}} (\mbox{\hyperlink{group__ethernet_gae7b6008a02816680c2e3a1e3d2451a60}{ethernet\+Connection\+\_\+t}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Intended to be called when an interrupt indicates that a link change as occured. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__leds_ga88905c196e37262340f8404fcb61ecf9}{ethernet\+Controller\+\_\+set\+L\+E\+D\+Status}} (uint8\+\_\+t L\+ED, uint8\+\_\+t status)
+\begin{DoxyCompactList}\small\item\em Sets the L\+E\+Ds in the R\+J45 receptacle to a given status (ON or O\+FF). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__leds_ga3ec0343a266cb8a4925097d708dd96f4}{ethernet\+Controller\+\_\+set\+L\+E\+D\+Configuration}} (uint8\+\_\+t L\+ED, uint8\+\_\+t conf)
+\begin{DoxyCompactList}\small\item\em Sets the L\+E\+Ds in the R\+J45 receptacle to a given configuration (ON, O\+FF or an \textquotesingle{}automatic\textquotesingle{} mode). \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__data__reception_ga0ab2398cb48efd9a8943a5c5b2872b0c}{ethernet\+Controller\+\_\+get\+Current\+Packet\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Get the total number of unprocessed packets. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group__data__reception_ga6155805a8511681932051b00a0032f9f}{ethernet\+Controller\+\_\+get\+Next\+Packet\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Get the address where the next packet starts. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group__interrupts_ga624b3a45566e56aa688ebb70ad4387da}{E\+N\+C424\+J600\+\_\+get\+Interrupt\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Reads out the Interrupt Flag Register E\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Drives Microchip\textquotesingle{}s Ethernet Controller E\+N\+C424\+J600 via S\+PI interface. Parallel interfacing is not supported. 
+
+Basic U\+A\+RT functions.
+
+\begin{DoxyAuthor}{Author}
+Stefan Gloor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+31. December 2018 
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Filter settings; not just unicast/broadcast but all packets visible \end{DoxyRefDesc}
+\begin{DoxyCopyright}{Copyright}
+
+\end{DoxyCopyright}
+Copyright (C) 2019 Stefan Gloor
+
+This program is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\texttt{ http\+://www.\+gnu.\+org/licenses/}}.
+
+\begin{DoxyAuthor}{Author}
+Stefan Gloor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28. December 2018 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+
+\end{DoxyCopyright}
+Copyright (C) 2019 Stefan Gloor
+
+This program is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\texttt{ http\+://www.\+gnu.\+org/licenses/}}. 
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_e_n_c424_j600_8c_a865b01101d5270f7ed56217e3201a1c1}\label{_e_n_c424_j600_8c_a865b01101d5270f7ed56217e3201a1c1}} 
+\index{ENC424J600.c@{ENC424J600.c}!MAX\_COUNT\_COMMUNICATION\_FAIL@{MAX\_COUNT\_COMMUNICATION\_FAIL}}
+\index{MAX\_COUNT\_COMMUNICATION\_FAIL@{MAX\_COUNT\_COMMUNICATION\_FAIL}!ENC424J600.c@{ENC424J600.c}}
+\subsubsection{\texorpdfstring{MAX\_COUNT\_COMMUNICATION\_FAIL}{MAX\_COUNT\_COMMUNICATION\_FAIL}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+C\+O\+U\+N\+T\+\_\+\+C\+O\+M\+M\+U\+N\+I\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+IL~5}
+
+\mbox{\Hypertarget{_e_n_c424_j600_8c_a0131f2774f4e3dd71567400683b60405}\label{_e_n_c424_j600_8c_a0131f2774f4e3dd71567400683b60405}} 
+\index{ENC424J600.c@{ENC424J600.c}!SPI\_TIMEOUT@{SPI\_TIMEOUT}}
+\index{SPI\_TIMEOUT@{SPI\_TIMEOUT}!ENC424J600.c@{ENC424J600.c}}
+\subsubsection{\texorpdfstring{SPI\_TIMEOUT}{SPI\_TIMEOUT}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define S\+P\+I\+\_\+\+T\+I\+M\+E\+O\+UT~0xfff}
+
+\mbox{\Hypertarget{_e_n_c424_j600_8c_a0131f2774f4e3dd71567400683b60405}\label{_e_n_c424_j600_8c_a0131f2774f4e3dd71567400683b60405}} 
+\index{ENC424J600.c@{ENC424J600.c}!SPI\_TIMEOUT@{SPI\_TIMEOUT}}
+\index{SPI\_TIMEOUT@{SPI\_TIMEOUT}!ENC424J600.c@{ENC424J600.c}}
+\subsubsection{\texorpdfstring{SPI\_TIMEOUT}{SPI\_TIMEOUT}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define S\+P\+I\+\_\+\+T\+I\+M\+E\+O\+UT~0xfff}
+
+\mbox{\Hypertarget{_e_n_c424_j600_8c_a45ba202b05caf39795aeca91b0ae547e}\label{_e_n_c424_j600_8c_a45ba202b05caf39795aeca91b0ae547e}} 
+\index{ENC424J600.c@{ENC424J600.c}!TIMEOUT@{TIMEOUT}}
+\index{TIMEOUT@{TIMEOUT}!ENC424J600.c@{ENC424J600.c}}
+\subsubsection{\texorpdfstring{TIMEOUT}{TIMEOUT}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+O\+UT~0xfff}
+
