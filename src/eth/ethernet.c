@@ -55,21 +55,15 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     error_t err;
     err.module = ERROR_MODULE_ETHERNET;
     err.code = ERROR_CODE_SUCCESSFUL;
-    //  UARTTransmitText("Old nextPacketPointer: ");
-    //  UARTTransmitText(intToString(ethernetController_getNextPacketPointer()));
     frame->memory.start = ethernetController_getNextPacketPointer(); //Get the address of the packet that should be processed next
 
     ethernetController_updateNextPacketPointer();
-    // UARTTransmitText("\n\rNew nextPacketPointer: ");
-    // UARTTransmitText(intToString(ethernetController_getNextPacketPointer()));
 
 
     frame->memory.fIsAssigned = 1; //Not really needed, for completeness
     frame->receiveStatusVector = ethernetController_getRSV(frame->memory.start); //get the RSV for that packet
     frame->memory.length = frame->receiveStatusVector.length;
-    // UARTTransmitText("Length according to RSV: ");
-    // UARTTransmitText(intToString(frame->memory.length));
-    // UARTTransmitText("\n\r");
+   
     //Now that we have the packets length we can work out where it ends
     if (frame->memory.start + frame->memory.length > END_OF_MEMORY_ADDRESS) {//Does it wrap around?
         //Work out the wrapped-around address
@@ -125,15 +119,6 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     UARTTransmitText(" (");
     UARTTransmitText(intToString(frame->memory.length));
     UARTTransmitText(")]");
-
-    /* UARTTransmitText("Starting to read at ");
-     UARTTransmitText(hexToString(frame->memory.start));
-     ethernetController_streamFromRXBuffer(0, frame->memory.start);
-     for (uint16_t i = 0; i < frame->memory.length; i++) {
-         UARTTransmitText(hexToString(ethernetController_streamFromRXBuffer(1, frame->memory.start)));
-         UARTTransmitText(" ");
-     }
-     ethernetController_streamFromRXBuffer(2, frame->memory.start);*/
 
 
     UARTTransmitText("\n\r");
