@@ -1,9 +1,10 @@
-/**
- * \file stack.h
- * \brief Top-level stuff of the Stack
+/** 
+ * \file arpSettings
+ * \brief Things to change about ARP
+ * \see RFC 5227
  * \author Stefan Gloor
  * \version 1.0
- * \date 27. Januar 2019
+ * \date 1. Februar 2019
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -18,36 +19,16 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.    
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
-#ifndef STACK_H
-#define	STACK_H
+#ifndef ARPSETTINGS_H
+#define	ARPSETTINGS_H
 
-#include <stdint.h>
+#define ANNOUNCE_WAIT       2
+#define PROBE_WAIT          2
+#define PROBE_MIN
+#define PROBE_MAX
 
-#include "../eth/ethernetTypes.h"
-#include "../stack/backgroundTasksTypes.h"
-#include "../stack/protocols/ipv4.h"
-
-/**
- * \defgroup stack Stack
- * \{
- */
-
-/**
- * \brief Top-level structure of the entire stack.
- */
-typedef struct stack {
-    ethernetConnection_t ethernet;
-    backgroundTaskHandler_t volatile background;
-    ethernetFrame_t newReceivedFrame;
-    ipv4_packet_t pendingPacketToSend;
-} stack_t;
-
-
-
-/**\}*/
-
-#endif	/* STACK_H */
+#endif	/* ARPSETTINGS_H */
 

@@ -8,12 +8,14 @@ src/enc424j600/../system/../stack/protocols/../protocols/../../eth/../mem/memory
 src/enc424j600/../system/uart.h  \
 src/enc424j600/../system/../eth/mac.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../protocols/ipv4.h  \
+src/enc424j600/../enc424j600/../eth/../eth/../stack/time.h  \
 src/enc424j600/../enc424j600/ENC424J600.h  \
 src/enc424j600/../system/../stack/protocols/../../stack/../stack/error.h  \
 src/enc424j600/../system/../stack/protocols/../../stack/backgroundTasksTypes.h  \
 src/enc424j600/../system/../stack/protocols/arpTypes.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/enc424j600/../system/../stack/protocols/../error.h  \
+src/enc424j600/../system/../stack/protocols/../time.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h  \
 src/enc424j600/../enc424j600/../eth/../eth/../mem/../stack/bool.h  \
 src/enc424j600/../enc424j600/../eth/../stack/error.h  \
@@ -33,6 +35,7 @@ src/enc424j600/../enc424j600/../eth/ethernetController.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../../eth/ethernetController.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../../eth/../eth/ethernetController.h  \
 src/enc424j600/../enc424j600/../system/system.h  \
+src/enc424j600/../system/../stack/protocols/../../stack/bool.h  \
 src/enc424j600/../enc424j600/../eth/../eth/../mem/memoryTypes.h  \
 src/enc424j600/../enc424j600/../eth/../mem/memoryTypes.h  \
 src/enc424j600/../enc424j600/../mem/../mem/memoryTypes.h  \

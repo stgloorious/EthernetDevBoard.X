@@ -27,6 +27,7 @@
 #include <stdint.h>
 #include "../enc424j600/rsv.h"
 #include "../mem/memoryTypes.h"
+#include "../stack/time.h"
 
 /**
  * \ingroup ethernet
@@ -89,6 +90,7 @@ typedef struct ethernetFrame {
      * \note The RSV is unused if this structure is used for transmission
      */
     RSV_t receiveStatusVector;
+    time_t tReceived;
 } ethernetFrame_t;
 
 /**

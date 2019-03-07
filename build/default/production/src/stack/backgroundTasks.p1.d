@@ -7,6 +7,7 @@ src/stack/../stack/../eth/ethernet.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/../mem/memoryController.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../system/../eth/mac.h  \
 src/stack/../stack/../stack/protocols/../protocols/../protocols/ipv4.h  \
+src/stack/../stack/../eth/../eth/../stack/time.h  \
 src/stack/../stack/../stack/protocols/../../stack/../stack/error.h  \
 src/stack/../stack/../stack/error.h  \
 src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h  \
@@ -15,6 +16,7 @@ src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protoco
 src/stack/../stack/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../error.h  \
 src/stack/../stack/../stack/protocols/../error.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../time.h  \
 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../protocols/ipv4Types.h  \
 src/stack/../stack/backgroundTasks.h  \
@@ -35,6 +37,7 @@ src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protoco
 src/stack/../stack/../eth/ethernetController.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernetController.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/../eth/ethernetController.h  \
+src/stack/../stack/../stack/protocols/../../stack/bool.h  \
 src/stack/../stack/../eth/../eth/../mem/memoryTypes.h  \
 src/stack/../stack/../eth/../mem/memoryTypes.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../mem/memoryTypes.h  \

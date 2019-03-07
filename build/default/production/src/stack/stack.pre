@@ -136,7 +136,16 @@ uint8_t fOutOfMemory;
 uint8_t index;
 } memoryField_t;
 
-# 48 "src/stack/../stack/../eth/ethernetTypes.h"
+# 30 "src/stack/../stack/../eth/../stack/time.h"
+typedef uint32_t time_t;
+
+# 36
+void updateTime();
+
+# 42
+time_t getMillis();
+
+# 49 "src/stack/../stack/../eth/ethernetTypes.h"
 typedef enum etherTypes {
 ETHERTYPE_IPv4 = 0x0800,
 ETHERTYPE_ARP = 0x0806,
@@ -144,27 +153,27 @@ ETHERTYPE_WOL = 0x0842,
 ETHERTYPE_FLOW_CONTROL = 0x8808
 } etherType_t;
 
-# 57
+# 58
 typedef struct macaddress {
 uint8_t address[6];
 } macaddress_t;
 
-# 63
+# 64
 typedef enum linkStates {
 NO_LINK, LINK_ESTABLISHED
 } linkState_t;
 
-# 69
+# 70
 typedef enum speeds {
 TEN_MBIT, HUNDRED_MBIT
 } speed_t;
 
-# 75
+# 76
 typedef enum duplexStates {
 HALF_DUPLEX, FULL_DUPLEX
 } duplexState_t;
 
-# 82
+# 83
 typedef struct ethernetFrame {
 uint16_t length;
 macaddress_t source;
@@ -172,11 +181,12 @@ macaddress_t destination;
 etherType_t ethertype;
 memoryField_t memory;
 
-# 91
+# 92
 RSV_t receiveStatusVector;
+time_t tReceived;
 } ethernetFrame_t;
 
-# 97
+# 99
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -194,12 +204,12 @@ ERROR_MODULE_ARP,
 ERROR_MODULE_IPv4
 } error_module_t;
 
-
 enum module_offsets {
 ERROR_MEMORY_OFFSET = 100,
 ERROR_ETHERNET_OFFSET = 200,
 ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
-ERROR_ARP_OFFSET = 400
+ERROR_ARP_OFFSET = 400,
+ERROR_IPv4_OFFSET = 500
 };
 
 enum errors_memory {
@@ -225,7 +235,14 @@ ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 enum errors_arp {
 ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
 ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 2,
-ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3
+ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
+ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+};
+
+enum errors_ipv4 {
+ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
+ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
 typedef struct error {
@@ -272,8 +289,8 @@ error_t err;
 # 46
 interruptFlags_t interruptFlags;
 
-# 51
-uint8_t fPacketPending : 1;
+# 52
+uint8_t fPacketPending;
 } backgroundTaskHandler_t;
 
 # 40 "src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h"
@@ -7081,7 +7098,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 54 "src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/arpTypes.h"
+# 55 "src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/arpTypes.h"
 typedef struct ARP_message {
 uint16_t htype;
 uint16_t ptype;
@@ -7097,27 +7114,27 @@ uint8_t fIsProbe : 1;
 error_t err;
 } ARP_message_t;
 
-# 73
+# 74
 typedef enum ARP_operation {
 ARP_REQUEST = 1,
 ARP_REPLY = 2
 } ARP_operation_t;
 
-# 82
+# 83
 typedef enum ARP_htype {
 ARP_HTYPE_ETHERNET = 1
 } ARP_htype_t;
 
-# 90
+# 91
 typedef enum ARP_ptype {
 ARP_PTYPE_IPv4 = 0x0800
 } ARP_ptype_t;
 
-# 98
+# 99
 typedef struct ARP_tableEntry {
 ipv4_address_t ip;
 macaddress_t mac;
-uint32_t secondsCreated;
+time_t timeCreated;
 } ARP_tableEntry_t;
 
 # 38 "src/stack/../stack/../stack/protocols/../protocols/../../system/uart.h"
@@ -7163,24 +7180,27 @@ void ARP_handleNewPacket(ethernetFrame_t *frame);
 ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
 
 # 70
-void ARP_replyIfNeeded(ARP_message_t request);
+void ARP_sendReply(ARP_message_t request);
 
 # 77
 void static ARP_send(ARP_message_t arp);
 
-# 84
-void ARP_sendRequest(ipv4_address_t ip);
+# 85
+void ARP_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
 
-# 93
-uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
+# 92
+error_t ARP_probe (ipv4_address_t ipTarget);
 
 # 101
+uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
+
+# 109
 macaddress_t ARP_getEntryFromTable(uint8_t index);
 
-# 110
+# 118
 void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
-# 117
+# 125
 void printArpTable();
 
 # 45 "src/stack/../stack/../stack/protocols/ipv4.h"
@@ -7211,7 +7231,7 @@ ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
 ipv4_address_t ipv4_getIPSourceAddress();
 
 # 105
-void ipv4_setIPSourceAddress(ipv4_address_t ip);
+error_t ipv4_setIPSourceAddress(ipv4_address_t ip);
 
 # 120
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
@@ -7229,29 +7249,4 @@ backgroundTaskHandler_t volatile background;
 ethernetFrame_t newReceivedFrame;
 ipv4_packet_t pendingPacketToSend;
 } stack_t;
-
-# 52
-void updateSeconds();
-
-# 59
-uint32_t getSeconds();
-
-# 26 "src/stack/stack.c"
-uint32_t static seconds = 0;
-
-void updateSeconds() {
-uint16_t static prescaler_ms = 0;
-
-# 33
-if (prescaler_ms == 243) {
-prescaler_ms = 0;
-seconds++;
-} else {
-prescaler_ms++;
-}
-}
-
-uint32_t getSeconds() {
-return seconds;
-}
 

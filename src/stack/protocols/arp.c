@@ -21,9 +21,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
+#include <stdlib.h>
 #include "arp.h"
 
 ARP_tableEntry_t static ARP_table [ARP_TABLE_LENGTH];
+
+/* =======================  Receive  ======================= */
 
 void ARP_handleNewPacket(ethernetFrame_t *frame) {
     ARP_message_t arp;
@@ -52,8 +55,8 @@ void ARP_handleNewPacket(ethernetFrame_t *frame) {
     if (arp.fIsGratuitous)
         UARTTransmitText("[IsGratuitous]");
 
-    ARP_replyIfNeeded(arp);
-    ARP_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getSeconds());
+    ARP_sendReply(arp);
+    ARP_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
     /**
      * \todo where does the tail pointer get updated
      */
@@ -129,7 +132,81 @@ ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
     return arp;
 }
 
-void static ARP_replyIfNeeded(ARP_message_t request) {
+/* =======================  Transmit  ======================= */
+
+void static ARP_send(ARP_message_t arp) {
+    memoryField_t field;
+    macaddress_t destination;
+    ethernetFrame_t ethFrame;
+    mac_setToBroadcast(&destination);
+
+    ethFrame.length = 36;
+    ethFrame.destination = arp.targetMACAddress;
+    ethFrame.source = ethernetController_getSourceMACAddress(field);
+    ethFrame.ethertype = ETHERTYPE_ARP;
+
+    ethernet_txFrameRequest(&ethFrame);
+
+    if (ethFrame.memory.fOutOfMemory) {
+        return;
+    }
+
+    field.start = ethFrame.memory.start + 8;
+    field.end = ethFrame.memory.end;
+    field.length = 28;
+
+    UARTTransmitText(hexToString(field.start));
+    UARTTransmitText(", ");
+    UARTTransmitText(hexToString(field.end));
+    UARTTransmitText("\n\r");
+
+
+    ethernetController_streamToTransmitBuffer((arp.htype & 0xff00) >> 8, field);
+    ethernetController_streamToTransmitBuffer(arp.htype & 0x00ff, field);
+    ethernetController_streamToTransmitBuffer((arp.ptype & 0xff00) >> 8, field);
+    ethernetController_streamToTransmitBuffer(arp.ptype & 0x00ff, field);
+    ethernetController_streamToTransmitBuffer(arp.hlen, field);
+    ethernetController_streamToTransmitBuffer(arp.plen, field);
+    ethernetController_streamToTransmitBuffer((arp.operation & 0xff00) >> 8, field);
+    ethernetController_streamToTransmitBuffer(arp.operation & 0x00ff, field);
+    for (uint8_t i = 0; i < arp.hlen; i++)
+        ethernetController_streamToTransmitBuffer(arp.senderMACAddress.address[i], field);
+    for (uint8_t i = 0; i < arp.plen; i++)
+        ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field);
+    for (uint8_t i = 0; i < arp.hlen; i++)
+        ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field);
+
+    for (uint8_t i = 0; i < arp.plen; i++)
+        ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field);
+
+    ethernetController_sendPacket(ethFrame.memory);
+}
+
+/* =======================  Messages  ======================= */
+void ARP_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget) {
+    ARP_message_t request;
+    macaddress_t senderMAC;
+    macaddress_t targetMAC;
+
+    senderMAC = ethernetController_getMacAddress();
+    //mac_setToBroadcast(&targetMAC);
+    ipSender = ipv4_getIPSourceAddress();
+    mac_setAllZero(&targetMAC);
+
+    request.hlen = ARP_ETHERNET_HLEN;
+    request.plen = ARP_IPv4_PLEN;
+    request.htype = ARP_HTYPE_ETHERNET;
+    request.ptype = ARP_PTYPE_IPv4;
+    request.operation = ARP_REQUEST;
+    request.senderIPAddress = ipSender;
+    request.senderMACAddress = senderMAC;
+    request.targetIPAddress = ipTarget;
+    request.targetMACAddress = targetMAC;
+
+    ARP_send(request);
+}
+
+void static ARP_sendReply(ARP_message_t request) {
     if (request.operation != ARP_REQUEST)//is it a request?
         return;
 
@@ -167,78 +244,37 @@ void static ARP_replyIfNeeded(ARP_message_t request) {
     UARTTransmitText("]");
 }
 
-void static ARP_send(ARP_message_t arp) {
-    memoryField_t field;
-    macaddress_t destination;
-    ethernetFrame_t ethFrame;
-    mac_setToBroadcast(&destination);
+/* =======================  Collision Check  ======================= */
+error_t ARP_probe(ipv4_address_t ipTarget) {
+    uint8_t static state = 0;
+    time_t timeStart;
+    time_t waitingTime;
+    ipv4_address_t ipSender;
+    switch (state) {
+        case 0:
+            ipv4_setToAllZero(&ipSender);
+            ARP_sendRequest(ipSender, ipTarget);
+            timeStart = getMillis();
+            waitingTime = rand() % 3000;
+            UARTTransmitText("Waited ");
+            UARTTransmitText(intToString(waitingTime));
+            UARTTransmitText(" seconds.\n\r");
+            state = 1;
+            break;
+        case 1:
 
-    ethFrame.length = 36;
-    ethFrame.destination = arp.targetMACAddress;
-    ethFrame.source = ethernetController_getSourceMACAddress(field);
-    ethFrame.ethertype = ETHERTYPE_ARP;
+            break;
 
-    ethernet_txFrameRequest(&ethFrame);
-
-    if (ethFrame.memory.fOutOfMemory) {
-        return;
     }
 
-    field.start = ethFrame.memory.start + 8;
-    field.end = ethFrame.memory.end;
-    field.length = 28;
-
-
-    ethernetController_streamToTransmitBuffer((arp.htype & 0xff00) >> 8, field);
-    ethernetController_streamToTransmitBuffer(arp.htype & 0x00ff, field);
-    ethernetController_streamToTransmitBuffer((arp.ptype & 0xff00) >> 8, field);
-    ethernetController_streamToTransmitBuffer(arp.ptype & 0x00ff, field);
-    ethernetController_streamToTransmitBuffer(arp.hlen, field);
-    ethernetController_streamToTransmitBuffer(arp.plen, field);
-    ethernetController_streamToTransmitBuffer((arp.operation & 0xff00) >> 8, field);
-    ethernetController_streamToTransmitBuffer(arp.operation & 0x00ff, field);
-    for (uint8_t i = 0; i < arp.hlen; i++)
-        ethernetController_streamToTransmitBuffer(arp.senderMACAddress.address[i], field);
-    for (uint8_t i = 0; i < arp.plen; i++)
-        ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field);
-    for (uint8_t i = 0; i < arp.hlen; i++)
-        ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field);
-
-    for (uint8_t i = 0; i < arp.plen; i++)
-        ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field);
-
-    ethernetController_sendPacket(ethFrame.memory);
 }
 
-void ARP_sendRequest(ipv4_address_t ip) {
-    ARP_message_t request;
-    ipv4_address_t senderIP;
-    ipv4_address_t targetIP;
-    macaddress_t senderMAC;
-    macaddress_t targetMAC;
-
-    senderMAC = ethernetController_getMacAddress();
-    mac_setToBroadcast(&targetMAC);
-    senderIP = ipv4_getIPSourceAddress(); 
-    targetIP = ip;
-
-    request.hlen = ARP_ETHERNET_HLEN;
-    request.plen = ARP_IPv4_PLEN;
-    request.htype = ARP_HTYPE_ETHERNET;
-    request.ptype = ARP_PTYPE_IPv4;
-    request.operation = ARP_REQUEST;
-    request.senderIPAddress = senderIP;
-    request.senderMACAddress = senderMAC;
-    request.targetIPAddress = targetIP;
-    request.targetMACAddress = targetMAC;
-
-    ARP_send(request);
-}
+/* =======================  Table  ======================= */
 
 uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index) {
     for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++) {
         if (ipv4_cmp(&ARP_table[i].ip, &ip)) {
-            if (getSeconds() - ARP_table[i].secondsCreated < ARP_TABLE_ENTRY_TTL) {//not expired?
+            if (getMillis() - ARP_table[i].timeCreated < ARP_TABLE_ENTRY_TTL) {//not expired?
                 //if an entry is expired it is just ignored; old entries are overwritten anyways when writing new ones.
                 *index = i; //save where the entry is
                 return 1; //don't check further
@@ -257,15 +293,15 @@ void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timest
     uint8_t oldestIndex = 0;
     //Loop through table to find oldest entry
     for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++) {
-        if (ARP_table[i].secondsCreated > maxSeconds) {
-            maxSeconds = ARP_table[i].secondsCreated;
+        if (ARP_table[i].timeCreated > maxSeconds) {
+            maxSeconds = ARP_table[i].timeCreated;
             oldestIndex = i;
         }
     }
     //Create new entry, replacing the oldest one
     ARP_table[oldestIndex].ip = ip;
     ARP_table[oldestIndex].mac = mac;
-    ARP_table[oldestIndex].secondsCreated = timestamp;
+    ARP_table[oldestIndex].timeCreated = timestamp;
 }
 
 void ARP_initTable() {

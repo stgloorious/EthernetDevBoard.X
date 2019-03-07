@@ -23,24 +23,6 @@
 
 #include "../stack/stack.h"
 
-uint32_t static seconds = 0;
-
-void updateSeconds() {
-    uint16_t static prescaler_ms = 0;
-    /**
-     * \brief Increment the second counter every 244th cycle because 244*4096 us = 0.999424 seconds, close enough :)
-     */
-    if (prescaler_ms == 243) {
-        prescaler_ms = 0;
-        seconds++;
-    } else {
-        prescaler_ms++;
-    }
-}
-
-uint32_t getSeconds() {
-    return seconds;
-}
 
 
 

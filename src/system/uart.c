@@ -241,7 +241,7 @@ char *arpEntryToString(ARP_tableEntry_t table) {
 
     string[pointer++] = ' ';
 
-    tempAddr = intToString(table.secondsCreated % 0xffff);
+    tempAddr = intToString(table.timeCreated % 0xffff);
     while (*tempAddr != '\0')
         string[pointer++] = *(tempAddr++);
 

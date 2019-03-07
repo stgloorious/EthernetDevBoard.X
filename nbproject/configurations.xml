@@ -26,6 +26,8 @@
       <itemPath>src/stack/protocols/ipv4Types.h</itemPath>
       <itemPath>src/system/system.h</itemPath>
       <itemPath>src/stack/bool.h</itemPath>
+      <itemPath>src/stack/protocols/arpSettings.h</itemPath>
+      <itemPath>src/stack/time.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -45,6 +47,7 @@
       <itemPath>src/system/uart.c</itemPath>
       <itemPath>src/stack/protocols/arp.c</itemPath>
       <itemPath>src/stack/protocols/ipv4.c</itemPath>
+      <itemPath>src/stack/time.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

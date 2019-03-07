@@ -67,7 +67,7 @@ ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
  * \ingroup arp
  * \param request New message (parseFromRXBuffer() first).
  */
-void ARP_replyIfNeeded(ARP_message_t request);
+void ARP_sendReply(ARP_message_t request);
 
 /**
  * \brief Sends the given message
@@ -79,9 +79,17 @@ void static ARP_send(ARP_message_t arp);
 /**
  * \brief Sends an ARP request to a given IPv4 address
  * \ingroup arp
- * \param ip IP Address that should be resolved
+ * \param ipSender
+ * \param ipTarget
  */
-void ARP_sendRequest(ipv4_address_t ip);
+void ARP_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+
+/**
+ * \brief
+ * \param ipTarget
+ * \return 
+ */
+error_t ARP_probe (ipv4_address_t ipTarget);
 
 /**
  * \brief Checks for an entry in the ARP table

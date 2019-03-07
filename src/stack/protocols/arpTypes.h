@@ -29,13 +29,14 @@
 #include "../../eth/ethernetTypes.h"
 #include "../protocols/ipv4Types.h"
 #include "../error.h"
+#include "../time.h"
 
 /** \ingroup arp
  * \{
  */
 
 #define ARP_TABLE_LENGTH        8   ///< Number of entries in the ARP table
-#define ARP_TABLE_ENTRY_TTL     300 ///< Time to live for an ARP Entry in seconds
+#define ARP_TABLE_ENTRY_TTL     30000 ///< Time to live for an ARP Entry in milliseconds
 #define ARP_TIMEOUT             2   ///< How long to wait after request for a reply in seconds
 
 #define ARP_IPv4_PLEN           4   ///< Number of bytes in an IPv4 address
@@ -98,7 +99,7 @@ typedef enum ARP_ptype {
 typedef struct ARP_tableEntry {
     ipv4_address_t ip; ///< Protocol address
     macaddress_t mac; ///< Corresponding hardware address
-    uint32_t secondsCreated; ///< Number of seconds that have elapsed since power up when this entry was created
+    time_t timeCreated; ///< Number of seconds that have elapsed since power up when this entry was created
 } ARP_tableEntry_t;
 
 #endif	/* ARPTYPES_H */

@@ -102,7 +102,7 @@ ipv4_address_t ipv4_getIPSourceAddress();
  * 
  * @param ip
  */
-void ipv4_setIPSourceAddress(ipv4_address_t ip);
+error_t ipv4_setIPSourceAddress(ipv4_address_t ip);
 
 /**\}*/
 

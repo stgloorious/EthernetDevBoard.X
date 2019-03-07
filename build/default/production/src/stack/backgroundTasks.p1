@@ -1,49 +1,49 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "26 src/stack/backgroundTasks.c
-[c E100 0 1 .. ]
-[n E100 linkStates NO_LINK LINK_ESTABLISHED  ]
-[c E104 0 1 .. ]
-[n E104 speeds TEN_MBIT HUNDRED_MBIT  ]
-[c E108 0 1 .. ]
-[n E108 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
-"57 src/stack/../stack/../eth/../eth/ethernetTypes.h
+[c E109 0 1 .. ]
+[n E109 linkStates NO_LINK LINK_ESTABLISHED  ]
+[c E113 0 1 .. ]
+[n E113 speeds TEN_MBIT HUNDRED_MBIT  ]
+[c E117 0 1 .. ]
+[n E117 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
+"58 src/stack/../stack/../eth/../eth/ethernetTypes.h
 [s S4 `uc -> 6 `i ]
 [n S4 macaddress address ]
-"97
-[s S6 `E100 1 `E104 1 `E108 1 `S4 1 `S4 1 ]
+"99
+[s S6 `E109 1 `E113 1 `E117 1 `S4 1 `S4 1 ]
 [n S6 ethernetConnection link speed duplex source destination ]
 "26 src/stack/backgroundTasks.c
 [c E29 0 1 2 3 4 .. ]
 [n E29 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
-"80 src/stack/../stack/../eth/../stack/error.h
+"87 src/stack/../stack/../eth/../stack/error.h
 [s S1 `E29 1 `ui 1 ]
 [n S1 error module code ]
 "34 src/stack/../stack/../eth/../enc424j600/interrupt.h
 [s S7 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S7 interruptFlags MODEXIF HASHIF AESIF LINKIF PKTIF DMAIF TXIF TXABTIF RXABTIF PCFULIF ]
 "37 src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h
-[s S615 `S1 1 `S7 1 :1 `uc 1 ]
+[s S615 `S1 1 `S7 1 `uc 1 ]
 [n S615 backgroundTaskHandler err interruptFlags fPacketPending ]
 "26 src/stack/backgroundTasks.c
-[c E91 2048 2054 2114 34824 .. ]
-[n E91 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
+[c E100 2048 2054 2114 34824 .. ]
+[n E100 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
 "35 src/stack/../stack/../eth/../eth/../mem/memoryTypes.h
 [s S3 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S3 memoryField start end length fIsAssigned fOutOfMemory index ]
 "33 src/stack/../stack/../eth/../eth/../enc424j600/rsv.h
 [s S2 `ui 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2 RSV length packetPreviouslyIgnored carrierEventPreviouslySeen CRCError lengthCheckError lengthOutOfRange receivedOk multicast broadcast dribbleNibble controlFrame pauseFrame unknownOpcode vlan runtFilter notMeFilter hashFilter magicFilter patternMatch unicast ]
-"82 src/stack/../stack/../eth/../eth/ethernetTypes.h
-[s S5 `ui 1 `S4 1 `S4 1 `E91 1 `S3 1 `S2 1 ]
-[n S5 ethernetFrame length source destination ethertype memory receiveStatusVector ]
+"83 src/stack/../stack/../eth/../eth/ethernetTypes.h
+[s S5 `ui 1 `S4 1 `S4 1 `E100 1 `S3 1 `S2 1 `ul 1 ]
+[n S5 ethernetFrame length source destination ethertype memory receiveStatusVector tReceived ]
 "26 src/stack/backgroundTasks.c
-[c E211 1 6 17 .. ]
-[n E211 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
+[c E221 1 6 17 .. ]
+[n E221 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
 "47 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h
 [s S8 `uc -> 4 `i ]
 [n S8 ipv4_address address ]
 "51
-[s S9 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `uc 1 `E211 1 `ui 1 `S8 1 `S8 1 ]
+[s S9 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `uc 1 `E221 1 `ui 1 `S8 1 `S8 1 ]
 [n S9 ipv4_header version headerLength dscp ecn totalLength identification flags fragmentOffset timeToLive protocol checksum source destination ]
 "127
 [s S10 `S9 1 `S3 1 `S5 1 ]
@@ -59,27 +59,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ethernet_rxGetNewFrame `(S1 ~T0 @X0 0 ef1`*S5 ]
 "79 src/stack/../stack/../stack/protocols/ipv4.h
 [v _ipv4_sendFrame `(S1 ~T0 @X0 0 ef1`S10 ]
-"39 src/stack/backgroundTasks.c
-[c E52 401 402 403 .. ]
-[n E52 errors_arp ERROR_ARP_WAITING_FOR_REPLY ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED ERROR_ARP_INVALID_VALUES  ]
+"43 src/stack/backgroundTasks.c
+[c E53 401 402 403 499 .. ]
+[n E53 errors_arp ERROR_ARP_WAITING_FOR_REPLY ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_UNKNOWN  ]
 "44 src/stack/../stack/../stack/protocols/../protocols/../../system/uart.h
 [v _UARTTransmitText `(v ~T0 @X0 0 ef1`*Cuc ]
 "98
 [v _ipAdressToString `(*uc ~T0 @X0 0 ef1`S8 ]
 "152 src/stack/../stack/../eth/ethernetController.h
 [v _ethernetController_updateLinkStatus `(v ~T0 @X0 0 ef1`*S6 ]
-"56 src/stack/backgroundTasks.c
-[c E151 0 1 .. ]
-[n E151 LEDs LEDA LEDB  ]
-[c E155 0 1 2 .. ]
-[n E155 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
+"64 src/stack/backgroundTasks.c
+[c E161 0 1 .. ]
+[n E161 LEDs LEDA LEDB  ]
+[c E165 0 1 2 .. ]
+[n E165 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
 "324 src/stack/../stack/../eth/ethernetController.h
-[v _ethernetController_setLEDConfig `(v ~T0 @X0 0 ef2`E151`E155 ]
+[v _ethernetController_setLEDConfig `(v ~T0 @X0 0 ef2`E161`E165 ]
 "172
 [v _ethernetController_clearInterruptFlag `(v ~T0 @X0 0 ef1`uc ]
-"62 src/stack/backgroundTasks.c
-[c E139 0 1 2 3 5 6 11 12 13 14 .. ]
-[n E139 interruptFlagsNames PCFULIF RXABTIF TXABTIF TXDIF DMAIF PKTIF LINKIF AESIF HASHIF MODEXIF  ]
+"70 src/stack/backgroundTasks.c
+[c E149 0 1 2 3 5 6 11 12 13 14 .. ]
+[n E149 interruptFlagsNames PCFULIF RXABTIF TXABTIF TXDIF DMAIF PKTIF LINKIF AESIF HASHIF MODEXIF  ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -115,11 +115,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 42: ERROR_MODULE_ARP,
 [; ;error.h: 43: ERROR_MODULE_IPv4
 [; ;error.h: 44: } error_module_t;
-[; ;error.h: 47: enum module_offsets {
-[; ;error.h: 48: ERROR_MEMORY_OFFSET = 100,
-[; ;error.h: 49: ERROR_ETHERNET_OFFSET = 200,
-[; ;error.h: 50: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
-[; ;error.h: 51: ERROR_ARP_OFFSET = 400
+[; ;error.h: 46: enum module_offsets {
+[; ;error.h: 47: ERROR_MEMORY_OFFSET = 100,
+[; ;error.h: 48: ERROR_ETHERNET_OFFSET = 200,
+[; ;error.h: 49: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
+[; ;error.h: 50: ERROR_ARP_OFFSET = 400,
+[; ;error.h: 51: ERROR_IPv4_OFFSET = 500
 [; ;error.h: 52: };
 [; ;error.h: 54: enum errors_memory {
 [; ;error.h: 55: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
@@ -138,12 +139,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 74: enum errors_arp {
 [; ;error.h: 75: ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
 [; ;error.h: 76: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 2,
-[; ;error.h: 77: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3
-[; ;error.h: 78: };
-[; ;error.h: 80: typedef struct error {
-[; ;error.h: 81: error_module_t module;
-[; ;error.h: 82: uint16_t code;
-[; ;error.h: 83: } error_t;
+[; ;error.h: 77: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
+[; ;error.h: 78: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 79: };
+[; ;error.h: 81: enum errors_ipv4 {
+[; ;error.h: 82: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 83: ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
+[; ;error.h: 84: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 85: };
+[; ;error.h: 87: typedef struct error {
+[; ;error.h: 88: error_module_t module;
+[; ;error.h: 89: uint16_t code;
+[; ;error.h: 90: } error_t;
 [; ;rsv.h: 33: typedef struct RSV {
 [; ;rsv.h: 39: uint16_t length;
 [; ;rsv.h: 40: uint8_t packetPreviouslyIgnored : 1;
@@ -175,39 +182,43 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memoryTypes.h: 46: uint8_t fOutOfMemory;
 [; ;memoryTypes.h: 51: uint8_t index;
 [; ;memoryTypes.h: 52: } memoryField_t;
-[; ;ethernetTypes.h: 48: typedef enum etherTypes {
-[; ;ethernetTypes.h: 49: ETHERTYPE_IPv4 = 0x0800,
-[; ;ethernetTypes.h: 50: ETHERTYPE_ARP = 0x0806,
-[; ;ethernetTypes.h: 51: ETHERTYPE_WOL = 0x0842,
-[; ;ethernetTypes.h: 52: ETHERTYPE_FLOW_CONTROL = 0x8808
-[; ;ethernetTypes.h: 53: } etherType_t;
-[; ;ethernetTypes.h: 57: typedef struct macaddress {
-[; ;ethernetTypes.h: 58: uint8_t address[6];
-[; ;ethernetTypes.h: 59: } macaddress_t;
-[; ;ethernetTypes.h: 63: typedef enum linkStates {
-[; ;ethernetTypes.h: 64: NO_LINK, LINK_ESTABLISHED
-[; ;ethernetTypes.h: 65: } linkState_t;
-[; ;ethernetTypes.h: 69: typedef enum speeds {
-[; ;ethernetTypes.h: 70: TEN_MBIT, HUNDRED_MBIT
-[; ;ethernetTypes.h: 71: } speed_t;
-[; ;ethernetTypes.h: 75: typedef enum duplexStates {
-[; ;ethernetTypes.h: 76: HALF_DUPLEX, FULL_DUPLEX
-[; ;ethernetTypes.h: 77: } duplexState_t;
-[; ;ethernetTypes.h: 82: typedef struct ethernetFrame {
-[; ;ethernetTypes.h: 83: uint16_t length;
-[; ;ethernetTypes.h: 84: macaddress_t source;
-[; ;ethernetTypes.h: 85: macaddress_t destination;
-[; ;ethernetTypes.h: 86: etherType_t ethertype;
-[; ;ethernetTypes.h: 87: memoryField_t memory;
-[; ;ethernetTypes.h: 91: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 92: } ethernetFrame_t;
-[; ;ethernetTypes.h: 97: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 98: linkState_t link;
-[; ;ethernetTypes.h: 99: speed_t speed;
-[; ;ethernetTypes.h: 100: duplexState_t duplex;
-[; ;ethernetTypes.h: 101: macaddress_t source;
-[; ;ethernetTypes.h: 102: macaddress_t destination;
-[; ;ethernetTypes.h: 103: } ethernetConnection_t;
+[; ;time.h: 30: typedef uint32_t time_t;
+[; ;time.h: 36: void updateTime();
+[; ;time.h: 42: time_t getMillis();
+[; ;ethernetTypes.h: 49: typedef enum etherTypes {
+[; ;ethernetTypes.h: 50: ETHERTYPE_IPv4 = 0x0800,
+[; ;ethernetTypes.h: 51: ETHERTYPE_ARP = 0x0806,
+[; ;ethernetTypes.h: 52: ETHERTYPE_WOL = 0x0842,
+[; ;ethernetTypes.h: 53: ETHERTYPE_FLOW_CONTROL = 0x8808
+[; ;ethernetTypes.h: 54: } etherType_t;
+[; ;ethernetTypes.h: 58: typedef struct macaddress {
+[; ;ethernetTypes.h: 59: uint8_t address[6];
+[; ;ethernetTypes.h: 60: } macaddress_t;
+[; ;ethernetTypes.h: 64: typedef enum linkStates {
+[; ;ethernetTypes.h: 65: NO_LINK, LINK_ESTABLISHED
+[; ;ethernetTypes.h: 66: } linkState_t;
+[; ;ethernetTypes.h: 70: typedef enum speeds {
+[; ;ethernetTypes.h: 71: TEN_MBIT, HUNDRED_MBIT
+[; ;ethernetTypes.h: 72: } speed_t;
+[; ;ethernetTypes.h: 76: typedef enum duplexStates {
+[; ;ethernetTypes.h: 77: HALF_DUPLEX, FULL_DUPLEX
+[; ;ethernetTypes.h: 78: } duplexState_t;
+[; ;ethernetTypes.h: 83: typedef struct ethernetFrame {
+[; ;ethernetTypes.h: 84: uint16_t length;
+[; ;ethernetTypes.h: 85: macaddress_t source;
+[; ;ethernetTypes.h: 86: macaddress_t destination;
+[; ;ethernetTypes.h: 87: etherType_t ethertype;
+[; ;ethernetTypes.h: 88: memoryField_t memory;
+[; ;ethernetTypes.h: 92: RSV_t receiveStatusVector;
+[; ;ethernetTypes.h: 93: time_t tReceived;
+[; ;ethernetTypes.h: 94: } ethernetFrame_t;
+[; ;ethernetTypes.h: 99: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 100: linkState_t link;
+[; ;ethernetTypes.h: 101: speed_t speed;
+[; ;ethernetTypes.h: 102: duplexState_t duplex;
+[; ;ethernetTypes.h: 103: macaddress_t source;
+[; ;ethernetTypes.h: 104: macaddress_t destination;
+[; ;ethernetTypes.h: 105: } ethernetConnection_t;
 [; ;interrupt.h: 34: typedef struct interruptFlags {
 [; ;interrupt.h: 35: uint8_t MODEXIF : 1;
 [; ;interrupt.h: 36: uint8_t HASHIF : 1;
@@ -5309,35 +5320,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;arpTypes.h: 54: typedef struct ARP_message {
-[; ;arpTypes.h: 55: uint16_t htype;
-[; ;arpTypes.h: 56: uint16_t ptype;
-[; ;arpTypes.h: 57: uint8_t hlen;
-[; ;arpTypes.h: 58: uint8_t plen;
-[; ;arpTypes.h: 59: uint16_t operation;
-[; ;arpTypes.h: 60: macaddress_t senderMACAddress;
-[; ;arpTypes.h: 61: ipv4_address_t senderIPAddress;
-[; ;arpTypes.h: 62: macaddress_t targetMACAddress;
-[; ;arpTypes.h: 63: ipv4_address_t targetIPAddress;
-[; ;arpTypes.h: 64: uint8_t fIsGratuitous : 1;
-[; ;arpTypes.h: 65: uint8_t fIsProbe : 1;
-[; ;arpTypes.h: 66: error_t err;
-[; ;arpTypes.h: 67: } ARP_message_t;
-[; ;arpTypes.h: 73: typedef enum ARP_operation {
-[; ;arpTypes.h: 74: ARP_REQUEST = 1,
-[; ;arpTypes.h: 75: ARP_REPLY = 2
-[; ;arpTypes.h: 76: } ARP_operation_t;
-[; ;arpTypes.h: 82: typedef enum ARP_htype {
-[; ;arpTypes.h: 83: ARP_HTYPE_ETHERNET = 1
-[; ;arpTypes.h: 84: } ARP_htype_t;
-[; ;arpTypes.h: 90: typedef enum ARP_ptype {
-[; ;arpTypes.h: 91: ARP_PTYPE_IPv4 = 0x0800
-[; ;arpTypes.h: 92: } ARP_ptype_t;
-[; ;arpTypes.h: 98: typedef struct ARP_tableEntry {
-[; ;arpTypes.h: 99: ipv4_address_t ip;
-[; ;arpTypes.h: 100: macaddress_t mac;
-[; ;arpTypes.h: 101: uint32_t secondsCreated;
-[; ;arpTypes.h: 102: } ARP_tableEntry_t;
+[; ;arpTypes.h: 55: typedef struct ARP_message {
+[; ;arpTypes.h: 56: uint16_t htype;
+[; ;arpTypes.h: 57: uint16_t ptype;
+[; ;arpTypes.h: 58: uint8_t hlen;
+[; ;arpTypes.h: 59: uint8_t plen;
+[; ;arpTypes.h: 60: uint16_t operation;
+[; ;arpTypes.h: 61: macaddress_t senderMACAddress;
+[; ;arpTypes.h: 62: ipv4_address_t senderIPAddress;
+[; ;arpTypes.h: 63: macaddress_t targetMACAddress;
+[; ;arpTypes.h: 64: ipv4_address_t targetIPAddress;
+[; ;arpTypes.h: 65: uint8_t fIsGratuitous : 1;
+[; ;arpTypes.h: 66: uint8_t fIsProbe : 1;
+[; ;arpTypes.h: 67: error_t err;
+[; ;arpTypes.h: 68: } ARP_message_t;
+[; ;arpTypes.h: 74: typedef enum ARP_operation {
+[; ;arpTypes.h: 75: ARP_REQUEST = 1,
+[; ;arpTypes.h: 76: ARP_REPLY = 2
+[; ;arpTypes.h: 77: } ARP_operation_t;
+[; ;arpTypes.h: 83: typedef enum ARP_htype {
+[; ;arpTypes.h: 84: ARP_HTYPE_ETHERNET = 1
+[; ;arpTypes.h: 85: } ARP_htype_t;
+[; ;arpTypes.h: 91: typedef enum ARP_ptype {
+[; ;arpTypes.h: 92: ARP_PTYPE_IPv4 = 0x0800
+[; ;arpTypes.h: 93: } ARP_ptype_t;
+[; ;arpTypes.h: 99: typedef struct ARP_tableEntry {
+[; ;arpTypes.h: 100: ipv4_address_t ip;
+[; ;arpTypes.h: 101: macaddress_t mac;
+[; ;arpTypes.h: 102: time_t timeCreated;
+[; ;arpTypes.h: 103: } ARP_tableEntry_t;
 [; ;uart.h: 38: void UARTInit(void);
 [; ;uart.h: 44: void UARTTransmitText(const char *str);
 [; ;uart.h: 50: void DEBUG_MSG(char *text);
@@ -5352,26 +5363,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.h: 47: void ARP_initTable();
 [; ;arp.h: 55: void ARP_handleNewPacket(ethernetFrame_t *frame);
 [; ;arp.h: 63: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
-[; ;arp.h: 70: void ARP_replyIfNeeded(ARP_message_t request);
+[; ;arp.h: 70: void ARP_sendReply(ARP_message_t request);
 [; ;arp.h: 77: void static ARP_send(ARP_message_t arp);
-[; ;arp.h: 84: void ARP_sendRequest(ipv4_address_t ip);
-[; ;arp.h: 93: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
-[; ;arp.h: 101: macaddress_t ARP_getEntryFromTable(uint8_t index);
-[; ;arp.h: 110: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 117: void printArpTable();
+[; ;arp.h: 85: void ARP_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+[; ;arp.h: 92: error_t ARP_probe (ipv4_address_t ipTarget);
+[; ;arp.h: 101: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
+[; ;arp.h: 109: macaddress_t ARP_getEntryFromTable(uint8_t index);
+[; ;arp.h: 118: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 125: void printArpTable();
 [; ;backgroundTasksTypes.h: 37: typedef struct backgroundTaskHandler {
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
-[; ;backgroundTasksTypes.h: 51: uint8_t fPacketPending : 1;
-[; ;backgroundTasksTypes.h: 52: } backgroundTaskHandler_t;
+[; ;backgroundTasksTypes.h: 52: uint8_t fPacketPending;
+[; ;backgroundTasksTypes.h: 53: } backgroundTaskHandler_t;
 [; ;stack.h: 41: typedef struct stack {
 [; ;stack.h: 42: ethernetConnection_t ethernet;
 [; ;stack.h: 43: backgroundTaskHandler_t volatile background;
 [; ;stack.h: 44: ethernetFrame_t newReceivedFrame;
 [; ;stack.h: 45: ipv4_packet_t pendingPacketToSend;
 [; ;stack.h: 46: } stack_t;
-[; ;stack.h: 52: void updateSeconds();
-[; ;stack.h: 59: uint32_t getSeconds();
 [; ;ipv4.h: 45: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 50: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 57: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5381,7 +5391,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 86: void ipv4_handleNewPacket(ethernetFrame_t *frame);
 [; ;ipv4.h: 93: ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
 [; ;ipv4.h: 99: ipv4_address_t ipv4_getIPSourceAddress();
-[; ;ipv4.h: 105: void ipv4_setIPSourceAddress(ipv4_address_t ip);
+[; ;ipv4.h: 105: error_t ipv4_setIPSourceAddress(ipv4_address_t ip);
 [; ;ipv4.h: 120: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 127: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 133: void ipv4_setToAllZero(ipv4_address_t *ip);
@@ -5415,97 +5425,105 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 618 ]
 [; ;backgroundTasks.c: 32: }
 [; ;backgroundTasks.c: 33: }
-[; ;backgroundTasks.c: 35: if (stack->background.fPacketPending) {
-"35
+[; ;backgroundTasks.c: 39: if (stack->background.fPacketPending) {
+"39
 [e $ ! != -> . . *U _stack 1 2 `i -> -> -> 0 `i `Vuc `i 620  ]
 {
-[; ;backgroundTasks.c: 37: stack->background.err = ipv4_sendFrame(stack->pendingPacketToSend);
-"37
-[e = . . *U _stack 1 0 ( _ipv4_sendFrame (1 . *U _stack 3 ]
-[; ;backgroundTasks.c: 38: if (stack->background.err.module == ERROR_MODULE_ARP &&
-[; ;backgroundTasks.c: 39: stack->background.err.code == ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED) {
-"39
-[e $ ! && == -> . . . *U _stack 1 0 0 `i -> . `E29 3 `i == . . . *U _stack 1 0 1 -> . `E52 1 `ui 621  ]
-{
-[; ;backgroundTasks.c: 40: UARTTransmitText("Could not resolve ");
-"40
-[e ( _UARTTransmitText (1 :s 1C ]
-[; ;backgroundTasks.c: 41: UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
-"41
-[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . . . *U _stack 3 0 12 `*Cuc ]
-[; ;backgroundTasks.c: 42: UARTTransmitText("\n\r");
+[; ;backgroundTasks.c: 42: stack->background.err = ipv4_sendFrame(stack->pendingPacketToSend);
 "42
-[e ( _UARTTransmitText (1 :s 2C ]
-[; ;backgroundTasks.c: 43: stack->background.fPacketPending = 0;
+[e = . . *U _stack 1 0 ( _ipv4_sendFrame (1 . *U _stack 3 ]
+[; ;backgroundTasks.c: 43: if (stack->background.err.code == ERROR_ARP_WAITING_FOR_REPLY) {
 "43
-[e = . . *U _stack 1 2 -> -> 0 `i `uc ]
-"44
+[e $ ! == . . . *U _stack 1 0 1 -> . `E53 0 `ui 621  ]
+{
+"45
 }
 [e :U 621 ]
-[; ;backgroundTasks.c: 44: }
-[; ;backgroundTasks.c: 45: if (stack->background.err.module == ERROR_MODULE_ARP &&
-[; ;backgroundTasks.c: 46: stack->background.err.code == (uint16_t)0) {
-"46
-[e $ ! && == -> . . . *U _stack 1 0 0 `i -> . `E29 3 `i == . . . *U _stack 1 0 1 -> -> 0 `i `ui 622  ]
-{
-[; ;backgroundTasks.c: 47: UARTTransmitText("IP packet sent.");
+[; ;backgroundTasks.c: 45: }
+[; ;backgroundTasks.c: 46: if (stack->background.err.module == ERROR_MODULE_ARP &&
+[; ;backgroundTasks.c: 47: stack->background.err.code == ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED) {
 "47
-[e ( _UARTTransmitText (1 :s 3C ]
-[; ;backgroundTasks.c: 49: stack->background.fPacketPending = 0;
+[e $ ! && == -> . . . *U _stack 1 0 0 `i -> . `E29 3 `i == . . . *U _stack 1 0 1 -> . `E53 1 `ui 622  ]
+{
+[; ;backgroundTasks.c: 48: UARTTransmitText("Could not resolve ");
+"48
+[e ( _UARTTransmitText (1 :s 1C ]
+[; ;backgroundTasks.c: 49: UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
 "49
-[e = . . *U _stack 1 2 -> -> 0 `i `uc ]
+[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . . . *U _stack 3 0 12 `*Cuc ]
+[; ;backgroundTasks.c: 50: UARTTransmitText("\n\r");
 "50
+[e ( _UARTTransmitText (1 :s 2C ]
+[; ;backgroundTasks.c: 51: stack->background.fPacketPending = 0;
+"51
+[e = . . *U _stack 1 2 -> -> 0 `i `uc ]
+"52
 }
 [e :U 622 ]
-"51
-}
-[e :U 620 ]
-[; ;backgroundTasks.c: 50: }
-[; ;backgroundTasks.c: 51: }
-[; ;backgroundTasks.c: 52: if (stack->background.interruptFlags.LINKIF) {
-"52
-[e $ ! != -> . . . *U _stack 1 1 3 `i -> -> -> 0 `i `Vuc `i 623  ]
+[; ;backgroundTasks.c: 52: }
+[; ;backgroundTasks.c: 53: if (stack->background.err.module == ERROR_MODULE_ARP &&
+[; ;backgroundTasks.c: 54: stack->background.err.code == (uint16_t)0) {
+"54
+[e $ ! && == -> . . . *U _stack 1 0 0 `i -> . `E29 3 `i == . . . *U _stack 1 0 1 -> -> 0 `i `ui 623  ]
 {
-[; ;backgroundTasks.c: 53: ethernetController_updateLinkStatus(&(stack->ethernet));
-"53
-[e ( _ethernetController_updateLinkStatus (1 &U . *U _stack 0 ]
-[; ;backgroundTasks.c: 55: if (stack->ethernet.link == LINK_ESTABLISHED) {
+[; ;backgroundTasks.c: 55: UARTTransmitText("IP packet sent.\n\r");
 "55
-[e $ ! == -> . . *U _stack 0 0 `i -> . `E100 1 `i 624  ]
-{
-[; ;backgroundTasks.c: 56: ethernetController_setLEDConfig(LEDA, LED_ON);
-"56
-[e ( _ethernetController_setLEDConfig (2 , . `E151 0 . `E155 0 ]
-[; ;backgroundTasks.c: 57: ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS);
+[e ( _UARTTransmitText (1 :s 3C ]
+[; ;backgroundTasks.c: 57: stack->background.fPacketPending = 0;
 "57
-[e ( _ethernetController_setLEDConfig (2 , . `E151 1 . `E155 2 ]
+[e = . . *U _stack 1 2 -> -> 0 `i `uc ]
 "58
 }
-[; ;backgroundTasks.c: 58: } else {
-[e $U 625  ]
-[e :U 624 ]
-{
-[; ;backgroundTasks.c: 59: ethernetController_setLEDConfig(LEDA, LED_OFF);
-"59
-[e ( _ethernetController_setLEDConfig (2 , . `E151 0 . `E155 1 ]
-[; ;backgroundTasks.c: 60: ethernetController_setLEDConfig(LEDB, LED_OFF);
-"60
-[e ( _ethernetController_setLEDConfig (2 , . `E151 1 . `E155 1 ]
-"61
-}
-[e :U 625 ]
-[; ;backgroundTasks.c: 61: }
-[; ;backgroundTasks.c: 62: ethernetController_clearInterruptFlag(LINKIF);
-"62
-[e ( _ethernetController_clearInterruptFlag (1 -> . `E139 6 `uc ]
-"63
-}
 [e :U 623 ]
-[; ;backgroundTasks.c: 63: }
-[; ;backgroundTasks.c: 64: }
+"59
+}
+[e :U 620 ]
+[; ;backgroundTasks.c: 58: }
+[; ;backgroundTasks.c: 59: }
+[; ;backgroundTasks.c: 60: if (stack->background.interruptFlags.LINKIF) {
+"60
+[e $ ! != -> . . . *U _stack 1 1 3 `i -> -> -> 0 `i `Vuc `i 624  ]
+{
+[; ;backgroundTasks.c: 61: ethernetController_updateLinkStatus(&(stack->ethernet));
+"61
+[e ( _ethernetController_updateLinkStatus (1 &U . *U _stack 0 ]
+[; ;backgroundTasks.c: 63: if (stack->ethernet.link == LINK_ESTABLISHED) {
+"63
+[e $ ! == -> . . *U _stack 0 0 `i -> . `E109 1 `i 625  ]
+{
+[; ;backgroundTasks.c: 64: ethernetController_setLEDConfig(LEDA, LED_ON);
 "64
+[e ( _ethernetController_setLEDConfig (2 , . `E161 0 . `E165 0 ]
+[; ;backgroundTasks.c: 65: ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS);
+"65
+[e ( _ethernetController_setLEDConfig (2 , . `E161 1 . `E165 2 ]
+"66
+}
+[; ;backgroundTasks.c: 66: } else {
+[e $U 626  ]
+[e :U 625 ]
+{
+[; ;backgroundTasks.c: 67: ethernetController_setLEDConfig(LEDA, LED_OFF);
+"67
+[e ( _ethernetController_setLEDConfig (2 , . `E161 0 . `E165 1 ]
+[; ;backgroundTasks.c: 68: ethernetController_setLEDConfig(LEDB, LED_OFF);
+"68
+[e ( _ethernetController_setLEDConfig (2 , . `E161 1 . `E165 1 ]
+"69
+}
+[e :U 626 ]
+[; ;backgroundTasks.c: 69: }
+[; ;backgroundTasks.c: 70: ethernetController_clearInterruptFlag(LINKIF);
+"70
+[e ( _ethernetController_clearInterruptFlag (1 -> . `E149 6 `uc ]
+"71
+}
+[e :U 624 ]
+[; ;backgroundTasks.c: 71: }
+[; ;backgroundTasks.c: 72: }
+"72
 [e :UE 617 ]
 }
-[a 3C 73 80 32 112 97 99 107 101 116 32 115 101 110 116 46 0 ]
 [a 1C 67 111 117 108 100 32 110 111 116 32 114 101 115 111 108 118 101 32 0 ]
+[a 3C 73 80 32 112 97 99 107 101 116 32 115 101 110 116 46 10 13 0 ]
 [a 2C 10 13 0 ]

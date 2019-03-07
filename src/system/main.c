@@ -21,6 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
+#include <stdlib.h>
 #include "../system/main.h"
 #include "../enc424j600/ENC424J600.h"
 
@@ -52,9 +53,26 @@ void main() {
     T0CONbits.PSA = 0; // prescaler is assigned
     T0CONbits.T0PS = 0b101;
 
+
+    /* TIMER 1 */
+    T1CONbits.TMR1ON = 1;
+    CCP1CONbits.CCP1M = 0b1011;
+    CCPR1 = 8000; //32 MHz Fosc; (Fosc/4)/1 kHz, so an interrupt every 1 ms
+    PIE1bits.CCP1IE = 1;
+    INTCONbits.PEIE = 1; //enable peripheral interrupts
+
+    TRISBbits.RB6 = 0;
+
+
     UARTInit();
     sevenSegmentInit();
     __delay_ms(10);
+    UARTTransmitText("\x12"); //form feed
+    if (!RCONbits.TO) {
+        UARTTransmitText("------------------------------------------------\n\r");
+        UARTTransmitText("\a*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
+        UARTTransmitText("------------------------------------------------\n\r");
+    }
     UARTTransmitText("FIRMWARE BUILD DATE IS ");
     UARTTransmitText(__DATE__);
     UARTTransmitText(" ");
@@ -96,27 +114,6 @@ void main() {
 
     uint8_t oldState;
 
-
-    stack.ethernet.destination.address[0] = 0x80;
-    stack.ethernet.destination.address[1] = 0x1F;
-    stack.ethernet.destination.address[2] = 0x12;
-    stack.ethernet.destination.address[3] = 0x1B;
-    stack.ethernet.destination.address[4] = 0x6A;
-    stack.ethernet.destination.address[5] = 0x2F;
-
-    /*macaddress source;
-    source.address[0] = 0xAA;
-    source.address[1] = 0xAA;
-    source.address[2] = 0xAA;
-    source.address[3] = 0xAA;
-    source.address[4] = 0xAA;
-    source.address[5] = 0xAA;
-
-    ethernetController_setMacAddress(source);
-    UARTTransmitText("Source MAC address has been altered to ");
-    UARTTransmitText(macToString(ethernetController_getMacAddress()));
-    UARTTransmitText(".\n\r");*/
-
     ipv4_address_t IPsource;
     IPsource.address[0] = 192;
     IPsource.address[1] = 168;
@@ -130,19 +127,20 @@ void main() {
     IPdestination.address[3] = 5;
 
     // ipv4_setIPDestinationAddress(IPdestination);
-     ipv4_setIPSourceAddress(IPsource);
+    ipv4_setIPSourceAddress(IPsource);
 
 
     //Now everything's set up, allow interrupts
     INTCONbits.GIE = 1; //global interrupt enable
     INTCONbits.PEIE = 1;
 
+    srand(ethernetController_getMacAddress().address[5]);
+
 
     while (1) {
         CLRWDT(); //clear watch doggy
 
         handleStackBackgroundTasks(&stack);
-
 
         printEthernetState(stack.ethernet);
         numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : ethernetController_getCurrentPacketCount();
@@ -172,6 +170,11 @@ void main() {
                 }
                 //////////////////////////////////////////////      
                 stack.background.fPacketPending = 1;
+
+                UARTTransmitText(hexToString(stack.pendingPacketToSend.memory.start));
+                UARTTransmitText(", ");
+                UARTTransmitText(hexToString(stack.pendingPacketToSend.memory.end));
+                UARTTransmitText("\n\r");
             }
         }
     }
@@ -247,9 +250,9 @@ void buttonHandler(uint8_t volatile *state) {
     uint8_t static oldState = 0;
     uint8_t static newState = 0;
     uint32_t static debounceCounter = 0;
-    const uint32_t debounceValue = 0x1f;
+    const uint32_t debounceValue = 0xfff;
     if (BUTTON_STATE) {
-        if (debounceCounter < 0xffff)
+        if (debounceCounter < debounceValue)
             debounceCounter++;
     } else {
         debounceCounter = 0;
@@ -265,12 +268,21 @@ void buttonHandler(uint8_t volatile *state) {
 }
 
 void interrupt ISR(void) {
+
+    if (PIR1bits.CCP1IF) {
+        PIR1bits.CCP1IF = 0;
+        PORTBbits.RB6 = ~PORTBbits.RB6;
+        updateTime();
+    }
+
     if (INTCONbits.TMR0IF) {//Timer 0 Overflow interrupt
         INTCONbits.TMR0IF = 0;
-        updateSeconds();
         sevenSegmentUpdate(numberToDisplay);
         buttonHandler(&buttonState);
+
+
     }
+
     if (INTCON3bits.INT2IF) {
         INTCON3bits.INT2IF = 0;
         /* IMPORTANT: 

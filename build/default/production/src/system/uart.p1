@@ -62,21 +62,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRMT `Vb ~T0 @X0 0 e@32097 ]
 "63 src/system/../system/uart.h
 [v _intToString `(*uc ~T0 @X0 0 ef1`ul ]
-"57 src/system/../system/../stack/protocols/../../eth/ethernetTypes.h
+"58 src/system/../system/../stack/protocols/../../eth/ethernetTypes.h
 [s S605 `uc -> 6 `i ]
 [n S605 macaddress address ]
 "178 src/system/uart.c
-[c E5467 2048 2054 2114 34824 .. ]
-[n E5467 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
+[c E5470 2048 2054 2114 34824 .. ]
+[n E5470 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
 "189
-[c E5503 1 6 17 .. ]
-[n E5503 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
+[c E5507 1 6 17 .. ]
+[n E5507 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
 "47 src/system/../system/../stack/protocols/../protocols/ipv4Types.h
 [s S608 `uc -> 4 `i ]
 [n S608 ipv4_address address ]
-"98 src/system/../system/../stack/protocols/arpTypes.h
+"99 src/system/../system/../stack/protocols/arpTypes.h
 [s S613 `S608 1 `S605 1 `ul 1 ]
-[n S613 ARP_tableEntry ip mac secondsCreated ]
+[n S613 ARP_tableEntry ip mac timeCreated ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -5134,39 +5134,43 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memoryTypes.h: 46: uint8_t fOutOfMemory;
 [; ;memoryTypes.h: 51: uint8_t index;
 [; ;memoryTypes.h: 52: } memoryField_t;
-[; ;ethernetTypes.h: 48: typedef enum etherTypes {
-[; ;ethernetTypes.h: 49: ETHERTYPE_IPv4 = 0x0800,
-[; ;ethernetTypes.h: 50: ETHERTYPE_ARP = 0x0806,
-[; ;ethernetTypes.h: 51: ETHERTYPE_WOL = 0x0842,
-[; ;ethernetTypes.h: 52: ETHERTYPE_FLOW_CONTROL = 0x8808
-[; ;ethernetTypes.h: 53: } etherType_t;
-[; ;ethernetTypes.h: 57: typedef struct macaddress {
-[; ;ethernetTypes.h: 58: uint8_t address[6];
-[; ;ethernetTypes.h: 59: } macaddress_t;
-[; ;ethernetTypes.h: 63: typedef enum linkStates {
-[; ;ethernetTypes.h: 64: NO_LINK, LINK_ESTABLISHED
-[; ;ethernetTypes.h: 65: } linkState_t;
-[; ;ethernetTypes.h: 69: typedef enum speeds {
-[; ;ethernetTypes.h: 70: TEN_MBIT, HUNDRED_MBIT
-[; ;ethernetTypes.h: 71: } speed_t;
-[; ;ethernetTypes.h: 75: typedef enum duplexStates {
-[; ;ethernetTypes.h: 76: HALF_DUPLEX, FULL_DUPLEX
-[; ;ethernetTypes.h: 77: } duplexState_t;
-[; ;ethernetTypes.h: 82: typedef struct ethernetFrame {
-[; ;ethernetTypes.h: 83: uint16_t length;
-[; ;ethernetTypes.h: 84: macaddress_t source;
-[; ;ethernetTypes.h: 85: macaddress_t destination;
-[; ;ethernetTypes.h: 86: etherType_t ethertype;
-[; ;ethernetTypes.h: 87: memoryField_t memory;
-[; ;ethernetTypes.h: 91: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 92: } ethernetFrame_t;
-[; ;ethernetTypes.h: 97: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 98: linkState_t link;
-[; ;ethernetTypes.h: 99: speed_t speed;
-[; ;ethernetTypes.h: 100: duplexState_t duplex;
-[; ;ethernetTypes.h: 101: macaddress_t source;
-[; ;ethernetTypes.h: 102: macaddress_t destination;
-[; ;ethernetTypes.h: 103: } ethernetConnection_t;
+[; ;time.h: 30: typedef uint32_t time_t;
+[; ;time.h: 36: void updateTime();
+[; ;time.h: 42: time_t getMillis();
+[; ;ethernetTypes.h: 49: typedef enum etherTypes {
+[; ;ethernetTypes.h: 50: ETHERTYPE_IPv4 = 0x0800,
+[; ;ethernetTypes.h: 51: ETHERTYPE_ARP = 0x0806,
+[; ;ethernetTypes.h: 52: ETHERTYPE_WOL = 0x0842,
+[; ;ethernetTypes.h: 53: ETHERTYPE_FLOW_CONTROL = 0x8808
+[; ;ethernetTypes.h: 54: } etherType_t;
+[; ;ethernetTypes.h: 58: typedef struct macaddress {
+[; ;ethernetTypes.h: 59: uint8_t address[6];
+[; ;ethernetTypes.h: 60: } macaddress_t;
+[; ;ethernetTypes.h: 64: typedef enum linkStates {
+[; ;ethernetTypes.h: 65: NO_LINK, LINK_ESTABLISHED
+[; ;ethernetTypes.h: 66: } linkState_t;
+[; ;ethernetTypes.h: 70: typedef enum speeds {
+[; ;ethernetTypes.h: 71: TEN_MBIT, HUNDRED_MBIT
+[; ;ethernetTypes.h: 72: } speed_t;
+[; ;ethernetTypes.h: 76: typedef enum duplexStates {
+[; ;ethernetTypes.h: 77: HALF_DUPLEX, FULL_DUPLEX
+[; ;ethernetTypes.h: 78: } duplexState_t;
+[; ;ethernetTypes.h: 83: typedef struct ethernetFrame {
+[; ;ethernetTypes.h: 84: uint16_t length;
+[; ;ethernetTypes.h: 85: macaddress_t source;
+[; ;ethernetTypes.h: 86: macaddress_t destination;
+[; ;ethernetTypes.h: 87: etherType_t ethertype;
+[; ;ethernetTypes.h: 88: memoryField_t memory;
+[; ;ethernetTypes.h: 92: RSV_t receiveStatusVector;
+[; ;ethernetTypes.h: 93: time_t tReceived;
+[; ;ethernetTypes.h: 94: } ethernetFrame_t;
+[; ;ethernetTypes.h: 99: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 100: linkState_t link;
+[; ;ethernetTypes.h: 101: speed_t speed;
+[; ;ethernetTypes.h: 102: duplexState_t duplex;
+[; ;ethernetTypes.h: 103: macaddress_t source;
+[; ;ethernetTypes.h: 104: macaddress_t destination;
+[; ;ethernetTypes.h: 105: } ethernetConnection_t;
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
 [; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
@@ -5202,11 +5206,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 42: ERROR_MODULE_ARP,
 [; ;error.h: 43: ERROR_MODULE_IPv4
 [; ;error.h: 44: } error_module_t;
-[; ;error.h: 47: enum module_offsets {
-[; ;error.h: 48: ERROR_MEMORY_OFFSET = 100,
-[; ;error.h: 49: ERROR_ETHERNET_OFFSET = 200,
-[; ;error.h: 50: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
-[; ;error.h: 51: ERROR_ARP_OFFSET = 400
+[; ;error.h: 46: enum module_offsets {
+[; ;error.h: 47: ERROR_MEMORY_OFFSET = 100,
+[; ;error.h: 48: ERROR_ETHERNET_OFFSET = 200,
+[; ;error.h: 49: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
+[; ;error.h: 50: ERROR_ARP_OFFSET = 400,
+[; ;error.h: 51: ERROR_IPv4_OFFSET = 500
 [; ;error.h: 52: };
 [; ;error.h: 54: enum errors_memory {
 [; ;error.h: 55: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
@@ -5225,41 +5230,47 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 74: enum errors_arp {
 [; ;error.h: 75: ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
 [; ;error.h: 76: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 2,
-[; ;error.h: 77: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3
-[; ;error.h: 78: };
-[; ;error.h: 80: typedef struct error {
-[; ;error.h: 81: error_module_t module;
-[; ;error.h: 82: uint16_t code;
-[; ;error.h: 83: } error_t;
-[; ;arpTypes.h: 54: typedef struct ARP_message {
-[; ;arpTypes.h: 55: uint16_t htype;
-[; ;arpTypes.h: 56: uint16_t ptype;
-[; ;arpTypes.h: 57: uint8_t hlen;
-[; ;arpTypes.h: 58: uint8_t plen;
-[; ;arpTypes.h: 59: uint16_t operation;
-[; ;arpTypes.h: 60: macaddress_t senderMACAddress;
-[; ;arpTypes.h: 61: ipv4_address_t senderIPAddress;
-[; ;arpTypes.h: 62: macaddress_t targetMACAddress;
-[; ;arpTypes.h: 63: ipv4_address_t targetIPAddress;
-[; ;arpTypes.h: 64: uint8_t fIsGratuitous : 1;
-[; ;arpTypes.h: 65: uint8_t fIsProbe : 1;
-[; ;arpTypes.h: 66: error_t err;
-[; ;arpTypes.h: 67: } ARP_message_t;
-[; ;arpTypes.h: 73: typedef enum ARP_operation {
-[; ;arpTypes.h: 74: ARP_REQUEST = 1,
-[; ;arpTypes.h: 75: ARP_REPLY = 2
-[; ;arpTypes.h: 76: } ARP_operation_t;
-[; ;arpTypes.h: 82: typedef enum ARP_htype {
-[; ;arpTypes.h: 83: ARP_HTYPE_ETHERNET = 1
-[; ;arpTypes.h: 84: } ARP_htype_t;
-[; ;arpTypes.h: 90: typedef enum ARP_ptype {
-[; ;arpTypes.h: 91: ARP_PTYPE_IPv4 = 0x0800
-[; ;arpTypes.h: 92: } ARP_ptype_t;
-[; ;arpTypes.h: 98: typedef struct ARP_tableEntry {
-[; ;arpTypes.h: 99: ipv4_address_t ip;
-[; ;arpTypes.h: 100: macaddress_t mac;
-[; ;arpTypes.h: 101: uint32_t secondsCreated;
-[; ;arpTypes.h: 102: } ARP_tableEntry_t;
+[; ;error.h: 77: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
+[; ;error.h: 78: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 79: };
+[; ;error.h: 81: enum errors_ipv4 {
+[; ;error.h: 82: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 83: ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
+[; ;error.h: 84: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 85: };
+[; ;error.h: 87: typedef struct error {
+[; ;error.h: 88: error_module_t module;
+[; ;error.h: 89: uint16_t code;
+[; ;error.h: 90: } error_t;
+[; ;arpTypes.h: 55: typedef struct ARP_message {
+[; ;arpTypes.h: 56: uint16_t htype;
+[; ;arpTypes.h: 57: uint16_t ptype;
+[; ;arpTypes.h: 58: uint8_t hlen;
+[; ;arpTypes.h: 59: uint8_t plen;
+[; ;arpTypes.h: 60: uint16_t operation;
+[; ;arpTypes.h: 61: macaddress_t senderMACAddress;
+[; ;arpTypes.h: 62: ipv4_address_t senderIPAddress;
+[; ;arpTypes.h: 63: macaddress_t targetMACAddress;
+[; ;arpTypes.h: 64: ipv4_address_t targetIPAddress;
+[; ;arpTypes.h: 65: uint8_t fIsGratuitous : 1;
+[; ;arpTypes.h: 66: uint8_t fIsProbe : 1;
+[; ;arpTypes.h: 67: error_t err;
+[; ;arpTypes.h: 68: } ARP_message_t;
+[; ;arpTypes.h: 74: typedef enum ARP_operation {
+[; ;arpTypes.h: 75: ARP_REQUEST = 1,
+[; ;arpTypes.h: 76: ARP_REPLY = 2
+[; ;arpTypes.h: 77: } ARP_operation_t;
+[; ;arpTypes.h: 83: typedef enum ARP_htype {
+[; ;arpTypes.h: 84: ARP_HTYPE_ETHERNET = 1
+[; ;arpTypes.h: 85: } ARP_htype_t;
+[; ;arpTypes.h: 91: typedef enum ARP_ptype {
+[; ;arpTypes.h: 92: ARP_PTYPE_IPv4 = 0x0800
+[; ;arpTypes.h: 93: } ARP_ptype_t;
+[; ;arpTypes.h: 99: typedef struct ARP_tableEntry {
+[; ;arpTypes.h: 100: ipv4_address_t ip;
+[; ;arpTypes.h: 101: macaddress_t mac;
+[; ;arpTypes.h: 102: time_t timeCreated;
+[; ;arpTypes.h: 103: } ARP_tableEntry_t;
 [; ;mac.h: 43: bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 [; ;mac.h: 49: void mac_setToBroadcast(macaddress_t *mac);
 [; ;mac.h: 56: bool_t mac_isBroadcast(macaddress_t *mac);
@@ -5338,26 +5349,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.h: 47: void ARP_initTable();
 [; ;arp.h: 55: void ARP_handleNewPacket(ethernetFrame_t *frame);
 [; ;arp.h: 63: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
-[; ;arp.h: 70: void ARP_replyIfNeeded(ARP_message_t request);
+[; ;arp.h: 70: void ARP_sendReply(ARP_message_t request);
 [; ;arp.h: 77: void static ARP_send(ARP_message_t arp);
-[; ;arp.h: 84: void ARP_sendRequest(ipv4_address_t ip);
-[; ;arp.h: 93: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
-[; ;arp.h: 101: macaddress_t ARP_getEntryFromTable(uint8_t index);
-[; ;arp.h: 110: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 117: void printArpTable();
+[; ;arp.h: 85: void ARP_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+[; ;arp.h: 92: error_t ARP_probe (ipv4_address_t ipTarget);
+[; ;arp.h: 101: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
+[; ;arp.h: 109: macaddress_t ARP_getEntryFromTable(uint8_t index);
+[; ;arp.h: 118: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 125: void printArpTable();
 [; ;backgroundTasksTypes.h: 37: typedef struct backgroundTaskHandler {
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
-[; ;backgroundTasksTypes.h: 51: uint8_t fPacketPending : 1;
-[; ;backgroundTasksTypes.h: 52: } backgroundTaskHandler_t;
+[; ;backgroundTasksTypes.h: 52: uint8_t fPacketPending;
+[; ;backgroundTasksTypes.h: 53: } backgroundTaskHandler_t;
 [; ;stack.h: 41: typedef struct stack {
 [; ;stack.h: 42: ethernetConnection_t ethernet;
 [; ;stack.h: 43: backgroundTaskHandler_t volatile background;
 [; ;stack.h: 44: ethernetFrame_t newReceivedFrame;
 [; ;stack.h: 45: ipv4_packet_t pendingPacketToSend;
 [; ;stack.h: 46: } stack_t;
-[; ;stack.h: 52: void updateSeconds();
-[; ;stack.h: 59: uint32_t getSeconds();
 [; ;ipv4.h: 45: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 50: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 57: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5367,7 +5377,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 86: void ipv4_handleNewPacket(ethernetFrame_t *frame);
 [; ;ipv4.h: 93: ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
 [; ;ipv4.h: 99: ipv4_address_t ipv4_getIPSourceAddress();
-[; ;ipv4.h: 105: void ipv4_setIPSourceAddress(ipv4_address_t ip);
+[; ;ipv4.h: 105: error_t ipv4_setIPSourceAddress(ipv4_address_t ip);
 [; ;ipv4.h: 120: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 127: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 133: void ipv4_setToAllZero(ipv4_address_t *ip);
@@ -5465,7 +5475,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _val `ul ~T0 @X0 1 r1 ]
 [f ]
 "93
-[v F5788 `uc ~T0 @X0 -> 10 `i s number ]
+[v F5799 `uc ~T0 @X0 -> 10 `i s number ]
 "94
 [v _pointer `uc ~T0 @X0 1 a ]
 [; ;uart.c: 93: char static number [10];
@@ -5497,7 +5507,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 103: number[pointer++] = tenthousands + 0x30u;
 "103
-[e = *U + &U F5788 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5788 `ui `ux -> + -> _tenthousands `ui -> 48 `ui `uc ]
+[e = *U + &U F5799 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5799 `ui `ux -> + -> _tenthousands `ui -> 48 `ui `uc ]
 "104
 }
 [e :U 627 ]
@@ -5508,7 +5518,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 107: number[pointer++] = thousands + 0x30u;
 "107
-[e = *U + &U F5788 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5788 `ui `ux -> + -> _thousands `ui -> 48 `ui `uc ]
+[e = *U + &U F5799 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5799 `ui `ux -> + -> _thousands `ui -> 48 `ui `uc ]
 "108
 }
 [e :U 628 ]
@@ -5519,7 +5529,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 111: number[pointer++] = hundreds + 0x30u;
 "111
-[e = *U + &U F5788 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5788 `ui `ux -> + -> _hundreds `ui -> 48 `ui `uc ]
+[e = *U + &U F5799 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5799 `ui `ux -> + -> _hundreds `ui -> 48 `ui `uc ]
 "112
 }
 [e :U 629 ]
@@ -5530,20 +5540,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 115: number[pointer++] = tens + 0x30u;
 "115
-[e = *U + &U F5788 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5788 `ui `ux -> + -> _tens `ui -> 48 `ui `uc ]
+[e = *U + &U F5799 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5799 `ui `ux -> + -> _tens `ui -> 48 `ui `uc ]
 "116
 }
 [e :U 630 ]
 [; ;uart.c: 116: }
 [; ;uart.c: 118: number[pointer++] = ones + 0x30u;
 "118
-[e = *U + &U F5788 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5788 `ui `ux -> + -> _ones `ui -> 48 `ui `uc ]
+[e = *U + &U F5799 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5799 `ui `ux -> + -> _ones `ui -> 48 `ui `uc ]
 [; ;uart.c: 119: number[pointer++] = '\0';
 "119
-[e = *U + &U F5788 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5788 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5799 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5799 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 121: return number;
 "121
-[e ) &U F5788 ]
+[e ) &U F5799 ]
 [e $UE 626  ]
 [; ;uart.c: 122: }
 "122
@@ -5596,7 +5606,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _val `ul ~T0 @X0 1 r1 ]
 [f ]
 "134
-[v F5798 `uc ~T0 @X0 -> 10 `i s number ]
+[v F5809 `uc ~T0 @X0 -> 10 `i s number ]
 "135
 [v _pointer `uc ~T0 @X0 1 a ]
 [; ;uart.c: 134: char static number [10];
@@ -5608,26 +5618,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 137: number[pointer++] = hexToChar((val >> 12) & 0xf);
 "137
-[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux ( _hexToChar (1 -> & >> _val -> 12 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5809 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5809 `ui `ux ( _hexToChar (1 -> & >> _val -> 12 `i -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 138: number[pointer++] = hexToChar((val >> 8) & 0xf);
 "138
-[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux ( _hexToChar (1 -> & >> _val -> 8 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5809 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5809 `ui `ux ( _hexToChar (1 -> & >> _val -> 8 `i -> -> -> 15 `i `l `ul `uc ]
 "139
 }
 [e :U 636 ]
 [; ;uart.c: 139: }
 [; ;uart.c: 140: number[pointer++] = hexToChar((val >> 4) & 0xf);
 "140
-[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux ( _hexToChar (1 -> & >> _val -> 4 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5809 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5809 `ui `ux ( _hexToChar (1 -> & >> _val -> 4 `i -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 141: number[pointer++] = hexToChar(val & 0xf);
 "141
-[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux ( _hexToChar (1 -> & _val -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5809 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5809 `ui `ux ( _hexToChar (1 -> & _val -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 143: number[pointer++] = '\0';
 "143
-[e = *U + &U F5798 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5798 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5809 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5809 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 144: return number;
 "144
-[e ) &U F5798 ]
+[e ) &U F5809 ]
 [e $UE 635  ]
 [; ;uart.c: 145: }
 "145
@@ -5640,8 +5650,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _macToString ]
 [v _addr `S605 ~T0 @X0 1 r1 ]
 [f ]
-[v F5802 `uc ~T0 @X0 -> 0 `x s ]
-[i F5802
+[v F5813 `uc ~T0 @X0 -> 0 `x s ]
+[i F5813
 :U ..
 -> 63 `c
 -> 63 `c
@@ -5666,7 +5676,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "148
 [v _address `uc ~T0 @X0 18  a ]
 [; ;uart.c: 148: char address[] = "??:??:??:??:??:??";
-[e = _address F5802 ]
+[e = _address F5813 ]
 "149
 [v _j `uc ~T0 @X0 1 a ]
 [; ;uart.c: 149: uint8_t j = 0;
@@ -5767,11 +5777,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 637 ]
 }
 "178
-[v _etherTypeToString `(*uc ~T0 @X0 1 ef1`E5467 ]
+[v _etherTypeToString `(*uc ~T0 @X0 1 ef1`E5470 ]
 {
 [; ;uart.c: 178: char *etherTypeToString(etherType_t ethertype) {
 [e :U _etherTypeToString ]
-[v _ethertype `E5467 ~T0 @X0 1 r1 ]
+[v _ethertype `E5470 ~T0 @X0 1 r1 ]
 [f ]
 [; ;uart.c: 179: switch (ethertype) {
 "179
@@ -5804,8 +5814,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 647  ]
 "179
 [e :U 648 ]
-[e [\ _ethertype , $ . `E5467 0 649
- , $ . `E5467 1 650
+[e [\ _ethertype , $ . `E5470 0 649
+ , $ . `E5470 1 650
  651 ]
 "186
 [e :U 647 ]
@@ -5814,11 +5824,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 646 ]
 }
 "189
-[v _ipProtocolToString `(*uc ~T0 @X0 1 ef1`E5503 ]
+[v _ipProtocolToString `(*uc ~T0 @X0 1 ef1`E5507 ]
 {
 [; ;uart.c: 189: char *ipProtocolToString(ipv4_protocol_t protocol) {
 [e :U _ipProtocolToString ]
-[v _protocol `E5503 ~T0 @X0 1 r1 ]
+[v _protocol `E5507 ~T0 @X0 1 r1 ]
 [f ]
 [; ;uart.c: 190: switch (protocol) {
 "190
@@ -5858,9 +5868,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 653  ]
 "190
 [e :U 654 ]
-[e [\ _protocol , $ . `E5503 0 655
- , $ . `E5503 1 656
- , $ . `E5503 2 657
+[e [\ _protocol , $ . `E5507 0 655
+ , $ . `E5507 1 656
+ , $ . `E5507 2 657
  658 ]
 "199
 [e :U 653 ]
@@ -5876,8 +5886,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ip `S608 ~T0 @X0 1 r1 ]
 [f ]
 "203
-[v F5810 `uc ~T0 @X0 -> 0 `x s address ]
-[i F5810
+[v F5821 `uc ~T0 @X0 -> 0 `x s address ]
+[i F5821
 :U ..
 -> 63 `c
 -> 63 `c
@@ -5934,24 +5944,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! > -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 0 `i 663  ]
 [; ;uart.c: 216: address[pointer++] = hundreds[i] + 0x30;
 "216
-[e = *U + &U F5810 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5810 `ui `ux -> + -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5821 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5821 `ui `ux -> + -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 48 `i `uc ]
 [e :U 663 ]
 [; ;uart.c: 217: if ((tens[i] > 0) || hundreds[i] > 0)
 "217
 [e $ ! || > -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 0 `i > -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 0 `i 664  ]
 [; ;uart.c: 218: address[pointer++] = tens[i] + 0x30;
 "218
-[e = *U + &U F5810 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5810 `ui `ux -> + -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5821 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5821 `ui `ux -> + -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 48 `i `uc ]
 [e :U 664 ]
 [; ;uart.c: 219: address[pointer++] = ones[i] + 0x30;
 "219
-[e = *U + &U F5810 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5810 `ui `ux -> + -> *U + &U _ones * -> _i `ux -> -> # *U &U _ones `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5821 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5821 `ui `ux -> + -> *U + &U _ones * -> _i `ux -> -> # *U &U _ones `ui `ux `i -> 48 `i `uc ]
 [; ;uart.c: 220: if (i != 3)
 "220
 [e $ ! != -> _i `i -> 3 `i 665  ]
 [; ;uart.c: 221: address[pointer++] = '.';
 "221
-[e = *U + &U F5810 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5810 `ui `ux -> -> 46 `ui `uc ]
+[e = *U + &U F5821 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5821 `ui `ux -> -> 46 `ui `uc ]
 [e :U 665 ]
 "222
 }
@@ -5964,10 +5974,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.c: 222: }
 [; ;uart.c: 223: address[pointer] = '\0';
 "223
-[e = *U + &U F5810 * -> _pointer `ux -> -> # *U &U F5810 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5821 * -> _pointer `ux -> -> # *U &U F5821 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 224: return address;
 "224
-[e ) &U F5810 ]
+[e ) &U F5821 ]
 [e $UE 659  ]
 [; ;uart.c: 225: }
 "225
@@ -5981,7 +5991,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _table `S613 ~T0 @X0 1 r1 ]
 [f ]
 "228
-[v F5817 `uc ~T0 @X0 -> 50 `i s string ]
+[v F5828 `uc ~T0 @X0 -> 50 `i s string ]
 "229
 [v _pointer `uc ~T0 @X0 1 a ]
 [; ;uart.c: 228: char static string [50];
@@ -5999,14 +6009,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 668 ]
 [; ;uart.c: 234: string[pointer++] = *(tempAddr++);
 "234
-[e = *U + &U F5817 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5817 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5828 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5828 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 667 ]
 "233
 [e $ != -> *U _tempAddr `ui -> 0 `ui 668  ]
 [e :U 669 ]
 [; ;uart.c: 236: string[pointer++] = ' ';
 "236
-[e = *U + &U F5817 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5817 `ui `ux -> -> 32 `ui `uc ]
+[e = *U + &U F5828 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5828 `ui `ux -> -> 32 `ui `uc ]
 [; ;uart.c: 238: tempAddr = macToString(table.mac);
 "238
 [e = _tempAddr ( _macToString (1 . _table 1 ]
@@ -6016,15 +6026,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 671 ]
 [; ;uart.c: 240: string[pointer++] = *(tempAddr++);
 "240
-[e = *U + &U F5817 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5817 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5828 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5828 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 670 ]
 "239
 [e $ != -> *U _tempAddr `ui -> 0 `ui 671  ]
 [e :U 672 ]
 [; ;uart.c: 242: string[pointer++] = ' ';
 "242
-[e = *U + &U F5817 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5817 `ui `ux -> -> 32 `ui `uc ]
-[; ;uart.c: 244: tempAddr = intToString(table.secondsCreated % 0xffff);
+[e = *U + &U F5828 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5828 `ui `ux -> -> 32 `ui `uc ]
+[; ;uart.c: 244: tempAddr = intToString(table.timeCreated % 0xffff);
 "244
 [e = _tempAddr ( _intToString (1 % . _table 2 -> -> 65535 `ui `ul ]
 [; ;uart.c: 245: while (*tempAddr != '\0')
@@ -6033,17 +6043,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 674 ]
 [; ;uart.c: 246: string[pointer++] = *(tempAddr++);
 "246
-[e = *U + &U F5817 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5817 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5828 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5828 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 673 ]
 "245
 [e $ != -> *U _tempAddr `ui -> 0 `ui 674  ]
 [e :U 675 ]
 [; ;uart.c: 248: string[pointer] = '\0';
 "248
-[e = *U + &U F5817 * -> _pointer `ux -> -> # *U &U F5817 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5828 * -> _pointer `ux -> -> # *U &U F5828 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 250: return string;
 "250
-[e ) &U F5817 ]
+[e ) &U F5828 ]
 [e $UE 666  ]
 [; ;uart.c: 251: }
 "251

@@ -1,0 +1,65 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;time.h: 30: typedef uint32_t time_t;
+[; ;time.h: 36: void updateTime();
+[; ;time.h: 42: time_t getMillis();
+"27 src/stack/time.c
+[v _time `Vul ~T0 @X0 1 s ]
+[i _time
+-> -> -> 0 `i `l `ul
+]
+[; ;time.c: 27: time_t volatile static time = 0;
+"29
+[v _updateTime `(v ~T0 @X0 1 ef ]
+{
+[; ;time.c: 29: void updateTime() {
+[e :U _updateTime ]
+[f ]
+[; ;time.c: 30: time++;
+"30
+[e ++ _time -> -> -> 1 `i `l `ul ]
+[; ;time.c: 31: }
+"31
+[e :UE 1 ]
+}
+"33
+[v _getMillis `(ul ~T0 @X0 1 ef ]
+{
+[; ;time.c: 33: time_t getMillis() {
+[e :U _getMillis ]
+[f ]
+[; ;time.c: 34: return time;
+"34
+[e ) _time ]
+[e $UE 2  ]
+[; ;time.c: 35: }
+"35
+[e :UE 2 ]
+}

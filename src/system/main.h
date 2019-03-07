@@ -91,7 +91,7 @@ void printRSV(uint8_t *rsv);
 
 // CONFIG2H
 #pragma config WDTEN = ON       // Watchdog Timer Enable bits (WDT enabled in hardware (SWDTEN ignored))
-#pragma config WDTPS = 32768    // Watchdog Timer Postscaler (1:32768)
+#pragma config WDTPS = 1024    // Watchdog Timer Postscaler (1:32768)
 
 // CONFIG3H
 #pragma config CCP2MX = RC1     // CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)

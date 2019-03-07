@@ -45,8 +45,8 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
     uint8_t index;
     uint8_t static requestCounter = 0;
     uint8_t const numberOfRequests = 3;
-    uint8_t const requestTimeout = 2;
-    uint32_t static oldTime = 0;
+    time_t const requestTimeout = 2000;
+    time_t static oldTime = 0;
 
     //First let's check the ARP table for a valid entry
     if (ARP_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
@@ -61,11 +61,11 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
         return err;
     } else {
         //There was no valid entry in the ARP table, we have to send some requests
-        if (getSeconds() - oldTime >= requestTimeout) {//Wait between two requests
-            oldTime = getSeconds();
+        if (getMillis() - oldTime >= requestTimeout) {//Wait between two requests
+            oldTime = getMillis();
             if (requestCounter < numberOfRequests) {//Send only a limited number of requests and then give up
                 requestCounter++;
-                ARP_sendRequest(ipPacket.ipv4Header.destination);
+                ARP_sendRequest(ipv4_getIPSourceAddress(), ipPacket.ipv4Header.destination);
             } else {
                 //We got no answer to our requests
                 requestCounter = 0;
@@ -159,9 +159,6 @@ void ipv4_handleNewPacket(ethernetFrame_t *frame) {
 
 
     ethernetController_dropPacket(frame);
-    /**
-     * \todo ipv4 packet reception
-     */
 }
 
 ipv4_header_t static ipv4_parseHeader(memoryField_t *field) {
@@ -228,8 +225,36 @@ ipv4_address_t ipv4_getIPSourceAddress() {
     return sourceIPAddress;
 }
 
-void ipv4_setIPSourceAddress(ipv4_address_t ip) {
-    sourceIPAddress = ip;
+error_t ipv4_setIPSourceAddress(ipv4_address_t ip) {
+    uint8_t static state = 0;
+    uint8_t const numberOfProbes = 3; //how many times an arp probe is sent
+    uint8_t const timeBetweenProbes = 1; //seconds between arp probes
+    uint8_t static probeCounter = 0;
+    uint8_t index;
+    error_t err;
+    err.module = ERROR_MODULE_IPv4;
+    switch (state) {
+        case 0://Check the ARP table 
+            if (ARP_checkForEntry(ip, &index)) {
+                if (probeCounter == 0)//Was an arp probe sent?
+                    //The address is already in the arp table
+                    err.code = ERROR_IPv4_ADDRESS_ALREADY_IN_USE;
+                else
+                    //The address was just added to the arp table
+                    err.code = ERROR_IPv4_ADDRESS_CONFLICT_DETECTED;
+                return err;
+            }
+            state = 1;
+            break;
+        case 1:
+            sourceIPAddress = ip;
+            break;
+    }
+
+}
+
+error_t ipv4_checkForConflicts(ipv4_address_t ip) {
+
 }
 
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t * b) {

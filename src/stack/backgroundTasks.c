@@ -31,22 +31,30 @@ void handleStackBackgroundTasks(stack_t* stack) {
             stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
         }
     }
+    /**
+     * \todo check other relevant interrupt flags and return errors
+     * 
+     */
 
     if (stack->background.fPacketPending) {
         //There is a packet awaiting transmission
+
         stack->background.err = ipv4_sendFrame(stack->pendingPacketToSend);
+        if (stack->background.err.code == ERROR_ARP_WAITING_FOR_REPLY) {
+
+        }
         if (stack->background.err.module == ERROR_MODULE_ARP &&
                 stack->background.err.code == ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED) {
             UARTTransmitText("Could not resolve ");
             UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
             UARTTransmitText("\n\r");
-            stack->background.fPacketPending = 0;
+            stack->background.fPacketPending = false;
         }
         if (stack->background.err.module == ERROR_MODULE_ARP &&
                 stack->background.err.code == ERROR_CODE_SUCCESSFUL) {
-            UARTTransmitText("IP packet sent.");
+            UARTTransmitText("IP packet sent.\n\r");
             //address resolution is completed
-            stack->background.fPacketPending = 0;
+            stack->background.fPacketPending = false;
         }
     }
     if (stack->background.interruptFlags.LINKIF) {//link status change

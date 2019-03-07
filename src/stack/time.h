@@ -1,9 +1,9 @@
-/**
- * \file stack.h
- * \brief Top-level stuff of the Stack
+/** 
+ * \file time.h
+ * \brief Time base
  * \author Stefan Gloor
  * \version 1.0
- * \date 27. Januar 2019
+ * \date 5. March 2019
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -18,36 +18,28 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.    
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+ * 
  */
-
-#ifndef STACK_H
-#define	STACK_H
 
 #include <stdint.h>
 
-#include "../eth/ethernetTypes.h"
-#include "../stack/backgroundTasksTypes.h"
-#include "../stack/protocols/ipv4.h"
+#ifndef TIME_H
+#define	TIME_H
+
+typedef uint32_t time_t;
 
 /**
- * \defgroup stack Stack
- * \{
+ * \brief Increments a time counting value
+ * \note Call this every 1 ms to keep time-sensitive functions up to date.
  */
+void updateTime();
 
 /**
- * \brief Top-level structure of the entire stack.
+ * \brief Returns the number of milliseconds passed since reset if \ref updateSeconds() was called regularly
+ * \return Number of milliseconds
  */
-typedef struct stack {
-    ethernetConnection_t ethernet;
-    backgroundTaskHandler_t volatile background;
-    ethernetFrame_t newReceivedFrame;
-    ipv4_packet_t pendingPacketToSend;
-} stack_t;
+time_t getMillis();
 
-
-
-/**\}*/
-
-#endif	/* STACK_H */
+#endif	/* TIME_H */
 

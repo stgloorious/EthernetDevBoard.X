@@ -11,6 +11,7 @@ src/system/../enc424j600/../mem/memoryController.h  \
 src/system/../system/main.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../../system/../eth/mac.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../protocols/ipv4.h  \
+src/system/../system/../eth/../eth/../stack/time.h  \
 src/system/../enc424j600/ENC424J600.h  \
 src/system/../system/../stack/../stack/../stack/error.h  \
 src/system/../system/../stack/../stack/error.h  \
@@ -20,6 +21,7 @@ src/system/../system/../stack/../stack/protocols/../protocols/../protocols/arpTy
 src/system/../system/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../error.h  \
 src/system/../system/../stack/../stack/protocols/../error.h  \
 src/system/../system/../system/sevenseg.h  \
+src/system/../system/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../time.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/ipv4Types.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../protocols/ipv4Types.h  \
 src/system/../system/../stack/backgroundTasks.h  \
@@ -55,6 +57,7 @@ src/system/../system/../stack/../stack/protocols/../protocols/../../mem/memoryTy
 src/system/../system/../stack/../stack/protocols/../protocols/../../system/uart.h  \
 src/system/../system/../eth/../enc424j600/interrupt.h  \
 src/system/../system/../stack/../stack/../enc424j600/interrupt.h  \
+src/system/../system/../stack/../stack/bool.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../../eth/mac.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../../eth/../stack/bool.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/arp.h 

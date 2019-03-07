@@ -24,7 +24,7 @@
 #ifndef BACKGROUNDTASKSTYPES_H
 #define	BACKGROUNDTASKSTYPES_H
 
-#include <stdint.h>
+#include "bool.h"
 #include "../stack/error.h"
 #include "../enc424j600/interrupt.h"
 
@@ -47,8 +47,9 @@ typedef struct backgroundTaskHandler {
     
     /**
      * \brief Indicates if there is a pending packet to send. This flag is reset when the transmission is complete.
+     * \todo Can somebody pls tell me why bool_t doesn't work here; A bitfield gives really strange behaviour (?)
      */
-    uint8_t fPacketPending : 1;
+    uint8_t fPacketPending;
 } backgroundTaskHandler_t;
 
 /**\}*/

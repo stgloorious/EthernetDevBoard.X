@@ -1,9 +1,9 @@
-/**
- * \file stack.h
- * \brief Top-level stuff of the Stack
+/** 
+ * \file time.c
+ * \brief Time base
  * \author Stefan Gloor
  * \version 1.0
- * \date 27. Januar 2019
+ * \date 5. March 2019
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -18,36 +18,18 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.    
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+ * 
  */
 
-#ifndef STACK_H
-#define	STACK_H
+#include "time.h"
 
-#include <stdint.h>
+time_t volatile static time = 0;
 
-#include "../eth/ethernetTypes.h"
-#include "../stack/backgroundTasksTypes.h"
-#include "../stack/protocols/ipv4.h"
+void updateTime() {
+    time++;
+}
 
-/**
- * \defgroup stack Stack
- * \{
- */
-
-/**
- * \brief Top-level structure of the entire stack.
- */
-typedef struct stack {
-    ethernetConnection_t ethernet;
-    backgroundTaskHandler_t volatile background;
-    ethernetFrame_t newReceivedFrame;
-    ipv4_packet_t pendingPacketToSend;
-} stack_t;
-
-
-
-/**\}*/
-
-#endif	/* STACK_H */
-
+time_t getMillis() {
+    return time;
+}

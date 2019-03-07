@@ -105,7 +105,6 @@ error_t ethernetController_softReset() {
         //verify 0x1234 has been written to EUDAST
         if ((receivedData[0] == dataToSend[0]) && (receivedData[1] == dataToSend[1])) {
             //it was successful
-            UARTTransmitText("Writing 0x1234 successful.\n\r");
             ENC424J600_writeSingleByte(SETETHRST); //issue software reset
             __delay_us(25);
             //read from EUDAST
@@ -113,19 +112,16 @@ error_t ethernetController_softReset() {
             ENC424J600_readControlRegisterUnbanked(EUDASTH + BANK_0_OFFSET, &receivedData[1]);
             //does it equal 0x0000?
             if (!receivedData[0] && !receivedData[1]) {
-                UARTTransmitText("Reset success.\n\r");
                 //everything's fine
                 __delay_us(256);
                 return err;
             } else {//reset was not successful because EUDAST doesn't equal 0x0000, issue an error
-                UARTTransmitText("Reset failed.\n\r");
                 err.code = ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE;
                 return err;
             }
         }
         comFailCount++; //try several times to write and verify 0x1234
     } else {//0x1234 could not be written/read 
-        UARTTransmitText("Writing 0x1234 failed.\n\r");
         err.code = ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE;
         return err;
     }
