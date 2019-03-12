@@ -6912,10 +6912,12 @@ memoryField_t memory;
 
 # 92
 RSV_t receiveStatusVector;
+
+# 96
 time_t tReceived;
 } ethernetFrame_t;
 
-# 99
+# 102
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -7085,6 +7087,10 @@ interruptFlags_t interruptFlags;
 
 # 52
 uint8_t fPacketPending;
+
+uint8_t fSetSourceAddr;
+
+
 } backgroundTaskHandler_t;
 
 # 40 "src/system/../system/../stack/../stack/protocols/../protocols/ipv4Types.h"
@@ -7148,6 +7154,8 @@ memoryField_t memory;
 # 139
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
+
+ipv4_address_t ipSource;
 
 # 43 "src/system/../system/../stack/../stack/protocols/../protocols/../../eth/mac.h"
 bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
@@ -7560,11 +7568,10 @@ UARTTransmitText("\a*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
 UARTTransmitText("------------------------------------------------\n\r");
 }
 UARTTransmitText("FIRMWARE BUILD DATE IS ");
-UARTTransmitText("Mar 07 2019");
+UARTTransmitText("Mar 12 2019");
 UARTTransmitText(" ");
-UARTTransmitText("20:14:30");
-UARTTransmitText("\n\r");
-UARTTransmitText("Initialising Ethernet Controller...\n\r");
+UARTTransmitText("22:43:55");
+UARTTransmitText(".\n\r");
 error_t err;
 err = ethernetController_init();
 if (err.code != (uint16_t)0)
@@ -7574,13 +7581,9 @@ if (err.code == (uint16_t)0) {
 UARTTransmitText(ethernetController_getDeviceName());
 UARTTransmitText(" detected. ");
 }
-UARTTransmitText("Silicon revision is ");
-UARTTransmitInt(ethernetController_getSiliconRevision());
-UARTTransmitText(".\n\r");
 UARTTransmitText("Source MAC address is ");
 UARTTransmitText(macToString(ethernetController_getMacAddress()));
 UARTTransmitText(".\n\r");
-UARTTransmitText("Initialisation completed.\n\r");
 UARTTransmitText("------------------------------------------------\n\r");
 
 ARP_initTable();
@@ -7613,12 +7616,10 @@ IPdestination.address[2] = 0;
 IPdestination.address[3] = 5;
 
 
-ipv4_setIPSourceAddress(IPsource);
-
-
-
 INTCONbits.GIE = 1;
 INTCONbits.PEIE = 1;
+
+
 
 srand(ethernetController_getMacAddress().address[5]);
 
@@ -7634,34 +7635,10 @@ numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : ethernetController_g
 if (buttonState) {
 buttonState = 0;
 
-if (stack.ethernet.link == LINK_ESTABLISHED) {
+UARTTransmitText("Setting IPv4 Address...\n\r");
+stack.background.fSetSourceAddr = 1;
 
-
-uint8_t headerBuf[32];
-stack.pendingPacketToSend.ipv4Header.destination = IPdestination;
-stack.pendingPacketToSend.ipv4Header.source = IPsource;
-stack.pendingPacketToSend.ipv4Header.totalLength = 120;
-stack.pendingPacketToSend.ipv4Header.timeToLive = 255;
-stack.pendingPacketToSend.ipv4Header.version = 4;
-ipv4_calculateHeaderChecksum(&stack.pendingPacketToSend.ipv4Header);
-ipv4_writeHeaderIntoBuffer(stack.pendingPacketToSend.ipv4Header, headerBuf);
-
-ipv4_txFrameRequest(&stack.pendingPacketToSend);
-
-for (uint8_t i = 0; i < stack.pendingPacketToSend.ipv4Header.totalLength; i++) {
-if (i < stack.pendingPacketToSend.ipv4Header.headerLength * 4) {
-ipv4_streamToTransmissionBuffer(headerBuf[i], stack.pendingPacketToSend);
-} else
-ipv4_streamToTransmissionBuffer(0, stack.pendingPacketToSend);
-}
-
-stack.background.fPacketPending = 1;
-
-UARTTransmitText(hexToString(stack.pendingPacketToSend.memory.start));
-UARTTransmitText(", ");
-UARTTransmitText(hexToString(stack.pendingPacketToSend.memory.end));
-UARTTransmitText("\n\r");
-}
+# 175
 }
 }
 }
@@ -7736,7 +7713,7 @@ void buttonHandler(uint8_t volatile *state) {
 uint8_t static oldState = 0;
 uint8_t static newState = 0;
 uint32_t static debounceCounter = 0;
-const uint32_t debounceValue = 0xfff;
+const uint32_t debounceValue = 0x1f;
 if ((unsigned)(!(PORTB & (1<<5)))) {
 if (debounceCounter < debounceValue)
 debounceCounter++;
@@ -7772,7 +7749,7 @@ buttonHandler(&buttonState);
 if (INTCON3bits.INT2IF) {
 INTCON3bits.INT2IF = 0;
 
-# 294
+# 290
 }
 if (RCIF) {
 

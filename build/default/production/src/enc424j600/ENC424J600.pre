@@ -6840,10 +6840,12 @@ memoryField_t memory;
 
 # 92
 RSV_t receiveStatusVector;
+
+# 96
 time_t tReceived;
 } ethernetFrame_t;
 
-# 99
+# 102
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -7145,6 +7147,8 @@ memoryField_t memory;
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
+ipv4_address_t ipSource;
+
 # 55 "src/enc424j600/../system/../stack/protocols/arpTypes.h"
 typedef struct ARP_message {
 uint16_t htype;
@@ -7249,6 +7253,10 @@ interruptFlags_t interruptFlags;
 
 # 52
 uint8_t fPacketPending;
+
+uint8_t fSetSourceAddr;
+
+
 } backgroundTaskHandler_t;
 
 # 41 "src/enc424j600/../system/../stack/protocols/../stack.h"

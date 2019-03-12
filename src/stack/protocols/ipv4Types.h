@@ -139,6 +139,8 @@ typedef struct ipv4_packet {
     ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
+ipv4_address_t ipSource;
+
 /**\}*/
 
 #endif	/* IPV4TYPES_H */

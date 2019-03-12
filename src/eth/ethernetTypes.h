@@ -90,6 +90,9 @@ typedef struct ethernetFrame {
      * \note The RSV is unused if this structure is used for transmission
      */
     RSV_t receiveStatusVector;
+    /**
+     * \brief A timestamp which shows the number of milliseconds that have passed since last reset at the time of reception of this frame.
+     */
     time_t tReceived;
 } ethernetFrame_t;
 

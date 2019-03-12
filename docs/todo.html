@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
   </td>
  </tr>
  </tbody>
@@ -70,7 +70,9 @@ $(function() {
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Global <a class="el" href="group__arp.html#ga1ba858e52bf34bca0e5260f0dc0e4641">ARP_handleNewPacket</a>  (ethernetFrame_t *frame)</dt>
-<dd><a class="anchor" id="_todo000007"></a>where does the tail pointer get updated  </dd>
+<dd><a class="anchor" id="_todo000009"></a>where does the tail pointer get updated  </dd>
+<dt>Global <a class="el" href="structbackground_task_handler.html#a55a5ad03a1e3f5808b419c49021b4759">backgroundTaskHandler::fPacketPending</a>  </dt>
+<dd><a class="anchor" id="_todo000008"></a>Can somebody pls tell me why bool_t doesn't work here; A bitfield gives really strange behaviour (?)  </dd>
 <dt>Module <a class="el" href="group___b_a_n_k__0.html">BANK_0</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000004"></a>It may be nice to add the full register names</p>
 <p class="enddd"></p>
@@ -81,12 +83,12 @@ $(function() {
 <dd><a class="anchor" id="_todo000002"></a>Crypto engine support with DMA  </dd>
 <dt>Global <a class="el" href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">ethernetController_setLEDConfig</a>  (LEDs_t LED, LEDStates_t conf)</dt>
 <dd><a class="anchor" id="_todo000006"></a>remove this and use only ethernetController_setLEDConfiguration()  </dd>
-<dt>Global <a class="el" href="group__ipv4.html#ga7f96d526bafe55783b675597634d87ae">ipv4_handleNewPacket</a>  (ethernetFrame_t *frame)</dt>
-<dd><a class="anchor" id="_todo000011"></a>ipv4 packet reception  </dd>
+<dt>Global <a class="el" href="group__background.html#gaf6bebfbbcd06181803783d2504fe318e">handleStackBackgroundTasks</a>  (stack_t *stack)</dt>
+<dd><a class="anchor" id="_todo000007"></a>check other relevant interrupt flags and return errors </dd>
 <dt>Global <a class="el" href="group__ipv4.html#ga9b32058fa6f24f692e0915345b3373b2">ipv4_streamToTransmissionBuffer</a>  (uint8_t data, ipv4_packet_t packet)</dt>
-<dd><a class="anchor" id="_todo000010"></a>Fragmenting  </dd>
+<dd><a class="anchor" id="_todo000012"></a>Fragmenting  </dd>
 <dt>Global <a class="el" href="group__arp.html#gad629320d0e251b055167216baa76aff3">printArpTable</a>  ()</dt>
-<dd><a class="anchor" id="_todo000009"></a>Remove this later  </dd>
+<dd><a class="anchor" id="_todo000011"></a>Remove this later  </dd>
 <dt>Module <a class="el" href="group__rsv_bits.html">rsvBits</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000005"></a>I don't really like how this looks</p>
 <p class="enddd"></p>

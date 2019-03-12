@@ -1,4 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"47 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h
+[s S610 `uc -> 4 `i ]
+[n S610 ipv4_address address ]
 "33 src/enc424j600/ENC424J600.c
 [c E5436 0 1 2 3 4 .. ]
 [n E5436 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
@@ -101,7 +104,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n E5520 speeds TEN_MBIT HUNDRED_MBIT  ]
 [c E5524 0 1 .. ]
 [n E5524 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
-"99 src/enc424j600/../enc424j600/../eth/../eth/ethernetTypes.h
+"102 src/enc424j600/../enc424j600/../eth/../eth/ethernetTypes.h
 [s S608 `E5516 1 `E5520 1 `E5524 1 `S606 1 `S606 1 ]
 [n S608 ethernetConnection link speed duplex source destination ]
 "132 src/enc424j600/../enc424j600/ENC424J600.h
@@ -5324,15 +5327,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 87: etherType_t ethertype;
 [; ;ethernetTypes.h: 88: memoryField_t memory;
 [; ;ethernetTypes.h: 92: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 93: time_t tReceived;
-[; ;ethernetTypes.h: 94: } ethernetFrame_t;
-[; ;ethernetTypes.h: 99: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 100: linkState_t link;
-[; ;ethernetTypes.h: 101: speed_t speed;
-[; ;ethernetTypes.h: 102: duplexState_t duplex;
-[; ;ethernetTypes.h: 103: macaddress_t source;
-[; ;ethernetTypes.h: 104: macaddress_t destination;
-[; ;ethernetTypes.h: 105: } ethernetConnection_t;
+[; ;ethernetTypes.h: 96: time_t tReceived;
+[; ;ethernetTypes.h: 97: } ethernetFrame_t;
+[; ;ethernetTypes.h: 102: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 103: linkState_t link;
+[; ;ethernetTypes.h: 104: speed_t speed;
+[; ;ethernetTypes.h: 105: duplexState_t duplex;
+[; ;ethernetTypes.h: 106: macaddress_t source;
+[; ;ethernetTypes.h: 107: macaddress_t destination;
+[; ;ethernetTypes.h: 108: } ethernetConnection_t;
 [; ;interrupt.h: 34: typedef struct interruptFlags {
 [; ;interrupt.h: 35: uint8_t MODEXIF : 1;
 [; ;interrupt.h: 36: uint8_t HASHIF : 1;
@@ -5456,6 +5459,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4Types.h: 135: memoryField_t memory;
 [; ;ipv4Types.h: 139: ethernetFrame_t ethernet;
 [; ;ipv4Types.h: 140: } ipv4_packet_t;
+"142 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h
+[v _ipSource `S610 ~T0 @X0 1 e ]
+[; ;ipv4Types.h: 142: ipv4_address_t ipSource;
 [; ;arpTypes.h: 55: typedef struct ARP_message {
 [; ;arpTypes.h: 56: uint16_t htype;
 [; ;arpTypes.h: 57: uint16_t ptype;
@@ -5507,7 +5513,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
 [; ;backgroundTasksTypes.h: 52: uint8_t fPacketPending;
-[; ;backgroundTasksTypes.h: 53: } backgroundTaskHandler_t;
+[; ;backgroundTasksTypes.h: 54: uint8_t fSetSourceAddr;
+[; ;backgroundTasksTypes.h: 57: } backgroundTaskHandler_t;
 [; ;stack.h: 41: typedef struct stack {
 [; ;stack.h: 42: ethernetConnection_t ethernet;
 [; ;stack.h: 43: backgroundTaskHandler_t volatile background;
@@ -5617,8 +5624,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _comFailCount `uc ~T0 @X0 1 a ]
 [; ;ENC424J600.c: 92: uint8_t comFailCount = 0;
 [e = _comFailCount -> -> 0 `i `uc ]
-[v F5848 `uc ~T0 @X0 -> 2 `i s ]
-[i F5848
+[v F5850 `uc ~T0 @X0 -> 2 `i s ]
+[i F5850
 :U ..
 "93
 -> -> 18 `i `uc
@@ -5627,9 +5634,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _dataToSend `uc ~T0 @X0 -> 2 `i a ]
 [; ;ENC424J600.c: 93: uint8_t dataToSend[2] = {0x12, 0x34};
-[e = _dataToSend F5848 ]
-[v F5850 `uc ~T0 @X0 -> 2 `i s ]
-[i F5850
+[e = _dataToSend F5850 ]
+[v F5852 `uc ~T0 @X0 -> 2 `i s ]
+[i F5852
 :U ..
 "94
 -> -> 0 `i `uc
@@ -5638,7 +5645,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _receivedData `uc ~T0 @X0 -> 2 `i a ]
 [; ;ENC424J600.c: 94: uint8_t receivedData[2] = {0, 0};
-[e = _receivedData F5850 ]
+[e = _receivedData F5852 ]
 "95
 [v _err `S603 ~T0 @X0 1 a ]
 [; ;ENC424J600.c: 95: error_t err;
@@ -5790,8 +5797,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 144: char *ethernetController_getDeviceName() {
 [e :U _ethernetController_getDeviceName ]
 [f ]
-[v F5860 `Cuc ~T0 @X0 -> 0 `x s ]
-[i F5860
+[v F5862 `Cuc ~T0 @X0 -> 0 `x s ]
+[i F5862
 :U ..
 -> 69 `c
 -> 78 `c
@@ -5809,7 +5816,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "145
 [v _string `Cuc ~T0 @X0 11  a ]
 [; ;ENC424J600.c: 145: const char string [] = "ENC424J600";
-[e = _string F5860 ]
+[e = _string F5862 ]
 [; ;ENC424J600.c: 146: return string;
 "146
 [e ) -> &U _string `*uc ]
@@ -6010,15 +6017,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "208
 [v _opcode `uc ~T0 @X0 1 a ]
 "209
-[v F5868 `ui ~T0 @X0 1 s pointer ]
-[i F5868
+[v F5870 `ui ~T0 @X0 1 s pointer ]
+[i F5870
 -> -> 0 `i `ui
 ]
 [; ;ENC424J600.c: 208: uint8_t opcode;
 [; ;ENC424J600.c: 209: uint16_t static pointer = 0;
 [; ;ENC424J600.c: 210: if (pointer == 0) {
 "210
-[e $ ! == F5868 -> -> 0 `i `ui 641  ]
+[e $ ! == F5870 -> -> 0 `i `ui 641  ]
 {
 [; ;ENC424J600.c: 211: ENC424J600_setGPDATAWritePointer(field.start);
 "211
@@ -6041,14 +6048,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ENC424J600_writeSPI (1 &U _data ]
 [; ;ENC424J600.c: 219: if (pointer == field.length - 1) {
 "219
-[e $ ! == F5868 - . _field 2 -> -> 1 `i `ui 642  ]
+[e $ ! == F5870 - . _field 2 -> -> 1 `i `ui 642  ]
 {
 [; ;ENC424J600.c: 220: PORTBbits.RB4=1;
 "220
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 221: pointer = 0;
 "221
-[e = F5868 -> -> 0 `i `ui ]
+[e = F5870 -> -> 0 `i `ui ]
 "222
 }
 [; ;ENC424J600.c: 222: } else {
@@ -6057,7 +6064,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;ENC424J600.c: 223: pointer++;
 "223
-[e ++ F5868 -> -> 1 `i `ui ]
+[e ++ F5870 -> -> 1 `i `ui ]
 "224
 }
 [e :U 643 ]
@@ -6353,7 +6360,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _address `ui ~T0 @X0 1 r1 ]
 [f ]
 "299
-[v F5897 `uc ~T0 @X0 -> 6 `i s temp ]
+[v F5899 `uc ~T0 @X0 -> 6 `i s temp ]
 [; ;ENC424J600.c: 299: uint8_t static temp[6];
 [; ;ENC424J600.c: 300: ENC424J600_setERXDATAReadPointer(address + 2);
 "300
@@ -6379,7 +6386,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;ENC424J600.c: 305: ENC424J600_readSPI(&temp[i]);
 "305
-[e ( _ENC424J600_readSPI (1 &U *U + &U F5897 * -> _i `ux -> -> # *U &U F5897 `ui `ux ]
+[e ( _ENC424J600_readSPI (1 &U *U + &U F5899 * -> _i `ux -> -> # *U &U F5899 `ui `ux ]
 "306
 }
 "304
@@ -6394,7 +6401,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 308: return ENC424J600_updateReceiveStatusVector(&temp[0]);
 "308
-[e ) ( _ENC424J600_updateReceiveStatusVector (1 &U *U + &U F5897 * -> -> -> 0 `i `ui `ux -> -> # *U &U F5897 `ui `ux ]
+[e ) ( _ENC424J600_updateReceiveStatusVector (1 &U *U + &U F5899 * -> -> -> 0 `i `ui `ux -> -> # *U &U F5899 `ui `ux ]
 [e $UE 661  ]
 [; ;ENC424J600.c: 309: }
 "309

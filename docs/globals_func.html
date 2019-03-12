@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
   </td>
  </tr>
  </tbody>
@@ -83,16 +83,20 @@ $(function() {
 : <a class="el" href="group__arp.html#ga35f276b970aa00ca18990c7ddc63a65e">arp.h</a>
 , <a class="el" href="group__arp.html#ga35f276b970aa00ca18990c7ddc63a65e">arp.c</a>
 </li>
-<li>ARP_replyIfNeeded()
-: <a class="el" href="group__arp.html#gae3e5d52fa89b91d6552cb328b8b6ec81">arp.h</a>
+<li>ARP_probe()
+: <a class="el" href="arp_8c.html#a9652dab0f37c3483c7d2e08c75a7781c">arp.c</a>
+, <a class="el" href="arp_8h.html#a9652dab0f37c3483c7d2e08c75a7781c">arp.h</a>
+</li>
+<li>ARP_sendReply()
+: <a class="el" href="group__arp.html#gab65f59f9ae425d1c88f494ddf8703af0">arp.h</a>
 </li>
 <li>ARP_sendRequest()
-: <a class="el" href="group__arp.html#ga1b3f3b5557d3cabb25df6b8f2af655bd">arp.c</a>
-, <a class="el" href="group__arp.html#ga1b3f3b5557d3cabb25df6b8f2af655bd">arp.h</a>
+: <a class="el" href="group__arp.html#gacb46c699a8bcaa36def633d756d110be">arp.c</a>
+, <a class="el" href="group__arp.html#gacb46c699a8bcaa36def633d756d110be">arp.h</a>
 </li>
 <li>arpEntryToString()
-: <a class="el" href="uart_8h.html#ae61e874d3d9829abc7d8a4804c79592b">uart.h</a>
-, <a class="el" href="uart_8c.html#ae61e874d3d9829abc7d8a4804c79592b">uart.c</a>
+: <a class="el" href="uart_8c.html#ae61e874d3d9829abc7d8a4804c79592b">uart.c</a>
+, <a class="el" href="uart_8h.html#ae61e874d3d9829abc7d8a4804c79592b">uart.h</a>
 </li>
 </ul>
 
@@ -266,9 +270,9 @@ $(function() {
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
-<li>getSeconds()
-: <a class="el" href="group__stack.html#ga232391229213d278f429714a9b551db5">stack.c</a>
-, <a class="el" href="group__stack.html#ga232391229213d278f429714a9b551db5">stack.h</a>
+<li>getMillis()
+: <a class="el" href="time_8c.html#ac3dfb63802bb70180628011a02da4854">time.c</a>
+, <a class="el" href="time_8h.html#ac3dfb63802bb70180628011a02da4854">time.h</a>
 </li>
 </ul>
 
@@ -308,6 +312,9 @@ $(function() {
 : <a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4.c</a>
 , <a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4.h</a>
 </li>
+<li>ipv4_checkForConflicts()
+: <a class="el" href="ipv4_8c.html#aad4bef6522793877d88393550f8afc40">ipv4.c</a>
+</li>
 <li>ipv4_cmp()
 : <a class="el" href="group__ip__operations.html#gad9c08409a635759d19d5118a29baec3d">ipv4.c</a>
 , <a class="el" href="group__ip__operations.html#gad9c08409a635759d19d5118a29baec3d">ipv4.h</a>
@@ -317,8 +324,8 @@ $(function() {
 , <a class="el" href="group__ipv4.html#gaace46bc098160cc06288e80390dc855a">ipv4.h</a>
 </li>
 <li>ipv4_handleNewPacket()
-: <a class="el" href="group__ipv4.html#ga7f96d526bafe55783b675597634d87ae">ipv4.c</a>
-, <a class="el" href="group__ipv4.html#ga7f96d526bafe55783b675597634d87ae">ipv4.h</a>
+: <a class="el" href="group__ipv4.html#ga7f96d526bafe55783b675597634d87ae">ipv4.h</a>
+, <a class="el" href="group__ipv4.html#ga7f96d526bafe55783b675597634d87ae">ipv4.c</a>
 </li>
 <li>ipv4_isAllZero()
 : <a class="el" href="group__ip__operations.html#gaa00ec29f5a104d77f8f61f47da1fa9b6">ipv4.c</a>
@@ -329,8 +336,8 @@ $(function() {
 , <a class="el" href="group__ipv4.html#ga1837c9c3c1856f57fe1d5ec5008015a2">ipv4.h</a>
 </li>
 <li>ipv4_setIPSourceAddress()
-: <a class="el" href="group__ipv4.html#ga8a9ec06886de83e5c5cc133871d2b250">ipv4.c</a>
-, <a class="el" href="group__ipv4.html#ga8a9ec06886de83e5c5cc133871d2b250">ipv4.h</a>
+: <a class="el" href="group__ipv4.html#gad7cdb199040068c1d1dc14d9f2d7571d">ipv4.c</a>
+, <a class="el" href="group__ipv4.html#gad7cdb199040068c1d1dc14d9f2d7571d">ipv4.h</a>
 </li>
 <li>ipv4_setToAllZero()
 : <a class="el" href="group__ip__operations.html#gac5383f68f84a2968218c92812354512a">ipv4.c</a>
@@ -345,8 +352,8 @@ $(function() {
 , <a class="el" href="group__ipv4.html#ga1bf24e45bf60a70b43ea1f1738c9a4c5">ipv4.h</a>
 </li>
 <li>ipv4_writeHeaderIntoBuffer()
-: <a class="el" href="group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d">ipv4.c</a>
-, <a class="el" href="group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d">ipv4.h</a>
+: <a class="el" href="group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d">ipv4.h</a>
+, <a class="el" href="group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d">ipv4.c</a>
 </li>
 <li>isOnlyOneAssigned()
 : <a class="el" href="memory_controller_8c.html#a497a08e5c5c8f820545daad14d586b65">memoryController.c</a>
@@ -439,9 +446,9 @@ $(function() {
 : <a class="el" href="uart_8c.html#aededddacce8a1f56d58e40654babcc83">uart.c</a>
 , <a class="el" href="uart_8h.html#aededddacce8a1f56d58e40654babcc83">uart.h</a>
 </li>
-<li>updateSeconds()
-: <a class="el" href="group__stack.html#gabeccd7481529472ac536f41b0d2be690">stack.h</a>
-, <a class="el" href="group__stack.html#gabeccd7481529472ac536f41b0d2be690">stack.c</a>
+<li>updateTime()
+: <a class="el" href="time_8h.html#a19562d96ecbcf8a223d3c38b39993fbf">time.h</a>
+, <a class="el" href="time_8c.html#a19562d96ecbcf8a223d3c38b39993fbf">time.c</a>
 </li>
 </ul>
 </div><!-- contents -->

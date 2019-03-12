@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getseconds',['getSeconds',['../group__stack.html#ga232391229213d278f429714a9b551db5',1,'getSeconds():&#160;stack.c'],['../group__stack.html#ga232391229213d278f429714a9b551db5',1,'getSeconds():&#160;stack.c']]]
+  ['getmillis',['getMillis',['../time_8c.html#ac3dfb63802bb70180628011a02da4854',1,'getMillis():&#160;time.c'],['../time_8h.html#ac3dfb63802bb70180628011a02da4854',1,'getMillis():&#160;time.c']]]
 ];

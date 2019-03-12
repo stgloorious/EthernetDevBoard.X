@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
   </td>
  </tr>
  </tbody>
@@ -78,6 +78,7 @@ $(function() {
 <p>Function definitions for IPv4.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ipv4_8h_source.html">ipv4.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="arp_settings_8h_source.html">arpSettings.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -101,8 +102,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga7f96d526bafe55783b675597634d87ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaace46bc098160cc06288e80390dc855a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gaace46bc098160cc06288e80390dc855a">ipv4_getIPSourceAddress</a> ()</td></tr>
 <tr class="separator:gaace46bc098160cc06288e80390dc855a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a9ec06886de83e5c5cc133871d2b250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga8a9ec06886de83e5c5cc133871d2b250">ipv4_setIPSourceAddress</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
-<tr class="separator:ga8a9ec06886de83e5c5cc133871d2b250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad7cdb199040068c1d1dc14d9f2d7571d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gad7cdb199040068c1d1dc14d9f2d7571d">ipv4_setIPSourceAddress</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
+<tr class="separator:gad7cdb199040068c1d1dc14d9f2d7571d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad4bef6522793877d88393550f8afc40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ipv4_8c.html#aad4bef6522793877d88393550f8afc40">ipv4_checkForConflicts</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
+<tr class="separator:aad4bef6522793877d88393550f8afc40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9c08409a635759d19d5118a29baec3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ip__operations.html#gad9c08409a635759d19d5118a29baec3d">ipv4_cmp</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> *a, <a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> *b)</td></tr>
 <tr class="memdesc:gad9c08409a635759d19d5118a29baec3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two IPv4 addresses and checks if they are equal.  <a href="group__ip__operations.html#gad9c08409a635759d19d5118a29baec3d">More...</a><br /></td></tr>
 <tr class="separator:gad9c08409a635759d19d5118a29baec3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,7 +126,26 @@ Functions</h2></td></tr>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aad4bef6522793877d88393550f8afc40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad4bef6522793877d88393550f8afc40">&#9670;&nbsp;</a></span>ipv4_checkForConflicts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a> ipv4_checkForConflicts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td>
+          <td class="paramname"><em>ip</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

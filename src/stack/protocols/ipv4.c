@@ -22,9 +22,7 @@
  */
 
 #include "ipv4.h"
-
-static ipv4_address_t sourceIPAddress;
-static ipv4_address_t destinationIPAddress;
+#include "arpSettings.h"
 
 void ipv4_txFrameRequest(ipv4_packet_t *packet) {
     packet->ethernet.length = packet->ipv4Header.totalLength + 8;
@@ -44,36 +42,35 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
     err.module = ERROR_MODULE_ARP;
     uint8_t index;
     uint8_t static requestCounter = 0;
-    uint8_t const numberOfRequests = 3;
-    time_t const requestTimeout = 2000;
     time_t static oldTime = 0;
 
     //First let's check the ARP table for a valid entry
-    if (ARP_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
-        //There is a non-expired entry of the IP address
-        ipPacket.ethernet.destination = ARP_getEntryFromTable(index);
-        //The source address is always stored in the Ethernet controller:
-        ipPacket.ethernet.source = ethernetController_getMacAddress();
-        //Fill the new information in memory and send the packet
-        ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipPacket.ethernet.memory);
-        ethernetController_sendPacket(ipPacket.ethernet.memory);
-        err.code = ERROR_CODE_SUCCESSFUL;
-        return err;
-    } else {
-        //There was no valid entry in the ARP table, we have to send some requests
-        if (getMillis() - oldTime >= requestTimeout) {//Wait between two requests
-            oldTime = getMillis();
-            if (requestCounter < numberOfRequests) {//Send only a limited number of requests and then give up
-                requestCounter++;
-                ARP_sendRequest(ipv4_getIPSourceAddress(), ipPacket.ipv4Header.destination);
-            } else {
-                //We got no answer to our requests
-                requestCounter = 0;
-                err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED;
-                return err;
-            }
-        }
-    }
+    /* if (ARP_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
+         //There is a non-expired entry of the IP address
+         ipPacket.ethernet.destination = ARP_getEntryFromTable(index);
+         //The source address is always stored in the Ethernet controller:
+         ipPacket.ethernet.source = ethernetController_getMacAddress();
+         //Fill the new information in memory and send the packet
+         ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipPacket.ethernet.memory);
+         ethernetController_sendPacket(ipPacket.ethernet.memory);
+         err.code = ERROR_CODE_SUCCESSFUL;
+         return err;
+     } else {
+         //There was no valid entry in the ARP table, we have to send some requests
+         if (getMillis() - oldTime >= ANNOUNCE_WAIT) {//Wait between two requests
+             oldTime = getMillis();
+             if (requestCounter < PROBE_NUM) {//Send only a limited number of requests and then give up
+                 requestCounter++;
+                 ARP_sendRequest(ipv4_getIPSourceAddress(), ipPacket.ipv4Header.destination);
+             } else {
+                 //We got no answer to our requests
+                 requestCounter = 0;
+                 err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED;
+                 return err;
+             }
+         }
+     }*/
+
     err.code = ERROR_ARP_WAITING_FOR_REPLY;
     return err;
 }
@@ -222,34 +219,15 @@ bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header) {
 }
 
 ipv4_address_t ipv4_getIPSourceAddress() {
-    return sourceIPAddress;
+    return ipSource;
 }
 
 error_t ipv4_setIPSourceAddress(ipv4_address_t ip) {
-    uint8_t static state = 0;
-    uint8_t const numberOfProbes = 3; //how many times an arp probe is sent
-    uint8_t const timeBetweenProbes = 1; //seconds between arp probes
-    uint8_t static probeCounter = 0;
     uint8_t index;
     error_t err;
     err.module = ERROR_MODULE_IPv4;
-    switch (state) {
-        case 0://Check the ARP table 
-            if (ARP_checkForEntry(ip, &index)) {
-                if (probeCounter == 0)//Was an arp probe sent?
-                    //The address is already in the arp table
-                    err.code = ERROR_IPv4_ADDRESS_ALREADY_IN_USE;
-                else
-                    //The address was just added to the arp table
-                    err.code = ERROR_IPv4_ADDRESS_CONFLICT_DETECTED;
-                return err;
-            }
-            state = 1;
-            break;
-        case 1:
-            sourceIPAddress = ip;
-            break;
-    }
+
+    ARP_probe(ip);
 
 }
 

@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
   </td>
  </tr>
  </tbody>
@@ -125,12 +125,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga1ba858e52bf34bca0e5260f0dc0e4641">ARP_handleNewPacket</a> (<a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a> *frame)</td></tr>
 <tr class="memdesc:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a received ARP packet and does the necessary steps.  <a href="#ga1ba858e52bf34bca0e5260f0dc0e4641">More...</a><br /></td></tr>
 <tr class="separator:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gae3e5d52fa89b91d6552cb328b8b6ec81">ARP_replyIfNeeded</a> (<a class="el" href="group__arp.html#ga1708785291f10e8cc257efe2b769ba4c">ARP_message_t</a> request)</td></tr>
-<tr class="memdesc:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the ARPmessage contains a request for my address, this function replies accordingly.  <a href="#gae3e5d52fa89b91d6552cb328b8b6ec81">More...</a><br /></td></tr>
-<tr class="separator:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga1b3f3b5557d3cabb25df6b8f2af655bd">ARP_sendRequest</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
-<tr class="memdesc:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an ARP request to a given IPv4 address.  <a href="#ga1b3f3b5557d3cabb25df6b8f2af655bd">More...</a><br /></td></tr>
-<tr class="separator:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab65f59f9ae425d1c88f494ddf8703af0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gab65f59f9ae425d1c88f494ddf8703af0">ARP_sendReply</a> (<a class="el" href="group__arp.html#ga1708785291f10e8cc257efe2b769ba4c">ARP_message_t</a> request)</td></tr>
+<tr class="memdesc:gab65f59f9ae425d1c88f494ddf8703af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the ARPmessage contains a request for my address, this function replies accordingly.  <a href="#gab65f59f9ae425d1c88f494ddf8703af0">More...</a><br /></td></tr>
+<tr class="separator:gab65f59f9ae425d1c88f494ddf8703af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb46c699a8bcaa36def633d756d110be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gacb46c699a8bcaa36def633d756d110be">ARP_sendRequest</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipSender, <a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipTarget)</td></tr>
+<tr class="memdesc:gacb46c699a8bcaa36def633d756d110be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an ARP request to a given IPv4 address.  <a href="#gacb46c699a8bcaa36def633d756d110be">More...</a><br /></td></tr>
+<tr class="separator:gacb46c699a8bcaa36def633d756d110be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa50891c65dcfb449eb93a4d5aed366f5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gaa50891c65dcfb449eb93a4d5aed366f5">ARP_checkForEntry</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip, uint8_t *index)</td></tr>
 <tr class="memdesc:gaa50891c65dcfb449eb93a4d5aed366f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for an entry in the ARP table.  <a href="#gaa50891c65dcfb449eb93a4d5aed366f5">More...</a><br /></td></tr>
 <tr class="separator:gaa50891c65dcfb449eb93a4d5aed366f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,8 +143,8 @@ Functions</h2></td></tr>
 <tr class="memitem:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gad4abd9ee89fa8a8ba4231b6d914b5e83">ARP_TABLE_LENGTH</a>&#160;&#160;&#160;8</td></tr>
 <tr class="memdesc:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of entries in the ARP table.  <a href="#gad4abd9ee89fa8a8ba4231b6d914b5e83">More...</a><br /></td></tr>
 <tr class="separator:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">ARP_TABLE_ENTRY_TTL</a>&#160;&#160;&#160;300</td></tr>
-<tr class="memdesc:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time to live for an ARP Entry in seconds.  <a href="#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">More...</a><br /></td></tr>
+<tr class="memitem:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">ARP_TABLE_ENTRY_TTL</a>&#160;&#160;&#160;30000</td></tr>
+<tr class="memdesc:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time to live for an ARP Entry in milliseconds.  <a href="#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">More...</a><br /></td></tr>
 <tr class="separator:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacadcd25bea19657185a5fcb4f65a7669"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gacadcd25bea19657185a5fcb4f65a7669">ARP_TIMEOUT</a>&#160;&#160;&#160;2</td></tr>
 <tr class="memdesc:gacadcd25bea19657185a5fcb4f65a7669"><td class="mdescLeft">&#160;</td><td class="mdescRight">How long to wait after request for a reply in seconds.  <a href="#gacadcd25bea19657185a5fcb4f65a7669">More...</a><br /></td></tr>
@@ -197,12 +197,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARP_TABLE_ENTRY_TTL&#160;&#160;&#160;300</td>
+          <td class="memname">#define ARP_TABLE_ENTRY_TTL&#160;&#160;&#160;30000</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Time to live for an ARP Entry in seconds. </p>
+<p>Time to live for an ARP Entry in milliseconds. </p>
 
 </div>
 </div>
@@ -468,7 +468,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>where does the tail pointer get updated </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>where does the tail pointer get updated </dd></dl>
 
 </div>
 </div>
@@ -493,14 +493,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gae3e5d52fa89b91d6552cb328b8b6ec81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae3e5d52fa89b91d6552cb328b8b6ec81">&#9670;&nbsp;</a></span>ARP_replyIfNeeded()</h2>
+<a id="gab65f59f9ae425d1c88f494ddf8703af0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab65f59f9ae425d1c88f494ddf8703af0">&#9670;&nbsp;</a></span>ARP_sendReply()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ARP_replyIfNeeded </td>
+          <td class="memname">void ARP_sendReply </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__arp.html#ga1708785291f10e8cc257efe2b769ba4c">ARP_message_t</a>&#160;</td>
           <td class="paramname"><em>request</em></td><td>)</td>
@@ -519,8 +519,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga1b3f3b5557d3cabb25df6b8f2af655bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1b3f3b5557d3cabb25df6b8f2af655bd">&#9670;&nbsp;</a></span>ARP_sendRequest()</h2>
+<a id="gacb46c699a8bcaa36def633d756d110be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacb46c699a8bcaa36def633d756d110be">&#9670;&nbsp;</a></span>ARP_sendRequest()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,8 +529,18 @@ Functions</h2></td></tr>
           <td class="memname">void ARP_sendRequest </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td>
-          <td class="paramname"><em>ip</em></td><td>)</td>
+          <td class="paramname"><em>ipSender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td>
+          <td class="paramname"><em>ipTarget</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -538,7 +548,8 @@ Functions</h2></td></tr>
 <p>Sends an ARP request to a given IPv4 address. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ip</td><td>IP Address that should be resolved </td></tr>
+    <tr><td class="paramname">ipSender</td><td></td></tr>
+    <tr><td class="paramname">ipTarget</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -561,7 +572,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Used for debugging. Prints out ARP table via UART. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Remove this later </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Remove this later </dd></dl>
 
 </div>
 </div>

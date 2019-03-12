@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['digit_5fselect_5fansel',['DIGIT_SELECT_ANSEL',['../sevenseg_8h.html#af729fa98adbb1586c91da7430331f83d',1,'sevenseg.h']]],
-  ['digit_5fselect_5fport',['DIGIT_SELECT_PORT',['../sevenseg_8h.html#aa123d485b5a859716d341fd30666d1cd',1,'sevenseg.h']]],
-  ['digit_5fselect_5ftris',['DIGIT_SELECT_TRIS',['../sevenseg_8h.html#a3f22bb8a836520c623742d9231b02e03',1,'sevenseg.h']]]
+  ['button_5fansel',['BUTTON_ANSEL',['../main_8h.html#a10b0e76b4b842e9a1708d4a3d5c67c32',1,'main.h']]],
+  ['button_5fstate',['BUTTON_STATE',['../main_8h.html#a148ffb2bd7ea68b584fa794c78fd5a4a',1,'main.h']]],
+  ['button_5ftrisb',['BUTTON_TRISB',['../main_8h.html#ad126a17023c6dcb1ac8e687d47fc9932',1,'main.h']]]
 ];

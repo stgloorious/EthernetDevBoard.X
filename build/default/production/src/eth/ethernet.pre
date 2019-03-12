@@ -238,10 +238,12 @@ memoryField_t memory;
 
 # 92
 RSV_t receiveStatusVector;
+
+# 96
 time_t tReceived;
 } ethernetFrame_t;
 
-# 99
+# 102
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -7151,6 +7153,8 @@ memoryField_t memory;
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
+ipv4_address_t ipSource;
+
 # 55 "src/eth/../system/../stack/protocols/arpTypes.h"
 typedef struct ARP_message {
 uint16_t htype;
@@ -7249,6 +7253,10 @@ interruptFlags_t interruptFlags;
 
 # 52
 uint8_t fPacketPending;
+
+uint8_t fSetSourceAddr;
+
+
 } backgroundTaskHandler_t;
 
 # 41 "src/eth/../system/../stack/protocols/../stack.h"
@@ -7362,6 +7370,7 @@ uint32_t static counter = 0;
 error_t err;
 err.module = ERROR_MODULE_ETHERNET;
 err.code = (uint16_t)0;
+
 frame->tReceived = getMillis();
 frame->memory.start = ethernetController_getNextPacketPointer();
 

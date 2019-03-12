@@ -24,6 +24,7 @@
 #include "../eth/ethernet.h"
 #include "../enc424j600/ENC424J600.h"
 #include "../system/uart.h"
+#include "../stack/time.h"
 
 error_t ethernet_txFrameRequest(ethernetFrame_t *frame) {
     // "I want to send an ethernet frame"
@@ -54,7 +55,9 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     uint32_t static counter = 0;
     error_t err;
     err.module = ERROR_MODULE_ETHERNET;
-    err.code = ERROR_CODE_SUCCESSFUL;
+    err.code = ERROR_CODE_SUCCESSFUL; //per default successful
+    
+    frame->tReceived = getMillis();//add a timestamp to every received packet
     frame->memory.start = ethernetController_getNextPacketPointer(); //Get the address of the packet that should be processed next
 
     ethernetController_updateNextPacketPointer();
@@ -63,7 +66,7 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     frame->memory.fIsAssigned = 1; //Not really needed, for completeness
     frame->receiveStatusVector = ethernetController_getRSV(frame->memory.start); //get the RSV for that packet
     frame->memory.length = frame->receiveStatusVector.length;
-   
+
     //Now that we have the packets length we can work out where it ends
     if (frame->memory.start + frame->memory.length > END_OF_MEMORY_ADDRESS) {//Does it wrap around?
         //Work out the wrapped-around address
@@ -83,6 +86,10 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
         UARTTransmitText("[Unicast]");
     if (!frame->receiveStatusVector.receivedOk)
         UARTTransmitText("[Symbol Errors]");
+
+    UARTTransmitText("[");
+    UARTTransmitText(intToString(frame->tReceived));
+    UARTTransmitText("]");
 
     switch (frame->ethertype) {
         case ETHERTYPE_ARP:

@@ -183,10 +183,12 @@ memoryField_t memory;
 
 # 92
 RSV_t receiveStatusVector;
+
+# 96
 time_t tReceived;
 } ethernetFrame_t;
 
-# 99
+# 102
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -256,6 +258,8 @@ memoryField_t memory;
 # 139
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
+
+ipv4_address_t ipSource;
 
 # 38 "src/stack/protocols/../protocols/../../eth/../stack/error.h"
 typedef enum error_modules {
@@ -7201,6 +7205,10 @@ interruptFlags_t interruptFlags;
 
 # 52
 uint8_t fPacketPending;
+
+uint8_t fSetSourceAddr;
+
+
 } backgroundTaskHandler_t;
 
 # 41 "src/stack/protocols/../stack.h"
@@ -7250,10 +7258,7 @@ bool_t ipv4_isAllZero(ipv4_address_t *ip);
 # 133
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
-# 26 "src/stack/protocols/ipv4.c"
-static ipv4_address_t sourceIPAddress;
-static ipv4_address_t destinationIPAddress;
-
+# 27 "src/stack/protocols/ipv4.c"
 void ipv4_txFrameRequest(ipv4_packet_t *packet) {
 packet->ethernet.length = packet->ipv4Header.totalLength + 8;
 packet->ethernet.ethertype = ETHERTYPE_IPv4;
@@ -7272,36 +7277,9 @@ error_t err;
 err.module = ERROR_MODULE_ARP;
 uint8_t index;
 uint8_t static requestCounter = 0;
-uint8_t const numberOfRequests = 3;
-time_t const requestTimeout = 2000;
 time_t static oldTime = 0;
 
-
-if (ARP_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
-
-ipPacket.ethernet.destination = ARP_getEntryFromTable(index);
-
-ipPacket.ethernet.source = ethernetController_getMacAddress();
-
-ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipPacket.ethernet.memory);
-ethernetController_sendPacket(ipPacket.ethernet.memory);
-err.code = (uint16_t)0;
-return err;
-} else {
-
-if (getMillis() - oldTime >= requestTimeout) {
-oldTime = getMillis();
-if (requestCounter < numberOfRequests) {
-requestCounter++;
-ARP_sendRequest(ipv4_getIPSourceAddress(), ipPacket.ipv4Header.destination);
-} else {
-
-requestCounter = 0;
-err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED;
-return err;
-}
-}
-}
+# 74
 err.code = ERROR_ARP_WAITING_FOR_REPLY;
 return err;
 }
@@ -7450,34 +7428,15 @@ return 0;
 }
 
 ipv4_address_t ipv4_getIPSourceAddress() {
-return sourceIPAddress;
+return ipSource;
 }
 
 error_t ipv4_setIPSourceAddress(ipv4_address_t ip) {
-uint8_t static state = 0;
-uint8_t const numberOfProbes = 3;
-uint8_t const timeBetweenProbes = 1;
-uint8_t static probeCounter = 0;
 uint8_t index;
 error_t err;
 err.module = ERROR_MODULE_IPv4;
-switch (state) {
-case 0:
-if (ARP_checkForEntry(ip, &index)) {
-if (probeCounter == 0)
 
-err.code = ERROR_IPv4_ADDRESS_ALREADY_IN_USE;
-else
-
-err.code = ERROR_IPv4_ADDRESS_CONFLICT_DETECTED;
-return err;
-}
-state = 1;
-break;
-case 1:
-sourceIPAddress = ip;
-break;
-}
+ARP_probe(ip);
 
 }
 

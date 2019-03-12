@@ -22,6 +22,7 @@
  */
 
 #include "../stack/backgroundTasks.h"
+#include "protocols/ipv4Types.h"
 
 void handleStackBackgroundTasks(stack_t* stack) {
     stack->background.interruptFlags = ethernetController_pollInterruptFlags();
@@ -68,5 +69,11 @@ void handleStackBackgroundTasks(stack_t* stack) {
             ethernetController_setLEDConfig(LEDB, LED_OFF); //Turn LED B off, indicating there are no packets
         }
         ethernetController_clearInterruptFlag(LINKIF);
+    }
+    
+    if (stack->background.fSetSourceAddr) {
+        if(ipv4_setIPSourceAddress(ipSource).code==ERROR_CODE_SUCCESSFUL){
+            stack->background.fSetSourceAddr=0;
+        }
     }
 }

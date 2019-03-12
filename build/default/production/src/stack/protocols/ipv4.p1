@@ -2,7 +2,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "47 src/stack/protocols/../protocols/ipv4Types.h
 [s S6 `uc -> 4 `i ]
 [n S6 ipv4_address address ]
-"29 src/stack/protocols/ipv4.c
+"27 src/stack/protocols/ipv4.c
 [c E100 1 6 17 .. ]
 [n E100 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
 "51 src/stack/protocols/../protocols/ipv4Types.h
@@ -14,7 +14,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "58 src/stack/protocols/../../eth/ethernetTypes.h
 [s S3 `uc -> 6 `i ]
 [n S3 macaddress address ]
-"29 src/stack/protocols/ipv4.c
+"27 src/stack/protocols/ipv4.c
 [c E63 2048 2054 2114 34824 .. ]
 [n E63 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
 "33 src/stack/protocols/../../eth/../enc424j600/rsv.h
@@ -26,33 +26,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 "127 src/stack/protocols/../protocols/ipv4Types.h
 [s S8 `S7 1 `S2 1 `S4 1 ]
 [n S8 ipv4_packet ipv4Header memory ethernet ]
-"32 src/stack/protocols/ipv4.c
-[c E128 0 1 2 3 4 .. ]
-[n E128 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
+"30 src/stack/protocols/ipv4.c
+[c E129 0 1 2 3 4 .. ]
+[n E129 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
 "87 src/stack/protocols/../protocols/../../eth/../stack/error.h
-[s S9 `E128 1 `ui 1 ]
+[s S9 `E129 1 `ui 1 ]
 [n S9 error module code ]
 "53 src/stack/protocols/../protocols/../../eth/ethernet.h
 [v _ethernet_txFrameRequest `(S9 ~T0 @X0 0 ef1`*S4 ]
-"101 src/stack/protocols/../protocols/arp.h
-[v _ARP_checkForEntry `(uc ~T0 @X0 0 ef2`S6`*uc ]
-"109
-[v _ARP_getEntryFromTable `(S3 ~T0 @X0 0 ef1`uc ]
-"297 src/stack/protocols/../protocols/../../eth/ethernetController.h
-[v _ethernetController_getMacAddress `(S3 ~T0 @X0 0 ef ]
-"210
-[v _ethernetController_writeDestinationMACAddress `(v ~T0 @X0 0 ef2`S3`S2 ]
-"186
-[v _ethernetController_sendPacket `(v ~T0 @X0 0 ef1`S2 ]
-"42 src/stack/protocols/../../eth/../stack/time.h
-[v _getMillis `(ul ~T0 @X0 0 ef ]
-"85 src/stack/protocols/../protocols/arp.h
-[v _ARP_sendRequest `(v ~T0 @X0 0 ef2`S6`S6 ]
-"99 src/stack/protocols/ipv4.h
-[v _ipv4_getIPSourceAddress `(S6 ~T0 @X0 0 ef ]
-"72 src/stack/protocols/ipv4.c
-[c E152 401 402 403 499 .. ]
-[n E152 errors_arp ERROR_ARP_WAITING_FOR_REPLY ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_UNKNOWN  ]
+"74 src/stack/protocols/ipv4.c
+[c E153 401 402 403 499 .. ]
+[n E153 errors_arp ERROR_ARP_WAITING_FOR_REPLY ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_UNKNOWN  ]
 "198 src/stack/protocols/../protocols/../../eth/ethernetController.h
 [v _ethernetController_streamToTransmitBuffer `(v ~T0 @X0 0 ef2`uc`S2 ]
 "226
@@ -73,9 +57,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ethernetController_streamFromRXBuffer `(uc ~T0 @X0 0 ef2`uc`ui ]
 "70 src/stack/protocols/../protocols/../../system/uart.h
 [v _hexToString `(*uc ~T0 @X0 0 ef1`ul ]
-"241 src/stack/protocols/ipv4.c
-[c E157 501 502 599 .. ]
-[n E157 errors_ipv4 ERROR_IPv4_ADDRESS_ALREADY_IN_USE ERROR_IPv4_ADDRESS_CONFLICT_DETECTED ERROR_IPv4_UNKNOWN  ]
+"92 src/stack/protocols/../protocols/arp.h
+[v _ARP_probe `(S9 ~T0 @X0 0 ef1`S6 ]
 [; ;bool.h: 32: typedef bit bool_t;
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
@@ -163,15 +146,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 87: etherType_t ethertype;
 [; ;ethernetTypes.h: 88: memoryField_t memory;
 [; ;ethernetTypes.h: 92: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 93: time_t tReceived;
-[; ;ethernetTypes.h: 94: } ethernetFrame_t;
-[; ;ethernetTypes.h: 99: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 100: linkState_t link;
-[; ;ethernetTypes.h: 101: speed_t speed;
-[; ;ethernetTypes.h: 102: duplexState_t duplex;
-[; ;ethernetTypes.h: 103: macaddress_t source;
-[; ;ethernetTypes.h: 104: macaddress_t destination;
-[; ;ethernetTypes.h: 105: } ethernetConnection_t;
+[; ;ethernetTypes.h: 96: time_t tReceived;
+[; ;ethernetTypes.h: 97: } ethernetFrame_t;
+[; ;ethernetTypes.h: 102: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 103: linkState_t link;
+[; ;ethernetTypes.h: 104: speed_t speed;
+[; ;ethernetTypes.h: 105: duplexState_t duplex;
+[; ;ethernetTypes.h: 106: macaddress_t source;
+[; ;ethernetTypes.h: 107: macaddress_t destination;
+[; ;ethernetTypes.h: 108: } ethernetConnection_t;
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
 [; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
@@ -200,6 +183,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4Types.h: 135: memoryField_t memory;
 [; ;ipv4Types.h: 139: ethernetFrame_t ethernet;
 [; ;ipv4Types.h: 140: } ipv4_packet_t;
+"142 src/stack/protocols/../protocols/ipv4Types.h
+[v _ipSource `S6 ~T0 @X0 1 e ]
+[; ;ipv4Types.h: 142: ipv4_address_t ipSource;
 [; ;error.h: 38: typedef enum error_modules {
 [; ;error.h: 39: ERROR_MODULE_MEMORY,
 [; ;error.h: 40: ERROR_MODULE_ETHERNET_CONTROLLER,
@@ -5371,7 +5357,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
 [; ;backgroundTasksTypes.h: 52: uint8_t fPacketPending;
-[; ;backgroundTasksTypes.h: 53: } backgroundTaskHandler_t;
+[; ;backgroundTasksTypes.h: 54: uint8_t fSetSourceAddr;
+[; ;backgroundTasksTypes.h: 57: } backgroundTaskHandler_t;
 [; ;stack.h: 41: typedef struct stack {
 [; ;stack.h: 42: ethernetConnection_t ethernet;
 [; ;stack.h: 43: backgroundTaskHandler_t volatile background;
@@ -5391,812 +5378,648 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 120: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 127: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 133: void ipv4_setToAllZero(ipv4_address_t *ip);
-"26 src/stack/protocols/ipv4.c
-[v _sourceIPAddress `S6 ~T0 @X0 1 s ]
-[; ;ipv4.c: 26: static ipv4_address_t sourceIPAddress;
-"27
-[v _destinationIPAddress `S6 ~T0 @X0 1 s ]
-[; ;ipv4.c: 27: static ipv4_address_t destinationIPAddress;
-"29
+"27 src/stack/protocols/ipv4.c
 [v _ipv4_txFrameRequest `(v ~T0 @X0 1 ef1`*S8 ]
 {
-[; ;ipv4.c: 29: void ipv4_txFrameRequest(ipv4_packet_t *packet) {
+[; ;ipv4.c: 27: void ipv4_txFrameRequest(ipv4_packet_t *packet) {
 [e :U _ipv4_txFrameRequest ]
 [v _packet `*S8 ~T0 @X0 1 r1 ]
 [f ]
-[; ;ipv4.c: 30: packet->ethernet.length = packet->ipv4Header.totalLength + 8;
-"30
+[; ;ipv4.c: 28: packet->ethernet.length = packet->ipv4Header.totalLength + 8;
+"28
 [e = . . *U _packet 2 0 + . . *U _packet 0 4 -> -> 8 `i `ui ]
-[; ;ipv4.c: 31: packet->ethernet.ethertype = ETHERTYPE_IPv4;
-"31
+[; ;ipv4.c: 29: packet->ethernet.ethertype = ETHERTYPE_IPv4;
+"29
 [e = . . *U _packet 2 3 . `E63 0 ]
-[; ;ipv4.c: 32: ethernet_txFrameRequest(&packet->ethernet);
-"32
+[; ;ipv4.c: 30: ethernet_txFrameRequest(&packet->ethernet);
+"30
 [e ( _ethernet_txFrameRequest (1 &U . *U _packet 2 ]
-[; ;ipv4.c: 34: packet->memory.fIsAssigned = packet->ethernet.memory.fIsAssigned;
-"34
+[; ;ipv4.c: 32: packet->memory.fIsAssigned = packet->ethernet.memory.fIsAssigned;
+"32
 [e = . . *U _packet 1 3 . . . *U _packet 2 4 3 ]
-[; ;ipv4.c: 35: packet->memory.fOutOfMemory = packet->ethernet.memory.fOutOfMemory;
-"35
+[; ;ipv4.c: 33: packet->memory.fOutOfMemory = packet->ethernet.memory.fOutOfMemory;
+"33
 [e = . . *U _packet 1 4 . . . *U _packet 2 4 4 ]
-[; ;ipv4.c: 36: packet->memory.index = packet->ethernet.memory.index;
-"36
+[; ;ipv4.c: 34: packet->memory.index = packet->ethernet.memory.index;
+"34
 [e = . . *U _packet 1 5 . . . *U _packet 2 4 5 ]
-[; ;ipv4.c: 37: packet->memory.start = packet->ethernet.memory.start + 8;
-"37
+[; ;ipv4.c: 35: packet->memory.start = packet->ethernet.memory.start + 8;
+"35
 [e = . . *U _packet 1 0 + . . . *U _packet 2 4 0 -> -> 8 `i `ui ]
-[; ;ipv4.c: 38: packet->memory.end = packet->ethernet.memory.end;
-"38
+[; ;ipv4.c: 36: packet->memory.end = packet->ethernet.memory.end;
+"36
 [e = . . *U _packet 1 1 . . . *U _packet 2 4 1 ]
-[; ;ipv4.c: 39: packet->memory.length = packet->ethernet.memory.length - 8;
-"39
+[; ;ipv4.c: 37: packet->memory.length = packet->ethernet.memory.length - 8;
+"37
 [e = . . *U _packet 1 2 - . . . *U _packet 2 4 2 -> -> 8 `i `ui ]
-[; ;ipv4.c: 40: }
-"40
+[; ;ipv4.c: 38: }
+"38
 [e :UE 617 ]
 }
-"42
+"40
 [v _ipv4_sendFrame `(S9 ~T0 @X0 1 ef1`S8 ]
 {
-[; ;ipv4.c: 42: error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
+[; ;ipv4.c: 40: error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
 [e :U _ipv4_sendFrame ]
 [v _ipPacket `S8 ~T0 @X0 1 r1 ]
 [f ]
-"43
+"41
 [v _err `S9 ~T0 @X0 1 a ]
-[; ;ipv4.c: 43: error_t err;
-[; ;ipv4.c: 44: err.module = ERROR_MODULE_ARP;
-"44
-[e = . _err 0 . `E128 3 ]
-"45
+[; ;ipv4.c: 41: error_t err;
+[; ;ipv4.c: 42: err.module = ERROR_MODULE_ARP;
+"42
+[e = . _err 0 . `E129 3 ]
+"43
 [v _index `uc ~T0 @X0 1 a ]
-"46
+"44
 [v F5801 `uc ~T0 @X0 1 s requestCounter ]
 [i F5801
 -> -> 0 `i `uc
 ]
-"47
-[v _numberOfRequests `Cuc ~T0 @X0 1 a ]
-[; ;ipv4.c: 45: uint8_t index;
-[; ;ipv4.c: 46: uint8_t static requestCounter = 0;
-[; ;ipv4.c: 47: uint8_t const numberOfRequests = 3;
-[e = _numberOfRequests -> -> 3 `i `uc ]
-"48
-[v _requestTimeout `Cul ~T0 @X0 1 a ]
-[; ;ipv4.c: 48: time_t const requestTimeout = 2000;
-[e = _requestTimeout -> -> -> 2000 `i `l `ul ]
-"49
-[v F5804 `ul ~T0 @X0 1 s oldTime ]
-[i F5804
+"45
+[v F5802 `ul ~T0 @X0 1 s oldTime ]
+[i F5802
 -> -> -> 0 `i `l `ul
 ]
-[; ;ipv4.c: 49: time_t static oldTime = 0;
-[; ;ipv4.c: 52: if (ARP_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
-"52
-[e $ ! != -> ( _ARP_checkForEntry (2 , . . _ipPacket 0 12 &U _index `i -> -> -> 0 `i `uc `i 619  ]
-{
-[; ;ipv4.c: 54: ipPacket.ethernet.destination = ARP_getEntryFromTable(index);
-"54
-[e = . . _ipPacket 2 2 ( _ARP_getEntryFromTable (1 _index ]
-[; ;ipv4.c: 56: ipPacket.ethernet.source = ethernetController_getMacAddress();
-"56
-[e = . . _ipPacket 2 1 ( _ethernetController_getMacAddress ..  ]
-[; ;ipv4.c: 58: ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipPacket.ethernet.memory);
-"58
-[e ( _ethernetController_writeDestinationMACAddress (2 , . . _ipPacket 2 2 . . _ipPacket 2 4 ]
-[; ;ipv4.c: 59: ethernetController_sendPacket(ipPacket.ethernet.memory);
-"59
-[e ( _ethernetController_sendPacket (1 . . _ipPacket 2 4 ]
-[; ;ipv4.c: 60: err.code = (uint16_t)0;
-"60
-[e = . _err 1 -> -> 0 `i `ui ]
-[; ;ipv4.c: 61: return err;
-"61
-[e ) _err ]
-[e $UE 618  ]
-"62
-}
-[; ;ipv4.c: 62: } else {
-[e $U 620  ]
-[e :U 619 ]
-{
-[; ;ipv4.c: 64: if (getMillis() - oldTime >= requestTimeout) {
-"64
-[e $ ! >= - ( _getMillis ..  F5804 _requestTimeout 621  ]
-{
-[; ;ipv4.c: 65: oldTime = getMillis();
-"65
-[e = F5804 ( _getMillis ..  ]
-[; ;ipv4.c: 66: if (requestCounter < numberOfRequests) {
-"66
-[e $ ! < -> F5801 `i -> _numberOfRequests `i 622  ]
-{
-[; ;ipv4.c: 67: requestCounter++;
-"67
-[e ++ F5801 -> -> 1 `i `uc ]
-[; ;ipv4.c: 68: ARP_sendRequest(ipv4_getIPSourceAddress(), ipPacket.ipv4Header.destination);
-"68
-[e ( _ARP_sendRequest (2 , ( _ipv4_getIPSourceAddress ..  . . _ipPacket 0 12 ]
-"69
-}
-[; ;ipv4.c: 69: } else {
-[e $U 623  ]
-[e :U 622 ]
-{
-[; ;ipv4.c: 71: requestCounter = 0;
-"71
-[e = F5801 -> -> 0 `i `uc ]
-[; ;ipv4.c: 72: err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED;
-"72
-[e = . _err 1 -> . `E152 1 `ui ]
-[; ;ipv4.c: 73: return err;
-"73
-[e ) _err ]
-[e $UE 618  ]
+[; ;ipv4.c: 43: uint8_t index;
+[; ;ipv4.c: 44: uint8_t static requestCounter = 0;
+[; ;ipv4.c: 45: time_t static oldTime = 0;
+[; ;ipv4.c: 74: err.code = ERROR_ARP_WAITING_FOR_REPLY;
 "74
-}
-[e :U 623 ]
+[e = . _err 1 -> . `E153 0 `ui ]
+[; ;ipv4.c: 75: return err;
 "75
-}
-[e :U 621 ]
-"76
-}
-[e :U 620 ]
-[; ;ipv4.c: 74: }
-[; ;ipv4.c: 75: }
-[; ;ipv4.c: 76: }
-[; ;ipv4.c: 77: err.code = ERROR_ARP_WAITING_FOR_REPLY;
-"77
-[e = . _err 1 -> . `E152 0 `ui ]
-[; ;ipv4.c: 78: return err;
-"78
 [e ) _err ]
 [e $UE 618  ]
-[; ;ipv4.c: 79: }
-"79
+[; ;ipv4.c: 76: }
+"76
 [e :UE 618 ]
 }
-"81
+"78
 [v _ipv4_streamToTransmissionBuffer `(v ~T0 @X0 1 ef2`uc`S8 ]
 {
-[; ;ipv4.c: 81: void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet) {
+[; ;ipv4.c: 78: void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet) {
 [e :U _ipv4_streamToTransmissionBuffer ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [v _packet `S8 ~T0 @X0 1 r2 ]
 [f ]
-"82
+"79
 [v _ethernetPacketLength `ui ~T0 @X0 1 a ]
-[; ;ipv4.c: 82: uint16_t ethernetPacketLength = packet.ipv4Header.totalLength;
+[; ;ipv4.c: 79: uint16_t ethernetPacketLength = packet.ipv4Header.totalLength;
 [e = _ethernetPacketLength . . _packet 0 4 ]
-"83
+"80
 [v _remainingLength `ui ~T0 @X0 1 a ]
-[; ;ipv4.c: 83: uint16_t remainingLength;
-[; ;ipv4.c: 87: ethernetController_streamToTransmitBuffer(data, packet.memory);
-"87
+[; ;ipv4.c: 80: uint16_t remainingLength;
+[; ;ipv4.c: 84: ethernetController_streamToTransmitBuffer(data, packet.memory);
+"84
 [e ( _ethernetController_streamToTransmitBuffer (2 , _data . _packet 1 ]
-[; ;ipv4.c: 88: }
-"88
-[e :UE 624 ]
+[; ;ipv4.c: 85: }
+"85
+[e :UE 619 ]
 }
-"90
+"87
 [v _ipv4_calculateHeaderChecksum `(v ~T0 @X0 1 ef1`*S7 ]
 {
-[; ;ipv4.c: 90: void ipv4_calculateHeaderChecksum(ipv4_header_t * header) {
+[; ;ipv4.c: 87: void ipv4_calculateHeaderChecksum(ipv4_header_t * header) {
 [e :U _ipv4_calculateHeaderChecksum ]
 [v _header `*S7 ~T0 @X0 1 r1 ]
 [f ]
-"92
+"89
 [v _sum `ul ~T0 @X0 1 a ]
-[; ;ipv4.c: 92: uint32_t sum = 0;
+[; ;ipv4.c: 89: uint32_t sum = 0;
 [e = _sum -> -> -> 0 `i `l `ul ]
-[; ;ipv4.c: 93: sum = ((header->version << 12) | (header->headerLength << 8) | (header->dscp << 2) | (header->ecn))&0xffff;
-"93
+[; ;ipv4.c: 90: sum = ((header->version << 12) | (header->headerLength << 8) | (header->dscp << 2) | (header->ecn))&0xffff;
+"90
 [e = _sum -> & -> | | | << -> . *U _header 0 `i -> 12 `i << -> . *U _header 1 `i -> 8 `i << -> . *U _header 2 `i -> 2 `i -> . *U _header 3 `i `ui -> 65535 `ui `ul ]
-[; ;ipv4.c: 94: sum += header->totalLength;
-"94
+[; ;ipv4.c: 91: sum += header->totalLength;
+"91
 [e =+ _sum -> . *U _header 4 `ul ]
-[; ;ipv4.c: 95: sum += header->identification;
-"95
+[; ;ipv4.c: 92: sum += header->identification;
+"92
 [e =+ _sum -> . *U _header 5 `ul ]
-[; ;ipv4.c: 96: sum += ((header->flags << 13) | (header->fragmentOffset))&0xffff;
-"96
+[; ;ipv4.c: 93: sum += ((header->flags << 13) | (header->fragmentOffset))&0xffff;
+"93
 [e =+ _sum -> & | -> << -> . *U _header 6 `i -> 13 `i `ui . *U _header 7 -> 65535 `ui `ul ]
-[; ;ipv4.c: 97: sum += ((header->timeToLive << 8) | (header->protocol))&0xffff;
-"97
+[; ;ipv4.c: 94: sum += ((header->timeToLive << 8) | (header->protocol))&0xffff;
+"94
 [e =+ _sum -> & -> | << -> . *U _header 8 `i -> 8 `i -> . *U _header 9 `i `ui -> 65535 `ui `ul ]
-[; ;ipv4.c: 99: sum += ((header->source.address[1] | (header->source.address[0] << 8)))&0xffff;
-"99
+[; ;ipv4.c: 96: sum += ((header->source.address[1] | (header->source.address[0] << 8)))&0xffff;
+"96
 [e =+ _sum -> & -> | -> *U + &U . . *U _header 11 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . *U _header 11 0 `ui `ux `i << -> *U + &U . . *U _header 11 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . *U _header 11 0 `ui `ux `i -> 8 `i `ui -> 65535 `ui `ul ]
-[; ;ipv4.c: 100: sum += ((header->source.address[3] | (header->source.address[2] << 8)))&0xffff;
-"100
+[; ;ipv4.c: 97: sum += ((header->source.address[3] | (header->source.address[2] << 8)))&0xffff;
+"97
 [e =+ _sum -> & -> | -> *U + &U . . *U _header 11 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . *U _header 11 0 `ui `ux `i << -> *U + &U . . *U _header 11 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . . *U _header 11 0 `ui `ux `i -> 8 `i `ui -> 65535 `ui `ul ]
-[; ;ipv4.c: 101: sum += ((header->destination.address[1] | (header->destination.address[0] << 8)))&0xffff;
-"101
+[; ;ipv4.c: 98: sum += ((header->destination.address[1] | (header->destination.address[0] << 8)))&0xffff;
+"98
 [e =+ _sum -> & -> | -> *U + &U . . *U _header 12 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . *U _header 12 0 `ui `ux `i << -> *U + &U . . *U _header 12 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . *U _header 12 0 `ui `ux `i -> 8 `i `ui -> 65535 `ui `ul ]
-[; ;ipv4.c: 102: sum += ((header->destination.address[3] | (header->destination.address[2] << 8)))&0xffff;
-"102
+[; ;ipv4.c: 99: sum += ((header->destination.address[3] | (header->destination.address[2] << 8)))&0xffff;
+"99
 [e =+ _sum -> & -> | -> *U + &U . . *U _header 12 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . *U _header 12 0 `ui `ux `i << -> *U + &U . . *U _header 12 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . . *U _header 12 0 `ui `ux `i -> 8 `i `ui -> 65535 `ui `ul ]
-[; ;ipv4.c: 104: sum = (sum & 0x0ffff)+((sum & 0xf0000) >> 16);
-"104
+[; ;ipv4.c: 101: sum = (sum & 0x0ffff)+((sum & 0xf0000) >> 16);
+"101
 [e = _sum + & _sum -> -> 65535 `ui `ul >> & _sum -> -> 983040 `l `ul -> 16 `i ]
-[; ;ipv4.c: 105: sum = ~sum;
-"105
+[; ;ipv4.c: 102: sum = ~sum;
+"102
 [e = _sum ~ _sum ]
-[; ;ipv4.c: 107: header->checksum = sum;
-"107
+[; ;ipv4.c: 104: header->checksum = sum;
+"104
 [e = . *U _header 10 -> _sum `ui ]
-[; ;ipv4.c: 108: }
-"108
-[e :UE 625 ]
+[; ;ipv4.c: 105: }
+"105
+[e :UE 620 ]
 }
-"110
+"107
 [v _ipv4_writeHeaderIntoBuffer `(v ~T0 @X0 1 ef2`S7`*uc ]
 {
-[; ;ipv4.c: 110: void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
+[; ;ipv4.c: 107: void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
 [e :U _ipv4_writeHeaderIntoBuffer ]
 [v _header `S7 ~T0 @X0 1 r1 ]
 [v _ptr `*uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;ipv4.c: 111: *ptr = (header.version << 4) | (header.headerLength);
-"111
+[; ;ipv4.c: 108: *ptr = (header.version << 4) | (header.headerLength);
+"108
 [e = *U _ptr -> | << -> . _header 0 `i -> 4 `i -> . _header 1 `i `uc ]
-[; ;ipv4.c: 112: *(ptr + 1) = (header.dscp << 2) | (header.ecn & 0x03);
-"112
+[; ;ipv4.c: 109: *(ptr + 1) = (header.dscp << 2) | (header.ecn & 0x03);
+"109
 [e = *U + _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x -> | << -> . _header 2 `i -> 2 `i & -> . _header 3 `i -> 3 `i `uc ]
-[; ;ipv4.c: 113: *(ptr + 2) = (header.totalLength & 0xff00) >> 8;
-"113
+[; ;ipv4.c: 110: *(ptr + 2) = (header.totalLength & 0xff00) >> 8;
+"110
 [e = *U + _ptr * -> -> 2 `i `x -> -> # *U _ptr `i `x -> >> & . _header 4 -> 65280 `ui -> 8 `i `uc ]
-[; ;ipv4.c: 114: *(ptr + 3) = header.totalLength & 0x00ff;
-"114
+[; ;ipv4.c: 111: *(ptr + 3) = header.totalLength & 0x00ff;
+"111
 [e = *U + _ptr * -> -> 3 `i `x -> -> # *U _ptr `i `x -> & . _header 4 -> -> 255 `i `ui `uc ]
-[; ;ipv4.c: 115: *(ptr + 4) = (header.identification & 0xff00) >> 8;
-"115
+[; ;ipv4.c: 112: *(ptr + 4) = (header.identification & 0xff00) >> 8;
+"112
 [e = *U + _ptr * -> -> 4 `i `x -> -> # *U _ptr `i `x -> >> & . _header 5 -> 65280 `ui -> 8 `i `uc ]
-[; ;ipv4.c: 116: *(ptr + 5) = header.identification & 0x00ff;
-"116
+[; ;ipv4.c: 113: *(ptr + 5) = header.identification & 0x00ff;
+"113
 [e = *U + _ptr * -> -> 5 `i `x -> -> # *U _ptr `i `x -> & . _header 5 -> -> 255 `i `ui `uc ]
-[; ;ipv4.c: 117: *(ptr + 6) = (header.flags << 5) | ((header.fragmentOffset & 0x1f00) >> 8);
-"117
+[; ;ipv4.c: 114: *(ptr + 6) = (header.flags << 5) | ((header.fragmentOffset & 0x1f00) >> 8);
+"114
 [e = *U + _ptr * -> -> 6 `i `x -> -> # *U _ptr `i `x -> | -> << -> . _header 6 `i -> 5 `i `ui >> & . _header 7 -> -> 7936 `i `ui -> 8 `i `uc ]
-[; ;ipv4.c: 118: *(ptr + 7) = (header.fragmentOffset & 0x00ff);
-"118
+[; ;ipv4.c: 115: *(ptr + 7) = (header.fragmentOffset & 0x00ff);
+"115
 [e = *U + _ptr * -> -> 7 `i `x -> -> # *U _ptr `i `x -> & . _header 7 -> -> 255 `i `ui `uc ]
-[; ;ipv4.c: 119: *(ptr + 8) = (header.timeToLive);
-"119
+[; ;ipv4.c: 116: *(ptr + 8) = (header.timeToLive);
+"116
 [e = *U + _ptr * -> -> 8 `i `x -> -> # *U _ptr `i `x . _header 8 ]
-[; ;ipv4.c: 120: *(ptr + 9) = (header.protocol);
-"120
+[; ;ipv4.c: 117: *(ptr + 9) = (header.protocol);
+"117
 [e = *U + _ptr * -> -> 9 `i `x -> -> # *U _ptr `i `x -> . _header 9 `uc ]
-[; ;ipv4.c: 121: *(ptr + 10) = (header.checksum & 0xff00) >> 8;
-"121
+[; ;ipv4.c: 118: *(ptr + 10) = (header.checksum & 0xff00) >> 8;
+"118
 [e = *U + _ptr * -> -> 10 `i `x -> -> # *U _ptr `i `x -> >> & . _header 10 -> 65280 `ui -> 8 `i `uc ]
-[; ;ipv4.c: 122: *(ptr + 11) = (header.checksum & 0x00ff);
-"122
+[; ;ipv4.c: 119: *(ptr + 11) = (header.checksum & 0x00ff);
+"119
 [e = *U + _ptr * -> -> 11 `i `x -> -> # *U _ptr `i `x -> & . _header 10 -> -> 255 `i `ui `uc ]
-[; ;ipv4.c: 123: *(ptr + 12) = (header.source.address[0]);
-"123
+[; ;ipv4.c: 120: *(ptr + 12) = (header.source.address[0]);
+"120
 [e = *U + _ptr * -> -> 12 `i `x -> -> # *U _ptr `i `x *U + &U . . _header 11 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . _header 11 0 `ui `ux ]
-[; ;ipv4.c: 124: *(ptr + 13) = (header.source.address[1]);
-"124
+[; ;ipv4.c: 121: *(ptr + 13) = (header.source.address[1]);
+"121
 [e = *U + _ptr * -> -> 13 `i `x -> -> # *U _ptr `i `x *U + &U . . _header 11 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . _header 11 0 `ui `ux ]
-[; ;ipv4.c: 125: *(ptr + 14) = (header.source.address[2]);
-"125
+[; ;ipv4.c: 122: *(ptr + 14) = (header.source.address[2]);
+"122
 [e = *U + _ptr * -> -> 14 `i `x -> -> # *U _ptr `i `x *U + &U . . _header 11 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . . _header 11 0 `ui `ux ]
-[; ;ipv4.c: 126: *(ptr + 15) = (header.source.address[3]);
-"126
+[; ;ipv4.c: 123: *(ptr + 15) = (header.source.address[3]);
+"123
 [e = *U + _ptr * -> -> 15 `i `x -> -> # *U _ptr `i `x *U + &U . . _header 11 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . _header 11 0 `ui `ux ]
-[; ;ipv4.c: 127: *(ptr + 16) = (header.destination.address[0]);
-"127
+[; ;ipv4.c: 124: *(ptr + 16) = (header.destination.address[0]);
+"124
 [e = *U + _ptr * -> -> 16 `i `x -> -> # *U _ptr `i `x *U + &U . . _header 12 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . _header 12 0 `ui `ux ]
-[; ;ipv4.c: 128: *(ptr + 17) = (header.destination.address[1]);
-"128
+[; ;ipv4.c: 125: *(ptr + 17) = (header.destination.address[1]);
+"125
 [e = *U + _ptr * -> -> 17 `i `x -> -> # *U _ptr `i `x *U + &U . . _header 12 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . _header 12 0 `ui `ux ]
-[; ;ipv4.c: 129: *(ptr + 18) = (header.destination.address[2]);
-"129
+[; ;ipv4.c: 126: *(ptr + 18) = (header.destination.address[2]);
+"126
 [e = *U + _ptr * -> -> 18 `i `x -> -> # *U _ptr `i `x *U + &U . . _header 12 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . . _header 12 0 `ui `ux ]
-[; ;ipv4.c: 130: *(ptr + 19) = (header.destination.address[3]);
-"130
+[; ;ipv4.c: 127: *(ptr + 19) = (header.destination.address[3]);
+"127
 [e = *U + _ptr * -> -> 19 `i `x -> -> # *U _ptr `i `x *U + &U . . _header 12 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . _header 12 0 `ui `ux ]
-[; ;ipv4.c: 131: }
-"131
-[e :UE 626 ]
+[; ;ipv4.c: 128: }
+"128
+[e :UE 621 ]
 }
-"133
+"130
 [v _ipv4_handleNewPacket `(v ~T0 @X0 1 ef1`*S4 ]
 {
-[; ;ipv4.c: 133: void ipv4_handleNewPacket(ethernetFrame_t *frame) {
+[; ;ipv4.c: 130: void ipv4_handleNewPacket(ethernetFrame_t *frame) {
 [e :U _ipv4_handleNewPacket ]
 [v _frame `*S4 ~T0 @X0 1 r1 ]
 [f ]
-"134
+"131
 [v _ip `S7 ~T0 @X0 1 a ]
-"135
+"132
 [v _headerField `S2 ~T0 @X0 1 a ]
-[; ;ipv4.c: 134: ipv4_header_t ip;
-[; ;ipv4.c: 135: memoryField_t headerField;
-[; ;ipv4.c: 136: if (frame->ethertype != ETHERTYPE_IPv4) {
-"136
-[e $ ! != -> . *U _frame 3 `i -> . `E63 0 `i 628  ]
+[; ;ipv4.c: 131: ipv4_header_t ip;
+[; ;ipv4.c: 132: memoryField_t headerField;
+[; ;ipv4.c: 133: if (frame->ethertype != ETHERTYPE_IPv4) {
+"133
+[e $ ! != -> . *U _frame 3 `i -> . `E63 0 `i 623  ]
 {
-[; ;ipv4.c: 137: ethernetController_dropPacket(frame);
+[; ;ipv4.c: 134: ethernetController_dropPacket(frame);
+"134
+[e ( _ethernetController_dropPacket (1 _frame ]
+[; ;ipv4.c: 135: return;
+"135
+[e $UE 622  ]
+"136
+}
+[e :U 623 ]
+[; ;ipv4.c: 136: }
+[; ;ipv4.c: 137: headerField = frame->memory;
 "137
-[e ( _ethernetController_dropPacket (1 _frame ]
-[; ;ipv4.c: 138: return;
-"138
-[e $UE 627  ]
-"139
-}
-[e :U 628 ]
-[; ;ipv4.c: 139: }
-[; ;ipv4.c: 140: headerField = frame->memory;
-"140
 [e = _headerField . *U _frame 4 ]
-[; ;ipv4.c: 141: headerField.start = frame->memory.start + 22;
-"141
+[; ;ipv4.c: 138: headerField.start = frame->memory.start + 22;
+"138
 [e = . _headerField 0 + . . *U _frame 4 0 -> -> 22 `i `ui ]
-[; ;ipv4.c: 143: ip = ipv4_parseHeader(&headerField);
-"143
+[; ;ipv4.c: 140: ip = ipv4_parseHeader(&headerField);
+"140
 [e = _ip ( _ipv4_parseHeader (1 &U _headerField ]
-[; ;ipv4.c: 144: UARTTransmitText("[");
-"144
+[; ;ipv4.c: 141: UARTTransmitText("[");
+"141
 [e ( _UARTTransmitText (1 :s 1C ]
-[; ;ipv4.c: 145: UARTTransmitText(ipAdressToString(ip.source));
-"145
+[; ;ipv4.c: 142: UARTTransmitText(ipAdressToString(ip.source));
+"142
 [e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . _ip 11 `*Cuc ]
-[; ;ipv4.c: 146: UARTTransmitText(" -> ");
-"146
+[; ;ipv4.c: 143: UARTTransmitText(" -> ");
+"143
 [e ( _UARTTransmitText (1 :s 2C ]
-[; ;ipv4.c: 147: UARTTransmitText(ipAdressToString(ip.destination));
-"147
+[; ;ipv4.c: 144: UARTTransmitText(ipAdressToString(ip.destination));
+"144
 [e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . _ip 12 `*Cuc ]
-[; ;ipv4.c: 148: UARTTransmitText("][");
-"148
+[; ;ipv4.c: 145: UARTTransmitText("][");
+"145
 [e ( _UARTTransmitText (1 :s 3C ]
-[; ;ipv4.c: 149: UARTTransmitText((ipProtocolToString(ip.protocol)));
-"149
+[; ;ipv4.c: 146: UARTTransmitText((ipProtocolToString(ip.protocol)));
+"146
 [e ( _UARTTransmitText (1 -> ( _ipProtocolToString (1 . _ip 9 `*Cuc ]
-[; ;ipv4.c: 150: UARTTransmitText("][");
-"150
+[; ;ipv4.c: 147: UARTTransmitText("][");
+"147
 [e ( _UARTTransmitText (1 :s 4C ]
-[; ;ipv4.c: 151: UARTTransmitText(intToString(ip.totalLength));
-"151
+[; ;ipv4.c: 148: UARTTransmitText(intToString(ip.totalLength));
+"148
 [e ( _UARTTransmitText (1 -> ( _intToString (1 -> . _ip 4 `ul `*Cuc ]
-[; ;ipv4.c: 152: UARTTransmitText("][");
-"152
+[; ;ipv4.c: 149: UARTTransmitText("][");
+"149
 [e ( _UARTTransmitText (1 :s 5C ]
-[; ;ipv4.c: 153: UARTTransmitText(intToString(ip.version));
-"153
+[; ;ipv4.c: 150: UARTTransmitText(intToString(ip.version));
+"150
 [e ( _UARTTransmitText (1 -> ( _intToString (1 -> . _ip 0 `ul `*Cuc ]
-[; ;ipv4.c: 154: UARTTransmitText(", ");
-"154
+[; ;ipv4.c: 151: UARTTransmitText(", ");
+"151
 [e ( _UARTTransmitText (1 :s 6C ]
-[; ;ipv4.c: 155: UARTTransmitText(intToString(ip.headerLength));
-"155
+[; ;ipv4.c: 152: UARTTransmitText(intToString(ip.headerLength));
+"152
 [e ( _UARTTransmitText (1 -> ( _intToString (1 -> . _ip 1 `ul `*Cuc ]
-[; ;ipv4.c: 156: UARTTransmitText("]");
-"156
+[; ;ipv4.c: 153: UARTTransmitText("]");
+"153
 [e ( _UARTTransmitText (1 :s 7C ]
-[; ;ipv4.c: 157: if (!ipv4_checkHeaderChecksum(&ip))
-"157
-[e $ ! ! ( _ipv4_checkHeaderChecksum (1 &U _ip 629  ]
-[; ;ipv4.c: 158: UARTTransmitText("[INVALID CHECKSUM]");
-"158
+[; ;ipv4.c: 154: if (!ipv4_checkHeaderChecksum(&ip))
+"154
+[e $ ! ! ( _ipv4_checkHeaderChecksum (1 &U _ip 624  ]
+[; ;ipv4.c: 155: UARTTransmitText("[INVALID CHECKSUM]");
+"155
 [e ( _UARTTransmitText (1 :s 8C ]
-[e :U 629 ]
-[; ;ipv4.c: 161: ethernetController_dropPacket(frame);
-"161
+[e :U 624 ]
+[; ;ipv4.c: 158: ethernetController_dropPacket(frame);
+"158
 [e ( _ethernetController_dropPacket (1 _frame ]
-[; ;ipv4.c: 162: }
-"162
-[e :UE 627 ]
+[; ;ipv4.c: 159: }
+"159
+[e :UE 622 ]
 }
-"164
+"161
 [v _ipv4_parseHeader `(S7 ~T0 @X0 1 sf1`*S2 ]
 {
-[; ;ipv4.c: 164: ipv4_header_t static ipv4_parseHeader(memoryField_t *field) {
+[; ;ipv4.c: 161: ipv4_header_t static ipv4_parseHeader(memoryField_t *field) {
 [e :U _ipv4_parseHeader ]
 [v _field `*S2 ~T0 @X0 1 r1 ]
 [f ]
-"165
+"162
 [v _ip `S7 ~T0 @X0 1 a ]
-"166
+"163
 [v _temp `uc ~T0 @X0 1 a ]
-[; ;ipv4.c: 165: ipv4_header_t ip;
-[; ;ipv4.c: 166: uint8_t temp;
-[; ;ipv4.c: 168: ethernetController_streamFromRXBuffer(0, field->start);
-"168
+[; ;ipv4.c: 162: ipv4_header_t ip;
+[; ;ipv4.c: 163: uint8_t temp;
+[; ;ipv4.c: 165: ethernetController_streamFromRXBuffer(0, field->start);
+"165
 [e ( _ethernetController_streamFromRXBuffer (2 , -> -> 0 `i `uc . *U _field 0 ]
-[; ;ipv4.c: 170: temp = ethernetController_streamFromRXBuffer(1, field->start);
-"170
+[; ;ipv4.c: 167: temp = ethernetController_streamFromRXBuffer(1, field->start);
+"167
 [e = _temp ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 ]
-[; ;ipv4.c: 171: ip.version = (temp & 0xf0) >> 4;
-"171
+[; ;ipv4.c: 168: ip.version = (temp & 0xf0) >> 4;
+"168
 [e = . _ip 0 -> >> & -> _temp `i -> 240 `i -> 4 `i `uc ]
-[; ;ipv4.c: 172: ip.headerLength = temp & 0x0f;
-"172
+[; ;ipv4.c: 169: ip.headerLength = temp & 0x0f;
+"169
 [e = . _ip 1 -> & -> _temp `i -> 15 `i `uc ]
-[; ;ipv4.c: 174: temp = ethernetController_streamFromRXBuffer(1, field->start);
-"174
+[; ;ipv4.c: 171: temp = ethernetController_streamFromRXBuffer(1, field->start);
+"171
 [e = _temp ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 ]
-[; ;ipv4.c: 175: ip.dscp = (temp & 0x1f);
-"175
+[; ;ipv4.c: 172: ip.dscp = (temp & 0x1f);
+"172
 [e = . _ip 2 -> & -> _temp `i -> 31 `i `uc ]
-[; ;ipv4.c: 176: ip.ecn = (temp & 0xC0) >> 6;
-"176
+[; ;ipv4.c: 173: ip.ecn = (temp & 0xC0) >> 6;
+"173
 [e = . _ip 3 -> >> & -> _temp `i -> 192 `i -> 6 `i `uc ]
-[; ;ipv4.c: 178: ip.totalLength = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
-"178
+[; ;ipv4.c: 175: ip.totalLength = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+"175
 [e = . _ip 4 -> << -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 `i -> 8 `i `ui ]
-[; ;ipv4.c: 179: ip.totalLength |= ethernetController_streamFromRXBuffer(1, field->start);
-"179
+[; ;ipv4.c: 176: ip.totalLength |= ethernetController_streamFromRXBuffer(1, field->start);
+"176
 [e =| . _ip 4 -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 `ui ]
-[; ;ipv4.c: 181: ip.identification = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
-"181
+[; ;ipv4.c: 178: ip.identification = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+"178
 [e = . _ip 5 -> << -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 `i -> 8 `i `ui ]
-[; ;ipv4.c: 182: ip.identification |= ethernetController_streamFromRXBuffer(1, field->start);
-"182
+[; ;ipv4.c: 179: ip.identification |= ethernetController_streamFromRXBuffer(1, field->start);
+"179
 [e =| . _ip 5 -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 `ui ]
-[; ;ipv4.c: 184: temp = ethernetController_streamFromRXBuffer(1, field->start);
-"184
+[; ;ipv4.c: 181: temp = ethernetController_streamFromRXBuffer(1, field->start);
+"181
 [e = _temp ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 ]
-[; ;ipv4.c: 185: ip.flags = ((temp & 0xC0) >> 6);
-"185
+[; ;ipv4.c: 182: ip.flags = ((temp & 0xC0) >> 6);
+"182
 [e = . _ip 6 -> >> & -> _temp `i -> 192 `i -> 6 `i `uc ]
-[; ;ipv4.c: 186: ip.fragmentOffset = ((temp & 0x1f) << 8);
-"186
+[; ;ipv4.c: 183: ip.fragmentOffset = ((temp & 0x1f) << 8);
+"183
 [e = . _ip 7 -> << & -> _temp `i -> 31 `i -> 8 `i `ui ]
-[; ;ipv4.c: 188: ip.fragmentOffset |= ethernetController_streamFromRXBuffer(1, field->start);
-"188
+[; ;ipv4.c: 185: ip.fragmentOffset |= ethernetController_streamFromRXBuffer(1, field->start);
+"185
 [e =| . _ip 7 -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 `ui ]
-[; ;ipv4.c: 190: ip.timeToLive = ethernetController_streamFromRXBuffer(1, field->start);
-"190
+[; ;ipv4.c: 187: ip.timeToLive = ethernetController_streamFromRXBuffer(1, field->start);
+"187
 [e = . _ip 8 ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 ]
-[; ;ipv4.c: 192: ip.protocol = ethernetController_streamFromRXBuffer(1, field->start);
-"192
+[; ;ipv4.c: 189: ip.protocol = ethernetController_streamFromRXBuffer(1, field->start);
+"189
 [e = . _ip 9 -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 `E100 ]
-[; ;ipv4.c: 194: ip.checksum = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
-"194
+[; ;ipv4.c: 191: ip.checksum = (ethernetController_streamFromRXBuffer(1, field->start) << 8);
+"191
 [e = . _ip 10 -> << -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 `i -> 8 `i `ui ]
-[; ;ipv4.c: 195: ip.checksum |= ethernetController_streamFromRXBuffer(1, field->start);
-"195
+[; ;ipv4.c: 192: ip.checksum |= ethernetController_streamFromRXBuffer(1, field->start);
+"192
 [e =| . _ip 10 -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 `ui ]
+[; ;ipv4.c: 194: for (uint8_t i = 0; i < 4; i++)
+"194
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 626  ]
+[e $U 627  ]
+"195
+[e :U 626 ]
+[; ;ipv4.c: 195: ip.source.address[i] = ethernetController_streamFromRXBuffer(1, field->start);
+[e = *U + &U . . _ip 11 0 * -> _i `ux -> -> # *U &U . . _ip 11 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 ]
+"194
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 626  ]
+[e :U 627 ]
+"195
+}
 [; ;ipv4.c: 197: for (uint8_t i = 0; i < 4; i++)
 "197
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 631  ]
-[e $U 632  ]
+[e $ < -> _i `i -> 4 `i 629  ]
+[e $U 630  ]
 "198
-[e :U 631 ]
-[; ;ipv4.c: 198: ip.source.address[i] = ethernetController_streamFromRXBuffer(1, field->start);
-[e = *U + &U . . _ip 11 0 * -> _i `ux -> -> # *U &U . . _ip 11 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 ]
+[e :U 629 ]
+[; ;ipv4.c: 198: ip.destination.address[i] = ethernetController_streamFromRXBuffer(1, field->start);
+[e = *U + &U . . _ip 12 0 * -> _i `ux -> -> # *U &U . . _ip 12 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 ]
 "197
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 631  ]
-[e :U 632 ]
+[e $ < -> _i `i -> 4 `i 629  ]
+[e :U 630 ]
 "198
 }
-[; ;ipv4.c: 200: for (uint8_t i = 0; i < 4; i++)
+[; ;ipv4.c: 200: ethernetController_streamFromRXBuffer(2, field->start);
 "200
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 634  ]
-[e $U 635  ]
-"201
-[e :U 634 ]
-[; ;ipv4.c: 201: ip.destination.address[i] = ethernetController_streamFromRXBuffer(1, field->start);
-[e = *U + &U . . _ip 12 0 * -> _i `ux -> -> # *U &U . . _ip 12 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc . *U _field 0 ]
-"200
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 634  ]
-[e :U 635 ]
-"201
-}
-[; ;ipv4.c: 203: ethernetController_streamFromRXBuffer(2, field->start);
-"203
 [e ( _ethernetController_streamFromRXBuffer (2 , -> -> 2 `i `uc . *U _field 0 ]
-[; ;ipv4.c: 205: return ip;
-"205
+[; ;ipv4.c: 202: return ip;
+"202
 [e ) _ip ]
-[e $UE 630  ]
-[; ;ipv4.c: 206: }
-"206
-[e :UE 630 ]
+[e $UE 625  ]
+[; ;ipv4.c: 203: }
+"203
+[e :UE 625 ]
 }
-"208
+"205
 [v _ipv4_checkHeaderChecksum `(b ~T0 @X0 1 sf1`*S7 ]
 {
-[; ;ipv4.c: 208: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header) {
+[; ;ipv4.c: 205: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header) {
 [e :U _ipv4_checkHeaderChecksum ]
 [v _header `*S7 ~T0 @X0 1 r1 ]
 [f ]
-"209
+"206
 [v _testHeader `S7 ~T0 @X0 1 a ]
-[; ;ipv4.c: 209: ipv4_header_t testHeader;
-[; ;ipv4.c: 210: testHeader = *header;
-"210
+[; ;ipv4.c: 206: ipv4_header_t testHeader;
+[; ;ipv4.c: 207: testHeader = *header;
+"207
 [e = _testHeader *U _header ]
-[; ;ipv4.c: 211: testHeader.checksum = 0x0000;
-"211
+[; ;ipv4.c: 208: testHeader.checksum = 0x0000;
+"208
 [e = . _testHeader 10 -> -> 0 `i `ui ]
-[; ;ipv4.c: 212: ipv4_calculateHeaderChecksum(&testHeader);
-"212
+[; ;ipv4.c: 209: ipv4_calculateHeaderChecksum(&testHeader);
+"209
 [e ( _ipv4_calculateHeaderChecksum (1 &U _testHeader ]
-[; ;ipv4.c: 213: if (testHeader.checksum == header->checksum) {
-"213
-[e $ ! == . _testHeader 10 . *U _header 10 638  ]
+[; ;ipv4.c: 210: if (testHeader.checksum == header->checksum) {
+"210
+[e $ ! == . _testHeader 10 . *U _header 10 633  ]
 {
-[; ;ipv4.c: 214: return 1;
-"214
+[; ;ipv4.c: 211: return 1;
+"211
 [e ) -> -> 1 `i `b ]
-[e $UE 637  ]
-"215
+[e $UE 632  ]
+"212
 }
-[e :U 638 ]
-[; ;ipv4.c: 215: }
-[; ;ipv4.c: 216: UARTTransmitText("[Expected ");
-"216
+[e :U 633 ]
+[; ;ipv4.c: 212: }
+[; ;ipv4.c: 213: UARTTransmitText("[Expected ");
+"213
 [e ( _UARTTransmitText (1 :s 9C ]
-[; ;ipv4.c: 217: UARTTransmitText(hexToString(testHeader.checksum));
-"217
+[; ;ipv4.c: 214: UARTTransmitText(hexToString(testHeader.checksum));
+"214
 [e ( _UARTTransmitText (1 -> ( _hexToString (1 -> . _testHeader 10 `ul `*Cuc ]
-[; ;ipv4.c: 218: UARTTransmitText(", got ");
-"218
+[; ;ipv4.c: 215: UARTTransmitText(", got ");
+"215
 [e ( _UARTTransmitText (1 :s 10C ]
-[; ;ipv4.c: 219: UARTTransmitText(hexToString(header->checksum));
-"219
+[; ;ipv4.c: 216: UARTTransmitText(hexToString(header->checksum));
+"216
 [e ( _UARTTransmitText (1 -> ( _hexToString (1 -> . *U _header 10 `ul `*Cuc ]
-[; ;ipv4.c: 220: UARTTransmitText("]");
-"220
+[; ;ipv4.c: 217: UARTTransmitText("]");
+"217
 [e ( _UARTTransmitText (1 :s 11C ]
-[; ;ipv4.c: 221: return 0;
-"221
+[; ;ipv4.c: 218: return 0;
+"218
 [e ) -> -> 0 `i `b ]
-[e $UE 637  ]
-[; ;ipv4.c: 222: }
-"222
-[e :UE 637 ]
+[e $UE 632  ]
+[; ;ipv4.c: 219: }
+"219
+[e :UE 632 ]
 }
-"224
+"221
 [v _ipv4_getIPSourceAddress `(S6 ~T0 @X0 1 ef ]
 {
-[; ;ipv4.c: 224: ipv4_address_t ipv4_getIPSourceAddress() {
+[; ;ipv4.c: 221: ipv4_address_t ipv4_getIPSourceAddress() {
 [e :U _ipv4_getIPSourceAddress ]
 [f ]
-[; ;ipv4.c: 225: return sourceIPAddress;
-"225
-[e ) _sourceIPAddress ]
-[e $UE 639  ]
-[; ;ipv4.c: 226: }
-"226
-[e :UE 639 ]
+[; ;ipv4.c: 222: return ipSource;
+"222
+[e ) _ipSource ]
+[e $UE 634  ]
+[; ;ipv4.c: 223: }
+"223
+[e :UE 634 ]
 }
-"228
+"225
 [v _ipv4_setIPSourceAddress `(S9 ~T0 @X0 1 ef1`S6 ]
 {
-[; ;ipv4.c: 228: error_t ipv4_setIPSourceAddress(ipv4_address_t ip) {
+[; ;ipv4.c: 225: error_t ipv4_setIPSourceAddress(ipv4_address_t ip) {
 [e :U _ipv4_setIPSourceAddress ]
 [v _ip `S6 ~T0 @X0 1 r1 ]
 [f ]
-"229
-[v F5825 `uc ~T0 @X0 1 s state ]
-[i F5825
--> -> 0 `i `uc
-]
-"230
-[v _numberOfProbes `Cuc ~T0 @X0 1 a ]
-[; ;ipv4.c: 229: uint8_t static state = 0;
-[; ;ipv4.c: 230: uint8_t const numberOfProbes = 3;
-[e = _numberOfProbes -> -> 3 `i `uc ]
-"231
-[v _timeBetweenProbes `Cuc ~T0 @X0 1 a ]
-[; ;ipv4.c: 231: uint8_t const timeBetweenProbes = 1;
-[e = _timeBetweenProbes -> -> 1 `i `uc ]
-"232
-[v F5828 `uc ~T0 @X0 1 s probeCounter ]
-[i F5828
--> -> 0 `i `uc
-]
-"233
+"226
 [v _index `uc ~T0 @X0 1 a ]
-"234
+"227
 [v _err `S9 ~T0 @X0 1 a ]
-[; ;ipv4.c: 232: uint8_t static probeCounter = 0;
-[; ;ipv4.c: 233: uint8_t index;
-[; ;ipv4.c: 234: error_t err;
-[; ;ipv4.c: 235: err.module = ERROR_MODULE_IPv4;
-"235
-[e = . _err 0 . `E128 4 ]
-[; ;ipv4.c: 236: switch (state) {
-"236
-[e $U 642  ]
-{
-[; ;ipv4.c: 237: case 0:
-"237
-[e :U 643 ]
-[; ;ipv4.c: 238: if (ARP_checkForEntry(ip, &index)) {
-"238
-[e $ ! != -> ( _ARP_checkForEntry (2 , _ip &U _index `i -> -> -> 0 `i `uc `i 644  ]
-{
-[; ;ipv4.c: 239: if (probeCounter == 0)
-"239
-[e $ ! == -> F5828 `i -> 0 `i 645  ]
-[; ;ipv4.c: 241: err.code = ERROR_IPv4_ADDRESS_ALREADY_IN_USE;
-"241
-[e = . _err 1 -> . `E157 0 `ui ]
-[e $U 646  ]
-"242
-[e :U 645 ]
-[; ;ipv4.c: 242: else
-[; ;ipv4.c: 244: err.code = ERROR_IPv4_ADDRESS_CONFLICT_DETECTED;
-"244
-[e = . _err 1 -> . `E157 1 `ui ]
-[e :U 646 ]
-[; ;ipv4.c: 245: return err;
-"245
-[e ) _err ]
-[e $UE 640  ]
-"246
+[; ;ipv4.c: 226: uint8_t index;
+[; ;ipv4.c: 227: error_t err;
+[; ;ipv4.c: 228: err.module = ERROR_MODULE_IPv4;
+"228
+[e = . _err 0 . `E129 4 ]
+[; ;ipv4.c: 230: ARP_probe(ip);
+"230
+[e ( _ARP_probe (1 _ip ]
+[; ;ipv4.c: 232: }
+"232
+[e :UE 635 ]
 }
-[e :U 644 ]
-[; ;ipv4.c: 246: }
-[; ;ipv4.c: 247: state = 1;
-"247
-[e = F5825 -> -> 1 `i `uc ]
-[; ;ipv4.c: 248: break;
-"248
-[e $U 641  ]
-[; ;ipv4.c: 249: case 1:
-"249
-[e :U 647 ]
-[; ;ipv4.c: 250: sourceIPAddress = ip;
-"250
-[e = _sourceIPAddress _ip ]
-[; ;ipv4.c: 251: break;
-"251
-[e $U 641  ]
-"252
-}
-[; ;ipv4.c: 252: }
-[e $U 641  ]
-"236
-[e :U 642 ]
-[e [\ F5825 , $ -> -> 0 `i `uc 643
- , $ -> -> 1 `i `uc 647
- 641 ]
-"252
-[e :U 641 ]
-[; ;ipv4.c: 254: }
-"254
-[e :UE 640 ]
-}
-"256
+"234
 [v _ipv4_checkForConflicts `(S9 ~T0 @X0 1 ef1`S6 ]
 {
-[; ;ipv4.c: 256: error_t ipv4_checkForConflicts(ipv4_address_t ip) {
+[; ;ipv4.c: 234: error_t ipv4_checkForConflicts(ipv4_address_t ip) {
 [e :U _ipv4_checkForConflicts ]
 [v _ip `S6 ~T0 @X0 1 r1 ]
 [f ]
-[; ;ipv4.c: 258: }
-"258
-[e :UE 648 ]
+[; ;ipv4.c: 236: }
+"236
+[e :UE 636 ]
 }
-"260
+"238
 [v _ipv4_cmp `(b ~T0 @X0 1 ef2`*S6`*S6 ]
 {
-[; ;ipv4.c: 260: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t * b) {
+[; ;ipv4.c: 238: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t * b) {
 [e :U _ipv4_cmp ]
 [v _a `*S6 ~T0 @X0 1 r1 ]
 [v _b `*S6 ~T0 @X0 1 r2 ]
 [f ]
-[; ;ipv4.c: 261: for (uint8_t i = 0; i < 4; i++) {
-"261
+[; ;ipv4.c: 239: for (uint8_t i = 0; i < 4; i++) {
+"239
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 650  ]
-[e $U 651  ]
-[e :U 650 ]
+[e $ < -> _i `i -> 4 `i 638  ]
+[e $U 639  ]
+[e :U 638 ]
 {
-[; ;ipv4.c: 262: if (a->address[i] != b->address[i])
-"262
-[e $ ! != -> *U + &U . *U _a 0 * -> _i `ux -> -> # *U &U . *U _a 0 `ui `ux `i -> *U + &U . *U _b 0 * -> _i `ux -> -> # *U &U . *U _b 0 `ui `ux `i 653  ]
-[; ;ipv4.c: 263: return 0;
-"263
+[; ;ipv4.c: 240: if (a->address[i] != b->address[i])
+"240
+[e $ ! != -> *U + &U . *U _a 0 * -> _i `ux -> -> # *U &U . *U _a 0 `ui `ux `i -> *U + &U . *U _b 0 * -> _i `ux -> -> # *U &U . *U _b 0 `ui `ux `i 641  ]
+[; ;ipv4.c: 241: return 0;
+"241
 [e ) -> -> 0 `i `b ]
-[e $UE 649  ]
-[e :U 653 ]
-"264
+[e $UE 637  ]
+[e :U 641 ]
+"242
 }
-"261
+"239
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 650  ]
-[e :U 651 ]
-"264
+[e $ < -> _i `i -> 4 `i 638  ]
+[e :U 639 ]
+"242
 }
-[; ;ipv4.c: 264: }
-[; ;ipv4.c: 265: return 1;
-"265
+[; ;ipv4.c: 242: }
+[; ;ipv4.c: 243: return 1;
+"243
 [e ) -> -> 1 `i `b ]
-[e $UE 649  ]
-[; ;ipv4.c: 266: }
-"266
-[e :UE 649 ]
+[e $UE 637  ]
+[; ;ipv4.c: 244: }
+"244
+[e :UE 637 ]
 }
-"268
+"246
 [v _ipv4_isAllZero `(b ~T0 @X0 1 ef1`*S6 ]
 {
-[; ;ipv4.c: 268: bool_t ipv4_isAllZero(ipv4_address_t * ip) {
+[; ;ipv4.c: 246: bool_t ipv4_isAllZero(ipv4_address_t * ip) {
 [e :U _ipv4_isAllZero ]
 [v _ip `*S6 ~T0 @X0 1 r1 ]
 [f ]
-[; ;ipv4.c: 269: for (uint8_t i = 0; i < 4; i++) {
-"269
+[; ;ipv4.c: 247: for (uint8_t i = 0; i < 4; i++) {
+"247
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 655  ]
-[e $U 656  ]
-[e :U 655 ]
+[e $ < -> _i `i -> 4 `i 643  ]
+[e $U 644  ]
+[e :U 643 ]
 {
-[; ;ipv4.c: 270: if (ip->address[i] != 0x00)
-"270
-[e $ ! != -> *U + &U . *U _ip 0 * -> _i `ux -> -> # *U &U . *U _ip 0 `ui `ux `i -> 0 `i 658  ]
-[; ;ipv4.c: 271: return 0;
-"271
+[; ;ipv4.c: 248: if (ip->address[i] != 0x00)
+"248
+[e $ ! != -> *U + &U . *U _ip 0 * -> _i `ux -> -> # *U &U . *U _ip 0 `ui `ux `i -> 0 `i 646  ]
+[; ;ipv4.c: 249: return 0;
+"249
 [e ) -> -> 0 `i `b ]
-[e $UE 654  ]
-[e :U 658 ]
-"272
+[e $UE 642  ]
+[e :U 646 ]
+"250
 }
-"269
+"247
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 655  ]
-[e :U 656 ]
-"272
+[e $ < -> _i `i -> 4 `i 643  ]
+[e :U 644 ]
+"250
 }
-[; ;ipv4.c: 272: }
-[; ;ipv4.c: 273: return 1;
-"273
+[; ;ipv4.c: 250: }
+[; ;ipv4.c: 251: return 1;
+"251
 [e ) -> -> 1 `i `b ]
-[e $UE 654  ]
-[; ;ipv4.c: 274: }
-"274
-[e :UE 654 ]
+[e $UE 642  ]
+[; ;ipv4.c: 252: }
+"252
+[e :UE 642 ]
 }
-"276
+"254
 [v _ipv4_setToAllZero `(v ~T0 @X0 1 ef1`*S6 ]
 {
-[; ;ipv4.c: 276: void ipv4_setToAllZero(ipv4_address_t * ip) {
+[; ;ipv4.c: 254: void ipv4_setToAllZero(ipv4_address_t * ip) {
 [e :U _ipv4_setToAllZero ]
 [v _ip `*S6 ~T0 @X0 1 r1 ]
 [f ]
-[; ;ipv4.c: 277: for (uint8_t i = 0; i < 4; i++) {
-"277
+[; ;ipv4.c: 255: for (uint8_t i = 0; i < 4; i++) {
+"255
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 660  ]
-[e $U 661  ]
-[e :U 660 ]
+[e $ < -> _i `i -> 4 `i 648  ]
+[e $U 649  ]
+[e :U 648 ]
 {
-[; ;ipv4.c: 278: ip->address[0] = 0x00;
-"278
+[; ;ipv4.c: 256: ip->address[0] = 0x00;
+"256
 [e = *U + &U . *U _ip 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _ip 0 `ui `ux -> -> 0 `i `uc ]
-"279
+"257
 }
-"277
+"255
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 660  ]
-[e :U 661 ]
-"279
+[e $ < -> _i `i -> 4 `i 648  ]
+[e :U 649 ]
+"257
 }
-[; ;ipv4.c: 279: }
-[; ;ipv4.c: 280: }
-"280
-[e :UE 659 ]
+[; ;ipv4.c: 257: }
+[; ;ipv4.c: 258: }
+"258
+[e :UE 647 ]
 }
 [a 8C 91 73 78 86 65 76 73 68 32 67 72 69 67 75 83 85 77 93 0 ]
 [a 7C 93 0 ]

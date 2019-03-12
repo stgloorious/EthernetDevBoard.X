@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
   </td>
  </tr>
  </tbody>
@@ -69,7 +69,8 @@ $(function() {
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">IPv4<div class="ingroups"><a class="el" href="group__stack.html">Stack</a> &raquo; <a class="el" href="group__ethernet.html">Ethernet</a> &raquo; <a class="el" href="group__protocols.html">Protocols</a></div></div>  </div>
 </div><!--header-->
@@ -132,8 +133,13 @@ Functions</h2></td></tr>
 <tr class="separator:ga7f96d526bafe55783b675597634d87ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaace46bc098160cc06288e80390dc855a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gaace46bc098160cc06288e80390dc855a">ipv4_getIPSourceAddress</a> ()</td></tr>
 <tr class="separator:gaace46bc098160cc06288e80390dc855a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a9ec06886de83e5c5cc133871d2b250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga8a9ec06886de83e5c5cc133871d2b250">ipv4_setIPSourceAddress</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
-<tr class="separator:ga8a9ec06886de83e5c5cc133871d2b250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad7cdb199040068c1d1dc14d9f2d7571d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gad7cdb199040068c1d1dc14d9f2d7571d">ipv4_setIPSourceAddress</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
+<tr class="separator:gad7cdb199040068c1d1dc14d9f2d7571d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga2dfd7888b822471d4bcdfe4ce873dc29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga2dfd7888b822471d4bcdfe4ce873dc29">ipSource</a></td></tr>
+<tr class="separator:ga2dfd7888b822471d4bcdfe4ce873dc29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -280,7 +286,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>ipv4 packet reception </dd></dl>
 
 </div>
 </div>
@@ -311,14 +316,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga8a9ec06886de83e5c5cc133871d2b250"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8a9ec06886de83e5c5cc133871d2b250">&#9670;&nbsp;</a></span>ipv4_setIPSourceAddress()</h2>
+<a id="gad7cdb199040068c1d1dc14d9f2d7571d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad7cdb199040068c1d1dc14d9f2d7571d">&#9670;&nbsp;</a></span>ipv4_setIPSourceAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ipv4_setIPSourceAddress </td>
+          <td class="memname"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a> ipv4_setIPSourceAddress </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td>
           <td class="paramname"><em>ip</em></td><td>)</td>
@@ -369,7 +374,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>Fragmenting </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Fragmenting </dd></dl>
 
 </div>
 </div>
@@ -435,6 +440,21 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>Always make sure the array which ptr points to is big enough! </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ga2dfd7888b822471d4bcdfe4ce873dc29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2dfd7888b822471d4bcdfe4ce873dc29">&#9670;&nbsp;</a></span>ipSource</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipSource</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
   </td>
  </tr>
  </tbody>
@@ -113,10 +113,14 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:ga8a4a6940eb9ce245840c7e0af23a8b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga98346c8114f5ad4aa5cf0a2f11c15aee"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#ga98346c8114f5ad4aa5cf0a2f11c15aee">module_offsets</a> { <a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeea9868f185ecc8fb5c406ef53baad4e400">ERROR_MEMORY_OFFSET</a> = 100, 
+<tr class="memitem:ga98346c8114f5ad4aa5cf0a2f11c15aee"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#ga98346c8114f5ad4aa5cf0a2f11c15aee">module_offsets</a> { <br />
+&#160;&#160;<a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeea9868f185ecc8fb5c406ef53baad4e400">ERROR_MEMORY_OFFSET</a> = 100, 
 <a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeeafde2d106522594f6c42922fa38a9a211">ERROR_ETHERNET_OFFSET</a> = 200, 
 <a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeeaff9cbe74fe91ea06386fd8b3d3aca4f0">ERROR_ETHERNET_CONTROLLER_OFFSET</a> = 300, 
-<a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeea8ea12ec718bd76d494f71875fbb7d6a7">ERROR_ARP_OFFSET</a> = 400
+<a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeea8ea12ec718bd76d494f71875fbb7d6a7">ERROR_ARP_OFFSET</a> = 400, 
+<br />
+&#160;&#160;<a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeeaca39d1704ec0b4dca80a024a63441347">ERROR_IPv4_OFFSET</a> = 500
+<br />
  }</td></tr>
 <tr class="separator:ga98346c8114f5ad4aa5cf0a2f11c15aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4d2300fd6df4ff42db6d34ca3bd63ea2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#ga4d2300fd6df4ff42db6d34ca3bd63ea2">errors_memory</a> { <a class="el" href="group__error.html#gga4d2300fd6df4ff42db6d34ca3bd63ea2a253569fc8cba5b5218d36e4e044c30cf">ERROR_MEMORY_OUT_OF_MEMORY</a> = ERROR_MEMORY_OFFSET + 1, 
@@ -135,9 +139,15 @@ Enumerations</h2></td></tr>
 <tr class="separator:gae82d87a039b0b080f43f6d790fe642e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadc6f7acf887618df05bc50c50fee037b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#gadc6f7acf887618df05bc50c50fee037b">errors_arp</a> { <a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037bac9e5c709706b773c6e42660a7720b716">ERROR_ARP_WAITING_FOR_REPLY</a> = ERROR_ARP_OFFSET + 1, 
 <a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba1de61ce85d3e162bfa397bdbe9919114">ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED</a> = ERROR_ARP_OFFSET + 2, 
-<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba9b91278de8312021b894a38f98265320">ERROR_ARP_INVALID_VALUES</a> = ERROR_ARP_OFFSET + 3
+<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba9b91278de8312021b894a38f98265320">ERROR_ARP_INVALID_VALUES</a> = ERROR_ARP_OFFSET + 3, 
+<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba5dd3e6a0d4e9b3d21e5490346bf79865">ERROR_ARP_UNKNOWN</a> = ERROR_ARP_OFFSET + 99
  }</td></tr>
 <tr class="separator:gadc6f7acf887618df05bc50c50fee037b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga856ca2ee3bb82078747ddb094764cbbd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#ga856ca2ee3bb82078747ddb094764cbbd">errors_ipv4</a> { <a class="el" href="group__error.html#gga856ca2ee3bb82078747ddb094764cbbdacaae6de62c8885080dfb215041911808">ERROR_IPv4_ADDRESS_ALREADY_IN_USE</a> = ERROR_IPv4_OFFSET + 1, 
+<a class="el" href="group__error.html#gga856ca2ee3bb82078747ddb094764cbbdae6a79d900417d27140b8f9b27c818534">ERROR_IPv4_ADDRESS_CONFLICT_DETECTED</a> = ERROR_IPv4_OFFSET + 2, 
+<a class="el" href="group__error.html#gga856ca2ee3bb82078747ddb094764cbbdae5e801af808d95e7efe34730e4f1c4e6">ERROR_IPv4_UNKNOWN</a> = ERROR_IPv4_OFFSET + 99
+ }</td></tr>
+<tr class="separator:ga856ca2ee3bb82078747ddb094764cbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines all error messages. </p>

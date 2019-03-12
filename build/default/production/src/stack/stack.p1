@@ -1,4 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"47 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h
+[s S9 `uc -> 4 `i ]
+[n S9 ipv4_address address ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -86,15 +89,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 87: etherType_t ethertype;
 [; ;ethernetTypes.h: 88: memoryField_t memory;
 [; ;ethernetTypes.h: 92: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 93: time_t tReceived;
-[; ;ethernetTypes.h: 94: } ethernetFrame_t;
-[; ;ethernetTypes.h: 99: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 100: linkState_t link;
-[; ;ethernetTypes.h: 101: speed_t speed;
-[; ;ethernetTypes.h: 102: duplexState_t duplex;
-[; ;ethernetTypes.h: 103: macaddress_t source;
-[; ;ethernetTypes.h: 104: macaddress_t destination;
-[; ;ethernetTypes.h: 105: } ethernetConnection_t;
+[; ;ethernetTypes.h: 96: time_t tReceived;
+[; ;ethernetTypes.h: 97: } ethernetFrame_t;
+[; ;ethernetTypes.h: 102: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 103: linkState_t link;
+[; ;ethernetTypes.h: 104: speed_t speed;
+[; ;ethernetTypes.h: 105: duplexState_t duplex;
+[; ;ethernetTypes.h: 106: macaddress_t source;
+[; ;ethernetTypes.h: 107: macaddress_t destination;
+[; ;ethernetTypes.h: 108: } ethernetConnection_t;
 [; ;error.h: 38: typedef enum error_modules {
 [; ;error.h: 39: ERROR_MODULE_MEMORY,
 [; ;error.h: 40: ERROR_MODULE_ETHERNET_CONTROLLER,
@@ -166,7 +169,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
 [; ;backgroundTasksTypes.h: 52: uint8_t fPacketPending;
-[; ;backgroundTasksTypes.h: 53: } backgroundTaskHandler_t;
+[; ;backgroundTasksTypes.h: 54: uint8_t fSetSourceAddr;
+[; ;backgroundTasksTypes.h: 57: } backgroundTaskHandler_t;
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
 [; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
@@ -195,6 +199,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4Types.h: 135: memoryField_t memory;
 [; ;ipv4Types.h: 139: ethernetFrame_t ethernet;
 [; ;ipv4Types.h: 140: } ipv4_packet_t;
+"142 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h
+[v _ipSource `S9 ~T0 @X0 1 e ]
+[; ;ipv4Types.h: 142: ipv4_address_t ipSource;
 [; ;ethernetController.h: 52: typedef enum LEDs {
 [; ;ethernetController.h: 53: LEDA, LEDB
 [; ;ethernetController.h: 54: } LEDs_t;

@@ -136,7 +136,16 @@ uint8_t fOutOfMemory;
 uint8_t index;
 } memoryField_t;
 
-# 48 "src/eth/ethernetTypes.h"
+# 30 "src/eth/../stack/time.h"
+typedef uint32_t time_t;
+
+# 36
+void updateTime();
+
+# 42
+time_t getMillis();
+
+# 49 "src/eth/ethernetTypes.h"
 typedef enum etherTypes {
 ETHERTYPE_IPv4 = 0x0800,
 ETHERTYPE_ARP = 0x0806,
@@ -144,27 +153,27 @@ ETHERTYPE_WOL = 0x0842,
 ETHERTYPE_FLOW_CONTROL = 0x8808
 } etherType_t;
 
-# 57
+# 58
 typedef struct macaddress {
 uint8_t address[6];
 } macaddress_t;
 
-# 63
+# 64
 typedef enum linkStates {
 NO_LINK, LINK_ESTABLISHED
 } linkState_t;
 
-# 69
+# 70
 typedef enum speeds {
 TEN_MBIT, HUNDRED_MBIT
 } speed_t;
 
-# 75
+# 76
 typedef enum duplexStates {
 HALF_DUPLEX, FULL_DUPLEX
 } duplexState_t;
 
-# 82
+# 83
 typedef struct ethernetFrame {
 uint16_t length;
 macaddress_t source;
@@ -172,11 +181,14 @@ macaddress_t destination;
 etherType_t ethertype;
 memoryField_t memory;
 
-# 91
+# 92
 RSV_t receiveStatusVector;
+
+# 96
+time_t tReceived;
 } ethernetFrame_t;
 
-# 97
+# 102
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;

@@ -50,6 +50,10 @@ typedef struct backgroundTaskHandler {
      * \todo Can somebody pls tell me why bool_t doesn't work here; A bitfield gives really strange behaviour (?)
      */
     uint8_t fPacketPending;
+    
+    uint8_t fSetSourceAddr;
+    
+    
 } backgroundTaskHandler_t;
 
 /**\}*/

@@ -6840,10 +6840,12 @@ memoryField_t memory;
 
 # 92
 RSV_t receiveStatusVector;
+
+# 96
 time_t tReceived;
 } ethernetFrame_t;
 
-# 99
+# 102
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -7013,6 +7015,10 @@ interruptFlags_t interruptFlags;
 
 # 52
 uint8_t fPacketPending;
+
+uint8_t fSetSourceAddr;
+
+
 } backgroundTaskHandler_t;
 
 # 40 "src/system/../system/../stack/../stack/protocols/../protocols/ipv4Types.h"
@@ -7076,6 +7082,8 @@ memoryField_t memory;
 # 139
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
+
+ipv4_address_t ipSource;
 
 # 43 "src/system/../system/../stack/../stack/protocols/../protocols/../../eth/mac.h"
 bool_t mac_cmp(macaddress_t *a, macaddress_t *b);

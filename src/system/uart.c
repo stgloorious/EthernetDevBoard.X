@@ -93,25 +93,41 @@ char *intToString(uint32_t val) {
     char static number [10];
     uint8_t pointer = 0;
 
-    uint8_t tenthousands = val / 10000u;
-    uint8_t thousands = (val - tenthousands * 10000u) / 1000u;
-    uint8_t hundreds = (val - tenthousands * 10000u - thousands * 1000u) / 100u;
-    uint8_t tens = (val - tenthousands * 10000u - thousands * 1000u - hundreds * 100u) / 10u;
+    uint8_t millions = 0;
+    uint8_t hundredthds = 0;
+    uint8_t tenthousands = 0;
+    uint8_t thousands = 0;
+    uint8_t hundreds = 0;
+    uint8_t tens = 0;
     uint8_t ones = val % 10u;
 
+    if (val > 999999) {
+        millions = val / 1000000u;
+        number[pointer++] = millions + 0x30u;
+    }
+
+    if (val > 99999) {
+        hundredthds = (val - millions * 1000000u) / 100000u;
+        number[pointer++] = hundredthds + 0x30u;
+    }
+
     if (val > 9999) {
+        tenthousands = (val - hundredthds * 100000u - millions * 1000000u) / 10000u;
         number[pointer++] = tenthousands + 0x30u;
     }
 
     if (val > 999) {
+        thousands = (val - tenthousands * 10000u - hundredthds * 100000u - millions * 1000000u) / 1000u;
         number[pointer++] = thousands + 0x30u;
     }
 
     if (val > 99) {
+        hundreds = (val - tenthousands * 10000u - thousands * 1000u - hundredthds * 100000u - millions * 1000000u) / 100u;
         number[pointer++] = hundreds + 0x30u;
     }
 
     if (val > 9) {
+        tens = (val - tenthousands * 10000u - thousands * 1000u - hundreds * 100u - hundredthds * 100000u - millions * 1000000u) / 10u;
         number[pointer++] = tens + 0x30u;
     }
 

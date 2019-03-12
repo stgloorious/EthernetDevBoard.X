@@ -250,23 +250,33 @@ error_t ARP_probe(ipv4_address_t ipTarget) {
     time_t timeStart;
     time_t waitingTime;
     ipv4_address_t ipSender;
+    error_t err;
+    err.module = ERROR_MODULE_ARP;
+
     switch (state) {
         case 0:
             ipv4_setToAllZero(&ipSender);
-            ARP_sendRequest(ipSender, ipTarget);
             timeStart = getMillis();
             waitingTime = rand() % 3000;
-            UARTTransmitText("Waited ");
-            UARTTransmitText(intToString(waitingTime));
-            UARTTransmitText(" seconds.\n\r");
             state = 1;
+            err.code = ERROR_ARP_WAITING_FOR_REPLY;
             break;
         case 1:
-
+            if (getMillis() - timeStart >= waitingTime) {
+                UARTTransmitText("Waited ");
+                UARTTransmitText(intToString(waitingTime));
+                UARTTransmitText(" ms.\n\r");
+                ARP_sendRequest(ipSender, ipTarget);
+                state = 2;
+            }
+            err.code = ERROR_ARP_WAITING_FOR_REPLY;
             break;
-
+        case 2:
+            state = 0;
+            err.code = ERROR_CODE_SUCCESSFUL;
+            break;
     }
-
+    return err;
 }
 
 /* =======================  Table  ======================= */

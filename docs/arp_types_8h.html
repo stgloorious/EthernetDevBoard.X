@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
   </td>
  </tr>
  </tbody>
@@ -83,6 +83,7 @@ $(function() {
 <code>#include &quot;<a class="el" href="ethernet_types_8h_source.html">../../eth/ethernetTypes.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ipv4_types_8h_source.html">../protocols/ipv4Types.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="error_8h_source.html">../error.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="time_8h_source.html">../time.h</a>&quot;</code><br />
 </div>
 <p><a href="arp_types_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -101,8 +102,8 @@ Macros</h2></td></tr>
 <tr class="memitem:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gad4abd9ee89fa8a8ba4231b6d914b5e83">ARP_TABLE_LENGTH</a>&#160;&#160;&#160;8</td></tr>
 <tr class="memdesc:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of entries in the ARP table.  <a href="group__arp.html#gad4abd9ee89fa8a8ba4231b6d914b5e83">More...</a><br /></td></tr>
 <tr class="separator:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">ARP_TABLE_ENTRY_TTL</a>&#160;&#160;&#160;300</td></tr>
-<tr class="memdesc:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time to live for an ARP Entry in seconds.  <a href="group__arp.html#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">More...</a><br /></td></tr>
+<tr class="memitem:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">ARP_TABLE_ENTRY_TTL</a>&#160;&#160;&#160;30000</td></tr>
+<tr class="memdesc:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time to live for an ARP Entry in milliseconds.  <a href="group__arp.html#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">More...</a><br /></td></tr>
 <tr class="separator:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacadcd25bea19657185a5fcb4f65a7669"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gacadcd25bea19657185a5fcb4f65a7669">ARP_TIMEOUT</a>&#160;&#160;&#160;2</td></tr>
 <tr class="memdesc:gacadcd25bea19657185a5fcb4f65a7669"><td class="mdescLeft">&#160;</td><td class="mdescRight">How long to wait after request for a reply in seconds.  <a href="group__arp.html#gacadcd25bea19657185a5fcb4f65a7669">More...</a><br /></td></tr>

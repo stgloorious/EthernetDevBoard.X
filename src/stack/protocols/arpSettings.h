@@ -25,8 +25,9 @@
 #ifndef ARPSETTINGS_H
 #define	ARPSETTINGS_H
 
-#define ANNOUNCE_WAIT       2
-#define PROBE_WAIT          2
+#define ANNOUNCE_WAIT       2 ///< Time between ARP requests
+#define PROBE_NUM           3 ///< Number of ARP probe messages
+#define PROBE_WAIT          2 ///< Max. Delay before beginning probing
 #define PROBE_MIN
 #define PROBE_MAX
 

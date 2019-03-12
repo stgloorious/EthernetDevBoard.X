@@ -25,7 +25,7 @@
    <div id="projectname">EthernetDevBoard
    &#160;<span id="projectnumber">v1.0</span>
    </div>
-   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack on a microcontroller</div>
+   <div id="projectbrief">Platform to develop and play around with a TCP/IP stack</div>
   </td>
  </tr>
  </tbody>
@@ -95,12 +95,14 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga1ba858e52bf34bca0e5260f0dc0e4641">ARP_handleNewPacket</a> (<a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a> *frame)</td></tr>
 <tr class="memdesc:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a received ARP packet and does the necessary steps.  <a href="group__arp.html#ga1ba858e52bf34bca0e5260f0dc0e4641">More...</a><br /></td></tr>
 <tr class="separator:ga1ba858e52bf34bca0e5260f0dc0e4641"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gae3e5d52fa89b91d6552cb328b8b6ec81">ARP_replyIfNeeded</a> (<a class="el" href="group__arp.html#ga1708785291f10e8cc257efe2b769ba4c">ARP_message_t</a> request)</td></tr>
-<tr class="memdesc:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the ARPmessage contains a request for my address, this function replies accordingly.  <a href="group__arp.html#gae3e5d52fa89b91d6552cb328b8b6ec81">More...</a><br /></td></tr>
-<tr class="separator:gae3e5d52fa89b91d6552cb328b8b6ec81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga1b3f3b5557d3cabb25df6b8f2af655bd">ARP_sendRequest</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
-<tr class="memdesc:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an ARP request to a given IPv4 address.  <a href="group__arp.html#ga1b3f3b5557d3cabb25df6b8f2af655bd">More...</a><br /></td></tr>
-<tr class="separator:ga1b3f3b5557d3cabb25df6b8f2af655bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab65f59f9ae425d1c88f494ddf8703af0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gab65f59f9ae425d1c88f494ddf8703af0">ARP_sendReply</a> (<a class="el" href="group__arp.html#ga1708785291f10e8cc257efe2b769ba4c">ARP_message_t</a> request)</td></tr>
+<tr class="memdesc:gab65f59f9ae425d1c88f494ddf8703af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the ARPmessage contains a request for my address, this function replies accordingly.  <a href="group__arp.html#gab65f59f9ae425d1c88f494ddf8703af0">More...</a><br /></td></tr>
+<tr class="separator:gab65f59f9ae425d1c88f494ddf8703af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb46c699a8bcaa36def633d756d110be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gacb46c699a8bcaa36def633d756d110be">ARP_sendRequest</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipSender, <a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipTarget)</td></tr>
+<tr class="memdesc:gacb46c699a8bcaa36def633d756d110be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an ARP request to a given IPv4 address.  <a href="group__arp.html#gacb46c699a8bcaa36def633d756d110be">More...</a><br /></td></tr>
+<tr class="separator:gacb46c699a8bcaa36def633d756d110be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9652dab0f37c3483c7d2e08c75a7781c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arp_8h.html#a9652dab0f37c3483c7d2e08c75a7781c">ARP_probe</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipTarget)</td></tr>
+<tr class="separator:a9652dab0f37c3483c7d2e08c75a7781c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa50891c65dcfb449eb93a4d5aed366f5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gaa50891c65dcfb449eb93a4d5aed366f5">ARP_checkForEntry</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip, uint8_t *index)</td></tr>
 <tr class="memdesc:gaa50891c65dcfb449eb93a4d5aed366f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for an entry in the ARP table.  <a href="group__arp.html#gaa50891c65dcfb449eb93a4d5aed366f5">More...</a><br /></td></tr>
 <tr class="separator:gaa50891c65dcfb449eb93a4d5aed366f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,7 +123,33 @@ Functions</h2></td></tr>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a9652dab0f37c3483c7d2e08c75a7781c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9652dab0f37c3483c7d2e08c75a7781c">&#9670;&nbsp;</a></span>ARP_probe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a> ARP_probe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td>
+          <td class="paramname"><em>ipTarget</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipTarget</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

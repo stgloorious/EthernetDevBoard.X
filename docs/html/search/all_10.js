@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['secondscreated',['secondsCreated',['../struct_a_r_p__table_entry.html#a06c3d88e59b26905ae3d434ff0b6e23e',1,'ARP_tableEntry']]],
   ['senderipaddress',['senderIPAddress',['../struct_a_r_p__message.html#a9532eb4e3dafc35df5f0cbd0598e6064',1,'ARP_message']]],
   ['sendermacaddress',['senderMACAddress',['../struct_a_r_p__message.html#a493c6c0fac00d24d97c5dd27e448d192',1,'ARP_message']]],
   ['set_5fseven_5fseg_5fansel',['SET_SEVEN_SEG_ANSEL',['../sevenseg_8h.html#a6c546290acda003a8b51ad3a2db8dbce',1,'sevenseg.h']]],

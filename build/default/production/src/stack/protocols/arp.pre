@@ -315,10 +315,12 @@ memoryField_t memory;
 
 # 92
 RSV_t receiveStatusVector;
+
+# 96
 time_t tReceived;
 } ethernetFrame_t;
 
-# 99
+# 102
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -542,6 +544,8 @@ memoryField_t memory;
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
+ipv4_address_t ipSource;
+
 # 37 "src/stack/protocols/../protocols/../../stack/backgroundTasksTypes.h"
 typedef struct backgroundTaskHandler {
 
@@ -553,6 +557,10 @@ interruptFlags_t interruptFlags;
 
 # 52
 uint8_t fPacketPending;
+
+uint8_t fSetSourceAddr;
+
+
 } backgroundTaskHandler_t;
 
 # 41 "src/stack/protocols/../protocols/../stack.h"
@@ -7548,23 +7556,33 @@ uint8_t static state = 0;
 time_t timeStart;
 time_t waitingTime;
 ipv4_address_t ipSender;
+error_t err;
+err.module = ERROR_MODULE_ARP;
+
 switch (state) {
 case 0:
 ipv4_setToAllZero(&ipSender);
-ARP_sendRequest(ipSender, ipTarget);
 timeStart = getMillis();
 waitingTime = rand() % 3000;
-UARTTransmitText("Waited ");
-UARTTransmitText(intToString(waitingTime));
-UARTTransmitText(" seconds.\n\r");
 state = 1;
+err.code = ERROR_ARP_WAITING_FOR_REPLY;
 break;
 case 1:
-
-break;
-
+if (getMillis() - timeStart >= waitingTime) {
+UARTTransmitText("Waited ");
+UARTTransmitText(intToString(waitingTime));
+UARTTransmitText(" ms.\n\r");
+ARP_sendRequest(ipSender, ipTarget);
+state = 2;
 }
-
+err.code = ERROR_ARP_WAITING_FOR_REPLY;
+break;
+case 2:
+state = 0;
+err.code = (uint16_t)0;
+break;
+}
+return err;
 }
 
 

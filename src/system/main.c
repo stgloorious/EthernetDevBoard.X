@@ -77,8 +77,7 @@ void main() {
     UARTTransmitText(__DATE__);
     UARTTransmitText(" ");
     UARTTransmitText(__TIME__);
-    UARTTransmitText("\n\r");
-    UARTTransmitText("Initialising Ethernet Controller...\n\r");
+    UARTTransmitText(".\n\r");
     error_t err;
     err = ethernetController_init();
     if (err.code != ERROR_CODE_SUCCESSFUL)
@@ -88,13 +87,9 @@ void main() {
         UARTTransmitText(ethernetController_getDeviceName());
         UARTTransmitText(" detected. ");
     }
-    UARTTransmitText("Silicon revision is ");
-    UARTTransmitInt(ethernetController_getSiliconRevision());
-    UARTTransmitText(".\n\r");
     UARTTransmitText("Source MAC address is ");
     UARTTransmitText(macToString(ethernetController_getMacAddress()));
     UARTTransmitText(".\n\r");
-    UARTTransmitText("Initialisation completed.\n\r");
     UARTTransmitText("------------------------------------------------\n\r");
 
     ARP_initTable();
@@ -126,13 +121,11 @@ void main() {
     IPdestination.address[2] = 0;
     IPdestination.address[3] = 5;
 
-    // ipv4_setIPDestinationAddress(IPdestination);
-    ipv4_setIPSourceAddress(IPsource);
-
-
     //Now everything's set up, allow interrupts
     INTCONbits.GIE = 1; //global interrupt enable
     INTCONbits.PEIE = 1;
+
+
 
     srand(ethernetController_getMacAddress().address[5]);
 
@@ -148,7 +141,10 @@ void main() {
         if (buttonState) {
             buttonState = 0;
 
-            if (stack.ethernet.link == LINK_ESTABLISHED) {
+            UARTTransmitText("Setting IPv4 Address...\n\r");
+            stack.background.fSetSourceAddr = 1;
+
+            /*if (stack.ethernet.link == LINK_ESTABLISHED) {
 
                 //////////////////////////////////////////////
                 uint8_t headerBuf[32];
@@ -175,7 +171,7 @@ void main() {
                 UARTTransmitText(", ");
                 UARTTransmitText(hexToString(stack.pendingPacketToSend.memory.end));
                 UARTTransmitText("\n\r");
-            }
+            }*/
         }
     }
 }
@@ -250,7 +246,7 @@ void buttonHandler(uint8_t volatile *state) {
     uint8_t static oldState = 0;
     uint8_t static newState = 0;
     uint32_t static debounceCounter = 0;
-    const uint32_t debounceValue = 0xfff;
+    const uint32_t debounceValue = 0x1f;
     if (BUTTON_STATE) {
         if (debounceCounter < debounceValue)
             debounceCounter++;
