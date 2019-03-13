@@ -3,6 +3,8 @@ Hard- and software platform with its own TCP/IP stack on a PIC18F microcontrolle
 
 Documentation can be found here: https://stgloorious.github.io/EthernetDevBoard.X/
 
+CircuitMaker Project: https://circuitmaker.com/Projects/Details/Stefan-Gloor/Ethernet-Development-Board
+
 Due to the increased market demand of internet-enabled devices it
 has become a preferable skill for engineers to be familiar with the basic
 principles of a network. I created this Ethernet Development Board
