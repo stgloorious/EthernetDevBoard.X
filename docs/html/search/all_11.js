@@ -1,22 +1,12 @@
 var searchData=
 [
-  ['targetipaddress',['targetIPAddress',['../structarp__message.html#a311d8e70c5a5a8b8b1e613e44ba25639',1,'arp_message']]],
-  ['targetmacaddress',['targetMACAddress',['../structarp__message.html#a07b2e71c5ec73e1d4828fd350bd4f041',1,'arp_message']]],
-  ['ten_5fmbit',['TEN_MBIT',['../ethernet_types_8h.html#gad51ff69ce00ee5c869723c572db0eefda283ccbbfdcfbf2e40a4a0f49f94d24ec',1,'ethernetTypes.h']]],
-  ['time',['time',['../time_8c.html#a76e1d33a738f97e1ce57b0e3428c3ccd',1,'time.c']]],
-  ['time_2ec',['time.c',['../time_8c.html',1,'']]],
-  ['time_2eh',['time.h',['../time_8h.html',1,'']]],
-  ['time_5ft',['time_t',['../group__stack.html#ga3346b04b0420b32ccf6b706551b70762',1,'time.h']]],
-  ['timecreated',['timeCreated',['../structarp__table_entry.html#ad3a3ddeadca84a20d7a6c10f394fcb47',1,'arp_tableEntry']]],
-  ['timeout',['TIMEOUT',['../_e_n_c424_j600_8c.html#a45ba202b05caf39795aeca91b0ae547e',1,'ENC424J600.c']]],
-  ['timetolive',['timeToLive',['../structipv4__header.html#a1c954c79d7e772d87d708498a586f206',1,'ipv4_header']]],
-  ['todo_20list',['Todo List',['../todo.html',1,'']]],
-  ['totallength',['totalLength',['../structipv4__header.html#a46d6b08cf598408355fa1fc5c1de902a',1,'ipv4_header']]],
-  ['transmission',['Transmission',['../group__transmission.html',1,'']]],
-  ['treceived',['tReceived',['../structethernet_frame.html#adf0eb85465daa4a54976d748ce072c84',1,'ethernetFrame']]],
-  ['true',['true',['../bool_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7',1,'bool.h']]],
-  ['tx_5fdata_5fstart_5faddress',['TX_DATA_START_ADDRESS',['../group__memory.html#gaf952470b2ca20106b4998e400ac4236e',1,'memoryController.h']]],
-  ['txabtif',['TXABTIF',['../structinterrupt_flags.html#aef79dc4f43ab3844327f963cedfc3a57',1,'interruptFlags::TXABTIF()'],['../group__interrupts.html#ggaf692e993b72f242633eee1b443276547abfa00fdc147b153f1960d9f5d2fceb3c',1,'TXABTIF():&#160;interrupt.h']]],
-  ['txdif',['TXDIF',['../group__interrupts.html#ggaf692e993b72f242633eee1b443276547aac1a991d894a8d498f3acdade862ed91',1,'interrupt.h']]],
-  ['txif',['TXIF',['../structinterrupt_flags.html#a8ac6b64dff7b25ddf36cea5543329e56',1,'interruptFlags']]]
+  ['unbanked_20instructions',['Unbanked Instructions',['../group___b_a_n_k___u_n.html',1,'']]],
+  ['uart_2ec',['uart.c',['../uart_8c.html',1,'']]],
+  ['uart_2eh',['uart.h',['../uart_8h.html',1,'']]],
+  ['uartinit',['UARTInit',['../uart_8c.html#a2208c97c21ded3ef393bd94a27509b69',1,'UARTInit(void):&#160;uart.c'],['../uart_8h.html#a2208c97c21ded3ef393bd94a27509b69',1,'UARTInit(void):&#160;uart.c']]],
+  ['uarttransmitint',['UARTTransmitInt',['../uart_8c.html#a4a038b093e8e3fbeac77a3da95231e86',1,'UARTTransmitInt(uint32_t val):&#160;uart.c'],['../uart_8h.html#a4a038b093e8e3fbeac77a3da95231e86',1,'UARTTransmitInt(uint32_t val):&#160;uart.c']]],
+  ['uarttransmittext',['UARTTransmitText',['../uart_8c.html#aededddacce8a1f56d58e40654babcc83',1,'UARTTransmitText(const char *str):&#160;uart.c'],['../uart_8h.html#aededddacce8a1f56d58e40654babcc83',1,'UARTTransmitText(const char *str):&#160;uart.c']]],
+  ['unicast',['unicast',['../struct_r_s_v.html#ab2a20bde35ec4242bf38d69c8277114a',1,'RSV']]],
+  ['unknownopcode',['unknownOpcode',['../struct_r_s_v.html#a57538bc935cb3aac5c51829f01b013af',1,'RSV']]],
+  ['updatetime',['updateTime',['../time_8c.html#a19562d96ecbcf8a223d3c38b39993fbf',1,'updateTime():&#160;time.c'],['../group__stack.html#ga19562d96ecbcf8a223d3c38b39993fbf',1,'updateTime():&#160;time.c']]]
 ];

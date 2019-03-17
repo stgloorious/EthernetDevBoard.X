@@ -134,7 +134,7 @@ ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 
 # 96
 enum errors_arp {
-ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
+ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
 ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
 ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
@@ -7278,22 +7278,25 @@ void static arp_send(arp_message_t arp);
 # 82
 void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
 
-# 94
-error_t static arp_probe (ipv4_address_t ipTarget);
+# 95
+error_t static arp_probe(ipv4_address_t ipTarget);
 
-# 101
+# 106
+error_t static arp_gratuitous(ipv4_address_t ip);
+
+# 113
 error_t arp_background();
 
-# 109
+# 121
 uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
 
-# 117
+# 129
 macaddress_t static arp_getEntryFromTable(uint8_t index);
 
-# 125
+# 137
 void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
-# 131
+# 143
 void printArpTable();
 
 # 37 "src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h"
@@ -7437,22 +7440,22 @@ void static enc424j600_enable();
 # 261
 void static enc424j600_enableReception();
 
-# 268
+# 267
 void static enc424j600_disableReception();
 
-# 273
+# 272
 void static enc424j600_enableAutoMACInsertion();
 
-# 278
+# 277
 void static enc424j600_disableAutoMACInsertion();
 
-# 295
+# 294
 uint16_t enc424j600_getInterruptFlags();
 
-# 303
+# 302
 void static enc424j600_clearInterruptFlag(uint8_t flag);
 
-# 320
+# 319
 RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
 
 # 36 "src/stack/backgroundTasks.c"

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_5fxtal_5ffreq',['_XTAL_FREQ',['../system_8h.html#a024148e99a7143db044a48216664d03d',1,'system.h']]]
+  ['expected_5fdevice_5fid',['EXPECTED_DEVICE_ID',['../_e_n_c424_j600_8h.html#af4964d66fae03157f52441b93e8c7be9',1,'ENC424J600.h']]]
 ];

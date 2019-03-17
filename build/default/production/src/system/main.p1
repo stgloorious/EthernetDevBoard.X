@@ -247,7 +247,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [c E5575 301 302 303 399 .. ]
 [n E5575 errors_ethernetController ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW ERROR_ETHERNET_CONTROLLER_UNKNOWN  ]
 [c E5580 401 402 403 404 499 .. ]
-[n E5580 errors_arp ERROR_ARP_WAITING_FOR_REPLY ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_IPv4_ADDRESS_CONFLICT ERROR_ARP_UNKNOWN  ]
+[n E5580 errors_arp ERROR_ARP_WAITING ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_IPv4_ADDRESS_CONFLICT ERROR_ARP_UNKNOWN  ]
 "62 src/system/../system/../stack/../stack/protocols/../protocols/../../system/uart.h
 [v _intToString `(*uc ~T0 @X0 0 ef1`ul ]
 "2945 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f25k50.h
@@ -5392,7 +5392,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 [; ;error.h: 91: };
 [; ;error.h: 96: enum errors_arp {
-[; ;error.h: 97: ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
+[; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 [; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
 [; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
 [; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
@@ -5638,12 +5638,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.h: 69: void static arp_sendReply(arp_message_t request);
 [; ;arp.h: 75: void static arp_send(arp_message_t arp);
 [; ;arp.h: 82: void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
-[; ;arp.h: 94: error_t static arp_probe (ipv4_address_t ipTarget);
-[; ;arp.h: 101: error_t arp_background();
-[; ;arp.h: 109: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
-[; ;arp.h: 117: macaddress_t static arp_getEntryFromTable(uint8_t index);
-[; ;arp.h: 125: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 131: void printArpTable();
+[; ;arp.h: 95: error_t static arp_probe(ipv4_address_t ipTarget);
+[; ;arp.h: 106: error_t static arp_gratuitous(ipv4_address_t ip);
+[; ;arp.h: 113: error_t arp_background();
+[; ;arp.h: 121: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+[; ;arp.h: 129: macaddress_t static arp_getEntryFromTable(uint8_t index);
+[; ;arp.h: 137: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 143: void printArpTable();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5823,12 +5824,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.h: 250: void static enc424j600_enable();
 [; ;ENC424J600.h: 256: void static enc424j600_enable();
 [; ;ENC424J600.h: 261: void static enc424j600_enableReception();
-[; ;ENC424J600.h: 268: void static enc424j600_disableReception();
-[; ;ENC424J600.h: 273: void static enc424j600_enableAutoMACInsertion();
-[; ;ENC424J600.h: 278: void static enc424j600_disableAutoMACInsertion();
-[; ;ENC424J600.h: 295: uint16_t enc424j600_getInterruptFlags();
-[; ;ENC424J600.h: 303: void static enc424j600_clearInterruptFlag(uint8_t flag);
-[; ;ENC424J600.h: 320: RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
+[; ;ENC424J600.h: 267: void static enc424j600_disableReception();
+[; ;ENC424J600.h: 272: void static enc424j600_enableAutoMACInsertion();
+[; ;ENC424J600.h: 277: void static enc424j600_disableAutoMACInsertion();
+[; ;ENC424J600.h: 294: uint16_t enc424j600_getInterruptFlags();
+[; ;ENC424J600.h: 302: void static enc424j600_clearInterruptFlag(uint8_t flag);
+[; ;ENC424J600.h: 319: RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
 "28 src/system/main.c
 [v _numberToDisplay `Vul ~T0 @X0 1 e ]
 [i _numberToDisplay
@@ -5949,7 +5950,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 78: UARTTransmitText(" ");
 "78
 [e ( _UARTTransmitText (1 :s 7C ]
-[; ;main.c: 79: UARTTransmitText("15:09:59");
+[; ;main.c: 79: UARTTransmitText("17:56:11");
 "79
 [e ( _UARTTransmitText (1 :s 8C ]
 [; ;main.c: 80: UARTTransmitText(".\n\r");
@@ -6119,11 +6120,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _state `S612 ~T0 @X0 1 r1 ]
 [f ]
 "180
-[v F6005 `S612 ~T0 @X0 1 s oldState ]
+[v F6007 `S612 ~T0 @X0 1 s oldState ]
 [; ;main.c: 180: static ethernetConnection_t oldState;
 [; ;main.c: 181: if (state.link != oldState.link) {
 "181
-[e $ ! != -> . _state 0 `i -> . F6005 0 `i 630  ]
+[e $ ! != -> . _state 0 `i -> . F6007 0 `i 630  ]
 {
 [; ;main.c: 182: if (state.link == NO_LINK) {
 "182
@@ -6205,7 +6206,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 201: }
 [; ;main.c: 202: oldState = state;
 "202
-[e = F6005 _state ]
+[e = F6007 _state ]
 [; ;main.c: 203: }
 "203
 [e :UE 629 ]
@@ -6360,18 +6361,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _state `*Vuc ~T0 @X0 1 r1 ]
 [f ]
 "246
-[v F6008 `uc ~T0 @X0 1 s oldState ]
-[i F6008
+[v F6010 `uc ~T0 @X0 1 s oldState ]
+[i F6010
 -> -> 0 `i `uc
 ]
 "247
-[v F6009 `uc ~T0 @X0 1 s newState ]
-[i F6009
+[v F6011 `uc ~T0 @X0 1 s newState ]
+[i F6011
 -> -> 0 `i `uc
 ]
 "248
-[v F6010 `ul ~T0 @X0 1 s debounceCounter ]
-[i F6010
+[v F6012 `ul ~T0 @X0 1 s debounceCounter ]
+[i F6012
 -> -> -> 0 `i `l `ul
 ]
 "249
@@ -6391,7 +6392,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 252: debounceCounter++;
 "252
-[e ++ F6010 -> -> -> 1 `i `l `ul ]
+[e ++ F6012 -> -> -> 1 `i `l `ul ]
 "253
 }
 [; ;main.c: 253: } else {
@@ -6400,21 +6401,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 254: debounceCounter = 0;
 "254
-[e = F6010 -> -> -> 0 `i `l `ul ]
+[e = F6012 -> -> -> 0 `i `l `ul ]
 "255
 }
 [e :U 659 ]
 [; ;main.c: 255: }
 [; ;main.c: 256: newState = (unsigned) ((debounceCounter >= debounceValue) ? 1 : 0);
 "256
-[e = F6009 -> -> ? >= F6010 _debounceValue : -> 1 `i -> 0 `i `ui `uc ]
+[e = F6011 -> -> ? >= F6012 _debounceValue : -> 1 `i -> 0 `i `ui `uc ]
 [; ;main.c: 257: if (newState && !oldState) {
 "257
-[e $ ! && != -> F6009 `i -> -> -> 0 `i `uc `i ! != -> F6008 `i -> -> -> 0 `i `uc `i 660  ]
+[e $ ! && != -> F6011 `i -> -> -> 0 `i `uc `i ! != -> F6010 `i -> -> -> 0 `i `uc `i 660  ]
 {
 [; ;main.c: 258: debounceCounter = debounceValue;
 "258
-[e = F6010 _debounceValue ]
+[e = F6012 _debounceValue ]
 [; ;main.c: 259: *state = 1;
 "259
 [e = *U _state -> -> 1 `i `uc ]
@@ -6433,22 +6434,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 262: }
 [; ;main.c: 263: if (debounceCounter > resetValue)
 "263
-[e $ ! > F6010 _resetValue 662  ]
+[e $ ! > F6012 _resetValue 662  ]
 [; ;main.c: 264: asm("reset");
 "264
 [; <" reset ;# ">
 [e :U 662 ]
 [; ;main.c: 266: oldState = newState;
 "266
-[e = F6008 F6009 ]
+[e = F6010 F6011 ]
 [; ;main.c: 267: }
 "267
 [e :UE 657 ]
 }
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F6017 `(v ~T0 @X0 1 tf ]
+[v F6019 `(v ~T0 @X0 1 tf ]
 "269
-[v _ISR `IF6017 ~T0 @X0 1 e ]
+[v _ISR `IF6019 ~T0 @X0 1 e ]
 {
 [; ;main.c: 269: void interrupt ISR(void) {
 [e :U _ISR ]
@@ -6511,8 +6512,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 663 ]
 }
 [a 20C 91 69 82 82 79 82 93 0 ]
-[a 8C 49 53 58 48 57 58 53 57 0 ]
 [a 6C 77 97 114 32 49 55 32 50 48 49 57 0 ]
+[a 8C 49 55 58 53 54 58 49 49 0 ]
 [a 26C 69 116 104 101 114 110 101 116 32 99 111 110 116 114 111 108 108 101 114 32 105 115 32 117 110 114 101 115 112 111 110 115 105 118 101 46 0 ]
 [a 28C 73 80 32 97 100 100 114 101 115 115 32 99 111 117 108 100 32 110 111 116 32 98 101 32 114 101 115 111 108 118 101 100 46 0 ]
 [a 29C 65 110 32 117 110 107 110 111 119 110 32 101 114 114 111 114 32 104 97 115 32 111 99 99 117 114 101 100 46 0 ]

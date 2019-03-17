@@ -80,31 +80,17 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gac2e383293fae75d74beedf63afefe604"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structbackground_task_handler.html">backgroundTaskHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__background.html#gac2e383293fae75d74beedf63afefe604">backgroundTaskHandler_t</a></td></tr>
+<tr class="memitem:gac2e383293fae75d74beedf63afefe604"><td class="memItemLeft" align="right" valign="top"><a id="gac2e383293fae75d74beedf63afefe604"></a>
+typedef struct <a class="el" href="structbackground_task_handler.html">backgroundTaskHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><b>backgroundTaskHandler_t</b></td></tr>
 <tr class="separator:gac2e383293fae75d74beedf63afefe604"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gaf6bebfbbcd06181803783d2504fe318e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__background.html#gaf6bebfbbcd06181803783d2504fe318e">handleStackBackgroundTasks</a> (<a class="el" href="group__stack.html#ga575defe06cb6cd9e4b02d90a916721b3">stack_t</a> *<a class="el" href="structstack.html">stack</a>)</td></tr>
-<tr class="memdesc:gaf6bebfbbcd06181803783d2504fe318e"><td class="mdescLeft">&#160;</td><td class="mdescRight">To be called periodically in <a class="el" href="main_8c.html#acdef7a1fd863a6d3770c1268cb06add3">main()</a> function.  <a href="#gaf6bebfbbcd06181803783d2504fe318e">More...</a><br /></td></tr>
+<tr class="memdesc:gaf6bebfbbcd06181803783d2504fe318e"><td class="mdescLeft">&#160;</td><td class="mdescRight">To be called periodically in main() function.  <a href="#gaf6bebfbbcd06181803783d2504fe318e">More...</a><br /></td></tr>
 <tr class="separator:gaf6bebfbbcd06181803783d2504fe318e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="gac2e383293fae75d74beedf63afefe604"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac2e383293fae75d74beedf63afefe604">&#9670;&nbsp;</a></span>backgroundTaskHandler_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structbackground_task_handler.html">backgroundTaskHandler</a>  <a class="el" href="group__background.html#gac2e383293fae75d74beedf63afefe604">backgroundTaskHandler_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gaf6bebfbbcd06181803783d2504fe318e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf6bebfbbcd06181803783d2504fe318e">&#9670;&nbsp;</a></span>handleStackBackgroundTasks()</h2>
@@ -122,7 +108,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>To be called periodically in <a class="el" href="main_8c.html#acdef7a1fd863a6d3770c1268cb06add3">main()</a> function. </p>
+<p>To be called periodically in main() function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">stack</td><td>Pointer to the Stack</td></tr>
@@ -130,7 +116,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd>(Kind of) Unsolved problem: If <a class="el" href="group__interrupts.html#ggaf692e993b72f242633eee1b443276547aecae98f658eb2390e4b15d4090cfeeca">PKTIF</a> is checked before <a class="el" href="group__interrupts.html#ggaf692e993b72f242633eee1b443276547a5ab1928649db29845f7a4babb4ac77f7">LINKIF</a> without calling <a class="el" href="group__init.html#ga5cdd5a8c6a5ceab1292643f291137bd1">ethernetController_pollInterruptFlags</a> again LINKIF seems to be set without no reason ?? It seems the problem does not occur if checked in this order or if <a class="el" href="group__init.html#ga5cdd5a8c6a5ceab1292643f291137bd1">ethernetController_pollInterruptFlags</a> is called multiple times. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>check other relevant interrupt flags and return errors</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>check other relevant interrupt flags and return errors</dd></dl>
 
 </div>
 </div>

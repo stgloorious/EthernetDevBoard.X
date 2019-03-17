@@ -67,7 +67,7 @@ void handleStackBackgroundTasks(stack_t* stack) {
         //There is a packet awaiting transmission
 
         /*  stack->background.err = ipv4_sendFrame(stack->pendingPacketToSend);
-          if (stack->background.err.code == ERROR_ARP_WAITING_FOR_REPLY) {
+          if (stack->background.err.code == ERROR_ARP_WAITING) {
 
           }
           if (stack->background.err.module == ERROR_MODULE_ARP &&

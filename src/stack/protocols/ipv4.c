@@ -80,7 +80,7 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
          }
      }*/
 
-    err.code = ERROR_ARP_WAITING_FOR_REPLY;
+    err.code = ERROR_ARP_WAITING;
     return err;
 }
 
@@ -255,7 +255,7 @@ error_t ipv4_background() {
             case ERROR_CODE_SUCCESSFUL:
                 err = (*arpStatus);
                 return err;
-            case ERROR_ARP_WAITING_FOR_REPLY:
+            case ERROR_ARP_WAITING:
                 err = (*arpStatus);
                 //UARTTransmitText("IPv4: ARP is waiting for reply.\n\r");
                 return err;

@@ -30,7 +30,7 @@
 /**
  * \addtogroup error Error Handling
  * \note Many "error" states are also used as a status indicator, so an error code different than \ref ERROR_CODE_SUCCESSFUL
- * is not necessarily a bad thing. Example: \ref ERROR_ARP_WAITING_FOR_REPLY .
+ * is not necessarily a bad thing. Example: \ref ERROR_ARP_WAITING .
  * \ingroup stack
  * \{
  */
@@ -94,7 +94,7 @@ enum errors_ethernetController {
  * \brief Error definitions of the Address Resolution Protocol
  */
 enum errors_arp {
-    ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1, ///< Is currently sending probes or waits for a reply
+    ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1, ///< Is currently sending probes or waits for a reply
     ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2, ///< The maximum number of probes were sent
     ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3, ///< A received message contained illegal values
     ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4, ///< There is a duplicate address on the network

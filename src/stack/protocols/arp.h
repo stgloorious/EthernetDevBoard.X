@@ -86,12 +86,24 @@ void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
  * \details Sends out #ARP_PROBE_NUM probes, with an initial random delay (#ARP_PROBE_WAIT) and a
  * random delay between #ARP_PROBE_MIN and #ARP_PROBE_MAX after each probe. It will check each time if
  * there is a valid ARP entry (to detect if there was a reply).
+ * \note This function has to be called repeatedly until it returns an error code different than #ERROR_ARP_WAITING .
  * \param ipTarget The IPv4 address being probed for
  * \return #ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED if there was no answer\n
- * #ERROR_ARP_WAITING_FOR_REPLY if probing process is not done yet\n
+ * #ERROR_ARP_WAITING if probing process is not done yet\n
  * #ERROR_ARP_IPv4_ADDRESS_CONFLICT if there was an ARP message with the requested IP address\n
  */
-error_t static arp_probe (ipv4_address_t ipTarget);
+error_t static arp_probe(ipv4_address_t ipTarget);
+
+/**
+ * \brief Announces the usage of an ip address (Gratuitous ARP)
+ * \note This function has to be called repeatetly until it returns #ERROR_CODE_SUCCESSFUL
+ * According to RFC 5227, a gratuitous ARP announce MUST be performed after the probing of an address
+ * \see RFC 5227, Section 2.3, Page 12
+ * \param ip IP address
+ * \return #ERROR_ARP_WAITING if there are more announcements to make \n
+ * #ERROR_CODE_SUCCESSFUL if everything's done
+ */
+error_t static arp_gratuitous(ipv4_address_t ip);
 
 /**
  * \brief To be called periodically in the background task handler

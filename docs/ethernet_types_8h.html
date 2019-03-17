@@ -98,14 +98,17 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:ga7e41863aa11f513f9f3e6f29535b56e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#ga7e41863aa11f513f9f3e6f29535b56e3">MAX_DATA_FIELD_LENGTH</a>&#160;&#160;&#160;1500</td></tr>
-<tr class="memdesc:ga7e41863aa11f513f9f3e6f29535b56e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normal value is 1500; Values greater than 1500 are not compliant to the Ethernet standard.  <a href="group__ethernet.html#ga7e41863aa11f513f9f3e6f29535b56e3">More...</a><br /></td></tr>
+<tr class="memitem:ga7e41863aa11f513f9f3e6f29535b56e3"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#ga7e41863aa11f513f9f3e6f29535b56e3">MAX_DATA_FIELD_LENGTH</a>&#160;&#160;&#160;1500</td></tr>
+<tr class="memdesc:ga7e41863aa11f513f9f3e6f29535b56e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normal value is 1500; Values greater than 1500 are not compliant to the Ethernet standard. <br /></td></tr>
 <tr class="separator:ga7e41863aa11f513f9f3e6f29535b56e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaecae779890dfc6b313fe2854369e5497"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gaecae779890dfc6b313fe2854369e5497">MAX_FRAME_LENGTH</a>&#160;&#160;&#160;<a class="el" href="group__ethernet.html#ga7e41863aa11f513f9f3e6f29535b56e3">MAX_DATA_FIELD_LENGTH</a>+18</td></tr>
-<tr class="memdesc:gaecae779890dfc6b313fe2854369e5497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source MAC Addr (6 Bytes), Destination MAC Addr (6 Bytes), EtherType (2 Bytes), CRC (4 Bytes)  <a href="group__ethernet.html#gaecae779890dfc6b313fe2854369e5497">More...</a><br /></td></tr>
+<tr class="memitem:gaecae779890dfc6b313fe2854369e5497"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gaecae779890dfc6b313fe2854369e5497">MAX_FRAME_LENGTH</a>&#160;&#160;&#160;<a class="el" href="group__ethernet.html#ga7e41863aa11f513f9f3e6f29535b56e3">MAX_DATA_FIELD_LENGTH</a>+18</td></tr>
+<tr class="memdesc:gaecae779890dfc6b313fe2854369e5497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source MAC Addr (6 Bytes), Destination MAC Addr (6 Bytes), EtherType (2 Bytes), CRC (4 Bytes) <br /></td></tr>
 <tr class="separator:gaecae779890dfc6b313fe2854369e5497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga828c657a62d97cb7339451fc46589c6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#ga828c657a62d97cb7339451fc46589c6e">MAX_FRAME_LENGTH_WITH_VLAN</a>&#160;&#160;&#160;<a class="el" href="group__ethernet.html#gaecae779890dfc6b313fe2854369e5497">MAX_FRAME_LENGTH</a>+4</td></tr>
-<tr class="memdesc:ga828c657a62d97cb7339451fc46589c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional 4 Bytes for VLAN:  <a href="group__ethernet.html#ga828c657a62d97cb7339451fc46589c6e">More...</a><br /></td></tr>
+<tr class="memitem:ga828c657a62d97cb7339451fc46589c6e"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#ga828c657a62d97cb7339451fc46589c6e">MAX_FRAME_LENGTH_WITH_VLAN</a>&#160;&#160;&#160;<a class="el" href="group__ethernet.html#gaecae779890dfc6b313fe2854369e5497">MAX_FRAME_LENGTH</a>+4</td></tr>
+<tr class="memdesc:ga828c657a62d97cb7339451fc46589c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional 4 Bytes for VLAN: <br /></td></tr>
 <tr class="separator:ga828c657a62d97cb7339451fc46589c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae9b220b061a72fe29cc1e3913a1f73cb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gae9b220b061a72fe29cc1e3913a1f73cb">etherTypes</a> { <a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbab2b889adbcd85458d549249e8f1d3bcd">ETHERTYPE_IPv4</a> = 0x0800, 
 <a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbab78454b9340abb34bd92a17f01a8060d">ETHERTYPE_ARP</a> = 0x0806, 
@@ -125,7 +128,8 @@ Macros</h2></td></tr>
 <a class="el" href="group__ethernet.html#ga07afd358acdd48dc34d82f6ed379316fa7dee6a082d2fe35451a6727e3585e499">FULL_DUPLEX</a>
  }</td></tr>
 <tr class="separator:ga07afd358acdd48dc34d82f6ed379316f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga467703afefdcaf7893a7da3eb63280ed"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__ethernet.html#gae9b220b061a72fe29cc1e3913a1f73cb">etherTypes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#ga467703afefdcaf7893a7da3eb63280ed">etherType_t</a></td></tr>
+<tr class="memitem:ga467703afefdcaf7893a7da3eb63280ed"><td class="memItemLeft" align="right" valign="top">
+typedef enum <a class="el" href="group__ethernet.html#gae9b220b061a72fe29cc1e3913a1f73cb">etherTypes</a>&#160;</td><td class="memItemRight" valign="bottom"><b>etherType_t</b></td></tr>
 <tr class="separator:ga467703afefdcaf7893a7da3eb63280ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacb865bcbf50a6c8cef05581bfabff373"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structmacaddress.html">macaddress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a></td></tr>
 <tr class="separator:gacb865bcbf50a6c8cef05581bfabff373"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,11 +139,13 @@ Macros</h2></td></tr>
 <tr class="separator:gaf44917bbf64327b78826bc2f74266af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf88782ec3aef6eb80f7fb5bcc4fb1401"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__ethernet.html#ga07afd358acdd48dc34d82f6ed379316f">duplexStates</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gaf88782ec3aef6eb80f7fb5bcc4fb1401">duplexState_t</a></td></tr>
 <tr class="separator:gaf88782ec3aef6eb80f7fb5bcc4fb1401"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7519a7ae14b490659069435698d28a25"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structethernet_frame.html">ethernetFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a></td></tr>
-<tr class="memdesc:ga7519a7ae14b490659069435698d28a25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a complete Ethernet Frame.  <a href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">More...</a><br /></td></tr>
+<tr class="memitem:ga7519a7ae14b490659069435698d28a25"><td class="memItemLeft" align="right" valign="top">
+typedef struct <a class="el" href="structethernet_frame.html">ethernetFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a></td></tr>
+<tr class="memdesc:ga7519a7ae14b490659069435698d28a25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a complete Ethernet Frame. <br /></td></tr>
 <tr class="separator:ga7519a7ae14b490659069435698d28a25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae7b6008a02816680c2e3a1e3d2451a60"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structethernet_connection.html">ethernetConnection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gae7b6008a02816680c2e3a1e3d2451a60">ethernetConnection_t</a></td></tr>
-<tr class="memdesc:gae7b6008a02816680c2e3a1e3d2451a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a complete Ethernet connection.  <a href="group__ethernet.html#gae7b6008a02816680c2e3a1e3d2451a60">More...</a><br /></td></tr>
+<tr class="memitem:gae7b6008a02816680c2e3a1e3d2451a60"><td class="memItemLeft" align="right" valign="top">
+typedef struct <a class="el" href="structethernet_connection.html">ethernetConnection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gae7b6008a02816680c2e3a1e3d2451a60">ethernetConnection_t</a></td></tr>
+<tr class="memdesc:gae7b6008a02816680c2e3a1e3d2451a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a complete Ethernet connection. <br /></td></tr>
 <tr class="separator:gae7b6008a02816680c2e3a1e3d2451a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

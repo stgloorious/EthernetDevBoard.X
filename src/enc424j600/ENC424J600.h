@@ -263,7 +263,6 @@ void static enc424j600_enableReception();
 /**
  * \brief Disables the ethernet connection to receive packets
  * \details It uses the dedicated single byte command \ref DISABLERX
- * \todo test this
  */
 void static enc424j600_disableReception();
 

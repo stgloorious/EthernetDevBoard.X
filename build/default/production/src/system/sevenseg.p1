@@ -5071,7 +5071,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 [; ;error.h: 91: };
 [; ;error.h: 96: enum errors_arp {
-[; ;error.h: 97: ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
+[; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 [; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
 [; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
 [; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
@@ -5368,12 +5368,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.h: 69: void static arp_sendReply(arp_message_t request);
 [; ;arp.h: 75: void static arp_send(arp_message_t arp);
 [; ;arp.h: 82: void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
-[; ;arp.h: 94: error_t static arp_probe (ipv4_address_t ipTarget);
-[; ;arp.h: 101: error_t arp_background();
-[; ;arp.h: 109: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
-[; ;arp.h: 117: macaddress_t static arp_getEntryFromTable(uint8_t index);
-[; ;arp.h: 125: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 131: void printArpTable();
+[; ;arp.h: 95: error_t static arp_probe(ipv4_address_t ipTarget);
+[; ;arp.h: 106: error_t static arp_gratuitous(ipv4_address_t ip);
+[; ;arp.h: 113: error_t arp_background();
+[; ;arp.h: 121: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+[; ;arp.h: 129: macaddress_t static arp_getEntryFromTable(uint8_t index);
+[; ;arp.h: 137: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 143: void printArpTable();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5568,13 +5569,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _numberToDisplay `ui ~T0 @X0 1 r1 ]
 [f ]
 "43
-[v F5946 `uc ~T0 @X0 1 s digitPointer ]
-[i F5946
+[v F5948 `uc ~T0 @X0 1 s digitPointer ]
+[i F5948
 -> -> 0 `i `uc
 ]
 "44
-[v F5947 `uc ~T0 @X0 -> 3 `i s digitsToDisplay ]
-[i F5947
+[v F5949 `uc ~T0 @X0 -> 3 `i s digitsToDisplay ]
+[i F5949
 :U ..
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -5585,13 +5586,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 44: uint8_t static digitsToDisplay[3] = {0, 0, 0};
 [; ;sevenseg.c: 45: PORTC &= ~(unsigned)(1 << digitPointer);
 "45
-[e =& _PORTC -> ~ -> << -> 1 `i F5946 `ui `uc ]
+[e =& _PORTC -> ~ -> << -> 1 `i F5948 `ui `uc ]
 [; ;sevenseg.c: 46: PORTA = 0x00;
 "46
 [e = _PORTA -> -> 0 `i `uc ]
 [; ;sevenseg.c: 47: digitPointer = (unsigned)((digitPointer >= 2) ? 0 : digitPointer + 1);
 "47
-[e = F5946 -> -> ? >= -> F5946 `i -> 2 `i : -> 0 `i + -> F5946 `i -> 1 `i `ui `uc ]
+[e = F5948 -> -> ? >= -> F5948 `i -> 2 `i : -> 0 `i + -> F5948 `i -> 1 `i `ui `uc ]
 [; ;sevenseg.c: 49: if (numberToDisplay > 999) {
 "49
 [e $ ! > _numberToDisplay -> -> 999 `i `ui 623  ]
@@ -5614,7 +5615,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;sevenseg.c: 53: digitsToDisplay[i] = parseNumber(numberToDisplay, i);
 "53
-[e = *U + &U F5947 * -> _i `ux -> -> # *U &U F5947 `ui `ux ( _parseNumber (2 , _numberToDisplay _i ]
+[e = *U + &U F5949 * -> _i `ux -> -> # *U &U F5949 `ui `ux ( _parseNumber (2 , _numberToDisplay _i ]
 "54
 }
 "52
@@ -5626,10 +5627,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 54: }
 [; ;sevenseg.c: 55: PORTC |= (unsigned)(1 << digitPointer);
 "55
-[e =| _PORTC -> -> << -> 1 `i F5946 `ui `uc ]
+[e =| _PORTC -> -> << -> 1 `i F5948 `ui `uc ]
 [; ;sevenseg.c: 56: PORTA = (sevenSegCharacters[digitsToDisplay[digitPointer]]);
 "56
-[e = _PORTA *U + &U _sevenSegCharacters * -> *U + &U F5947 * -> F5946 `ux -> -> # *U &U F5947 `ui `ux `ux -> -> # *U &U _sevenSegCharacters `ui `ux ]
+[e = _PORTA *U + &U _sevenSegCharacters * -> *U + &U F5949 * -> F5948 `ux -> -> # *U &U F5949 `ui `ux `ux -> -> # *U &U _sevenSegCharacters `ui `ux ]
 [; ;sevenseg.c: 57: }
 "57
 [e :UE 622 ]

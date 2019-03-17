@@ -80,7 +80,7 @@ $(function() {
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="ethernet_controller_8h_source.html">../../eth/ethernetController.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mac_8h_source.html">../../eth/mac.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ipv4_8h_source.html">../protocols/ipv4.h</a>&quot;</code><br />
+<code>#include &quot;../protocols/ipv4.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ethernet_8h_source.html">../../eth/ethernet.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="uart_8h_source.html">../../system/uart.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="arp_types_8h_source.html">../protocols/arpTypes.h</a>&quot;</code><br />
@@ -111,6 +111,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaaea22c837aface2f94a2dd06aeb8f163"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gaaea22c837aface2f94a2dd06aeb8f163">arp_probe</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipTarget)</td></tr>
 <tr class="memdesc:gaaea22c837aface2f94a2dd06aeb8f163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends probes to check for address conflicts.  <a href="group__arp.html#gaaea22c837aface2f94a2dd06aeb8f163">More...</a><br /></td></tr>
 <tr class="separator:gaaea22c837aface2f94a2dd06aeb8f163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga618c1e56222543a9f076e8f692ee9c21"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga618c1e56222543a9f076e8f692ee9c21">arp_gratuitous</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
+<tr class="memdesc:ga618c1e56222543a9f076e8f692ee9c21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Announces the usage of an ip address (Gratuitous ARP)  <a href="group__arp.html#ga618c1e56222543a9f076e8f692ee9c21">More...</a><br /></td></tr>
+<tr class="separator:ga618c1e56222543a9f076e8f692ee9c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga17a54c1695a7c2ce4fbc62f89b5372c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga17a54c1695a7c2ce4fbc62f89b5372c3">arp_background</a> ()</td></tr>
 <tr class="memdesc:ga17a54c1695a7c2ce4fbc62f89b5372c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">To be called periodically in the background task handler.  <a href="group__arp.html#ga17a54c1695a7c2ce4fbc62f89b5372c3">More...</a><br /></td></tr>
 <tr class="separator:ga17a54c1695a7c2ce4fbc62f89b5372c3"><td class="memSeparator" colspan="2">&#160;</td></tr>

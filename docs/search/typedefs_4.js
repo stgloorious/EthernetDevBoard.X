@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['interruptflagname_5ft',['interruptFlagName_t',['../group__interrupts.html#gaa2c8c63912e19f8bccebc09dfc23023a',1,'interrupt.h']]],
-  ['interruptflags_5ft',['interruptFlags_t',['../group__interrupts.html#ga337298055be267e726930c9fc6b2d4eb',1,'interrupt.h']]],
-  ['ipv4_5faddress_5ft',['ipv4_address_t',['../group__ipv4.html#gad9df0882950e70d0587a4b423beb261a',1,'ipv4Types.h']]],
-  ['ipv4_5fheader_5ft',['ipv4_header_t',['../group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de',1,'ipv4Types.h']]],
-  ['ipv4_5fpacket_5ft',['ipv4_packet_t',['../group__ipv4.html#ga68ea36d252d9332fd5e37d9aaedd06af',1,'ipv4Types.h']]],
-  ['ipv4_5fprotocol_5ft',['ipv4_protocol_t',['../group__ipv4.html#gab04cc76a064d21f3a4d7b28a8f3af1a9',1,'ipv4Types.h']]]
+  ['leds_5ft',['LEDs_t',['../group__leds.html#ga8ef3296ee64cd1095b361874ca9e9607',1,'ethernetController.h']]],
+  ['ledstates_5ft',['LEDStates_t',['../group__leds.html#ga97711e6b776162e8a69a07c2957023f0',1,'ethernetController.h']]],
+  ['linkstate_5ft',['linkState_t',['../group__ethernet.html#ga0e02d2c1291711df8a3ffc6f5c8aab98',1,'ethernetTypes.h']]]
 ];

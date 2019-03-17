@@ -70,38 +70,22 @@ $(function() {
 <div class="title">backgroundTaskHandler Struct Reference<div class="ingroups"><a class="el" href="group__stack.html">Stack</a> &raquo; <a class="el" href="group__background.html">Background Tasks</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p><code>#include &lt;<a class="el" href="background_tasks_types_8h_source.html">backgroundTasksTypes.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a79e8f977787d9fccf257bbbccaaf3522"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbackground_task_handler.html#a79e8f977787d9fccf257bbbccaaf3522">err</a></td></tr>
-<tr class="memdesc:a79e8f977787d9fccf257bbbccaaf3522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error structure of all background tasks.  <a href="#a79e8f977787d9fccf257bbbccaaf3522">More...</a><br /></td></tr>
+<tr class="memitem:a79e8f977787d9fccf257bbbccaaf3522"><td class="memItemLeft" align="right" valign="top"><a id="a79e8f977787d9fccf257bbbccaaf3522"></a>
+<a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbackground_task_handler.html#a79e8f977787d9fccf257bbbccaaf3522">err</a></td></tr>
+<tr class="memdesc:a79e8f977787d9fccf257bbbccaaf3522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error structure of all background tasks. <br /></td></tr>
 <tr class="separator:a79e8f977787d9fccf257bbbccaaf3522"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58c597d1c6de0f01d960436216389529"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__interrupts.html#ga337298055be267e726930c9fc6b2d4eb">interruptFlags_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbackground_task_handler.html#a58c597d1c6de0f01d960436216389529">interruptFlags</a></td></tr>
-<tr class="memdesc:a58c597d1c6de0f01d960436216389529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt flags are polled periodically and stored into this dedicated data structure.  <a href="#a58c597d1c6de0f01d960436216389529">More...</a><br /></td></tr>
+<tr class="memitem:a58c597d1c6de0f01d960436216389529"><td class="memItemLeft" align="right" valign="top"><a id="a58c597d1c6de0f01d960436216389529"></a>
+<a class="el" href="group__interrupts.html#ga337298055be267e726930c9fc6b2d4eb">interruptFlags_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbackground_task_handler.html#a58c597d1c6de0f01d960436216389529">interruptFlags</a></td></tr>
+<tr class="memdesc:a58c597d1c6de0f01d960436216389529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt flags are polled periodically and stored into this dedicated data structure. <br /></td></tr>
 <tr class="separator:a58c597d1c6de0f01d960436216389529"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55a5ad03a1e3f5808b419c49021b4759"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbackground_task_handler.html#a55a5ad03a1e3f5808b419c49021b4759">fPacketPending</a></td></tr>
 <tr class="memdesc:a55a5ad03a1e3f5808b419c49021b4759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if there is a pending packet to send. This flag is reset when the transmission is complete.  <a href="#a55a5ad03a1e3f5808b419c49021b4759">More...</a><br /></td></tr>
 <tr class="separator:a55a5ad03a1e3f5808b419c49021b4759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Field Documentation</h2>
-<a id="a79e8f977787d9fccf257bbbccaaf3522"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79e8f977787d9fccf257bbbccaaf3522">&#9670;&nbsp;</a></span>err</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a> err</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Error structure of all background tasks. </p>
-
-</div>
-</div>
 <a id="a55a5ad03a1e3f5808b419c49021b4759"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55a5ad03a1e3f5808b419c49021b4759">&#9670;&nbsp;</a></span>fPacketPending</h2>
 
@@ -115,23 +99,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Indicates if there is a pending packet to send. This flag is reset when the transmission is complete. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Can somebody pls tell me why bool_t doesn't work here; A bitfield gives really strange behaviour (?) </dd></dl>
-
-</div>
-</div>
-<a id="a58c597d1c6de0f01d960436216389529"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58c597d1c6de0f01d960436216389529">&#9670;&nbsp;</a></span>interruptFlags</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__interrupts.html#ga337298055be267e726930c9fc6b2d4eb">interruptFlags_t</a> <a class="el" href="structinterrupt_flags.html">interruptFlags</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Interrupt flags are polled periodically and stored into this dedicated data structure. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Can somebody pls tell me why bool_t doesn't work here; A bitfield gives really strange behaviour (?) </dd></dl>
 
 </div>
 </div>

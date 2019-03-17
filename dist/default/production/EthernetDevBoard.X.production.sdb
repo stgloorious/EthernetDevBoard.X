@@ -191,7 +191,7 @@ ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW 303
 ERROR_ETHERNET_CONTROLLER_UNKNOWN 399
 ]
 [e E5580 errors_arp `ui
-ERROR_ARP_WAITING_FOR_REPLY 401
+ERROR_ARP_WAITING 401
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED 402
 ERROR_ARP_INVALID_VALUES 403
 ERROR_ARP_IPv4_ADDRESS_CONFLICT 404
@@ -239,14 +239,14 @@ ARP_PTYPE_IPv4 2048
 ]
 "124
 [e E175 errors_arp `ui
-ERROR_ARP_WAITING_FOR_REPLY 401
+ERROR_ARP_WAITING 401
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED 402
 ERROR_ARP_INVALID_VALUES 403
 ERROR_ARP_IPv4_ADDRESS_CONFLICT 404
 ERROR_ARP_UNKNOWN 499
 ]
 "254
-[e E5966 states `uc
+[e E5968 states `uc
 PREPARING_PROBE 0
 WAITING_TO_SEND 1
 SENDING_PROBE 2
@@ -274,7 +274,7 @@ ETHERTYPE_FLOW_CONTROL -30712
 ]
 "83
 [e E153 errors_arp `ui
-ERROR_ARP_WAITING_FOR_REPLY 401
+ERROR_ARP_WAITING 401
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED 402
 ERROR_ARP_INVALID_VALUES 403
 ERROR_ARP_IPv4_ADDRESS_CONFLICT 404
@@ -537,13 +537,17 @@ ERROR_IPv4_UNKNOWN 599
 [v _arp_probe arp_probe `(S29  1 s 3 arp_probe ]
 "118 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S29 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"324 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"304 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[v _arp_gratuitous arp_gratuitous `(S29  1 s 3 arp_gratuitous ]
+"118 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
+[s S29 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
+"342 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _arp_background arp_background `(S29  1 e 3 0 ]
-"356
+"383
 [v _arp_checkForEntry arp_checkForEntry `(uc  1 s 1 arp_checkForEntry ]
-"374
+"401
 [v _arp_setNewEntry arp_setNewEntry `(v  1 s 1 arp_setNewEntry ]
-"391
+"418
 [v _arp_init arp_init `(v  1 e 1 0 ]
 "121 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
 [v _ipv4_calculateHeaderChecksum ipv4_calculateHeaderChecksum `(v  1 e 1 0 ]
@@ -1181,18 +1185,18 @@ ERROR_IPv4_UNKNOWN 599
 {
 "323
 } 0
-"391 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"418 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _arp_init arp_init `(v  1 e 1 0 ]
 {
-"397
+"424
 [v arp_init@i i `uc  1 a 1 38 ]
 [s S95 macaddress 6 `[6]uc 1 address 6 0 ]
-"392
+"419
 [v arp_init@mac mac `S95  1 a 6 28 ]
 [s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"393
+"420
 [v arp_init@ip ip `S21  1 a 4 34 ]
-"399
+"426
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\rand.c
 [v _srand srand `(v  1 e 1 0 ]
@@ -1365,7 +1369,7 @@ ERROR_IPv4_UNKNOWN 599
 [v _ipv4_parseHeader ipv4_parseHeader `(S1278  1 s 23 ipv4_parseHeader ]
 {
 "177
-[v ipv4_parseHeader@i_3580 i `uc  1 a 1 45 ]
+[v ipv4_parseHeader@i_3583 i `uc  1 a 1 45 ]
 "174
 [v ipv4_parseHeader@i i `uc  1 a 1 44 ]
 "142
@@ -1600,22 +1604,22 @@ ERROR_IPv4_UNKNOWN 599
 {
 "592
 } 0
-"374 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"401 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _arp_setNewEntry arp_setNewEntry `(v  1 s 1 arp_setNewEntry ]
 {
-"378
+"405
 [v arp_setNewEntry@i i `uc  1 a 1 27 ]
-"375
+"402
 [v arp_setNewEntry@maxSeconds maxSeconds `ul  1 a 4 22 ]
-"376
+"403
 [v arp_setNewEntry@oldestIndex oldestIndex `uc  1 a 1 26 ]
 [s S95 macaddress 6 `[6]uc 1 address 6 0 ]
-"374
+"401
 [v arp_setNewEntry@mac mac `S95  1 p 6 4 ]
 [s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
 [v arp_setNewEntry@ip ip `S21  1 p 4 10 ]
 [v arp_setNewEntry@timestamp timestamp `ul  1 p 4 14 ]
-"389
+"416
 } 0
 "206
 [v _arp_sendReply arp_sendReply `(v  1 s 1 arp_sendReply ]
@@ -1658,8 +1662,40 @@ ERROR_IPv4_UNKNOWN 599
 [s S95 macaddress 6 `[6]uc 1 address 6 0 ]
 "107
 [v macToString@addr addr `S95  1 p 6 26 ]
-[v macToString@F5941 F5941 `[18]uc  1 s 18 F5941 ]
+[v macToString@F5943 F5943 `[18]uc  1 s 18 F5943 ]
 "136
+} 0
+"162
+[v _ipAdressToString ipAdressToString `(*.39uc  1 e 2 0 ]
+{
+"169
+[v ipAdressToString@i i `uc  1 a 1 40 ]
+"164
+[v ipAdressToString@hundreds hundreds `[4]uc  1 a 4 35 ]
+"165
+[v ipAdressToString@tens tens `[4]uc  1 a 4 31 ]
+"166
+[v ipAdressToString@ones ones `[4]uc  1 a 4 27 ]
+"167
+[v ipAdressToString@pointer pointer `uc  1 a 1 39 ]
+[s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"162
+[v ipAdressToString@ip ip `S21  1 p 4 19 ]
+"163
+[v ipAdressToString@address address `[16]uc  1 s 16 address ]
+"185
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 4 ]
+"8
+[v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
+"31
 } 0
 "39 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arpTypes.h
 "58 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/eth/ethernetTypes.h
@@ -1677,11 +1713,11 @@ ERROR_IPv4_UNKNOWN 599
 [v _arp_parseFromRXBuffer arp_parseFromRXBuffer `(S2765  1 s 32 arp_parseFromRXBuffer ]
 {
 "91
-[v arp_parseFromRXBuffer@i_2995 i `uc  1 a 1 58 ]
+[v arp_parseFromRXBuffer@i_2994 i `uc  1 a 1 58 ]
 "89
-[v arp_parseFromRXBuffer@i_2994 i `uc  1 a 1 57 ]
+[v arp_parseFromRXBuffer@i_2993 i `uc  1 a 1 57 ]
 "86
-[v arp_parseFromRXBuffer@i_2993 i `uc  1 a 1 56 ]
+[v arp_parseFromRXBuffer@i_2992 i `uc  1 a 1 56 ]
 "84
 [v arp_parseFromRXBuffer@i i `uc  1 a 1 55 ]
 "65
@@ -1764,6 +1800,60 @@ ERROR_IPv4_UNKNOWN 599
 {
 [v UARTTransmitInt@val val `ul  1 p 4 58 ]
 "73
+} 0
+"75
+[v _intToString intToString `(*.39uc  1 e 2 0 ]
+{
+[v intToString@val val `ul  1 p 4 36 ]
+"76
+[v intToString@number number `[10]uc  1 s 10 number ]
+"82
+} 0
+"7 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ltoa.c
+[v _ltoa ltoa `(*.39uc  1 e 2 0 ]
+{
+"10
+[v ltoa@cp cp `*.39uc  1 a 2 34 ]
+"7
+[v ltoa@buf buf `*.39uc  1 p 2 26 ]
+[v ltoa@val val `l  1 p 4 28 ]
+[v ltoa@base base `i  1 p 2 32 ]
+"22
+} 0
+"32
+[v _ultoa ultoa `(*.39uc  1 e 2 0 ]
+{
+"35
+[v ultoa@v v `ul  1 a 4 21 ]
+"36
+[v ultoa@c c `uc  1 a 1 25 ]
+"32
+[v ultoa@buf buf `*.39uc  1 p 2 13 ]
+[v ultoa@val val `ul  1 p 4 15 ]
+[v ultoa@base base `i  1 p 2 19 ]
+"53
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+{
+"11
+[v ___llmod@counter counter `uc  1 a 1 8 ]
+"8
+[v ___llmod@dividend dividend `ul  1 p 4 0 ]
+[v ___llmod@divisor divisor `ul  1 p 4 4 ]
+"26
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
+"8
+[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
+"31
 } 0
 "394 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/enc424j600/ENC424J600.c
 [v _ethernetController_updateLinkStatus ethernetController_updateLinkStatus `(v  1 e 1 0 ]
@@ -1870,17 +1960,28 @@ ERROR_IPv4_UNKNOWN 599
 } 0
 "118 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
 [s S29 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
-"324 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+"342 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _arp_background arp_background `(S29  1 e 3 0 ]
 {
 [s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"329
+"350
 [v arp_background@ipPreliminary ipPreliminary `S21  1 a 4 78 ]
-"325
+"344
+[v arp_background@errAnnounce errAnnounce `S29  1 a 3 82 ]
+"343
 [v arp_background@err err `S29  1 s 3 err ]
-"352
+"345
+[v arp_background@fAnnounce fAnnounce `b  1 s 0 fAnnounce ]
+"379
 } 0
-"291 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
+"60 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4Types.h
+[s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"235 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
+[v _ipv4_getPreliminaryIPSourceAddress ipv4_getPreliminaryIPSourceAddress `(S21  1 e 4 0 ]
+{
+"237
+} 0
+"291
 [v _ipv4_SrcAddrChanged ipv4_SrcAddrChanged `(b  1 e 0 0 ]
 {
 [s S29 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
@@ -1892,11 +1993,11 @@ ERROR_IPv4_UNKNOWN 599
 "245 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _arp_probe arp_probe `(S29  1 s 3 arp_probe ]
 {
-"247
-[v arp_probe@waitingTime waitingTime `ul  1 a 4 69 ]
 [s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
 "248
-[v arp_probe@ipSender ipSender `S21  1 a 4 65 ]
+[v arp_probe@ipSender ipSender `S21  1 a 4 69 ]
+"247
+[v arp_probe@waitingTime waitingTime `ul  1 a 4 65 ]
 "246
 [v arp_probe@timeStart timeStart `ul  1 a 4 61 ]
 "250
@@ -1909,7 +2010,7 @@ ERROR_IPv4_UNKNOWN 599
 [v arp_probe@probeCounter probeCounter `uc  1 s 1 probeCounter ]
 "255
 [v arp_probe@state state `uc  1 s 1 state ]
-"320
+"302
 } 0
 "12 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\rand.c
 [v _rand rand `(i  1 e 2 0 ]
@@ -1936,32 +2037,27 @@ ERROR_IPv4_UNKNOWN 599
 [v ipv4_setToAllZero@ip ip `*.39S21  1 p 2 0 ]
 "318
 } 0
-"60 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4Types.h
-[s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"235 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
-[v _ipv4_getPreliminaryIPSourceAddress ipv4_getPreliminaryIPSourceAddress `(S21  1 e 4 0 ]
+"383 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[v _arp_checkForEntry arp_checkForEntry `(uc  1 s 1 arp_checkForEntry ]
 {
-"237
+"384
+[v arp_checkForEntry@i i `uc  1 a 1 21 ]
+[s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"383
+[v arp_checkForEntry@ip ip `S21  1 p 4 7 ]
+[v arp_checkForEntry@index index `*.39uc  1 p 2 11 ]
+"395
 } 0
-"162 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/uart.c
-[v _ipAdressToString ipAdressToString `(*.39uc  1 e 2 0 ]
+"298 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
+[v _ipv4_cmp ipv4_cmp `(b  1 e 0 0 ]
 {
-"169
-[v ipAdressToString@i i `uc  1 a 1 40 ]
-"164
-[v ipAdressToString@hundreds hundreds `[4]uc  1 a 4 35 ]
-"165
-[v ipAdressToString@tens tens `[4]uc  1 a 4 31 ]
-"166
-[v ipAdressToString@ones ones `[4]uc  1 a 4 27 ]
-"167
-[v ipAdressToString@pointer pointer `uc  1 a 1 39 ]
+"299
+[v ipv4_cmp@i i `uc  1 a 1 6 ]
 [s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"162
-[v ipAdressToString@ip ip `S21  1 p 4 19 ]
-"163
-[v ipAdressToString@address address `[16]uc  1 s 16 address ]
-"185
+"298
+[v ipv4_cmp@a a `*.39S21  1 p 2 0 ]
+[v ipv4_cmp@b b `*.39S21  1 p 2 2 ]
+"304
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
@@ -1973,71 +2069,28 @@ ERROR_IPv4_UNKNOWN 599
 [v ___lwmod@divisor divisor `ui  1 p 2 16 ]
 "26
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"118 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
+[s S29 error 3 `E5436 1 module 1 0 `ui 1 code 2 1 ]
+"304 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
+[v _arp_gratuitous arp_gratuitous `(S29  1 s 3 arp_gratuitous ]
 {
-"11
-[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
-"12
-[v ___lwdiv@counter counter `uc  1 a 1 4 ]
-"8
-[v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
-[v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
-"31
+"308
+[v arp_gratuitous@err err `S29  1 a 3 60 ]
+[s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
+"304
+[v arp_gratuitous@ip ip `S21  1 p 4 156 ]
+"305
+[v arp_gratuitous@announceCounter announceCounter `uc  1 s 1 announceCounter ]
+"306
+[v arp_gratuitous@state state `uc  1 s 1 state ]
+"307
+[v arp_gratuitous@timeStart timeStart `ul  1 s 4 timeStart ]
+"338
 } 0
-"75 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/uart.c
-[v _intToString intToString `(*.39uc  1 e 2 0 ]
+"34 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/time.c
+[v _getMillis getMillis `(ul  1 e 4 0 ]
 {
-[v intToString@val val `ul  1 p 4 36 ]
-"76
-[v intToString@number number `[10]uc  1 s 10 number ]
-"82
-} 0
-"7 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ltoa.c
-[v _ltoa ltoa `(*.39uc  1 e 2 0 ]
-{
-"10
-[v ltoa@cp cp `*.39uc  1 a 2 34 ]
-"7
-[v ltoa@buf buf `*.39uc  1 p 2 26 ]
-[v ltoa@val val `l  1 p 4 28 ]
-[v ltoa@base base `i  1 p 2 32 ]
-"22
-} 0
-"32
-[v _ultoa ultoa `(*.39uc  1 e 2 0 ]
-{
-"35
-[v ultoa@v v `ul  1 a 4 21 ]
 "36
-[v ultoa@c c `uc  1 a 1 25 ]
-"32
-[v ultoa@buf buf `*.39uc  1 p 2 13 ]
-[v ultoa@val val `ul  1 p 4 15 ]
-[v ultoa@base base `i  1 p 2 19 ]
-"53
-} 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\llmod.c
-[v ___llmod __llmod `(ul  1 e 4 0 ]
-{
-"11
-[v ___llmod@counter counter `uc  1 a 1 8 ]
-"8
-[v ___llmod@dividend dividend `ul  1 p 4 0 ]
-[v ___llmod@divisor divisor `ul  1 p 4 4 ]
-"26
-} 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lldiv.c
-[v ___lldiv __lldiv `(ul  1 e 4 0 ]
-{
-"11
-[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
-"12
-[v ___lldiv@counter counter `uc  1 a 1 12 ]
-"8
-[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
-[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
-"31
 } 0
 "183 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
 [v _arp_sendRequest arp_sendRequest `(v  1 s 1 arp_sendRequest ]
@@ -2089,11 +2142,11 @@ ERROR_IPv4_UNKNOWN 599
 [v _arp_send arp_send `(v  1 s 1 arp_send ]
 {
 "176
-[v arp_send@i_3070 i `uc  1 a 1 112 ]
+[v arp_send@i_3069 i `uc  1 a 1 112 ]
 "173
-[v arp_send@i_3069 i `uc  1 a 1 111 ]
+[v arp_send@i_3068 i `uc  1 a 1 111 ]
 "171
-[v arp_send@i_3068 i `uc  1 a 1 110 ]
+[v arp_send@i_3067 i `uc  1 a 1 110 ]
 "169
 [v arp_send@i i `uc  1 a 1 109 ]
 [s S95 macaddress 6 `[6]uc 1 address 6 0 ]
@@ -2366,33 +2419,6 @@ ERROR_IPv4_UNKNOWN 599
 [v enc424j600_setERXDATAReadPointer@addr addr `ui  1 p 2 10 ]
 "640
 } 0
-"356 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/arp.c
-[v _arp_checkForEntry arp_checkForEntry `(uc  1 s 1 arp_checkForEntry ]
-{
-"357
-[v arp_checkForEntry@i i `uc  1 a 1 21 ]
-[s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"356
-[v arp_checkForEntry@ip ip `S21  1 p 4 7 ]
-[v arp_checkForEntry@index index `*.39uc  1 p 2 11 ]
-"368
-} 0
-"298 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/protocols/ipv4.c
-[v _ipv4_cmp ipv4_cmp `(b  1 e 0 0 ]
-{
-"299
-[v ipv4_cmp@i i `uc  1 a 1 6 ]
-[s S21 ipv4_address 4 `[4]uc 1 address 4 0 ]
-"298
-[v ipv4_cmp@a a `*.39S21  1 p 2 0 ]
-[v ipv4_cmp@b b `*.39S21  1 p 2 2 ]
-"304
-} 0
-"34 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/time.c
-[v _getMillis getMillis `(ul  1 e 4 0 ]
-{
-"36
-} 0
 "36 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/system/uart.c
 [v _UARTTransmitText UARTTransmitText `(v  1 e 1 0 ]
 {
@@ -2421,9 +2447,9 @@ ERROR_IPv4_UNKNOWN 599
 [v ethernetController_softReset@dataToSend dataToSend `[2]uc  1 a 2 19 ]
 "93
 [v ethernetController_softReset@comFailCount comFailCount `uc  1 a 1 18 ]
-[v ethernetController_softReset@F5981 F5981 `[2]uc  1 s 2 F5981 ]
-"94
 [v ethernetController_softReset@F5983 F5983 `[2]uc  1 s 2 F5983 ]
+"94
+[v ethernetController_softReset@F5985 F5985 `[2]uc  1 s 2 F5985 ]
 "130
 } 0
 "118 C:\Users\stefa\Dropbox\Documents\Hobby\Elektronik\EthernetDevBoard\Software\EthernetDevBoard.X\src/stack/error.h
@@ -2503,7 +2529,7 @@ ERROR_IPv4_UNKNOWN 599
 "146
 [v ethernetController_getDeviceName@string string `C[11]uc  1 a 11 2 ]
 "145
-[v ethernetController_getDeviceName@F5993 F5993 `C[11]uc  1 s 11 F5993 ]
+[v ethernetController_getDeviceName@F5995 F5995 `C[11]uc  1 s 11 F5995 ]
 "148
 } 0
 "457

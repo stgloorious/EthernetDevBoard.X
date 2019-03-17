@@ -140,7 +140,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 [; ;error.h: 91: };
 [; ;error.h: 96: enum errors_arp {
-[; ;error.h: 97: ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
+[; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 [; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
 [; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
 [; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
@@ -5364,12 +5364,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.h: 69: void static arp_sendReply(arp_message_t request);
 [; ;arp.h: 75: void static arp_send(arp_message_t arp);
 [; ;arp.h: 82: void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
-[; ;arp.h: 94: error_t static arp_probe (ipv4_address_t ipTarget);
-[; ;arp.h: 101: error_t arp_background();
-[; ;arp.h: 109: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
-[; ;arp.h: 117: macaddress_t static arp_getEntryFromTable(uint8_t index);
-[; ;arp.h: 125: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 131: void printArpTable();
+[; ;arp.h: 95: error_t static arp_probe(ipv4_address_t ipTarget);
+[; ;arp.h: 106: error_t static arp_gratuitous(ipv4_address_t ip);
+[; ;arp.h: 113: error_t arp_background();
+[; ;arp.h: 121: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+[; ;arp.h: 129: macaddress_t static arp_getEntryFromTable(uint8_t index);
+[; ;arp.h: 137: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 143: void printArpTable();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);

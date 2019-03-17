@@ -73,13 +73,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gacab51e5c9afa0f0b90e6694bcfc7d936"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#gacab51e5c9afa0f0b90e6694bcfc7d936">ethernetController_sendPacket</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> field)</td></tr>
-<tr class="memdesc:gacab51e5c9afa0f0b90e6694bcfc7d936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the data in the SRAM buffer.  <a href="#gacab51e5c9afa0f0b90e6694bcfc7d936">More...</a><br /></td></tr>
+<tr class="memitem:gacab51e5c9afa0f0b90e6694bcfc7d936"><td class="memItemLeft" align="right" valign="top"><a id="gacab51e5c9afa0f0b90e6694bcfc7d936"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#gacab51e5c9afa0f0b90e6694bcfc7d936">ethernetController_sendPacket</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> field)</td></tr>
+<tr class="memdesc:gacab51e5c9afa0f0b90e6694bcfc7d936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the data in the SRAM buffer. <br /></td></tr>
 <tr class="separator:gacab51e5c9afa0f0b90e6694bcfc7d936"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafbd607d1cd5a22cb0cacf7a4fe698bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#gafbd607d1cd5a22cb0cacf7a4fe698bac">ethernetController_streamToTransmitBuffer</a> (uint8_t data, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> field)</td></tr>
 <tr class="memdesc:gafbd607d1cd5a22cb0cacf7a4fe698bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Streams data online to the internal memory of the Ethernet Controller. An additonal buffer on the MCU is not needed.  <a href="#gafbd607d1cd5a22cb0cacf7a4fe698bac">More...</a><br /></td></tr>
 <tr class="separator:gafbd607d1cd5a22cb0cacf7a4fe698bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8fa7a1c372901218a6c545df21fc9ef3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#ga8fa7a1c372901218a6c545df21fc9ef3">ethernetController_writeEtherTypeFieldToBuffer</a> (<a class="el" href="group__ethernet.html#ga467703afefdcaf7893a7da3eb63280ed">etherType_t</a> ethtype, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> f)</td></tr>
+<tr class="memitem:ga8fa7a1c372901218a6c545df21fc9ef3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#ga8fa7a1c372901218a6c545df21fc9ef3">ethernetController_writeEtherTypeFieldToBuffer</a> (etherType_t ethtype, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> f)</td></tr>
 <tr class="memdesc:ga8fa7a1c372901218a6c545df21fc9ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the EtherType field in the SRAM buffer.  <a href="#ga8fa7a1c372901218a6c545df21fc9ef3">More...</a><br /></td></tr>
 <tr class="separator:ga8fa7a1c372901218a6c545df21fc9ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga858fd557b9ef00b3fd8166381e415bec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__transmission.html#ga858fd557b9ef00b3fd8166381e415bec">ethernetController_writeDestinationMACAddress</a> (<a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a> addr, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> f)</td></tr>
@@ -88,26 +89,6 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gacab51e5c9afa0f0b90e6694bcfc7d936"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacab51e5c9afa0f0b90e6694bcfc7d936">&#9670;&nbsp;</a></span>ethernetController_sendPacket()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ethernetController_sendPacket </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
-          <td class="paramname"><em>field</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sends the data in the SRAM buffer. </p>
-
-</div>
-</div>
 <a id="gafbd607d1cd5a22cb0cacf7a4fe698bac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gafbd607d1cd5a22cb0cacf7a4fe698bac">&#9670;&nbsp;</a></span>ethernetController_streamToTransmitBuffer()</h2>
 
@@ -192,7 +173,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void ethernetController_writeEtherTypeFieldToBuffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__ethernet.html#ga467703afefdcaf7893a7da3eb63280ed">etherType_t</a>&#160;</td>
+          <td class="paramtype">etherType_t&#160;</td>
           <td class="paramname"><em>ethtype</em>, </td>
         </tr>
         <tr>

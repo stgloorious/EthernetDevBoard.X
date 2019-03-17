@@ -257,36 +257,24 @@ error_t static arp_probe(ipv4_address_t ipTarget) {
     err.module = ERROR_MODULE_ARP;
 
     if (arp_checkForEntry(ipTarget, &index)) {
-        UARTTransmitText("ARP: Found a valid entry for ");
-        UARTTransmitText(ipAdressToString(ipTarget));
-        UARTTransmitText(".\n\r");
         state = ARP_ENTRY_FOUND;
     }
 
     switch (state) {//State Machine
         case PREPARING_PROBE:
-            UARTTransmitText("ARP: Preparing probe...\n\r");
             ipv4_setToAllZero(&ipSender); //"The 'sender IP address' field MUST be set to all zeroes" - RFC 5227
             timeStart = getMillis(); //keep track when we started counting the waitingTime
             waitingTime = rand() % ARP_PROBE_WAIT; //"[...] then wait for a random time interval selected uniformly in the range zero to PROBE_WAIT" - RFC 5227
             state = WAITING_TO_SEND;
-            err.code = ERROR_ARP_WAITING_FOR_REPLY;
-            UARTTransmitText("ARP: Waiting to send probe.\n\r");
+            err.code = ERROR_ARP_WAITING;
             break;
         case WAITING_TO_SEND:
             if (getMillis() - timeStart >= waitingTime) {//Are we done waiting for the first probe?
-                UARTTransmitText("ARP: Waited ");
-                UARTTransmitText(intToString(waitingTime));
-                UARTTransmitText(" ms.\n\r");
                 state = SENDING_PROBE;
                 //"[...] each of these probe packets spaced randomly and uniformly, PROBE_MIN to PROBE_MAX seconds apart." - RFC 5227
                 waitingTime = (rand() % (ARP_PROBE_MAX - ARP_PROBE_MIN)) + ARP_PROBE_MIN;
-
-                UARTTransmitText("ARP: Waiting time between the probes is ");
-                UARTTransmitText(intToString(waitingTime));
-                UARTTransmitText(" ms.\n\r");
             }
-            err.code = ERROR_ARP_WAITING_FOR_REPLY;
+            err.code = ERROR_ARP_WAITING;
             break;
         case SENDING_PROBE:
             if (probeCounter == 0 || (getMillis() - timeStart) > waitingTime) {
@@ -294,21 +282,15 @@ error_t static arp_probe(ipv4_address_t ipTarget) {
 
                 if (probeCounter < ARP_PROBE_NUM) {
                     arp_sendRequest(ipSender, ipTarget);
-                    UARTTransmitText("ARP: Sending probe #");
-                    UARTTransmitText(intToString(probeCounter));
-                    UARTTransmitText(": Who has ");
-                    UARTTransmitText(ipAdressToString(ipv4_getPreliminaryIPSourceAddress()));
-                    UARTTransmitText("?\n\r");
                 }
                 if (probeCounter >= ARP_PROBE_NUM) {//RFC suggests to wait *after* the transmission
                     probeCounter = 0;
                     state = PREPARING_PROBE;
                     err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED; //That would be the "normal" case; the probing was negative
                 } else {
-                    err.code = ERROR_ARP_WAITING_FOR_REPLY; //there are more probes to send
+                    err.code = ERROR_ARP_WAITING; //there are more probes to send
                     probeCounter++;
                 }
-
             }
             break;
         case ARP_ENTRY_FOUND:
@@ -319,19 +301,55 @@ error_t static arp_probe(ipv4_address_t ipTarget) {
     return err;
 }
 
+error_t static arp_gratuitous(ipv4_address_t ip) {
+    uint8_t static announceCounter = 0;
+    uint8_t static state = 0;
+    time_t static timeStart = 0;
+    error_t err;
+    err.module = ERROR_MODULE_ARP;
+    err.code = ERROR_ARP_WAITING;//default state is waiting
+
+    switch (state) {//state machine
+        case 0://used to determine the start time
+            timeStart = getMillis();
+            state = 1;
+            break;
+        case 1://waiting ANNOUNCE_WAIT
+            if ((getMillis() - timeStart) > ARP_ANNOUNCE_WAIT) {
+                state = 2;//done waiting
+                announceCounter = 0;
+            }
+            break;
+        case 2://Ready to announce
+            if ((announceCounter == 0) || (getMillis() - timeStart) > ARP_ANNOUNCE_INTERVAL) {//Wait ANNOUNCE_INTERVAL between announcements
+                timeStart = getMillis();//memorise time when the last announcement was sent
+                arp_sendRequest(ip, ip); //Sender and target IP are the newly selected address
+                announceCounter++;
+            }
+            if (announceCounter >= ARP_ANNOUNCE_NUM) {
+                //reset everything
+                announceCounter = 0;
+                state = 0;
+                err.code = ERROR_CODE_SUCCESSFUL;
+            }
+            break;
+    }
+    return err;
+}
+
 /* =======================  Background work ======================= */
 
 error_t arp_background() {
     error_t static err;
+    error_t errAnnounce;
+    bool_t static fAnnounce = false;
     err.code = ERROR_CODE_UNDEFINED;
     err.module = ERROR_MODULE_ARP;
+
 
     ipv4_address_t ipPreliminary = ipv4_getPreliminaryIPSourceAddress();
 
     if (ipv4_SrcAddrChanged(&err)) {//The IPv4 module wants to use a different source address than before
-        /*   UARTTransmitText("ARP: IPv4 Src Addr should be changed to ");
-           UARTTransmitText(ipAdressToString(ipPreliminary));
-           UARTTransmitText(".\n\r");*/
 
         err.code = arp_probe(ipPreliminary).code;
 
@@ -341,11 +359,20 @@ error_t arp_background() {
                 break;
             case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
                 UARTTransmitText("ARP: Nobody answered.\n\r");
+                fAnnounce = true;
                 break;
-            case ERROR_ARP_WAITING_FOR_REPLY:
+            case ERROR_ARP_WAITING:
                 break;
             default:
                 UARTTransmitText("ARP: An unknown error occured.\n\r");
+        }
+    }
+    if (fAnnounce) {
+        errAnnounce = arp_gratuitous(ipPreliminary);
+        if (errAnnounce.module == ERROR_MODULE_ARP &&
+                errAnnounce.code == ERROR_CODE_SUCCESSFUL) {
+            UARTTransmitText("ARP: All Announcements sent.\n\r");
+            fAnnounce = false;
         }
     }
     return err;
