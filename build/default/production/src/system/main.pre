@@ -7614,7 +7614,7 @@ UARTTransmitText("------------------------------------------------\n\r");
 UARTTransmitText("FIRMWARE BUILD DATE IS ");
 UARTTransmitText("Mar 17 2019");
 UARTTransmitText(" ");
-UARTTransmitText("17:56:11");
+UARTTransmitText("19:46:25");
 UARTTransmitText(".\n\r");
 error_t err;
 err = ethernetController_init();
@@ -7666,7 +7666,7 @@ INTCONbits.PEIE = 1;
 
 
 srand(ethernetController_getMacAddress().address[5]);
-
+ipv4_setIPSourceAddress(ipSrc);
 
 while (1) {
 asm(" clrwdt");
@@ -7680,7 +7680,6 @@ if (buttonState) {
 buttonState = 0;
 
 ipv4_setIPSourceAddress(ipSrc);
-ipSrc.address[3]++;
 
 # 175
 }

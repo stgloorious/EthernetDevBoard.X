@@ -235,14 +235,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "61 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
 [v _srand `(v ~T0 @X0 0 ef1`ui ]
+"111 src/system/../system/../stack/../stack/protocols/ipv4.h
+[v _ipv4_setIPSourceAddress `(v ~T0 @X0 0 ef1`S615 ]
 "41 src/system/../system/../stack/backgroundTasks.h
 [v _handleStackBackgroundTasks `(v ~T0 @X0 0 ef1`*S620 ]
 "61 src/system/../system/main.h
 [v _printEthernetState `(v ~T0 @X0 0 ef1`S612 ]
 "291 src/system/../system/../eth/ethernetController.h
 [v _ethernetController_getCurrentPacketCount `(uc ~T0 @X0 0 ef ]
-"111 src/system/../system/../stack/../stack/protocols/ipv4.h
-[v _ipv4_setIPSourceAddress `(v ~T0 @X0 0 ef1`S615 ]
 "225 src/system/main.c
 [c E5575 301 302 303 399 .. ]
 [n E5575 errors_ethernetController ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW ERROR_ETHERNET_CONTROLLER_UNKNOWN  ]
@@ -5950,7 +5950,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 78: UARTTransmitText(" ");
 "78
 [e ( _UARTTransmitText (1 :s 7C ]
-[; ;main.c: 79: UARTTransmitText("17:56:11");
+[; ;main.c: 79: UARTTransmitText("19:46:25");
 "79
 [e ( _UARTTransmitText (1 :s 8C ]
 [; ;main.c: 80: UARTTransmitText(".\n\r");
@@ -6068,6 +6068,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 130: srand(ethernetController_getMacAddress().address[5]);
 "130
 [e ( _srand (1 -> *U + &U . ( _ethernetController_getMacAddress ..  0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . ( _ethernetController_getMacAddress ..  0 `ui `ux `ui ]
+[; ;main.c: 131: ipv4_setIPSourceAddress(ipSrc);
+"131
+[e ( _ipv4_setIPSourceAddress (1 _ipSrc ]
 [; ;main.c: 133: while (1) {
 "133
 [e :U 626 ]
@@ -6094,9 +6097,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 144: ipv4_setIPSourceAddress(ipSrc);
 "144
 [e ( _ipv4_setIPSourceAddress (1 _ipSrc ]
-[; ;main.c: 145: ipSrc.address[3]++;
-"145
-[e ++ *U + &U . _ipSrc 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _ipSrc 0 `ui `ux -> -> 1 `i `uc ]
 "175
 }
 [e :U 628 ]
@@ -6513,7 +6513,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [a 20C 91 69 82 82 79 82 93 0 ]
 [a 6C 77 97 114 32 49 55 32 50 48 49 57 0 ]
-[a 8C 49 55 58 53 54 58 49 49 0 ]
+[a 8C 49 57 58 52 54 58 50 53 0 ]
 [a 26C 69 116 104 101 114 110 101 116 32 99 111 110 116 114 111 108 108 101 114 32 105 115 32 117 110 114 101 115 112 111 110 115 105 118 101 46 0 ]
 [a 28C 73 80 32 97 100 100 114 101 115 115 32 99 111 117 108 100 32 110 111 116 32 98 101 32 114 101 115 111 108 118 101 100 46 0 ]
 [a 29C 65 110 32 117 110 107 110 111 119 110 32 101 114 114 111 114 32 104 97 115 32 111 99 99 117 114 101 100 46 0 ]

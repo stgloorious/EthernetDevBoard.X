@@ -50,6 +50,9 @@ void handleStackBackgroundTasks(stack_t* stack) {
             ethernetController_setLEDConfig(LEDA, LED_OFF); //LED A indicates the link
             ethernetController_setLEDConfig(LEDB, LED_OFF); //Turn LED B off, indicating there are no packets
         }
+        
+        ipv4_setIPSourceAddress(ipv4_getIPSourceAddress());
+        
         ethernetController_clearInterruptFlag(LINKIF);
     }
 

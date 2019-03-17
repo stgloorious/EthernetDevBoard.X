@@ -62,9 +62,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n E166 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
 "325 src/stack/../stack/../eth/ethernetController.h
 [v _ethernetController_setLEDConfig `(v ~T0 @X0 0 ef2`E162`E166 ]
-"172
+"111 src/stack/../stack/../stack/protocols/ipv4.h
+[v _ipv4_setIPSourceAddress `(v ~T0 @X0 0 ef1`S8 ]
+"100
+[v _ipv4_getIPSourceAddress `(S8 ~T0 @X0 0 ef ]
+"172 src/stack/../stack/../eth/ethernetController.h
 [v _ethernetController_clearInterruptFlag `(v ~T0 @X0 0 ef1`uc ]
-"53 src/stack/backgroundTasks.c
+"56 src/stack/backgroundTasks.c
 [c E150 0 1 2 3 5 6 11 12 13 14 .. ]
 [n E150 interruptFlagsNames PCFULIF RXABTIF TXABTIF TXDIF DMAIF PKTIF LINKIF AESIF HASHIF MODEXIF  ]
 "285 src/stack/../stack/../eth/ethernetController.h
@@ -5532,47 +5536,50 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 624 ]
 [; ;backgroundTasks.c: 52: }
-[; ;backgroundTasks.c: 53: ethernetController_clearInterruptFlag(LINKIF);
-"53
-[e ( _ethernetController_clearInterruptFlag (1 -> . `E150 6 `uc ]
+[; ;backgroundTasks.c: 54: ipv4_setIPSourceAddress(ipv4_getIPSourceAddress());
 "54
+[e ( _ipv4_setIPSourceAddress (1 ( _ipv4_getIPSourceAddress ..  ]
+[; ;backgroundTasks.c: 56: ethernetController_clearInterruptFlag(LINKIF);
+"56
+[e ( _ethernetController_clearInterruptFlag (1 -> . `E150 6 `uc ]
+"57
 }
 [e :U 622 ]
-[; ;backgroundTasks.c: 54: }
-[; ;backgroundTasks.c: 56: if (stack->background.interruptFlags.PKTIF) {
-"56
+[; ;backgroundTasks.c: 57: }
+[; ;backgroundTasks.c: 59: if (stack->background.interruptFlags.PKTIF) {
+"59
 [e $ ! != -> . . . *U _stack 1 1 4 `i -> -> -> 0 `i `Vuc `i 625  ]
 {
-[; ;backgroundTasks.c: 58: if (ethernetController_newPacketAvailable()) {
-"58
+[; ;backgroundTasks.c: 61: if (ethernetController_newPacketAvailable()) {
+"61
 [e $ ! != -> ( _ethernetController_newPacketAvailable ..  `i -> -> -> 0 `i `uc `i 626  ]
 {
-[; ;backgroundTasks.c: 59: stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
-"59
+[; ;backgroundTasks.c: 62: stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
+"62
 [e = . . *U _stack 1 0 ( _ethernet_rxGetNewFrame (1 -> &U . *U _stack 0 `*S5 ]
-"60
+"63
 }
 [e :U 626 ]
-"61
+"64
 }
 [e :U 625 ]
-[; ;backgroundTasks.c: 60: }
-[; ;backgroundTasks.c: 61: }
-[; ;backgroundTasks.c: 66: if (stack->background.fPacketPending) {
-"66
+[; ;backgroundTasks.c: 63: }
+[; ;backgroundTasks.c: 64: }
+[; ;backgroundTasks.c: 69: if (stack->background.fPacketPending) {
+"69
 [e $ ! != -> . . *U _stack 1 2 `i -> -> -> 0 `i `Vuc `i 627  ]
 {
-"86
+"89
 }
 [e :U 627 ]
-[; ;backgroundTasks.c: 86: }
-[; ;backgroundTasks.c: 88: arp_background();
-"88
+[; ;backgroundTasks.c: 89: }
+[; ;backgroundTasks.c: 91: arp_background();
+"91
 [e ( _arp_background ..  ]
-[; ;backgroundTasks.c: 89: ipv4_background();
-"89
+[; ;backgroundTasks.c: 92: ipv4_background();
+"92
 [e ( _ipv4_background ..  ]
-[; ;backgroundTasks.c: 90: }
-"90
+[; ;backgroundTasks.c: 93: }
+"93
 [e :UE 621 ]
 }

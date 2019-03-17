@@ -7476,6 +7476,9 @@ ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS);
 ethernetController_setLEDConfig(LEDA, LED_OFF);
 ethernetController_setLEDConfig(LEDB, LED_OFF);
 }
+
+ipv4_setIPSourceAddress(ipv4_getIPSourceAddress());
+
 ethernetController_clearInterruptFlag(LINKIF);
 }
 
@@ -7486,10 +7489,10 @@ stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
 }
 }
 
-# 66
+# 69
 if (stack->background.fPacketPending) {
 
-# 86
+# 89
 }
 
 arp_background();

@@ -128,7 +128,7 @@ void main() {
 
 
     srand(ethernetController_getMacAddress().address[5]);
-
+    ipv4_setIPSourceAddress(ipSrc);
 
     while (1) {
         CLRWDT(); //clear watch doggy
@@ -142,7 +142,7 @@ void main() {
             buttonState = 0;
 
             ipv4_setIPSourceAddress(ipSrc);
-            ipSrc.address[3]++;
+
 
             /*if (stack.ethernet.link == LINK_ESTABLISHED) {
 
@@ -262,7 +262,7 @@ void buttonHandler(uint8_t volatile *state) {
     }
     if (debounceCounter > resetValue)
         RESET();
-    
+
     oldState = newState;
 }
 
