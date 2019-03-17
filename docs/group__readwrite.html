@@ -64,11 +64,262 @@ $(function() {
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Read/Write Registers<div class="ingroups"><a class="el" href="group__ethernet_controller.html">Ethernet Controller</a> &raquo; <a class="el" href="group__enc424j600__module.html">ENC424J600</a> &raquo; <a class="el" href="group__registers.html">Registers</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gae44784d145c4ed6e48323a8d06f23fa5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#gae44784d145c4ed6e48323a8d06f23fa5">enc424j600_writeSPI</a> (uint8_t *data)</td></tr>
+<tr class="memdesc:gae44784d145c4ed6e48323a8d06f23fa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a single byte to the SPI Interface; CS Pin is not driven by this function.  <a href="#gae44784d145c4ed6e48323a8d06f23fa5">More...</a><br /></td></tr>
+<tr class="separator:gae44784d145c4ed6e48323a8d06f23fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga912bde599010f782a4d2fe4d2cb1e447"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#ga912bde599010f782a4d2fe4d2cb1e447">enc424j600_readSPI</a> (uint8_t *data)</td></tr>
+<tr class="memdesc:ga912bde599010f782a4d2fe4d2cb1e447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a single byte from the SPI interface; CS Pin is not driven by this function.  <a href="#ga912bde599010f782a4d2fe4d2cb1e447">More...</a><br /></td></tr>
+<tr class="separator:ga912bde599010f782a4d2fe4d2cb1e447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8a8b88b0965f20661b380fa8d3ff0b3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#gad8a8b88b0965f20661b380fa8d3ff0b3">enc424j600_writeSingleByte</a> (uint8_t opcode)</td></tr>
+<tr class="memdesc:gad8a8b88b0965f20661b380fa8d3ff0b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a single byte opcode via the SPI interface.  <a href="#gad8a8b88b0965f20661b380fa8d3ff0b3">More...</a><br /></td></tr>
+<tr class="separator:gad8a8b88b0965f20661b380fa8d3ff0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga437b8a3902cb75739a5a2730f128bf1d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#ga437b8a3902cb75739a5a2730f128bf1d">enc424j600_readSingleByte</a> (uint8_t opcode)</td></tr>
+<tr class="memdesc:ga437b8a3902cb75739a5a2730f128bf1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a one-byte command via the SPI interface.  <a href="#ga437b8a3902cb75739a5a2730f128bf1d">More...</a><br /></td></tr>
+<tr class="separator:ga437b8a3902cb75739a5a2730f128bf1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad35964898ff900ab68b554b5241e0050"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#gad35964898ff900ab68b554b5241e0050">enc424j600_writeControlRegisterUnbanked</a> (uint8_t addr, uint8_t *data)</td></tr>
+<tr class="memdesc:gad35964898ff900ab68b554b5241e0050"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes an unbanked Special Function Register from the ENC424J600. Bank offsets have to be added to the register addresses.  <a href="#gad35964898ff900ab68b554b5241e0050">More...</a><br /></td></tr>
+<tr class="separator:gad35964898ff900ab68b554b5241e0050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a5beea8dd2ff4fa5087b1e0106d8cf5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#ga0a5beea8dd2ff4fa5087b1e0106d8cf5">enc424j600_readControlRegisterUnbanked</a> (uint8_t addr, uint8_t *data)</td></tr>
+<tr class="memdesc:ga0a5beea8dd2ff4fa5087b1e0106d8cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads an unbanked Special Function Register from the ENC424J600. Bank offsets have to be added to the register addresses.  <a href="#ga0a5beea8dd2ff4fa5087b1e0106d8cf5">More...</a><br /></td></tr>
+<tr class="separator:ga0a5beea8dd2ff4fa5087b1e0106d8cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga0a5beea8dd2ff4fa5087b1e0106d8cf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0a5beea8dd2ff4fa5087b1e0106d8cf5">&#9670;&nbsp;</a></span>enc424j600_readControlRegisterUnbanked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_readControlRegisterUnbanked </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads an unbanked Special Function Register from the ENC424J600. Bank offsets have to be added to the register addresses. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">addr</td><td>Register address </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Register data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga437b8a3902cb75739a5a2730f128bf1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga437b8a3902cb75739a5a2730f128bf1d">&#9670;&nbsp;</a></span>enc424j600_readSingleByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_readSingleByte </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>opcode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a one-byte command via the SPI interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opcode</td><td>Command </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga912bde599010f782a4d2fe4d2cb1e447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga912bde599010f782a4d2fe4d2cb1e447">&#9670;&nbsp;</a></span>enc424j600_readSPI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_readSPI </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a single byte from the SPI interface; CS Pin is not driven by this function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to the byte where the read data is stored </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gad35964898ff900ab68b554b5241e0050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad35964898ff900ab68b554b5241e0050">&#9670;&nbsp;</a></span>enc424j600_writeControlRegisterUnbanked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_writeControlRegisterUnbanked </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes an unbanked Special Function Register from the ENC424J600. Bank offsets have to be added to the register addresses. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">addr</td><td>Register address </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Register data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gad8a8b88b0965f20661b380fa8d3ff0b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad8a8b88b0965f20661b380fa8d3ff0b3">&#9670;&nbsp;</a></span>enc424j600_writeSingleByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_writeSingleByte </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>opcode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sends a single byte opcode via the SPI interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opcode</td><td>Command which is going to be sent </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gae44784d145c4ed6e48323a8d06f23fa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae44784d145c4ed6e48323a8d06f23fa5">&#9670;&nbsp;</a></span>enc424j600_writeSPI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_writeSPI </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a single byte to the SPI Interface; CS Pin is not driven by this function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Pointer to the byte you want to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

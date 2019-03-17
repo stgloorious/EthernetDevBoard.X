@@ -69,9 +69,10 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">ipv4.c File Reference</div>  </div>
+<div class="title">ipv4.c File Reference<div class="ingroups"><a class="el" href="group__stack.html">Stack</a> &raquo; <a class="el" href="group__ethernet.html">Ethernet</a> &raquo; <a class="el" href="group__protocols.html">Protocols</a> &raquo; <a class="el" href="group__ipv4.html">IPv4</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -79,6 +80,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ipv4_8h_source.html">ipv4.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="arp_settings_8h_source.html">arpSettings.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bool_8h_source.html">../bool.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -91,21 +93,31 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9b32058fa6f24f692e0915345b3373b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga9b32058fa6f24f692e0915345b3373b2">ipv4_streamToTransmissionBuffer</a> (uint8_t data, <a class="el" href="group__ipv4.html#ga68ea36d252d9332fd5e37d9aaedd06af">ipv4_packet_t</a> packet)</td></tr>
 <tr class="memdesc:ga9b32058fa6f24f692e0915345b3373b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Streams data to the memory.  <a href="group__ipv4.html#ga9b32058fa6f24f692e0915345b3373b2">More...</a><br /></td></tr>
 <tr class="separator:ga9b32058fa6f24f692e0915345b3373b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabf86b43adee57be777cf22f4cddc0b38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
-<tr class="memdesc:gabf86b43adee57be777cf22f4cddc0b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function after everything in the header has been filled in.  <a href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">More...</a><br /></td></tr>
-<tr class="separator:gabf86b43adee57be777cf22f4cddc0b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacfb15ed3a5d68caffefbb0605e94b61d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d">ipv4_writeHeaderIntoBuffer</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> header, uint8_t *ptr)</td></tr>
 <tr class="memdesc:gacfb15ed3a5d68caffefbb0605e94b61d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the IPv4 Header and writes it into a buffer.  <a href="group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d">More...</a><br /></td></tr>
 <tr class="separator:gacfb15ed3a5d68caffefbb0605e94b61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabf86b43adee57be777cf22f4cddc0b38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
+<tr class="memdesc:gabf86b43adee57be777cf22f4cddc0b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function after everything in the header has been filled in.  <a href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">More...</a><br /></td></tr>
+<tr class="separator:gabf86b43adee57be777cf22f4cddc0b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a1f9b0d289740294afb5bd277283088"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ipv4_8c.html#a7a1f9b0d289740294afb5bd277283088">ipv4_parseHeader</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> *field)</td></tr>
+<tr class="separator:a7a1f9b0d289740294afb5bd277283088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a7186073296a195e3f053d01468922"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ipv4_8c.html#ad9a7186073296a195e3f053d01468922">ipv4_checkHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
+<tr class="separator:ad9a7186073296a195e3f053d01468922"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7f96d526bafe55783b675597634d87ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga7f96d526bafe55783b675597634d87ae">ipv4_handleNewPacket</a> (<a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a> *frame)</td></tr>
 <tr class="memdesc:ga7f96d526bafe55783b675597634d87ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does all the necessary things to process a new packet.  <a href="group__ipv4.html#ga7f96d526bafe55783b675597634d87ae">More...</a><br /></td></tr>
 <tr class="separator:ga7f96d526bafe55783b675597634d87ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaace46bc098160cc06288e80390dc855a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gaace46bc098160cc06288e80390dc855a">ipv4_getIPSourceAddress</a> ()</td></tr>
 <tr class="separator:gaace46bc098160cc06288e80390dc855a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad7cdb199040068c1d1dc14d9f2d7571d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gad7cdb199040068c1d1dc14d9f2d7571d">ipv4_setIPSourceAddress</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
-<tr class="separator:gad7cdb199040068c1d1dc14d9f2d7571d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad4bef6522793877d88393550f8afc40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ipv4_8c.html#aad4bef6522793877d88393550f8afc40">ipv4_checkForConflicts</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
-<tr class="separator:aad4bef6522793877d88393550f8afc40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b8457cc3cc3500070d4b29b473596ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga7b8457cc3cc3500070d4b29b473596ab">ipv4_getPreliminaryIPSourceAddress</a> ()</td></tr>
+<tr class="separator:ga7b8457cc3cc3500070d4b29b473596ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a9ec06886de83e5c5cc133871d2b250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga8a9ec06886de83e5c5cc133871d2b250">ipv4_setIPSourceAddress</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
+<tr class="separator:ga8a9ec06886de83e5c5cc133871d2b250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b6cb0f6ca9c91a5596a781177bd4874"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga2b6cb0f6ca9c91a5596a781177bd4874">ipv4_background</a> ()</td></tr>
+<tr class="memdesc:ga2b6cb0f6ca9c91a5596a781177bd4874"><td class="mdescLeft">&#160;</td><td class="mdescRight">To be called periodically in the background task handler.  <a href="group__ipv4.html#ga2b6cb0f6ca9c91a5596a781177bd4874">More...</a><br /></td></tr>
+<tr class="separator:ga2b6cb0f6ca9c91a5596a781177bd4874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63010eeb9b8a0545e9ff83e97d810dd2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga63010eeb9b8a0545e9ff83e97d810dd2">ipv4_SrcAddrChanged</a> (<a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a> *err)</td></tr>
+<tr class="memdesc:ga63010eeb9b8a0545e9ff83e97d810dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="ipv4_8c.html#a0f9006a2f24c1d3b37acd8441c8f9a29">fSrcAddrChanged</a> flag located in <a class="el" href="ipv4_8c.html">ipv4.c</a>.  <a href="group__ipv4.html#ga63010eeb9b8a0545e9ff83e97d810dd2">More...</a><br /></td></tr>
+<tr class="separator:ga63010eeb9b8a0545e9ff83e97d810dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9c08409a635759d19d5118a29baec3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ip__operations.html#gad9c08409a635759d19d5118a29baec3d">ipv4_cmp</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> *a, <a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> *b)</td></tr>
 <tr class="memdesc:gad9c08409a635759d19d5118a29baec3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two IPv4 addresses and checks if they are equal.  <a href="group__ip__operations.html#gad9c08409a635759d19d5118a29baec3d">More...</a><br /></td></tr>
 <tr class="separator:gad9c08409a635759d19d5118a29baec3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,33 +127,170 @@ Functions</h2></td></tr>
 <tr class="memitem:gac5383f68f84a2968218c92812354512a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ip__operations.html#gac5383f68f84a2968218c92812354512a">ipv4_setToAllZero</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> *ip)</td></tr>
 <tr class="memdesc:gac5383f68f84a2968218c92812354512a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the IP address to 0.0.0.0.  <a href="group__ip__operations.html#gac5383f68f84a2968218c92812354512a">More...</a><br /></td></tr>
 <tr class="separator:gac5383f68f84a2968218c92812354512a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a5f5fc72313a9c96fa34ad359a0b22a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga6a5f5fc72313a9c96fa34ad359a0b22a">ipv4_init</a> ()</td></tr>
+<tr class="separator:ga6a5f5fc72313a9c96fa34ad359a0b22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a2dfd7888b822471d4bcdfe4ce873dc29"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ipv4_8c.html#a2dfd7888b822471d4bcdfe4ce873dc29">ipSource</a></td></tr>
+<tr class="memdesc:a2dfd7888b822471d4bcdfe4ce873dc29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source IP address of the stack.  <a href="#a2dfd7888b822471d4bcdfe4ce873dc29">More...</a><br /></td></tr>
+<tr class="separator:a2dfd7888b822471d4bcdfe4ce873dc29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c946513138d755c1fa06294772e4c1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ipv4_8c.html#ac1c946513138d755c1fa06294772e4c1">ipPreliminarySource</a></td></tr>
+<tr class="memdesc:ac1c946513138d755c1fa06294772e4c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Future source IP address of the stack (needs to be verified by collision detection first)  <a href="#ac1c946513138d755c1fa06294772e4c1">More...</a><br /></td></tr>
+<tr class="separator:ac1c946513138d755c1fa06294772e4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f9006a2f24c1d3b37acd8441c8f9a29"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ipv4_8c.html#a0f9006a2f24c1d3b37acd8441c8f9a29">fSrcAddrChanged</a></td></tr>
+<tr class="memdesc:a0f9006a2f24c1d3b37acd8441c8f9a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">used as an indicator when to check for collisions  <a href="#a0f9006a2f24c1d3b37acd8441c8f9a29">More...</a><br /></td></tr>
+<tr class="separator:a0f9006a2f24c1d3b37acd8441c8f9a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a641c3c91abeb5c31cf2b3bfd24830e49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ipv4_8c.html#a641c3c91abeb5c31cf2b3bfd24830e49">arpStatus</a></td></tr>
+<tr class="separator:a641c3c91abeb5c31cf2b3bfd24830e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function definitions for IPv4. </p>
 <dl class="section author"><dt>Author</dt><dd>Stefan Gloor </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>29. Januar 2019 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>29. Januar 2019</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd></dd></dl>
 <p>Copyright (C) 2019 Stefan Gloor</p>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aad4bef6522793877d88393550f8afc40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad4bef6522793877d88393550f8afc40">&#9670;&nbsp;</a></span>ipv4_checkForConflicts()</h2>
+<a id="ad9a7186073296a195e3f053d01468922"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9a7186073296a195e3f053d01468922">&#9670;&nbsp;</a></span>ipv4_checkHeaderChecksum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> ipv4_checkHeaderChecksum </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *&#160;</td>
+          <td class="paramname"><em>header</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7a1f9b0d289740294afb5bd277283088"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a1f9b0d289740294afb5bd277283088">&#9670;&nbsp;</a></span>ipv4_parseHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> ipv4_parseHeader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> *&#160;</td>
+          <td class="paramname"><em>field</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a641c3c91abeb5c31cf2b3bfd24830e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a641c3c91abeb5c31cf2b3bfd24830e49">&#9670;&nbsp;</a></span>arpStatus</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a> ipv4_checkForConflicts </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a>&#160;</td>
-          <td class="paramname"><em>ip</em></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a>* arpStatus</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f9006a2f24c1d3b37acd8441c8f9a29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f9006a2f24c1d3b37acd8441c8f9a29">&#9670;&nbsp;</a></span>fSrcAddrChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> fSrcAddrChanged</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>used as an indicator when to check for collisions </p>
+
+</div>
+</div>
+<a id="ac1c946513138d755c1fa06294772e4c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1c946513138d755c1fa06294772e4c1">&#9670;&nbsp;</a></span>ipPreliminarySource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipPreliminarySource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Future source IP address of the stack (needs to be verified by collision detection first) </p>
+
+</div>
+</div>
+<a id="a2dfd7888b822471d4bcdfe4ce873dc29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dfd7888b822471d4bcdfe4ce873dc29">&#9670;&nbsp;</a></span>ipSource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipSource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Source IP address of the stack. </p>
 
 </div>
 </div>

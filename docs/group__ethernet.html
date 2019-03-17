@@ -66,6 +66,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#groups">Modules</a> &#124;
+<a href="#files">Files</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Ethernet<div class="ingroups"><a class="el" href="group__stack.html">Stack</a></div></div>  </div>
@@ -77,6 +78,14 @@ Modules</h2></td></tr>
 <tr class="memitem:group__protocols"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__protocols.html">Protocols</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__mac__operations"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mac__operations.html">MAC Address Operations</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:ethernet_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ethernet_8c.html">ethernet.c</a></td></tr>
+<tr class="memdesc:ethernet_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acts as interface between hardware/medium and upper laying protocols. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ethernet_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ethernet_8h.html">ethernet.h</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -297,8 +306,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ga07afd358acdd48dc34d82f6ed379316faea07ca15f5869b4c98b70763be15f6d8"></a>HALF_DUPLEX&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ga07afd358acdd48dc34d82f6ed379316fa7dee6a082d2fe35451a6727e3585e499"></a>FULL_DUPLEX&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ga07afd358acdd48dc34d82f6ed379316faea07ca15f5869b4c98b70763be15f6d8"></a>HALF_DUPLEX&#160;</td><td class="fielddoc"><p>One after another. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ga07afd358acdd48dc34d82f6ed379316fa7dee6a082d2fe35451a6727e3585e499"></a>FULL_DUPLEX&#160;</td><td class="fielddoc"><p>Both at the same type. </p>
+</td></tr>
 </table>
 
 </div>
@@ -315,10 +326,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cbab2b889adbcd85458d549249e8f1d3bcd"></a>ETHERTYPE_IPv4&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cbab78454b9340abb34bd92a17f01a8060d"></a>ETHERTYPE_ARP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cba421e1f3ba7f0c80d1e22742b7ab7dc56"></a>ETHERTYPE_WOL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cba2a2f46cbbd4ecefb4d852d7ca0579f19"></a>ETHERTYPE_FLOW_CONTROL&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cbab2b889adbcd85458d549249e8f1d3bcd"></a>ETHERTYPE_IPv4&#160;</td><td class="fielddoc"><p>Internet Protocol Version 4. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cbab78454b9340abb34bd92a17f01a8060d"></a>ETHERTYPE_ARP&#160;</td><td class="fielddoc"><p>Address Resolution Protocol. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cba421e1f3ba7f0c80d1e22742b7ab7dc56"></a>ETHERTYPE_WOL&#160;</td><td class="fielddoc"><p>Wake-On-LAN. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cba2a2f46cbbd4ecefb4d852d7ca0579f19"></a>ETHERTYPE_FLOW_CONTROL&#160;</td><td class="fielddoc"><p>FLow control. </p>
+</td></tr>
 </table>
 
 </div>
@@ -335,8 +350,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gad146c3b2a237ecd80026880aef2cbb7eaba43fad8ee5185f12ea31f7dcb843709"></a>NO_LINK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="gad146c3b2a237ecd80026880aef2cbb7eae089385bb92f30d1c9c6cb4f1fb1d226"></a>LINK_ESTABLISHED&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gad146c3b2a237ecd80026880aef2cbb7eaba43fad8ee5185f12ea31f7dcb843709"></a>NO_LINK&#160;</td><td class="fielddoc"><p>Nothing is connected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gad146c3b2a237ecd80026880aef2cbb7eae089385bb92f30d1c9c6cb4f1fb1d226"></a>LINK_ESTABLISHED&#160;</td><td class="fielddoc"><p>An Ethernet partner is present. </p>
+</td></tr>
 </table>
 
 </div>
@@ -353,8 +370,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gad51ff69ce00ee5c869723c572db0eefda283ccbbfdcfbf2e40a4a0f49f94d24ec"></a>TEN_MBIT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="gad51ff69ce00ee5c869723c572db0eefdad16b512761cace49b5a8f574629747f0"></a>HUNDRED_MBIT&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gad51ff69ce00ee5c869723c572db0eefda283ccbbfdcfbf2e40a4a0f49f94d24ec"></a>TEN_MBIT&#160;</td><td class="fielddoc"><p>10Base-T </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gad51ff69ce00ee5c869723c572db0eefdad16b512761cace49b5a8f574629747f0"></a>HUNDRED_MBIT&#160;</td><td class="fielddoc"><p>100Base-TX </p>
+</td></tr>
 </table>
 
 </div>
@@ -377,7 +396,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Takes care of the necessary steps to read a received packet. </p>
-<p>This function figures out the memory start and end address of the packet that was received. It then parses the Receive Status Vector and the EtherType field. From this, the appropriate function of the responsible upper laying protocol is called. (E.g. <a class="el" href="group__arp.html#ga1ba858e52bf34bca0e5260f0dc0e4641">ARP_handleNewPacket</a>) </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This function figures out the memory start and end address of the packet that was received. It then parses the Receive Status Vector and the EtherType field. From this, the appropriate function of the responsible upper laying protocol is called. (E.g. <a class="el" href="group__arp.html#gafd21d29cb1dffc5c81ad6662f363715e">arp_handleNewPacket</a>) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">*frame</td><td>Received Packet </td></tr>
   </table>

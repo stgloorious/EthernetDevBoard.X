@@ -8,7 +8,7 @@ var searchData=
   ['headerlength',['headerLength',['../structipv4__header.html#abf2b1d816d4e2e459b2ed1bda26cb904',1,'ipv4_header']]],
   ['hextochar',['hexToChar',['../uart_8c.html#a9043978129a5348725b0a915fe74f08f',1,'uart.c']]],
   ['hextostring',['hexToString',['../uart_8c.html#a2b5ab32a5e424cca95e98f0034678c46',1,'hexToString(uint32_t val):&#160;uart.c'],['../uart_8h.html#a2b5ab32a5e424cca95e98f0034678c46',1,'hexToString(uint32_t val):&#160;uart.c']]],
-  ['hlen',['hlen',['../struct_a_r_p__message.html#aff25a69752648654e56c4ff3e0b1b226',1,'ARP_message']]],
-  ['htype',['htype',['../struct_a_r_p__message.html#aaf87c38602b614bc7896cf7a5a90d372',1,'ARP_message']]],
+  ['hlen',['hlen',['../structarp__message.html#aff25a69752648654e56c4ff3e0b1b226',1,'arp_message']]],
+  ['htype',['htype',['../structarp__message.html#aaf87c38602b614bc7896cf7a5a90d372',1,'arp_message']]],
   ['hundred_5fmbit',['HUNDRED_MBIT',['../ethernet_types_8h.html#gad51ff69ce00ee5c869723c572db0eefdad16b512761cace49b5a8f574629747f0',1,'ethernetTypes.h']]]
 ];

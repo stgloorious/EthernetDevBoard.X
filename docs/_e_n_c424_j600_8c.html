@@ -70,9 +70,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">ENC424J600.c File Reference</div>  </div>
+<div class="title">ENC424J600.c File Reference<div class="ingroups"><a class="el" href="group__ethernet_controller.html">Ethernet Controller</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -180,7 +181,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gab294a8fbc5b11d40a5da5e769110f6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intended to be called when an interrupt indicates that a link change as occured.  <a href="group__init.html#gab294a8fbc5b11d40a5da5e769110f6ca">More...</a><br /></td></tr>
 <tr class="separator:gab294a8fbc5b11d40a5da5e769110f6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6b4fefc44ec4a3491276c943388fe0a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">ethernetController_setLEDConfig</a> (<a class="el" href="group__leds.html#ga8ef3296ee64cd1095b361874ca9e9607">LEDs_t</a> LED, <a class="el" href="group__leds.html#ga97711e6b776162e8a69a07c2957023f0">LEDStates_t</a> conf)</td></tr>
-<tr class="memdesc:ga6b4fefc44ec4a3491276c943388fe0a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the LEDs in the RJ45 receptacle to a given status (ON or OFF).  <a href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">More...</a><br /></td></tr>
+<tr class="memdesc:ga6b4fefc44ec4a3491276c943388fe0a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the LEDs in the RJ45 receptacle to a given configuration (ON, OFF or an 'automatic' mode).  <a href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">More...</a><br /></td></tr>
 <tr class="separator:ga6b4fefc44ec4a3491276c943388fe0a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0ab2398cb48efd9a8943a5c5b2872b0c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#ga0ab2398cb48efd9a8943a5c5b2872b0c">ethernetController_getCurrentPacketCount</a> ()</td></tr>
 <tr class="memdesc:ga0ab2398cb48efd9a8943a5c5b2872b0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of unprocessed packets.  <a href="group__data__reception.html#ga0ab2398cb48efd9a8943a5c5b2872b0c">More...</a><br /></td></tr>
@@ -188,16 +189,72 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6155805a8511681932051b00a0032f9f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#ga6155805a8511681932051b00a0032f9f">ethernetController_getNextPacketPointer</a> ()</td></tr>
 <tr class="memdesc:ga6155805a8511681932051b00a0032f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the address where the next packet starts.  <a href="group__data__reception.html#ga6155805a8511681932051b00a0032f9f">More...</a><br /></td></tr>
 <tr class="separator:ga6155805a8511681932051b00a0032f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga624b3a45566e56aa688ebb70ad4387da"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__interrupts.html#ga624b3a45566e56aa688ebb70ad4387da">ENC424J600_getInterruptFlags</a> ()</td></tr>
-<tr class="memdesc:ga624b3a45566e56aa688ebb70ad4387da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads out the Interrupt Flag Register EIR.  <a href="group__interrupts.html#ga624b3a45566e56aa688ebb70ad4387da">More...</a><br /></td></tr>
-<tr class="separator:ga624b3a45566e56aa688ebb70ad4387da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69c9a4ff3ecb321ab560e4f6ab1d62f8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a69c9a4ff3ecb321ab560e4f6ab1d62f8">enc424j600_initSPI</a> ()</td></tr>
+<tr class="separator:a69c9a4ff3ecb321ab560e4f6ab1d62f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae44784d145c4ed6e48323a8d06f23fa5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#ae44784d145c4ed6e48323a8d06f23fa5">enc424j600_writeSPI</a> (uint8_t *data)</td></tr>
+<tr class="separator:ae44784d145c4ed6e48323a8d06f23fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a912bde599010f782a4d2fe4d2cb1e447"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a912bde599010f782a4d2fe4d2cb1e447">enc424j600_readSPI</a> (uint8_t *data)</td></tr>
+<tr class="separator:a912bde599010f782a4d2fe4d2cb1e447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8a8b88b0965f20661b380fa8d3ff0b3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#ad8a8b88b0965f20661b380fa8d3ff0b3">enc424j600_writeSingleByte</a> (uint8_t opcode)</td></tr>
+<tr class="separator:ad8a8b88b0965f20661b380fa8d3ff0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad35964898ff900ab68b554b5241e0050"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#ad35964898ff900ab68b554b5241e0050">enc424j600_writeControlRegisterUnbanked</a> (uint8_t addr, uint8_t *data)</td></tr>
+<tr class="separator:ad35964898ff900ab68b554b5241e0050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a5beea8dd2ff4fa5087b1e0106d8cf5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a0a5beea8dd2ff4fa5087b1e0106d8cf5">enc424j600_readControlRegisterUnbanked</a> (uint8_t addr, uint8_t *data)</td></tr>
+<tr class="separator:a0a5beea8dd2ff4fa5087b1e0106d8cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab05adcb645a18cf63b0dc146291f80e3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#ab05adcb645a18cf63b0dc146291f80e3">enc424j600_readPHYRegister</a> (uint8_t addr, uint16_t *data)</td></tr>
+<tr class="separator:ab05adcb645a18cf63b0dc146291f80e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf19431dfe205bca94c0ac0ace30d7ea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#abf19431dfe205bca94c0ac0ace30d7ea">enc424j600_setTXLength</a> (uint16_t len)</td></tr>
+<tr class="separator:abf19431dfe205bca94c0ac0ace30d7ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c4e649eb51c03385653361dfe2eeef6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a4c4e649eb51c03385653361dfe2eeef6">enc424j600_setNextPacketPointer</a> (uint16_t ptr)</td></tr>
+<tr class="separator:a4c4e649eb51c03385653361dfe2eeef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e574538b7a280497a9ea2bdf314136"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#ab6e574538b7a280497a9ea2bdf314136">enc424j600_getNextPacketPointer</a> ()</td></tr>
+<tr class="separator:ab6e574538b7a280497a9ea2bdf314136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e4f7d0ecaa66fc04022f3bec2f8a7c5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reception.html#ga2e4f7d0ecaa66fc04022f3bec2f8a7c5">enc424j600_getPacketCount</a> ()</td></tr>
+<tr class="memdesc:ga2e4f7d0ecaa66fc04022f3bec2f8a7c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads out internal register PKCNT;.  <a href="group__reception.html#ga2e4f7d0ecaa66fc04022f3bec2f8a7c5">More...</a><br /></td></tr>
+<tr class="separator:ga2e4f7d0ecaa66fc04022f3bec2f8a7c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf81276ad76a011afe85bc012f58245e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#acf81276ad76a011afe85bc012f58245e">enc424j600_setTXStartAddress</a> (uint16_t addr)</td></tr>
+<tr class="separator:acf81276ad76a011afe85bc012f58245e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4975a43c8af9992aaf36f76df7885763"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a4975a43c8af9992aaf36f76df7885763">enc424j600_setGPDATAWritePointer</a> (uint16_t addr)</td></tr>
+<tr class="separator:a4975a43c8af9992aaf36f76df7885763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1405449372d788f54191ed949ba9eb4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#aa1405449372d788f54191ed949ba9eb4">enc424j600_setGPDATAReadPointer</a> (uint16_t addr)</td></tr>
+<tr class="separator:aa1405449372d788f54191ed949ba9eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa4bb230aeaf52b9434831d1e8231189"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#afa4bb230aeaf52b9434831d1e8231189">enc424j600_setERXDATAReadPointer</a> (uint16_t addr)</td></tr>
+<tr class="separator:afa4bb230aeaf52b9434831d1e8231189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f87e38e6a123bd0ead3dbc46b543d60"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a5f87e38e6a123bd0ead3dbc46b543d60">enc424j600_setRXBufferStartAddress</a> (uint16_t addr)</td></tr>
+<tr class="separator:a5f87e38e6a123bd0ead3dbc46b543d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae704f2c6a786db16d5d51a4c90c072f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#ae704f2c6a786db16d5d51a4c90c072f1">enc424j600_setRXTailPointer</a> (uint16_t addr)</td></tr>
+<tr class="separator:ae704f2c6a786db16d5d51a4c90c072f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a627343c6faf33fb08f1bec1c4cd09a43"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a627343c6faf33fb08f1bec1c4cd09a43">enc424j600_enableAutoMACInsertion</a> ()</td></tr>
+<tr class="separator:a627343c6faf33fb08f1bec1c4cd09a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee6ab6104272ce3db14b64e78d1f2516"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#aee6ab6104272ce3db14b64e78d1f2516">enc424j600_disableAutoMACInsertion</a> ()</td></tr>
+<tr class="separator:aee6ab6104272ce3db14b64e78d1f2516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a576ad0ca6f608bdb65d5abb05feedd30"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a576ad0ca6f608bdb65d5abb05feedd30">enc424j600_enableReception</a> ()</td></tr>
+<tr class="separator:a576ad0ca6f608bdb65d5abb05feedd30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28c2ade818f7b0f32a9d681dd85812db"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a28c2ade818f7b0f32a9d681dd85812db">enc424j600_disableReception</a> ()</td></tr>
+<tr class="separator:a28c2ade818f7b0f32a9d681dd85812db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae20a515e6db22ce2dc4f9d92dd439126"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#ae20a515e6db22ce2dc4f9d92dd439126">enc424j600_enable</a> ()</td></tr>
+<tr class="separator:ae20a515e6db22ce2dc4f9d92dd439126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2302561ba95bea002ae3fe6c5e96bdaa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a2302561ba95bea002ae3fe6c5e96bdaa">enc424j600_disable</a> ()</td></tr>
+<tr class="separator:a2302561ba95bea002ae3fe6c5e96bdaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9efc027ae0075f1eef3436a620a1def9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__interrupts.html#ga9efc027ae0075f1eef3436a620a1def9">enc424j600_getInterruptFlags</a> ()</td></tr>
+<tr class="memdesc:ga9efc027ae0075f1eef3436a620a1def9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads out the Interrupt Flag Register EIR.  <a href="group__interrupts.html#ga9efc027ae0075f1eef3436a620a1def9">More...</a><br /></td></tr>
+<tr class="separator:ga9efc027ae0075f1eef3436a620a1def9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e2285d110cba2732fa0b3d073110d8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a31e2285d110cba2732fa0b3d073110d8">enc424j600_clearInterruptFlag</a> (uint8_t flag)</td></tr>
+<tr class="separator:a31e2285d110cba2732fa0b3d073110d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c5a336bf557088d092171dc55fa2eb3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__rsv.html#gaf7fd94a9424fccb0aafa846f27a43099">RSV_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a8c5a336bf557088d092171dc55fa2eb3">enc424j600_updateReceiveStatusVector</a> (uint8_t *rsv)</td></tr>
+<tr class="separator:a8c5a336bf557088d092171dc55fa2eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a569bb6b6e7c496785461f46dc00d6328"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_e_n_c424_j600_8c.html#a569bb6b6e7c496785461f46dc00d6328">nextPacketPointer</a> = 0x0000</td></tr>
+<tr class="separator:a569bb6b6e7c496785461f46dc00d6328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Drives Microchip's Ethernet Controller ENC424J600 via SPI interface. Parallel interfacing is not supported. </p>
 <dl class="section author"><dt>Author</dt><dd>Stefan Gloor </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>31. December 2018 </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Filter settings; not just unicast/broadcast but all packets visible </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Filter settings; not just unicast/broadcast but all packets visible</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd></dd></dl>
 <p>Copyright (C) 2019 Stefan Gloor</p>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
@@ -256,6 +313,676 @@ Functions</h2></td></tr>
           <td class="memname">#define TIMEOUT&#160;&#160;&#160;0xfff</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a31e2285d110cba2732fa0b3d073110d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31e2285d110cba2732fa0b3d073110d8">&#9670;&nbsp;</a></span>enc424j600_clearInterruptFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_clearInterruptFlag </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2302561ba95bea002ae3fe6c5e96bdaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2302561ba95bea002ae3fe6c5e96bdaa">&#9670;&nbsp;</a></span>enc424j600_disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_disable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee6ab6104272ce3db14b64e78d1f2516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee6ab6104272ce3db14b64e78d1f2516">&#9670;&nbsp;</a></span>enc424j600_disableAutoMACInsertion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_disableAutoMACInsertion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28c2ade818f7b0f32a9d681dd85812db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28c2ade818f7b0f32a9d681dd85812db">&#9670;&nbsp;</a></span>enc424j600_disableReception()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_disableReception </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae20a515e6db22ce2dc4f9d92dd439126"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae20a515e6db22ce2dc4f9d92dd439126">&#9670;&nbsp;</a></span>enc424j600_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_enable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a627343c6faf33fb08f1bec1c4cd09a43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a627343c6faf33fb08f1bec1c4cd09a43">&#9670;&nbsp;</a></span>enc424j600_enableAutoMACInsertion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_enableAutoMACInsertion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a576ad0ca6f608bdb65d5abb05feedd30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a576ad0ca6f608bdb65d5abb05feedd30">&#9670;&nbsp;</a></span>enc424j600_enableReception()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_enableReception </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6e574538b7a280497a9ea2bdf314136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e574538b7a280497a9ea2bdf314136">&#9670;&nbsp;</a></span>enc424j600_getNextPacketPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint16_t enc424j600_getNextPacketPointer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69c9a4ff3ecb321ab560e4f6ab1d62f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69c9a4ff3ecb321ab560e4f6ab1d62f8">&#9670;&nbsp;</a></span>enc424j600_initSPI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_initSPI </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0a5beea8dd2ff4fa5087b1e0106d8cf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a5beea8dd2ff4fa5087b1e0106d8cf5">&#9670;&nbsp;</a></span>enc424j600_readControlRegisterUnbanked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_readControlRegisterUnbanked </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab05adcb645a18cf63b0dc146291f80e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab05adcb645a18cf63b0dc146291f80e3">&#9670;&nbsp;</a></span>enc424j600_readPHYRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_readPHYRegister </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a912bde599010f782a4d2fe4d2cb1e447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a912bde599010f782a4d2fe4d2cb1e447">&#9670;&nbsp;</a></span>enc424j600_readSPI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_readSPI </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa4bb230aeaf52b9434831d1e8231189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa4bb230aeaf52b9434831d1e8231189">&#9670;&nbsp;</a></span>enc424j600_setERXDATAReadPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setERXDATAReadPointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1405449372d788f54191ed949ba9eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1405449372d788f54191ed949ba9eb4">&#9670;&nbsp;</a></span>enc424j600_setGPDATAReadPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setGPDATAReadPointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4975a43c8af9992aaf36f76df7885763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4975a43c8af9992aaf36f76df7885763">&#9670;&nbsp;</a></span>enc424j600_setGPDATAWritePointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setGPDATAWritePointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c4e649eb51c03385653361dfe2eeef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c4e649eb51c03385653361dfe2eeef6">&#9670;&nbsp;</a></span>enc424j600_setNextPacketPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setNextPacketPointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f87e38e6a123bd0ead3dbc46b543d60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f87e38e6a123bd0ead3dbc46b543d60">&#9670;&nbsp;</a></span>enc424j600_setRXBufferStartAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setRXBufferStartAddress </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae704f2c6a786db16d5d51a4c90c072f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae704f2c6a786db16d5d51a4c90c072f1">&#9670;&nbsp;</a></span>enc424j600_setRXTailPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setRXTailPointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abf19431dfe205bca94c0ac0ace30d7ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf19431dfe205bca94c0ac0ace30d7ea">&#9670;&nbsp;</a></span>enc424j600_setTXLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setTXLength </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>len</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf81276ad76a011afe85bc012f58245e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf81276ad76a011afe85bc012f58245e">&#9670;&nbsp;</a></span>enc424j600_setTXStartAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setTXStartAddress </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c5a336bf557088d092171dc55fa2eb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c5a336bf557088d092171dc55fa2eb3">&#9670;&nbsp;</a></span>enc424j600_updateReceiveStatusVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="group__rsv.html#gaf7fd94a9424fccb0aafa846f27a43099">RSV_t</a> enc424j600_updateReceiveStatusVector </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>rsv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad35964898ff900ab68b554b5241e0050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad35964898ff900ab68b554b5241e0050">&#9670;&nbsp;</a></span>enc424j600_writeControlRegisterUnbanked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_writeControlRegisterUnbanked </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad8a8b88b0965f20661b380fa8d3ff0b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8a8b88b0965f20661b380fa8d3ff0b3">&#9670;&nbsp;</a></span>enc424j600_writeSingleByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_writeSingleByte </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>opcode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae44784d145c4ed6e48323a8d06f23fa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae44784d145c4ed6e48323a8d06f23fa5">&#9670;&nbsp;</a></span>enc424j600_writeSPI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_writeSPI </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a569bb6b6e7c496785461f46dc00d6328"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a569bb6b6e7c496785461f46dc00d6328">&#9670;&nbsp;</a></span>nextPacketPointer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t nextPacketPointer = 0x0000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

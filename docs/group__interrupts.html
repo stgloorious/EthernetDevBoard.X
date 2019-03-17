@@ -65,6 +65,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
@@ -74,6 +75,12 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:interrupt_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupt_8h.html">interrupt.h</a></td></tr>
+<tr class="memdesc:interrupt_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains bit name definitions and the data structure for all the different interrupt flags of the ENC424J600. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinterrupt_flags.html">interruptFlags</a></td></tr>
@@ -111,9 +118,12 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga624b3a45566e56aa688ebb70ad4387da"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__interrupts.html#ga624b3a45566e56aa688ebb70ad4387da">ENC424J600_getInterruptFlags</a> ()</td></tr>
-<tr class="memdesc:ga624b3a45566e56aa688ebb70ad4387da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads out the Interrupt Flag Register EIR.  <a href="#ga624b3a45566e56aa688ebb70ad4387da">More...</a><br /></td></tr>
-<tr class="separator:ga624b3a45566e56aa688ebb70ad4387da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9efc027ae0075f1eef3436a620a1def9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__interrupts.html#ga9efc027ae0075f1eef3436a620a1def9">enc424j600_getInterruptFlags</a> ()</td></tr>
+<tr class="memdesc:ga9efc027ae0075f1eef3436a620a1def9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads out the Interrupt Flag Register EIR.  <a href="#ga9efc027ae0075f1eef3436a620a1def9">More...</a><br /></td></tr>
+<tr class="separator:ga9efc027ae0075f1eef3436a620a1def9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga31e2285d110cba2732fa0b3d073110d8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__interrupts.html#ga31e2285d110cba2732fa0b3d073110d8">enc424j600_clearInterruptFlag</a> (uint8_t flag)</td></tr>
+<tr class="memdesc:ga31e2285d110cba2732fa0b3d073110d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears a single interrupt flag in the Interrupt Flag Register EIR.  <a href="#ga31e2285d110cba2732fa0b3d073110d8">More...</a><br /></td></tr>
+<tr class="separator:ga31e2285d110cba2732fa0b3d073110d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -130,7 +140,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Contains the interrupt flag names of the EIR Interrupt Flag register. </p>
-<p>The numbers represent the bit numbers. To be used with ENC424J600_clearInterruptFlag () </p><dl class="section note"><dt>Note</dt><dd>The flag names represent bit numbers, not masks. </dd></dl>
+<p>The numbers represent the bit numbers. To be used with <a class="el" href="group__interrupts.html#ga31e2285d110cba2732fa0b3d073110d8">enc424j600_clearInterruptFlag</a> () </p><dl class="section note"><dt>Note</dt><dd>The flag names represent bit numbers, not masks. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>Register 13-1, Page 120 of ENC424J600's data sheet. </dd></dl>
 
 </div>
@@ -166,7 +176,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Contains the interrupt flag names of the EIR Interrupt Flag register. </p>
-<p>The numbers represent the bit numbers. To be used with ENC424J600_clearInterruptFlag () </p><dl class="section note"><dt>Note</dt><dd>The flag names represent bit numbers, not masks. </dd></dl>
+<p>The numbers represent the bit numbers. To be used with <a class="el" href="group__interrupts.html#ga31e2285d110cba2732fa0b3d073110d8">enc424j600_clearInterruptFlag</a> () </p><dl class="section note"><dt>Note</dt><dd>The flag names represent bit numbers, not masks. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>Register 13-1, Page 120 of ENC424J600's data sheet. </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaf692e993b72f242633eee1b443276547a763a1fb486fd541369f9f91f63d11b2f"></a>PCFULIF&#160;</td><td class="fielddoc"><p>Packet Counter Full Interrupt Flag bit. </p>
@@ -194,14 +204,49 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga624b3a45566e56aa688ebb70ad4387da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga624b3a45566e56aa688ebb70ad4387da">&#9670;&nbsp;</a></span>ENC424J600_getInterruptFlags()</h2>
+<a id="ga31e2285d110cba2732fa0b3d073110d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga31e2285d110cba2732fa0b3d073110d8">&#9670;&nbsp;</a></span>enc424j600_clearInterruptFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_clearInterruptFlag </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clears a single interrupt flag in the Interrupt Flag Register EIR. </p>
+<p>Note that the MSB is not an interrupt flag. </p><dl class="section note"><dt>Note</dt><dd>Use <a class="el" href="group__interrupts.html#gaf692e993b72f242633eee1b443276547">interruptFlagsNames</a> with this. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>Bit number of the flag to clear (0..15) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga9efc027ae0075f1eef3436a620a1def9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9efc027ae0075f1eef3436a620a1def9">&#9670;&nbsp;</a></span>enc424j600_getInterruptFlags()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t ENC424J600_getInterruptFlags </td>
+          <td class="memname">uint16_t enc424j600_getInterruptFlags </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

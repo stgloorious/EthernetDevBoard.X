@@ -64,12 +64,242 @@ $(function() {
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Pointer operations<div class="ingroups"><a class="el" href="group__ethernet_controller.html">Ethernet Controller</a> &raquo; <a class="el" href="group__enc424j600__module.html">ENC424J600</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gacf81276ad76a011afe85bc012f58245e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#gacf81276ad76a011afe85bc012f58245e">enc424j600_setTXStartAddress</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:gacf81276ad76a011afe85bc012f58245e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the TX Start Address Pointer to a desired value.  <a href="#gacf81276ad76a011afe85bc012f58245e">More...</a><br /></td></tr>
+<tr class="separator:gacf81276ad76a011afe85bc012f58245e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4975a43c8af9992aaf36f76df7885763"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#ga4975a43c8af9992aaf36f76df7885763">enc424j600_setGPDATAWritePointer</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:ga4975a43c8af9992aaf36f76df7885763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the General Purpose Data Write Pointer to a desired position.  <a href="#ga4975a43c8af9992aaf36f76df7885763">More...</a><br /></td></tr>
+<tr class="separator:ga4975a43c8af9992aaf36f76df7885763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1405449372d788f54191ed949ba9eb4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#gaa1405449372d788f54191ed949ba9eb4">enc424j600_setGPDATAReadPointer</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:gaa1405449372d788f54191ed949ba9eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the General Purpose Data Read Pointer to a desired position.  <a href="#gaa1405449372d788f54191ed949ba9eb4">More...</a><br /></td></tr>
+<tr class="separator:gaa1405449372d788f54191ed949ba9eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa4bb230aeaf52b9434831d1e8231189"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#gafa4bb230aeaf52b9434831d1e8231189">enc424j600_setERXDATAReadPointer</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:gafa4bb230aeaf52b9434831d1e8231189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Ethernet RX Data Window Register Read Pointer to a desired position.  <a href="#gafa4bb230aeaf52b9434831d1e8231189">More...</a><br /></td></tr>
+<tr class="separator:gafa4bb230aeaf52b9434831d1e8231189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f87e38e6a123bd0ead3dbc46b543d60"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#ga5f87e38e6a123bd0ead3dbc46b543d60">enc424j600_setRXBufferStartAddress</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:ga5f87e38e6a123bd0ead3dbc46b543d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receive buffer start address.  <a href="#ga5f87e38e6a123bd0ead3dbc46b543d60">More...</a><br /></td></tr>
+<tr class="separator:ga5f87e38e6a123bd0ead3dbc46b543d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae704f2c6a786db16d5d51a4c90c072f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#gae704f2c6a786db16d5d51a4c90c072f1">enc424j600_setRXTailPointer</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:gae704f2c6a786db16d5d51a4c90c072f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RX tail pointer ERXTAIL.  <a href="#gae704f2c6a786db16d5d51a4c90c072f1">More...</a><br /></td></tr>
+<tr class="separator:gae704f2c6a786db16d5d51a4c90c072f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <dl class="section note"><dt>Note</dt><dd>Since the SPI mode is the only supported interface data can not be written/read to/from the General Purpose Buffer directly. Instead memory access is achieved through a data window. A pointer register indicates where the data gets written to or read from, respectively. Data can then be exchanged through a dedicated register (data window). </dd></dl>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gafa4bb230aeaf52b9434831d1e8231189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafa4bb230aeaf52b9434831d1e8231189">&#9670;&nbsp;</a></span>enc424j600_setERXDATAReadPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setERXDATAReadPointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the Ethernet RX Data Window Register Read Pointer to a desired position. </p>
+<p>This pointer points to the location in the reception buffer memory which should be read from. It is used to read the received data </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gaa1405449372d788f54191ed949ba9eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa1405449372d788f54191ed949ba9eb4">&#9670;&nbsp;</a></span>enc424j600_setGPDATAReadPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setGPDATAReadPointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the General Purpose Data Read Pointer to a desired position. </p>
+<p>This pointer points to the location in memory which should be read from. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Pointer value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga4975a43c8af9992aaf36f76df7885763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4975a43c8af9992aaf36f76df7885763">&#9670;&nbsp;</a></span>enc424j600_setGPDATAWritePointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setGPDATAWritePointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the General Purpose Data Write Pointer to a desired position. </p>
+<p>This pointer points to the location in memory which should be written to. It is used to write data to the transmit buffer </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Pointer value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga5f87e38e6a123bd0ead3dbc46b543d60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5f87e38e6a123bd0ead3dbc46b543d60">&#9670;&nbsp;</a></span>enc424j600_setRXBufferStartAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setRXBufferStartAddress </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the receive buffer start address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Pointer value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gae704f2c6a786db16d5d51a4c90c072f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae704f2c6a786db16d5d51a4c90c072f1">&#9670;&nbsp;</a></span>enc424j600_setRXTailPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setRXTailPointer </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the RX tail pointer ERXTAIL. </p>
+<p>This pointer indicates where unprocessed data ends in the buffer. This way data which lies between head and tail pointer is "protected" from being overwritten. </p><dl class="section see"><dt>See also</dt><dd>Figure 9-3, Page 88 of the datasheet. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Pointer value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gacf81276ad76a011afe85bc012f58245e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacf81276ad76a011afe85bc012f58245e">&#9670;&nbsp;</a></span>enc424j600_setTXStartAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enc424j600_setTXStartAddress </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the TX Start Address Pointer to a desired value. </p>
+<p>Data starting from this pointer will be sent. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Pointer value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

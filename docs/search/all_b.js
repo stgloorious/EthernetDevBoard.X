@@ -8,7 +8,7 @@ var searchData=
   ['maadr3l',['MAADR3L',['../group___b_a_n_k__3.html#ga562cebf48745071887d6b26b45613dee',1,'ENC424J600.h']]],
   ['mabbipgh',['MABBIPGH',['../group___b_a_n_k__2.html#gac586d61570587d6895a16395cb22b19f',1,'ENC424J600.h']]],
   ['mabbipgl',['MABBIPGL',['../group___b_a_n_k__2.html#gacd7ea416b65b2a84378dfea8bacfd24c',1,'ENC424J600.h']]],
-  ['mac',['mac',['../struct_a_r_p__table_entry.html#a815eb066061f1dd9afdb6c6eee48f46e',1,'ARP_tableEntry']]],
+  ['mac',['mac',['../structarp__table_entry.html#a815eb066061f1dd9afdb6c6eee48f46e',1,'arp_tableEntry']]],
   ['mac_2ec',['mac.c',['../mac_8c.html',1,'']]],
   ['mac_2eh',['mac.h',['../mac_8h.html',1,'']]],
   ['mac_5fcmp',['mac_cmp',['../group__mac__operations.html#ga87bc219b1c3eed3359777bee707a9eee',1,'mac_cmp(macaddress_t *a, macaddress_t *b):&#160;mac.c'],['../group__mac__operations.html#ga87bc219b1c3eed3359777bee707a9eee',1,'mac_cmp(macaddress_t *a, macaddress_t *b):&#160;mac.c']]],

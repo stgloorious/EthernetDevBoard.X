@@ -65,20 +65,12 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a> &#124;
-<a href="#enumval-members">Enumerator</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Data Reception<div class="ingroups"><a class="el" href="group__ethernet_controller.html">Ethernet Controller</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
-Modules</h2></td></tr>
-<tr class="memitem:group__leds"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__leds.html">LEDs</a></td></tr>
-<tr class="memdesc:group__leds"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status LEDs in the RJ45 Receptacle. Usually they show Link/Unlinked Status and activity. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gada8fcdc667d1800b5f963bfc8cea56c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__data__reception.html#gada8fcdc667d1800b5f963bfc8cea56c2">ethernetController_dropPacket</a> (<a class="el" href="group__ethernet.html#ga7519a7ae14b490659069435698d28a25">ethernetFrame_t</a> *frame)</td></tr>
@@ -137,6 +129,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Discards a packet. </p>
+<p>This updates the Tail pointer in Ethernet Controller's memory and decrements the packet counter using <a class="el" href="group__single__byte.html#gab4cdb8940073f2025cab184a4215510f">SETPKTDEC</a> . </p><dl class="section note"><dt>Note</dt><dd>Not only is this function called if a packet should be ignored, it is called after <em>every</em> packet that has been completely processed, so the memory occupied by this packet can be freed up. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*frame</td><td>Pointer to the Packet that should be dropped </td></tr>
@@ -389,8 +382,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Warning</dt><dd>Once a stream is openend no other function should be called that could access the data communication to the Ethernet controller. For maximum speed effiency, the read pointer is only set once (at the beginning of the stream). After that, the read operation relies on the automatic pointer increment of the Ethernet Controller. So before doing anything else this function has to be called with startEnd equal to 2 to properly end the stream. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>If startEnd != 1 the returned value is always 0. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Once a stream is openend no other function should be called that could access the data communication to the Ethernet controller. For maximum speed effiency, the read pointer is only set once (at the beginning of the stream). After that, the read operation relies on the automatic pointer increment of the Ethernet Controller. So before doing anything else this function has to be called with <code>startEnd</code> equal to 2 to properly end the stream. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If <code>startEnd</code> != 1 the returned value is always 0. </dd></dl>
 
 </div>
 </div>
