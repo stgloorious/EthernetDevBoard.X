@@ -25,12 +25,11 @@
 #define	UART_H
 
 #include <xc.h>
+#include <stdlib.h>
 #include <stdint.h>
 #include "../stack/protocols/arpTypes.h"
 #include "../eth/mac.h"
 #include "../stack/protocols/ipv4.h"
-
-
 
 /**
  * \brief Initialises the UART module and sets up baud rate and other settings
@@ -71,7 +70,7 @@ char *hexToString(uint32_t val);
 
 /**
  * \brief Takes a MAC address and translates it to a human-readable char string
- * \param mac MAC address
+ * \param addr MAC address
  * \return Char string
  */
 char *macToString(macaddress_t addr);
@@ -92,7 +91,7 @@ char *ipProtocolToString(ipv4_protocol_t protocol);
 
 /**
  * \brief Takes an IPv4 Address and converts it into string (decimal notation)
- * \param IP address
+ * \param ip address
  * \return char string
  */
 char *ipAdressToString(ipv4_address_t ip);
@@ -102,7 +101,7 @@ char *ipAdressToString(ipv4_address_t ip);
  * \param table
  * \return String
  */
-char *arpEntryToString(ARP_tableEntry_t table);
+char *arpEntryToString(arp_tableEntry_t table);
 
 
 #endif	/* UART_H */

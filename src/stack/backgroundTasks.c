@@ -23,42 +23,24 @@
 
 #include "../stack/backgroundTasks.h"
 #include "protocols/ipv4Types.h"
+#include "../enc424j600/ENC424J600.h"
 
+#include <stdlib.h>
+
+/**
+ * \bug (Kind of) Unsolved problem: If \ref PKTIF is checked before \ref LINKIF without
+ * calling \ref ethernetController_pollInterruptFlags again LINKIF seems to be set without no reason ??
+ * It seems the problem does not occur if checked in this order or if \ref ethernetController_pollInterruptFlags is called
+ * multiple times.
+ */
 void handleStackBackgroundTasks(stack_t* stack) {
+    unsigned char foo[10];
+
     stack->background.interruptFlags = ethernetController_pollInterruptFlags();
-    if (stack->background.interruptFlags.PKTIF) {//indicating a new packet
-        //Check anyway if there is something new
-        if (ethernetController_newPacketAvailable()) {
-            stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
-        }
-    }
-    /**
-     * \todo check other relevant interrupt flags and return errors
-     * 
-     */
 
-    if (stack->background.fPacketPending) {
-        //There is a packet awaiting transmission
-
-        stack->background.err = ipv4_sendFrame(stack->pendingPacketToSend);
-        if (stack->background.err.code == ERROR_ARP_WAITING_FOR_REPLY) {
-
-        }
-        if (stack->background.err.module == ERROR_MODULE_ARP &&
-                stack->background.err.code == ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED) {
-            UARTTransmitText("Could not resolve ");
-            UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
-            UARTTransmitText("\n\r");
-            stack->background.fPacketPending = false;
-        }
-        if (stack->background.err.module == ERROR_MODULE_ARP &&
-                stack->background.err.code == ERROR_CODE_SUCCESSFUL) {
-            UARTTransmitText("IP packet sent.\n\r");
-            //address resolution is completed
-            stack->background.fPacketPending = false;
-        }
-    }
+    //stack->background.interruptFlags = ethernetController_pollInterruptFlags();
     if (stack->background.interruptFlags.LINKIF) {//link status change
+        //if (enc424j600_getInterruptFlags()&(1 << LINKIF)) {
         ethernetController_updateLinkStatus(&(stack->ethernet)); //save current status
         //Set up the LEDs manually at every link change because of hardware mistake (LEDs are wired up inverted)
         if (stack->ethernet.link == LINK_ESTABLISHED) {//is another ethernet partner present?
@@ -70,10 +52,39 @@ void handleStackBackgroundTasks(stack_t* stack) {
         }
         ethernetController_clearInterruptFlag(LINKIF);
     }
-    
-    if (stack->background.fSetSourceAddr) {
-        if(ipv4_setIPSourceAddress(ipSource).code==ERROR_CODE_SUCCESSFUL){
-            stack->background.fSetSourceAddr=0;
+
+    if (stack->background.interruptFlags.PKTIF) {//indicating a new packet
+        //Check anyway if there is something new
+        if (ethernetController_newPacketAvailable()) {
+            stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
         }
     }
+    /**
+     * \todo check other relevant interrupt flags and return errors
+     * 
+     */
+    if (stack->background.fPacketPending) {
+        //There is a packet awaiting transmission
+
+        /*  stack->background.err = ipv4_sendFrame(stack->pendingPacketToSend);
+          if (stack->background.err.code == ERROR_ARP_WAITING_FOR_REPLY) {
+
+          }
+          if (stack->background.err.module == ERROR_MODULE_ARP &&
+                  stack->background.err.code == ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED) {
+              UARTTransmitText("Could not resolve ");
+              UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
+              UARTTransmitText("\n\r");
+              stack->background.fPacketPending = false;
+          }
+          if (stack->background.err.module == ERROR_MODULE_ARP &&
+                  stack->background.err.code == ERROR_CODE_SUCCESSFUL) {
+              UARTTransmitText("IP packet sent.\n\r");
+              //address resolution is completed
+              stack->background.fPacketPending = false;
+          }*/
+    }
+
+    arp_background();
+    ipv4_background();
 }

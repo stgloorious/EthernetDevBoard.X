@@ -73,4 +73,3 @@ bool_t mac_isAllZero(macaddress_t *mac);
 
 
 #endif	/* MAC_H */
-

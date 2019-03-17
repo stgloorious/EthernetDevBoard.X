@@ -12,6 +12,7 @@ src/system/../system/../stack/protocols/../../stack/backgroundTasksTypes.h  \
 src/system/../system/../stack/protocols/arpTypes.h  \
 src/system/../system/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/system/../system/../stack/protocols/../error.h  \
+src/system/../system/../stack/protocols/../protocols/arpSettings.h  \
 src/system/../system/../stack/protocols/../time.h  \
 src/system/../system/../stack/protocols/../protocols/ipv4Types.h  \
 src/system/../system/../stack/protocols/../../eth/../mem/../stack/bool.h  \

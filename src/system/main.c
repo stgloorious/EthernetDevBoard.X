@@ -92,7 +92,7 @@ void main() {
     UARTTransmitText(".\n\r");
     UARTTransmitText("------------------------------------------------\n\r");
 
-    ARP_initTable();
+    stack_init();
 
     ethernetController_setLEDConfig(LEDA, LED_ON);
     ethernetController_setLEDConfig(LEDA, LED_ON);
@@ -109,17 +109,17 @@ void main() {
 
     uint8_t oldState;
 
-    ipv4_address_t IPsource;
-    IPsource.address[0] = 192;
-    IPsource.address[1] = 168;
-    IPsource.address[2] = 0;
-    IPsource.address[3] = 4;
+    ipv4_address_t ipSrc;
+    ipSrc.address[0] = 192;
+    ipSrc.address[1] = 168;
+    ipSrc.address[2] = 0;
+    ipSrc.address[3] = 1;
 
-    ipv4_address_t IPdestination;
-    IPdestination.address[0] = 192;
-    IPdestination.address[1] = 168;
-    IPdestination.address[2] = 0;
-    IPdestination.address[3] = 5;
+    ipv4_address_t ipDst;
+    ipDst.address[0] = 192;
+    ipDst.address[1] = 168;
+    ipDst.address[2] = 0;
+    ipDst.address[3] = 4;
 
     //Now everything's set up, allow interrupts
     INTCONbits.GIE = 1; //global interrupt enable
@@ -141,8 +141,8 @@ void main() {
         if (buttonState) {
             buttonState = 0;
 
-            UARTTransmitText("Setting IPv4 Address...\n\r");
-            stack.background.fSetSourceAddr = 1;
+            ipv4_setIPSourceAddress(ipSrc);
+            ipSrc.address[3]++;
 
             /*if (stack.ethernet.link == LINK_ESTABLISHED) {
 
@@ -229,7 +229,7 @@ void printErrorMessage(error_t err) {
         case ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID:
             UARTTransmitText("Ethernet controller has returned an unknown device ID.");
             break;
-        case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
+        case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
             UARTTransmitText("IP address could not be resolved.");
         default:
         case ERROR_ETHERNET_CONTROLLER_UNKNOWN:
@@ -247,9 +247,9 @@ void buttonHandler(uint8_t volatile *state) {
     uint8_t static newState = 0;
     uint32_t static debounceCounter = 0;
     const uint32_t debounceValue = 0x1f;
+    const uint32_t resetValue = 0xfff;
     if (BUTTON_STATE) {
-        if (debounceCounter < debounceValue)
-            debounceCounter++;
+        debounceCounter++;
     } else {
         debounceCounter = 0;
     }
@@ -260,6 +260,9 @@ void buttonHandler(uint8_t volatile *state) {
     } else {
         *state = 0;
     }
+    if (debounceCounter > resetValue)
+        RESET();
+    
     oldState = newState;
 }
 
@@ -293,4 +296,3 @@ void interrupt ISR(void) {
         //UARTReceptionHandler();
     }
 }
-

@@ -38,16 +38,32 @@
  * \brief Currrently supported protocols embedded in IPv4
  */
 typedef enum ipv4_protocols {
-    IPv4_PROTOCOL_ICMP = 1,
-    IPv4_PROTOCOL_TCP = 6,
-    IPv4_PROTOCOL_UDP = 17
+    IPv4_PROTOCOL_ICMP = 1, ///< Internet Control Message Protocol
+    IPv4_PROTOCOL_TCP = 6, ///< Transmission Control Protocol
+    IPv4_PROTOCOL_UDP = 17///< User Datagram Protocol
 
 } ipv4_protocol_t;
 
+/**
+ * \brief IPv4 Address type
+ * \details Address is stored in an array of bytes, the first element being the first byte if read from left to right.
+ * 
+ * \code
+ * // This sets an IPv4 Address to 192.168.0.1
+ * ipv4_address_t ip;
+ * ip[0] = 192;
+ * ip[1] = 168;
+ * ip[2] = 0;
+ * ip[3] = 1;
+ * \endcode
+ */
 typedef struct ipv4_address {
-    uint8_t address[4];
+    uint8_t address[4]; ///< 4 Address bytes
 } ipv4_address_t;
 
+/**
+ * \brief The header field of every IPv4 packet
+ */
 typedef struct ipv4_header {
     /**
      * \name Byte 0
@@ -112,18 +128,21 @@ typedef struct ipv4_header {
      * \name Byte 12..15
      * \{
      */
-    ipv4_address_t source;
+    ipv4_address_t source; ///< Address from where this came from
     /**\}*/
 
     /**
      * \name Byte 16..19
      * \{
      */
-    ipv4_address_t destination;
+    ipv4_address_t destination; ///< Address to where this is going
     /**\}*/
 
 } ipv4_header_t;
 
+/**
+ * \brief Represantation of an IPv4 packet
+ */
 typedef struct ipv4_packet {
     /**
      * \brief Contains information about the header of this packet
@@ -144,4 +163,3 @@ ipv4_address_t ipSource;
 /**\}*/
 
 #endif	/* IPV4TYPES_H */
-

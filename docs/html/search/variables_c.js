@@ -6,7 +6,7 @@ var searchData=
   ['pcfulif',['PCFULIF',['../structinterrupt_flags.html#a54ca36edd15d3a43ea58c44c9b4632d1',1,'interruptFlags']]],
   ['pendingpackettosend',['pendingPacketToSend',['../structstack.html#add38392b782a601d965c4f3cdca4617f',1,'stack']]],
   ['pktif',['PKTIF',['../structinterrupt_flags.html#a4bfff8bb603cb3baf42fabe79d5e0a39',1,'interruptFlags']]],
-  ['plen',['plen',['../struct_a_r_p__message.html#ae414f6c2299d9cf0eff8aa8e81f538d8',1,'ARP_message']]],
+  ['plen',['plen',['../structarp__message.html#ae414f6c2299d9cf0eff8aa8e81f538d8',1,'arp_message']]],
   ['protocol',['protocol',['../structipv4__header.html#a7de5f6a405a2303535b5d9ce543854ab',1,'ipv4_header']]],
-  ['ptype',['ptype',['../struct_a_r_p__message.html#ab4891e9b77eb26f33d21cfde982564cb',1,'ARP_message']]]
+  ['ptype',['ptype',['../structarp__message.html#ab4891e9b77eb26f33d21cfde982564cb',1,'arp_message']]]
 ];

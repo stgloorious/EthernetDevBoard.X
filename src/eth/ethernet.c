@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 16. Februar 2019
+ * \ingroup ethernet
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -56,16 +57,15 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     error_t err;
     err.module = ERROR_MODULE_ETHERNET;
     err.code = ERROR_CODE_SUCCESSFUL; //per default successful
-    
-    frame->tReceived = getMillis();//add a timestamp to every received packet
+
+    /* =======================  Memory and basic information about the packet  ======================= */
+    frame->tReceived = getMillis(); //add a timestamp to every received packet
     frame->memory.start = ethernetController_getNextPacketPointer(); //Get the address of the packet that should be processed next
-
-    ethernetController_updateNextPacketPointer();
-
-
+    ethernetController_updateNextPacketPointer(); //read out the nextPacketPointer of the current frame, so we know where the next frame will begin
     frame->memory.fIsAssigned = 1; //Not really needed, for completeness
     frame->receiveStatusVector = ethernetController_getRSV(frame->memory.start); //get the RSV for that packet
     frame->memory.length = frame->receiveStatusVector.length;
+    //frame->length = frame->receiveStatusVector.length;
 
     //Now that we have the packets length we can work out where it ends
     if (frame->memory.start + frame->memory.length > END_OF_MEMORY_ADDRESS) {//Does it wrap around?
@@ -80,6 +80,7 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     UARTTransmitText(intToString(counter++));
     UARTTransmitText("]");
 
+    /* =======================  Processing the FLags from the Receive Status Vector  ======================= */
     if (frame->receiveStatusVector.broadcast)
         UARTTransmitText("[Broadcast]");
     if (frame->receiveStatusVector.unicast)
@@ -91,20 +92,21 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     UARTTransmitText(intToString(frame->tReceived));
     UARTTransmitText("]");
 
+
+
+    /* ======================= Distributing the packet to the responsible protocol  ======================= */
+
     switch (frame->ethertype) {
         case ETHERTYPE_ARP:
             UARTTransmitText("[ARP]");
-            ARP_handleNewPacket(frame);
-            break;
-        case ETHERTYPE_FLOW_CONTROL:
+            arp_handleNewPacket(frame);
             break;
         case ETHERTYPE_IPv4:
             UARTTransmitText("[IPv4]");
             ipv4_handleNewPacket(frame);
             break;
-        case ETHERTYPE_WOL:
-            break;
         default:
+            UARTTransmitText("[Unknown EtherType]");
             UARTTransmitText("[");
             UARTTransmitText(macToString(frame->source));
             UARTTransmitText("->");
@@ -113,11 +115,10 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
             UARTTransmitText(etherTypeToString(frame->ethertype));
             UARTTransmitText("][L=");
             UARTTransmitInt(frame->length);
-            UARTTransmitText("]");
-            ethernetController_dropPacket(frame);
+            UARTTransmitText("] ");
             break;
-            return err;
     }
+
 
     UARTTransmitText("[");
     UARTTransmitText(intToString(frame->memory.start));
@@ -127,11 +128,9 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     UARTTransmitText(intToString(frame->memory.length));
     UARTTransmitText(")]");
 
+    ethernetController_dropPacket(frame);
 
     UARTTransmitText("\n\r");
+
+    return err;
 }
-
-
-
-
-

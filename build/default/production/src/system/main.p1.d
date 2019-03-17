@@ -21,6 +21,7 @@ src/system/../system/../stack/../stack/protocols/../protocols/../protocols/arpTy
 src/system/../system/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../error.h  \
 src/system/../system/../stack/../stack/protocols/../error.h  \
 src/system/../system/../system/sevenseg.h  \
+src/system/../system/../stack/../stack/protocols/../protocols/arpSettings.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../time.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/ipv4Types.h  \
 src/system/../system/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../protocols/ipv4Types.h  \

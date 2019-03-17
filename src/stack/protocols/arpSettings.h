@@ -1,10 +1,13 @@
 /** 
- * \file arpSettings
- * \brief Things to change about ARP
+ * \file arpSettings.h
+ * \brief Timing constants and general settings
+ * \details Timing constants according to RFC 5227 "IPv4 Address Conflict Detection", Page 5.
+ * \warning These constants require a time measurement in milliseconds.
  * \see RFC 5227
  * \author Stefan Gloor
  * \version 1.0
  * \date 1. Februar 2019
+ * \ingroup arp
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -25,11 +28,40 @@
 #ifndef ARPSETTINGS_H
 #define	ARPSETTINGS_H
 
-#define ANNOUNCE_WAIT       2 ///< Time between ARP requests
-#define PROBE_NUM           3 ///< Number of ARP probe messages
-#define PROBE_WAIT          2 ///< Max. Delay before beginning probing
-#define PROBE_MIN
-#define PROBE_MAX
+/** \ingroup arp
+ * \{
+ */
+
+#define ARP_PROBE_WAIT          1000u    ///< Initial random delay
+#define ARP_PROBE_NUM           3u       ///< Number of probe packets
+#define ARP_PROBE_MIN           1000u    ///< Minimum delay until repeated probe
+#define ARP_PROBE_MAX           2000u    ///< Maximum delay until repeated probe
+#define ARP_ANNOUNCE_WAIT       2000u    ///< Delay before announcing
+#define ARP_ANNOUNCE_NUM        2u       ///< Number of announcement packets
+#define ARP_ANNOUNCE_INTERVAL   2000u    ///< Time between announcement packets
+#define ARP_MAX_CONFLICTS       10u      ///< Max conflicts before rate-limit
+#define ARP_RATE_LIMIT_INTERVAL 60000u   ///< Delay between successive attempts
+#define ARP_DEFEND_INTERVAL     10000u   ///< Minimum interval between defensive ARPs
+
+#define ARP_TABLE_LENGTH        8u       ///< Number of entries in the ARP table
+#define ARP_TABLE_ENTRY_TTL     30000u   ///< Time to live for an ARP Entry in milliseconds
+#define ARP_TIMEOUT             2u       ///< How long to wait after request for a reply in seconds
+
+/**
+ * \brief Replies are sent using a link-level broadcast and not unicast
+ * \details Enabling this option leads to a quicker conflict detection, but does also increase traffic.
+ * \warning NOT RECOMMENDED for general use, but other specification may choose to use broadcast for ARP replies if appropriate.
+ * \see RFC 5227, Section 2.6, Page 14f.
+ */
+#define ARP_LINK_BROADCAST      true     
+
+#define ARP_IPv4_PLEN           4u       ///< Number of bytes in an IPv4 address
+#define ARP_ETHERNET_HLEN       6u       ///< Number of bytes in a MAC address
+
+#if ARP_TABLE_LENGTH > 255
+#error "ARP_TABLE_LENGTH too large"
+#endif
+
+/**\}*/
 
 #endif	/* ARPSETTINGS_H */
-

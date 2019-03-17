@@ -17,6 +17,7 @@ src/eth/../system/../stack/protocols/../../stack/backgroundTasksTypes.h  \
 src/eth/../system/../stack/protocols/arpTypes.h  \
 src/eth/../system/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/eth/../system/../stack/protocols/../error.h  \
+src/eth/../system/../stack/protocols/../protocols/arpSettings.h  \
 src/eth/../system/../stack/protocols/../time.h  \
 src/eth/../system/../stack/protocols/../protocols/ipv4Types.h  \
 src/eth/../eth/../eth/../eth/../mem/../stack/bool.h  \

@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 19. February 2019
+ * \ingroup arp
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -31,33 +32,16 @@
 #include "../error.h"
 #include "../time.h"
 
-/** \ingroup arp
- * \{
- */
-
-#define ARP_TABLE_LENGTH        8   ///< Number of entries in the ARP table
-#define ARP_TABLE_ENTRY_TTL     30000 ///< Time to live for an ARP Entry in milliseconds
-#define ARP_TIMEOUT             2   ///< How long to wait after request for a reply in seconds
-
-#define ARP_IPv4_PLEN           4   ///< Number of bytes in an IPv4 address
-#define ARP_ETHERNET_HLEN       6   ///< Number of bytes in a MAC address
-
-#if ARP_TABLE_LENGTH > 255
-#error "ARP_TABLE_LENGTH too large"
-#endif
-
-/**\}*/
-
 /**
  * \ingroup arp
  * \brief Contains all information which makes up an ARP message
  */
-typedef struct ARP_message {
+typedef struct arp_message {
     uint16_t htype; ///< Hardware yype. Ethernet is 1.
     uint16_t ptype; ///< Protocol type. For IPv4 it's 0x0800.
     uint8_t hlen; ///< Hardware address length in bytes. Ethernet addresses have 6 Bytes.
     uint8_t plen; ///< Protocol address length in bytes. IPv4 has 4 byte wide addresses.
-    uint16_t operation; ///< Request or Reply; use \ref ARPoperation
+    uint16_t operation; ///< Request or Reply; use \ref arp_operation
     macaddress_t senderMACAddress; ///< Sender hardware address (SHA)
     ipv4_address_t senderIPAddress; ///< Sender protocol address (SPA)
     macaddress_t targetMACAddress; ///< Target hardware address (THA)
@@ -65,42 +49,43 @@ typedef struct ARP_message {
     uint8_t fIsGratuitous : 1; ///< Flag indicating if the message is gratuitous
     uint8_t fIsProbe : 1; ///< Flag indicating if the message is an announcement
     error_t err; ///< Error code
-} ARP_message_t;
+} arp_message_t;
 
 /**
  * \ingroup arp
- * \brief Data types for \ref ARP_message_t.operation
+ * \brief Data types for \ref arp_message_t.operation
  */
-typedef enum ARP_operation {
+typedef enum arp_operation {
     ARP_REQUEST = 1,
     ARP_REPLY = 2
-} ARP_operation_t;
+} arp_operation_t;
 
 /**
  * \ingroup arp
- * \brief Data type for \ref ARP_message_t.htype
+ * \brief Data type for \ref arp_message_t.htype
  */
-typedef enum ARP_htype {
+typedef enum arp_htype {
     ARP_HTYPE_ETHERNET = 1
-} ARP_htype_t;
+} arp_htype_t;
 
 /**
  * \ingroup arp
- * \brief Data type for \ref ARP_message_t.ptype
+ * \brief Data type for \ref arp_message_t.ptype
  */
-typedef enum ARP_ptype {
-    ARP_PTYPE_IPv4 = 0x0800
-} ARP_ptype_t;
+typedef enum arp_ptype {
+    ARP_PTYPE_IPv4 = 0x0800 ///< The only thing this ARP implementation supports is Internet Protocol Version 4
+} arp_ptype_t;
 
 /**
  * \ingroup arp
  * \brief One entry in the ARP table consists out of one hardware and one protocol address and a timestamp
  */
-typedef struct ARP_tableEntry {
+typedef struct arp_tableEntry {
     ipv4_address_t ip; ///< Protocol address
     macaddress_t mac; ///< Corresponding hardware address
     time_t timeCreated; ///< Number of seconds that have elapsed since power up when this entry was created
-} ARP_tableEntry_t;
+} arp_tableEntry_t;
+
+
 
 #endif	/* ARPTYPES_H */
-

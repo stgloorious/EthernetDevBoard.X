@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 5. March 2019
+ * \ingroup stack
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *

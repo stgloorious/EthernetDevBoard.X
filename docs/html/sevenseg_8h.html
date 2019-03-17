@@ -116,10 +116,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a94a65f300916a69141e20fc7d4f82b81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sevenseg_8h.html#a94a65f300916a69141e20fc7d4f82b81">sevenSegmentUpdate</a> (uint16_t <a class="el" href="main_8c.html#ab636db2946849b7200cab45eae2067af">numberToDisplay</a>)</td></tr>
 <tr class="memdesc:a94a65f300916a69141e20fc7d4f82b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does the multiplexing and updates the display; has to be called periodically.  <a href="#a94a65f300916a69141e20fc7d4f82b81">More...</a><br /></td></tr>
 <tr class="separator:a94a65f300916a69141e20fc7d4f82b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac37ca7e8a344880f04861868503dd69e"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sevenseg_8h.html#ac37ca7e8a344880f04861868503dd69e">parseNumber</a> (uint16_t <a class="el" href="main_8c.html#ab636db2946849b7200cab45eae2067af">numberToDisplay</a>, uint8_t digit)</td></tr>
+<tr class="memdesc:ac37ca7e8a344880f04861868503dd69e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses number into individual digits.  <a href="#ac37ca7e8a344880f04861868503dd69e">More...</a><br /></td></tr>
+<tr class="separator:ac37ca7e8a344880f04861868503dd69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a066239177272e172b81f6bab352fe607"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sevenseg_8h.html#a066239177272e172b81f6bab352fe607">sevenSegCharacters</a> [12]</td></tr>
+<tr class="memdesc:a066239177272e172b81f6bab352fe607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the bit patterns for the 7-Segment display.  <a href="#a066239177272e172b81f6bab352fe607">More...</a><br /></td></tr>
 <tr class="separator:a066239177272e172b81f6bab352fe607"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -288,6 +292,52 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ac37ca7e8a344880f04861868503dd69e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac37ca7e8a344880f04861868503dd69e">&#9670;&nbsp;</a></span>parseNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint8_t parseNumber </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>numberToDisplay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>digit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses number into individual digits. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numberToDisplay</td><td>Number to parse </td></tr>
+    <tr><td class="paramname">digit</td><td>Digit position </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Digit value </dd></dl>
+
+</div>
+</div>
 <a id="a1196b81952fee4205882bb0372c98e91"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1196b81952fee4205882bb0372c98e91">&#9670;&nbsp;</a></span>sevenSegmentInit()</h2>
 
@@ -346,6 +396,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line"></div><div class="line">    0b00111111, </div><div class="line">    0b00000110, </div><div class="line">    0b01011011, </div><div class="line">    0b01001111, </div><div class="line">    0b01100110, </div><div class="line">    0b01101101, </div><div class="line">    0b01111101, </div><div class="line">    0b00000111, </div><div class="line">    0b01111111, </div><div class="line">    0b01101111, </div><div class="line">    0b00000000, </div><div class="line">    0b01000000, </div><div class="line">}</div></div><!-- fragment -->
+<p>Contains the bit patterns for the 7-Segment display. </p>
+<p>Bit order is: DP g f e d c b a from MSB...LSB </p>
+
 </div>
 </div>
 </div><!-- contents -->

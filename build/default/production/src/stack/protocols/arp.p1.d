@@ -13,6 +13,7 @@ src/stack/protocols/../../system/../stack/protocols/arpTypes.h  \
 src/stack/protocols/../protocols/arpTypes.h  \
 src/stack/protocols/../protocols/../error.h  \
 src/stack/protocols/../../system/../stack/protocols/../error.h  \
+src/stack/protocols/arpSettings.h  \
 src/stack/protocols/../../system/../stack/protocols/../time.h  \
 src/stack/protocols/../protocols/../protocols/ipv4Types.h  \
 src/stack/protocols/../../system/../stack/protocols/../protocols/ipv4Types.h  \

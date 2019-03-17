@@ -15,6 +15,7 @@ src/enc424j600/../system/../stack/protocols/../../stack/backgroundTasksTypes.h  
 src/enc424j600/../system/../stack/protocols/arpTypes.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/enc424j600/../system/../stack/protocols/../error.h  \
+src/enc424j600/../system/../stack/protocols/../protocols/arpSettings.h  \
 src/enc424j600/../system/../stack/protocols/../time.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h  \
 src/enc424j600/../enc424j600/../eth/../eth/../mem/../stack/bool.h  \

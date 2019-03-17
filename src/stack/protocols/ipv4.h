@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 29. January 2019
+ * \ingroup ipv4
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -100,9 +101,34 @@ ipv4_address_t ipv4_getIPSourceAddress();
 
 /**
  * 
+ */
+ipv4_address_t ipv4_getPreliminaryIPSourceAddress();
+
+/**
+ * 
  * @param ip
  */
-error_t ipv4_setIPSourceAddress(ipv4_address_t ip);
+void ipv4_setIPSourceAddress(ipv4_address_t ip);
+
+/**
+ * \brief To be called periodically in the background task handler
+ * \details Does various stuff that takes some time to wait, e.g. handling ARP when setting a new ip address
+ * \return Errors that occurred during operation
+ */
+error_t ipv4_background();
+
+/**
+ * \brief Returns the \ref fSrcAddrChanged flag located in \ref ipv4.c
+ * \note Used by ARP to check if it's necessary to send probes
+ * \param [in] err At this point the pointer to the arp error structure is given so the ip module knows about its status
+ * \return true if the ipv4 address has changed, false if not
+ */
+bool_t ipv4_SrcAddrChanged(error_t *err);
+
+/**
+ * 
+ */
+void ipv4_init();
 
 /**\}*/
 
@@ -135,4 +161,3 @@ void ipv4_setToAllZero(ipv4_address_t *ip);
 /**\}*/
 
 #endif	/* IPV4_H */
-

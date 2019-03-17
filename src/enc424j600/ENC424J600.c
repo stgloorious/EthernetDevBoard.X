@@ -5,6 +5,7 @@
  * \version 1.0
  * \date 31. December 2018
  * \todo Filter settings; not just unicast/broadcast but all packets visible
+ * \ingroup ethernetController
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -32,7 +33,7 @@ static uint16_t nextPacketPointer = 0x0000; //holds address value of received pa
 
 error_t ethernetController_init() {
     error_t err;
-    ENC424J600_initSPI();
+    enc424j600_initSPI();
     err = ethernetController_softReset();
     if (err.code != ERROR_CODE_SUCCESSFUL) {
         //return err; //abort
@@ -59,12 +60,12 @@ error_t ethernetController_init() {
     4. Configure interrupts as desired. See
     Section 13.0 ?Interrupts? for more information.
     5. Set RXEN (ECON1<0>) to enable reception. */
-    ENC424J600_setRXBufferStartAddress(RX_DATA_START_ADDRESS); // STEP 1
-    ENC424J600_setNextPacketPointer(RX_DATA_START_ADDRESS); // STEP 2
-    ENC424J600_setRXTailPointer(0x5FFE); // STEP 3
+    enc424j600_setRXBufferStartAddress(RX_DATA_START_ADDRESS); // STEP 1
+    enc424j600_setNextPacketPointer(RX_DATA_START_ADDRESS); // STEP 2
+    enc424j600_setRXTailPointer(0x5FFE); // STEP 3
     //STEP 4
-    ENC424J600_enableReception(); // STEP 5
-    ENC424J600_enableAutoMACInsertion();
+    enc424j600_enableReception(); // STEP 5
+    enc424j600_enableAutoMACInsertion();
 
     err.module = ERROR_MODULE_ETHERNET_CONTROLLER;
     err.code = ERROR_CODE_SUCCESSFUL;
@@ -97,19 +98,19 @@ error_t ethernetController_softReset() {
     err.code = ERROR_CODE_SUCCESSFUL;
     if (comFailCount < MAX_COUNT_COMMUNICATION_FAIL) {//try several times to write and verify 0x1234
         //write 0x1234 to EUDAST
-        ENC424J600_writeControlRegisterUnbanked(EUDASTL + BANK_0_OFFSET, &dataToSend[0]);
-        ENC424J600_writeControlRegisterUnbanked(EUDASTH + BANK_0_OFFSET, &dataToSend[1]);
+        enc424j600_writeControlRegisterUnbanked(EUDASTL + BANK_0_OFFSET, &dataToSend[0]);
+        enc424j600_writeControlRegisterUnbanked(EUDASTH + BANK_0_OFFSET, &dataToSend[1]);
         //read from EUDAST
-        ENC424J600_readControlRegisterUnbanked(EUDASTL + BANK_0_OFFSET, &receivedData[0]);
-        ENC424J600_readControlRegisterUnbanked(EUDASTH + BANK_0_OFFSET, &receivedData[1]);
+        enc424j600_readControlRegisterUnbanked(EUDASTL + BANK_0_OFFSET, &receivedData[0]);
+        enc424j600_readControlRegisterUnbanked(EUDASTH + BANK_0_OFFSET, &receivedData[1]);
         //verify 0x1234 has been written to EUDAST
         if ((receivedData[0] == dataToSend[0]) && (receivedData[1] == dataToSend[1])) {
             //it was successful
-            ENC424J600_writeSingleByte(SETETHRST); //issue software reset
+            enc424j600_writeSingleByte(SETETHRST); //issue software reset
             __delay_us(25);
             //read from EUDAST
-            ENC424J600_readControlRegisterUnbanked(EUDASTL + BANK_0_OFFSET, &receivedData[0]);
-            ENC424J600_readControlRegisterUnbanked(EUDASTH + BANK_0_OFFSET, &receivedData[1]);
+            enc424j600_readControlRegisterUnbanked(EUDASTL + BANK_0_OFFSET, &receivedData[0]);
+            enc424j600_readControlRegisterUnbanked(EUDASTH + BANK_0_OFFSET, &receivedData[1]);
             //does it equal 0x0000?
             if (!receivedData[0] && !receivedData[1]) {
                 //everything's fine
@@ -133,7 +134,7 @@ error_t ethernetController_checkDeviceId() {
     err.module = ERROR_MODULE_ETHERNET_CONTROLLER;
     err.code = ERROR_CODE_SUCCESSFUL;
     uint8_t data = 0;
-    ENC424J600_readControlRegisterUnbanked(EIDLEDL + BANK_3_OFFSET, &data);
+    enc424j600_readControlRegisterUnbanked(EIDLEDL + BANK_3_OFFSET, &data);
     if (((data >> 5)&0x07) == EXPECTED_DEVICE_ID)//check device id bits
         err.code = ERROR_CODE_SUCCESSFUL;
     else
@@ -143,24 +144,24 @@ error_t ethernetController_checkDeviceId() {
 
 char *ethernetController_getDeviceName() {
     const char string [] = DEVICE_NAME;
-    return string;
+    return (char*) string;
 }
 
 uint8_t ethernetController_getSiliconRevision() {
     uint8_t data = 0;
-    ENC424J600_readControlRegisterUnbanked(EIDLEDL + BANK_3_OFFSET, &data);
+    enc424j600_readControlRegisterUnbanked(EIDLEDL + BANK_3_OFFSET, &data);
     data &= 0x1F; //mask out unwanted bits
     return data;
 }
 
 macaddress_t ethernetController_getMacAddress() {
     macaddress_t mac;
-    ENC424J600_readControlRegisterUnbanked(MAADR1L + BANK_3_OFFSET, &mac.address[0]);
-    ENC424J600_readControlRegisterUnbanked(MAADR1H + BANK_3_OFFSET, &mac.address[1]);
-    ENC424J600_readControlRegisterUnbanked(MAADR2L + BANK_3_OFFSET, &mac.address[2]);
-    ENC424J600_readControlRegisterUnbanked(MAADR2H + BANK_3_OFFSET, &mac.address[3]);
-    ENC424J600_readControlRegisterUnbanked(MAADR3L + BANK_3_OFFSET, &mac.address[4]);
-    ENC424J600_readControlRegisterUnbanked(MAADR3H + BANK_3_OFFSET, &mac.address[5]);
+    enc424j600_readControlRegisterUnbanked(MAADR1L + BANK_3_OFFSET, &mac.address[0]);
+    enc424j600_readControlRegisterUnbanked(MAADR1H + BANK_3_OFFSET, &mac.address[1]);
+    enc424j600_readControlRegisterUnbanked(MAADR2L + BANK_3_OFFSET, &mac.address[2]);
+    enc424j600_readControlRegisterUnbanked(MAADR2H + BANK_3_OFFSET, &mac.address[3]);
+    enc424j600_readControlRegisterUnbanked(MAADR3L + BANK_3_OFFSET, &mac.address[4]);
+    enc424j600_readControlRegisterUnbanked(MAADR3H + BANK_3_OFFSET, &mac.address[5]);
     return mac;
 }
 
@@ -169,20 +170,20 @@ uint16_t ethernetController_getMTU() {
 }
 
 void ethernetController_setMacAddress(macaddress_t mac) {
-    ENC424J600_writeControlRegisterUnbanked(MAADR1L + BANK_3_OFFSET, &mac.address[0]);
-    ENC424J600_writeControlRegisterUnbanked(MAADR1H + BANK_3_OFFSET, &mac.address[1]);
-    ENC424J600_writeControlRegisterUnbanked(MAADR2L + BANK_3_OFFSET, &mac.address[2]);
-    ENC424J600_writeControlRegisterUnbanked(MAADR2H + BANK_3_OFFSET, &mac.address[3]);
-    ENC424J600_writeControlRegisterUnbanked(MAADR3L + BANK_3_OFFSET, &mac.address[4]);
-    ENC424J600_writeControlRegisterUnbanked(MAADR3H + BANK_3_OFFSET, &mac.address[5]);
+    enc424j600_writeControlRegisterUnbanked(MAADR1L + BANK_3_OFFSET, &mac.address[0]);
+    enc424j600_writeControlRegisterUnbanked(MAADR1H + BANK_3_OFFSET, &mac.address[1]);
+    enc424j600_writeControlRegisterUnbanked(MAADR2L + BANK_3_OFFSET, &mac.address[2]);
+    enc424j600_writeControlRegisterUnbanked(MAADR2H + BANK_3_OFFSET, &mac.address[3]);
+    enc424j600_writeControlRegisterUnbanked(MAADR3L + BANK_3_OFFSET, &mac.address[4]);
+    enc424j600_writeControlRegisterUnbanked(MAADR3H + BANK_3_OFFSET, &mac.address[5]);
 }
 
 void ethernetController_enableReception() {
-    ENC424J600_enableReception();
+    enc424j600_enableReception();
 }
 
 void ethernetController_disableReception() {
-    ENC424J600_disableReception();
+    enc424j600_disableReception();
 }
 
 void ethernetController_enableTransmission() {
@@ -198,9 +199,9 @@ void ethernetController_disableEthernet() {
 }
 
 void ethernetController_sendPacket(memoryField_t field) {
-    ENC424J600_setTXStartAddress(field.start);
-    ENC424J600_setTXLength(field.length);
-    ENC424J600_writeSingleByte(SETTXRTS);
+    enc424j600_setTXStartAddress(field.start);
+    enc424j600_setTXLength(field.length);
+    enc424j600_writeSingleByte(SETTXRTS);
     memory_txFrameClear(field.index);
 }
 
@@ -208,13 +209,13 @@ void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field
     uint8_t opcode;
     uint16_t static pointer = 0;
     if (pointer == 0) {//at the first byte
-        ENC424J600_setGPDATAWritePointer(field.start); //payload data offset (6 Byte MAC address + 2 Byte EtherType)*/
+        enc424j600_setGPDATAWritePointer(field.start); //payload data offset (6 Byte MAC address + 2 Byte EtherType)*/
         opcode = 0x2A; //EGPDATA opcode
         CS_PIN_LOW; //Start transmission
-        ENC424J600_writeSPI(&opcode);
+        enc424j600_writeSPI(&opcode);
     }
 
-    ENC424J600_writeSPI(&data);
+    enc424j600_writeSPI(&data);
 
     if (pointer == field.length - 1) {
         CS_PIN_HIGH; //Stop transmission
@@ -225,39 +226,39 @@ void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field
 }
 
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t field) {
-    ENC424J600_setGPDATAWritePointer(field.start);
+    enc424j600_setGPDATAWritePointer(field.start);
     uint8_t data[6];
     for (uint8_t i = 0; i < 6; i++)
         data[i] = addr.address[i];
     uint8_t opcode = 0x2A; //EGPDATA opcode
     CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
+    enc424j600_writeSPI(&opcode);
     for (uint8_t i = 0; i < 6; i++)
-        ENC424J600_writeSPI(&data[i]);
+        enc424j600_writeSPI(&data[i]);
     CS_PIN_HIGH;
 }
 
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t field) {
-    ENC424J600_setGPDATAWritePointer(field.start + 0x0006);
+    enc424j600_setGPDATAWritePointer(field.start + 0x0006);
     uint8_t lowByte = ethtype & 0x00ff;
     uint8_t highByte = (ethtype & 0xff00) >> 8;
     uint8_t opcode = 0x2A; //EGPDATA opcode
     CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
-    ENC424J600_writeSPI(&highByte);
-    ENC424J600_writeSPI(&lowByte);
+    enc424j600_writeSPI(&opcode);
+    enc424j600_writeSPI(&highByte);
+    enc424j600_writeSPI(&lowByte);
     CS_PIN_HIGH;
 }
 
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
     macaddress_t destinationAddress;
-    ENC424J600_setERXDATAReadPointer(field.start + 8); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV
+    enc424j600_setERXDATAReadPointer(field.start + 8); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV
     uint8_t opcode = 0x2C; //ERXDATA Read opcode
     CS_PIN_LOW; //Start the read operation
-    ENC424J600_writeSPI(&opcode);
+    enc424j600_writeSPI(&opcode);
     for (uint8_t i = 0; i < 6; i++) {//MAC address has 6 bytes
         uint8_t temp;
-        ENC424J600_readSPI(&temp); //Read a byte
+        enc424j600_readSPI(&temp); //Read a byte
         destinationAddress.address[i] = temp;
     }
     CS_PIN_HIGH; //End the read operation
@@ -266,13 +267,13 @@ macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
 
 macaddress_t ethernetController_getSourceMACAddress(memoryField_t field) {
     macaddress_t sourceAddress;
-    ENC424J600_setERXDATAReadPointer(field.start + 14); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV, 6 Bytes Destination MAC address
+    enc424j600_setERXDATAReadPointer(field.start + 14); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV, 6 Bytes Destination MAC address
     uint8_t opcode = 0x2C; //ERXDATA Read opcode
     CS_PIN_LOW; //Start the read operation
-    ENC424J600_writeSPI(&opcode);
+    enc424j600_writeSPI(&opcode);
     for (uint8_t i = 0; i < 6; i++) {//MAC address has 6 bytes
         uint8_t temp;
-        ENC424J600_readSPI(&temp); //Read a byte
+        enc424j600_readSPI(&temp); //Read a byte
         sourceAddress.address[i] = temp;
     }
     CS_PIN_HIGH; //End the read operation
@@ -281,15 +282,15 @@ macaddress_t ethernetController_getSourceMACAddress(memoryField_t field) {
 
 etherType_t ethernetController_getEtherTypeField(memoryField_t field) {
     etherType_t ethertype = 0x0000;
-    ENC424J600_setERXDATAReadPointer(field.start + 20); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV, 12 Bytes MAC addresses
+    enc424j600_setERXDATAReadPointer(field.start + 20); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV, 12 Bytes MAC addresses
     uint8_t opcode = 0x2C; //ERXDATA Read opcode
     CS_PIN_LOW; //Start the read operation
-    ENC424J600_writeSPI(&opcode);
+    enc424j600_writeSPI(&opcode);
 
     uint8_t lowByte;
     uint8_t highByte;
-    ENC424J600_readSPI(&highByte); //Read high byte
-    ENC424J600_readSPI(&lowByte); //Read low byte
+    enc424j600_readSPI(&highByte); //Read high byte
+    enc424j600_readSPI(&lowByte); //Read low byte
     ethertype = (uint16_t) (lowByte | (highByte << 8));
     CS_PIN_HIGH; //End the read operation
     return ethertype;
@@ -297,53 +298,53 @@ etherType_t ethernetController_getEtherTypeField(memoryField_t field) {
 
 RSV_t ethernetController_getRSV(uint16_t address) {
     uint8_t static temp[6]; //needs to be static because its address gets returned
-    ENC424J600_setERXDATAReadPointer(address + 2); //Fixed offset: 2 Bytes NextPacketPointer
+    enc424j600_setERXDATAReadPointer(address + 2); //Fixed offset: 2 Bytes NextPacketPointer
     uint8_t opcode = 0x2C; //ERXDATA Read opcode
     CS_PIN_LOW; //Start the read operation
-    ENC424J600_writeSPI(&opcode);
+    enc424j600_writeSPI(&opcode);
     for (uint8_t i = 0; i < 6; i++) {//RSV has 6 bytes
-        ENC424J600_readSPI(&temp[i]); //Read a byte
+        enc424j600_readSPI(&temp[i]); //Read a byte
     }
     CS_PIN_HIGH; //End the read operation
-    return ENC424J600_updateReceiveStatusVector(&temp[0]);
+    return enc424j600_updateReceiveStatusVector(&temp[0]);
 }
 
 interruptFlags_t ethernetController_pollInterruptFlags() {
     interruptFlags_t flags;
-    uint16_t reg = ENC424J600_getInterruptFlags();
-    flags.MODEXIF = (reg & (1 << 14)) != 0 ? true : false;
-    flags.HASHIF = (reg & (1 << 13)) != 0 ? true : false;
-    flags.AESIF = (reg & (1 << 12)) != 0 ? true : false;
-    flags.LINKIF = (reg & (1 << 11)) != 0 ? true : false;
+    uint16_t reg = enc424j600_getInterruptFlags();
+    flags.MODEXIF = (reg & (1 << MODEXIF)) != 0 ? true : false;
+    flags.HASHIF = (reg & (1 << HASHIF)) != 0 ? true : false;
+    flags.AESIF = (reg & (1 << AESIF)) != 0 ? true : false;
+    flags.LINKIF = (reg & (1 << LINKIF)) != 0 ? true : false;
     //Bit 10-7: Reserved
-    flags.PKTIF = (reg & (1 << 6)) != 0 ? true : false;
-    flags.DMAIF = (reg & (1 << 5)) != 0 ? true : false;
+    flags.PKTIF = (reg & (1 << PKTIF)) != 0 ? true : false;
+    flags.DMAIF = (reg & (1 << DMAIF)) != 0 ? true : false;
     //Bit 4: Reserved
-    flags.TXIF = (reg & (1 << 3)) != 0 ? true : false;
-    flags.TXABTIF = (reg & (1 << 2)) != 0 ? true : false;
-    flags.RXABTIF = (reg & (1 << 1)) != 0 ? true : false;
-    flags.PCFULIF = (reg & (1 << 0)) != 0 ? true : false;
+    flags.TXIF = (reg & (1 << TXIF)) != 0 ? true : false;
+    flags.TXABTIF = (reg & (1 << TXABTIF)) != 0 ? true : false;
+    flags.RXABTIF = (reg & (1 << RXABTIF)) != 0 ? true : false;
+    flags.PCFULIF = (reg & (1 << PCFULIF)) != 0 ? true : false;
     return flags;
 }
 
 void ethernetController_clearInterruptFlag(uint8_t flag) {
-    ENC424J600_clearInterruptFlag(flag);
+    enc424j600_clearInterruptFlag(flag);
 }
 
 void ethernetController_updateNextPacketPointer() {
     uint16_t nextPktPointer;
     uint8_t opcode;
     uint8_t newPointerL, newPointerH;
-    nextPktPointer = ENC424J600_getNextPacketPointer();
-    ENC424J600_setERXDATAReadPointer(nextPktPointer);
+    nextPktPointer = enc424j600_getNextPacketPointer();
+    enc424j600_setERXDATAReadPointer(nextPktPointer);
     opcode = 0x2C; //ERXDATA Read opcode
     CS_PIN_LOW; //Start the read operation
-    ENC424J600_writeSPI(&opcode);
-    ENC424J600_readSPI(&newPointerL); //first field is the new nextPacketPointer
-    ENC424J600_readSPI(&newPointerH);
+    enc424j600_writeSPI(&opcode);
+    enc424j600_readSPI(&newPointerL); //first field is the new nextPacketPointer
+    enc424j600_readSPI(&newPointerH);
     CS_PIN_HIGH;
     //update nextPacketPointer
-    ENC424J600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
+    enc424j600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
 }
 
 uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress) {
@@ -351,68 +352,56 @@ uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAd
     uint8_t opcode;
     switch (startEnd) {
         case 0://Begin data streaming
-            ENC424J600_setERXDATAReadPointer(startAddress);
+            enc424j600_setERXDATAReadPointer(startAddress);
             opcode = 0x2C; //ERXDATA Read opcode
             CS_PIN_LOW; //Start the read operation
-            ENC424J600_writeSPI(&opcode);
+            enc424j600_writeSPI(&opcode);
             return 0;
         case 1://Real data is being read
-            ENC424J600_readSPI(&temp); //Read the whole frame
+            enc424j600_readSPI(&temp); //Read the whole frame
             return temp;
         case 2:
             CS_PIN_HIGH; //End the read operation
-            //free up memory by updating the tail pointer to the point where the data has already been processed
+           /* //free up memory by updating the tail pointer to the point where the data has already been processed
             if (ethernetController_getNextPacketPointer() == RX_DATA_START_ADDRESS) {//wrap around 
-                ENC424J600_setRXTailPointer(0x55FE);
+                enc424j600_setRXTailPointer(0x55FE);
             } else {
-                ENC424J600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
+                enc424j600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
             }
 
             //Set PKTDEC bit so the PKTCNT gets decremented
-            ENC424J600_writeSingleByte(SETPKTDEC);
+            enc424j600_writeSingleByte(SETPKTDEC);*/
             return 0;
     }
     return 0; //never reached (or when an invalid startEnd is passed)
 }
 
 void ethernetController_dropPacket(ethernetFrame_t *frame) {
-    /*  uint32_t nextPktPointer;
-      uint8_t newPointerL, newPointerH;
-      uint8_t opcode;
-      nextPktPointer = ENC424J600_getNextPacketPointer();
-      ENC424J600_setERXDATAReadPointer(nextPktPointer);
-      opcode = 0x2C; //ERXDATA Read opcode
-      CS_PIN_LOW; //Start the read operation
-      ENC424J600_writeSPI(&opcode);
-      ENC424J600_readSPI(&newPointerL); //first field is the new nextPacketPointer
-      ENC424J600_readSPI(&newPointerH);
-      //update nextPacketPointer
-      ENC424J600_setNextPacketPointer((uint16_t) ((newPointerL & (unsigned) 0x00ff) | ((unsigned) (newPointerH << 8)&(unsigned) 0xff00)));
-      CS_PIN_HIGH; //End the read operation*/
     //free up memory
     if (ethernetController_getNextPacketPointer() == RX_DATA_START_ADDRESS) {//wrap around 
-        ENC424J600_setRXTailPointer(END_OF_MEMORY_ADDRESS - 1); //-1 because we need the last *even* memory address
+        enc424j600_setRXTailPointer(END_OF_MEMORY_ADDRESS - 1); //-1 because we need the last *even* memory address
     } else {
-        ENC424J600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
+        enc424j600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
     }
     //Set PKTDEC bit so the PKTCNT gets decremented
-    ENC424J600_writeSingleByte(SETPKTDEC);
+    enc424j600_writeSingleByte(SETPKTDEC);
 }
 
 uint8_t ethernetController_newPacketAvailable() {
-    return (unsigned) (ENC424J600_getPacketCount() != 0);
+    return (unsigned) (enc424j600_getPacketCount() != 0);
 }
 
 void ethernetController_updateLinkStatus(ethernetConnection_t * state) {
-    uint8_t temp, temp16;
-    ENC424J600_readControlRegisterUnbanked(ESTATH, &temp);
+    uint8_t temp;
+    uint16_t temp16;
+    enc424j600_readControlRegisterUnbanked(ESTATH, &temp);
     if (temp & 0x01) {//Bit 8, PHYLNK
         state->link = LINK_ESTABLISHED;
     } else {
         state->link = NO_LINK;
     }
 
-    ENC424J600_readPHYRegister(0x1F, &temp16); //PHSTAT3 Register
+    enc424j600_readPHYRegister(0x1F, &temp16); //PHSTAT3 Register
 
     if (temp16 & (1 << 3)) {
         state->speed = HUNDRED_MBIT;
@@ -427,34 +416,9 @@ void ethernetController_updateLinkStatus(ethernetConnection_t * state) {
     }
 }
 
-/*void ethernetController_setLEDStatus(uint8_t LED, uint8_t status) {
-    uint8_t data;
-    ENC424J600_readControlRegisterUnbanked(EIDLEDH + BANK_3_OFFSET, &data);
-    if (LED == LEDB) {
-        //LED B
-        if (status == LED_ON) {
-            data &= ~0x0f; //set LBCFG to 0b0000 
-        } else if (status == LED_OFF) {
-            //set LBCFG to 0b0001
-            data &= ~0x0f;
-            data |= 0x01;
-        }
-    } else if (LED == LEDA) {
-        //LED A
-        if (status == LED_ON) {
-            data &= ~(0x0f << 4); //set LACFG to 0b0000 
-        } else if (status == LED_OFF) {
-            //set LACFG to 0b0001
-            data &= ~(0x0f << 4);
-            data |= (0x01 << 4);
-        }
-    }
-    ENC424J600_writeControlRegisterUnbanked(EIDLEDH + BANK_3_OFFSET, &data);
-}*/
-
 void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf) {
     uint8_t data;
-    ENC424J600_readControlRegisterUnbanked(EIDLEDH + BANK_3_OFFSET, &data);
+    enc424j600_readControlRegisterUnbanked(EIDLEDH + BANK_3_OFFSET, &data);
     if (LED == LEDB) {
         //LED B
         switch (conf) {
@@ -487,21 +451,22 @@ void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf) {
                 break;
         }
     }
-    ENC424J600_writeControlRegisterUnbanked(EIDLEDH + BANK_3_OFFSET, &data);
+    enc424j600_writeControlRegisterUnbanked(EIDLEDH + BANK_3_OFFSET, &data);
 }
 
 uint8_t ethernetController_getCurrentPacketCount() {
-    return ENC424J600_getPacketCount();
+    return enc424j600_getPacketCount();
 }
 
 uint16_t ethernetController_getNextPacketPointer() {
-    return ENC424J600_getNextPacketPointer();
+    return enc424j600_getNextPacketPointer();
 }
 
 /* ==============================================  DEVICE SPECIFIC - ETHERNET CONTROLLER  ============================================== */
+
 /* =======================  Initialisation  ======================= */
 
-void static ENC424J600_initSPI() {
+void static enc424j600_initSPI() {
     SSP1CON1bits.SSPEN = 0; //disable serial port
     SSP1STATbits.CKE = 1; //clock transition polarity
     //SPI Master mode, clock = Fosc/4 is selected by POR
@@ -519,58 +484,58 @@ void static ENC424J600_initSPI() {
 
 /* =======================  READ/WRITE REGISTERS  ======================= */
 
-void static ENC424J600_writeSPI(uint8_t *data) {
+void static enc424j600_writeSPI(uint8_t *data) {
 #define SPI_TIMEOUT		0xfff //max cycle count to wait for transmission of one byte
     uint32_t timeoutCounter = 0;
     SSP1BUF = *data; //writing to buffer starts transmission
     while ((!SSP1STATbits.BF) && (timeoutCounter++ < SPI_TIMEOUT)); //wait for completion of transmission
     if (timeoutCounter >= SPI_TIMEOUT) {//if timeout reached, return
         CS_PIN_HIGH; //abort transmission
-        ENC424J600_initSPI(); //reset module
+        enc424j600_initSPI(); //reset module
         return;
     }
 }
 
-void static ENC424J600_readSPI(uint8_t *data) {
+void static enc424j600_readSPI(uint8_t *data) {
 #define SPI_TIMEOUT		0xfff//max cycle count to wait for transmission of one byte
     uint32_t timeoutCounter = 0;
     SSP1BUF = 0x00; //dummy
     while ((!SSP1STATbits.BF) && (timeoutCounter++ < SPI_TIMEOUT)); //wait for completion of transmission
     if (timeoutCounter >= SPI_TIMEOUT) {//if timeout reached, return
         CS_PIN_HIGH; //abort transmission
-        ENC424J600_initSPI(); //reset module
+        enc424j600_initSPI(); //reset module
         return;
     }
     *data = SSP1BUF;
 }
 
-void static ENC424J600_writeSingleByte(uint8_t opcode) {
+void static enc424j600_writeSingleByte(uint8_t opcode) {
     CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
+    enc424j600_writeSPI(&opcode);
     CS_PIN_HIGH;
 }
 
-void static ENC424J600_writeControlRegisterUnbanked(uint8_t addr, uint8_t *data) {
+void static enc424j600_writeControlRegisterUnbanked(uint8_t addr, uint8_t *data) {
     uint8_t opcode = 0x22;
     CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
-    ENC424J600_writeSPI(&addr);
-    ENC424J600_writeSPI(data);
+    enc424j600_writeSPI(&opcode);
+    enc424j600_writeSPI(&addr);
+    enc424j600_writeSPI(data);
     CS_PIN_HIGH;
 }
 
-void static ENC424J600_readControlRegisterUnbanked(uint8_t addr, uint8_t *data) {
+void static enc424j600_readControlRegisterUnbanked(uint8_t addr, uint8_t *data) {
     uint8_t opcode = 0x20;
     CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
-    ENC424J600_writeSPI(&addr);
-    ENC424J600_readSPI(data);
+    enc424j600_writeSPI(&opcode);
+    enc424j600_writeSPI(&addr);
+    enc424j600_readSPI(data);
     CS_PIN_HIGH;
 }
 
 /* =======================  PHY REGISTERS  ======================= */
 
-void static ENC424J600_readPHYRegister(uint8_t addr, uint16_t *data) {
+void static enc424j600_readPHYRegister(uint8_t addr, uint16_t *data) {
 #define TIMEOUT 0xfff
     uint8_t PHYaddress = addr & 0x1F;
     uint8_t unusedBits = 0x01;
@@ -579,179 +544,179 @@ void static ENC424J600_readPHYRegister(uint8_t addr, uint16_t *data) {
     uint8_t highByte;
     uint32_t timeoutCounter = 0;
 
-    ENC424J600_writeControlRegisterUnbanked(MIREGADRL + BANK_2_OFFSET, &PHYaddress); //set PHY address
-    ENC424J600_writeControlRegisterUnbanked(MIREGADRH + BANK_2_OFFSET, &unusedBits);
+    enc424j600_writeControlRegisterUnbanked(MIREGADRL + BANK_2_OFFSET, &PHYaddress); //set PHY address
+    enc424j600_writeControlRegisterUnbanked(MIREGADRH + BANK_2_OFFSET, &unusedBits);
 
     //init read process by setting MICMD<0>
-    ENC424J600_readControlRegisterUnbanked(MICMDL + BANK_2_OFFSET, &temp);
+    enc424j600_readControlRegisterUnbanked(MICMDL + BANK_2_OFFSET, &temp);
     temp |= 0x01;
-    ENC424J600_writeControlRegisterUnbanked(MICMDL + BANK_2_OFFSET, &temp);
+    enc424j600_writeControlRegisterUnbanked(MICMDL + BANK_2_OFFSET, &temp);
 
     __delay_us(26); //wait at least 25.6us
 
     do { //poll busy bit
-        ENC424J600_readControlRegisterUnbanked(MISTATL + BANK_3_OFFSET, &temp);
+        enc424j600_readControlRegisterUnbanked(MISTATL + BANK_3_OFFSET, &temp);
         timeoutCounter++;
     } while ((temp & 0x01) && (timeoutCounter < TIMEOUT));
     if (timeoutCounter >= TIMEOUT)//timeout!
         return;
 
     //finish read process by clearing MICMD<0>
-    ENC424J600_readControlRegisterUnbanked(MICMDL + BANK_2_OFFSET, &temp);
+    enc424j600_readControlRegisterUnbanked(MICMDL + BANK_2_OFFSET, &temp);
     temp &= ~0x01;
-    ENC424J600_writeControlRegisterUnbanked(MICMDL + BANK_2_OFFSET, &temp);
+    enc424j600_writeControlRegisterUnbanked(MICMDL + BANK_2_OFFSET, &temp);
 
     //read register 
-    ENC424J600_readControlRegisterUnbanked(MIRDL + BANK_3_OFFSET, &lowByte);
-    ENC424J600_readControlRegisterUnbanked(MIRDH + BANK_3_OFFSET, &highByte);
+    enc424j600_readControlRegisterUnbanked(MIRDL + BANK_3_OFFSET, &lowByte);
+    enc424j600_readControlRegisterUnbanked(MIRDH + BANK_3_OFFSET, &highByte);
     *data = (lowByte | ((highByte << 8)&0xff00));
 }
 
 /* =======================  TRANSMISSION  ======================= */
 
-void static ENC424J600_setTXLength(uint16_t len) {
+void static enc424j600_setTXLength(uint16_t len) {
     uint8_t lowByte = len & 0x00ff;
     uint8_t highByte = len >> 8;
-    ENC424J600_writeControlRegisterUnbanked(ETXLENL + BANK_0_OFFSET, &lowByte);
-    ENC424J600_writeControlRegisterUnbanked(ETXLENH + BANK_0_OFFSET, &highByte);
+    enc424j600_writeControlRegisterUnbanked(ETXLENL + BANK_0_OFFSET, &lowByte);
+    enc424j600_writeControlRegisterUnbanked(ETXLENH + BANK_0_OFFSET, &highByte);
 }
 
 /* =======================  RECEPTION  ======================= */
 
-void static ENC424J600_setNextPacketPointer(uint16_t ptr) {
+void static enc424j600_setNextPacketPointer(uint16_t ptr) {
     nextPacketPointer = ptr;
 }
 
-uint16_t static ENC424J600_getNextPacketPointer() {
+uint16_t static enc424j600_getNextPacketPointer() {
     return nextPacketPointer;
 }
 
-uint8_t static ENC424J600_getPacketCount() {
+uint8_t enc424j600_getPacketCount() {
     uint8_t lowByte = 0;
-    ENC424J600_readControlRegisterUnbanked(ESTATL + BANK_0_OFFSET, &lowByte);
+    enc424j600_readControlRegisterUnbanked(ESTATL + BANK_0_OFFSET, &lowByte);
     return (uint32_t) lowByte;
 }
 
 /* =======================  POINTER OPERATIONS  ======================= */
 
-void static ENC424J600_setTXStartAddress(uint16_t addr) {
+void static enc424j600_setTXStartAddress(uint16_t addr) {
     uint8_t lowByte = addr & 0xff;
     uint8_t highByte = (addr & 0xff00) >> 8;
-    ENC424J600_writeControlRegisterUnbanked(ETXSTL + BANK_0_OFFSET, &lowByte);
-    ENC424J600_writeControlRegisterUnbanked(ETXSTH + BANK_0_OFFSET, &highByte);
+    enc424j600_writeControlRegisterUnbanked(ETXSTL + BANK_0_OFFSET, &lowByte);
+    enc424j600_writeControlRegisterUnbanked(ETXSTH + BANK_0_OFFSET, &highByte);
 }
 
-void static ENC424J600_setGPDATAWritePointer(uint16_t addr) {
+void static enc424j600_setGPDATAWritePointer(uint16_t addr) {
     uint8_t opcode = 0x6C; //write GPWRPT opcode
     uint8_t lowByte = addr & 0x00ff;
     uint8_t highByte = (addr & 0xff00) >> 8;
     CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
-    ENC424J600_writeSPI(&lowByte);
-    ENC424J600_writeSPI(&highByte);
+    enc424j600_writeSPI(&opcode);
+    enc424j600_writeSPI(&lowByte);
+    enc424j600_writeSPI(&highByte);
     CS_PIN_HIGH;
 }
 
-void static ENC424J600_setGPDATAReadPointer(uint16_t addr) {
+void static enc424j600_setGPDATAReadPointer(uint16_t addr) {
     uint8_t opcode = 0x60; //write GPRDPT opcode
     uint8_t lowByte = addr & 0x00ff;
     uint8_t highByte = (addr & 0xff00) >> 8;
     CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
-    ENC424J600_writeSPI(&lowByte);
-    ENC424J600_writeSPI(&highByte);
+    enc424j600_writeSPI(&opcode);
+    enc424j600_writeSPI(&lowByte);
+    enc424j600_writeSPI(&highByte);
     CS_PIN_HIGH;
 }
 
-void static ENC424J600_setERXDATAReadPointer(uint16_t addr) {
+void static enc424j600_setERXDATAReadPointer(uint16_t addr) {
     uint8_t opcode = 0x64; //write ERXRDPT opcode
     uint8_t lowByte = addr & 0x00ff;
     uint8_t highByte = (addr >> 8) & 0xff;
     CS_PIN_LOW;
-    ENC424J600_writeSPI(&opcode);
-    ENC424J600_writeSPI(&lowByte);
-    ENC424J600_writeSPI(&highByte);
+    enc424j600_writeSPI(&opcode);
+    enc424j600_writeSPI(&lowByte);
+    enc424j600_writeSPI(&highByte);
     CS_PIN_HIGH;
 }
 
-void static ENC424J600_setRXBufferStartAddress(uint16_t addr) {
+void static enc424j600_setRXBufferStartAddress(uint16_t addr) {
     uint8_t lowByte = addr & 0x00ff;
     uint8_t highByte = (addr >> 8) & 0xff;
-    ENC424J600_writeControlRegisterUnbanked(ERXSTL + BANK_0_OFFSET, &lowByte);
-    ENC424J600_writeControlRegisterUnbanked(ERXSTH + BANK_0_OFFSET, &highByte);
+    enc424j600_writeControlRegisterUnbanked(ERXSTL + BANK_0_OFFSET, &lowByte);
+    enc424j600_writeControlRegisterUnbanked(ERXSTH + BANK_0_OFFSET, &highByte);
 }
 
-void static ENC424J600_setRXTailPointer(uint16_t addr) {
+void static enc424j600_setRXTailPointer(uint16_t addr) {
     uint8_t lowByte = addr & 0x00ff;
     uint8_t highByte = (addr >> 8) & 0xff;
-    ENC424J600_writeControlRegisterUnbanked(ERXTAILL + BANK_0_OFFSET, &lowByte);
-    ENC424J600_writeControlRegisterUnbanked(ERXTAILH + BANK_0_OFFSET, &highByte);
+    enc424j600_writeControlRegisterUnbanked(ERXTAILL + BANK_0_OFFSET, &lowByte);
+    enc424j600_writeControlRegisterUnbanked(ERXTAILH + BANK_0_OFFSET, &highByte);
 }
 
 /* =======================  SETTINGS  ======================= */
 
-void static ENC424J600_enableAutoMACInsertion() {
+void static enc424j600_enableAutoMACInsertion() {
     uint8_t temp = 0;
-    ENC424J600_readControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
+    enc424j600_readControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
     temp |= (1 << 5); //enable TXMAC
-    ENC424J600_writeControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
+    enc424j600_writeControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
 }
 
-void static ENC424J600_disableAutoMACInsertion() {
+void static enc424j600_disableAutoMACInsertion() {
     uint8_t temp = 0;
-    ENC424J600_readControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
+    enc424j600_readControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
     temp &= ~(1 << 5); //disable TXMAC
-    ENC424J600_writeControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
+    enc424j600_writeControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
 }
 
-void static ENC424J600_enableReception() {
-    ENC424J600_writeSingleByte(ENABLERX);
+void static enc424j600_enableReception() {
+    enc424j600_writeSingleByte(ENABLERX);
 }
 
-void static ENC424J600_disableReception() {
-    ENC424J600_writeSingleByte(DISABLERX);
+void static enc424j600_disableReception() {
+    enc424j600_writeSingleByte(DISABLERX);
 }
 
-void static ENC424J600_enable() {
+void static enc424j600_enable() {
     uint8_t temp;
-    ENC424J600_readControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
+    enc424j600_readControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
     temp |= (1 << 7); //Set the ETHEN bit
-    ENC424J600_writeControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
+    enc424j600_writeControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
 }
 
-void static ENC424J600_disable() {
+void static enc424j600_disable() {
     uint8_t temp;
-    ENC424J600_readControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
+    enc424j600_readControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
     temp &= ~(1 << 7); //Clear the ETHEN bit
-    ENC424J600_writeControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
+    enc424j600_writeControlRegisterUnbanked(ECON2H + BANK_3_OFFSET, &temp);
 }
 
 /* =======================  INTERRUPTS  ======================= */
 
-uint16_t ENC424J600_getInterruptFlags() {
+uint16_t enc424j600_getInterruptFlags() {
     uint8_t low, high;
-    ENC424J600_readControlRegisterUnbanked(EIRH + BANK_0_OFFSET, &high);
-    ENC424J600_readControlRegisterUnbanked(EIRL + BANK_0_OFFSET, &low);
-    return (((uint16_t) low & 0x00ff) | (((uint16_t) high << 8)&0xff00));
+    enc424j600_readControlRegisterUnbanked(EIRL + BANK_0_OFFSET, &low);
+    enc424j600_readControlRegisterUnbanked(EIRH + BANK_0_OFFSET, &high);
+    return ( (((uint16_t) low)&0x00ff) | (((uint16_t) high << 8)&0xff00));
 }
 
-void static ENC424J600_clearInterruptFlag(uint8_t flag) {
+void static enc424j600_clearInterruptFlag(uint8_t flag) {
     uint8_t temp;
     if (flag < 8) {
-        ENC424J600_readControlRegisterUnbanked(EIRL + BANK_0_OFFSET, &temp);
+        enc424j600_readControlRegisterUnbanked(EIRL + BANK_0_OFFSET, &temp);
         temp &= ~(1 << flag);
-        ENC424J600_writeControlRegisterUnbanked(EIRL + BANK_0_OFFSET, &temp);
+        enc424j600_writeControlRegisterUnbanked(EIRL + BANK_0_OFFSET, &temp);
     } else {
         flag -= 8;
-        ENC424J600_readControlRegisterUnbanked(EIRH + BANK_0_OFFSET, &temp);
+        enc424j600_readControlRegisterUnbanked(EIRH + BANK_0_OFFSET, &temp);
         temp &= ~(1 << flag);
-        ENC424J600_writeControlRegisterUnbanked(EIRH + BANK_0_OFFSET, &temp);
+        enc424j600_writeControlRegisterUnbanked(EIRH + BANK_0_OFFSET, &temp);
     }
 }
 
 /* =======================  RECEIVE STATUS VECTOR  ======================= */
 
-RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv) {
+RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv) {
     RSV_t receiveStatusVector;
     //BYTE 0    //Length 
     //BYTE 1    //Length
@@ -780,5 +745,3 @@ RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv) {
 
     return receiveStatusVector;
 }
-
-

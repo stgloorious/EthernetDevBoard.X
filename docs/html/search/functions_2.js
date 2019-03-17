@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['debug_5fmsg',['DEBUG_MSG',['../uart_8h.html#a8cd465006ed73cab2e273a815e264014',1,'uart.h']]]
+  ['checkforoverlap',['checkForOverlap',['../memory_controller_8c.html#a98fd910db12573934a5ca0d4e5ab25ee',1,'checkForOverlap(memoryField_t a, memoryField_t b):&#160;memoryController.c'],['../group__memory.html#ga98fd910db12573934a5ca0d4e5ab25ee',1,'checkForOverlap(memoryField_t a, memoryField_t b):&#160;memoryController.h']]],
+  ['checkforoverlapswitched',['checkForOverlapSwitched',['../memory_controller_8c.html#ae5b71e47aedf03bd72d08982d2595f59',1,'checkForOverlapSwitched(memoryField_t a, memoryField_t b):&#160;memoryController.c'],['../group__memory.html#gae5b71e47aedf03bd72d08982d2595f59',1,'checkForOverlapSwitched(memoryField_t a, memoryField_t b):&#160;memoryController.h']]]
 ];

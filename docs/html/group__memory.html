@@ -65,6 +65,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
@@ -74,6 +75,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:memory_controller_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html">memoryController.c</a></td></tr>
+<tr class="memdesc:memory_controller_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function definitions for memory operations. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:memory_controller_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8h.html">memoryController.h</a></td></tr>
+<tr class="memdesc:memory_controller_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function definitions for memory operations. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemory_field.html">memoryField</a></td></tr>
@@ -109,6 +119,21 @@ Functions</h2></td></tr>
 <tr class="memitem:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga8b2a265d683cd262c1a0aa1fcb847f75">memory_txFrameClear</a> (uint8_t index)</td></tr>
 <tr class="memdesc:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free up a <a class="el" href="structmemory_field.html" title="Represents a part of memory where a packet is stored.">memoryField</a>.  <a href="#ga8b2a265d683cd262c1a0aa1fcb847f75">More...</a><br /></td></tr>
 <tr class="separator:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga98fd910db12573934a5ca0d4e5ab25ee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga98fd910db12573934a5ca0d4e5ab25ee">checkForOverlap</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> a, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> b)</td></tr>
+<tr class="memdesc:ga98fd910db12573934a5ca0d4e5ab25ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two (unassigned) fields overlap.  <a href="#ga98fd910db12573934a5ca0d4e5ab25ee">More...</a><br /></td></tr>
+<tr class="separator:ga98fd910db12573934a5ca0d4e5ab25ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae5b71e47aedf03bd72d08982d2595f59"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#gae5b71e47aedf03bd72d08982d2595f59">checkForOverlapSwitched</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> a, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> b)</td></tr>
+<tr class="memdesc:gae5b71e47aedf03bd72d08982d2595f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <a class="el" href="group__memory.html#ga98fd910db12573934a5ca0d4e5ab25ee">checkForOverlap</a> (), but a and b are switched.  <a href="#gae5b71e47aedf03bd72d08982d2595f59">More...</a><br /></td></tr>
+<tr class="separator:gae5b71e47aedf03bd72d08982d2595f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7039d665e74c257c69f72af37d9b727"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#gab7039d665e74c257c69f72af37d9b727">entireMemoryEmpty</a> ()</td></tr>
+<tr class="memdesc:gab7039d665e74c257c69f72af37d9b727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is not a single memory field assigned.  <a href="#gab7039d665e74c257c69f72af37d9b727">More...</a><br /></td></tr>
+<tr class="separator:gab7039d665e74c257c69f72af37d9b727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga47762a849ab53adf1cf3e533a9873514"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga47762a849ab53adf1cf3e533a9873514">entireMemoryFull</a> ()</td></tr>
+<tr class="memdesc:ga47762a849ab53adf1cf3e533a9873514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if all available memory fields are assigned.  <a href="#ga47762a849ab53adf1cf3e533a9873514">More...</a><br /></td></tr>
+<tr class="separator:ga47762a849ab53adf1cf3e533a9873514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga519e42e36c3689f6bc1606081743c1b8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga519e42e36c3689f6bc1606081743c1b8">isOnlyOneAssigned</a> (uint8_t index)</td></tr>
+<tr class="memdesc:ga519e42e36c3689f6bc1606081743c1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is only one memory field assigned.  <a href="#ga519e42e36c3689f6bc1606081743c1b8">More...</a><br /></td></tr>
+<tr class="separator:ga519e42e36c3689f6bc1606081743c1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -194,6 +219,190 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga98fd910db12573934a5ca0d4e5ab25ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga98fd910db12573934a5ca0d4e5ab25ee">&#9670;&nbsp;</a></span>checkForOverlap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> checkForOverlap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if two (unassigned) fields overlap. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td></td></tr>
+    <tr><td class="paramname">b</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if they overlap, otherwise false </dd></dl>
+
+</div>
+</div>
+<a id="gae5b71e47aedf03bd72d08982d2595f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae5b71e47aedf03bd72d08982d2595f59">&#9670;&nbsp;</a></span>checkForOverlapSwitched()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> checkForOverlapSwitched </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The same as <a class="el" href="group__memory.html#ga98fd910db12573934a5ca0d4e5ab25ee">checkForOverlap</a> (), but a and b are switched. </p>
+<dl class="section note"><dt>Note</dt><dd>This is necessary because the xc8 Compiler does not support recursion. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td></td></tr>
+    <tr><td class="paramname">b</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if they overlap, otherwise false </dd></dl>
+
+</div>
+</div>
+<a id="gab7039d665e74c257c69f72af37d9b727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab7039d665e74c257c69f72af37d9b727">&#9670;&nbsp;</a></span>entireMemoryEmpty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> entireMemoryEmpty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if there is not a single memory field assigned. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if no memory fields are assigned, false if there is at least one field assigned </dd></dl>
+
+</div>
+</div>
+<a id="ga47762a849ab53adf1cf3e533a9873514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga47762a849ab53adf1cf3e533a9873514">&#9670;&nbsp;</a></span>entireMemoryFull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> entireMemoryFull </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if all available memory fields are assigned. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if everything's assigned, false if there is at least one unassigned memory field </dd></dl>
+
+</div>
+</div>
+<a id="ga519e42e36c3689f6bc1606081743c1b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga519e42e36c3689f6bc1606081743c1b8">&#9670;&nbsp;</a></span>isOnlyOneAssigned()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> isOnlyOneAssigned </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if there is only one memory field assigned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The memory field with this index is ignored (so it doesn't check itself) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if there is only one, false if there are multiple </dd></dl>
+
+</div>
+</div>
 <a id="ga8b2a265d683cd262c1a0aa1fcb847f75"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8b2a265d683cd262c1a0aa1fcb847f75">&#9670;&nbsp;</a></span>memory_txFrameClear()</h2>
 

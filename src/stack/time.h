@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 5. March 2019
+ * \ingroup stack
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -27,6 +28,11 @@
 #ifndef TIME_H
 #define	TIME_H
 
+/** 
+ * \ingroup stack
+ * \{
+ */
+
 typedef uint32_t time_t;
 
 /**
@@ -36,10 +42,11 @@ typedef uint32_t time_t;
 void updateTime();
 
 /**
- * \brief Returns the number of milliseconds passed since reset if \ref updateSeconds() was called regularly
- * \return Number of milliseconds
+ * \brief Returns the number of milliseconds passed since reset if \ref updateTime() was called regularly
+ * \return Number of milliseconds since reset
  */
 time_t getMillis();
 
-#endif	/* TIME_H */
+/**\}*/
 
+#endif	/* TIME_H */

@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date  19. Februar 2019
+ * \ingroup rsv
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -67,8 +68,8 @@ typedef struct RSV {
 /**
  * \addtogroup rsvBits Receive Status Vector Bit Masks
  * \ingroup rsv
- * \details Used by \ref ENC424J600_updateReceiveStatusVector () which takes in the "raw" vector 
- *  and returns it in a more readable \ref RSV_ structure.
+ * \details Used by \ref enc424j600_updateReceiveStatusVector () which takes in the "raw" vector 
+ *  and returns it in a more readable \ref RSV_t structure.
  * \see Table 9-1, Page 91 in ENC424J600's datasheet.
  * \todo I don't really like how this looks
  * \{
@@ -111,4 +112,3 @@ typedef struct RSV {
 /** \} */
 
 #endif	/* RSV_H */
-

@@ -175,7 +175,8 @@ Functions</h2></td></tr>
 <p>Fills in the destination MAC address in the SRAM buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mac</td><td>Destination MAC address </td></tr>
+    <tr><td class="paramname">addr</td><td>Destination MAC address </td></tr>
+    <tr><td class="paramname">f</td><td>Memory field where the concerning packet is stored </td></tr>
   </table>
   </dd>
 </dl>
@@ -211,7 +212,8 @@ Functions</h2></td></tr>
 <p>Fills in the EtherType field in the SRAM buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>EtherType </td></tr>
+    <tr><td class="paramname">ethtype</td><td>EtherType </td></tr>
+    <tr><td class="paramname">f</td><td>Memory field where the concerning packet is stored </td></tr>
   </table>
   </dd>
 </dl>

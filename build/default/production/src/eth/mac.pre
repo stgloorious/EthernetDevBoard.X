@@ -94,14 +94,14 @@ typedef uint16_t uintptr_t;
 # 32 "src/eth/../stack/bool.h"
 typedef bit bool_t;
 
-# 33 "src/eth/../enc424j600/rsv.h"
+# 34 "src/eth/../enc424j600/rsv.h"
 typedef struct RSV {
 
-# 39
+# 40
 uint16_t length;
 uint8_t packetPreviouslyIgnored : 1;
 
-# 47
+# 48
 uint8_t carrierEventPreviouslySeen : 1;
 uint8_t CRCError : 1;
 uint8_t lengthCheckError : 1;
@@ -136,13 +136,13 @@ uint8_t fOutOfMemory;
 uint8_t index;
 } memoryField_t;
 
-# 30 "src/eth/../stack/time.h"
+# 36 "src/eth/../stack/time.h"
 typedef uint32_t time_t;
 
-# 36
+# 42
 void updateTime();
 
-# 42
+# 48
 time_t getMillis();
 
 # 49 "src/eth/ethernetTypes.h"
@@ -160,20 +160,23 @@ uint8_t address[6];
 
 # 64
 typedef enum linkStates {
-NO_LINK, LINK_ESTABLISHED
+NO_LINK,
+LINK_ESTABLISHED
 } linkState_t;
 
-# 70
+# 71
 typedef enum speeds {
-TEN_MBIT, HUNDRED_MBIT
+TEN_MBIT,
+HUNDRED_MBIT
 } speed_t;
 
-# 76
+# 78
 typedef enum duplexStates {
-HALF_DUPLEX, FULL_DUPLEX
+HALF_DUPLEX,
+FULL_DUPLEX
 } duplexState_t;
 
-# 83
+# 86
 typedef struct ethernetFrame {
 uint16_t length;
 macaddress_t source;
@@ -181,14 +184,14 @@ macaddress_t destination;
 etherType_t ethertype;
 memoryField_t memory;
 
-# 92
+# 96
 RSV_t receiveStatusVector;
 
-# 96
+# 100
 time_t tReceived;
 } ethernetFrame_t;
 
-# 102
+# 106
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -238,4 +241,3 @@ void mac_setAllZero(macaddress_t* mac) {
 for (uint8_t i = 0; i < 6; i++)
 mac->address[i] = 0x00;
 }
-

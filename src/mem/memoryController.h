@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date  3. Februar 2019
+ * \ingroup memory
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -70,21 +71,39 @@ void memory_txFrameClear(uint8_t index);
  * \brief Checks if two (unassigned) fields overlap
  * \param a
  * \param b
- * \return 1 if they overlap, otherwise 0
+ * \return true if they overlap, otherwise false
  */
-uint8_t static checkForOverlap(memoryField_t a, memoryField_t b);
+bool_t static checkForOverlap(memoryField_t a, memoryField_t b);
 
 /**
  * \brief The same as \ref checkForOverlap (), but a and b are switched
  * \note This is necessary because the xc8 Compiler does not support recursion.
  * \param a
  * \param b
- * \return 1 if they overlap, otherwise 0
+ * \return true if they overlap, otherwise false
  */
-uint8_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b);
+bool_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b);
+
+/**
+ * \brief Checks if there is not a single memory field assigned
+ * \return true if no memory fields are assigned, false if there is at least one field assigned
+ */
+bool_t static entireMemoryEmpty();
+
+/**
+ * \brief Checks if all available memory fields are assigned
+ * \return true if everything's assigned, false if there is at least one unassigned memory field
+ */
+bool_t static entireMemoryFull();
+
+/**
+ * \brief Checks if there is only one memory field assigned
+ * \param index The memory field with this index is ignored (so it doesn't check itself)
+ * \return true if there is only one, false if there are multiple
+ */
+bool_t static isOnlyOneAssigned(uint8_t index);
 
 /**\}*/
 
 
 #endif	/* ENC424J600_MEMORY_H */
-

@@ -72,7 +72,7 @@ $(function() {
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">memoryController.h File Reference</div>  </div>
+<div class="title">memoryController.h File Reference<div class="ingroups"><a class="el" href="group__stack.html">Stack</a> &raquo; <a class="el" href="group__memory.html">Memory</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -106,12 +106,27 @@ Functions</h2></td></tr>
 <tr class="memitem:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga8b2a265d683cd262c1a0aa1fcb847f75">memory_txFrameClear</a> (uint8_t index)</td></tr>
 <tr class="memdesc:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free up a <a class="el" href="structmemory_field.html" title="Represents a part of memory where a packet is stored.">memoryField</a>.  <a href="group__memory.html#ga8b2a265d683cd262c1a0aa1fcb847f75">More...</a><br /></td></tr>
 <tr class="separator:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga98fd910db12573934a5ca0d4e5ab25ee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga98fd910db12573934a5ca0d4e5ab25ee">checkForOverlap</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> a, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> b)</td></tr>
+<tr class="memdesc:ga98fd910db12573934a5ca0d4e5ab25ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two (unassigned) fields overlap.  <a href="group__memory.html#ga98fd910db12573934a5ca0d4e5ab25ee">More...</a><br /></td></tr>
+<tr class="separator:ga98fd910db12573934a5ca0d4e5ab25ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae5b71e47aedf03bd72d08982d2595f59"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#gae5b71e47aedf03bd72d08982d2595f59">checkForOverlapSwitched</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> a, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> b)</td></tr>
+<tr class="memdesc:gae5b71e47aedf03bd72d08982d2595f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <a class="el" href="group__memory.html#ga98fd910db12573934a5ca0d4e5ab25ee">checkForOverlap</a> (), but a and b are switched.  <a href="group__memory.html#gae5b71e47aedf03bd72d08982d2595f59">More...</a><br /></td></tr>
+<tr class="separator:gae5b71e47aedf03bd72d08982d2595f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7039d665e74c257c69f72af37d9b727"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#gab7039d665e74c257c69f72af37d9b727">entireMemoryEmpty</a> ()</td></tr>
+<tr class="memdesc:gab7039d665e74c257c69f72af37d9b727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is not a single memory field assigned.  <a href="group__memory.html#gab7039d665e74c257c69f72af37d9b727">More...</a><br /></td></tr>
+<tr class="separator:gab7039d665e74c257c69f72af37d9b727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga47762a849ab53adf1cf3e533a9873514"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga47762a849ab53adf1cf3e533a9873514">entireMemoryFull</a> ()</td></tr>
+<tr class="memdesc:ga47762a849ab53adf1cf3e533a9873514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if all available memory fields are assigned.  <a href="group__memory.html#ga47762a849ab53adf1cf3e533a9873514">More...</a><br /></td></tr>
+<tr class="separator:ga47762a849ab53adf1cf3e533a9873514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga519e42e36c3689f6bc1606081743c1b8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga519e42e36c3689f6bc1606081743c1b8">isOnlyOneAssigned</a> (uint8_t index)</td></tr>
+<tr class="memdesc:ga519e42e36c3689f6bc1606081743c1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is only one memory field assigned.  <a href="group__memory.html#ga519e42e36c3689f6bc1606081743c1b8">More...</a><br /></td></tr>
+<tr class="separator:ga519e42e36c3689f6bc1606081743c1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function definitions for memory operations. </p>
 <dl class="section author"><dt>Author</dt><dd>Stefan Gloor </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>3. Februar 2019 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>3. Februar 2019</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd></dd></dl>
 <p>Copyright (C) 2019 Stefan Gloor</p>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>

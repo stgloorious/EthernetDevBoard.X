@@ -52,4 +52,3 @@ typedef struct memoryField {
 } memoryField_t;
 
 #endif	/* MEMORYTYPES_H */
-

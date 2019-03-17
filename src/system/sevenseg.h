@@ -40,20 +40,24 @@
 #define SET_SEVEN_SEG_DIGITS_ANSEL  DIGIT_SELECT_ANSEL&= ~0x07;
 
 
+/**
+ * \brief Contains the bit patterns for the 7-Segment display
+ * \details Bit order is: DP g f e d c b a from MSB...LSB
+ */
 uint8_t sevenSegCharacters[12] = {
 //   dpgfedcba
-    0b00111111, //0
-    0b00000110, //1
-    0b01011011, //2
-    0b01001111, //3
-    0b01100110, //4
-    0b01101101, //5
-    0b01111101, //6
-    0b00000111, //7
-    0b01111111, //8
-    0b01101111, //9
-    0b00000000, //blank
-    0b01000000, //-
+    0b00111111, ///<0
+    0b00000110, ///<1
+    0b01011011, ///<2
+    0b01001111, ///<3
+    0b01100110, ///<4
+    0b01101101, ///<5
+    0b01111101, ///<6
+    0b00000111, ///<7
+    0b01111111, ///<8
+    0b01101111, ///<9
+    0b00000000, ///<blank
+    0b01000000, ///<-
 };
 #define SEVEN_SEG_DP		0b10000000
 

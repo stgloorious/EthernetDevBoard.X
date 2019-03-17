@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date  2. February 2019
+ * \ingroup stack
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -23,6 +24,7 @@
 
 #include "../stack/stack.h"
 
-
-
-
+error_t stack_init() {
+    arp_init();
+    ipv4_init();
+}

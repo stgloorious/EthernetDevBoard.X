@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 1. February 2019
+ * \ingroup arp
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -31,99 +32,105 @@
 #include "../../eth/ethernet.h"
 #include "../../system/uart.h"
 #include "../protocols/arpTypes.h"
+#include "arpSettings.h"
 
 /**
  * \addtogroup arp Address Resolution Protocol
  * \ingroup protocols
+ * \{
  */
 
 /**
  * \brief Initialises the ARP table. 
- * \ingroup arp
  * \note To be called after reset.
  * \details IP and MAC addresses are set to 0:0:0:0 / 00:00:00:00:00:00, respectively. 
  * The timestamp is set to a maximum value so it will always be consired expired.
  */
-void ARP_initTable();
+void arp_init();
 
 /**
  * \brief Takes a received ARP packet and does the necessary steps. 
- * \ingroup arp
  * \note To be called after a new packet was identified as an ARP message.
  * \param [in] *frame Pointer to the received Ethernet Packet
  */
-void ARP_handleNewPacket(ethernetFrame_t *frame);
+void arp_handleNewPacket(ethernetFrame_t *frame);
 
 /**
  * \brief Takes the received packet and puts it into a more readable format.
- * \ingroup arp
  * \param [in] *frame Pointer to the received Ethernet Packet
- * \return ARPmessage data structure 
+ * \return The message that was received
  */
-ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
+arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame);
 
 /**
  * \brief If the ARPmessage contains a request for my address, this function replies accordingly
- * \ingroup arp
  * \param request New message (parseFromRXBuffer() first).
  */
-void ARP_sendReply(ARP_message_t request);
+void static arp_sendReply(arp_message_t request);
 
 /**
  * \brief Sends the given message
- * \ingroup arp
  * \param arp message to send
  */
-void static ARP_send(ARP_message_t arp);
+void static arp_send(arp_message_t arp);
 
 /**
  * \brief Sends an ARP request to a given IPv4 address
- * \ingroup arp
  * \param ipSender
  * \param ipTarget
  */
-void ARP_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
 
 /**
- * \brief
- * \param ipTarget
- * \return 
+ * \brief Sends probes to check for address conflicts
+ * \details Sends out #ARP_PROBE_NUM probes, with an initial random delay (#ARP_PROBE_WAIT) and a
+ * random delay between #ARP_PROBE_MIN and #ARP_PROBE_MAX after each probe. It will check each time if
+ * there is a valid ARP entry (to detect if there was a reply).
+ * \param ipTarget The IPv4 address being probed for
+ * \return #ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED if there was no answer\n
+ * #ERROR_ARP_WAITING_FOR_REPLY if probing process is not done yet\n
+ * #ERROR_ARP_IPv4_ADDRESS_CONFLICT if there was an ARP message with the requested IP address\n
  */
-error_t ARP_probe (ipv4_address_t ipTarget);
+error_t static arp_probe (ipv4_address_t ipTarget);
+
+/**
+ * \brief To be called periodically in the background task handler
+ * \details Does various stuff that takes some time to wait, e.g. waiting for an ARP reply
+ * \return Errors that occurred during operation
+ */
+error_t arp_background();
 
 /**
  * \brief Checks for an entry in the ARP table
- * \ingroup arp
  * \param ip IP Address to check
  * \param [out] *index Index of the entry if one was found
- * \return Wheter or not there is a valid (non-expired) entry in the table
+ * \return Whether or not there is a valid (non-expired) entry in the table
  */
-uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
+uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
 
 /**
  * \brief Gets an entry from the ARP table if there is one (check prior to calling this function)
- * \ingroup arp
  * \param index Index of the entry whose MAC address should be returned
+ * \note Find the index using \ref arp_checkForEntry()
  * \return MAC address of the desired entry
  */
-macaddress_t ARP_getEntryFromTable(uint8_t index);
+macaddress_t static arp_getEntryFromTable(uint8_t index);
 
 /**
  * \brief Creates a new entry in the ARP table
- * \ingroup arp
  * \param mac MAC address of the new entry
  * \param ip IP address of the new entry
  * \param timestamp Current time (use getSeconds())
  */
-void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
 /**
  * \brief Used for debugging. Prints out ARP table via UART.
- * \ingroup arp
  * \todo Remove this later
  */
 void printArpTable();
 
+/**\}*/
+
 
 #endif	/* ARP_H */
-

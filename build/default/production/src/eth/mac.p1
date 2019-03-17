@@ -31,28 +31,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;bool.h: 32: typedef bit bool_t;
-[; ;rsv.h: 33: typedef struct RSV {
-[; ;rsv.h: 39: uint16_t length;
-[; ;rsv.h: 40: uint8_t packetPreviouslyIgnored : 1;
-[; ;rsv.h: 47: uint8_t carrierEventPreviouslySeen : 1;
-[; ;rsv.h: 48: uint8_t CRCError : 1;
-[; ;rsv.h: 49: uint8_t lengthCheckError : 1;
-[; ;rsv.h: 50: uint8_t lengthOutOfRange : 1;
-[; ;rsv.h: 51: uint8_t receivedOk : 1;
-[; ;rsv.h: 52: uint8_t multicast : 1;
-[; ;rsv.h: 53: uint8_t broadcast : 1;
-[; ;rsv.h: 54: uint8_t dribbleNibble : 1;
-[; ;rsv.h: 55: uint8_t controlFrame : 1;
-[; ;rsv.h: 56: uint8_t pauseFrame : 1;
-[; ;rsv.h: 57: uint8_t unknownOpcode : 1;
-[; ;rsv.h: 58: uint8_t vlan : 1;
-[; ;rsv.h: 59: uint8_t runtFilter : 1;
-[; ;rsv.h: 60: uint8_t notMeFilter : 1;
-[; ;rsv.h: 61: uint8_t hashFilter : 1;
-[; ;rsv.h: 62: uint8_t magicFilter : 1;
-[; ;rsv.h: 63: uint8_t patternMatch : 1;
-[; ;rsv.h: 64: uint8_t unicast : 1;
-[; ;rsv.h: 65: } RSV_t;
+[; ;rsv.h: 34: typedef struct RSV {
+[; ;rsv.h: 40: uint16_t length;
+[; ;rsv.h: 41: uint8_t packetPreviouslyIgnored : 1;
+[; ;rsv.h: 48: uint8_t carrierEventPreviouslySeen : 1;
+[; ;rsv.h: 49: uint8_t CRCError : 1;
+[; ;rsv.h: 50: uint8_t lengthCheckError : 1;
+[; ;rsv.h: 51: uint8_t lengthOutOfRange : 1;
+[; ;rsv.h: 52: uint8_t receivedOk : 1;
+[; ;rsv.h: 53: uint8_t multicast : 1;
+[; ;rsv.h: 54: uint8_t broadcast : 1;
+[; ;rsv.h: 55: uint8_t dribbleNibble : 1;
+[; ;rsv.h: 56: uint8_t controlFrame : 1;
+[; ;rsv.h: 57: uint8_t pauseFrame : 1;
+[; ;rsv.h: 58: uint8_t unknownOpcode : 1;
+[; ;rsv.h: 59: uint8_t vlan : 1;
+[; ;rsv.h: 60: uint8_t runtFilter : 1;
+[; ;rsv.h: 61: uint8_t notMeFilter : 1;
+[; ;rsv.h: 62: uint8_t hashFilter : 1;
+[; ;rsv.h: 63: uint8_t magicFilter : 1;
+[; ;rsv.h: 64: uint8_t patternMatch : 1;
+[; ;rsv.h: 65: uint8_t unicast : 1;
+[; ;rsv.h: 66: } RSV_t;
 [; ;memoryTypes.h: 35: typedef struct memoryField {
 [; ;memoryTypes.h: 42: uint16_t start;
 [; ;memoryTypes.h: 43: uint16_t end;
@@ -61,9 +61,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memoryTypes.h: 46: uint8_t fOutOfMemory;
 [; ;memoryTypes.h: 51: uint8_t index;
 [; ;memoryTypes.h: 52: } memoryField_t;
-[; ;time.h: 30: typedef uint32_t time_t;
-[; ;time.h: 36: void updateTime();
-[; ;time.h: 42: time_t getMillis();
+[; ;time.h: 36: typedef uint32_t time_t;
+[; ;time.h: 42: void updateTime();
+[; ;time.h: 48: time_t getMillis();
 [; ;ethernetTypes.h: 49: typedef enum etherTypes {
 [; ;ethernetTypes.h: 50: ETHERTYPE_IPv4 = 0x0800,
 [; ;ethernetTypes.h: 51: ETHERTYPE_ARP = 0x0806,
@@ -74,30 +74,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 59: uint8_t address[6];
 [; ;ethernetTypes.h: 60: } macaddress_t;
 [; ;ethernetTypes.h: 64: typedef enum linkStates {
-[; ;ethernetTypes.h: 65: NO_LINK, LINK_ESTABLISHED
-[; ;ethernetTypes.h: 66: } linkState_t;
-[; ;ethernetTypes.h: 70: typedef enum speeds {
-[; ;ethernetTypes.h: 71: TEN_MBIT, HUNDRED_MBIT
-[; ;ethernetTypes.h: 72: } speed_t;
-[; ;ethernetTypes.h: 76: typedef enum duplexStates {
-[; ;ethernetTypes.h: 77: HALF_DUPLEX, FULL_DUPLEX
-[; ;ethernetTypes.h: 78: } duplexState_t;
-[; ;ethernetTypes.h: 83: typedef struct ethernetFrame {
-[; ;ethernetTypes.h: 84: uint16_t length;
-[; ;ethernetTypes.h: 85: macaddress_t source;
-[; ;ethernetTypes.h: 86: macaddress_t destination;
-[; ;ethernetTypes.h: 87: etherType_t ethertype;
-[; ;ethernetTypes.h: 88: memoryField_t memory;
-[; ;ethernetTypes.h: 92: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 96: time_t tReceived;
-[; ;ethernetTypes.h: 97: } ethernetFrame_t;
-[; ;ethernetTypes.h: 102: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 103: linkState_t link;
-[; ;ethernetTypes.h: 104: speed_t speed;
-[; ;ethernetTypes.h: 105: duplexState_t duplex;
-[; ;ethernetTypes.h: 106: macaddress_t source;
-[; ;ethernetTypes.h: 107: macaddress_t destination;
-[; ;ethernetTypes.h: 108: } ethernetConnection_t;
+[; ;ethernetTypes.h: 65: NO_LINK,
+[; ;ethernetTypes.h: 66: LINK_ESTABLISHED
+[; ;ethernetTypes.h: 67: } linkState_t;
+[; ;ethernetTypes.h: 71: typedef enum speeds {
+[; ;ethernetTypes.h: 72: TEN_MBIT,
+[; ;ethernetTypes.h: 73: HUNDRED_MBIT
+[; ;ethernetTypes.h: 74: } speed_t;
+[; ;ethernetTypes.h: 78: typedef enum duplexStates {
+[; ;ethernetTypes.h: 79: HALF_DUPLEX,
+[; ;ethernetTypes.h: 80: FULL_DUPLEX
+[; ;ethernetTypes.h: 81: } duplexState_t;
+[; ;ethernetTypes.h: 86: typedef struct ethernetFrame {
+[; ;ethernetTypes.h: 87: uint16_t length;
+[; ;ethernetTypes.h: 88: macaddress_t source;
+[; ;ethernetTypes.h: 89: macaddress_t destination;
+[; ;ethernetTypes.h: 90: etherType_t ethertype;
+[; ;ethernetTypes.h: 91: memoryField_t memory;
+[; ;ethernetTypes.h: 96: RSV_t receiveStatusVector;
+[; ;ethernetTypes.h: 100: time_t tReceived;
+[; ;ethernetTypes.h: 101: } ethernetFrame_t;
+[; ;ethernetTypes.h: 106: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 107: linkState_t link;
+[; ;ethernetTypes.h: 108: speed_t speed;
+[; ;ethernetTypes.h: 109: duplexState_t duplex;
+[; ;ethernetTypes.h: 110: macaddress_t source;
+[; ;ethernetTypes.h: 111: macaddress_t destination;
+[; ;ethernetTypes.h: 112: } ethernetConnection_t;
 [; ;mac.h: 43: bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 [; ;mac.h: 49: void mac_setToBroadcast(macaddress_t *mac);
 [; ;mac.h: 56: bool_t mac_isBroadcast(macaddress_t *mac);

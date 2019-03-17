@@ -66,8 +66,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#groups">Modules</a> &#124;
+<a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Receive Status Vector<div class="ingroups"><a class="el" href="group__ethernet_controller.html">Ethernet Controller</a> &raquo; <a class="el" href="group__enc424j600__module.html">ENC424J600</a> &raquo; <a class="el" href="group__reception.html">Reception</a></div></div>  </div>
 </div><!--header-->
@@ -76,6 +78,12 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Modules</h2></td></tr>
 <tr class="memitem:group__rsv_bits"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rsv_bits.html">Receive Status Vector Bit Masks</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:rsv_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv_8h.html">rsv.h</a></td></tr>
+<tr class="memdesc:rsv_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data type for the Receive Status Vector (<a class="el" href="struct_r_s_v.html" title="This structure represents the Receive Status Vector in a nice way.">RSV</a>) of the ENC424J600. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -89,6 +97,12 @@ Typedefs</h2></td></tr>
 <tr class="memitem:gaf7fd94a9424fccb0aafa846f27a43099"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_r_s_v.html">RSV</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rsv.html#gaf7fd94a9424fccb0aafa846f27a43099">RSV_t</a></td></tr>
 <tr class="memdesc:gaf7fd94a9424fccb0aafa846f27a43099"><td class="mdescLeft">&#160;</td><td class="mdescRight">This structure represents the Receive Status Vector in a nice way.  <a href="#gaf7fd94a9424fccb0aafa846f27a43099">More...</a><br /></td></tr>
 <tr class="separator:gaf7fd94a9424fccb0aafa846f27a43099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga8c5a336bf557088d092171dc55fa2eb3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__rsv.html#gaf7fd94a9424fccb0aafa846f27a43099">RSV_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rsv.html#ga8c5a336bf557088d092171dc55fa2eb3">enc424j600_updateReceiveStatusVector</a> (uint8_t *rsv)</td></tr>
+<tr class="memdesc:ga8c5a336bf557088d092171dc55fa2eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function takes in the Receive Status Vector and puts it in a nice structure.  <a href="#ga8c5a336bf557088d092171dc55fa2eb3">More...</a><br /></td></tr>
+<tr class="separator:ga8c5a336bf557088d092171dc55fa2eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Receive Status Vector (<a class="el" href="struct_r_s_v.html" title="This structure represents the Receive Status Vector in a nice way.">RSV</a>) The <a class="el" href="struct_r_s_v.html" title="This structure represents the Receive Status Vector in a nice way.">RSV</a> includes the length of the frame, and flags indicating the type of packet and which filters were matched. It is put in </p>
@@ -106,6 +120,42 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This structure represents the Receive Status Vector in a nice way. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga8c5a336bf557088d092171dc55fa2eb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8c5a336bf557088d092171dc55fa2eb3">&#9670;&nbsp;</a></span>enc424j600_updateReceiveStatusVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="group__rsv.html#gaf7fd94a9424fccb0aafa846f27a43099">RSV_t</a> enc424j600_updateReceiveStatusVector </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>rsv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function takes in the Receive Status Vector and puts it in a nice structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rsv</td><td>[in] Pointer to the first element of a 6 Byte array which contains the <a class="el" href="struct_r_s_v.html" title="This structure represents the Receive Status Vector in a nice way.">RSV</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_r_s_v.html" title="This structure represents the Receive Status Vector in a nice way.">RSV</a> structure </dd></dl>
 
 </div>
 </div>

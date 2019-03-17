@@ -78,6 +78,7 @@ $(function() {
 <p>Function definitions for UART.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;xc.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="arp_types_8h_source.html">../stack/protocols/arpTypes.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mac_8h_source.html">../eth/mac.h</a>&quot;</code><br />
@@ -117,9 +118,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a313a7ba72fc63857f535add533ae0717"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a313a7ba72fc63857f535add533ae0717">ipAdressToString</a> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ip)</td></tr>
 <tr class="memdesc:a313a7ba72fc63857f535add533ae0717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes an IPv4 Address and converts it into string (decimal notation)  <a href="#a313a7ba72fc63857f535add533ae0717">More...</a><br /></td></tr>
 <tr class="separator:a313a7ba72fc63857f535add533ae0717"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61e874d3d9829abc7d8a4804c79592b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#ae61e874d3d9829abc7d8a4804c79592b">arpEntryToString</a> (<a class="el" href="group__arp.html#gab5d4ef9cd020c5de772f55549aa70716">ARP_tableEntry_t</a> table)</td></tr>
-<tr class="memdesc:ae61e874d3d9829abc7d8a4804c79592b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an ARP entry to a string.  <a href="#ae61e874d3d9829abc7d8a4804c79592b">More...</a><br /></td></tr>
-<tr class="separator:ae61e874d3d9829abc7d8a4804c79592b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ec9b60369dd0dc40610a7c45153e3ae"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a9ec9b60369dd0dc40610a7c45153e3ae">arpEntryToString</a> (<a class="el" href="group__arp.html#ga8119bd05e90375d2e82620556e42fa1c">arp_tableEntry_t</a> table)</td></tr>
+<tr class="memdesc:a9ec9b60369dd0dc40610a7c45153e3ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an ARP entry to a string.  <a href="#a9ec9b60369dd0dc40610a7c45153e3ae">More...</a><br /></td></tr>
+<tr class="separator:a9ec9b60369dd0dc40610a7c45153e3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function definitions for UART. </p>
@@ -132,8 +133,8 @@ Functions</h2></td></tr>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ae61e874d3d9829abc7d8a4804c79592b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae61e874d3d9829abc7d8a4804c79592b">&#9670;&nbsp;</a></span>arpEntryToString()</h2>
+<a id="a9ec9b60369dd0dc40610a7c45153e3ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ec9b60369dd0dc40610a7c45153e3ae">&#9670;&nbsp;</a></span>arpEntryToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -141,7 +142,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">char* arpEntryToString </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__arp.html#gab5d4ef9cd020c5de772f55549aa70716">ARP_tableEntry_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__arp.html#ga8119bd05e90375d2e82620556e42fa1c">arp_tableEntry_t</a>&#160;</td>
           <td class="paramname"><em>table</em></td><td>)</td>
           <td></td>
         </tr>
@@ -285,7 +286,7 @@ Functions</h2></td></tr>
 <p>Takes an IPv4 Address and converts it into string (decimal notation) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">IP</td><td>address </td></tr>
+    <tr><td class="paramname">ip</td><td>address </td></tr>
   </table>
   </dd>
 </dl>
@@ -339,7 +340,7 @@ Functions</h2></td></tr>
 <p>Takes a MAC address and translates it to a human-readable char string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mac</td><td>MAC address </td></tr>
+    <tr><td class="paramname">addr</td><td>MAC address </td></tr>
   </table>
   </dd>
 </dl>

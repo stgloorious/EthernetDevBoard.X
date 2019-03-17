@@ -69,9 +69,10 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">memoryController.c File Reference</div>  </div>
+<div class="title">memoryController.c File Reference<div class="ingroups"><a class="el" href="group__stack.html">Stack</a> &raquo; <a class="el" href="group__memory.html">Memory</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -83,60 +84,159 @@ $(function() {
 Functions</h2></td></tr>
 <tr class="memitem:a2374233b8cd8185e753ba171f3229169"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#a2374233b8cd8185e753ba171f3229169">initBuffer</a> ()</td></tr>
 <tr class="separator:a2374233b8cd8185e753ba171f3229169"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42a992f3af626be03e528f48833b3706"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#a42a992f3af626be03e528f48833b3706">entireMemoryEmpty</a> ()</td></tr>
-<tr class="separator:a42a992f3af626be03e528f48833b3706"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8c4cc6c6816adc58af10b6cd6d7ad87"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#af8c4cc6c6816adc58af10b6cd6d7ad87">entireMemoryFull</a> ()</td></tr>
-<tr class="separator:af8c4cc6c6816adc58af10b6cd6d7ad87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a497a08e5c5c8f820545daad14d586b65"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#a497a08e5c5c8f820545daad14d586b65">isOnlyOneAssigned</a> (uint8_t index)</td></tr>
-<tr class="separator:a497a08e5c5c8f820545daad14d586b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7039d665e74c257c69f72af37d9b727"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#ab7039d665e74c257c69f72af37d9b727">entireMemoryEmpty</a> ()</td></tr>
+<tr class="separator:ab7039d665e74c257c69f72af37d9b727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47762a849ab53adf1cf3e533a9873514"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#a47762a849ab53adf1cf3e533a9873514">entireMemoryFull</a> ()</td></tr>
+<tr class="separator:a47762a849ab53adf1cf3e533a9873514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a519e42e36c3689f6bc1606081743c1b8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#a519e42e36c3689f6bc1606081743c1b8">isOnlyOneAssigned</a> (uint8_t index)</td></tr>
+<tr class="separator:a519e42e36c3689f6bc1606081743c1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98fd910db12573934a5ca0d4e5ab25ee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#a98fd910db12573934a5ca0d4e5ab25ee">checkForOverlap</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> a, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> b)</td></tr>
+<tr class="separator:a98fd910db12573934a5ca0d4e5ab25ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5b71e47aedf03bd72d08982d2595f59"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#ae5b71e47aedf03bd72d08982d2595f59">checkForOverlapSwitched</a> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> a, <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> b)</td></tr>
+<tr class="separator:ae5b71e47aedf03bd72d08982d2595f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8efe1d17c78d178ef11effad448b1041"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga8efe1d17c78d178ef11effad448b1041">memory_txFrameRequest</a> (uint16_t length)</td></tr>
 <tr class="memdesc:ga8efe1d17c78d178ef11effad448b1041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an address where data of the given length can be stored.  <a href="group__memory.html#ga8efe1d17c78d178ef11effad448b1041">More...</a><br /></td></tr>
 <tr class="separator:ga8efe1d17c78d178ef11effad448b1041"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memory.html#ga8b2a265d683cd262c1a0aa1fcb847f75">memory_txFrameClear</a> (uint8_t index)</td></tr>
 <tr class="memdesc:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free up a <a class="el" href="structmemory_field.html" title="Represents a part of memory where a packet is stored.">memoryField</a>.  <a href="group__memory.html#ga8b2a265d683cd262c1a0aa1fcb847f75">More...</a><br /></td></tr>
 <tr class="separator:ga8b2a265d683cd262c1a0aa1fcb847f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a763e415bfa2a663d0059def6c5dd3478"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#a763e415bfa2a663d0059def6c5dd3478">occupiedMemory</a> [<a class="el" href="group__memory.html#ga31efd827f5e76320608065c79fc29e00">NUMBER_OF_MEMORY_FIELDS</a>]</td></tr>
+<tr class="separator:a763e415bfa2a663d0059def6c5dd3478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af48dc23c4b29e42ae919403a903ac6f4"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_controller_8c.html#af48dc23c4b29e42ae919403a903ac6f4">numberOfOccupiedFields</a> = 0</td></tr>
+<tr class="separator:af48dc23c4b29e42ae919403a903ac6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function definitions for memory operations. </p>
 <dl class="section author"><dt>Author</dt><dd>Stefan Gloor </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>3. February 2019 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>3. February 2019</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd></dd></dl>
 <p>Copyright (C) 2019 Stefan Gloor</p>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a42a992f3af626be03e528f48833b3706"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42a992f3af626be03e528f48833b3706">&#9670;&nbsp;</a></span>entireMemoryEmpty()</h2>
+<a id="a98fd910db12573934a5ca0d4e5ab25ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98fd910db12573934a5ca0d4e5ab25ee">&#9670;&nbsp;</a></span>checkForOverlap()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t entireMemoryEmpty </td>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> checkForOverlap </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="af8c4cc6c6816adc58af10b6cd6d7ad87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8c4cc6c6816adc58af10b6cd6d7ad87">&#9670;&nbsp;</a></span>entireMemoryFull()</h2>
+<a id="ae5b71e47aedf03bd72d08982d2595f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5b71e47aedf03bd72d08982d2595f59">&#9670;&nbsp;</a></span>checkForOverlapSwitched()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t entireMemoryFull </td>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> checkForOverlapSwitched </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab7039d665e74c257c69f72af37d9b727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7039d665e74c257c69f72af37d9b727">&#9670;&nbsp;</a></span>entireMemoryEmpty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> entireMemoryEmpty </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47762a849ab53adf1cf3e533a9873514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47762a849ab53adf1cf3e533a9873514">&#9670;&nbsp;</a></span>entireMemoryFull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> entireMemoryFull </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -158,20 +258,73 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a497a08e5c5c8f820545daad14d586b65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a497a08e5c5c8f820545daad14d586b65">&#9670;&nbsp;</a></span>isOnlyOneAssigned()</h2>
+<a id="a519e42e36c3689f6bc1606081743c1b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a519e42e36c3689f6bc1606081743c1b8">&#9670;&nbsp;</a></span>isOnlyOneAssigned()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t isOnlyOneAssigned </td>
+          <td class="memname">static <a class="el" href="bool_8h.html#a449976458a084f880dc8e3d29e7eb6f5">bool_t</a> isOnlyOneAssigned </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="af48dc23c4b29e42ae919403a903ac6f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48dc23c4b29e42ae919403a903ac6f4">&#9670;&nbsp;</a></span>numberOfOccupiedFields</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t numberOfOccupiedFields = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a763e415bfa2a663d0059def6c5dd3478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a763e415bfa2a663d0059def6c5dd3478">&#9670;&nbsp;</a></span>occupiedMemory</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> occupiedMemory[<a class="el" href="group__memory.html#ga31efd827f5e76320608065c79fc29e00">NUMBER_OF_MEMORY_FIELDS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

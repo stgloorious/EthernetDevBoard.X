@@ -91,7 +91,7 @@ Modules</h2></td></tr>
 <tr class="memitem:group__registers"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__registers.html">Registers</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__single__byte"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__single__byte.html">Single Byte Instructions</a></td></tr>
-<tr class="memdesc:group__single__byte"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use with ENC424J600_writeSingleByte () <br /></td></tr>
+<tr class="memdesc:group__single__byte"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use with <a class="el" href="group__readwrite.html#gad8a8b88b0965f20661b380fa8d3ff0b3">enc424j600_writeSingleByte</a> () <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -102,7 +102,7 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>These functions directly interface the Ethernet controller and are device-specific. Currently the only interface supported is SPI. The parallel port is not supported.</p>
 <p>All functions are static because they should only be accessible for ethernetController_* functions.</p>
-<dl class="section note"><dt>Note</dt><dd>Direct multi-byte read/write operations as suggested by the datasheet are not (yet) implemented as separate functions. Instead, this functionality is achieved by calling ENC424J600_writeSPI() multiple times, as seen in ENC424J600_setGPDATAWritePointer, for example.</dd>
+<dl class="section note"><dt>Note</dt><dd>Direct multi-byte read/write operations as suggested by the datasheet are not (yet) implemented as separate functions. Instead, this functionality is achieved by calling <a class="el" href="_e_n_c424_j600_8c.html#ae44784d145c4ed6e48323a8d06f23fa5">enc424j600_writeSPI()</a> multiple times, as seen in <a class="el" href="group__pointers.html#ga4975a43c8af9992aaf36f76df7885763">enc424j600_setGPDATAWritePointer</a>, for example.</dd>
 <dd>
 Banked operations are not (yet) supported. Everything is accessed through unbanked addresses and commands. </dd></dl>
 <h2 class="groupheader">Macro Definition Documentation</h2>

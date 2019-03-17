@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 27. Januar 2019
+ * \ingroup stack
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -39,15 +40,19 @@
  * \brief Top-level structure of the entire stack.
  */
 typedef struct stack {
-    ethernetConnection_t ethernet;
-    backgroundTaskHandler_t volatile background;
-    ethernetFrame_t newReceivedFrame;
-    ipv4_packet_t pendingPacketToSend;
+    ethernetConnection_t ethernet; ///< The ethernet connection that uses the stack
+    backgroundTaskHandler_t volatile background; ///< Stuff that happens in the background, like sending ARP requests
+    ethernetFrame_t newReceivedFrame; ///< A newly received frame that is next being processed
+    ipv4_packet_t pendingPacketToSend; ///< The packet that is currently being prepared for transmission
 } stack_t;
 
-
+/**
+ * \brief Initialises all protocols 
+ * \note To be called after system reset
+ * \return
+ */
+error_t stack_init();
 
 /**\}*/
 
 #endif	/* STACK_H */
-

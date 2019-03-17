@@ -48,5 +48,3 @@ void mac_setAllZero(macaddress_t* mac) {
     for (uint8_t i = 0; i < 6; i++)
         mac->address[i] = 0x00;
 }
-
-

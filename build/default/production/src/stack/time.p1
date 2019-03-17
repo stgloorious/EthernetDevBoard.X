@@ -27,39 +27,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;time.h: 30: typedef uint32_t time_t;
-[; ;time.h: 36: void updateTime();
-[; ;time.h: 42: time_t getMillis();
-"27 src/stack/time.c
+[; ;time.h: 36: typedef uint32_t time_t;
+[; ;time.h: 42: void updateTime();
+[; ;time.h: 48: time_t getMillis();
+"28 src/stack/time.c
 [v _time `Vul ~T0 @X0 1 s ]
 [i _time
 -> -> -> 0 `i `l `ul
 ]
-[; ;time.c: 27: time_t volatile static time = 0;
-"29
+[; ;time.c: 28: time_t volatile static time = 0;
+"30
 [v _updateTime `(v ~T0 @X0 1 ef ]
 {
-[; ;time.c: 29: void updateTime() {
+[; ;time.c: 30: void updateTime() {
 [e :U _updateTime ]
 [f ]
-[; ;time.c: 30: time++;
-"30
-[e ++ _time -> -> -> 1 `i `l `ul ]
-[; ;time.c: 31: }
+[; ;time.c: 31: time++;
 "31
+[e ++ _time -> -> -> 1 `i `l `ul ]
+[; ;time.c: 32: }
+"32
 [e :UE 1 ]
 }
-"33
+"34
 [v _getMillis `(ul ~T0 @X0 1 ef ]
 {
-[; ;time.c: 33: time_t getMillis() {
+[; ;time.c: 34: time_t getMillis() {
 [e :U _getMillis ]
 [f ]
-[; ;time.c: 34: return time;
-"34
+[; ;time.c: 35: return time;
+"35
 [e ) _time ]
 [e $UE 2  ]
-[; ;time.c: 35: }
-"35
+[; ;time.c: 36: }
+"36
 [e :UE 2 ]
 }

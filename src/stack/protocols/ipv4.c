@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 29. Januar 2019
+ * \ingroup ipv4
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -23,6 +24,14 @@
 
 #include "ipv4.h"
 #include "arpSettings.h"
+#include "../bool.h"
+
+ipv4_address_t static ipSource; ///< Source IP address of the stack
+ipv4_address_t static ipPreliminarySource; ///< Future source IP address of the stack (needs to be verified by collision detection first)
+bool_t static fSrcAddrChanged; ///< used as an indicator when to check for collisions
+error_t *arpStatus;
+
+/* =======================  Transmit packet ======================= */
 
 void ipv4_txFrameRequest(ipv4_packet_t *packet) {
     packet->ethernet.length = packet->ipv4Header.totalLength + 8;
@@ -84,25 +93,7 @@ void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet) {
     ethernetController_streamToTransmitBuffer(data, packet.memory);
 }
 
-void ipv4_calculateHeaderChecksum(ipv4_header_t * header) {
-    //Sum up all 16-Bit words of the header:
-    uint32_t sum = 0;
-    sum = ((header->version << 12) | (header->headerLength << 8) | (header->dscp << 2) | (header->ecn))&0xffff; //Word 0
-    sum += header->totalLength; //Word 1
-    sum += header->identification; //Word 2
-    sum += ((header->flags << 13) | (header->fragmentOffset))&0xffff; //Word 3
-    sum += ((header->timeToLive << 8) | (header->protocol))&0xffff; //Word 4
-    //header checksum is zero for calculation
-    sum += ((header->source.address[1] | (header->source.address[0] << 8)))&0xffff; // Word 5
-    sum += ((header->source.address[3] | (header->source.address[2] << 8)))&0xffff; // Word 6
-    sum += ((header->destination.address[1] | (header->destination.address[0] << 8)))&0xffff; // Word 7
-    sum += ((header->destination.address[3] | (header->destination.address[2] << 8)))&0xffff; // Word 8
-
-    sum = (sum & 0x0ffff)+((sum & 0xf0000) >> 16);
-    sum = ~sum; //invert all bits
-
-    header->checksum = sum;
-}
+/* =======================  Header ======================= */
 
 void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
     *ptr = (header.version << 4) | (header.headerLength);
@@ -127,35 +118,24 @@ void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
     *(ptr + 19) = (header.destination.address[3]);
 }
 
-void ipv4_handleNewPacket(ethernetFrame_t *frame) {
-    ipv4_header_t ip;
-    memoryField_t headerField;
-    if (frame->ethertype != ETHERTYPE_IPv4) {
-        ethernetController_dropPacket(frame);
-        return;
-    }
-    headerField = frame->memory;
-    headerField.start = frame->memory.start + 22; //skip NextPacketPointer (2 Bytes), RSV (6 Bytes), 2 MAC addresses (12 Bytes) and EtherType (2 Bytes)
+void ipv4_calculateHeaderChecksum(ipv4_header_t * header) {
+    //Sum up all 16-Bit words of the header:
+    uint32_t sum = 0;
+    sum = ((header->version << 12) | (header->headerLength << 8) | (header->dscp << 2) | (header->ecn))&0xffff; //Word 0
+    sum += header->totalLength; //Word 1
+    sum += header->identification; //Word 2
+    sum += ((header->flags << 13) | (header->fragmentOffset))&0xffff; //Word 3
+    sum += ((header->timeToLive << 8) | (header->protocol))&0xffff; //Word 4
+    //header checksum is zero for calculation
+    sum += ((header->source.address[1] | (header->source.address[0] << 8)))&0xffff; // Word 5
+    sum += ((header->source.address[3] | (header->source.address[2] << 8)))&0xffff; // Word 6
+    sum += ((header->destination.address[1] | (header->destination.address[0] << 8)))&0xffff; // Word 7
+    sum += ((header->destination.address[3] | (header->destination.address[2] << 8)))&0xffff; // Word 8
 
-    ip = ipv4_parseHeader(&headerField);
-    UARTTransmitText("[");
-    UARTTransmitText(ipAdressToString(ip.source));
-    UARTTransmitText(" -> ");
-    UARTTransmitText(ipAdressToString(ip.destination));
-    UARTTransmitText("][");
-    UARTTransmitText((ipProtocolToString(ip.protocol)));
-    UARTTransmitText("][");
-    UARTTransmitText(intToString(ip.totalLength));
-    UARTTransmitText("][");
-    UARTTransmitText(intToString(ip.version));
-    UARTTransmitText(", ");
-    UARTTransmitText(intToString(ip.headerLength));
-    UARTTransmitText("]");
-    if (!ipv4_checkHeaderChecksum(&ip))
-        UARTTransmitText("[INVALID CHECKSUM]");
+    sum = (sum & 0x0ffff)+((sum & 0xf0000) >> 16);
+    sum = ~sum; //invert all bits
 
-
-    ethernetController_dropPacket(frame);
+    header->checksum = sum;
 }
 
 ipv4_header_t static ipv4_parseHeader(memoryField_t *field) {
@@ -218,22 +198,102 @@ bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header) {
     return false;
 }
 
+/* =======================  Reception ======================= */
+
+void ipv4_handleNewPacket(ethernetFrame_t *frame) {
+    ipv4_header_t ip;
+    memoryField_t headerField;
+    if (frame->ethertype != ETHERTYPE_IPv4) {
+        ethernetController_dropPacket(frame);
+        return;
+    }
+    headerField = frame->memory;
+    headerField.start = frame->memory.start + 22; //skip NextPacketPointer (2 Bytes), RSV (6 Bytes), 2 MAC addresses (12 Bytes) and EtherType (2 Bytes)
+
+    ip = ipv4_parseHeader(&headerField);
+    UARTTransmitText("[");
+    UARTTransmitText(ipAdressToString(ip.source));
+    UARTTransmitText(" -> ");
+    UARTTransmitText(ipAdressToString(ip.destination));
+    UARTTransmitText("][");
+    UARTTransmitText((ipProtocolToString(ip.protocol)));
+    UARTTransmitText("][");
+    UARTTransmitText(intToString(ip.totalLength));
+    UARTTransmitText("][");
+    UARTTransmitText(intToString(ip.version));
+    UARTTransmitText(", ");
+    UARTTransmitText(intToString(ip.headerLength));
+    UARTTransmitText("]");
+    if (!ipv4_checkHeaderChecksum(&ip))
+        UARTTransmitText("[INVALID CHECKSUM]");
+}
+
 ipv4_address_t ipv4_getIPSourceAddress() {
     return ipSource;
 }
 
-error_t ipv4_setIPSourceAddress(ipv4_address_t ip) {
-    uint8_t index;
+ipv4_address_t ipv4_getPreliminaryIPSourceAddress() {
+    return ipPreliminarySource;
+}
+
+void ipv4_setIPSourceAddress(ipv4_address_t ip) {
+    UARTTransmitText("IPv4: Request for new IP source address (");
+    UARTTransmitText(ipAdressToString(ip));
+    UARTTransmitText(").\n\r");
+    ipPreliminarySource = ip;
+    fSrcAddrChanged = true; //used as an indicator when to check for collisions
+}
+
+/* =======================  Background work ======================= */
+
+error_t ipv4_background() {
     error_t err;
     err.module = ERROR_MODULE_IPv4;
-
-    ARP_probe(ip);
-
+    err.code = ERROR_CODE_SUCCESSFUL;
+    if ((*arpStatus).module == ERROR_MODULE_ARP && fSrcAddrChanged) {
+        switch ((*arpStatus).code) {
+            case ERROR_CODE_SUCCESSFUL:
+                err = (*arpStatus);
+                return err;
+            case ERROR_ARP_WAITING_FOR_REPLY:
+                err = (*arpStatus);
+                //UARTTransmitText("IPv4: ARP is waiting for reply.\n\r");
+                return err;
+            case ERROR_ARP_IPv4_ADDRESS_CONFLICT:
+                UARTTransmitText("IPv4: Address is already in use.\n\r");
+                fSrcAddrChanged = false;
+                UARTTransmitText("IPv4: Flag was reset because address change was unsuccessful.\n\r");
+                return err;
+            case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
+                err.code = ERROR_CODE_SUCCESSFUL;
+                UARTTransmitText("IPv4: ARP sent maximum number of requests.\n\r");
+                UARTTransmitText("IPv4: ARP returned success.\n\r");
+                UARTTransmitText("IPv4: Old IP Src Addr ");
+                UARTTransmitText(ipAdressToString(ipSource));
+                ipSource = ipPreliminarySource;
+                UARTTransmitText(" was set to the preliminary address (");
+                UARTTransmitText(ipAdressToString(ipSource));
+                UARTTransmitText(").\n\r");
+                fSrcAddrChanged = false;
+                UARTTransmitText("IPv4: Flag was reset because address change is complete.\n\r");
+                return err;
+            default:
+            case ERROR_ARP_UNKNOWN:
+                err = (*arpStatus);
+                UARTTransmitText("IPv4: ARP returned an unknown error.\n\r");
+                return err;
+        }
+    } else
+        err.code = ERROR_IPv4_UNKNOWN;
+    return err;
 }
 
-error_t ipv4_checkForConflicts(ipv4_address_t ip) {
-
+bool_t ipv4_SrcAddrChanged(error_t *err) {
+    arpStatus = err;
+    return fSrcAddrChanged;
 }
+
+/* ======================= Address operations  ======================= */
 
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t * b) {
     for (uint8_t i = 0; i < 4; i++) {
@@ -257,4 +317,7 @@ void ipv4_setToAllZero(ipv4_address_t * ip) {
     }
 }
 
-
+/* ======================= Init ======================= */
+void ipv4_init() {
+    fSrcAddrChanged = false;
+}

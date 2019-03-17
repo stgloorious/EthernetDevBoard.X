@@ -71,6 +71,3 @@ uint8_t static parseNumber(uint16_t numberToDisplay, uint8_t digit) {
         default: return 0;
     }
 }
-
-
-

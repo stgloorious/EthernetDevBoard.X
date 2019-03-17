@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 16. February 2019
+ * \ingroup ethernet
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -57,7 +58,7 @@ error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
  * \ingroup ethernet
  * \details This function figures out the memory start and end address of the packet that was received.
  * It then parses the Receive Status Vector and the EtherType field. From this, the appropriate function of 
- * the responsible upper laying protocol is called. (E.g. \ref ARP_handleNewPacket)
+ * the responsible upper laying protocol is called. (E.g. \ref arp_handleNewPacket)
  * \param [inout] *frame Received Packet
  * \return Error code
  */
@@ -66,4 +67,3 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
 
 
 #endif	/* ETHERNET_H */
-

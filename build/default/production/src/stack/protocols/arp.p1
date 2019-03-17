@@ -1,96 +1,100 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"47 src/stack/protocols/../protocols/../protocols/ipv4Types.h
+"60 src/stack/protocols/../protocols/../protocols/ipv4Types.h
 [s S12 `uc -> 4 `i ]
 [n S12 ipv4_address address ]
 "58 src/stack/protocols/../../eth/../eth/ethernetTypes.h
 [s S8 `uc -> 6 `i ]
 [n S8 macaddress address ]
-"99 src/stack/protocols/../../system/../stack/protocols/arpTypes.h
+"83 src/stack/protocols/../../system/../stack/protocols/arpTypes.h
 [s S620 `S12 1 `S8 1 `ul 1 ]
-[n S620 ARP_tableEntry ip mac timeCreated ]
-"31 src/stack/protocols/arp.c
-[c E222 2048 2054 2114 34824 .. ]
-[n E222 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
+[n S620 arp_tableEntry ip mac timeCreated ]
+"33 src/stack/protocols/arp.c
+[c E223 2048 2054 2114 34824 .. ]
+[n E223 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
 "35 src/stack/protocols/../../eth/../eth/../mem/memoryTypes.h
 [s S7 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S7 memoryField start end length fIsAssigned fOutOfMemory index ]
-"33 src/stack/protocols/../../eth/../eth/../enc424j600/rsv.h
+"34 src/stack/protocols/../../eth/../eth/../enc424j600/rsv.h
 [s S6 `ui 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S6 RSV length packetPreviouslyIgnored carrierEventPreviouslySeen CRCError lengthCheckError lengthOutOfRange receivedOk multicast broadcast dribbleNibble controlFrame pauseFrame unknownOpcode vlan runtFilter notMeFilter hashFilter magicFilter patternMatch unicast ]
-"83 src/stack/protocols/../../eth/../eth/ethernetTypes.h
-[s S9 `ui 1 `S8 1 `S8 1 `E222 1 `S7 1 `S6 1 `ul 1 ]
+"86 src/stack/protocols/../../eth/../eth/ethernetTypes.h
+[s S9 `ui 1 `S8 1 `S8 1 `E223 1 `S7 1 `S6 1 `ul 1 ]
 [n S9 ethernetFrame length source destination ethertype memory receiveStatusVector tReceived ]
-"32 src/stack/protocols/arp.c
+"34 src/stack/protocols/arp.c
 [c E151 0 1 2 3 4 .. ]
 [n E151 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
-"87 src/stack/protocols/../../eth/../stack/error.h
+"118 src/stack/protocols/../../eth/../stack/error.h
 [s S5 `E151 1 `ui 1 ]
 [n S5 error module code ]
-"55 src/stack/protocols/../../system/../stack/protocols/arpTypes.h
+"39 src/stack/protocols/../../system/../stack/protocols/arpTypes.h
 [s S619 `ui 1 `ui 1 `uc 1 `uc 1 `ui 1 `S8 1 `S12 1 `S8 1 `S12 1 :1 `uc 1 :1 `uc 1 `S5 1 ]
-[n S619 ARP_message htype ptype hlen plen operation senderMACAddress senderIPAddress targetMACAddress targetIPAddress fIsGratuitous fIsProbe err ]
-"226 src/stack/protocols/../../eth/ethernetController.h
+[n S619 arp_message htype ptype hlen plen operation senderMACAddress senderIPAddress targetMACAddress targetIPAddress fIsGratuitous fIsProbe err ]
+"232 src/stack/protocols/../../eth/ethernetController.h
 [v _ethernetController_dropPacket `(v ~T0 @X0 0 ef1`*S9 ]
 "63 src/stack/protocols/arp.h
-[v _ARP_parseFromRXBuffer `(S619 ~T0 @X0 0 sf1`*S9 ]
-"44 src/stack/protocols/../../system/uart.h
+[v _arp_parseFromRXBuffer `(S619 ~T0 @X0 0 sf1`*S9 ]
+"43 src/stack/protocols/../../system/uart.h
 [v _UARTTransmitText `(v ~T0 @X0 0 ef1`*Cuc ]
-"77
+"76
 [v _macToString `(*uc ~T0 @X0 0 ef1`S8 ]
-"98
+"97
 [v _ipAdressToString `(*uc ~T0 @X0 0 ef1`S12 ]
-"70 src/stack/protocols/arp.h
-[v _ARP_sendReply `(v ~T0 @X0 0 ef1`S619 ]
-"118
-[v _ARP_setNewEntry `(v ~T0 @X0 0 sf3`S8`S12`ul ]
-"42 src/stack/protocols/../../eth/../eth/../stack/time.h
+"69 src/stack/protocols/arp.h
+[v _arp_sendReply `(v ~T0 @X0 0 sf1`S619 ]
+"125
+[v _arp_setNewEntry `(v ~T0 @X0 0 sf3`S8`S12`ul ]
+"48 src/stack/protocols/../../eth/../eth/../stack/time.h
 [v _getMillis `(ul ~T0 @X0 0 ef ]
-"246 src/stack/protocols/../../eth/ethernetController.h
+"252 src/stack/protocols/../../eth/ethernetController.h
 [v _ethernetController_streamFromRXBuffer `(uc ~T0 @X0 0 ef2`uc`ui ]
-"127 src/stack/protocols/../protocols/ipv4.h
+"153 src/stack/protocols/../protocols/ipv4.h
 [v _ipv4_isAllZero `(b ~T0 @X0 0 ef1`*S12 ]
-"120
+"146
 [v _ipv4_cmp `(b ~T0 @X0 0 ef2`*S12`*S12 ]
 "70 src/stack/protocols/../../eth/mac.h
 [v _mac_isAllZero `(b ~T0 @X0 0 ef1`*S8 ]
-"105 src/stack/protocols/arp.c
-[c E5856 1 2 .. ]
-[n E5856 ARP_operation ARP_REQUEST ARP_REPLY  ]
+"104 src/stack/protocols/arp.c
+[c E5866 1 2 .. ]
+[n E5866 arp_operation ARP_REQUEST ARP_REPLY  ]
 "43 src/stack/protocols/../../eth/mac.h
 [v _mac_cmp `(b ~T0 @X0 0 ef2`*S8`*S8 ]
-"124 src/stack/protocols/arp.c
-[c E5860 1 .. ]
-[n E5860 ARP_htype ARP_HTYPE_ETHERNET  ]
-[c E5863 2048 .. ]
-[n E5863 ARP_ptype ARP_PTYPE_IPv4  ]
-"125
-[c E175 401 402 403 499 .. ]
-[n E175 errors_arp ERROR_ARP_WAITING_FOR_REPLY ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_UNKNOWN  ]
+"123 src/stack/protocols/arp.c
+[c E5870 1 .. ]
+[n E5870 arp_htype ARP_HTYPE_ETHERNET  ]
+[c E5873 2048 .. ]
+[n E5873 arp_ptype ARP_PTYPE_IPv4  ]
+"124
+[c E175 401 402 403 404 499 .. ]
+[n E175 errors_arp ERROR_ARP_WAITING_FOR_REPLY ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_IPv4_ADDRESS_CONFLICT ERROR_ARP_UNKNOWN  ]
 "49 src/stack/protocols/../../eth/mac.h
 [v _mac_setToBroadcast `(v ~T0 @X0 0 ef1`*S8 ]
-"260 src/stack/protocols/../../eth/ethernetController.h
+"266 src/stack/protocols/../../eth/ethernetController.h
 [v _ethernetController_getSourceMACAddress `(S8 ~T0 @X0 0 ef1`S7 ]
-"53 src/stack/protocols/../../eth/ethernet.h
+"54 src/stack/protocols/../../eth/ethernet.h
 [v _ethernet_txFrameRequest `(S5 ~T0 @X0 0 ef1`*S9 ]
-"70 src/stack/protocols/../../system/uart.h
-[v _hexToString `(*uc ~T0 @X0 0 ef1`ul ]
 "198 src/stack/protocols/../../eth/ethernetController.h
 [v _ethernetController_streamToTransmitBuffer `(v ~T0 @X0 0 ef2`uc`S7 ]
 "186
 [v _ethernetController_sendPacket `(v ~T0 @X0 0 ef1`S7 ]
-"297
+"303
 [v _ethernetController_getMacAddress `(S8 ~T0 @X0 0 ef ]
-"99 src/stack/protocols/../protocols/ipv4.h
+"100 src/stack/protocols/../protocols/ipv4.h
 [v _ipv4_getIPSourceAddress `(S12 ~T0 @X0 0 ef ]
 "62 src/stack/protocols/../../eth/mac.h
 [v _mac_setAllZero `(v ~T0 @X0 0 ef1`*S8 ]
-"133 src/stack/protocols/../protocols/ipv4.h
+"109 src/stack/protocols/arp.h
+[v _arp_checkForEntry `(uc ~T0 @X0 0 sf2`S12`*uc ]
+"159 src/stack/protocols/../protocols/ipv4.h
 [v _ipv4_setToAllZero `(v ~T0 @X0 0 ef1`*S12 ]
 "60 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
 [v _rand `(i ~T0 @X0 0 ef ]
-"63 src/stack/protocols/../../system/uart.h
+"62 src/stack/protocols/../../system/uart.h
 [v _intToString `(*uc ~T0 @X0 0 ef1`ul ]
-"105
+"105 src/stack/protocols/../protocols/ipv4.h
+[v _ipv4_getPreliminaryIPSourceAddress `(S12 ~T0 @X0 0 ef ]
+"126
+[v _ipv4_SrcAddrChanged `(b ~T0 @X0 0 ef1`*S5 ]
+"104 src/stack/protocols/../../system/uart.h
 [v _arpEntryToString `(*uc ~T0 @X0 0 ef1`S620 ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
@@ -172,71 +176,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;error.h: 38: typedef enum error_modules {
-[; ;error.h: 39: ERROR_MODULE_MEMORY,
-[; ;error.h: 40: ERROR_MODULE_ETHERNET_CONTROLLER,
-[; ;error.h: 41: ERROR_MODULE_ETHERNET,
-[; ;error.h: 42: ERROR_MODULE_ARP,
-[; ;error.h: 43: ERROR_MODULE_IPv4
-[; ;error.h: 44: } error_module_t;
-[; ;error.h: 46: enum module_offsets {
-[; ;error.h: 47: ERROR_MEMORY_OFFSET = 100,
-[; ;error.h: 48: ERROR_ETHERNET_OFFSET = 200,
-[; ;error.h: 49: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
-[; ;error.h: 50: ERROR_ARP_OFFSET = 400,
-[; ;error.h: 51: ERROR_IPv4_OFFSET = 500
-[; ;error.h: 52: };
-[; ;error.h: 54: enum errors_memory {
-[; ;error.h: 55: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
-[; ;error.h: 56: ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
-[; ;error.h: 57: };
-[; ;error.h: 59: enum error_ethernet {
-[; ;error.h: 60: ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
-[; ;error.h: 61: ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
+[; ;error.h: 45: typedef enum error_modules {
+[; ;error.h: 46: ERROR_MODULE_MEMORY,
+[; ;error.h: 47: ERROR_MODULE_ETHERNET_CONTROLLER,
+[; ;error.h: 48: ERROR_MODULE_ETHERNET,
+[; ;error.h: 49: ERROR_MODULE_ARP,
+[; ;error.h: 50: ERROR_MODULE_IPv4
+[; ;error.h: 51: } error_module_t;
+[; ;error.h: 56: enum module_offsets {
+[; ;error.h: 57: ERROR_MEMORY_OFFSET = 100,
+[; ;error.h: 58: ERROR_ETHERNET_OFFSET = 200,
+[; ;error.h: 59: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
+[; ;error.h: 60: ERROR_ARP_OFFSET = 400,
+[; ;error.h: 61: ERROR_IPv4_OFFSET = 500
 [; ;error.h: 62: };
-[; ;error.h: 64: enum errors_ethernetController {
-[; ;error.h: 66: ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
-[; ;error.h: 67: ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE = ERROR_ETHERNET_CONTROLLER_OFFSET + 2,
-[; ;error.h: 69: ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OFFSET + 3,
-[; ;error.h: 71: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
-[; ;error.h: 72: };
-[; ;error.h: 74: enum errors_arp {
-[; ;error.h: 75: ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
-[; ;error.h: 76: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 2,
-[; ;error.h: 77: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
-[; ;error.h: 78: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
-[; ;error.h: 79: };
-[; ;error.h: 81: enum errors_ipv4 {
-[; ;error.h: 82: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-[; ;error.h: 83: ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
-[; ;error.h: 84: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
-[; ;error.h: 85: };
-[; ;error.h: 87: typedef struct error {
-[; ;error.h: 88: error_module_t module;
-[; ;error.h: 89: uint16_t code;
-[; ;error.h: 90: } error_t;
-[; ;rsv.h: 33: typedef struct RSV {
-[; ;rsv.h: 39: uint16_t length;
-[; ;rsv.h: 40: uint8_t packetPreviouslyIgnored : 1;
-[; ;rsv.h: 47: uint8_t carrierEventPreviouslySeen : 1;
-[; ;rsv.h: 48: uint8_t CRCError : 1;
-[; ;rsv.h: 49: uint8_t lengthCheckError : 1;
-[; ;rsv.h: 50: uint8_t lengthOutOfRange : 1;
-[; ;rsv.h: 51: uint8_t receivedOk : 1;
-[; ;rsv.h: 52: uint8_t multicast : 1;
-[; ;rsv.h: 53: uint8_t broadcast : 1;
-[; ;rsv.h: 54: uint8_t dribbleNibble : 1;
-[; ;rsv.h: 55: uint8_t controlFrame : 1;
-[; ;rsv.h: 56: uint8_t pauseFrame : 1;
-[; ;rsv.h: 57: uint8_t unknownOpcode : 1;
-[; ;rsv.h: 58: uint8_t vlan : 1;
-[; ;rsv.h: 59: uint8_t runtFilter : 1;
-[; ;rsv.h: 60: uint8_t notMeFilter : 1;
-[; ;rsv.h: 61: uint8_t hashFilter : 1;
-[; ;rsv.h: 62: uint8_t magicFilter : 1;
-[; ;rsv.h: 63: uint8_t patternMatch : 1;
-[; ;rsv.h: 64: uint8_t unicast : 1;
-[; ;rsv.h: 65: } RSV_t;
+[; ;error.h: 67: enum errors_memory {
+[; ;error.h: 68: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
+[; ;error.h: 69: ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
+[; ;error.h: 70: };
+[; ;error.h: 75: enum error_ethernet {
+[; ;error.h: 76: ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
+[; ;error.h: 77: ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
+[; ;error.h: 78: };
+[; ;error.h: 83: enum errors_ethernetController {
+[; ;error.h: 85: ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
+[; ;error.h: 86: ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE = ERROR_ETHERNET_CONTROLLER_OFFSET + 2,
+[; ;error.h: 88: ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OFFSET + 3,
+[; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
+[; ;error.h: 91: };
+[; ;error.h: 96: enum errors_arp {
+[; ;error.h: 97: ERROR_ARP_WAITING_FOR_REPLY = ERROR_ARP_OFFSET + 1,
+[; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
+[; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
+[; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
+[; ;error.h: 101: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 102: };
+[; ;error.h: 107: enum errors_ipv4 {
+[; ;error.h: 108: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 109: ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
+[; ;error.h: 110: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 111: };
+[; ;error.h: 118: typedef struct error {
+[; ;error.h: 122: error_module_t module;
+[; ;error.h: 128: uint16_t code;
+[; ;error.h: 129: } error_t;
+[; ;rsv.h: 34: typedef struct RSV {
+[; ;rsv.h: 40: uint16_t length;
+[; ;rsv.h: 41: uint8_t packetPreviouslyIgnored : 1;
+[; ;rsv.h: 48: uint8_t carrierEventPreviouslySeen : 1;
+[; ;rsv.h: 49: uint8_t CRCError : 1;
+[; ;rsv.h: 50: uint8_t lengthCheckError : 1;
+[; ;rsv.h: 51: uint8_t lengthOutOfRange : 1;
+[; ;rsv.h: 52: uint8_t receivedOk : 1;
+[; ;rsv.h: 53: uint8_t multicast : 1;
+[; ;rsv.h: 54: uint8_t broadcast : 1;
+[; ;rsv.h: 55: uint8_t dribbleNibble : 1;
+[; ;rsv.h: 56: uint8_t controlFrame : 1;
+[; ;rsv.h: 57: uint8_t pauseFrame : 1;
+[; ;rsv.h: 58: uint8_t unknownOpcode : 1;
+[; ;rsv.h: 59: uint8_t vlan : 1;
+[; ;rsv.h: 60: uint8_t runtFilter : 1;
+[; ;rsv.h: 61: uint8_t notMeFilter : 1;
+[; ;rsv.h: 62: uint8_t hashFilter : 1;
+[; ;rsv.h: 63: uint8_t magicFilter : 1;
+[; ;rsv.h: 64: uint8_t patternMatch : 1;
+[; ;rsv.h: 65: uint8_t unicast : 1;
+[; ;rsv.h: 66: } RSV_t;
 [; ;bool.h: 32: typedef bit bool_t;
 [; ;memoryTypes.h: 35: typedef struct memoryField {
 [; ;memoryTypes.h: 42: uint16_t start;
@@ -246,9 +251,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memoryTypes.h: 46: uint8_t fOutOfMemory;
 [; ;memoryTypes.h: 51: uint8_t index;
 [; ;memoryTypes.h: 52: } memoryField_t;
-[; ;time.h: 30: typedef uint32_t time_t;
-[; ;time.h: 36: void updateTime();
-[; ;time.h: 42: time_t getMillis();
+[; ;time.h: 36: typedef uint32_t time_t;
+[; ;time.h: 42: void updateTime();
+[; ;time.h: 48: time_t getMillis();
 [; ;ethernetTypes.h: 49: typedef enum etherTypes {
 [; ;ethernetTypes.h: 50: ETHERTYPE_IPv4 = 0x0800,
 [; ;ethernetTypes.h: 51: ETHERTYPE_ARP = 0x0806,
@@ -259,54 +264,57 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 59: uint8_t address[6];
 [; ;ethernetTypes.h: 60: } macaddress_t;
 [; ;ethernetTypes.h: 64: typedef enum linkStates {
-[; ;ethernetTypes.h: 65: NO_LINK, LINK_ESTABLISHED
-[; ;ethernetTypes.h: 66: } linkState_t;
-[; ;ethernetTypes.h: 70: typedef enum speeds {
-[; ;ethernetTypes.h: 71: TEN_MBIT, HUNDRED_MBIT
-[; ;ethernetTypes.h: 72: } speed_t;
-[; ;ethernetTypes.h: 76: typedef enum duplexStates {
-[; ;ethernetTypes.h: 77: HALF_DUPLEX, FULL_DUPLEX
-[; ;ethernetTypes.h: 78: } duplexState_t;
-[; ;ethernetTypes.h: 83: typedef struct ethernetFrame {
-[; ;ethernetTypes.h: 84: uint16_t length;
-[; ;ethernetTypes.h: 85: macaddress_t source;
-[; ;ethernetTypes.h: 86: macaddress_t destination;
-[; ;ethernetTypes.h: 87: etherType_t ethertype;
-[; ;ethernetTypes.h: 88: memoryField_t memory;
-[; ;ethernetTypes.h: 92: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 96: time_t tReceived;
-[; ;ethernetTypes.h: 97: } ethernetFrame_t;
-[; ;ethernetTypes.h: 102: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 103: linkState_t link;
-[; ;ethernetTypes.h: 104: speed_t speed;
-[; ;ethernetTypes.h: 105: duplexState_t duplex;
-[; ;ethernetTypes.h: 106: macaddress_t source;
-[; ;ethernetTypes.h: 107: macaddress_t destination;
-[; ;ethernetTypes.h: 108: } ethernetConnection_t;
-[; ;interrupt.h: 34: typedef struct interruptFlags {
-[; ;interrupt.h: 35: uint8_t MODEXIF : 1;
-[; ;interrupt.h: 36: uint8_t HASHIF : 1;
-[; ;interrupt.h: 37: uint8_t AESIF : 1;
-[; ;interrupt.h: 38: uint8_t LINKIF : 1;
-[; ;interrupt.h: 40: uint8_t PKTIF : 1;
-[; ;interrupt.h: 41: uint8_t DMAIF : 1;
-[; ;interrupt.h: 43: uint8_t TXIF : 1;
-[; ;interrupt.h: 44: uint8_t TXABTIF : 1;
-[; ;interrupt.h: 45: uint8_t RXABTIF : 1;
-[; ;interrupt.h: 46: uint8_t PCFULIF : 1;
-[; ;interrupt.h: 47: } interruptFlags_t;
-[; ;interrupt.h: 56: typedef enum interruptFlagsNames {
-[; ;interrupt.h: 57: PCFULIF = 0,
-[; ;interrupt.h: 58: RXABTIF = 1,
-[; ;interrupt.h: 59: TXABTIF = 2,
-[; ;interrupt.h: 60: TXDIF = 3,
-[; ;interrupt.h: 61: DMAIF = 5,
-[; ;interrupt.h: 62: PKTIF = 6,
-[; ;interrupt.h: 63: LINKIF = 11,
-[; ;interrupt.h: 64: AESIF = 12,
-[; ;interrupt.h: 65: HASHIF = 13,
-[; ;interrupt.h: 66: MODEXIF = 14
-[; ;interrupt.h: 67: } interruptFlagName_t;
+[; ;ethernetTypes.h: 65: NO_LINK,
+[; ;ethernetTypes.h: 66: LINK_ESTABLISHED
+[; ;ethernetTypes.h: 67: } linkState_t;
+[; ;ethernetTypes.h: 71: typedef enum speeds {
+[; ;ethernetTypes.h: 72: TEN_MBIT,
+[; ;ethernetTypes.h: 73: HUNDRED_MBIT
+[; ;ethernetTypes.h: 74: } speed_t;
+[; ;ethernetTypes.h: 78: typedef enum duplexStates {
+[; ;ethernetTypes.h: 79: HALF_DUPLEX,
+[; ;ethernetTypes.h: 80: FULL_DUPLEX
+[; ;ethernetTypes.h: 81: } duplexState_t;
+[; ;ethernetTypes.h: 86: typedef struct ethernetFrame {
+[; ;ethernetTypes.h: 87: uint16_t length;
+[; ;ethernetTypes.h: 88: macaddress_t source;
+[; ;ethernetTypes.h: 89: macaddress_t destination;
+[; ;ethernetTypes.h: 90: etherType_t ethertype;
+[; ;ethernetTypes.h: 91: memoryField_t memory;
+[; ;ethernetTypes.h: 96: RSV_t receiveStatusVector;
+[; ;ethernetTypes.h: 100: time_t tReceived;
+[; ;ethernetTypes.h: 101: } ethernetFrame_t;
+[; ;ethernetTypes.h: 106: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 107: linkState_t link;
+[; ;ethernetTypes.h: 108: speed_t speed;
+[; ;ethernetTypes.h: 109: duplexState_t duplex;
+[; ;ethernetTypes.h: 110: macaddress_t source;
+[; ;ethernetTypes.h: 111: macaddress_t destination;
+[; ;ethernetTypes.h: 112: } ethernetConnection_t;
+[; ;interrupt.h: 35: typedef struct interruptFlags {
+[; ;interrupt.h: 36: uint8_t MODEXIF : 1;
+[; ;interrupt.h: 37: uint8_t HASHIF : 1;
+[; ;interrupt.h: 38: uint8_t AESIF : 1;
+[; ;interrupt.h: 39: uint8_t LINKIF : 1;
+[; ;interrupt.h: 41: uint8_t PKTIF : 1;
+[; ;interrupt.h: 42: uint8_t DMAIF : 1;
+[; ;interrupt.h: 44: uint8_t TXIF : 1;
+[; ;interrupt.h: 45: uint8_t TXABTIF : 1;
+[; ;interrupt.h: 46: uint8_t RXABTIF : 1;
+[; ;interrupt.h: 47: uint8_t PCFULIF : 1;
+[; ;interrupt.h: 48: } interruptFlags_t;
+[; ;interrupt.h: 57: typedef enum interruptFlagsNames {
+[; ;interrupt.h: 58: PCFULIF = 0,
+[; ;interrupt.h: 59: RXABTIF = 1,
+[; ;interrupt.h: 60: TXABTIF = 2,
+[; ;interrupt.h: 61: TXDIF = 3,
+[; ;interrupt.h: 62: DMAIF = 5,
+[; ;interrupt.h: 63: PKTIF = 6,
+[; ;interrupt.h: 64: LINKIF = 11,
+[; ;interrupt.h: 65: AESIF = 12,
+[; ;interrupt.h: 66: HASHIF = 13,
+[; ;interrupt.h: 67: MODEXIF = 14
+[; ;interrupt.h: 68: } interruptFlagName_t;
 [; ;ethernetController.h: 52: typedef enum LEDs {
 [; ;ethernetController.h: 53: LEDA, LEDB
 [; ;ethernetController.h: 54: } LEDs_t;
@@ -332,21 +340,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetController.h: 172: void ethernetController_clearInterruptFlag(uint8_t flag);
 [; ;ethernetController.h: 186: void ethernetController_sendPacket(memoryField_t field);
 [; ;ethernetController.h: 198: void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
-[; ;ethernetController.h: 204: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
-[; ;ethernetController.h: 210: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
-[; ;ethernetController.h: 226: void ethernetController_dropPacket(ethernetFrame_t *frame);
-[; ;ethernetController.h: 232: void ethernetController_updateNextPacketPointer();
-[; ;ethernetController.h: 246: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
-[; ;ethernetController.h: 253: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
-[; ;ethernetController.h: 260: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
-[; ;ethernetController.h: 267: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
-[; ;ethernetController.h: 273: RSV_t ethernetController_getRSV(uint16_t address);
-[; ;ethernetController.h: 279: uint8_t ethernetController_newPacketAvailable();
-[; ;ethernetController.h: 285: uint8_t ethernetController_getCurrentPacketCount();
-[; ;ethernetController.h: 291: uint16_t ethernetController_getNextPacketPointer();
-[; ;ethernetController.h: 297: macaddress_t ethernetController_getMacAddress();
-[; ;ethernetController.h: 303: void ethernetController_setMacAddress(macaddress_t mac);
-[; ;ethernetController.h: 324: void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
+[; ;ethernetController.h: 205: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
+[; ;ethernetController.h: 212: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
+[; ;ethernetController.h: 232: void ethernetController_dropPacket(ethernetFrame_t *frame);
+[; ;ethernetController.h: 238: void ethernetController_updateNextPacketPointer();
+[; ;ethernetController.h: 252: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
+[; ;ethernetController.h: 259: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
+[; ;ethernetController.h: 266: macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
+[; ;ethernetController.h: 273: etherType_t ethernetController_getEtherTypeField(memoryField_t field);
+[; ;ethernetController.h: 279: RSV_t ethernetController_getRSV(uint16_t address);
+[; ;ethernetController.h: 285: uint8_t ethernetController_newPacketAvailable();
+[; ;ethernetController.h: 291: uint8_t ethernetController_getCurrentPacketCount();
+[; ;ethernetController.h: 297: uint16_t ethernetController_getNextPacketPointer();
+[; ;ethernetController.h: 303: macaddress_t ethernetController_getMacAddress();
+[; ;ethernetController.h: 309: void ethernetController_setMacAddress(macaddress_t mac);
+[; ;ethernetController.h: 325: void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 [; ;mac.h: 43: bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 [; ;mac.h: 49: void mac_setToBroadcast(macaddress_t *mac);
 [; ;mac.h: 56: bool_t mac_isBroadcast(macaddress_t *mac);
@@ -357,63 +365,70 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
 [; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17
 [; ;ipv4Types.h: 45: } ipv4_protocol_t;
-[; ;ipv4Types.h: 47: typedef struct ipv4_address {
-[; ;ipv4Types.h: 48: uint8_t address[4];
-[; ;ipv4Types.h: 49: } ipv4_address_t;
-[; ;ipv4Types.h: 51: typedef struct ipv4_header {
-[; ;ipv4Types.h: 56: uint8_t version;
-[; ;ipv4Types.h: 57: uint8_t headerLength;
-[; ;ipv4Types.h: 64: uint8_t dscp;
-[; ;ipv4Types.h: 65: uint8_t ecn;
-[; ;ipv4Types.h: 72: uint16_t totalLength;
-[; ;ipv4Types.h: 79: uint16_t identification;
-[; ;ipv4Types.h: 86: uint8_t flags;
-[; ;ipv4Types.h: 87: uint16_t fragmentOffset;
-[; ;ipv4Types.h: 94: uint8_t timeToLive;
-[; ;ipv4Types.h: 101: ipv4_protocol_t protocol;
-[; ;ipv4Types.h: 108: uint16_t checksum;
-[; ;ipv4Types.h: 115: ipv4_address_t source;
-[; ;ipv4Types.h: 122: ipv4_address_t destination;
-[; ;ipv4Types.h: 125: } ipv4_header_t;
-[; ;ipv4Types.h: 127: typedef struct ipv4_packet {
-[; ;ipv4Types.h: 131: ipv4_header_t ipv4Header;
-[; ;ipv4Types.h: 135: memoryField_t memory;
-[; ;ipv4Types.h: 139: ethernetFrame_t ethernet;
-[; ;ipv4Types.h: 140: } ipv4_packet_t;
-"142 src/stack/protocols/../protocols/../protocols/ipv4Types.h
+[; ;ipv4Types.h: 60: typedef struct ipv4_address {
+[; ;ipv4Types.h: 61: uint8_t address[4];
+[; ;ipv4Types.h: 62: } ipv4_address_t;
+[; ;ipv4Types.h: 67: typedef struct ipv4_header {
+[; ;ipv4Types.h: 72: uint8_t version;
+[; ;ipv4Types.h: 73: uint8_t headerLength;
+[; ;ipv4Types.h: 80: uint8_t dscp;
+[; ;ipv4Types.h: 81: uint8_t ecn;
+[; ;ipv4Types.h: 88: uint16_t totalLength;
+[; ;ipv4Types.h: 95: uint16_t identification;
+[; ;ipv4Types.h: 102: uint8_t flags;
+[; ;ipv4Types.h: 103: uint16_t fragmentOffset;
+[; ;ipv4Types.h: 110: uint8_t timeToLive;
+[; ;ipv4Types.h: 117: ipv4_protocol_t protocol;
+[; ;ipv4Types.h: 124: uint16_t checksum;
+[; ;ipv4Types.h: 131: ipv4_address_t source;
+[; ;ipv4Types.h: 138: ipv4_address_t destination;
+[; ;ipv4Types.h: 141: } ipv4_header_t;
+[; ;ipv4Types.h: 146: typedef struct ipv4_packet {
+[; ;ipv4Types.h: 150: ipv4_header_t ipv4Header;
+[; ;ipv4Types.h: 154: memoryField_t memory;
+[; ;ipv4Types.h: 158: ethernetFrame_t ethernet;
+[; ;ipv4Types.h: 159: } ipv4_packet_t;
+"161 src/stack/protocols/../protocols/../protocols/ipv4Types.h
 [v _ipSource `S12 ~T0 @X0 1 e ]
-[; ;ipv4Types.h: 142: ipv4_address_t ipSource;
+[; ;ipv4Types.h: 161: ipv4_address_t ipSource;
 [; ;backgroundTasksTypes.h: 37: typedef struct backgroundTaskHandler {
 [; ;backgroundTasksTypes.h: 41: error_t err;
 [; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
 [; ;backgroundTasksTypes.h: 52: uint8_t fPacketPending;
-[; ;backgroundTasksTypes.h: 54: uint8_t fSetSourceAddr;
-[; ;backgroundTasksTypes.h: 57: } backgroundTaskHandler_t;
-[; ;stack.h: 41: typedef struct stack {
-[; ;stack.h: 42: ethernetConnection_t ethernet;
-[; ;stack.h: 43: backgroundTaskHandler_t volatile background;
-[; ;stack.h: 44: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 45: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 46: } stack_t;
-[; ;ipv4.h: 45: void ipv4_txFrameRequest(ipv4_packet_t *packet);
-[; ;ipv4.h: 50: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
-[; ;ipv4.h: 57: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
-[; ;ipv4.h: 65: void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
-[; ;ipv4.h: 72: void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
-[; ;ipv4.h: 79: error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
-[; ;ipv4.h: 86: void ipv4_handleNewPacket(ethernetFrame_t *frame);
-[; ;ipv4.h: 93: ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
-[; ;ipv4.h: 99: ipv4_address_t ipv4_getIPSourceAddress();
-[; ;ipv4.h: 105: error_t ipv4_setIPSourceAddress(ipv4_address_t ip);
-[; ;ipv4.h: 120: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
-[; ;ipv4.h: 127: bool_t ipv4_isAllZero(ipv4_address_t *ip);
-[; ;ipv4.h: 133: void ipv4_setToAllZero(ipv4_address_t *ip);
-[; ;memoryController.h: 61: memoryField_t memory_txFrameRequest(uint16_t length);
-[; ;memoryController.h: 67: void memory_txFrameClear(uint8_t index);
-[; ;memoryController.h: 75: uint8_t static checkForOverlap(memoryField_t a, memoryField_t b);
-[; ;memoryController.h: 84: uint8_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b);
-[; ;ethernet.h: 53: error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
-[; ;ethernet.h: 64: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
+[; ;backgroundTasksTypes.h: 53: } backgroundTaskHandler_t;
+[; ;stack.h: 42: typedef struct stack {
+[; ;stack.h: 43: ethernetConnection_t ethernet;
+[; ;stack.h: 44: backgroundTaskHandler_t volatile background;
+[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 46: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 47: } stack_t;
+[; ;stack.h: 54: error_t stack_init();
+[; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
+[; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
+[; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
+[; ;ipv4.h: 66: void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
+[; ;ipv4.h: 73: void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
+[; ;ipv4.h: 80: error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
+[; ;ipv4.h: 87: void ipv4_handleNewPacket(ethernetFrame_t *frame);
+[; ;ipv4.h: 94: ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
+[; ;ipv4.h: 100: ipv4_address_t ipv4_getIPSourceAddress();
+[; ;ipv4.h: 105: ipv4_address_t ipv4_getPreliminaryIPSourceAddress();
+[; ;ipv4.h: 111: void ipv4_setIPSourceAddress(ipv4_address_t ip);
+[; ;ipv4.h: 118: error_t ipv4_background();
+[; ;ipv4.h: 126: bool_t ipv4_SrcAddrChanged(error_t *err);
+[; ;ipv4.h: 131: void ipv4_init();
+[; ;ipv4.h: 146: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
+[; ;ipv4.h: 153: bool_t ipv4_isAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
+[; ;memoryController.h: 62: memoryField_t memory_txFrameRequest(uint16_t length);
+[; ;memoryController.h: 68: void memory_txFrameClear(uint8_t index);
+[; ;memoryController.h: 76: bool_t static checkForOverlap(memoryField_t a, memoryField_t b);
+[; ;memoryController.h: 85: bool_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b);
+[; ;memoryController.h: 91: bool_t static entireMemoryEmpty();
+[; ;memoryController.h: 97: bool_t static entireMemoryFull();
+[; ;memoryController.h: 104: bool_t static isOnlyOneAssigned(uint8_t index);
+[; ;ethernet.h: 54: error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
+[; ;ethernet.h: 65: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;pic18f25k50.h: 50: extern volatile unsigned char SRCON1 @ 0xF57;
@@ -5411,1032 +5426,1238 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;arpTypes.h: 55: typedef struct ARP_message {
-[; ;arpTypes.h: 56: uint16_t htype;
-[; ;arpTypes.h: 57: uint16_t ptype;
-[; ;arpTypes.h: 58: uint8_t hlen;
-[; ;arpTypes.h: 59: uint8_t plen;
-[; ;arpTypes.h: 60: uint16_t operation;
-[; ;arpTypes.h: 61: macaddress_t senderMACAddress;
-[; ;arpTypes.h: 62: ipv4_address_t senderIPAddress;
-[; ;arpTypes.h: 63: macaddress_t targetMACAddress;
-[; ;arpTypes.h: 64: ipv4_address_t targetIPAddress;
-[; ;arpTypes.h: 65: uint8_t fIsGratuitous : 1;
-[; ;arpTypes.h: 66: uint8_t fIsProbe : 1;
-[; ;arpTypes.h: 67: error_t err;
-[; ;arpTypes.h: 68: } ARP_message_t;
-[; ;arpTypes.h: 74: typedef enum ARP_operation {
-[; ;arpTypes.h: 75: ARP_REQUEST = 1,
-[; ;arpTypes.h: 76: ARP_REPLY = 2
-[; ;arpTypes.h: 77: } ARP_operation_t;
-[; ;arpTypes.h: 83: typedef enum ARP_htype {
-[; ;arpTypes.h: 84: ARP_HTYPE_ETHERNET = 1
-[; ;arpTypes.h: 85: } ARP_htype_t;
-[; ;arpTypes.h: 91: typedef enum ARP_ptype {
-[; ;arpTypes.h: 92: ARP_PTYPE_IPv4 = 0x0800
-[; ;arpTypes.h: 93: } ARP_ptype_t;
-[; ;arpTypes.h: 99: typedef struct ARP_tableEntry {
-[; ;arpTypes.h: 100: ipv4_address_t ip;
-[; ;arpTypes.h: 101: macaddress_t mac;
-[; ;arpTypes.h: 102: time_t timeCreated;
-[; ;arpTypes.h: 103: } ARP_tableEntry_t;
-[; ;uart.h: 38: void UARTInit(void);
-[; ;uart.h: 44: void UARTTransmitText(const char *str);
-[; ;uart.h: 50: void DEBUG_MSG(char *text);
-[; ;uart.h: 56: void UARTTransmitInt(uint32_t val);
-[; ;uart.h: 63: char *intToString(uint32_t val);
-[; ;uart.h: 70: char *hexToString(uint32_t val);
-[; ;uart.h: 77: char *macToString(macaddress_t addr);
-[; ;uart.h: 84: char *etherTypeToString(etherType_t ethertype);
-[; ;uart.h: 91: char *ipProtocolToString(ipv4_protocol_t protocol);
-[; ;uart.h: 98: char *ipAdressToString(ipv4_address_t ip);
-[; ;uart.h: 105: char *arpEntryToString(ARP_tableEntry_t table);
-[; ;arp.h: 47: void ARP_initTable();
-[; ;arp.h: 55: void ARP_handleNewPacket(ethernetFrame_t *frame);
-[; ;arp.h: 63: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame);
-[; ;arp.h: 70: void ARP_sendReply(ARP_message_t request);
-[; ;arp.h: 77: void static ARP_send(ARP_message_t arp);
-[; ;arp.h: 85: void ARP_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
-[; ;arp.h: 92: error_t ARP_probe (ipv4_address_t ipTarget);
-[; ;arp.h: 101: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index);
-[; ;arp.h: 109: macaddress_t ARP_getEntryFromTable(uint8_t index);
-[; ;arp.h: 118: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 125: void printArpTable();
-"27 src/stack/protocols/arp.c
-[v _ARP_table `S620 ~T0 @X0 -> 8 `i s ]
-[; ;arp.c: 27: ARP_tableEntry_t static ARP_table [8];
-"31
-[v _ARP_handleNewPacket `(v ~T0 @X0 1 ef1`*S9 ]
+[; ;arpTypes.h: 39: typedef struct arp_message {
+[; ;arpTypes.h: 40: uint16_t htype;
+[; ;arpTypes.h: 41: uint16_t ptype;
+[; ;arpTypes.h: 42: uint8_t hlen;
+[; ;arpTypes.h: 43: uint8_t plen;
+[; ;arpTypes.h: 44: uint16_t operation;
+[; ;arpTypes.h: 45: macaddress_t senderMACAddress;
+[; ;arpTypes.h: 46: ipv4_address_t senderIPAddress;
+[; ;arpTypes.h: 47: macaddress_t targetMACAddress;
+[; ;arpTypes.h: 48: ipv4_address_t targetIPAddress;
+[; ;arpTypes.h: 49: uint8_t fIsGratuitous : 1;
+[; ;arpTypes.h: 50: uint8_t fIsProbe : 1;
+[; ;arpTypes.h: 51: error_t err;
+[; ;arpTypes.h: 52: } arp_message_t;
+[; ;arpTypes.h: 58: typedef enum arp_operation {
+[; ;arpTypes.h: 59: ARP_REQUEST = 1,
+[; ;arpTypes.h: 60: ARP_REPLY = 2
+[; ;arpTypes.h: 61: } arp_operation_t;
+[; ;arpTypes.h: 67: typedef enum arp_htype {
+[; ;arpTypes.h: 68: ARP_HTYPE_ETHERNET = 1
+[; ;arpTypes.h: 69: } arp_htype_t;
+[; ;arpTypes.h: 75: typedef enum arp_ptype {
+[; ;arpTypes.h: 76: ARP_PTYPE_IPv4 = 0x0800
+[; ;arpTypes.h: 77: } arp_ptype_t;
+[; ;arpTypes.h: 83: typedef struct arp_tableEntry {
+[; ;arpTypes.h: 84: ipv4_address_t ip;
+[; ;arpTypes.h: 85: macaddress_t mac;
+[; ;arpTypes.h: 86: time_t timeCreated;
+[; ;arpTypes.h: 87: } arp_tableEntry_t;
+[; ;uart.h: 37: void UARTInit(void);
+[; ;uart.h: 43: void UARTTransmitText(const char *str);
+[; ;uart.h: 49: void DEBUG_MSG(char *text);
+[; ;uart.h: 55: void UARTTransmitInt(uint32_t val);
+[; ;uart.h: 62: char *intToString(uint32_t val);
+[; ;uart.h: 69: char *hexToString(uint32_t val);
+[; ;uart.h: 76: char *macToString(macaddress_t addr);
+[; ;uart.h: 83: char *etherTypeToString(etherType_t ethertype);
+[; ;uart.h: 90: char *ipProtocolToString(ipv4_protocol_t protocol);
+[; ;uart.h: 97: char *ipAdressToString(ipv4_address_t ip);
+[; ;uart.h: 104: char *arpEntryToString(arp_tableEntry_t table);
+[; ;arp.h: 49: void arp_init();
+[; ;arp.h: 56: void arp_handleNewPacket(ethernetFrame_t *frame);
+[; ;arp.h: 63: arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame);
+[; ;arp.h: 69: void static arp_sendReply(arp_message_t request);
+[; ;arp.h: 75: void static arp_send(arp_message_t arp);
+[; ;arp.h: 82: void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+[; ;arp.h: 94: error_t static arp_probe (ipv4_address_t ipTarget);
+[; ;arp.h: 101: error_t arp_background();
+[; ;arp.h: 109: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+[; ;arp.h: 117: macaddress_t static arp_getEntryFromTable(uint8_t index);
+[; ;arp.h: 125: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 131: void printArpTable();
+"29 src/stack/protocols/arp.c
+[v _arp_table `S620 ~T0 @X0 -> 8 `ui s ]
+[; ;arp.c: 29: arp_tableEntry_t static arp_table [8u];
+"33
+[v _arp_handleNewPacket `(v ~T0 @X0 1 ef1`*S9 ]
 {
-[; ;arp.c: 31: void ARP_handleNewPacket(ethernetFrame_t *frame) {
-[e :U _ARP_handleNewPacket ]
+[; ;arp.c: 33: void arp_handleNewPacket(ethernetFrame_t *frame) {
+[e :U _arp_handleNewPacket ]
 [v _frame `*S9 ~T0 @X0 1 r1 ]
 [f ]
-"32
-[v _arp `S619 ~T0 @X0 1 a ]
-[; ;arp.c: 32: ARP_message_t arp;
-[; ;arp.c: 33: if (frame->ethertype != ETHERTYPE_ARP) {
-"33
-[e $ ! != -> . *U _frame 3 `i -> . `E222 1 `i 622  ]
-{
-[; ;arp.c: 34: ethernetController_dropPacket(frame);
 "34
-[e ( _ethernetController_dropPacket (1 _frame ]
-[; ;arp.c: 35: return;
+[v _arp `S619 ~T0 @X0 1 a ]
+[; ;arp.c: 34: arp_message_t arp;
+[; ;arp.c: 35: if (frame->ethertype != ETHERTYPE_ARP) {
 "35
-[e $UE 621  ]
+[e $ ! != -> . *U _frame 3 `i -> . `E223 1 `i 622  ]
+{
+[; ;arp.c: 36: ethernetController_dropPacket(frame);
 "36
+[e ( _ethernetController_dropPacket (1 _frame ]
+[; ;arp.c: 37: return;
+"37
+[e $UE 621  ]
+"38
 }
 [e :U 622 ]
-[; ;arp.c: 36: }
-[; ;arp.c: 38: arp = ARP_parseFromRXBuffer(frame);
-"38
-[e = _arp ( _ARP_parseFromRXBuffer (1 _frame ]
-[; ;arp.c: 39: if (arp.err.code != (uint16_t)0) {
-"39
+[; ;arp.c: 38: }
+[; ;arp.c: 40: arp = arp_parseFromRXBuffer(frame);
+"40
+[e = _arp ( _arp_parseFromRXBuffer (1 _frame ]
+[; ;arp.c: 41: if (arp.err.code != (uint16_t)0) {
+"41
 [e $ ! != . . _arp 11 1 -> -> 0 `i `ui 623  ]
 {
-[; ;arp.c: 40: ethernetController_dropPacket(frame);
-"40
-[e ( _ethernetController_dropPacket (1 _frame ]
-[; ;arp.c: 41: UARTTransmitText("[Invalid ARP Message was discarded.]\r\n");
-"41
-[e ( _UARTTransmitText (1 :s 1C ]
-[; ;arp.c: 42: return;
+[; ;arp.c: 42: ethernetController_dropPacket(frame);
 "42
-[e $UE 621  ]
+[e ( _ethernetController_dropPacket (1 _frame ]
+[; ;arp.c: 43: UARTTransmitText("[Invalid ARP Message was discarded.]\r\n");
 "43
+[e ( _UARTTransmitText (1 :s 1C ]
+[; ;arp.c: 44: return;
+"44
+[e $UE 621  ]
+"45
 }
 [e :U 623 ]
-[; ;arp.c: 43: }
-[; ;arp.c: 44: UARTTransmitText("[");
-"44
-[e ( _UARTTransmitText (1 :s 2C ]
-[; ;arp.c: 45: UARTTransmitText(macToString(arp.senderMACAddress));
-"45
-[e ( _UARTTransmitText (1 -> ( _macToString (1 . _arp 5 `*Cuc ]
-[; ;arp.c: 46: UARTTransmitText(", ");
+[; ;arp.c: 45: }
+[; ;arp.c: 46: UARTTransmitText("[");
 "46
-[e ( _UARTTransmitText (1 :s 3C ]
-[; ;arp.c: 47: UARTTransmitText(ipAdressToString(arp.senderIPAddress));
+[e ( _UARTTransmitText (1 :s 2C ]
+[; ;arp.c: 47: UARTTransmitText(macToString(arp.senderMACAddress));
 "47
-[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . _arp 6 `*Cuc ]
-[; ;arp.c: 48: UARTTransmitText("]->[");
+[e ( _UARTTransmitText (1 -> ( _macToString (1 . _arp 5 `*Cuc ]
+[; ;arp.c: 48: UARTTransmitText(", ");
 "48
-[e ( _UARTTransmitText (1 :s 4C ]
-[; ;arp.c: 49: UARTTransmitText(macToString(arp.targetMACAddress));
+[e ( _UARTTransmitText (1 :s 3C ]
+[; ;arp.c: 49: UARTTransmitText(ipAdressToString(arp.senderIPAddress));
 "49
-[e ( _UARTTransmitText (1 -> ( _macToString (1 . _arp 7 `*Cuc ]
-[; ;arp.c: 50: UARTTransmitText(", ");
+[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . _arp 6 `*Cuc ]
+[; ;arp.c: 50: UARTTransmitText("]->[");
 "50
-[e ( _UARTTransmitText (1 :s 5C ]
-[; ;arp.c: 51: UARTTransmitText(ipAdressToString(arp.targetIPAddress));
+[e ( _UARTTransmitText (1 :s 4C ]
+[; ;arp.c: 51: UARTTransmitText(macToString(arp.targetMACAddress));
 "51
-[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . _arp 8 `*Cuc ]
-[; ;arp.c: 52: UARTTransmitText("]");
+[e ( _UARTTransmitText (1 -> ( _macToString (1 . _arp 7 `*Cuc ]
+[; ;arp.c: 52: UARTTransmitText(", ");
 "52
-[e ( _UARTTransmitText (1 :s 6C ]
-[; ;arp.c: 53: if (arp.fIsProbe)
+[e ( _UARTTransmitText (1 :s 5C ]
+[; ;arp.c: 53: UARTTransmitText(ipAdressToString(arp.targetIPAddress));
 "53
-[e $ ! != -> . _arp 10 `i -> -> -> 0 `i `uc `i 624  ]
-[; ;arp.c: 54: UARTTransmitText("[IsProbe]");
+[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . _arp 8 `*Cuc ]
+[; ;arp.c: 54: UARTTransmitText("]");
 "54
+[e ( _UARTTransmitText (1 :s 6C ]
+[; ;arp.c: 55: if (arp.fIsProbe)
+"55
+[e $ ! != -> . _arp 10 `i -> -> -> 0 `i `uc `i 624  ]
+[; ;arp.c: 56: UARTTransmitText("[IsProbe]");
+"56
 [e ( _UARTTransmitText (1 :s 7C ]
 [e :U 624 ]
-[; ;arp.c: 55: if (arp.fIsGratuitous)
-"55
+[; ;arp.c: 57: if (arp.fIsGratuitous)
+"57
 [e $ ! != -> . _arp 9 `i -> -> -> 0 `i `uc `i 625  ]
-[; ;arp.c: 56: UARTTransmitText("[IsGratuitous]");
-"56
+[; ;arp.c: 58: UARTTransmitText("[IsGratuitous]");
+"58
 [e ( _UARTTransmitText (1 :s 8C ]
 [e :U 625 ]
-[; ;arp.c: 58: ARP_sendReply(arp);
-"58
-[e ( _ARP_sendReply (1 _arp ]
-[; ;arp.c: 59: ARP_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
-"59
-[e ( _ARP_setNewEntry (3 , , . _arp 5 . _arp 6 ( _getMillis ..  ]
-[; ;arp.c: 63: }
-"63
+[; ;arp.c: 60: arp_sendReply(arp);
+"60
+[e ( _arp_sendReply (1 _arp ]
+[; ;arp.c: 61: arp_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
+"61
+[e ( _arp_setNewEntry (3 , , . _arp 5 . _arp 6 ( _getMillis ..  ]
+[; ;arp.c: 62: }
+"62
 [e :UE 621 ]
 }
-"65
-[v _ARP_parseFromRXBuffer `(S619 ~T0 @X0 1 sf1`*S9 ]
+"64
+[v _arp_parseFromRXBuffer `(S619 ~T0 @X0 1 sf1`*S9 ]
 {
-[; ;arp.c: 65: ARP_message_t static ARP_parseFromRXBuffer(ethernetFrame_t *frame) {
-[e :U _ARP_parseFromRXBuffer ]
+[; ;arp.c: 64: arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame) {
+[e :U _arp_parseFromRXBuffer ]
 [v _frame `*S9 ~T0 @X0 1 r1 ]
 [f ]
-"66
+"65
 [v _arp `S619 ~T0 @X0 1 a ]
-"67
+"66
 [v _offset `Cui ~T0 @X0 1 a ]
-[; ;arp.c: 66: ARP_message_t arp;
-[; ;arp.c: 67: uint16_t const offset = 22;
+[; ;arp.c: 65: arp_message_t arp;
+[; ;arp.c: 66: uint16_t const offset = 22;
 [e = _offset -> -> 22 `i `ui ]
-[; ;arp.c: 69: ethernetController_streamFromRXBuffer(0, frame->memory.start + offset);
-"69
+[; ;arp.c: 68: ethernetController_streamFromRXBuffer(0, frame->memory.start + offset);
+"68
 [e ( _ethernetController_streamFromRXBuffer (2 , -> -> 0 `i `uc + . . *U _frame 4 0 _offset ]
-[; ;arp.c: 72: arp.htype = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
-"72
+[; ;arp.c: 71: arp.htype = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+"71
 [e = . _arp 0 -> << -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset `i -> 8 `i `ui ]
-[; ;arp.c: 73: arp.htype |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-"73
+[; ;arp.c: 72: arp.htype |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+"72
 [e =| . _arp 0 -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset `ui ]
-[; ;arp.c: 75: arp.ptype = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
-"75
+[; ;arp.c: 74: arp.ptype = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+"74
 [e = . _arp 1 -> << -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset `i -> 8 `i `ui ]
-[; ;arp.c: 76: arp.ptype |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-"76
+[; ;arp.c: 75: arp.ptype |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+"75
 [e =| . _arp 1 -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset `ui ]
-[; ;arp.c: 78: arp.hlen = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-"78
+[; ;arp.c: 77: arp.hlen = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+"77
 [e = . _arp 2 ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
-[; ;arp.c: 79: arp.plen = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-"79
+[; ;arp.c: 78: arp.plen = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+"78
 [e = . _arp 3 ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
-[; ;arp.c: 81: arp.operation = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
-"81
+[; ;arp.c: 80: arp.operation = (ethernetController_streamFromRXBuffer(1, frame->memory.start + offset) << 8);
+"80
 [e = . _arp 4 -> << -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset `i -> 8 `i `ui ]
-[; ;arp.c: 82: arp.operation |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-"82
+[; ;arp.c: 81: arp.operation |= ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+"81
 [e =| . _arp 4 -> ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset `ui ]
-[; ;arp.c: 85: for (uint8_t i = 0; i < arp.hlen; i++)
-"85
+[; ;arp.c: 84: for (uint8_t i = 0; i < arp.hlen; i++)
+"84
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 630  ]
-"86
-[e :U 627 ]
-[; ;arp.c: 86: arp.senderMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-[e = *U + &U . . _arp 5 0 * -> _i `ux -> -> # *U &U . . _arp 5 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
 "85
+[e :U 627 ]
+[; ;arp.c: 85: arp.senderMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+[e = *U + &U . . _arp 5 0 * -> _i `ux -> -> # *U &U . . _arp 5 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
+"84
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 630 ]
 [e $ < -> _i `i -> . _arp 2 `i 627  ]
 [e :U 628 ]
-"86
+"85
 }
-[; ;arp.c: 87: for (uint8_t i = 0; i < arp.plen; i++)
-"87
+[; ;arp.c: 86: for (uint8_t i = 0; i < arp.plen; i++)
+"86
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 634  ]
-"88
-[e :U 631 ]
-[; ;arp.c: 88: arp.senderIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-[e = *U + &U . . _arp 6 0 * -> _i `ux -> -> # *U &U . . _arp 6 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
 "87
+[e :U 631 ]
+[; ;arp.c: 87: arp.senderIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+[e = *U + &U . . _arp 6 0 * -> _i `ux -> -> # *U &U . . _arp 6 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
+"86
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 634 ]
 [e $ < -> _i `i -> . _arp 3 `i 631  ]
 [e :U 632 ]
-"88
+"87
 }
-[; ;arp.c: 90: for (uint8_t i = 0; i < arp.hlen; i++)
-"90
+[; ;arp.c: 89: for (uint8_t i = 0; i < arp.hlen; i++)
+"89
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 638  ]
-"91
-[e :U 635 ]
-[; ;arp.c: 91: arp.targetMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-[e = *U + &U . . _arp 7 0 * -> _i `ux -> -> # *U &U . . _arp 7 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
 "90
+[e :U 635 ]
+[; ;arp.c: 90: arp.targetMACAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+[e = *U + &U . . _arp 7 0 * -> _i `ux -> -> # *U &U . . _arp 7 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
+"89
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 638 ]
 [e $ < -> _i `i -> . _arp 2 `i 635  ]
 [e :U 636 ]
-"91
+"90
 }
-[; ;arp.c: 92: for (uint8_t i = 0; i < arp.plen; i++)
-"92
+[; ;arp.c: 91: for (uint8_t i = 0; i < arp.plen; i++)
+"91
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 642  ]
-"93
-[e :U 639 ]
-[; ;arp.c: 93: arp.targetIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
-[e = *U + &U . . _arp 8 0 * -> _i `ux -> -> # *U &U . . _arp 8 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
 "92
+[e :U 639 ]
+[; ;arp.c: 92: arp.targetIPAddress.address[i] = ethernetController_streamFromRXBuffer(1, frame->memory.start + offset);
+[e = *U + &U . . _arp 8 0 * -> _i `ux -> -> # *U &U . . _arp 8 0 `ui `ux ( _ethernetController_streamFromRXBuffer (2 , -> -> 1 `i `uc + . . *U _frame 4 0 _offset ]
+"91
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 642 ]
 [e $ < -> _i `i -> . _arp 3 `i 639  ]
 [e :U 640 ]
-"93
+"92
 }
-[; ;arp.c: 95: ethernetController_streamFromRXBuffer(2, frame->memory.start + offset);
-"95
+[; ;arp.c: 94: ethernetController_streamFromRXBuffer(2, frame->memory.start + offset);
+"94
 [e ( _ethernetController_streamFromRXBuffer (2 , -> -> 2 `i `uc + . . *U _frame 4 0 _offset ]
-[; ;arp.c: 97: if (ipv4_isAllZero(&arp.senderIPAddress)) {
-"97
+[; ;arp.c: 96: if (ipv4_isAllZero(&arp.senderIPAddress)) {
+"96
 [e $ ! ( _ipv4_isAllZero (1 &U . _arp 6 643  ]
 {
-[; ;arp.c: 98: arp.fIsProbe = 1;
-"98
+[; ;arp.c: 97: arp.fIsProbe = 1;
+"97
 [e = . _arp 10 -> -> 1 `i `uc ]
-[; ;arp.c: 99: arp.fIsGratuitous = 0;
-"99
+[; ;arp.c: 98: arp.fIsGratuitous = 0;
+"98
 [e = . _arp 9 -> -> 0 `i `uc ]
-"100
+"99
 }
-[; ;arp.c: 100: } else {
+[; ;arp.c: 99: } else {
 [e $U 644  ]
 [e :U 643 ]
 {
-[; ;arp.c: 101: arp.fIsProbe = 0;
-"101
+[; ;arp.c: 100: arp.fIsProbe = 0;
+"100
 [e = . _arp 10 -> -> 0 `i `uc ]
-[; ;arp.c: 103: if (ipv4_cmp(&arp.senderIPAddress, &arp.targetIPAddress) &&
-[; ;arp.c: 104: mac_isAllZero(&arp.targetMACAddress) &&
-[; ;arp.c: 105: arp.operation == ARP_REQUEST) {
-"105
-[e $ ! && && ( _ipv4_cmp (2 , &U . _arp 6 &U . _arp 8 ( _mac_isAllZero (1 &U . _arp 7 == . _arp 4 -> . `E5856 0 `ui 645  ]
+[; ;arp.c: 102: if (ipv4_cmp(&arp.senderIPAddress, &arp.targetIPAddress) &&
+[; ;arp.c: 103: mac_isAllZero(&arp.targetMACAddress) &&
+[; ;arp.c: 104: arp.operation == ARP_REQUEST) {
+"104
+[e $ ! && && ( _ipv4_cmp (2 , &U . _arp 6 &U . _arp 8 ( _mac_isAllZero (1 &U . _arp 7 == . _arp 4 -> . `E5866 0 `ui 645  ]
 {
-[; ;arp.c: 106: arp.fIsGratuitous = 1;
-"106
+[; ;arp.c: 105: arp.fIsGratuitous = 1;
+"105
 [e = . _arp 9 -> -> 1 `i `uc ]
-"107
+"106
 }
-[; ;arp.c: 107: } else {
+[; ;arp.c: 106: } else {
 [e $U 646  ]
 [e :U 645 ]
 {
-[; ;arp.c: 109: if (ipv4_cmp(&arp.senderIPAddress, &arp.targetIPAddress) &&
-[; ;arp.c: 110: mac_cmp(&arp.senderMACAddress, &arp.targetMACAddress) &&
-[; ;arp.c: 111: arp.operation == ARP_REPLY) {
-"111
-[e $ ! && && ( _ipv4_cmp (2 , &U . _arp 6 &U . _arp 8 ( _mac_cmp (2 , &U . _arp 5 &U . _arp 7 == . _arp 4 -> . `E5856 1 `ui 647  ]
+[; ;arp.c: 108: if (ipv4_cmp(&arp.senderIPAddress, &arp.targetIPAddress) &&
+[; ;arp.c: 109: mac_cmp(&arp.senderMACAddress, &arp.targetMACAddress) &&
+[; ;arp.c: 110: arp.operation == ARP_REPLY) {
+"110
+[e $ ! && && ( _ipv4_cmp (2 , &U . _arp 6 &U . _arp 8 ( _mac_cmp (2 , &U . _arp 5 &U . _arp 7 == . _arp 4 -> . `E5866 1 `ui 647  ]
 {
-[; ;arp.c: 112: arp.fIsGratuitous = 1;
-"112
+[; ;arp.c: 111: arp.fIsGratuitous = 1;
+"111
 [e = . _arp 9 -> -> 1 `i `uc ]
-"113
+"112
 }
-[; ;arp.c: 113: } else {
+[; ;arp.c: 112: } else {
 [e $U 648  ]
 [e :U 647 ]
 {
-[; ;arp.c: 114: arp.fIsGratuitous = 0;
-"114
+[; ;arp.c: 113: arp.fIsGratuitous = 0;
+"113
 [e = . _arp 9 -> -> 0 `i `uc ]
-"115
+"114
 }
 [e :U 648 ]
-"116
+"115
 }
 [e :U 646 ]
-"117
+"116
 }
 [e :U 644 ]
+[; ;arp.c: 114: }
 [; ;arp.c: 115: }
 [; ;arp.c: 116: }
-[; ;arp.c: 117: }
-[; ;arp.c: 120: if ((arp.htype != ARP_HTYPE_ETHERNET) ||
-[; ;arp.c: 121: (arp.ptype != ARP_PTYPE_IPv4) ||
-[; ;arp.c: 122: (arp.operation > 2) ||
-[; ;arp.c: 123: (arp.hlen != 6) ||
-[; ;arp.c: 124: (arp.plen != 4)) {
-"124
-[e $ ! || || || || != . _arp 0 -> . `E5860 0 `ui != . _arp 1 -> . `E5863 0 `ui > . _arp 4 -> -> 2 `i `ui != -> . _arp 2 `i -> 6 `i != -> . _arp 3 `i -> 4 `i 649  ]
+[; ;arp.c: 119: if ((arp.htype != ARP_HTYPE_ETHERNET) ||
+[; ;arp.c: 120: (arp.ptype != ARP_PTYPE_IPv4) ||
+[; ;arp.c: 121: (arp.operation > 2) ||
+[; ;arp.c: 122: (arp.hlen != 6u) ||
+[; ;arp.c: 123: (arp.plen != 4u)) {
+"123
+[e $ ! || || || || != . _arp 0 -> . `E5870 0 `ui != . _arp 1 -> . `E5873 0 `ui > . _arp 4 -> -> 2 `i `ui != -> . _arp 2 `ui -> 6 `ui != -> . _arp 3 `ui -> 4 `ui 649  ]
 {
-[; ;arp.c: 125: arp.err.code = ERROR_ARP_INVALID_VALUES;
-"125
+[; ;arp.c: 124: arp.err.code = ERROR_ARP_INVALID_VALUES;
+"124
 [e = . . _arp 11 1 -> . `E175 2 `ui ]
-[; ;arp.c: 126: arp.err.module = ERROR_MODULE_ARP;
-"126
+[; ;arp.c: 125: arp.err.module = ERROR_MODULE_ARP;
+"125
 [e = . . _arp 11 0 . `E151 3 ]
-"127
+"126
 }
-[; ;arp.c: 127: } else {
+[; ;arp.c: 126: } else {
 [e $U 650  ]
 [e :U 649 ]
 {
-[; ;arp.c: 128: arp.err.code = (uint16_t)0;
-"128
+[; ;arp.c: 127: arp.err.code = (uint16_t)0;
+"127
 [e = . . _arp 11 1 -> -> 0 `i `ui ]
-[; ;arp.c: 129: arp.err.module = ERROR_MODULE_ARP;
-"129
+[; ;arp.c: 128: arp.err.module = ERROR_MODULE_ARP;
+"128
 [e = . . _arp 11 0 . `E151 3 ]
-"130
+"129
 }
 [e :U 650 ]
-[; ;arp.c: 130: }
-[; ;arp.c: 132: return arp;
-"132
+[; ;arp.c: 129: }
+[; ;arp.c: 131: return arp;
+"131
 [e ) _arp ]
 [e $UE 626  ]
-[; ;arp.c: 133: }
-"133
+[; ;arp.c: 132: }
+"132
 [e :UE 626 ]
 }
-"137
-[v _ARP_send `(v ~T0 @X0 1 sf1`S619 ]
+"136
+[v _arp_send `(v ~T0 @X0 1 sf1`S619 ]
 {
-[; ;arp.c: 137: void static ARP_send(ARP_message_t arp) {
-[e :U _ARP_send ]
+[; ;arp.c: 136: void static arp_send(arp_message_t arp) {
+[e :U _arp_send ]
 [v _arp `S619 ~T0 @X0 1 r1 ]
 [f ]
-"138
+"137
 [v _field `S7 ~T0 @X0 1 a ]
-"139
-[v _destination `S8 ~T0 @X0 1 a ]
-"140
+"138
 [v _ethFrame `S9 ~T0 @X0 1 a ]
-[; ;arp.c: 138: memoryField_t field;
-[; ;arp.c: 139: macaddress_t destination;
-[; ;arp.c: 140: ethernetFrame_t ethFrame;
-[; ;arp.c: 141: mac_setToBroadcast(&destination);
 "141
+[v _destination `S8 ~T0 @X0 1 a ]
+[; ;arp.c: 137: memoryField_t field;
+[; ;arp.c: 138: ethernetFrame_t ethFrame;
+[; ;arp.c: 141: macaddress_t destination;
+[; ;arp.c: 142: mac_setToBroadcast(&destination);
+"142
 [e ( _mac_setToBroadcast (1 &U _destination ]
-[; ;arp.c: 143: ethFrame.length = 36;
+[; ;arp.c: 143: ethFrame.destination = destination;
 "143
+[e = . _ethFrame 2 _destination ]
+[; ;arp.c: 147: ethFrame.length = 36;
+"147
 [e = . _ethFrame 0 -> -> 36 `i `ui ]
-[; ;arp.c: 144: ethFrame.destination = arp.targetMACAddress;
-"144
-[e = . _ethFrame 2 . _arp 7 ]
-[; ;arp.c: 145: ethFrame.source = ethernetController_getSourceMACAddress(field);
-"145
-[e = . _ethFrame 1 ( _ethernetController_getSourceMACAddress (1 _field ]
-[; ;arp.c: 146: ethFrame.ethertype = ETHERTYPE_ARP;
-"146
-[e = . _ethFrame 3 . `E222 1 ]
-[; ;arp.c: 148: ethernet_txFrameRequest(&ethFrame);
+[; ;arp.c: 148: ethFrame.source = ethernetController_getSourceMACAddress(field);
 "148
+[e = . _ethFrame 1 ( _ethernetController_getSourceMACAddress (1 _field ]
+[; ;arp.c: 149: ethFrame.ethertype = ETHERTYPE_ARP;
+"149
+[e = . _ethFrame 3 . `E223 1 ]
+[; ;arp.c: 151: ethernet_txFrameRequest(&ethFrame);
+"151
 [e ( _ethernet_txFrameRequest (1 &U _ethFrame ]
-[; ;arp.c: 150: if (ethFrame.memory.fOutOfMemory) {
-"150
+[; ;arp.c: 153: if (ethFrame.memory.fOutOfMemory) {
+"153
 [e $ ! != -> . . _ethFrame 4 4 `i -> -> -> 0 `i `uc `i 652  ]
 {
-[; ;arp.c: 151: return;
-"151
+[; ;arp.c: 154: return;
+"154
 [e $UE 651  ]
-"152
+"155
 }
 [e :U 652 ]
-[; ;arp.c: 152: }
-[; ;arp.c: 154: field.start = ethFrame.memory.start + 8;
-"154
+[; ;arp.c: 155: }
+[; ;arp.c: 157: field.start = ethFrame.memory.start + 8;
+"157
 [e = . _field 0 + . . _ethFrame 4 0 -> -> 8 `i `ui ]
-[; ;arp.c: 155: field.end = ethFrame.memory.end;
-"155
-[e = . _field 1 . . _ethFrame 4 1 ]
-[; ;arp.c: 156: field.length = 28;
-"156
-[e = . _field 2 -> -> 28 `i `ui ]
-[; ;arp.c: 158: UARTTransmitText(hexToString(field.start));
+[; ;arp.c: 158: field.end = ethFrame.memory.end;
 "158
-[e ( _UARTTransmitText (1 -> ( _hexToString (1 -> . _field 0 `ul `*Cuc ]
-[; ;arp.c: 159: UARTTransmitText(", ");
+[e = . _field 1 . . _ethFrame 4 1 ]
+[; ;arp.c: 159: field.length = 28;
 "159
-[e ( _UARTTransmitText (1 :s 9C ]
-[; ;arp.c: 160: UARTTransmitText(hexToString(field.end));
-"160
-[e ( _UARTTransmitText (1 -> ( _hexToString (1 -> . _field 1 `ul `*Cuc ]
-[; ;arp.c: 161: UARTTransmitText("\n\r");
+[e = . _field 2 -> -> 28 `i `ui ]
+[; ;arp.c: 161: ethernetController_streamToTransmitBuffer((arp.htype & 0xff00) >> 8, field);
 "161
-[e ( _UARTTransmitText (1 :s 10C ]
-[; ;arp.c: 164: ethernetController_streamToTransmitBuffer((arp.htype & 0xff00) >> 8, field);
-"164
 [e ( _ethernetController_streamToTransmitBuffer (2 , -> >> & . _arp 0 -> 65280 `ui -> 8 `i `uc _field ]
-[; ;arp.c: 165: ethernetController_streamToTransmitBuffer(arp.htype & 0x00ff, field);
-"165
+[; ;arp.c: 162: ethernetController_streamToTransmitBuffer(arp.htype & 0x00ff, field);
+"162
 [e ( _ethernetController_streamToTransmitBuffer (2 , -> & . _arp 0 -> -> 255 `i `ui `uc _field ]
-[; ;arp.c: 166: ethernetController_streamToTransmitBuffer((arp.ptype & 0xff00) >> 8, field);
-"166
+[; ;arp.c: 163: ethernetController_streamToTransmitBuffer((arp.ptype & 0xff00) >> 8, field);
+"163
 [e ( _ethernetController_streamToTransmitBuffer (2 , -> >> & . _arp 1 -> 65280 `ui -> 8 `i `uc _field ]
-[; ;arp.c: 167: ethernetController_streamToTransmitBuffer(arp.ptype & 0x00ff, field);
-"167
+[; ;arp.c: 164: ethernetController_streamToTransmitBuffer(arp.ptype & 0x00ff, field);
+"164
 [e ( _ethernetController_streamToTransmitBuffer (2 , -> & . _arp 1 -> -> 255 `i `ui `uc _field ]
-[; ;arp.c: 168: ethernetController_streamToTransmitBuffer(arp.hlen, field);
-"168
+[; ;arp.c: 165: ethernetController_streamToTransmitBuffer(arp.hlen, field);
+"165
 [e ( _ethernetController_streamToTransmitBuffer (2 , . _arp 2 _field ]
-[; ;arp.c: 169: ethernetController_streamToTransmitBuffer(arp.plen, field);
-"169
+[; ;arp.c: 166: ethernetController_streamToTransmitBuffer(arp.plen, field);
+"166
 [e ( _ethernetController_streamToTransmitBuffer (2 , . _arp 3 _field ]
-[; ;arp.c: 170: ethernetController_streamToTransmitBuffer((arp.operation & 0xff00) >> 8, field);
-"170
+[; ;arp.c: 167: ethernetController_streamToTransmitBuffer((arp.operation & 0xff00) >> 8, field);
+"167
 [e ( _ethernetController_streamToTransmitBuffer (2 , -> >> & . _arp 4 -> 65280 `ui -> 8 `i `uc _field ]
-[; ;arp.c: 171: ethernetController_streamToTransmitBuffer(arp.operation & 0x00ff, field);
-"171
+[; ;arp.c: 168: ethernetController_streamToTransmitBuffer(arp.operation & 0x00ff, field);
+"168
 [e ( _ethernetController_streamToTransmitBuffer (2 , -> & . _arp 4 -> -> 255 `i `ui `uc _field ]
-[; ;arp.c: 172: for (uint8_t i = 0; i < arp.hlen; i++)
-"172
+[; ;arp.c: 169: for (uint8_t i = 0; i < arp.hlen; i++)
+"169
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 656  ]
-"173
+"170
 [e :U 653 ]
-[; ;arp.c: 173: ethernetController_streamToTransmitBuffer(arp.senderMACAddress.address[i], field);
+[; ;arp.c: 170: ethernetController_streamToTransmitBuffer(arp.senderMACAddress.address[i], field);
 [e ( _ethernetController_streamToTransmitBuffer (2 , *U + &U . . _arp 5 0 * -> _i `ux -> -> # *U &U . . _arp 5 0 `ui `ux _field ]
-"172
+"169
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 656 ]
 [e $ < -> _i `i -> . _arp 2 `i 653  ]
 [e :U 654 ]
-"173
+"170
 }
-[; ;arp.c: 174: for (uint8_t i = 0; i < arp.plen; i++)
-"174
+[; ;arp.c: 171: for (uint8_t i = 0; i < arp.plen; i++)
+"171
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 660  ]
-"175
+"172
 [e :U 657 ]
-[; ;arp.c: 175: ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field);
+[; ;arp.c: 172: ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field);
 [e ( _ethernetController_streamToTransmitBuffer (2 , *U + &U . . _arp 6 0 * -> _i `ux -> -> # *U &U . . _arp 6 0 `ui `ux _field ]
-"174
+"171
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 660 ]
 [e $ < -> _i `i -> . _arp 3 `i 657  ]
 [e :U 658 ]
-"175
+"172
 }
-[; ;arp.c: 176: for (uint8_t i = 0; i < arp.hlen; i++)
-"176
+[; ;arp.c: 173: for (uint8_t i = 0; i < arp.hlen; i++)
+"173
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 664  ]
-"177
+"174
 [e :U 661 ]
-[; ;arp.c: 177: ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field);
+[; ;arp.c: 174: ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field);
 [e ( _ethernetController_streamToTransmitBuffer (2 , *U + &U . . _arp 7 0 * -> _i `ux -> -> # *U &U . . _arp 7 0 `ui `ux _field ]
-"176
+"173
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 664 ]
 [e $ < -> _i `i -> . _arp 2 `i 661  ]
 [e :U 662 ]
-"177
+"174
 }
-[; ;arp.c: 179: for (uint8_t i = 0; i < arp.plen; i++)
-"179
+[; ;arp.c: 176: for (uint8_t i = 0; i < arp.plen; i++)
+"176
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 668  ]
-"180
+"177
 [e :U 665 ]
-[; ;arp.c: 180: ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field);
+[; ;arp.c: 177: ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field);
 [e ( _ethernetController_streamToTransmitBuffer (2 , *U + &U . . _arp 8 0 * -> _i `ux -> -> # *U &U . . _arp 8 0 `ui `ux _field ]
-"179
+"176
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 668 ]
 [e $ < -> _i `i -> . _arp 3 `i 665  ]
 [e :U 666 ]
-"180
+"177
 }
-[; ;arp.c: 182: ethernetController_sendPacket(ethFrame.memory);
-"182
+[; ;arp.c: 179: ethernetController_sendPacket(ethFrame.memory);
+"179
 [e ( _ethernetController_sendPacket (1 . _ethFrame 4 ]
-[; ;arp.c: 183: }
-"183
+[; ;arp.c: 180: }
+"180
 [e :UE 651 ]
 }
-"186
-[v _ARP_sendRequest `(v ~T0 @X0 1 ef2`S12`S12 ]
+"183
+[v _arp_sendRequest `(v ~T0 @X0 1 sf2`S12`S12 ]
 {
-[; ;arp.c: 186: void ARP_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget) {
-[e :U _ARP_sendRequest ]
+[; ;arp.c: 183: void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget) {
+[e :U _arp_sendRequest ]
 [v _ipSender `S12 ~T0 @X0 1 r1 ]
 [v _ipTarget `S12 ~T0 @X0 1 r2 ]
 [f ]
-"187
+"184
 [v _request `S619 ~T0 @X0 1 a ]
-"188
+"185
 [v _senderMAC `S8 ~T0 @X0 1 a ]
-"189
+"186
 [v _targetMAC `S8 ~T0 @X0 1 a ]
-[; ;arp.c: 187: ARP_message_t request;
-[; ;arp.c: 188: macaddress_t senderMAC;
-[; ;arp.c: 189: macaddress_t targetMAC;
-[; ;arp.c: 191: senderMAC = ethernetController_getMacAddress();
-"191
+[; ;arp.c: 184: arp_message_t request;
+[; ;arp.c: 185: macaddress_t senderMAC;
+[; ;arp.c: 186: macaddress_t targetMAC;
+[; ;arp.c: 188: senderMAC = ethernetController_getMacAddress();
+"188
 [e = _senderMAC ( _ethernetController_getMacAddress ..  ]
-[; ;arp.c: 193: ipSender = ipv4_getIPSourceAddress();
-"193
+[; ;arp.c: 190: ipSender = ipv4_getIPSourceAddress();
+"190
 [e = _ipSender ( _ipv4_getIPSourceAddress ..  ]
-[; ;arp.c: 194: mac_setAllZero(&targetMAC);
-"194
+[; ;arp.c: 191: mac_setAllZero(&targetMAC);
+"191
 [e ( _mac_setAllZero (1 &U _targetMAC ]
-[; ;arp.c: 196: request.hlen = 6;
+[; ;arp.c: 193: request.hlen = 6u;
+"193
+[e = . _request 2 -> -> 6 `ui `uc ]
+[; ;arp.c: 194: request.plen = 4u;
+"194
+[e = . _request 3 -> -> 4 `ui `uc ]
+[; ;arp.c: 195: request.htype = ARP_HTYPE_ETHERNET;
+"195
+[e = . _request 0 -> . `E5870 0 `ui ]
+[; ;arp.c: 196: request.ptype = ARP_PTYPE_IPv4;
 "196
-[e = . _request 2 -> -> 6 `i `uc ]
-[; ;arp.c: 197: request.plen = 4;
+[e = . _request 1 -> . `E5873 0 `ui ]
+[; ;arp.c: 197: request.operation = ARP_REQUEST;
 "197
-[e = . _request 3 -> -> 4 `i `uc ]
-[; ;arp.c: 198: request.htype = ARP_HTYPE_ETHERNET;
+[e = . _request 4 -> . `E5866 0 `ui ]
+[; ;arp.c: 198: request.senderIPAddress = ipSender;
 "198
-[e = . _request 0 -> . `E5860 0 `ui ]
-[; ;arp.c: 199: request.ptype = ARP_PTYPE_IPv4;
-"199
-[e = . _request 1 -> . `E5863 0 `ui ]
-[; ;arp.c: 200: request.operation = ARP_REQUEST;
-"200
-[e = . _request 4 -> . `E5856 0 `ui ]
-[; ;arp.c: 201: request.senderIPAddress = ipSender;
-"201
 [e = . _request 6 _ipSender ]
-[; ;arp.c: 202: request.senderMACAddress = senderMAC;
-"202
+[; ;arp.c: 199: request.senderMACAddress = senderMAC;
+"199
 [e = . _request 5 _senderMAC ]
-[; ;arp.c: 203: request.targetIPAddress = ipTarget;
-"203
+[; ;arp.c: 200: request.targetIPAddress = ipTarget;
+"200
 [e = . _request 8 _ipTarget ]
-[; ;arp.c: 204: request.targetMACAddress = targetMAC;
-"204
+[; ;arp.c: 201: request.targetMACAddress = targetMAC;
+"201
 [e = . _request 7 _targetMAC ]
-[; ;arp.c: 206: ARP_send(request);
-"206
-[e ( _ARP_send (1 _request ]
-[; ;arp.c: 207: }
-"207
+[; ;arp.c: 203: arp_send(request);
+"203
+[e ( _arp_send (1 _request ]
+[; ;arp.c: 204: }
+"204
 [e :UE 669 ]
 }
-"209
-[v _ARP_sendReply `(v ~T0 @X0 1 ef1`S619 ]
+"206
+[v _arp_sendReply `(v ~T0 @X0 1 sf1`S619 ]
 {
-[; ;arp.c: 209: void static ARP_sendReply(ARP_message_t request) {
-[e :U _ARP_sendReply ]
+[; ;arp.c: 206: void static arp_sendReply(arp_message_t request) {
+[e :U _arp_sendReply ]
 [v _request `S619 ~T0 @X0 1 r1 ]
 [f ]
-[; ;arp.c: 210: if (request.operation != ARP_REQUEST)
-"210
-[e $ ! != . _request 4 -> . `E5856 0 `ui 671  ]
-[; ;arp.c: 211: return;
-"211
+[; ;arp.c: 207: if (request.operation != ARP_REQUEST)
+"207
+[e $ ! != . _request 4 -> . `E5866 0 `ui 671  ]
+[; ;arp.c: 208: return;
+"208
 [e $UE 670  ]
 [e :U 671 ]
-"213
+"210
 [v _myIP `S12 ~T0 @X0 1 a ]
-[; ;arp.c: 213: ipv4_address_t myIP = ipv4_getIPSourceAddress();
+[; ;arp.c: 210: ipv4_address_t myIP = ipv4_getIPSourceAddress();
 [e = _myIP ( _ipv4_getIPSourceAddress ..  ]
-[; ;arp.c: 214: if (!(ipv4_cmp(&request.targetIPAddress, &myIP)))
-"214
+[; ;arp.c: 211: if (!(ipv4_cmp(&request.targetIPAddress, &myIP)))
+"211
 [e $ ! ! ( _ipv4_cmp (2 , &U . _request 8 &U _myIP 672  ]
-[; ;arp.c: 215: return;
-"215
+[; ;arp.c: 212: return;
+"212
 [e $UE 670  ]
 [e :U 672 ]
-"217
+"214
 [v _reply `S619 ~T0 @X0 1 a ]
-"218
+"215
 [v _senderIP `S12 ~T0 @X0 1 a ]
-"219
+"216
 [v _targetIP `S12 ~T0 @X0 1 a ]
-"220
+"217
 [v _senderMAC `S8 ~T0 @X0 1 a ]
-"221
+"218
 [v _targetMAC `S8 ~T0 @X0 1 a ]
-[; ;arp.c: 217: ARP_message_t reply;
-[; ;arp.c: 218: ipv4_address_t senderIP;
-[; ;arp.c: 219: ipv4_address_t targetIP;
-[; ;arp.c: 220: macaddress_t senderMAC;
-[; ;arp.c: 221: macaddress_t targetMAC;
-[; ;arp.c: 223: senderMAC = ethernetController_getMacAddress();
-"223
+[; ;arp.c: 214: arp_message_t reply;
+[; ;arp.c: 215: ipv4_address_t senderIP;
+[; ;arp.c: 216: ipv4_address_t targetIP;
+[; ;arp.c: 217: macaddress_t senderMAC;
+[; ;arp.c: 218: macaddress_t targetMAC;
+[; ;arp.c: 220: senderMAC = ethernetController_getMacAddress();
+"220
 [e = _senderMAC ( _ethernetController_getMacAddress ..  ]
-[; ;arp.c: 224: targetMAC = request.senderMACAddress;
-"224
+[; ;arp.c: 221: targetMAC = request.senderMACAddress;
+"221
 [e = _targetMAC . _request 5 ]
-[; ;arp.c: 225: senderIP = ipv4_getIPSourceAddress();
-"225
+[; ;arp.c: 222: senderIP = ipv4_getIPSourceAddress();
+"222
 [e = _senderIP ( _ipv4_getIPSourceAddress ..  ]
-[; ;arp.c: 226: targetIP = request.senderIPAddress;
-"226
+[; ;arp.c: 223: targetIP = request.senderIPAddress;
+"223
 [e = _targetIP . _request 6 ]
-[; ;arp.c: 228: reply.hlen = 6;
+[; ;arp.c: 225: reply.hlen = 6u;
+"225
+[e = . _reply 2 -> -> 6 `ui `uc ]
+[; ;arp.c: 226: reply.plen = 4u;
+"226
+[e = . _reply 3 -> -> 4 `ui `uc ]
+[; ;arp.c: 227: reply.htype = ARP_HTYPE_ETHERNET;
+"227
+[e = . _reply 0 -> . `E5870 0 `ui ]
+[; ;arp.c: 228: reply.ptype = ARP_PTYPE_IPv4;
 "228
-[e = . _reply 2 -> -> 6 `i `uc ]
-[; ;arp.c: 229: reply.plen = 4;
+[e = . _reply 1 -> . `E5873 0 `ui ]
+[; ;arp.c: 229: reply.operation = ARP_REPLY;
 "229
-[e = . _reply 3 -> -> 4 `i `uc ]
-[; ;arp.c: 230: reply.htype = ARP_HTYPE_ETHERNET;
+[e = . _reply 4 -> . `E5866 1 `ui ]
+[; ;arp.c: 230: reply.senderIPAddress = senderIP;
 "230
-[e = . _reply 0 -> . `E5860 0 `ui ]
-[; ;arp.c: 231: reply.ptype = ARP_PTYPE_IPv4;
-"231
-[e = . _reply 1 -> . `E5863 0 `ui ]
-[; ;arp.c: 232: reply.operation = ARP_REPLY;
-"232
-[e = . _reply 4 -> . `E5856 1 `ui ]
-[; ;arp.c: 233: reply.senderIPAddress = senderIP;
-"233
 [e = . _reply 6 _senderIP ]
-[; ;arp.c: 234: reply.senderMACAddress = senderMAC;
-"234
+[; ;arp.c: 231: reply.senderMACAddress = senderMAC;
+"231
 [e = . _reply 5 _senderMAC ]
-[; ;arp.c: 235: reply.targetIPAddress = targetIP;
-"235
+[; ;arp.c: 232: reply.targetIPAddress = targetIP;
+"232
 [e = . _reply 8 _targetIP ]
-[; ;arp.c: 236: reply.targetMACAddress = targetMAC;
-"236
+[; ;arp.c: 233: reply.targetMACAddress = targetMAC;
+"233
 [e = . _reply 7 _targetMAC ]
-[; ;arp.c: 238: ARP_send(reply);
+[; ;arp.c: 235: arp_send(reply);
+"235
+[e ( _arp_send (1 _reply ]
+[; ;arp.c: 237: UARTTransmitText("[Reply sent to ");
+"237
+[e ( _UARTTransmitText (1 :s 9C ]
+[; ;arp.c: 238: UARTTransmitText(macToString(reply.targetMACAddress));
 "238
-[e ( _ARP_send (1 _reply ]
-[; ;arp.c: 240: UARTTransmitText("[Reply sent to ");
-"240
-[e ( _UARTTransmitText (1 :s 11C ]
-[; ;arp.c: 241: UARTTransmitText(macToString(reply.targetMACAddress));
-"241
 [e ( _UARTTransmitText (1 -> ( _macToString (1 . _reply 7 `*Cuc ]
-[; ;arp.c: 242: UARTTransmitText(", ");
-"242
-[e ( _UARTTransmitText (1 :s 12C ]
-[; ;arp.c: 243: UARTTransmitText(ipAdressToString(reply.targetIPAddress));
-"243
+[; ;arp.c: 239: UARTTransmitText(", ");
+"239
+[e ( _UARTTransmitText (1 :s 10C ]
+[; ;arp.c: 240: UARTTransmitText(ipAdressToString(reply.targetIPAddress));
+"240
 [e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . _reply 8 `*Cuc ]
-[; ;arp.c: 244: UARTTransmitText("]");
-"244
-[e ( _UARTTransmitText (1 :s 13C ]
-[; ;arp.c: 245: }
-"245
+[; ;arp.c: 241: UARTTransmitText("]");
+"241
+[e ( _UARTTransmitText (1 :s 11C ]
+[; ;arp.c: 242: }
+"242
 [e :UE 670 ]
 }
-"248
-[v _ARP_probe `(S5 ~T0 @X0 1 ef1`S12 ]
+"245
+[v _arp_probe `(S5 ~T0 @X0 1 sf1`S12 ]
 {
-[; ;arp.c: 248: error_t ARP_probe(ipv4_address_t ipTarget) {
-[e :U _ARP_probe ]
+[; ;arp.c: 245: error_t static arp_probe(ipv4_address_t ipTarget) {
+[e :U _arp_probe ]
 [v _ipTarget `S12 ~T0 @X0 1 r1 ]
 [f ]
+"246
+[v _timeStart `ul ~T0 @X0 1 a ]
+"247
+[v _waitingTime `ul ~T0 @X0 1 a ]
+"248
+[v _ipSender `S12 ~T0 @X0 1 a ]
 "249
-[v F5950 `uc ~T0 @X0 1 s state ]
-[i F5950
+[v F5964 `uc ~T0 @X0 1 s probeCounter ]
+[i F5964
 -> -> 0 `i `uc
 ]
 "250
-[v _timeStart `ul ~T0 @X0 1 a ]
-"251
-[v _waitingTime `ul ~T0 @X0 1 a ]
-"252
-[v _ipSender `S12 ~T0 @X0 1 a ]
-"253
 [v _err `S5 ~T0 @X0 1 a ]
-[; ;arp.c: 249: uint8_t static state = 0;
-[; ;arp.c: 250: time_t timeStart;
-[; ;arp.c: 251: time_t waitingTime;
-[; ;arp.c: 252: ipv4_address_t ipSender;
-[; ;arp.c: 253: error_t err;
-[; ;arp.c: 254: err.module = ERROR_MODULE_ARP;
 "254
-[e = . _err 0 . `E151 3 ]
-[; ;arp.c: 256: switch (state) {
+[c E5966 0 1 2 3 .. ]
+[n E5966 states PREPARING_PROBE WAITING_TO_SEND SENDING_PROBE ARP_ENTRY_FOUND  ]
+"255
+[v F5971 `uc ~T0 @X0 1 s state ]
+[i F5971
+-> . `E5966 0 `uc
+]
 "256
-[e $U 675  ]
-{
-[; ;arp.c: 257: case 0:
+[v _index `uc ~T0 @X0 1 a ]
+[; ;arp.c: 246: time_t timeStart;
+[; ;arp.c: 247: time_t waitingTime;
+[; ;arp.c: 248: ipv4_address_t ipSender;
+[; ;arp.c: 249: uint8_t static probeCounter = 0;
+[; ;arp.c: 250: error_t err;
+[; ;arp.c: 252: enum states {
+[; ;arp.c: 253: PREPARING_PROBE, WAITING_TO_SEND, SENDING_PROBE, ARP_ENTRY_FOUND
+[; ;arp.c: 254: };
+[; ;arp.c: 255: uint8_t static state = PREPARING_PROBE;
+[; ;arp.c: 256: uint8_t index;
+[; ;arp.c: 257: err.module = ERROR_MODULE_ARP;
 "257
-[e :U 676 ]
-[; ;arp.c: 258: ipv4_setToAllZero(&ipSender);
-"258
-[e ( _ipv4_setToAllZero (1 &U _ipSender ]
-[; ;arp.c: 259: timeStart = getMillis();
+[e = . _err 0 . `E151 3 ]
+[; ;arp.c: 259: if (arp_checkForEntry(ipTarget, &index)) {
 "259
-[e = _timeStart ( _getMillis ..  ]
-[; ;arp.c: 260: waitingTime = rand() % 3000;
-"260
-[e = _waitingTime -> -> % ( _rand ..  -> 3000 `i `l `ul ]
-[; ;arp.c: 261: state = 1;
-"261
-[e = F5950 -> -> 1 `i `uc ]
-[; ;arp.c: 262: err.code = ERROR_ARP_WAITING_FOR_REPLY;
-"262
-[e = . _err 1 -> . `E175 0 `ui ]
-[; ;arp.c: 263: break;
-"263
-[e $U 674  ]
-[; ;arp.c: 264: case 1:
-"264
-[e :U 677 ]
-[; ;arp.c: 265: if (getMillis() - timeStart >= waitingTime) {
-"265
-[e $ ! >= - ( _getMillis ..  _timeStart _waitingTime 678  ]
+[e $ ! != -> ( _arp_checkForEntry (2 , _ipTarget &U _index `i -> -> -> 0 `i `uc `i 674  ]
 {
-[; ;arp.c: 266: UARTTransmitText("Waited ");
-"266
-[e ( _UARTTransmitText (1 :s 14C ]
-[; ;arp.c: 267: UARTTransmitText(intToString(waitingTime));
-"267
-[e ( _UARTTransmitText (1 -> ( _intToString (1 _waitingTime `*Cuc ]
-[; ;arp.c: 268: UARTTransmitText(" ms.\n\r");
-"268
-[e ( _UARTTransmitText (1 :s 15C ]
-[; ;arp.c: 269: ARP_sendRequest(ipSender, ipTarget);
-"269
-[e ( _ARP_sendRequest (2 , _ipSender _ipTarget ]
-[; ;arp.c: 270: state = 2;
-"270
-[e = F5950 -> -> 2 `i `uc ]
-"271
+[; ;arp.c: 260: UARTTransmitText("ARP: Found a valid entry for ");
+"260
+[e ( _UARTTransmitText (1 :s 12C ]
+[; ;arp.c: 261: UARTTransmitText(ipAdressToString(ipTarget));
+"261
+[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 _ipTarget `*Cuc ]
+[; ;arp.c: 262: UARTTransmitText(".\n\r");
+"262
+[e ( _UARTTransmitText (1 :s 13C ]
+[; ;arp.c: 263: state = ARP_ENTRY_FOUND;
+"263
+[e = F5971 -> . `E5966 3 `uc ]
+"264
 }
-[e :U 678 ]
-[; ;arp.c: 271: }
-[; ;arp.c: 272: err.code = ERROR_ARP_WAITING_FOR_REPLY;
-"272
-[e = . _err 1 -> . `E175 0 `ui ]
-[; ;arp.c: 273: break;
-"273
-[e $U 674  ]
-[; ;arp.c: 274: case 2:
-"274
-[e :U 679 ]
-[; ;arp.c: 275: state = 0;
-"275
-[e = F5950 -> -> 0 `i `uc ]
-[; ;arp.c: 276: err.code = (uint16_t)0;
-"276
-[e = . _err 1 -> -> 0 `i `ui ]
-[; ;arp.c: 277: break;
-"277
-[e $U 674  ]
-"278
-}
-[; ;arp.c: 278: }
-[e $U 674  ]
-"256
-[e :U 675 ]
-[e [\ F5950 , $ -> -> 0 `i `uc 676
- , $ -> -> 1 `i `uc 677
- , $ -> -> 2 `i `uc 679
- 674 ]
-"278
 [e :U 674 ]
-[; ;arp.c: 279: return err;
+[; ;arp.c: 264: }
+[; ;arp.c: 266: switch (state) {
+"266
+[e $U 676  ]
+{
+[; ;arp.c: 267: case PREPARING_PROBE:
+"267
+[e :U 677 ]
+[; ;arp.c: 268: UARTTransmitText("ARP: Preparing probe...\n\r");
+"268
+[e ( _UARTTransmitText (1 :s 14C ]
+[; ;arp.c: 269: ipv4_setToAllZero(&ipSender);
+"269
+[e ( _ipv4_setToAllZero (1 &U _ipSender ]
+[; ;arp.c: 270: timeStart = getMillis();
+"270
+[e = _timeStart ( _getMillis ..  ]
+[; ;arp.c: 271: waitingTime = rand() % 1000u;
+"271
+[e = _waitingTime -> % -> ( _rand ..  `ui -> 1000 `ui `ul ]
+[; ;arp.c: 272: state = WAITING_TO_SEND;
+"272
+[e = F5971 -> . `E5966 1 `uc ]
+[; ;arp.c: 273: err.code = ERROR_ARP_WAITING_FOR_REPLY;
+"273
+[e = . _err 1 -> . `E175 0 `ui ]
+[; ;arp.c: 274: UARTTransmitText("ARP: Waiting to send probe.\n\r");
+"274
+[e ( _UARTTransmitText (1 :s 15C ]
+[; ;arp.c: 275: break;
+"275
+[e $U 675  ]
+[; ;arp.c: 276: case WAITING_TO_SEND:
+"276
+[e :U 678 ]
+[; ;arp.c: 277: if (getMillis() - timeStart >= waitingTime) {
+"277
+[e $ ! >= - ( _getMillis ..  _timeStart _waitingTime 679  ]
+{
+[; ;arp.c: 278: UARTTransmitText("ARP: Waited ");
+"278
+[e ( _UARTTransmitText (1 :s 16C ]
+[; ;arp.c: 279: UARTTransmitText(intToString(waitingTime));
 "279
+[e ( _UARTTransmitText (1 -> ( _intToString (1 _waitingTime `*Cuc ]
+[; ;arp.c: 280: UARTTransmitText(" ms.\n\r");
+"280
+[e ( _UARTTransmitText (1 :s 17C ]
+[; ;arp.c: 281: state = SENDING_PROBE;
+"281
+[e = F5971 -> . `E5966 2 `uc ]
+[; ;arp.c: 283: waitingTime = (rand() % (2000u - 1000u)) + 1000u;
+"283
+[e = _waitingTime -> + % -> ( _rand ..  `ui - -> 2000 `ui -> 1000 `ui -> 1000 `ui `ul ]
+[; ;arp.c: 285: UARTTransmitText("ARP: Waiting time between the probes is ");
+"285
+[e ( _UARTTransmitText (1 :s 18C ]
+[; ;arp.c: 286: UARTTransmitText(intToString(waitingTime));
+"286
+[e ( _UARTTransmitText (1 -> ( _intToString (1 _waitingTime `*Cuc ]
+[; ;arp.c: 287: UARTTransmitText(" ms.\n\r");
+"287
+[e ( _UARTTransmitText (1 :s 19C ]
+"288
+}
+[e :U 679 ]
+[; ;arp.c: 288: }
+[; ;arp.c: 289: err.code = ERROR_ARP_WAITING_FOR_REPLY;
+"289
+[e = . _err 1 -> . `E175 0 `ui ]
+[; ;arp.c: 290: break;
+"290
+[e $U 675  ]
+[; ;arp.c: 291: case SENDING_PROBE:
+"291
+[e :U 680 ]
+[; ;arp.c: 292: if (probeCounter == 0 || (getMillis() - timeStart) > waitingTime) {
+"292
+[e $ ! || == -> F5964 `i -> 0 `i > - ( _getMillis ..  _timeStart _waitingTime 681  ]
+{
+[; ;arp.c: 293: timeStart = getMillis();
+"293
+[e = _timeStart ( _getMillis ..  ]
+[; ;arp.c: 295: if (probeCounter < 3u) {
+"295
+[e $ ! < -> F5964 `ui -> 3 `ui 682  ]
+{
+[; ;arp.c: 296: arp_sendRequest(ipSender, ipTarget);
+"296
+[e ( _arp_sendRequest (2 , _ipSender _ipTarget ]
+[; ;arp.c: 297: UARTTransmitText("ARP: Sending probe #");
+"297
+[e ( _UARTTransmitText (1 :s 20C ]
+[; ;arp.c: 298: UARTTransmitText(intToString(probeCounter));
+"298
+[e ( _UARTTransmitText (1 -> ( _intToString (1 -> F5964 `ul `*Cuc ]
+[; ;arp.c: 299: UARTTransmitText(": Who has ");
+"299
+[e ( _UARTTransmitText (1 :s 21C ]
+[; ;arp.c: 300: UARTTransmitText(ipAdressToString(ipv4_getPreliminaryIPSourceAddress()));
+"300
+[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 ( _ipv4_getPreliminaryIPSourceAddress ..  `*Cuc ]
+[; ;arp.c: 301: UARTTransmitText("?\n\r");
+"301
+[e ( _UARTTransmitText (1 :s 22C ]
+"302
+}
+[e :U 682 ]
+[; ;arp.c: 302: }
+[; ;arp.c: 303: if (probeCounter >= 3u) {
+"303
+[e $ ! >= -> F5964 `ui -> 3 `ui 683  ]
+{
+[; ;arp.c: 304: probeCounter = 0;
+"304
+[e = F5964 -> -> 0 `i `uc ]
+[; ;arp.c: 305: state = PREPARING_PROBE;
+"305
+[e = F5971 -> . `E5966 0 `uc ]
+[; ;arp.c: 306: err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED;
+"306
+[e = . _err 1 -> . `E175 1 `ui ]
+"307
+}
+[; ;arp.c: 307: } else {
+[e $U 684  ]
+[e :U 683 ]
+{
+[; ;arp.c: 308: err.code = ERROR_ARP_WAITING_FOR_REPLY;
+"308
+[e = . _err 1 -> . `E175 0 `ui ]
+[; ;arp.c: 309: probeCounter++;
+"309
+[e ++ F5964 -> -> 1 `i `uc ]
+"310
+}
+[e :U 684 ]
+"312
+}
+[e :U 681 ]
+[; ;arp.c: 310: }
+[; ;arp.c: 312: }
+[; ;arp.c: 313: break;
+"313
+[e $U 675  ]
+[; ;arp.c: 314: case ARP_ENTRY_FOUND:
+"314
+[e :U 685 ]
+[; ;arp.c: 315: probeCounter = 0;
+"315
+[e = F5964 -> -> 0 `i `uc ]
+[; ;arp.c: 316: state = PREPARING_PROBE;
+"316
+[e = F5971 -> . `E5966 0 `uc ]
+[; ;arp.c: 317: err.code = ERROR_ARP_IPv4_ADDRESS_CONFLICT;
+"317
+[e = . _err 1 -> . `E175 3 `ui ]
+"318
+}
+[; ;arp.c: 318: }
+[e $U 675  ]
+"266
+[e :U 676 ]
+[e [\ F5971 , $ -> . `E5966 0 `uc 677
+ , $ -> . `E5966 1 `uc 678
+ , $ -> . `E5966 2 `uc 680
+ , $ -> . `E5966 3 `uc 685
+ 675 ]
+"318
+[e :U 675 ]
+[; ;arp.c: 319: return err;
+"319
 [e ) _err ]
 [e $UE 673  ]
-[; ;arp.c: 280: }
-"280
+[; ;arp.c: 320: }
+"320
 [e :UE 673 ]
 }
-"284
-[v _ARP_checkForEntry `(uc ~T0 @X0 1 ef2`S12`*uc ]
+"324
+[v _arp_background `(S5 ~T0 @X0 1 ef ]
 {
-[; ;arp.c: 284: uint8_t ARP_checkForEntry(ipv4_address_t ip, uint8_t *index) {
-[e :U _ARP_checkForEntry ]
+[; ;arp.c: 324: error_t arp_background() {
+[e :U _arp_background ]
+[f ]
+"325
+[v F5973 `S5 ~T0 @X0 1 s err ]
+[; ;arp.c: 325: error_t static err;
+[; ;arp.c: 326: err.code = (uint16_t)0xffff;
+"326
+[e = . F5973 1 -> 65535 `ui ]
+[; ;arp.c: 327: err.module = ERROR_MODULE_ARP;
+"327
+[e = . F5973 0 . `E151 3 ]
+"329
+[v _ipPreliminary `S12 ~T0 @X0 1 a ]
+[; ;arp.c: 329: ipv4_address_t ipPreliminary = ipv4_getPreliminaryIPSourceAddress();
+[e = _ipPreliminary ( _ipv4_getPreliminaryIPSourceAddress ..  ]
+[; ;arp.c: 331: if (ipv4_SrcAddrChanged(&err)) {
+"331
+[e $ ! ( _ipv4_SrcAddrChanged (1 &U F5973 687  ]
+{
+[; ;arp.c: 336: err.code = arp_probe(ipPreliminary).code;
+"336
+[e = . F5973 1 . ( _arp_probe (1 _ipPreliminary 1 ]
+[; ;arp.c: 338: switch (err.code) {
+"338
+[e $U 689  ]
+{
+[; ;arp.c: 339: case ERROR_ARP_IPv4_ADDRESS_CONFLICT:
+"339
+[e :U 690 ]
+[; ;arp.c: 340: UARTTransmitText("ARP: IPv4 address already in use!\n\r");
+"340
+[e ( _UARTTransmitText (1 :s 23C ]
+[; ;arp.c: 341: break;
+"341
+[e $U 688  ]
+[; ;arp.c: 342: case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
+"342
+[e :U 691 ]
+[; ;arp.c: 343: UARTTransmitText("ARP: Nobody answered.\n\r");
+"343
+[e ( _UARTTransmitText (1 :s 24C ]
+[; ;arp.c: 344: break;
+"344
+[e $U 688  ]
+[; ;arp.c: 345: case ERROR_ARP_WAITING_FOR_REPLY:
+"345
+[e :U 692 ]
+[; ;arp.c: 346: break;
+"346
+[e $U 688  ]
+[; ;arp.c: 347: default:
+"347
+[e :U 693 ]
+[; ;arp.c: 348: UARTTransmitText("ARP: An unknown error occured.\n\r");
+"348
+[e ( _UARTTransmitText (1 :s 25C ]
+"349
+}
+[; ;arp.c: 349: }
+[e $U 688  ]
+"338
+[e :U 689 ]
+[e [\ . F5973 1 , $ -> . `E175 3 `ui 690
+ , $ -> . `E175 1 `ui 691
+ , $ -> . `E175 0 `ui 692
+ 693 ]
+"349
+[e :U 688 ]
+"350
+}
+[e :U 687 ]
+[; ;arp.c: 350: }
+[; ;arp.c: 351: return err;
+"351
+[e ) F5973 ]
+[e $UE 686  ]
+[; ;arp.c: 352: }
+"352
+[e :UE 686 ]
+}
+"356
+[v _arp_checkForEntry `(uc ~T0 @X0 1 sf2`S12`*uc ]
+{
+[; ;arp.c: 356: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t * index) {
+[e :U _arp_checkForEntry ]
 [v _ip `S12 ~T0 @X0 1 r1 ]
 [v _index `*uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;arp.c: 285: for (uint8_t i = 0; i < 8; i++) {
-"285
+[; ;arp.c: 357: for (uint8_t i = 0; i < 8u; i++) {
+"357
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 681  ]
-[e $U 682  ]
-[e :U 681 ]
+[e $ < -> _i `ui -> 8 `ui 695  ]
+[e $U 696  ]
+[e :U 695 ]
 {
-[; ;arp.c: 286: if (ipv4_cmp(&ARP_table[i].ip, &ip)) {
-"286
-[e $ ! ( _ipv4_cmp (2 , &U . *U + &U _ARP_table * -> _i `ux -> -> # *U &U _ARP_table `ui `ux 0 &U _ip 684  ]
+[; ;arp.c: 358: if (ipv4_cmp(&arp_table[i].ip, &ip)) {
+"358
+[e $ ! ( _ipv4_cmp (2 , &U . *U + &U _arp_table * -> _i `ux -> -> # *U &U _arp_table `ui `ux 0 &U _ip 698  ]
 {
-[; ;arp.c: 287: if (getMillis() - ARP_table[i].timeCreated < 30000) {
-"287
-[e $ ! < - ( _getMillis ..  . *U + &U _ARP_table * -> _i `ux -> -> # *U &U _ARP_table `ui `ux 2 -> -> -> 30000 `i `l `ul 685  ]
+[; ;arp.c: 359: if (getMillis() - arp_table[i].timeCreated < 30000u) {
+"359
+[e $ ! < - ( _getMillis ..  . *U + &U _arp_table * -> _i `ux -> -> # *U &U _arp_table `ui `ux 2 -> -> 30000 `ui `ul 699  ]
 {
-[; ;arp.c: 289: *index = i;
-"289
+[; ;arp.c: 361: *index = i;
+"361
 [e = *U _index _i ]
-[; ;arp.c: 290: return 1;
-"290
+[; ;arp.c: 363: return 1;
+"363
 [e ) -> -> 1 `i `uc ]
-[e $UE 680  ]
-"291
+[e $UE 694  ]
+"364
 }
-[e :U 685 ]
-"292
+[e :U 699 ]
+"365
 }
-[e :U 684 ]
-"293
+[e :U 698 ]
+"366
 }
-"285
+"357
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 681  ]
-[e :U 682 ]
-"293
+[e $ < -> _i `ui -> 8 `ui 695  ]
+[e :U 696 ]
+"366
 }
-[; ;arp.c: 291: }
-[; ;arp.c: 292: }
-[; ;arp.c: 293: }
-[; ;arp.c: 294: return 0;
-"294
+[; ;arp.c: 364: }
+[; ;arp.c: 365: }
+[; ;arp.c: 366: }
+[; ;arp.c: 367: return 0;
+"367
 [e ) -> -> 0 `i `uc ]
-[e $UE 680  ]
-[; ;arp.c: 295: }
-"295
-[e :UE 680 ]
+[e $UE 694  ]
+[; ;arp.c: 368: }
+"368
+[e :UE 694 ]
 }
-"297
-[v _ARP_getEntryFromTable `(S8 ~T0 @X0 1 ef1`uc ]
+"370
+[v _arp_getEntryFromTable `(S8 ~T0 @X0 1 sf1`uc ]
 {
-[; ;arp.c: 297: macaddress_t ARP_getEntryFromTable(uint8_t index) {
-[e :U _ARP_getEntryFromTable ]
+[; ;arp.c: 370: macaddress_t static arp_getEntryFromTable(uint8_t index) {
+[e :U _arp_getEntryFromTable ]
 [v _index `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;arp.c: 298: return ARP_table[index].mac;
-"298
-[e ) . *U + &U _ARP_table * -> _index `ux -> -> # *U &U _ARP_table `ui `ux 1 ]
-[e $UE 686  ]
-[; ;arp.c: 299: }
-"299
-[e :UE 686 ]
+[; ;arp.c: 371: return arp_table[index].mac;
+"371
+[e ) . *U + &U _arp_table * -> _index `ux -> -> # *U &U _arp_table `ui `ux 1 ]
+[e $UE 700  ]
+[; ;arp.c: 372: }
+"372
+[e :UE 700 ]
 }
-"301
-[v _ARP_setNewEntry `(v ~T0 @X0 1 sf3`S8`S12`ul ]
+"374
+[v _arp_setNewEntry `(v ~T0 @X0 1 sf3`S8`S12`ul ]
 {
-[; ;arp.c: 301: void static ARP_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp) {
-[e :U _ARP_setNewEntry ]
+[; ;arp.c: 374: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp) {
+[e :U _arp_setNewEntry ]
 [v _mac `S8 ~T0 @X0 1 r1 ]
 [v _ip `S12 ~T0 @X0 1 r2 ]
 [v _timestamp `ul ~T0 @X0 1 r3 ]
 [f ]
-"302
+"375
 [v _maxSeconds `ul ~T0 @X0 1 a ]
-[; ;arp.c: 302: uint32_t maxSeconds = 0;
+[; ;arp.c: 375: uint32_t maxSeconds = 0;
 [e = _maxSeconds -> -> -> 0 `i `l `ul ]
-"303
+"376
 [v _oldestIndex `uc ~T0 @X0 1 a ]
-[; ;arp.c: 303: uint8_t oldestIndex = 0;
+[; ;arp.c: 376: uint8_t oldestIndex = 0;
 [e = _oldestIndex -> -> 0 `i `uc ]
-[; ;arp.c: 305: for (uint8_t i = 0; i < 8; i++) {
-"305
+[; ;arp.c: 378: for (uint8_t i = 0; i < 8u; i++) {
+"378
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 688  ]
-[e $U 689  ]
-[e :U 688 ]
+[e $ < -> _i `ui -> 8 `ui 702  ]
+[e $U 703  ]
+[e :U 702 ]
 {
-[; ;arp.c: 306: if (ARP_table[i].timeCreated > maxSeconds) {
-"306
-[e $ ! > . *U + &U _ARP_table * -> _i `ux -> -> # *U &U _ARP_table `ui `ux 2 _maxSeconds 691  ]
+[; ;arp.c: 379: if (arp_table[i].timeCreated > maxSeconds) {
+"379
+[e $ ! > . *U + &U _arp_table * -> _i `ux -> -> # *U &U _arp_table `ui `ux 2 _maxSeconds 705  ]
 {
-[; ;arp.c: 307: maxSeconds = ARP_table[i].timeCreated;
-"307
-[e = _maxSeconds . *U + &U _ARP_table * -> _i `ux -> -> # *U &U _ARP_table `ui `ux 2 ]
-[; ;arp.c: 308: oldestIndex = i;
-"308
+[; ;arp.c: 381: maxSeconds = arp_table[i].timeCreated;
+"381
+[e = _maxSeconds . *U + &U _arp_table * -> _i `ux -> -> # *U &U _arp_table `ui `ux 2 ]
+[; ;arp.c: 382: oldestIndex = i;
+"382
 [e = _oldestIndex _i ]
-"309
+"383
 }
-[e :U 691 ]
-"310
+[e :U 705 ]
+"384
 }
-"305
+"378
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 688  ]
-[e :U 689 ]
-"310
+[e $ < -> _i `ui -> 8 `ui 702  ]
+[e :U 703 ]
+"384
 }
-[; ;arp.c: 309: }
-[; ;arp.c: 310: }
-[; ;arp.c: 312: ARP_table[oldestIndex].ip = ip;
-"312
-[e = . *U + &U _ARP_table * -> _oldestIndex `ux -> -> # *U &U _ARP_table `ui `ux 0 _ip ]
-[; ;arp.c: 313: ARP_table[oldestIndex].mac = mac;
-"313
-[e = . *U + &U _ARP_table * -> _oldestIndex `ux -> -> # *U &U _ARP_table `ui `ux 1 _mac ]
-[; ;arp.c: 314: ARP_table[oldestIndex].timeCreated = timestamp;
-"314
-[e = . *U + &U _ARP_table * -> _oldestIndex `ux -> -> # *U &U _ARP_table `ui `ux 2 _timestamp ]
-[; ;arp.c: 315: }
-"315
-[e :UE 687 ]
+[; ;arp.c: 383: }
+[; ;arp.c: 384: }
+[; ;arp.c: 386: arp_table[oldestIndex].ip = ip;
+"386
+[e = . *U + &U _arp_table * -> _oldestIndex `ux -> -> # *U &U _arp_table `ui `ux 0 _ip ]
+[; ;arp.c: 387: arp_table[oldestIndex].mac = mac;
+"387
+[e = . *U + &U _arp_table * -> _oldestIndex `ux -> -> # *U &U _arp_table `ui `ux 1 _mac ]
+[; ;arp.c: 388: arp_table[oldestIndex].timeCreated = timestamp;
+"388
+[e = . *U + &U _arp_table * -> _oldestIndex `ux -> -> # *U &U _arp_table `ui `ux 2 _timestamp ]
+[; ;arp.c: 389: }
+"389
+[e :UE 701 ]
 }
-"317
-[v _ARP_initTable `(v ~T0 @X0 1 ef ]
+"391
+[v _arp_init `(v ~T0 @X0 1 ef ]
 {
-[; ;arp.c: 317: void ARP_initTable() {
-[e :U _ARP_initTable ]
+[; ;arp.c: 391: void arp_init() {
+[e :U _arp_init ]
 [f ]
-"318
+"392
 [v _mac `S8 ~T0 @X0 1 a ]
-"319
+"393
 [v _ip `S12 ~T0 @X0 1 a ]
-[; ;arp.c: 318: macaddress_t mac;
-[; ;arp.c: 319: ipv4_address_t ip;
-[; ;arp.c: 320: mac_setAllZero(&mac);
-"320
+[; ;arp.c: 392: macaddress_t mac;
+[; ;arp.c: 393: ipv4_address_t ip;
+[; ;arp.c: 394: mac_setAllZero(&mac);
+"394
 [e ( _mac_setAllZero (1 &U _mac ]
-[; ;arp.c: 321: ipv4_setToAllZero(&ip);
-"321
+[; ;arp.c: 395: ipv4_setToAllZero(&ip);
+"395
 [e ( _ipv4_setToAllZero (1 &U _ip ]
-[; ;arp.c: 322: for (uint8_t i = 0; i < 8; i++)
-"322
+[; ;arp.c: 397: for (uint8_t i = 0; i < 8u; i++)
+"397
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 693  ]
-[e $U 694  ]
-"323
-[e :U 693 ]
-[; ;arp.c: 323: ARP_setNewEntry(mac, ip, 0xffffffff);
-[e ( _ARP_setNewEntry (3 , , _mac _ip -> -1 `ul ]
-"322
+[e $ < -> _i `ui -> 8 `ui 707  ]
+[e $U 708  ]
+"398
+[e :U 707 ]
+[; ;arp.c: 398: arp_setNewEntry(mac, ip, 0xffffffff);
+[e ( _arp_setNewEntry (3 , , _mac _ip -> -1 `ul ]
+"397
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 693  ]
-[e :U 694 ]
-"323
+[e $ < -> _i `ui -> 8 `ui 707  ]
+[e :U 708 ]
+"398
 }
-[; ;arp.c: 324: }
-"324
-[e :UE 692 ]
+[; ;arp.c: 399: }
+"399
+[e :UE 706 ]
 }
-"326
+"401
 [v _printArpTable `(v ~T0 @X0 1 ef ]
 {
-[; ;arp.c: 326: void printArpTable() {
+[; ;arp.c: 401: void printArpTable() {
 [e :U _printArpTable ]
 [f ]
-[; ;arp.c: 327: for (uint8_t i = 0; i < 8; i++) {
-"327
+[; ;arp.c: 402: for (uint8_t i = 0; i < 8u; i++) {
+"402
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 697  ]
-[e $U 698  ]
-[e :U 697 ]
+[e $ < -> _i `ui -> 8 `ui 711  ]
+[e $U 712  ]
+[e :U 711 ]
 {
-[; ;arp.c: 328: UARTTransmitText(arpEntryToString(ARP_table[i]));
-"328
-[e ( _UARTTransmitText (1 -> ( _arpEntryToString (1 *U + &U _ARP_table * -> _i `ux -> -> # *U &U _ARP_table `ui `ux `*Cuc ]
-[; ;arp.c: 329: UARTTransmitText("\n\r");
-"329
-[e ( _UARTTransmitText (1 :s 16C ]
-"330
+[; ;arp.c: 403: UARTTransmitText(arpEntryToString(arp_table[i]));
+"403
+[e ( _UARTTransmitText (1 -> ( _arpEntryToString (1 *U + &U _arp_table * -> _i `ux -> -> # *U &U _arp_table `ui `ux `*Cuc ]
+[; ;arp.c: 404: UARTTransmitText("\n\r");
+"404
+[e ( _UARTTransmitText (1 :s 26C ]
+"405
 }
-"327
+"402
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 697  ]
-[e :U 698 ]
-"330
+[e $ < -> _i `ui -> 8 `ui 711  ]
+[e :U 712 ]
+"405
 }
-[; ;arp.c: 330: }
-[; ;arp.c: 331: }
-"331
-[e :UE 696 ]
+[; ;arp.c: 405: }
+[; ;arp.c: 406: }
+"406
+[e :UE 710 ]
 }
 [a 8C 91 73 115 71 114 97 116 117 105 116 111 117 115 93 0 ]
 [a 7C 91 73 115 80 114 111 98 101 93 0 ]
 [a 6C 93 0 ]
-[a 13C 93 0 ]
+[a 11C 93 0 ]
 [a 4C 93 45 62 91 0 ]
 [a 2C 91 0 ]
-[a 11C 91 82 101 112 108 121 32 115 101 110 116 32 116 111 32 0 ]
-[a 14C 87 97 105 116 101 100 32 0 ]
+[a 20C 65 82 80 58 32 83 101 110 100 105 110 103 32 112 114 111 98 101 32 35 0 ]
+[a 18C 65 82 80 58 32 87 97 105 116 105 110 103 32 116 105 109 101 32 98 101 116 119 101 101 110 32 116 104 101 32 112 114 111 98 101 115 32 105 115 32 0 ]
+[a 21C 58 32 87 104 111 32 104 97 115 32 0 ]
+[a 12C 65 82 80 58 32 70 111 117 110 100 32 97 32 118 97 108 105 100 32 101 110 116 114 121 32 102 111 114 32 0 ]
+[a 9C 91 82 101 112 108 121 32 115 101 110 116 32 116 111 32 0 ]
+[a 16C 65 82 80 58 32 87 97 105 116 101 100 32 0 ]
 [a 3C 44 32 0 ]
 [a 5C 44 32 0 ]
-[a 9C 44 32 0 ]
-[a 12C 44 32 0 ]
-[a 15C 32 109 115 46 10 13 0 ]
-[a 10C 10 13 0 ]
-[a 16C 10 13 0 ]
+[a 10C 44 32 0 ]
+[a 22C 63 10 13 0 ]
+[a 17C 32 109 115 46 10 13 0 ]
+[a 19C 32 109 115 46 10 13 0 ]
+[a 15C 65 82 80 58 32 87 97 105 116 105 110 103 32 116 111 32 115 101 110 100 32 112 114 111 98 101 46 10 13 0 ]
+[a 25C 65 82 80 58 32 65 110 32 117 110 107 110 111 119 110 32 101 114 114 111 114 32 111 99 99 117 114 101 100 46 10 13 0 ]
+[a 24C 65 82 80 58 32 78 111 98 111 100 121 32 97 110 115 119 101 114 101 100 46 10 13 0 ]
+[a 14C 65 82 80 58 32 80 114 101 112 97 114 105 110 103 32 112 114 111 98 101 46 46 46 10 13 0 ]
+[a 13C 46 10 13 0 ]
+[a 23C 65 82 80 58 32 73 80 118 52 32 97 100 100 114 101 115 115 32 97 108 114 101 97 100 121 32 105 110 32 117 115 101 33 10 13 0 ]
+[a 26C 10 13 0 ]
 [a 1C 91 73 110 118 97 108 105 100 32 65 82 80 32 77 101 115 115 97 103 101 32 119 97 115 32 100 105 115 99 97 114 100 101 100 46 93 13 10 0 ]

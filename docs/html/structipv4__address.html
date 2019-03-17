@@ -71,14 +71,21 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>IPv4 Address type.  
+ <a href="structipv4__address.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ipv4_types_8h_source.html">ipv4Types.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:addf23a7962e43c9ba2ed54c76bd937d3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structipv4__address.html#addf23a7962e43c9ba2ed54c76bd937d3">address</a> [4]</td></tr>
+<tr class="memdesc:addf23a7962e43c9ba2ed54c76bd937d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">4 Address bytes  <a href="#addf23a7962e43c9ba2ed54c76bd937d3">More...</a><br /></td></tr>
 <tr class="separator:addf23a7962e43c9ba2ed54c76bd937d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>IPv4 Address type. </p>
+<p>Address is stored in an array of bytes, the first element being the first byte if read from left to right.</p>
+<div class="fragment"><div class="line"><span class="comment">// This sets an IPv4 Address to 192.168.0.1</span></div><div class="line"><a class="code" href="structipv4__address.html">ipv4_address_t</a> ip;</div><div class="line">ip[0] = 192;</div><div class="line">ip[1] = 168;</div><div class="line">ip[2] = 0;</div><div class="line">ip[3] = 1;</div></div><!-- fragment --> </div><h2 class="groupheader">Field Documentation</h2>
 <a id="addf23a7962e43c9ba2ed54c76bd937d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#addf23a7962e43c9ba2ed54c76bd937d3">&#9670;&nbsp;</a></span>address</h2>
 
@@ -90,6 +97,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>4 Address bytes </p>
 
 </div>
 </div>

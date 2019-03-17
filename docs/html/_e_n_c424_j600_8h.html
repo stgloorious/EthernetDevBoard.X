@@ -72,7 +72,7 @@ $(function() {
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">ENC424J600.h File Reference</div>  </div>
+<div class="title">ENC424J600.h File Reference<div class="ingroups"><a class="el" href="group__ethernet_controller.html">Ethernet Controller</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -445,16 +445,91 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga624b3a45566e56aa688ebb70ad4387da"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__interrupts.html#ga624b3a45566e56aa688ebb70ad4387da">ENC424J600_getInterruptFlags</a> ()</td></tr>
-<tr class="memdesc:ga624b3a45566e56aa688ebb70ad4387da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads out the Interrupt Flag Register EIR.  <a href="group__interrupts.html#ga624b3a45566e56aa688ebb70ad4387da">More...</a><br /></td></tr>
-<tr class="separator:ga624b3a45566e56aa688ebb70ad4387da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69c9a4ff3ecb321ab560e4f6ab1d62f8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__init.html#ga69c9a4ff3ecb321ab560e4f6ab1d62f8">enc424j600_initSPI</a> ()</td></tr>
+<tr class="memdesc:ga69c9a4ff3ecb321ab560e4f6ab1d62f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises the hardware SPI module. To be called after power-up.  <a href="group__init.html#ga69c9a4ff3ecb321ab560e4f6ab1d62f8">More...</a><br /></td></tr>
+<tr class="separator:ga69c9a4ff3ecb321ab560e4f6ab1d62f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae44784d145c4ed6e48323a8d06f23fa5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#gae44784d145c4ed6e48323a8d06f23fa5">enc424j600_writeSPI</a> (uint8_t *data)</td></tr>
+<tr class="memdesc:gae44784d145c4ed6e48323a8d06f23fa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a single byte to the SPI Interface; CS Pin is not driven by this function.  <a href="group__readwrite.html#gae44784d145c4ed6e48323a8d06f23fa5">More...</a><br /></td></tr>
+<tr class="separator:gae44784d145c4ed6e48323a8d06f23fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga912bde599010f782a4d2fe4d2cb1e447"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#ga912bde599010f782a4d2fe4d2cb1e447">enc424j600_readSPI</a> (uint8_t *data)</td></tr>
+<tr class="memdesc:ga912bde599010f782a4d2fe4d2cb1e447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a single byte from the SPI interface; CS Pin is not driven by this function.  <a href="group__readwrite.html#ga912bde599010f782a4d2fe4d2cb1e447">More...</a><br /></td></tr>
+<tr class="separator:ga912bde599010f782a4d2fe4d2cb1e447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8a8b88b0965f20661b380fa8d3ff0b3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#gad8a8b88b0965f20661b380fa8d3ff0b3">enc424j600_writeSingleByte</a> (uint8_t opcode)</td></tr>
+<tr class="memdesc:gad8a8b88b0965f20661b380fa8d3ff0b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a single byte opcode via the SPI interface.  <a href="group__readwrite.html#gad8a8b88b0965f20661b380fa8d3ff0b3">More...</a><br /></td></tr>
+<tr class="separator:gad8a8b88b0965f20661b380fa8d3ff0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga437b8a3902cb75739a5a2730f128bf1d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#ga437b8a3902cb75739a5a2730f128bf1d">enc424j600_readSingleByte</a> (uint8_t opcode)</td></tr>
+<tr class="memdesc:ga437b8a3902cb75739a5a2730f128bf1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a one-byte command via the SPI interface.  <a href="group__readwrite.html#ga437b8a3902cb75739a5a2730f128bf1d">More...</a><br /></td></tr>
+<tr class="separator:ga437b8a3902cb75739a5a2730f128bf1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad35964898ff900ab68b554b5241e0050"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#gad35964898ff900ab68b554b5241e0050">enc424j600_writeControlRegisterUnbanked</a> (uint8_t addr, uint8_t *data)</td></tr>
+<tr class="memdesc:gad35964898ff900ab68b554b5241e0050"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes an unbanked Special Function Register from the ENC424J600. Bank offsets have to be added to the register addresses.  <a href="group__readwrite.html#gad35964898ff900ab68b554b5241e0050">More...</a><br /></td></tr>
+<tr class="separator:gad35964898ff900ab68b554b5241e0050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a5beea8dd2ff4fa5087b1e0106d8cf5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__readwrite.html#ga0a5beea8dd2ff4fa5087b1e0106d8cf5">enc424j600_readControlRegisterUnbanked</a> (uint8_t addr, uint8_t *data)</td></tr>
+<tr class="memdesc:ga0a5beea8dd2ff4fa5087b1e0106d8cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads an unbanked Special Function Register from the ENC424J600. Bank offsets have to be added to the register addresses.  <a href="group__readwrite.html#ga0a5beea8dd2ff4fa5087b1e0106d8cf5">More...</a><br /></td></tr>
+<tr class="separator:ga0a5beea8dd2ff4fa5087b1e0106d8cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab05adcb645a18cf63b0dc146291f80e3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__phy.html#gab05adcb645a18cf63b0dc146291f80e3">enc424j600_readPHYRegister</a> (uint8_t addr, uint16_t *data)</td></tr>
+<tr class="memdesc:gab05adcb645a18cf63b0dc146291f80e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a PHY Register.  <a href="group__phy.html#gab05adcb645a18cf63b0dc146291f80e3">More...</a><br /></td></tr>
+<tr class="separator:gab05adcb645a18cf63b0dc146291f80e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabf19431dfe205bca94c0ac0ace30d7ea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transmission.html#gabf19431dfe205bca94c0ac0ace30d7ea">enc424j600_setTXLength</a> (uint16_t len)</td></tr>
+<tr class="memdesc:gabf19431dfe205bca94c0ac0ace30d7ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the TX Frame Length; This has to be called prior to transmitting a frame.  <a href="group__transmission.html#gabf19431dfe205bca94c0ac0ace30d7ea">More...</a><br /></td></tr>
+<tr class="separator:gabf19431dfe205bca94c0ac0ace30d7ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4c4e649eb51c03385653361dfe2eeef6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reception.html#ga4c4e649eb51c03385653361dfe2eeef6">enc424j600_setNextPacketPointer</a> (uint16_t ptr)</td></tr>
+<tr class="memdesc:ga4c4e649eb51c03385653361dfe2eeef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">NextPacketPointer holds the address value of the received packet.  <a href="group__reception.html#ga4c4e649eb51c03385653361dfe2eeef6">More...</a><br /></td></tr>
+<tr class="separator:ga4c4e649eb51c03385653361dfe2eeef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab6e574538b7a280497a9ea2bdf314136"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reception.html#gab6e574538b7a280497a9ea2bdf314136">enc424j600_getNextPacketPointer</a> ()</td></tr>
+<tr class="memdesc:gab6e574538b7a280497a9ea2bdf314136"><td class="mdescLeft">&#160;</td><td class="mdescRight">NextPacketPointer holds the address value of the received packet.  <a href="group__reception.html#gab6e574538b7a280497a9ea2bdf314136">More...</a><br /></td></tr>
+<tr class="separator:gab6e574538b7a280497a9ea2bdf314136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e4f7d0ecaa66fc04022f3bec2f8a7c5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reception.html#ga2e4f7d0ecaa66fc04022f3bec2f8a7c5">enc424j600_getPacketCount</a> ()</td></tr>
+<tr class="memdesc:ga2e4f7d0ecaa66fc04022f3bec2f8a7c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads out internal register PKCNT;.  <a href="group__reception.html#ga2e4f7d0ecaa66fc04022f3bec2f8a7c5">More...</a><br /></td></tr>
+<tr class="separator:ga2e4f7d0ecaa66fc04022f3bec2f8a7c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf81276ad76a011afe85bc012f58245e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#gacf81276ad76a011afe85bc012f58245e">enc424j600_setTXStartAddress</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:gacf81276ad76a011afe85bc012f58245e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the TX Start Address Pointer to a desired value.  <a href="group__pointers.html#gacf81276ad76a011afe85bc012f58245e">More...</a><br /></td></tr>
+<tr class="separator:gacf81276ad76a011afe85bc012f58245e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4975a43c8af9992aaf36f76df7885763"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#ga4975a43c8af9992aaf36f76df7885763">enc424j600_setGPDATAWritePointer</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:ga4975a43c8af9992aaf36f76df7885763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the General Purpose Data Write Pointer to a desired position.  <a href="group__pointers.html#ga4975a43c8af9992aaf36f76df7885763">More...</a><br /></td></tr>
+<tr class="separator:ga4975a43c8af9992aaf36f76df7885763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1405449372d788f54191ed949ba9eb4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#gaa1405449372d788f54191ed949ba9eb4">enc424j600_setGPDATAReadPointer</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:gaa1405449372d788f54191ed949ba9eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the General Purpose Data Read Pointer to a desired position.  <a href="group__pointers.html#gaa1405449372d788f54191ed949ba9eb4">More...</a><br /></td></tr>
+<tr class="separator:gaa1405449372d788f54191ed949ba9eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa4bb230aeaf52b9434831d1e8231189"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#gafa4bb230aeaf52b9434831d1e8231189">enc424j600_setERXDATAReadPointer</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:gafa4bb230aeaf52b9434831d1e8231189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Ethernet RX Data Window Register Read Pointer to a desired position.  <a href="group__pointers.html#gafa4bb230aeaf52b9434831d1e8231189">More...</a><br /></td></tr>
+<tr class="separator:gafa4bb230aeaf52b9434831d1e8231189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f87e38e6a123bd0ead3dbc46b543d60"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#ga5f87e38e6a123bd0ead3dbc46b543d60">enc424j600_setRXBufferStartAddress</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:ga5f87e38e6a123bd0ead3dbc46b543d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receive buffer start address.  <a href="group__pointers.html#ga5f87e38e6a123bd0ead3dbc46b543d60">More...</a><br /></td></tr>
+<tr class="separator:ga5f87e38e6a123bd0ead3dbc46b543d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae704f2c6a786db16d5d51a4c90c072f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pointers.html#gae704f2c6a786db16d5d51a4c90c072f1">enc424j600_setRXTailPointer</a> (uint16_t addr)</td></tr>
+<tr class="memdesc:gae704f2c6a786db16d5d51a4c90c072f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RX tail pointer ERXTAIL.  <a href="group__pointers.html#gae704f2c6a786db16d5d51a4c90c072f1">More...</a><br /></td></tr>
+<tr class="separator:gae704f2c6a786db16d5d51a4c90c072f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae20a515e6db22ce2dc4f9d92dd439126"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__settings.html#gae20a515e6db22ce2dc4f9d92dd439126">enc424j600_enable</a> ()</td></tr>
+<tr class="memdesc:gae20a515e6db22ce2dc4f9d92dd439126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the Ethernet module.  <a href="group__settings.html#gae20a515e6db22ce2dc4f9d92dd439126">More...</a><br /></td></tr>
+<tr class="separator:gae20a515e6db22ce2dc4f9d92dd439126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga576ad0ca6f608bdb65d5abb05feedd30"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__settings.html#ga576ad0ca6f608bdb65d5abb05feedd30">enc424j600_enableReception</a> ()</td></tr>
+<tr class="memdesc:ga576ad0ca6f608bdb65d5abb05feedd30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the ethernet connection to receive packets.  <a href="group__settings.html#ga576ad0ca6f608bdb65d5abb05feedd30">More...</a><br /></td></tr>
+<tr class="separator:ga576ad0ca6f608bdb65d5abb05feedd30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28c2ade818f7b0f32a9d681dd85812db"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__settings.html#ga28c2ade818f7b0f32a9d681dd85812db">enc424j600_disableReception</a> ()</td></tr>
+<tr class="memdesc:ga28c2ade818f7b0f32a9d681dd85812db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the ethernet connection to receive packets.  <a href="group__settings.html#ga28c2ade818f7b0f32a9d681dd85812db">More...</a><br /></td></tr>
+<tr class="separator:ga28c2ade818f7b0f32a9d681dd85812db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga627343c6faf33fb08f1bec1c4cd09a43"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__settings.html#ga627343c6faf33fb08f1bec1c4cd09a43">enc424j600_enableAutoMACInsertion</a> ()</td></tr>
+<tr class="memdesc:ga627343c6faf33fb08f1bec1c4cd09a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the auto-hardware-insertion of the MAC source address. The MAC address is unique and hardwired into the ENC424J600.  <a href="group__settings.html#ga627343c6faf33fb08f1bec1c4cd09a43">More...</a><br /></td></tr>
+<tr class="separator:ga627343c6faf33fb08f1bec1c4cd09a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaee6ab6104272ce3db14b64e78d1f2516"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__settings.html#gaee6ab6104272ce3db14b64e78d1f2516">enc424j600_disableAutoMACInsertion</a> ()</td></tr>
+<tr class="memdesc:gaee6ab6104272ce3db14b64e78d1f2516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the auto-hardware-insertion of the MAC source address. The MAC address is unique and hardwired into the ENC424J600.  <a href="group__settings.html#gaee6ab6104272ce3db14b64e78d1f2516">More...</a><br /></td></tr>
+<tr class="separator:gaee6ab6104272ce3db14b64e78d1f2516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9efc027ae0075f1eef3436a620a1def9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__interrupts.html#ga9efc027ae0075f1eef3436a620a1def9">enc424j600_getInterruptFlags</a> ()</td></tr>
+<tr class="memdesc:ga9efc027ae0075f1eef3436a620a1def9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads out the Interrupt Flag Register EIR.  <a href="group__interrupts.html#ga9efc027ae0075f1eef3436a620a1def9">More...</a><br /></td></tr>
+<tr class="separator:ga9efc027ae0075f1eef3436a620a1def9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga31e2285d110cba2732fa0b3d073110d8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__interrupts.html#ga31e2285d110cba2732fa0b3d073110d8">enc424j600_clearInterruptFlag</a> (uint8_t flag)</td></tr>
+<tr class="memdesc:ga31e2285d110cba2732fa0b3d073110d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears a single interrupt flag in the Interrupt Flag Register EIR.  <a href="group__interrupts.html#ga31e2285d110cba2732fa0b3d073110d8">More...</a><br /></td></tr>
+<tr class="separator:ga31e2285d110cba2732fa0b3d073110d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8c5a336bf557088d092171dc55fa2eb3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__rsv.html#gaf7fd94a9424fccb0aafa846f27a43099">RSV_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rsv.html#ga8c5a336bf557088d092171dc55fa2eb3">enc424j600_updateReceiveStatusVector</a> (uint8_t *rsv)</td></tr>
+<tr class="memdesc:ga8c5a336bf557088d092171dc55fa2eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function takes in the Receive Status Vector and puts it in a nice structure.  <a href="group__rsv.html#ga8c5a336bf557088d092171dc55fa2eb3">More...</a><br /></td></tr>
+<tr class="separator:ga8c5a336bf557088d092171dc55fa2eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Drives Microchip's ENC424J600 10/100Base-TX Ethernet Controller. </p>
 <dl class="section author"><dt>Author</dt><dd>Stefan Gloor </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>31. December 2018 </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Crypto engine support with DMA </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Crypto engine support with DMA</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd></dd></dl>
 <p>Copyright (C) 2019 Stefan Gloor</p>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>

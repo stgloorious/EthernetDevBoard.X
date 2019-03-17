@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['uartinit',['UARTInit',['../uart_8c.html#a2208c97c21ded3ef393bd94a27509b69',1,'UARTInit(void):&#160;uart.c'],['../uart_8h.html#a2208c97c21ded3ef393bd94a27509b69',1,'UARTInit(void):&#160;uart.c']]],
-  ['uarttransmitint',['UARTTransmitInt',['../uart_8c.html#a4a038b093e8e3fbeac77a3da95231e86',1,'UARTTransmitInt(uint32_t val):&#160;uart.c'],['../uart_8h.html#a4a038b093e8e3fbeac77a3da95231e86',1,'UARTTransmitInt(uint32_t val):&#160;uart.c']]],
-  ['uarttransmittext',['UARTTransmitText',['../uart_8c.html#aededddacce8a1f56d58e40654babcc83',1,'UARTTransmitText(const char *str):&#160;uart.c'],['../uart_8h.html#aededddacce8a1f56d58e40654babcc83',1,'UARTTransmitText(const char *str):&#160;uart.c']]],
-  ['updatetime',['updateTime',['../time_8c.html#a19562d96ecbcf8a223d3c38b39993fbf',1,'updateTime():&#160;time.c'],['../time_8h.html#a19562d96ecbcf8a223d3c38b39993fbf',1,'updateTime():&#160;time.c']]]
+  ['sevensegmentinit',['sevenSegmentInit',['../sevenseg_8c.html#a1196b81952fee4205882bb0372c98e91',1,'sevenSegmentInit():&#160;sevenseg.c'],['../sevenseg_8h.html#a1196b81952fee4205882bb0372c98e91',1,'sevenSegmentInit():&#160;sevenseg.c']]],
+  ['sevensegmentupdate',['sevenSegmentUpdate',['../sevenseg_8c.html#a94a65f300916a69141e20fc7d4f82b81',1,'sevenSegmentUpdate(uint16_t numberToDisplay):&#160;sevenseg.c'],['../sevenseg_8h.html#a94a65f300916a69141e20fc7d4f82b81',1,'sevenSegmentUpdate(uint16_t numberToDisplay):&#160;sevenseg.c']]],
+  ['stack_5finit',['stack_init',['../group__stack.html#ga7e5b90321d20106f3f69e6c06c7f41b3',1,'stack_init():&#160;stack.c'],['../group__stack.html#ga7e5b90321d20106f3f69e6c06c7f41b3',1,'stack_init():&#160;stack.c']]]
 ];

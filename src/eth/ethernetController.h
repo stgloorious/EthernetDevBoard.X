@@ -199,13 +199,15 @@ void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field
 
 /**
  * \brief Fills in the EtherType field in the SRAM buffer
- * \param data EtherType
+ * \param ethtype EtherType
+ * \param f Memory field where the concerning packet is stored
  */
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 
 /**
  * \brief Fills in the destination MAC address in the SRAM buffer
- * \param mac Destination MAC address
+ * \param addr Destination MAC address
+ * \param f Memory field where the concerning packet is stored
  */
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
@@ -219,8 +221,12 @@ void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryFiel
  * \{
  */
 
+
 /**
  * \brief Discards a packet
+ * \details This updates the Tail pointer in Ethernet Controller's memory and decrements the packet counter using \ref SETPKTDEC .
+ * \note Not only is this function called if a packet should be ignored, it is called after *every* packet
+ * that has been completely processed, so the memory occupied by this packet can be freed up.
  * \param [in] *frame Pointer to the Packet that should be dropped
  */
 void ethernetController_dropPacket(ethernetFrame_t *frame);
@@ -239,8 +245,8 @@ void ethernetController_updateNextPacketPointer();
  * \warning Once a stream is openend no other function should be called that could access the data communication
  * to the Ethernet controller. For maximum speed effiency, the read pointer is only set once (at the beginning of the stream).
  * After that, the read operation relies on the automatic pointer increment of the Ethernet Controller. So before doing anything else
- * this function has to be called with \ref startEnd equal to 2 to properly end the stream.
- * \note If \ref startEnd != 1 the returned value is always 0.
+ * this function has to be called with \p startEnd equal to 2 to properly end the stream.
+ * \note If \p startEnd != 1 the returned value is always 0.
  * 
  */
 uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
@@ -302,28 +308,22 @@ macaddress_t ethernetController_getMacAddress();
  */
 void ethernetController_setMacAddress(macaddress_t mac);
 
+/**\}*/
+
 /* =======================  LEDs  ======================= */
 /**
  * \addtogroup leds LEDs
  * \ingroup ethernetController
  * \{
  */
-/**
- * \brief Sets the LEDs in the RJ45 receptacle to a given status (ON or OFF). 
- * \param LED Which LED; use \ref LEDs_t 
- * \param status Status of the LED; use \ref LEDStates_t
- * \todo remove this and use only \ref ethernetController_setLEDConfiguration()
- */
-//void ethernetController_setLEDStatus(uint8_t LED, uint8_t status);
 
 /**
  * \brief Sets the LEDs in the RJ45 receptacle to a given configuration (ON, OFF or an 'automatic' mode).
  * \param LED Which LED; use \ref LEDs_t
- * \param status Status of the LED; use \ref LEDStates_t
+ * \param conf Status of the LED; use \ref LEDStates_t
  */
 void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 
 /**\}*/
 
 #endif	/* ETHERNETCONTROLLER_H */
-

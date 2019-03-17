@@ -5,6 +5,7 @@
  * \version 1.0
  * \date 31. December 2018
  * \todo Crypto engine support with DMA
+ * \ingroup ethernetController
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -42,8 +43,8 @@
  * All functions are static because they should only be accessible for ethernetController_* functions.
  * 
  * \note Direct multi-byte read/write operations as suggested by the datasheet are not (yet) implemented as separate functions.
- *  Instead, this functionality is achieved by calling \ref ENC424J600_writeSPI() multiple times, 
- *  as seen in \ref ENC424J600_setGPDATAWritePointer, for example.
+ *  Instead, this functionality is achieved by calling \ref enc424j600_writeSPI() multiple times, 
+ *  as seen in \ref enc424j600_setGPDATAWritePointer, for example.
  * 
  * \note Banked operations are not (yet) supported. Everything is accessed through unbanked addresses and commands.
  * 
@@ -67,7 +68,7 @@
 /**
  * \brief Initialises the hardware SPI module. To be called after power-up.
  */
-void static ENC424J600_initSPI();
+void static enc424j600_initSPI();
 
 /** \} */
 
@@ -79,41 +80,41 @@ void static ENC424J600_initSPI();
  */
 /**
  * \brief Writes a single byte to the SPI Interface; CS Pin is not driven by this function
- * \param [in] Pointer to the byte you want to send
+ * \param [in] data Pointer to the byte you want to send
  */
-void static ENC424J600_writeSPI(uint8_t *data);
+void static enc424j600_writeSPI(uint8_t *data);
 
 /**
  * \brief Reads a single byte from the SPI interface; CS Pin is not driven by this function
- * \param [out] Pointer to the byte where the read data is stored
+ * \param [out] data Pointer to the byte where the read data is stored
  */
-void static ENC424J600_readSPI(uint8_t *data);
+void static enc424j600_readSPI(uint8_t *data);
 
 /**
  * \brief Sends a single byte opcode via the SPI interface
  * \param opcode Command which is going to be sent
  */
-void static ENC424J600_writeSingleByte(uint8_t opcode);
+void static enc424j600_writeSingleByte(uint8_t opcode);
 
 /**
  * \brief Reads a one-byte command via the SPI interface
  * \param opcode Command
  */
-void static ENC424J600_readSingleByte(uint8_t opcode);
+void static enc424j600_readSingleByte(uint8_t opcode);
 
 /**
  * \brief Writes an unbanked Special Function Register from the ENC424J600. Bank offsets have to be added to the register addresses.
  * \param addr Register address
  * \param [in] data  Register data
  */
-void static ENC424J600_writeControlRegisterUnbanked(uint8_t addr, uint8_t *data);
+void static enc424j600_writeControlRegisterUnbanked(uint8_t addr, uint8_t *data);
 
 /**
  * \brief Reads an unbanked Special Function Register from the ENC424J600. Bank offsets have to be added to the register addresses.
  * \param addr  Register address
  * \param [out] data  Register data
  */
-void static ENC424J600_readControlRegisterUnbanked(uint8_t addr, uint8_t *data);
+void static enc424j600_readControlRegisterUnbanked(uint8_t addr, uint8_t *data);
 
 /**\}*/
 
@@ -129,7 +130,7 @@ void static ENC424J600_readControlRegisterUnbanked(uint8_t addr, uint8_t *data);
  * \param addr  Address of the PHY register
  * \param [out] data  Data that is read
  */
-void static ENC424J600_readPHYRegister(uint8_t addr, uint16_t *data);
+void static enc424j600_readPHYRegister(uint8_t addr, uint16_t *data);
 
 /** \} */
 
@@ -143,7 +144,7 @@ void static ENC424J600_readPHYRegister(uint8_t addr, uint16_t *data);
  * \brief Sets the TX Frame Length; This has to be called prior to transmitting a frame.
  * \param len   Byte length of the TX Frame
  */
-void static ENC424J600_setTXLength(uint16_t len);
+void static enc424j600_setTXLength(uint16_t len);
 
 /**\}*/
 
@@ -158,13 +159,13 @@ void static ENC424J600_setTXLength(uint16_t len);
  * \brief NextPacketPointer holds the address value of the received packet.
  * \param ptr Value which NextPacketPointer should be set to
  */
-void static ENC424J600_setNextPacketPointer(uint16_t ptr);
+void static enc424j600_setNextPacketPointer(uint16_t ptr);
 
 /**
  * \brief NextPacketPointer holds the address value of the received packet.
  * \return Value of NextPacketPointer
  */
-uint16_t static ENC424J600_getNextPacketPointer();
+uint16_t static enc424j600_getNextPacketPointer();
 
 
 /**
@@ -174,7 +175,7 @@ uint16_t static ENC424J600_getNextPacketPointer();
  * (after processing) \ref SETPKTDEC needs to be set (via single byte command).
  * \return Value of PKCNT
  */
-uint8_t static ENC424J600_getPacketCount();
+uint8_t enc424j600_getPacketCount();
 
 /**\}*/
 
@@ -193,7 +194,7 @@ uint8_t static ENC424J600_getPacketCount();
  * \details Data starting from this pointer will be sent.
  * \param addr Pointer value
  */
-void static ENC424J600_setTXStartAddress(uint16_t addr);
+void static enc424j600_setTXStartAddress(uint16_t addr);
 
 /**
  * \brief Sets the General Purpose Data Write Pointer to a desired position.
@@ -201,14 +202,14 @@ void static ENC424J600_setTXStartAddress(uint16_t addr);
  * It is used to write data to the transmit buffer
  * \param addr  Pointer value
  */
-void static ENC424J600_setGPDATAWritePointer(uint16_t addr);
+void static enc424j600_setGPDATAWritePointer(uint16_t addr);
 
 /**
  * \brief Sets the General Purpose Data Read Pointer to a desired position.
  * \details This pointer points to the location in memory which should be read from.
  * \param addr  Pointer value
  */
-void static ENC424J600_setGPDATAReadPointer(uint16_t addr);
+void static enc424j600_setGPDATAReadPointer(uint16_t addr);
 
 /**
  * \brief Sets the Ethernet RX Data Window Register Read Pointer to a desired position.
@@ -216,13 +217,13 @@ void static ENC424J600_setGPDATAReadPointer(uint16_t addr);
  * It is used to read the received data
  * \param addr
  */
-void static ENC424J600_setERXDATAReadPointer(uint16_t addr);
+void static enc424j600_setERXDATAReadPointer(uint16_t addr);
 
 /**
  * \brief Sets the receive buffer start address
  * \param addr Pointer value
  */
-void static ENC424J600_setRXBufferStartAddress(uint16_t addr);
+void static enc424j600_setRXBufferStartAddress(uint16_t addr);
 
 /**
  * \brief Sets the RX tail pointer ERXTAIL
@@ -231,7 +232,7 @@ void static ENC424J600_setRXBufferStartAddress(uint16_t addr);
  * \see Figure 9-3, Page 88 of the datasheet.
  * \param addr Pointer value
  */
-void static ENC424J600_setRXTailPointer(uint16_t addr);
+void static enc424j600_setRXTailPointer(uint16_t addr);
 
 /**\}*/
 
@@ -246,35 +247,35 @@ void static ENC424J600_setRXTailPointer(uint16_t addr);
  * \brief Enables the Ethernet module
  * \details Works by setting the ETHEN<15> bit in the ECON2 register (\ref ECON2H)
  */
-void static ENC424J600_enable();
+void static enc424j600_enable();
 /**
  * \brief Disables the Ethernet module
  * \details Works by clearing the ETHEN<15> bit in the ECON2 register (\ref ECON2H)
  * If the controller is disabled, it uses less power.
  */
-void static ENC424J600_enable();
+void static enc424j600_enable();
 /**
  * \brief Enables the ethernet connection to receive packets
  * \details It uses the dedicated single byte command \ref ENABLERX
  */
-void static ENC424J600_enableReception();
+void static enc424j600_enableReception();
 
 /**
  * \brief Disables the ethernet connection to receive packets
  * \details It uses the dedicated single byte command \ref DISABLERX
  * \todo test this
  */
-void static ENC424J600_disableReception();
+void static enc424j600_disableReception();
 
 /**
  * \brief Enables the auto-hardware-insertion of the MAC source address. The MAC address is unique and hardwired into the ENC424J600
  */
-void static ENC424J600_enableAutoMACInsertion();
+void static enc424j600_enableAutoMACInsertion();
 
 /**
  * \brief Disables the auto-hardware-insertion of the MAC source address. The MAC address is unique and hardwired into the ENC424J600
  */
-void static ENC424J600_disableAutoMACInsertion();
+void static enc424j600_disableAutoMACInsertion();
 
 /**\}*/
 
@@ -291,15 +292,15 @@ void static ENC424J600_disableAutoMACInsertion();
  * Note that the MSB is not an interrupt flag (it is returned, too).
  * \return The value of the Interrupt FLag Register EIR
  */
-uint16_t ENC424J600_getInterruptFlags();
+uint16_t enc424j600_getInterruptFlags();
 
 /**
  * \brief Clears a single interrupt flag in the Interrupt Flag Register EIR.
  * \details Note that the MSB is not an interrupt flag.
- * \note Use \ref interruptFlagsNames_t with this.
+ * \note Use \ref interruptFlagsNames with this.
  * \param flag Bit number of the flag to clear (0..15)
  */
-void static ENC424J600_clearInterruptFlag(uint8_t flag);
+void static enc424j600_clearInterruptFlag(uint8_t flag);
 
 /**\}*/
 
@@ -316,7 +317,7 @@ void static ENC424J600_clearInterruptFlag(uint8_t flag);
  * @param rsv [in] Pointer to the first element of a 6 Byte array which contains the RSV.
  * @return A RSV structure
  */
-RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv);
+RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
 
 /**\}*/
 
@@ -555,7 +556,7 @@ RSV_t static ENC424J600_updateReceiveStatusVector(uint8_t *rsv);
 /**
  * \addtogroup single_byte Single Byte Instructions
  * \ingroup enc424j600_module
- * \brief Use with \ref ENC424J600_writeSingleByte ()
+ * \brief Use with \ref enc424j600_writeSingleByte ()
  * \see Table 4-2, Page 44 in ENC424J600's datasheet.
  * \{
  */

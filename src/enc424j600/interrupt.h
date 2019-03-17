@@ -4,6 +4,7 @@
  * \author Stefan Gloor
  * \version 1.0
  * \date 23. February 2019
+ * \ingroup interrupts
  * \copyright    
  *  Copyright (C) 2019  Stefan Gloor
  *
@@ -49,7 +50,7 @@ typedef struct interruptFlags {
 /**
  * \ingroup interrupts
  * \brief Contains the interrupt flag names of the EIR Interrupt Flag register
- * \details The numbers represent the bit numbers. To be used with \ref ENC424J600_clearInterruptFlag ()
+ * \details The numbers represent the bit numbers. To be used with \ref enc424j600_clearInterruptFlag ()
  * \note The flag names represent bit numbers, not masks.
  * \see Register 13-1, Page 120 of ENC424J600's data sheet.
  */

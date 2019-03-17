@@ -41,4 +41,3 @@
 void handleStackBackgroundTasks (stack_t *stack);
 
 #endif	/* BACKGROUNDTASKS_H */
-

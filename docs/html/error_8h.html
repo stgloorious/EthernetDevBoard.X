@@ -74,7 +74,7 @@ $(function() {
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">error.h File Reference</div>  </div>
+<div class="title">error.h File Reference<div class="ingroups"><a class="el" href="group__stack.html">Stack</a> &raquo; <a class="el" href="group__error.html">Error Handling</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -87,18 +87,25 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerror.html">error</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error code type.  <a href="structerror.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:gacdd581bef905616f588f5be6b5a5bae3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#gacdd581bef905616f588f5be6b5a5bae3">ERROR_CODE_SUCCESSFUL</a>&#160;&#160;&#160;(uint16_t)0</td></tr>
+<tr class="memdesc:gacdd581bef905616f588f5be6b5a5bae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returned when everything went fine (= No errors).  <a href="group__error.html#gacdd581bef905616f588f5be6b5a5bae3">More...</a><br /></td></tr>
 <tr class="separator:gacdd581bef905616f588f5be6b5a5bae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaedad84af644a3c7c16960d2c86d632d6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#gaedad84af644a3c7c16960d2c86d632d6">ERROR_CODE_UNDEFINED</a>&#160;&#160;&#160;(uint16_t)0xffff</td></tr>
+<tr class="memdesc:gaedad84af644a3c7c16960d2c86d632d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to initialize <a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a> types where initialisation with <a class="el" href="group__error.html#gacdd581bef905616f588f5be6b5a5bae3">ERROR_CODE_SUCCESSFUL</a> would be inappropriate.  <a href="group__error.html#gaedad84af644a3c7c16960d2c86d632d6">More...</a><br /></td></tr>
+<tr class="separator:gaedad84af644a3c7c16960d2c86d632d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga07aaf66e281b4d8635efe00e6402f4a3"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__error.html#ga8a4a6940eb9ce245840c7e0af23a8b7c">error_modules</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#ga07aaf66e281b4d8635efe00e6402f4a3">error_module_t</a></td></tr>
+<tr class="memdesc:ga07aaf66e281b4d8635efe00e6402f4a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error modules are used to find out the source of an error.  <a href="group__error.html#ga07aaf66e281b4d8635efe00e6402f4a3">More...</a><br /></td></tr>
 <tr class="separator:ga07aaf66e281b4d8635efe00e6402f4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad3ae44be85fe6952dcaed425499e8f6b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structerror.html">error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">error_t</a></td></tr>
+<tr class="memdesc:gad3ae44be85fe6952dcaed425499e8f6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error code type.  <a href="group__error.html#gad3ae44be85fe6952dcaed425499e8f6b">More...</a><br /></td></tr>
 <tr class="separator:gad3ae44be85fe6952dcaed425499e8f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -112,6 +119,7 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca5a3ae39ad1e6d703df19baff7e84be22">ERROR_MODULE_IPv4</a>
 <br />
  }</td></tr>
+<tr class="memdesc:ga8a4a6940eb9ce245840c7e0af23a8b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error modules are used to find out the source of an error.  <a href="group__error.html#ga8a4a6940eb9ce245840c7e0af23a8b7c">More...</a><br /></td></tr>
 <tr class="separator:ga8a4a6940eb9ce245840c7e0af23a8b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga98346c8114f5ad4aa5cf0a2f11c15aee"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#ga98346c8114f5ad4aa5cf0a2f11c15aee">module_offsets</a> { <br />
 &#160;&#160;<a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeea9868f185ecc8fb5c406ef53baad4e400">ERROR_MEMORY_OFFSET</a> = 100, 
@@ -122,38 +130,48 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="group__error.html#gga98346c8114f5ad4aa5cf0a2f11c15aeeaca39d1704ec0b4dca80a024a63441347">ERROR_IPv4_OFFSET</a> = 500
 <br />
  }</td></tr>
+<tr class="memdesc:ga98346c8114f5ad4aa5cf0a2f11c15aee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The use of offsets allow changes in the error code value order.  <a href="group__error.html#ga98346c8114f5ad4aa5cf0a2f11c15aee">More...</a><br /></td></tr>
 <tr class="separator:ga98346c8114f5ad4aa5cf0a2f11c15aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4d2300fd6df4ff42db6d34ca3bd63ea2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#ga4d2300fd6df4ff42db6d34ca3bd63ea2">errors_memory</a> { <a class="el" href="group__error.html#gga4d2300fd6df4ff42db6d34ca3bd63ea2a253569fc8cba5b5218d36e4e044c30cf">ERROR_MEMORY_OUT_OF_MEMORY</a> = ERROR_MEMORY_OFFSET + 1, 
 <a class="el" href="group__error.html#gga4d2300fd6df4ff42db6d34ca3bd63ea2a6496299e8c486deb9954e3b03b7ba1a6">ERROR_MEMORY_UNKNOWN</a> = ERROR_MEMORY_OFFSET + 99
  }</td></tr>
+<tr class="memdesc:ga4d2300fd6df4ff42db6d34ca3bd63ea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error definitions of memory related errors.  <a href="group__error.html#ga4d2300fd6df4ff42db6d34ca3bd63ea2">More...</a><br /></td></tr>
 <tr class="separator:ga4d2300fd6df4ff42db6d34ca3bd63ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabd4054d37209b93794967dfe37ef2588"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#gabd4054d37209b93794967dfe37ef2588">error_ethernet</a> { <a class="el" href="group__error.html#ggabd4054d37209b93794967dfe37ef2588a3bc5b7fc971ced9dccd076ce4a3dd1e3">ERROR_ETHERNET_SYMBOL_ERRORS</a> = ERROR_ETHERNET_OFFSET + 1, 
 <a class="el" href="group__error.html#ggabd4054d37209b93794967dfe37ef2588a0c34c074cc52d07009c8c7c34b7b7b70">ERROR_ETHERNET_CRC_ERROR</a> = ERROR_ETHERNET_OFFSET + 2
  }</td></tr>
+<tr class="memdesc:gabd4054d37209b93794967dfe37ef2588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error definitions of ethernet related errors.  <a href="group__error.html#gabd4054d37209b93794967dfe37ef2588">More...</a><br /></td></tr>
 <tr class="separator:gabd4054d37209b93794967dfe37ef2588"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae82d87a039b0b080f43f6d790fe642e9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#gae82d87a039b0b080f43f6d790fe642e9">errors_ethernetController</a> { <a class="el" href="group__error.html#ggae82d87a039b0b080f43f6d790fe642e9adbb4de8c31875d6b09862bd6f9cfbc51">ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID</a> = ERROR_ETHERNET_CONTROLLER_OFFSET + 1, 
 <a class="el" href="group__error.html#ggae82d87a039b0b080f43f6d790fe642e9a597a00d37e6a842f7d2d72124ffdb3b4">ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE</a> = ERROR_ETHERNET_CONTROLLER_OFFSET + 2, 
 <a class="el" href="group__error.html#ggae82d87a039b0b080f43f6d790fe642e9a70b6f3c0286930f7f579bf81515bab6f">ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW</a> = ERROR_ETHERNET_CONTROLLER_OFFSET + 3, 
 <a class="el" href="group__error.html#ggae82d87a039b0b080f43f6d790fe642e9a17c6e8431d659771c9cca7693f6eb592">ERROR_ETHERNET_CONTROLLER_UNKNOWN</a> = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
  }</td></tr>
+<tr class="memdesc:gae82d87a039b0b080f43f6d790fe642e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error definitions of ethernet controller related errors.  <a href="group__error.html#gae82d87a039b0b080f43f6d790fe642e9">More...</a><br /></td></tr>
 <tr class="separator:gae82d87a039b0b080f43f6d790fe642e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc6f7acf887618df05bc50c50fee037b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#gadc6f7acf887618df05bc50c50fee037b">errors_arp</a> { <a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037bac9e5c709706b773c6e42660a7720b716">ERROR_ARP_WAITING_FOR_REPLY</a> = ERROR_ARP_OFFSET + 1, 
-<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba1de61ce85d3e162bfa397bdbe9919114">ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED</a> = ERROR_ARP_OFFSET + 2, 
+<tr class="memitem:gadc6f7acf887618df05bc50c50fee037b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#gadc6f7acf887618df05bc50c50fee037b">errors_arp</a> { <br />
+&#160;&#160;<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037bac9e5c709706b773c6e42660a7720b716">ERROR_ARP_WAITING_FOR_REPLY</a> = ERROR_ARP_OFFSET + 1, 
+<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba48c1e250436823c5d6182e59e4f664bc">ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED</a> = ERROR_ARP_OFFSET + 2, 
 <a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba9b91278de8312021b894a38f98265320">ERROR_ARP_INVALID_VALUES</a> = ERROR_ARP_OFFSET + 3, 
-<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba5dd3e6a0d4e9b3d21e5490346bf79865">ERROR_ARP_UNKNOWN</a> = ERROR_ARP_OFFSET + 99
+<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba883dd6985ba1ccb1d3abcc2c02f9668c">ERROR_ARP_IPv4_ADDRESS_CONFLICT</a> = ERROR_ARP_OFFSET + 4, 
+<br />
+&#160;&#160;<a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba5dd3e6a0d4e9b3d21e5490346bf79865">ERROR_ARP_UNKNOWN</a> = ERROR_ARP_OFFSET + 99
+<br />
  }</td></tr>
+<tr class="memdesc:gadc6f7acf887618df05bc50c50fee037b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error definitions of the Address Resolution Protocol.  <a href="group__error.html#gadc6f7acf887618df05bc50c50fee037b">More...</a><br /></td></tr>
 <tr class="separator:gadc6f7acf887618df05bc50c50fee037b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga856ca2ee3bb82078747ddb094764cbbd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__error.html#ga856ca2ee3bb82078747ddb094764cbbd">errors_ipv4</a> { <a class="el" href="group__error.html#gga856ca2ee3bb82078747ddb094764cbbdacaae6de62c8885080dfb215041911808">ERROR_IPv4_ADDRESS_ALREADY_IN_USE</a> = ERROR_IPv4_OFFSET + 1, 
 <a class="el" href="group__error.html#gga856ca2ee3bb82078747ddb094764cbbdae6a79d900417d27140b8f9b27c818534">ERROR_IPv4_ADDRESS_CONFLICT_DETECTED</a> = ERROR_IPv4_OFFSET + 2, 
 <a class="el" href="group__error.html#gga856ca2ee3bb82078747ddb094764cbbdae5e801af808d95e7efe34730e4f1c4e6">ERROR_IPv4_UNKNOWN</a> = ERROR_IPv4_OFFSET + 99
  }</td></tr>
+<tr class="memdesc:ga856ca2ee3bb82078747ddb094764cbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error definitions of the Internet Protocol Version 4.  <a href="group__error.html#ga856ca2ee3bb82078747ddb094764cbbd">More...</a><br /></td></tr>
 <tr class="separator:ga856ca2ee3bb82078747ddb094764cbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines all error messages. </p>
 <dl class="section author"><dt>Author</dt><dd>Stefan Gloor </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>17. February 2019 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>17. February 2019</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd></dd></dl>
 <p>Copyright (C) 2019 Stefan Gloor</p>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>

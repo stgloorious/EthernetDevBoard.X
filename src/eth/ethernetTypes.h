@@ -47,46 +47,50 @@
 
 
 typedef enum etherTypes {
-    ETHERTYPE_IPv4 = 0x0800,
-    ETHERTYPE_ARP = 0x0806,
-    ETHERTYPE_WOL = 0x0842,
-    ETHERTYPE_FLOW_CONTROL = 0x8808
+    ETHERTYPE_IPv4 = 0x0800, ///< Internet Protocol Version 4
+    ETHERTYPE_ARP = 0x0806, ///< Address Resolution Protocol
+    ETHERTYPE_WOL = 0x0842, ///< Wake-On-LAN
+    ETHERTYPE_FLOW_CONTROL = 0x8808///< FLow control
 } etherType_t;
 
 /**
  */
 typedef struct macaddress {
-    uint8_t address[6];
+    uint8_t address[6]; ///< Address bytes
 } macaddress_t;
 
 /**
  */
 typedef enum linkStates {
-    NO_LINK, LINK_ESTABLISHED
+    NO_LINK, ///< Nothing is connected
+    LINK_ESTABLISHED ///< An Ethernet partner is present
 } linkState_t;
 
 /**
  */
 typedef enum speeds {
-    TEN_MBIT, HUNDRED_MBIT
+    TEN_MBIT, ///< 10Base-T
+    HUNDRED_MBIT ///< 100Base-TX
 } speed_t;
 
 /**
  */
 typedef enum duplexStates {
-    HALF_DUPLEX, FULL_DUPLEX
+    HALF_DUPLEX, ///< One after another
+    FULL_DUPLEX ///< Both at the same type
 } duplexState_t;
 
 /**
  * \brief Represents a complete Ethernet Frame
  */
 typedef struct ethernetFrame {
-    uint16_t length;
-    macaddress_t source;
-    macaddress_t destination;
-    etherType_t ethertype;
-    memoryField_t memory;
+    uint16_t length; ///< The total length of the Ethernet frame.
+    macaddress_t source; ///< Source Hardware address
+    macaddress_t destination; ///< Destination Hardware address
+    etherType_t ethertype; ///< EtherType field
+    memoryField_t memory; ///< Memory field occupied by this frame
     /**
+     * \brief The RSV that gets appended to every received frame by the ethernet controller
      * \note The RSV is unused if this structure is used for transmission
      */
     RSV_t receiveStatusVector;
@@ -100,14 +104,13 @@ typedef struct ethernetFrame {
  * \brief Represents a complete Ethernet connection
  */
 typedef struct ethernetConnection {
-    linkState_t link;
-    speed_t speed;
-    duplexState_t duplex;
-    macaddress_t source;
-    macaddress_t destination;
+    linkState_t link; ///< Tells you if there is currently an Ethernet partner connected (Link established)
+    speed_t speed; ///< Tells you the current speed of the connection 10M/100M
+    duplexState_t duplex; ///< Tells you if the connection is full or half duplex
+    macaddress_t source; ///< Hardware source address 
+    macaddress_t destination; ///< Hardware destination address
 } ethernetConnection_t;
 
 /*\}*/
 
 #endif	/* ETHERNETTYPES_H */
-
