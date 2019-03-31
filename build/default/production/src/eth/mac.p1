@@ -100,8 +100,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 109: duplexState_t duplex;
 [; ;ethernetTypes.h: 110: macaddress_t source;
 [; ;ethernetTypes.h: 111: macaddress_t destination;
-[; ;ethernetTypes.h: 115: uint32_t foo[3];
-[; ;ethernetTypes.h: 116: } ethernetConnection_t;
+[; ;ethernetTypes.h: 112: } ethernetConnection_t;
 [; ;mac.h: 43: bool_t mac_cmp(macaddress_t *a, macaddress_t *b);
 [; ;mac.h: 49: void mac_setToBroadcast(macaddress_t *mac);
 [; ;mac.h: 56: bool_t mac_isBroadcast(macaddress_t *mac);

@@ -2,28 +2,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "60 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h
 [s S8 `uc -> 4 `i ]
 [n S8 ipv4_address address ]
-"36 src/stack/backgroundTasks.c
-[c E29 0 1 2 3 4 .. ]
-[n E29 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
-"118 src/stack/../stack/../eth/../stack/error.h
-[s S1 `E29 1 `ui 1 ]
-[n S1 error module code ]
-"37 src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h
-[s S619 `S1 1 `uc 1 ]
-[n S619 backgroundTaskHandler err fPacketPending ]
-"36 src/stack/backgroundTasks.c
-[c E110 0 1 .. ]
-[n E110 linkStates NO_LINK LINK_ESTABLISHED  ]
-[c E114 0 1 .. ]
-[n E114 speeds TEN_MBIT HUNDRED_MBIT  ]
-[c E118 0 1 .. ]
-[n E118 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
 "58 src/stack/../stack/../eth/../eth/ethernetTypes.h
 [s S4 `uc -> 6 `i ]
 [n S4 macaddress address ]
-"106
-[s S6 `E110 1 `E114 1 `E118 1 `S4 1 `S4 1 ]
-[n S6 ethernetConnection link speed duplex source destination ]
 "36 src/stack/backgroundTasks.c
 [c E101 2048 2054 2114 34824 .. ]
 [n E101 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
@@ -37,6 +18,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S5 `ui 1 `S4 1 `S4 1 `E101 1 `S3 1 `S2 1 `ul 1 ]
 [n S5 ethernetFrame length source destination ethertype memory receiveStatusVector tReceived ]
 "36 src/stack/backgroundTasks.c
+[c E110 0 1 .. ]
+[n E110 linkStates NO_LINK LINK_ESTABLISHED  ]
+[c E114 0 1 .. ]
+[n E114 speeds TEN_MBIT HUNDRED_MBIT  ]
+[c E118 0 1 .. ]
+[n E118 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
+"106 src/stack/../stack/../eth/../eth/ethernetTypes.h
+[s S6 `E110 1 `E114 1 `E118 1 `S4 1 `S4 1 ]
+[n S6 ethernetConnection link speed duplex source destination ]
+"36 src/stack/backgroundTasks.c
+[c E29 0 1 2 3 4 .. ]
+[n E29 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
+"118 src/stack/../stack/../eth/../stack/error.h
+[s S1 `E29 1 `ui 1 ]
+[n S1 error module code ]
+"37 src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h
+[s S619 `S1 1 `uc 1 ]
+[n S619 backgroundTaskHandler err fPacketPending ]
+"36 src/stack/backgroundTasks.c
 [c E221 1 6 17 .. ]
 [n E221 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
 "67 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h
@@ -45,9 +45,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "146
 [s S10 `S9 1 `S3 1 `S5 1 ]
 [n S10 ipv4_packet ipv4Header memory ethernet ]
-"52 src/stack/../stack/../stack/protocols/../stack.h
-[s S620 `S619 1 `S6 1 `ul -> 3 `i `S5 1 `S10 1 `S8 1 ]
-[n S620 stack background ethernet foo newReceivedFrame pendingPacketToSend source ]
+"44 src/stack/../stack/../stack/protocols/../stack.h
+[s S620 `S5 1 `S6 1 `S619 1 `S10 1 `S8 1 ]
+[n S620 stack newReceivedFrame ethernet background pendingPacketToSend source ]
 "35 src/stack/../stack/../eth/../enc424j600/interrupt.h
 [s S7 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S7 interruptFlags MODEXIF HASHIF AESIF LINKIF PKTIF DMAIF TXIF TXABTIF RXABTIF PCFULIF ]
@@ -5446,15 +5446,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 42: error_t err;
 [; ;backgroundTasksTypes.h: 53: uint8_t fPacketPending;
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
-[; ;stack.h: 52: typedef struct stack {
-[; ;stack.h: 53: backgroundTaskHandler_t background;
-[; ;stack.h: 56: ethernetConnection_t ethernet;
-[; ;stack.h: 60: uint32_t foo[3];
-[; ;stack.h: 62: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 63: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 64: ipv4_address_t source;
-[; ;stack.h: 65: } stack_t;
-[; ;stack.h: 72: error_t stack_init();
+[; ;stack.h: 44: typedef struct stack {
+[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 49: ethernetConnection_t ethernet;
+[; ;stack.h: 50: backgroundTaskHandler_t background;
+[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 57: ipv4_address_t source;
+[; ;stack.h: 69: } stack_t;
+[; ;stack.h: 76: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5541,7 +5540,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ethernetController_setLEDConfig (2 , . `E162 1 . `E166 2 ]
 [; ;backgroundTasks.c: 50: ipv4_setIPSourceAddress(stack->source);
 "50
-[e ( _ipv4_setIPSourceAddress (1 . *U _stack 5 ]
+[e ( _ipv4_setIPSourceAddress (1 . *U _stack 4 ]
 "51
 }
 [; ;backgroundTasks.c: 51: } else {
@@ -5576,9 +5575,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "60
 [e $ ! != -> ( _ethernetController_newPacketAvailable ..  `i -> -> -> 0 `i `uc `i 626  ]
 {
-[; ;backgroundTasks.c: 62: ethernet_rxGetNewFrame(&stack->ethernet);
+[; ;backgroundTasks.c: 62: ethernet_rxGetNewFrame(&stack->newReceivedFrame);
 "62
-[e ( _ethernet_rxGetNewFrame (1 -> &U . *U _stack 1 `*S5 ]
+[e ( _ethernet_rxGetNewFrame (1 &U . *U _stack 0 ]
 "63
 }
 [e :U 626 ]
@@ -5589,21 +5588,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasks.c: 64: }
 [; ;backgroundTasks.c: 71: if (stack->background.fPacketPending == 1) {
 "71
-[e $ ! == -> . . *U _stack 0 1 `i -> 1 `i 627  ]
+[e $ ! == -> . . *U _stack 2 1 `i -> 1 `i 627  ]
 {
 [; ;backgroundTasks.c: 74: UARTTransmitText(".");
 "74
 [e ( _UARTTransmitText (1 :s 1C ]
 [; ;backgroundTasks.c: 75: if (ipv4_sendFrame(stack->pendingPacketToSend).code == (uint16_t)0) {
 "75
-[e $ ! == . ( _ipv4_sendFrame (1 . *U _stack 4 1 -> -> 0 `i `ui 628  ]
+[e $ ! == . ( _ipv4_sendFrame (1 . *U _stack 3 1 -> -> 0 `i `ui 628  ]
 {
 [; ;backgroundTasks.c: 76: UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
 "76
 [e ( _UARTTransmitText (1 :s 2C ]
 [; ;backgroundTasks.c: 77: stack->background.fPacketPending=0;
 "77
-[e = . . *U _stack 0 1 -> -> 0 `i `uc ]
+[e = . . *U _stack 2 1 -> -> 0 `i `uc ]
 "78
 }
 [e :U 628 ]
@@ -5628,19 +5627,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _UARTTransmitText (1 :s 3C ]
 [; ;backgroundTasks.c: 88: stack->source.address[3]++;
 "88
-[e ++ *U + &U . . *U _stack 5 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . *U _stack 5 0 `ui `ux -> -> 1 `i `uc ]
+[e ++ *U + &U . . *U _stack 4 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . *U _stack 4 0 `ui `ux -> -> 1 `i `uc ]
 [; ;backgroundTasks.c: 89: UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
 "89
 [e ( _UARTTransmitText (1 :s 4C ]
 [; ;backgroundTasks.c: 90: UARTTransmitText(ipAdressToString(stack->source));
 "90
-[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . *U _stack 5 `*Cuc ]
+[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . *U _stack 4 `*Cuc ]
 [; ;backgroundTasks.c: 91: UARTTransmitText("\n\r");
 "91
 [e ( _UARTTransmitText (1 :s 5C ]
 [; ;backgroundTasks.c: 92: ipv4_setIPSourceAddress(stack->source);
 "92
-[e ( _ipv4_setIPSourceAddress (1 . *U _stack 5 ]
+[e ( _ipv4_setIPSourceAddress (1 . *U _stack 4 ]
 "93
 }
 [e :U 629 ]

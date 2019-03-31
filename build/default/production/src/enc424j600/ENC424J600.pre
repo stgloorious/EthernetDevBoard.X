@@ -7358,22 +7358,26 @@ uint8_t fPacketPending;
 
 } backgroundTaskHandler_t;
 
-# 52 "src/enc424j600/../system/../stack/protocols/../stack.h"
+# 44 "src/enc424j600/../system/../stack/protocols/../stack.h"
 typedef struct stack {
-backgroundTaskHandler_t background;
+ethernetFrame_t newReceivedFrame;
+
 
 
 ethernetConnection_t ethernet;
+backgroundTaskHandler_t background;
 
-# 60
-uint32_t foo[3];
-
-ethernetFrame_t newReceivedFrame;
 ipv4_packet_t pendingPacketToSend;
+
+
+
+
 ipv4_address_t source;
+
+# 69
 } stack_t;
 
-# 72
+# 76
 error_t stack_init();
 
 # 46 "src/enc424j600/../system/../stack/protocols/ipv4.h"

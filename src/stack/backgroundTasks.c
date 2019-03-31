@@ -59,7 +59,7 @@ void handleStackBackgroundTasks(stack_t* stack) {
         //Check anyway if there is something new
         if (ethernetController_newPacketAvailable()) {
             //stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
-            ethernet_rxGetNewFrame(&stack->ethernet);
+            ethernet_rxGetNewFrame(&stack->newReceivedFrame);
         }
     }
     /**

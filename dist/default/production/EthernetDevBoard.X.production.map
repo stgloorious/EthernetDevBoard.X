@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.45\dat\en_msgs.txt -cs \
   -h+dist/default/production\EthernetDevBoard.X.production.sym \
   --cmf=dist/default/production\EthernetDevBoard.X.production.cmf -z \
-  -Q18F25K50 -oC:\Users\stefa\AppData\Local\Temp\s7ts.2 \
+  -Q18F25K50 -oC:\Users\stefa\AppData\Local\Temp\s8dk.2 \
   -Mdist/default/production/EthernetDevBoard.X.production.map -E1 -ver=XC8 \
   -ASTACK=03D0h-07ffh -pstack=STACK -ACODE=00h-07FFFh -ACONST=00h-07FFFh \
   -ASMALLCONST=0800h-08FFhx120 -AMEDIUMCONST=0800h-07FFFh -ACOMRAM=01h-05Fh \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\stefa\AppData\Local\Temp\s7ts.obj \
+  C:\Users\stefa\AppData\Local\Temp\s8dk.obj \
   dist/default/production\EthernetDevBoard.X.production.obj 
 
 Object code version is 3.11
@@ -35,7 +35,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\stefa\AppData\Local\Temp\s7ts.obj
+C:\Users\stefa\AppData\Local\Temp\s8dk.obj
                 init                                 E8       E8        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -44,138 +44,138 @@ dist/default/production\EthernetDevBoard.X.production.obj
                 intcode                               8        8       E0        4       0
                 temp                                 50       50        1        1       1
                 mediumconst                        7A08     7A08      5F8     3D04       0
-                text116                            41E0     41E0       AC        4       0
-                text115                            4F10     4F10       52        4       0
-                text114                            47B2     47B2       7E        4       0
-                text113                            3FBE     3FBE       BE        4       0
-                text112                            5768     5768        E        4       0
-                text110                            572E     572E       10        4       0
-                text109                            4A7E     4A7E       72        4       0
-                text108                            55CC     55CC       24        4       0
-                text107                            5656     5656       1C        4       0
-                text106                            4BD0     4BD0       6A        4       0
-                text105                            4CA2     4CA2       64        4       0
-                text104                            52F8     52F8       36        4       0
-                text103                            52C2     52C2       36        4       0
-                text102                            550E     550E       28        4       0
-                text101                            56A6     56A6       18        4       0
-                text100                            57A0     57A0        8        4       0
-                text99                             5796     5796        A        4       0
-                text98                             546C     546C       2A        4       0
-                text97                             5442     5442       2A        4       0
-                text96                             4FB0     4FB0       4E        4       0
-                text95                             3A10     3A10      10A        4       0
-                text94                             43CE     43CE       A0        4       0
-                text93                             4E12     4E12       56        4       0
-                text92                             571C     571C       12        4       0
-                text91                             515C     515C       42        4       0
-                text90                             412E     412E       B2        4       0
-                text89                             5216     5216       3C        4       0
-                text88                             4B60     4B60       70        4       0
-                text87                             5418     5418       2A        4       0
-                text86                             53EE     53EE       2A        4       0
-                text85                             55A8     55A8       24        4       0
-                text84                             54E6     54E6       28        4       0
-                text83                             51DA     51DA       3C        4       0
-                text82                             48AA     48AA       78        4       0
-                text81                             4732     4732       80        4       0
-                text80                             4F62     4F62       4E        4       0
-                text79                             54BE     54BE       28        4       0
-                text78                             407C     407C       B2        4       0
-                text77                             38F2     38F2      11E        4       0
-                text76                             528A     528A       38        4       0
-                text75                             5252     5252       38        4       0
+                text116                            41DA     41DA       AC        4       0
+                text115                            4F0A     4F0A       52        4       0
+                text114                            47AC     47AC       7E        4       0
+                text113                            3FB8     3FB8       BE        4       0
+                text112                            5762     5762        E        4       0
+                text110                            5728     5728       10        4       0
+                text109                            4A78     4A78       72        4       0
+                text108                            55C6     55C6       24        4       0
+                text107                            5650     5650       1C        4       0
+                text106                            4BCA     4BCA       6A        4       0
+                text105                            4C9C     4C9C       64        4       0
+                text104                            52F2     52F2       36        4       0
+                text103                            52BC     52BC       36        4       0
+                text102                            5508     5508       28        4       0
+                text101                            56A0     56A0       18        4       0
+                text100                            579A     579A        8        4       0
+                text99                             5790     5790        A        4       0
+                text98                             5466     5466       2A        4       0
+                text97                             543C     543C       2A        4       0
+                text96                             4FAA     4FAA       4E        4       0
+                text95                             3A0A     3A0A      10A        4       0
+                text94                             43C8     43C8       A0        4       0
+                text93                             4E0C     4E0C       56        4       0
+                text92                             5716     5716       12        4       0
+                text91                             5156     5156       42        4       0
+                text90                             4128     4128       B2        4       0
+                text89                             5210     5210       3C        4       0
+                text88                             4B5A     4B5A       70        4       0
+                text87                             5412     5412       2A        4       0
+                text86                             53E8     53E8       2A        4       0
+                text85                             55A2     55A2       24        4       0
+                text84                             54E0     54E0       28        4       0
+                text83                             51D4     51D4       3C        4       0
+                text82                             48A4     48A4       78        4       0
+                text81                             472C     472C       80        4       0
+                text80                             4F5C     4F5C       4E        4       0
+                text79                             54B8     54B8       28        4       0
+                text78                             4076     4076       B2        4       0
+                text77                             38EC     38EC      11E        4       0
+                text76                             5284     5284       38        4       0
+                text75                             524C     524C       38        4       0
                 text74                              5FE      5FE      4DC        4       0
-                text73                             3E0E     3E0E       E8        4       0
-                text72                             5582     5582       26        4       0
+                text73                             3E08     3E08       E8        4       0
+                text72                             557C     557C       26        4       0
                 text71                             1C60     1C60      278        4       0
-                text70                             4A0A     4A0A       74        4       0
-                text69                             555C     555C       26        4       0
-                text68                             446E     446E       9E        4       0
-                text67                             4EBC     4EBC       54        4       0
-                text66                             50D6     50D6       44        4       0
-                text65                             2792     2792      1EE        4       0
+                text70                             4A04     4A04       74        4       0
+                text69                             5556     5556       26        4       0
+                text68                             4468     4468       9E        4       0
+                text67                             4EB6     4EB6       54        4       0
+                text66                             50D0     50D0       44        4       0
+                text65                             278C     278C      1EE        4       0
                 text64                             2122     2122      244        4       0
-                text63                             5536     5536       26        4       0
-                text62                             4D64     4D64       58        4       0
-                text61                             4DBC     4DBC       56        4       0
+                text63                             5530     5530       26        4       0
+                text62                             4D5E     4D5E       58        4       0
+                text61                             4DB6     4DB6       56        4       0
                 text60                             1994     1994      2CC        4       0
-                text59                             56D2     56D2       14        4       0
-                text58                             570A     570A       12        4       0
-                text57                             2CDA     2CDA      180        4       0
-                text56                             5390     5390       30        4       0
-                text55                             3B1A     3B1A      108        4       0
-                text54                             5360     5360       30        4       0
-                text53                             2E5A     2E5A      17C        4       0
-                text52                             4996     4996       74        4       0
-                text51                             4624     4624       8A        4       0
-                text50                             575A     575A        E        4       0
-                text49                             568C     568C       1A        4       0
-                text48                             56F8     56F8       12        4       0
-                text47                             4FFE     4FFE       4C        4       0
-                text46                             3414     3414      158        4       0
-                text45                             450C     450C       8E        4       0
-                text44                             37D0     37D0      122        4       0
-                text43                             459A     459A       8A        4       0
-                text42                             46AE     46AE       84        4       0
-                text41                             4C3A     4C3A       68        4       0
-                text40                             3C22     3C22       FE        4       0
-                text39                             4E68     4E68       54        4       0
-                text38                             532E     532E       32        4       0
-                text37                             5634     5634       22        4       0
-                text36                             4D06     4D06       5E        4       0
-                text35                             511A     511A       42        4       0
+                text59                             56CC     56CC       14        4       0
+                text58                             5704     5704       12        4       0
+                text57                             2CD4     2CD4      180        4       0
+                text56                             538A     538A       30        4       0
+                text55                             3B14     3B14      108        4       0
+                text54                             535A     535A       30        4       0
+                text53                             2E54     2E54      17C        4       0
+                text52                             4990     4990       74        4       0
+                text51                             461E     461E       8A        4       0
+                text50                             5754     5754        E        4       0
+                text49                             5686     5686       1A        4       0
+                text48                             56F2     56F2       12        4       0
+                text47                             4FF8     4FF8       4C        4       0
+                text46                             340E     340E      158        4       0
+                text45                             4506     4506       8E        4       0
+                text44                             37CA     37CA      122        4       0
+                text43                             4594     4594       8A        4       0
+                text42                             46A8     46A8       84        4       0
+                text41                             4C34     4C34       68        4       0
+                text40                             3C1C     3C1C       FE        4       0
+                text39                             4E62     4E62       54        4       0
+                text38                             5328     5328       32        4       0
+                text37                             562E     562E       22        4       0
+                text36                             4D00     4D00       5E        4       0
+                text35                             5114     5114       42        4       0
                 text34                              F72      F72      3FA        4       0
-                text33                             56E6     56E6       12        4       0
-                text32                             3144     3144      16C        4       0
-                text31                             578C     578C        A        4       0
-                text30                             574C     574C        E        4       0
-                text29                             519E     519E       3C        4       0
-                text28                             2980     2980      1AE        4       0
-                text27                             5092     5092       44        4       0
-                text26                             4AF0     4AF0       70        4       0
+                text33                             56E0     56E0       12        4       0
+                text32                             313E     313E      16C        4       0
+                text31                             5786     5786        A        4       0
+                text30                             5746     5746        E        4       0
+                text29                             5198     5198       3C        4       0
+                text28                             297A     297A      1AE        4       0
+                text27                             508C     508C       44        4       0
+                text26                             4AEA     4AEA       70        4       0
                 text25                             136C     136C      31C        4       0
-                text24                             4922     4922       74        4       0
-                text23                             4830     4830       7A        4       0
-                text22                             504A     504A       48        4       0
-                text21                             5612     5612       22        4       0
-                text20                             3D20     3D20       EE        4       0
+                text24                             491C     491C       74        4       0
+                text23                             482A     482A       7A        4       0
+                text22                             5044     5044       48        4       0
+                text21                             560C     560C       22        4       0
+                text20                             3D1A     3D1A       EE        4       0
                 text19                             1688     1688      30C        4       0
-                text18                             3EF6     3EF6       C8        4       0
+                text18                             3EF0     3EF0       C8        4       0
                 text17                             1ED8     1ED8      24A        4       0
-                text16                             2B2E     2B2E      1AC        4       0
+                text16                             2B28     2B28      1AC        4       0
                 text15                               EC       EC      512        4       0
-                text14                             32B0     32B0      164        4       0
-                text13                             53C0     53C0       2E        4       0
-                text12                             2580     2580      212        4       0
-                text11                             56BE     56BE       14        4       0
-                text10                             2366     2366      21A        4       0
-                text9                              5496     5496       28        4       0
-                text8                              356C     356C      136        4       0
-                text7                              2FD6     2FD6      16E        4       0
-                text6                              36A2     36A2      12E        4       0
-                text5                              428C     428C       A2        4       0
-                text4                              5672     5672       1A        4       0
-                text3                              573E     573E        E        4       0
-                text2                              57AE     57AE        4        4       0
-                text1                              5782     5782        A        4       0
+                text14                             32AA     32AA      164        4       0
+                text13                             53BA     53BA       2E        4       0
+                text12                             257A     257A      212        4       0
+                text11                             56B8     56B8       14        4       0
+                text10                             2366     2366      214        4       0
+                text9                              5490     5490       28        4       0
+                text8                              3566     3566      136        4       0
+                text7                              2FD0     2FD0      16E        4       0
+                text6                              369C     369C      12E        4       0
+                text5                              4286     4286       A2        4       0
+                text4                              566C     566C       1A        4       0
+                text3                              5738     5738        E        4       0
+                text2                              57A8     57A8        4        4       0
+                text1                              577C     577C        A        4       0
                 text0                               ADA      ADA      498        4       0
                 cstackCOMRAM                          1        1       28        1       1
                 cstackBANK0                          60       60       A0       60       1
                 cstackBANK1                         100      100       94      100       1
                 cstackBANK3                         3A2      3A2       2E      300       1
                 bssBANK3                            300      300       A2      300       1
-                dataBANK2                           2DE      2DE       22      200       1
-                bssBANK2                            200      200       DE      200       1
+                dataBANK2                           2D2      2D2       22      200       1
+                bssBANK2                            200      200       D2      200       1
                 dataBANK1                           1CB      1CB        C      100       1
                 bssBANK1                            194      194       37      100       1
                 dataCOMRAM                           49       49        6        1       1
                 bssCOMRAM                            29       29       20        1       1
                 bitbssCOMRAM                        278       4F        2        1       1     8
-                cinit                              432E     432E       A0        4       0
-                idataBANK2                         55F0     55F0       22        4       0
-                idataBANK1                         5776     5776        C        4       0
-                idataCOMRAM                        57A8     57A8        6        4       0
+                cinit                              4328     4328       A0        4       0
+                idataBANK2                         55EA     55EA       22        4       0
+                idataBANK1                         5770     5770        C        4       0
+                idataCOMRAM                        57A2     57A2        6        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -184,126 +184,126 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcode                               8        8       E0         0
                 init                                 E8       E8        4         0
                 reset_vec                             0        0        4         0
-                text116                            41E0     41E0       AC         0
-                text115                            4F10     4F10       52         0
-                text114                            47B2     47B2       7E         0
-                text113                            3FBE     3FBE       BE         0
-                text112                            5768     5768        E         0
-                text110                            572E     572E       10         0
-                text109                            4A7E     4A7E       72         0
-                text108                            55CC     55CC       24         0
-                text107                            5656     5656       1C         0
-                text106                            4BD0     4BD0       6A         0
-                text105                            4CA2     4CA2       64         0
-                text104                            52F8     52F8       36         0
-                text103                            52C2     52C2       36         0
-                text102                            550E     550E       28         0
-                text101                            56A6     56A6       18         0
-                text100                            57A0     57A0        8         0
-                text99                             5796     5796        A         0
-                text98                             546C     546C       2A         0
-                text97                             5442     5442       2A         0
-                text96                             4FB0     4FB0       4E         0
-                text95                             3A10     3A10      10A         0
-                text94                             43CE     43CE       A0         0
-                text93                             4E12     4E12       56         0
-                text92                             571C     571C       12         0
-                text91                             515C     515C       42         0
-                text90                             412E     412E       B2         0
-                text89                             5216     5216       3C         0
-                text88                             4B60     4B60       70         0
-                text87                             5418     5418       2A         0
-                text86                             53EE     53EE       2A         0
-                text85                             55A8     55A8       24         0
-                text84                             54E6     54E6       28         0
-                text83                             51DA     51DA       3C         0
-                text82                             48AA     48AA       78         0
-                text81                             4732     4732       80         0
-                text80                             4F62     4F62       4E         0
-                text79                             54BE     54BE       28         0
-                text78                             407C     407C       B2         0
-                text77                             38F2     38F2      11E         0
-                text76                             528A     528A       38         0
-                text75                             5252     5252       38         0
+                text116                            41DA     41DA       AC         0
+                text115                            4F0A     4F0A       52         0
+                text114                            47AC     47AC       7E         0
+                text113                            3FB8     3FB8       BE         0
+                text112                            5762     5762        E         0
+                text110                            5728     5728       10         0
+                text109                            4A78     4A78       72         0
+                text108                            55C6     55C6       24         0
+                text107                            5650     5650       1C         0
+                text106                            4BCA     4BCA       6A         0
+                text105                            4C9C     4C9C       64         0
+                text104                            52F2     52F2       36         0
+                text103                            52BC     52BC       36         0
+                text102                            5508     5508       28         0
+                text101                            56A0     56A0       18         0
+                text100                            579A     579A        8         0
+                text99                             5790     5790        A         0
+                text98                             5466     5466       2A         0
+                text97                             543C     543C       2A         0
+                text96                             4FAA     4FAA       4E         0
+                text95                             3A0A     3A0A      10A         0
+                text94                             43C8     43C8       A0         0
+                text93                             4E0C     4E0C       56         0
+                text92                             5716     5716       12         0
+                text91                             5156     5156       42         0
+                text90                             4128     4128       B2         0
+                text89                             5210     5210       3C         0
+                text88                             4B5A     4B5A       70         0
+                text87                             5412     5412       2A         0
+                text86                             53E8     53E8       2A         0
+                text85                             55A2     55A2       24         0
+                text84                             54E0     54E0       28         0
+                text83                             51D4     51D4       3C         0
+                text82                             48A4     48A4       78         0
+                text81                             472C     472C       80         0
+                text80                             4F5C     4F5C       4E         0
+                text79                             54B8     54B8       28         0
+                text78                             4076     4076       B2         0
+                text77                             38EC     38EC      11E         0
+                text76                             5284     5284       38         0
+                text75                             524C     524C       38         0
                 text74                              5FE      5FE      4DC         0
-                text73                             3E0E     3E0E       E8         0
-                text72                             5582     5582       26         0
+                text73                             3E08     3E08       E8         0
+                text72                             557C     557C       26         0
                 text71                             1C60     1C60      278         0
-                text70                             4A0A     4A0A       74         0
-                text69                             555C     555C       26         0
-                text68                             446E     446E       9E         0
-                text67                             4EBC     4EBC       54         0
-                text66                             50D6     50D6       44         0
-                text65                             2792     2792      1EE         0
+                text70                             4A04     4A04       74         0
+                text69                             5556     5556       26         0
+                text68                             4468     4468       9E         0
+                text67                             4EB6     4EB6       54         0
+                text66                             50D0     50D0       44         0
+                text65                             278C     278C      1EE         0
                 text64                             2122     2122      244         0
-                text63                             5536     5536       26         0
-                text62                             4D64     4D64       58         0
-                text61                             4DBC     4DBC       56         0
+                text63                             5530     5530       26         0
+                text62                             4D5E     4D5E       58         0
+                text61                             4DB6     4DB6       56         0
                 text60                             1994     1994      2CC         0
-                text59                             56D2     56D2       14         0
-                text58                             570A     570A       12         0
-                text57                             2CDA     2CDA      180         0
-                text56                             5390     5390       30         0
-                text55                             3B1A     3B1A      108         0
-                text54                             5360     5360       30         0
-                text53                             2E5A     2E5A      17C         0
-                text52                             4996     4996       74         0
-                text51                             4624     4624       8A         0
-                text50                             575A     575A        E         0
-                text49                             568C     568C       1A         0
-                text48                             56F8     56F8       12         0
-                text47                             4FFE     4FFE       4C         0
-                text46                             3414     3414      158         0
-                text45                             450C     450C       8E         0
-                text44                             37D0     37D0      122         0
-                text43                             459A     459A       8A         0
-                text42                             46AE     46AE       84         0
-                text41                             4C3A     4C3A       68         0
-                text40                             3C22     3C22       FE         0
-                text39                             4E68     4E68       54         0
-                text38                             532E     532E       32         0
-                text37                             5634     5634       22         0
-                text36                             4D06     4D06       5E         0
-                text35                             511A     511A       42         0
+                text59                             56CC     56CC       14         0
+                text58                             5704     5704       12         0
+                text57                             2CD4     2CD4      180         0
+                text56                             538A     538A       30         0
+                text55                             3B14     3B14      108         0
+                text54                             535A     535A       30         0
+                text53                             2E54     2E54      17C         0
+                text52                             4990     4990       74         0
+                text51                             461E     461E       8A         0
+                text50                             5754     5754        E         0
+                text49                             5686     5686       1A         0
+                text48                             56F2     56F2       12         0
+                text47                             4FF8     4FF8       4C         0
+                text46                             340E     340E      158         0
+                text45                             4506     4506       8E         0
+                text44                             37CA     37CA      122         0
+                text43                             4594     4594       8A         0
+                text42                             46A8     46A8       84         0
+                text41                             4C34     4C34       68         0
+                text40                             3C1C     3C1C       FE         0
+                text39                             4E62     4E62       54         0
+                text38                             5328     5328       32         0
+                text37                             562E     562E       22         0
+                text36                             4D00     4D00       5E         0
+                text35                             5114     5114       42         0
                 text34                              F72      F72      3FA         0
-                text33                             56E6     56E6       12         0
-                text32                             3144     3144      16C         0
-                text31                             578C     578C        A         0
-                text30                             574C     574C        E         0
-                text29                             519E     519E       3C         0
-                text28                             2980     2980      1AE         0
-                text27                             5092     5092       44         0
-                text26                             4AF0     4AF0       70         0
+                text33                             56E0     56E0       12         0
+                text32                             313E     313E      16C         0
+                text31                             5786     5786        A         0
+                text30                             5746     5746        E         0
+                text29                             5198     5198       3C         0
+                text28                             297A     297A      1AE         0
+                text27                             508C     508C       44         0
+                text26                             4AEA     4AEA       70         0
                 text25                             136C     136C      31C         0
-                text24                             4922     4922       74         0
-                text23                             4830     4830       7A         0
-                text22                             504A     504A       48         0
-                text21                             5612     5612       22         0
-                text20                             3D20     3D20       EE         0
+                text24                             491C     491C       74         0
+                text23                             482A     482A       7A         0
+                text22                             5044     5044       48         0
+                text21                             560C     560C       22         0
+                text20                             3D1A     3D1A       EE         0
                 text19                             1688     1688      30C         0
-                text18                             3EF6     3EF6       C8         0
+                text18                             3EF0     3EF0       C8         0
                 text17                             1ED8     1ED8      24A         0
-                text16                             2B2E     2B2E      1AC         0
+                text16                             2B28     2B28      1AC         0
                 text15                               EC       EC      512         0
-                text14                             32B0     32B0      164         0
-                text13                             53C0     53C0       2E         0
-                text12                             2580     2580      212         0
-                text11                             56BE     56BE       14         0
-                text10                             2366     2366      21A         0
-                text9                              5496     5496       28         0
-                text8                              356C     356C      136         0
-                text7                              2FD6     2FD6      16E         0
-                text6                              36A2     36A2      12E         0
-                text5                              428C     428C       A2         0
-                text4                              5672     5672       1A         0
-                text3                              573E     573E        E         0
-                text2                              57AE     57AE        4         0
-                text1                              5782     5782        A         0
+                text14                             32AA     32AA      164         0
+                text13                             53BA     53BA       2E         0
+                text12                             257A     257A      212         0
+                text11                             56B8     56B8       14         0
+                text10                             2366     2366      214         0
+                text9                              5490     5490       28         0
+                text8                              3566     3566      136         0
+                text7                              2FD0     2FD0      16E         0
+                text6                              369C     369C      12E         0
+                text5                              4286     4286       A2         0
+                text4                              566C     566C       1A         0
+                text3                              5738     5738        E         0
+                text2                              57A8     57A8        4         0
+                text1                              577C     577C        A         0
                 text0                               ADA      ADA      498         0
-                cinit                              432E     432E       A0         0
-                idataBANK2                         55F0     55F0       22         0
-                idataBANK1                         5776     5776        C         0
-                idataCOMRAM                        57A8     57A8        6         0
+                cinit                              4328     4328       A0         0
+                idataBANK2                         55EA     55EA       22         0
+                idataBANK1                         5770     5770        C         0
+                idataCOMRAM                        57A2     57A2        6         0
 
         CLASS   CONST          
 
@@ -334,8 +334,8 @@ TOTAL           Name                               Link     Load   Length     Sp
                 bssBANK1                            194      194       37         1
 
         CLASS   BANK2          
-                dataBANK2                           2DE      2DE       22         1
-                bssBANK2                            200      200       DE         1
+                dataBANK2                           2D2      2D2       22         1
+                bssBANK2                            200      200       D2         1
 
         CLASS   BANK3          
                 cstackBANK3                         3A2      3A2       2E         1
@@ -367,10 +367,10 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 cstackCOMRAM                   000001  000050  000051         1       1  COMRAM  
-                intcode                        000008  0057AA  0057B2         4       0  CODE    
+                intcode                        000008  0057A4  0057AC         4       0  CODE    
                 cstackBANK0                    000060  0000A0  000100        60       1  BANK0   
                 cstackBANK1                    000100  0000D7  0001D7       100       1  BANK1   
-                bssBANK2                       000200  000100  000300       200       1  BANK2   
+                bssBANK2                       000200  0000F4  0002F4       200       1  BANK2   
                 bssBANK3                       000300  0000D0  0003D0       300       1  BANK3   
                 mediumconst                    007A08  0005F8  008000      3D04       0  MEDIUMCO
                 idloc                          200000  000008  200008    200000       0  IDLOC   
@@ -381,6 +381,7 @@ UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
         BANK1            0001D7-0001FF               29
+        BANK2            0002F4-0002FF                C
         BANK3            0003D0-0003FF               30
         BANK4            000400-0004FF              100
         BANK5            000500-0005FF              100
@@ -388,18 +389,20 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BIGRAM           000051-00005F                F
                          0001D7-0001FF               29
+                         0002F4-0002FF                C
                          0003D0-0007FF              430
         CODE             000004-000007                4
-                         0057B2-007A07             2256
+                         0057AC-007A07             225C
         COMRAM           000051-00005F                F
         CONST            000004-000007                4
-                         0057B2-007A07             2256
+                         0057AC-007A07             225C
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      0057B2-007A07             2256
+        MEDIUMCONST      0057AC-007A07             225C
         RAM              0001D7-0001FF               29
+                         0002F4-0002FF                C
                          0003D0-0007FF              100
         SFR              000F53-000FFF                D
-        SMALLCONST       0057B2-007A07              100
+        SMALLCONST       0057AC-007A07              100
         STACK            0003D0-0007FF              430
 
                                   Symbol Table
@@ -483,9 +486,9 @@ _TRMT                                                     (abs)        007D61
 _TXIF                                                     (abs)        007CF4
 _TXREG1                                                   (abs)        000FAD
 _TXSTA1bits                                               (abs)        000FAC
-_UARTInit                                                 text110      00572E
-_UARTTransmitInt                                          text37       005634
-_UARTTransmitText                                         text93       004E12
+_UARTInit                                                 text110      005728
+_UARTTransmitInt                                          text37       00562E
+_UARTTransmitText                                         text93       004E0C
 __CFG_BOREN$SBORDIS                                       (abs)        000000
 __CFG_BORV$190                                            (abs)        000000
 __CFG_CCP2MX$RC1                                          (abs)        000000
@@ -906,299 +909,299 @@ __Ltext99                                                 text99       000000
 __S0                                                      (abs)        30000E
 __S1                                                      (abs)        0003D0
 __S2                                                      (abs)        000000
-___awmod                                                  text109      004A7E
+___awmod                                                  text109      004A78
 ___awmod@counter                                          cstackBANK0  000072
 ___awmod@dividend                                         cstackBANK0  00006E
 ___awmod@divisor                                          cstackBANK0  000070
 ___awmod@sign                                             cstackBANK0  000073
 ___inthi_sp                                               stack        000000
 ___intlo_sp                                               stack        000000
-___lldiv                                                  text42       0046AE
+___lldiv                                                  text42       0046A8
 ___lldiv@counter                                          cstackBANK0  00006C
 ___lldiv@dividend                                         cstackBANK0  000060
 ___lldiv@divisor                                          cstackBANK0  000064
 ___lldiv@quotient                                         cstackBANK0  000068
-___llmod                                                  text41       004C3A
+___llmod                                                  text41       004C34
 ___llmod@counter                                          cstackBANK0  000068
 ___llmod@dividend                                         cstackBANK0  000060
 ___llmod@divisor                                          cstackBANK0  000064
-___lmul                                                   text62       004D64
+___lmul                                                   text62       004D5E
 ___lmul@multiplicand                                      cstackBANK0  000064
 ___lmul@multiplier                                        cstackBANK0  000060
 ___lmul@product                                           cstackBANK0  000068
-___lwdiv                                                  text67       004EBC
+___lwdiv                                                  text67       004EB6
 ___lwdiv@counter                                          cstackBANK0  000064
 ___lwdiv@dividend                                         cstackBANK0  000060
 ___lwdiv@divisor                                          cstackBANK0  000062
 ___lwdiv@quotient                                         cstackBANK0  000065
-___lwmod                                                  text66       0050D6
+___lwmod                                                  text66       0050D0
 ___lwmod@counter                                          cstackBANK0  000072
 ___lwmod@dividend                                         cstackBANK0  00006E
 ___lwmod@divisor                                          cstackBANK0  000070
 ___param_bank                                             (abs)        000000
 ___rparam_used                                            (abs)        000001
 ___sp                                                     stack        000000
-___wmul                                                   text79       0054BE
+___wmul                                                   text79       0054B8
 ___wmul@multiplicand                                      cstackBANK0  000062
 ___wmul@multiplier                                        cstackBANK0  000060
 ___wmul@product                                           cstackBANK0  000064
 __accesstop                                               (abs)        000060
 __activetblptr                                            (abs)        000002
 __end_of_ISR                                              intcode      0000E8
-__end_of_UARTInit                                         text110      00573E
-__end_of_UARTTransmitInt                                  text37       005656
-__end_of_UARTTransmitText                                 text93       004E68
-__end_of___awmod                                          text109      004AF0
-__end_of___lldiv                                          text42       004732
-__end_of___llmod                                          text41       004CA2
-__end_of___lmul                                           text62       004DBC
-__end_of___lwdiv                                          text67       004F10
-__end_of___lwmod                                          text66       00511A
-__end_of___wmul                                           text79       0054E6
-__end_of__initialization                                  cinit        0043C0
-__end_of_arp_background                                   text57       002E5A
-__end_of_arp_checkForEntry                                text90       0041E0
-__end_of_arp_getEntryFromTable                            text13       0053EE
+__end_of_UARTInit                                         text110      005738
+__end_of_UARTTransmitInt                                  text37       005650
+__end_of_UARTTransmitText                                 text93       004E62
+__end_of___awmod                                          text109      004AEA
+__end_of___lldiv                                          text42       00472C
+__end_of___llmod                                          text41       004C9C
+__end_of___lmul                                           text62       004DB6
+__end_of___lwdiv                                          text67       004F0A
+__end_of___lwmod                                          text66       005114
+__end_of___wmul                                           text79       0054E0
+__end_of__initialization                                  cinit        0043BA
+__end_of_arp_background                                   text57       002E54
+__end_of_arp_checkForEntry                                text90       0041DA
+__end_of_arp_getEntryFromTable                            text13       0053E8
 __end_of_arp_gratuitous                                   text64       002366
-__end_of_arp_handleNewPacket                              text28       002B2E
-__end_of_arp_init                                         text52       004A0A
+__end_of_arp_handleNewPacket                              text28       002B28
+__end_of_arp_init                                         text52       004A04
 __end_of_arp_parseFromRXBuffer                            text34       00136C
 __end_of_arp_probe                                        text60       001C60
 __end_of_arp_send                                         text71       001ED8
-__end_of_arp_sendReply                                    text32       0032B0
-__end_of_arp_sendRequest                                  text68       00450C
-__end_of_arp_setNewEntry                                  text53       002FD6
-__end_of_buttonHandler                                    text116      00428C
-__end_of_checkForOverlap                                  text77       003A10
-__end_of_checkForOverlapSwitched                          text78       00412E
-__end_of_enc424j600_clearInterruptFlag                    text51       0046AE
-__end_of_enc424j600_enableAutoMACInsertion                text102      005536
-__end_of_enc424j600_enableReception                       text100      0057A8
-__end_of_enc424j600_getInterruptFlags                     text47       00504A
-__end_of_enc424j600_getNextPacketPointer                  text31       005796
-__end_of_enc424j600_getPacketCount                        text49       0056A6
-__end_of_enc424j600_initSPI                               text107      005672
-__end_of_enc424j600_readControlRegisterUnbanked           text104      00532E
-__end_of_enc424j600_readPHYRegister                       text44       0038F2
-__end_of_enc424j600_readSPI                               text106      004C3A
-__end_of_enc424j600_setERXDATAReadPointer                 text89       005252
-__end_of_enc424j600_setGPDATAWritePointer                 text83       005216
-__end_of_enc424j600_setNextPacketPointer                  text99       0057A0
-__end_of_enc424j600_setRXBufferStartAddress               text98       005496
-__end_of_enc424j600_setRXTailPointer                      text97       00546C
-__end_of_enc424j600_setTXLength                           text87       005442
-__end_of_enc424j600_setTXStartAddress                     text86       005418
+__end_of_arp_sendReply                                    text32       0032AA
+__end_of_arp_sendRequest                                  text68       004506
+__end_of_arp_setNewEntry                                  text53       002FD0
+__end_of_buttonHandler                                    text116      004286
+__end_of_checkForOverlap                                  text77       003A0A
+__end_of_checkForOverlapSwitched                          text78       004128
+__end_of_enc424j600_clearInterruptFlag                    text51       0046A8
+__end_of_enc424j600_enableAutoMACInsertion                text102      005530
+__end_of_enc424j600_enableReception                       text100      0057A2
+__end_of_enc424j600_getInterruptFlags                     text47       005044
+__end_of_enc424j600_getNextPacketPointer                  text31       005790
+__end_of_enc424j600_getPacketCount                        text49       0056A0
+__end_of_enc424j600_initSPI                               text107      00566C
+__end_of_enc424j600_readControlRegisterUnbanked           text104      005328
+__end_of_enc424j600_readPHYRegister                       text44       0038EC
+__end_of_enc424j600_readSPI                               text106      004C34
+__end_of_enc424j600_setERXDATAReadPointer                 text89       00524C
+__end_of_enc424j600_setGPDATAWritePointer                 text83       005210
+__end_of_enc424j600_setNextPacketPointer                  text99       00579A
+__end_of_enc424j600_setRXBufferStartAddress               text98       005490
+__end_of_enc424j600_setRXTailPointer                      text97       005466
+__end_of_enc424j600_setTXLength                           text87       00543C
+__end_of_enc424j600_setTXStartAddress                     text86       005412
 __end_of_enc424j600_updateReceiveStatusVector             text25       001688
-__end_of_enc424j600_writeControlRegisterUnbanked          text103      0052F8
-__end_of_enc424j600_writeSPI                              text105      004D06
-__end_of_enc424j600_writeSingleByte                       text101      0056BE
-__end_of_entireMemoryEmpty                                text76       0052C2
-__end_of_entireMemoryFull                                 text75       00528A
-__end_of_etherTypeToString                                text27       0050D6
-__end_of_ethernetController_checkDeviceId                 text96       004FFE
-__end_of_ethernetController_clearInterruptFlag            text50       005768
-__end_of_ethernetController_dropPacket                    text29       0051DA
-__end_of_ethernetController_getDeviceName                 text108      0055F0
-__end_of_ethernetController_getEtherTypeField             text26       004B60
-__end_of_ethernetController_getMacAddress                 text70       004A7E
-__end_of_ethernetController_getNextPacketPointer          text30       00575A
-__end_of_ethernetController_getRSV                        text24       004996
-__end_of_ethernetController_getSourceMACAddress           text88       004BD0
-__end_of_ethernetController_init                          text94       00446E
-__end_of_ethernetController_newPacketAvailable            text48       00570A
-__end_of_ethernetController_pollInterruptFlags            text46       00356C
-__end_of_ethernetController_sendPacket                    text84       00550E
-__end_of_ethernetController_setLEDConfig                  text45       00459A
-__end_of_ethernetController_softReset                     text95       003B1A
-__end_of_ethernetController_streamFromRXBuffer            text36       004D64
-__end_of_ethernetController_streamToTransmitBuffer        text82       004922
-__end_of_ethernetController_updateLinkStatus              text43       004624
-__end_of_ethernetController_updateNextPacketPointer       text23       0048AA
-__end_of_ethernetController_writeDestinationMACAddress    text81       0047B2
-__end_of_ethernetController_writeEtherTypeFieldToBuffer   text80       004FB0
+__end_of_enc424j600_writeControlRegisterUnbanked          text103      0052F2
+__end_of_enc424j600_writeSPI                              text105      004D00
+__end_of_enc424j600_writeSingleByte                       text101      0056B8
+__end_of_entireMemoryEmpty                                text76       0052BC
+__end_of_entireMemoryFull                                 text75       005284
+__end_of_etherTypeToString                                text27       0050D0
+__end_of_ethernetController_checkDeviceId                 text96       004FF8
+__end_of_ethernetController_clearInterruptFlag            text50       005762
+__end_of_ethernetController_dropPacket                    text29       0051D4
+__end_of_ethernetController_getDeviceName                 text108      0055EA
+__end_of_ethernetController_getEtherTypeField             text26       004B5A
+__end_of_ethernetController_getMacAddress                 text70       004A78
+__end_of_ethernetController_getNextPacketPointer          text30       005754
+__end_of_ethernetController_getRSV                        text24       004990
+__end_of_ethernetController_getSourceMACAddress           text88       004BCA
+__end_of_ethernetController_init                          text94       004468
+__end_of_ethernetController_newPacketAvailable            text48       005704
+__end_of_ethernetController_pollInterruptFlags            text46       003566
+__end_of_ethernetController_sendPacket                    text84       005508
+__end_of_ethernetController_setLEDConfig                  text45       004594
+__end_of_ethernetController_softReset                     text95       003B14
+__end_of_ethernetController_streamFromRXBuffer            text36       004D5E
+__end_of_ethernetController_streamToTransmitBuffer        text82       00491C
+__end_of_ethernetController_updateLinkStatus              text43       00461E
+__end_of_ethernetController_updateNextPacketPointer       text23       0048A4
+__end_of_ethernetController_writeDestinationMACAddress    text81       0047AC
+__end_of_ethernetController_writeEtherTypeFieldToBuffer   text80       004FAA
 __end_of_ethernet_rxGetNewFrame                           text15       0005FE
-__end_of_ethernet_txFrameRequest                          text73       003EF6
-__end_of_getMillis                                        text92       00572E
-__end_of_handleStackBackgroundTasks                       text10       002580
-__end_of_hexToChar                                        text21       005634
-__end_of_hexToString                                      text20       003E0E
-__end_of_intToString                                      text38       005360
-__end_of_ipAdressToString                                 text65       002980
-__end_of_ipProtocolToString                               text22       005092
-__end_of_ipv4_SrcAddrChanged                              text59       0056E6
-__end_of_ipv4_background                                  text14       003414
+__end_of_ethernet_txFrameRequest                          text73       003EF0
+__end_of_getMillis                                        text92       005728
+__end_of_handleStackBackgroundTasks                       text10       00257A
+__end_of_hexToChar                                        text21       00562E
+__end_of_hexToString                                      text20       003E08
+__end_of_intToString                                      text38       00535A
+__end_of_ipAdressToString                                 text65       00297A
+__end_of_ipProtocolToString                               text22       00508C
+__end_of_ipv4_SrcAddrChanged                              text59       0056E0
+__end_of_ipv4_background                                  text14       00340E
 __end_of_ipv4_calculateHeaderChecksum                     text19       001994
-__end_of_ipv4_checkHeaderChecksum                         text18       003FBE
-__end_of_ipv4_cmp                                         text91       00519E
-__end_of_ipv4_getIPSourceAddress                          text33       0056F8
-__end_of_ipv4_getPreliminaryIPSourceAddress               text58       00571C
-__end_of_ipv4_handleNewPacket                             text16       002CDA
-__end_of_ipv4_init                                        text2        0057B2
-__end_of_ipv4_isAllZero                                   text56       0053C0
+__end_of_ipv4_checkHeaderChecksum                         text18       003FB8
+__end_of_ipv4_cmp                                         text91       005198
+__end_of_ipv4_getIPSourceAddress                          text33       0056F2
+__end_of_ipv4_getPreliminaryIPSourceAddress               text58       005716
+__end_of_ipv4_handleNewPacket                             text16       002CD4
+__end_of_ipv4_init                                        text2        0057AC
+__end_of_ipv4_isAllZero                                   text56       0053BA
 __end_of_ipv4_parseHeader                                 text17       002122
-__end_of_ipv4_sendFrame                                   text12       002792
-__end_of_ipv4_setIPSourceAddress                          text11       0056D2
-__end_of_ipv4_setToAllZero                                text63       00555C
-__end_of_ipv4_streamToTransmissionBuffer                  text9        0054BE
-__end_of_ipv4_txFrameRequest                              text8        0036A2
-__end_of_ipv4_writeHeaderIntoBuffer                       text7        003144
-__end_of_ltoa                                             text39       004EBC
-__end_of_macToString                                      text55       003C22
-__end_of_mac_cmp                                          text35       00515C
-__end_of_mac_isAllZero                                    text54       005390
-__end_of_mac_setAllZero                                   text69       005582
-__end_of_mac_setToBroadcast                               text72       0055A8
+__end_of_ipv4_sendFrame                                   text12       00278C
+__end_of_ipv4_setIPSourceAddress                          text11       0056CC
+__end_of_ipv4_setToAllZero                                text63       005556
+__end_of_ipv4_streamToTransmissionBuffer                  text9        0054B8
+__end_of_ipv4_txFrameRequest                              text8        00369C
+__end_of_ipv4_writeHeaderIntoBuffer                       text7        00313E
+__end_of_ltoa                                             text39       004EB6
+__end_of_macToString                                      text55       003C1C
+__end_of_mac_cmp                                          text35       005156
+__end_of_mac_isAllZero                                    text54       00538A
+__end_of_mac_setAllZero                                   text69       00557C
+__end_of_mac_setToBroadcast                               text72       0055A2
 __end_of_main                                             text0        000F72
-__end_of_memory_txFrameClear                              text85       0055CC
+__end_of_memory_txFrameClear                              text85       0055C6
 __end_of_memory_txFrameRequest                            text74       000ADA
-__end_of_parseNumber                                      text114      004830
-__end_of_printErrorMessage                                text6        0037D0
-__end_of_printEthernetState                               text5        00432E
-__end_of_rand                                             text61       004E12
-__end_of_sevenSegmentInit                                 text4        00568C
-__end_of_sevenSegmentUpdate                               text113      00407C
-__end_of_srand                                            text3        00574C
-__end_of_stack_init                                       text1        00578C
-__end_of_ultoa                                            text40       003D20
-__end_of_updateTime                                       text112      005776
-__end_ofethernetController_getDeviceName@F5999            mediumconst  007A14
-__end_ofi2___lwdiv                                        text115      004F62
-__initialization                                          cinit        00432E
+__end_of_parseNumber                                      text114      00482A
+__end_of_printErrorMessage                                text6        0037CA
+__end_of_printEthernetState                               text5        004328
+__end_of_rand                                             text61       004E0C
+__end_of_sevenSegmentInit                                 text4        005686
+__end_of_sevenSegmentUpdate                               text113      004076
+__end_of_srand                                            text3        005746
+__end_of_stack_init                                       text1        005786
+__end_of_ultoa                                            text40       003D1A
+__end_of_updateTime                                       text112      005770
+__end_ofethernetController_getDeviceName@F5998            mediumconst  007A14
+__end_ofi2___lwdiv                                        text115      004F5C
+__initialization                                          cinit        004328
 __mediumconst                                             mediumconst  007A08
 __pbitbssCOMRAM                                           bitbssCOMRAM 000278
 __pbssBANK1                                               bssBANK1     000194
 __pbssBANK2                                               bssBANK2     000200
 __pbssBANK3                                               bssBANK3     000300
 __pbssCOMRAM                                              bssCOMRAM    000029
-__pcinit                                                  cinit        00432E
+__pcinit                                                  cinit        004328
 __pcstackBANK0                                            cstackBANK0  000060
 __pcstackBANK1                                            cstackBANK1  000100
 __pcstackBANK3                                            cstackBANK3  0003A2
 __pcstackCOMRAM                                           cstackCOMRAM 000001
 __pdataBANK1                                              dataBANK1    0001CB
-__pdataBANK2                                              dataBANK2    0002DE
+__pdataBANK2                                              dataBANK2    0002D2
 __pdataCOMRAM                                             dataCOMRAM   000049
-__pidataBANK1                                             idataBANK1   005776
-__pidataBANK2                                             idataBANK2   0055F0
-__pidataCOMRAM                                            idataCOMRAM  0057A8
+__pidataBANK1                                             idataBANK1   005770
+__pidataBANK2                                             idataBANK2   0055EA
+__pidataCOMRAM                                            idataCOMRAM  0057A2
 __pintcode                                                intcode      000008
 __pmediumconst                                            mediumconst  007A08
 __ptext0                                                  text0        000ADA
-__ptext1                                                  text1        005782
+__ptext1                                                  text1        00577C
 __ptext10                                                 text10       002366
-__ptext100                                                text100      0057A0
-__ptext101                                                text101      0056A6
-__ptext102                                                text102      00550E
-__ptext103                                                text103      0052C2
-__ptext104                                                text104      0052F8
-__ptext105                                                text105      004CA2
-__ptext106                                                text106      004BD0
-__ptext107                                                text107      005656
-__ptext108                                                text108      0055CC
-__ptext109                                                text109      004A7E
-__ptext11                                                 text11       0056BE
-__ptext110                                                text110      00572E
-__ptext112                                                text112      005768
-__ptext113                                                text113      003FBE
-__ptext114                                                text114      0047B2
-__ptext115                                                text115      004F10
-__ptext116                                                text116      0041E0
-__ptext12                                                 text12       002580
-__ptext13                                                 text13       0053C0
-__ptext14                                                 text14       0032B0
+__ptext100                                                text100      00579A
+__ptext101                                                text101      0056A0
+__ptext102                                                text102      005508
+__ptext103                                                text103      0052BC
+__ptext104                                                text104      0052F2
+__ptext105                                                text105      004C9C
+__ptext106                                                text106      004BCA
+__ptext107                                                text107      005650
+__ptext108                                                text108      0055C6
+__ptext109                                                text109      004A78
+__ptext11                                                 text11       0056B8
+__ptext110                                                text110      005728
+__ptext112                                                text112      005762
+__ptext113                                                text113      003FB8
+__ptext114                                                text114      0047AC
+__ptext115                                                text115      004F0A
+__ptext116                                                text116      0041DA
+__ptext12                                                 text12       00257A
+__ptext13                                                 text13       0053BA
+__ptext14                                                 text14       0032AA
 __ptext15                                                 text15       0000EC
-__ptext16                                                 text16       002B2E
+__ptext16                                                 text16       002B28
 __ptext17                                                 text17       001ED8
-__ptext18                                                 text18       003EF6
+__ptext18                                                 text18       003EF0
 __ptext19                                                 text19       001688
-__ptext2                                                  text2        0057AE
-__ptext20                                                 text20       003D20
-__ptext21                                                 text21       005612
-__ptext22                                                 text22       00504A
-__ptext23                                                 text23       004830
-__ptext24                                                 text24       004922
+__ptext2                                                  text2        0057A8
+__ptext20                                                 text20       003D1A
+__ptext21                                                 text21       00560C
+__ptext22                                                 text22       005044
+__ptext23                                                 text23       00482A
+__ptext24                                                 text24       00491C
 __ptext25                                                 text25       00136C
-__ptext26                                                 text26       004AF0
-__ptext27                                                 text27       005092
-__ptext28                                                 text28       002980
-__ptext29                                                 text29       00519E
-__ptext3                                                  text3        00573E
-__ptext30                                                 text30       00574C
-__ptext31                                                 text31       00578C
-__ptext32                                                 text32       003144
-__ptext33                                                 text33       0056E6
+__ptext26                                                 text26       004AEA
+__ptext27                                                 text27       00508C
+__ptext28                                                 text28       00297A
+__ptext29                                                 text29       005198
+__ptext3                                                  text3        005738
+__ptext30                                                 text30       005746
+__ptext31                                                 text31       005786
+__ptext32                                                 text32       00313E
+__ptext33                                                 text33       0056E0
 __ptext34                                                 text34       000F72
-__ptext35                                                 text35       00511A
-__ptext36                                                 text36       004D06
-__ptext37                                                 text37       005634
-__ptext38                                                 text38       00532E
-__ptext39                                                 text39       004E68
-__ptext4                                                  text4        005672
-__ptext40                                                 text40       003C22
-__ptext41                                                 text41       004C3A
-__ptext42                                                 text42       0046AE
-__ptext43                                                 text43       00459A
-__ptext44                                                 text44       0037D0
-__ptext45                                                 text45       00450C
-__ptext46                                                 text46       003414
-__ptext47                                                 text47       004FFE
-__ptext48                                                 text48       0056F8
-__ptext49                                                 text49       00568C
-__ptext5                                                  text5        00428C
-__ptext50                                                 text50       00575A
-__ptext51                                                 text51       004624
-__ptext52                                                 text52       004996
-__ptext53                                                 text53       002E5A
-__ptext54                                                 text54       005360
-__ptext55                                                 text55       003B1A
-__ptext56                                                 text56       005390
-__ptext57                                                 text57       002CDA
-__ptext58                                                 text58       00570A
-__ptext59                                                 text59       0056D2
-__ptext6                                                  text6        0036A2
+__ptext35                                                 text35       005114
+__ptext36                                                 text36       004D00
+__ptext37                                                 text37       00562E
+__ptext38                                                 text38       005328
+__ptext39                                                 text39       004E62
+__ptext4                                                  text4        00566C
+__ptext40                                                 text40       003C1C
+__ptext41                                                 text41       004C34
+__ptext42                                                 text42       0046A8
+__ptext43                                                 text43       004594
+__ptext44                                                 text44       0037CA
+__ptext45                                                 text45       004506
+__ptext46                                                 text46       00340E
+__ptext47                                                 text47       004FF8
+__ptext48                                                 text48       0056F2
+__ptext49                                                 text49       005686
+__ptext5                                                  text5        004286
+__ptext50                                                 text50       005754
+__ptext51                                                 text51       00461E
+__ptext52                                                 text52       004990
+__ptext53                                                 text53       002E54
+__ptext54                                                 text54       00535A
+__ptext55                                                 text55       003B14
+__ptext56                                                 text56       00538A
+__ptext57                                                 text57       002CD4
+__ptext58                                                 text58       005704
+__ptext59                                                 text59       0056CC
+__ptext6                                                  text6        00369C
 __ptext60                                                 text60       001994
-__ptext61                                                 text61       004DBC
-__ptext62                                                 text62       004D64
-__ptext63                                                 text63       005536
+__ptext61                                                 text61       004DB6
+__ptext62                                                 text62       004D5E
+__ptext63                                                 text63       005530
 __ptext64                                                 text64       002122
-__ptext65                                                 text65       002792
-__ptext66                                                 text66       0050D6
-__ptext67                                                 text67       004EBC
-__ptext68                                                 text68       00446E
-__ptext69                                                 text69       00555C
-__ptext7                                                  text7        002FD6
-__ptext70                                                 text70       004A0A
+__ptext65                                                 text65       00278C
+__ptext66                                                 text66       0050D0
+__ptext67                                                 text67       004EB6
+__ptext68                                                 text68       004468
+__ptext69                                                 text69       005556
+__ptext7                                                  text7        002FD0
+__ptext70                                                 text70       004A04
 __ptext71                                                 text71       001C60
-__ptext72                                                 text72       005582
-__ptext73                                                 text73       003E0E
+__ptext72                                                 text72       00557C
+__ptext73                                                 text73       003E08
 __ptext74                                                 text74       0005FE
-__ptext75                                                 text75       005252
-__ptext76                                                 text76       00528A
-__ptext77                                                 text77       0038F2
-__ptext78                                                 text78       00407C
-__ptext79                                                 text79       0054BE
-__ptext8                                                  text8        00356C
-__ptext80                                                 text80       004F62
-__ptext81                                                 text81       004732
-__ptext82                                                 text82       0048AA
-__ptext83                                                 text83       0051DA
-__ptext84                                                 text84       0054E6
-__ptext85                                                 text85       0055A8
-__ptext86                                                 text86       0053EE
-__ptext87                                                 text87       005418
-__ptext88                                                 text88       004B60
-__ptext89                                                 text89       005216
-__ptext9                                                  text9        005496
-__ptext90                                                 text90       00412E
-__ptext91                                                 text91       00515C
-__ptext92                                                 text92       00571C
-__ptext93                                                 text93       004E12
-__ptext94                                                 text94       0043CE
-__ptext95                                                 text95       003A10
-__ptext96                                                 text96       004FB0
-__ptext97                                                 text97       005442
-__ptext98                                                 text98       00546C
-__ptext99                                                 text99       005796
+__ptext75                                                 text75       00524C
+__ptext76                                                 text76       005284
+__ptext77                                                 text77       0038EC
+__ptext78                                                 text78       004076
+__ptext79                                                 text79       0054B8
+__ptext8                                                  text8        003566
+__ptext80                                                 text80       004F5C
+__ptext81                                                 text81       00472C
+__ptext82                                                 text82       0048A4
+__ptext83                                                 text83       0051D4
+__ptext84                                                 text84       0054E0
+__ptext85                                                 text85       0055A2
+__ptext86                                                 text86       0053E8
+__ptext87                                                 text87       005412
+__ptext88                                                 text88       004B5A
+__ptext89                                                 text89       005210
+__ptext9                                                  text9        005490
+__ptext90                                                 text90       004128
+__ptext91                                                 text91       005156
+__ptext92                                                 text92       005716
+__ptext93                                                 text93       004E0C
+__ptext94                                                 text94       0043C8
+__ptext95                                                 text95       003A0A
+__ptext96                                                 text96       004FAA
+__ptext97                                                 text97       00543C
+__ptext98                                                 text98       005466
+__ptext99                                                 text99       005790
 __ramtop                                                  ramtop       000800
 __size_of_ISR                                             (abs)        000000
 __size_of_UARTInit                                        (abs)        000000
@@ -1319,126 +1322,126 @@ __size_of_updateTime                                      (abs)        000000
 __size_ofi2___lwdiv                                       (abs)        000000
 __smallconst                                              smallconst   000000
 _arpStatus                                                bssCOMRAM    00003C
-_arp_background                                           text57       002CDA
-_arp_checkForEntry                                        text90       00412E
-_arp_getEntryFromTable                                    text13       0053C0
+_arp_background                                           text57       002CD4
+_arp_checkForEntry                                        text90       004128
+_arp_getEntryFromTable                                    text13       0053BA
 _arp_gratuitous                                           text64       002122
-_arp_handleNewPacket                                      text28       002980
-_arp_init                                                 text52       004996
+_arp_handleNewPacket                                      text28       00297A
+_arp_init                                                 text52       004990
 _arp_parseFromRXBuffer                                    text34       000F72
 _arp_probe                                                text60       001994
 _arp_send                                                 text71       001C60
-_arp_sendReply                                            text32       003144
-_arp_sendRequest                                          text68       00446E
-_arp_setNewEntry                                          text53       002E5A
+_arp_sendReply                                            text32       00313E
+_arp_sendRequest                                          text68       004468
+_arp_setNewEntry                                          text53       002E54
 _arp_table                                                bssBANK3     000300
-_buttonHandler                                            text116      0041E0
+_buttonHandler                                            text116      0041DA
 _buttonState                                              bssBANK1     0001CA
-_checkForOverlap                                          text77       0038F2
-_checkForOverlapSwitched                                  text78       00407C
-_enc424j600_clearInterruptFlag                            text51       004624
-_enc424j600_enableAutoMACInsertion                        text102      00550E
-_enc424j600_enableReception                               text100      0057A0
-_enc424j600_getInterruptFlags                             text47       004FFE
-_enc424j600_getNextPacketPointer                          text31       00578C
-_enc424j600_getPacketCount                                text49       00568C
-_enc424j600_initSPI                                       text107      005656
-_enc424j600_readControlRegisterUnbanked                   text104      0052F8
-_enc424j600_readPHYRegister                               text44       0037D0
-_enc424j600_readSPI                                       text106      004BD0
-_enc424j600_setERXDATAReadPointer                         text89       005216
-_enc424j600_setGPDATAWritePointer                         text83       0051DA
-_enc424j600_setNextPacketPointer                          text99       005796
-_enc424j600_setRXBufferStartAddress                       text98       00546C
-_enc424j600_setRXTailPointer                              text97       005442
-_enc424j600_setTXLength                                   text87       005418
-_enc424j600_setTXStartAddress                             text86       0053EE
+_checkForOverlap                                          text77       0038EC
+_checkForOverlapSwitched                                  text78       004076
+_enc424j600_clearInterruptFlag                            text51       00461E
+_enc424j600_enableAutoMACInsertion                        text102      005508
+_enc424j600_enableReception                               text100      00579A
+_enc424j600_getInterruptFlags                             text47       004FF8
+_enc424j600_getNextPacketPointer                          text31       005786
+_enc424j600_getPacketCount                                text49       005686
+_enc424j600_initSPI                                       text107      005650
+_enc424j600_readControlRegisterUnbanked                   text104      0052F2
+_enc424j600_readPHYRegister                               text44       0037CA
+_enc424j600_readSPI                                       text106      004BCA
+_enc424j600_setERXDATAReadPointer                         text89       005210
+_enc424j600_setGPDATAWritePointer                         text83       0051D4
+_enc424j600_setNextPacketPointer                          text99       005790
+_enc424j600_setRXBufferStartAddress                       text98       005466
+_enc424j600_setRXTailPointer                              text97       00543C
+_enc424j600_setTXLength                                   text87       005412
+_enc424j600_setTXStartAddress                             text86       0053E8
 _enc424j600_updateReceiveStatusVector                     text25       00136C
-_enc424j600_writeControlRegisterUnbanked                  text103      0052C2
-_enc424j600_writeSPI                                      text105      004CA2
-_enc424j600_writeSingleByte                               text101      0056A6
-_entireMemoryEmpty                                        text76       00528A
-_entireMemoryFull                                         text75       005252
-_etherTypeToString                                        text27       005092
-_ethernetController_checkDeviceId                         text96       004FB0
-_ethernetController_clearInterruptFlag                    text50       00575A
-_ethernetController_dropPacket                            text29       00519E
-_ethernetController_getDeviceName                         text108      0055CC
-_ethernetController_getEtherTypeField                     text26       004AF0
-_ethernetController_getMacAddress                         text70       004A0A
-_ethernetController_getNextPacketPointer                  text30       00574C
-_ethernetController_getRSV                                text24       004922
-_ethernetController_getSourceMACAddress                   text88       004B60
-_ethernetController_init                                  text94       0043CE
-_ethernetController_newPacketAvailable                    text48       0056F8
-_ethernetController_pollInterruptFlags                    text46       003414
-_ethernetController_sendPacket                            text84       0054E6
-_ethernetController_setLEDConfig                          text45       00450C
-_ethernetController_softReset                             text95       003A10
-_ethernetController_streamFromRXBuffer                    text36       004D06
-_ethernetController_streamToTransmitBuffer                text82       0048AA
-_ethernetController_updateLinkStatus                      text43       00459A
-_ethernetController_updateNextPacketPointer               text23       004830
-_ethernetController_writeDestinationMACAddress            text81       004732
-_ethernetController_writeEtherTypeFieldToBuffer           text80       004F62
+_enc424j600_writeControlRegisterUnbanked                  text103      0052BC
+_enc424j600_writeSPI                                      text105      004C9C
+_enc424j600_writeSingleByte                               text101      0056A0
+_entireMemoryEmpty                                        text76       005284
+_entireMemoryFull                                         text75       00524C
+_etherTypeToString                                        text27       00508C
+_ethernetController_checkDeviceId                         text96       004FAA
+_ethernetController_clearInterruptFlag                    text50       005754
+_ethernetController_dropPacket                            text29       005198
+_ethernetController_getDeviceName                         text108      0055C6
+_ethernetController_getEtherTypeField                     text26       004AEA
+_ethernetController_getMacAddress                         text70       004A04
+_ethernetController_getNextPacketPointer                  text30       005746
+_ethernetController_getRSV                                text24       00491C
+_ethernetController_getSourceMACAddress                   text88       004B5A
+_ethernetController_init                                  text94       0043C8
+_ethernetController_newPacketAvailable                    text48       0056F2
+_ethernetController_pollInterruptFlags                    text46       00340E
+_ethernetController_sendPacket                            text84       0054E0
+_ethernetController_setLEDConfig                          text45       004506
+_ethernetController_softReset                             text95       003A0A
+_ethernetController_streamFromRXBuffer                    text36       004D00
+_ethernetController_streamToTransmitBuffer                text82       0048A4
+_ethernetController_updateLinkStatus                      text43       004594
+_ethernetController_updateNextPacketPointer               text23       00482A
+_ethernetController_writeDestinationMACAddress            text81       00472C
+_ethernetController_writeEtherTypeFieldToBuffer           text80       004F5C
 _ethernet_rxGetNewFrame                                   text15       0000EC
-_ethernet_txFrameRequest                                  text73       003E0E
+_ethernet_txFrameRequest                                  text73       003E08
 _fSrcAddrChanged                                          bitbssCOMRAM 000278
-_getMillis                                                text92       00571C
+_getMillis                                                text92       005716
 _handleStackBackgroundTasks                               text10       002366
-_hexToChar                                                text21       005612
-_hexToString                                              text20       003D20
-_intToString                                              text38       00532E
-_ipAdressToString                                         text65       002792
+_hexToChar                                                text21       00560C
+_hexToString                                              text20       003D1A
+_intToString                                              text38       005328
+_ipAdressToString                                         text65       00278C
 _ipPreliminarySource                                      bssBANK1     000198
-_ipProtocolToString                                       text22       00504A
+_ipProtocolToString                                       text22       005044
 _ipSource                                                 bssBANK1     0001A4
-_ipv4_SrcAddrChanged                                      text59       0056D2
-_ipv4_background                                          text14       0032B0
+_ipv4_SrcAddrChanged                                      text59       0056CC
+_ipv4_background                                          text14       0032AA
 _ipv4_calculateHeaderChecksum                             text19       001688
-_ipv4_checkHeaderChecksum                                 text18       003EF6
-_ipv4_cmp                                                 text91       00515C
-_ipv4_getIPSourceAddress                                  text33       0056E6
-_ipv4_getPreliminaryIPSourceAddress                       text58       00570A
-_ipv4_handleNewPacket                                     text16       002B2E
-_ipv4_init                                                text2        0057AE
-_ipv4_isAllZero                                           text56       005390
+_ipv4_checkHeaderChecksum                                 text18       003EF0
+_ipv4_cmp                                                 text91       005156
+_ipv4_getIPSourceAddress                                  text33       0056E0
+_ipv4_getPreliminaryIPSourceAddress                       text58       005704
+_ipv4_handleNewPacket                                     text16       002B28
+_ipv4_init                                                text2        0057A8
+_ipv4_isAllZero                                           text56       00538A
 _ipv4_parseHeader                                         text17       001ED8
-_ipv4_sendFrame                                           text12       002580
-_ipv4_setIPSourceAddress                                  text11       0056BE
-_ipv4_setToAllZero                                        text63       005536
-_ipv4_streamToTransmissionBuffer                          text9        005496
-_ipv4_txFrameRequest                                      text8        00356C
-_ipv4_writeHeaderIntoBuffer                               text7        002FD6
-_ltoa                                                     text39       004E68
-_macToString                                              text55       003B1A
-_mac_cmp                                                  text35       00511A
-_mac_isAllZero                                            text54       005360
-_mac_setAllZero                                           text69       00555C
-_mac_setToBroadcast                                       text72       005582
+_ipv4_sendFrame                                           text12       00257A
+_ipv4_setIPSourceAddress                                  text11       0056B8
+_ipv4_setToAllZero                                        text63       005530
+_ipv4_streamToTransmissionBuffer                          text9        005490
+_ipv4_txFrameRequest                                      text8        003566
+_ipv4_writeHeaderIntoBuffer                               text7        002FD0
+_ltoa                                                     text39       004E62
+_macToString                                              text55       003B14
+_mac_cmp                                                  text35       005114
+_mac_isAllZero                                            text54       00535A
+_mac_setAllZero                                           text69       005556
+_mac_setToBroadcast                                       text72       00557C
 _main                                                     text0        000ADA
-_main$2404                                                cstackBANK3  0003C6
-_memory_txFrameClear                                      text85       0055A8
+_main$2400                                                cstackBANK3  0003C6
+_memory_txFrameClear                                      text85       0055A2
 _memory_txFrameRequest                                    text74       0005FE
 _memory_txFrameRequest$1174                               cstackBANK0  000093
 _nextPacketPointer                                        bssCOMRAM    000042
 _numberToDisplay                                          bssCOMRAM    000031
 _occupiedMemory                                           bssBANK2     000200
-_parseNumber                                              text114      0047B2
-_printErrorMessage                                        text6        0036A2
-_printEthernetState                                       text5        00428C
-_rand                                                     text61       004DBC
+_parseNumber                                              text114      0047AC
+_printErrorMessage                                        text6        00369C
+_printEthernetState                                       text5        004286
+_rand                                                     text61       004DB6
 _randx                                                    dataCOMRAM   000049
 _sevenSegCharacters                                       dataBANK1    0001CB
-_sevenSegmentInit                                         text4        005672
-_sevenSegmentUpdate                                       text113      003FBE
-_sevenSegmentUpdate$2495                                  cstackCOMRAM 000013
-_srand                                                    text3        00573E
+_sevenSegmentInit                                         text4        00566C
+_sevenSegmentUpdate                                       text113      003FB8
+_sevenSegmentUpdate$2491                                  cstackCOMRAM 000013
+_srand                                                    text3        005738
 _stack                                                    bssBANK2     000257
-_stack_init                                               text1        005782
+_stack_init                                               text1        00577C
 _time                                                     bssCOMRAM    000029
-_ultoa                                                    text40       003C22
-_updateTime                                               text112      005768
+_ultoa                                                    text40       003C1C
+_updateTime                                               text112      005762
 arpEntryToString@string                                   bssBANK3     000370
 arp_background@err                                        bssBANK1     0001C7
 arp_background@errAnnounce                                cstackBANK1  000157
@@ -1465,9 +1468,9 @@ arp_init@mac                                              cstackBANK0  0000B2
 arp_parseFromRXBuffer@arp                                 cstackBANK0  00009D
 arp_parseFromRXBuffer@frame                               cstackBANK0  000074
 arp_parseFromRXBuffer@i                                   cstackBANK0  000097
-arp_parseFromRXBuffer@i_3029                              cstackBANK0  000098
-arp_parseFromRXBuffer@i_3030                              cstackBANK0  000099
-arp_parseFromRXBuffer@i_3031                              cstackBANK0  00009A
+arp_parseFromRXBuffer@i_3025                              cstackBANK0  000098
+arp_parseFromRXBuffer@i_3026                              cstackBANK0  000099
+arp_parseFromRXBuffer@i_3027                              cstackBANK0  00009A
 arp_parseFromRXBuffer@offset                              cstackBANK0  00009B
 arp_probe@err                                             cstackBANK1  00014E
 arp_probe@index                                           cstackBANK1  000141
@@ -1483,9 +1486,9 @@ arp_send@destination                                      cstackBANK0  0000C7
 arp_send@ethFrame                                         cstackBANK0  0000D1
 arp_send@field                                            cstackBANK0  0000F3
 arp_send@i                                                cstackBANK0  0000CD
-arp_send@i_3104                                           cstackBANK0  0000CE
-arp_send@i_3105                                           cstackBANK0  0000CF
-arp_send@i_3106                                           cstackBANK0  0000D0
+arp_send@i_3100                                           cstackBANK0  0000CE
+arp_send@i_3101                                           cstackBANK0  0000CF
+arp_send@i_3102                                           cstackBANK0  0000D0
 arp_sendReply@myIP                                        cstackBANK1  000134
 arp_sendReply@reply                                       cstackBANK1  000138
 arp_sendReply@request                                     cstackBANK1  000100
@@ -1563,14 +1566,14 @@ enc424j600_writeControlRegisterUnbanked@opcode            cstackBANK0  00006D
 enc424j600_writeSPI@data                                  cstackBANK0  000060
 enc424j600_writeSPI@timeoutCounter                        cstackBANK0  000066
 enc424j600_writeSingleByte@opcode                         cstackBANK0  00006A
-end_of_initialization                                     cinit        0043C0
+end_of_initialization                                     cinit        0043BA
 entireMemoryEmpty@i                                       cstackBANK0  000060
 entireMemoryFull@i                                        cstackBANK0  000060
 etherTypeToString@ethertype                               cstackBANK0  000060
 ethernetController_checkDeviceId@data                     cstackBANK0  000071
 ethernetController_checkDeviceId@err                      cstackBANK0  000072
 ethernetController_clearInterruptFlag@flag                cstackBANK0  000072
-ethernetController_getDeviceName@F5999                    mediumconst  007A09
+ethernetController_getDeviceName@F5998                    mediumconst  007A09
 ethernetController_getDeviceName@string                   cstackBANK0  000062
 ethernetController_getEtherTypeField@ethertype            cstackBANK0  00007C
 ethernetController_getEtherTypeField@field                cstackBANK0  00006F
@@ -1594,8 +1597,8 @@ ethernetController_sendPacket@field                       cstackBANK0  000072
 ethernetController_setLEDConfig@LED                       cstackBANK0  00006F
 ethernetController_setLEDConfig@conf                      cstackBANK0  00006E
 ethernetController_setLEDConfig@data                      cstackBANK0  000070
-ethernetController_softReset@F5987                        dataCOMRAM   00004D
-ethernetController_softReset@F5989                        bssCOMRAM    000040
+ethernetController_softReset@F5986                        dataCOMRAM   00004D
+ethernetController_softReset@F5988                        bssCOMRAM    000040
 ethernetController_softReset@comFailCount                 cstackBANK0  000072
 ethernetController_softReset@dataToSend                   cstackBANK0  000073
 ethernetController_softReset@err                          cstackBANK0  000077
@@ -1639,7 +1642,7 @@ hexToChar@val                                             cstackBANK0  000060
 hexToString@number                                        bssBANK1     0001AD
 hexToString@pointer                                       cstackBANK0  000069
 hexToString@val                                           cstackBANK0  000061
-i2___lwdiv                                                text115      004F10
+i2___lwdiv                                                text115      004F0A
 i2___lwdiv@counter                                        cstackCOMRAM 000007
 i2___lwdiv@dividend                                       cstackCOMRAM 000001
 i2___lwdiv@divisor                                        cstackCOMRAM 000003
@@ -1651,7 +1654,7 @@ intlevel0                                                 text         000000
 intlevel1                                                 text         000000
 intlevel2                                                 text         000000
 intlevel3                                                 text         000000
-ipAdressToString@address                                  dataBANK2    0002F0
+ipAdressToString@address                                  dataBANK2    0002E4
 ipAdressToString@hundreds                                 cstackBANK0  000083
 ipAdressToString@i                                        cstackBANK0  000088
 ipAdressToString@ip                                       cstackBANK0  000073
@@ -1675,7 +1678,7 @@ ipv4_isAllZero@i                                          cstackBANK0  000062
 ipv4_isAllZero@ip                                         cstackBANK0  000060
 ipv4_parseHeader@field                                    cstackBANK0  000074
 ipv4_parseHeader@i                                        cstackBANK0  00008C
-ipv4_parseHeader@i_3661                                   cstackBANK0  00008D
+ipv4_parseHeader@i_3657                                   cstackBANK0  00008D
 ipv4_parseHeader@ip                                       cstackBANK0  00008F
 ipv4_parseHeader@temp                                     cstackBANK0  00008E
 ipv4_sendFrame@err                                        cstackBANK0  0000FD
@@ -1695,7 +1698,7 @@ ltoa@base                                                 cstackBANK0  000080
 ltoa@buf                                                  cstackBANK0  00007A
 ltoa@cp                                                   cstackBANK0  000082
 ltoa@val                                                  cstackBANK0  00007C
-macToString@F5947                                         dataBANK2    0002DE
+macToString@F5946                                         dataBANK2    0002D2
 macToString@addr                                          cstackBANK0  00007A
 macToString@address                                       cstackBANK0  000081
 macToString@firstDigit                                    cstackBANK0  000093
@@ -1739,7 +1742,7 @@ srand@x                                                   cstackBANK0  00007A
 stackhi                                                   (abs)        0007FF
 stacklo                                                   (abs)        0003D0
 start                                                     init         0000E8
-start_initialization                                      cinit        00432E
+start_initialization                                      cinit        004328
 ultoa@base                                                cstackBANK0  000073
 ultoa@buf                                                 cstackBANK0  00006D
 ultoa@c                                                   cstackBANK0  000079
@@ -2025,7 +2028,7 @@ Total ram usage:       27 bytes
 		line 36 in file "src/stack/protocols/ipv4.c"
  Parameters:    Size  Location     Type
   packet          2   71[BANK0 ] PTR struct ipv4_packet
-		 -> stack(135), 
+		 -> stack(123), 
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
@@ -2089,7 +2092,7 @@ Total ram usage:       69 bytes
 		line 36 in file "src/stack/backgroundTasks.c"
  Parameters:    Size  Location     Type
   stack           2  133[BANK1 ] PTR struct stack
-		 -> stack(135), 
+		 -> stack(123), 
  Auto vars:     Size  Location     Type
   foo            10    0        unsigned char [10]
   errIPv4         3  142[BANK1 ] struct error
@@ -2266,7 +2269,7 @@ Total ram usage:        8 bytes
 		line 55 in file "src/eth/ethernet.c"
  Parameters:    Size  Location     Type
   frame           2  120[BANK1 ] PTR struct ethernetFrame
-		 -> stack(135), 
+		 -> stack(123), 
  Auto vars:     Size  Location     Type
   err             3  130[BANK1 ] struct error
  Return value:  Size  Location     Type
@@ -2309,7 +2312,7 @@ Total ram usage:       13 bytes
 		line 199 in file "src/stack/protocols/ipv4.c"
  Parameters:    Size  Location     Type
   frame           2   85[BANK0 ] PTR struct ethernetFrame
-		 -> stack(135), 
+		 -> stack(123), 
  Auto vars:     Size  Location     Type
   ip             23   98[BANK0 ] struct ipv4_header
   headerField     9   89[BANK0 ] struct memoryField
@@ -2414,7 +2417,7 @@ Total ram usage:       27 bytes
 		line 117 in file "src/stack/protocols/ipv4.c"
  Parameters:    Size  Location     Type
   header          2    0[BANK0 ] PTR struct ipv4_header
-		 -> ipv4_checkHeaderChecksum@testHeader(23), stack.pendingPacketToSend(66), stack(135), 
+		 -> ipv4_checkHeaderChecksum@testHeader(23), stack.pendingPacketToSend(66), stack(123), 
  Auto vars:     Size  Location     Type
   sum             4   14[BANK0 ] unsigned long 
  Return value:  Size  Location     Type
@@ -2703,7 +2706,7 @@ Total ram usage:        4 bytes
 		line 33 in file "src/stack/protocols/arp.c"
  Parameters:    Size  Location     Type
   frame           2  156[BANK0 ] PTR struct ethernetFrame
-		 -> stack(135), 
+		 -> stack(123), 
  Auto vars:     Size  Location     Type
   arp            32   88[BANK1 ] struct arp_message
  Return value:  Size  Location     Type
@@ -2909,7 +2912,7 @@ Total ram usage:        4 bytes
 		line 64 in file "src/stack/protocols/arp.c"
  Parameters:    Size  Location     Type
   frame           2   20[BANK0 ] PTR struct ethernetFrame
-		 -> stack(135), 
+		 -> stack(123), 
  Auto vars:     Size  Location     Type
   i               1   58[BANK0 ] unsigned char 
   i               1   57[BANK0 ] unsigned char 
@@ -3217,7 +3220,7 @@ Total ram usage:       13 bytes
 		line 394 in file "src/enc424j600/ENC424J600.c"
  Parameters:    Size  Location     Type
   state           2   32[BANK0 ] PTR struct ethernetConne
-		 -> stack(135), 
+		 -> stack(123), 
  Auto vars:     Size  Location     Type
   temp16          2   35[BANK0 ] unsigned int 
   temp            1   34[BANK0 ] unsigned char 
@@ -4238,7 +4241,7 @@ Total ram usage:        3 bytes
 		line 30 in file "src/eth/ethernet.c"
  Parameters:    Size  Location     Type
   frame           2   66[BANK0 ] PTR struct ethernetFrame
-		 -> arp_send@ethFrame(34), stack(135), 
+		 -> arp_send@ethFrame(34), stack(123), 
  Auto vars:     Size  Location     Type
   err             3   68[BANK0 ] struct error
  Return value:  Size  Location     Type
@@ -5783,209 +5786,209 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 src/stack/protocols/ipv4.c
-		_ipv4_isAllZero		CODE           	5390	0000	49
-		_ipv4_getPreliminaryIPSourceAddress		CODE           	570A	0000	19
-		_ipv4_SrcAddrChanged		CODE           	56D2	0000	21
-		_ipv4_init     		CODE           	57AE	0000	5
-		_ipv4_streamToTransmissionBuffer		CODE           	5496	0000	41
-		_ipv4_writeHeaderIntoBuffer		CODE           	2FD6	0000	367
+		_ipv4_isAllZero		CODE           	538A	0000	49
+		_ipv4_getPreliminaryIPSourceAddress		CODE           	5704	0000	19
+		_ipv4_SrcAddrChanged		CODE           	56CC	0000	21
+		_ipv4_init     		CODE           	57A8	0000	5
+		_ipv4_streamToTransmissionBuffer		CODE           	5490	0000	41
+		_ipv4_writeHeaderIntoBuffer		CODE           	2FD0	0000	367
 		_ipv4_calculateHeaderChecksum		CODE           	1688	0000	781
-		_ipv4_background		CODE           	32B0	0000	357
-		_ipv4_checkHeaderChecksum		CODE           	3EF6	0000	201
-		_ipv4_getIPSourceAddress		CODE           	56E6	0000	19
-		_ipv4_cmp      		CODE           	515C	0000	67
-		_ipv4_setIPSourceAddress		CODE           	56BE	0000	21
-		_ipv4_txFrameRequest		CODE           	356C	0000	311
-		_ipv4_handleNewPacket		CODE           	2B2E	0000	429
-		_ipv4_sendFrame		CODE           	2580	0000	531
-		_ipv4_setToAllZero		CODE           	5536	0000	39
+		_ipv4_background		CODE           	32AA	0000	357
+		_ipv4_checkHeaderChecksum		CODE           	3EF0	0000	201
+		_ipv4_getIPSourceAddress		CODE           	56E0	0000	19
+		_ipv4_cmp      		CODE           	5156	0000	67
+		_ipv4_setIPSourceAddress		CODE           	56B8	0000	21
+		_ipv4_txFrameRequest		CODE           	3566	0000	311
+		_ipv4_handleNewPacket		CODE           	2B28	0000	429
+		_ipv4_sendFrame		CODE           	257A	0000	531
+		_ipv4_setToAllZero		CODE           	5530	0000	39
 		_ipv4_parseHeader		CODE           	1ED8	0000	587
 
 src/stack/protocols/ipv4.c estimated size: 3845
 
 src/eth/ethernet.c
 		_ethernet_rxGetNewFrame		CODE           	00EC	0000	1299
-		_ethernet_txFrameRequest		CODE           	3E0E	0000	233
+		_ethernet_txFrameRequest		CODE           	3E08	0000	233
 
 src/eth/ethernet.c estimated size: 1532
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
-		___wmul        		CODE           	54BE	0000	41
+		___wmul        		CODE           	54B8	0000	41
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c estimated size: 41
 
 src/system/main.c
-		_printErrorMessage		CODE           	36A2	0000	303
+		_printErrorMessage		CODE           	369C	0000	303
 		_ISR           		CODE           	0008	0000	225
-		_buttonHandler 		CODE           	41E0	0000	173
+		_buttonHandler 		CODE           	41DA	0000	173
 		_main          		CODE           	0ADA	0000	1177
-		_printEthernetState		CODE           	428C	0000	163
+		_printEthernetState		CODE           	4286	0000	163
 
 src/system/main.c estimated size: 2041
 
 src/stack/time.c
-		_getMillis     		CODE           	571C	0000	19
-		_updateTime    		CODE           	5768	0000	15
+		_getMillis     		CODE           	5716	0000	19
+		_updateTime    		CODE           	5762	0000	15
 
 src/stack/time.c estimated size: 34
 
 src/mem/memoryController.c
-		_entireMemoryFull		CODE           	5252	0000	57
+		_entireMemoryFull		CODE           	524C	0000	57
 		_memory_txFrameRequest		CODE           	05FE	0000	1245
-		_memory_txFrameClear		CODE           	55A8	0000	37
-		_entireMemoryEmpty		CODE           	528A	0000	57
-		_checkForOverlapSwitched		CODE           	407C	0000	179
-		_checkForOverlap		CODE           	38F2	0000	287
+		_memory_txFrameClear		CODE           	55A2	0000	37
+		_entireMemoryEmpty		CODE           	5284	0000	57
+		_checkForOverlapSwitched		CODE           	4076	0000	179
+		_checkForOverlap		CODE           	38EC	0000	287
 
 src/mem/memoryController.c estimated size: 1862
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-		___lwmod       		CODE           	50D6	0000	69
+		___lwmod       		CODE           	50D0	0000	69
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c estimated size: 69
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awmod.c
-		___awmod       		CODE           	4A7E	0000	115
+		___awmod       		CODE           	4A78	0000	115
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awmod.c estimated size: 115
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\llmod.c
-		___llmod       		CODE           	4C3A	0000	105
+		___llmod       		CODE           	4C34	0000	105
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\llmod.c estimated size: 105
 
 src/system/uart.c
-		_UARTTransmitInt		CODE           	5634	0000	35
-		_hexToString   		CODE           	3D20	0000	239
-		_intToString   		CODE           	532E	0000	51
-		_macToString   		CODE           	3B1A	0000	265
-		_hexToChar     		CODE           	5612	0000	35
-		_ipAdressToString		CODE           	2792	0000	495
-		_UARTTransmitText		CODE           	4E12	0000	87
-		_ipProtocolToString		CODE           	504A	0000	73
-		_UARTInit      		CODE           	572E	0000	17
-		_etherTypeToString		CODE           	5092	0000	69
+		_UARTTransmitInt		CODE           	562E	0000	35
+		_hexToString   		CODE           	3D1A	0000	239
+		_intToString   		CODE           	5328	0000	51
+		_macToString   		CODE           	3B14	0000	265
+		_hexToChar     		CODE           	560C	0000	35
+		_ipAdressToString		CODE           	278C	0000	495
+		_UARTTransmitText		CODE           	4E0C	0000	87
+		_ipProtocolToString		CODE           	5044	0000	73
+		_UARTInit      		CODE           	5728	0000	17
+		_etherTypeToString		CODE           	508C	0000	69
 
 src/system/uart.c estimated size: 1366
 
 src/stack/stack.c
-		_stack_init    		CODE           	5782	0000	11
+		_stack_init    		CODE           	577C	0000	11
 
 src/stack/stack.c estimated size: 11
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-		___lmul        		CODE           	4D64	0000	89
+		___lmul        		CODE           	4D5E	0000	89
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c estimated size: 89
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\rand.c
-		_srand         		CODE           	573E	0000	15
-		_rand          		CODE           	4DBC	0000	87
+		_srand         		CODE           	5738	0000	15
+		_rand          		CODE           	4DB6	0000	87
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\rand.c estimated size: 102
 
 shared
-		i2___lwdiv     		CODE           	4F10	0000	83
-		ethernetController_getDeviceName@F5999		MEDIUMCONST    	7A09	0000	12
-		__initialization		CODE           	432E	0000	147
+		i2___lwdiv     		CODE           	4F0A	0000	83
+		ethernetController_getDeviceName@F5998		MEDIUMCONST    	7A09	0000	12
+		__initialization		CODE           	4328	0000	147
 
 shared estimated size: 242
 
 src/system/sevenseg.c
-		_sevenSegmentInit		CODE           	5672	0000	27
-		_sevenSegmentUpdate		CODE           	3FBE	0000	191
-		_parseNumber   		CODE           	47B2	0000	127
+		_sevenSegmentInit		CODE           	566C	0000	27
+		_sevenSegmentUpdate		CODE           	3FB8	0000	191
+		_parseNumber   		CODE           	47AC	0000	127
 
 src/system/sevenseg.c estimated size: 345
 
 src/stack/protocols/arp.c
-		_arp_background		CODE           	2CDA	0000	385
-		_arp_checkForEntry		CODE           	412E	0000	179
-		_arp_sendRequest		CODE           	446E	0000	159
+		_arp_background		CODE           	2CD4	0000	385
+		_arp_checkForEntry		CODE           	4128	0000	179
+		_arp_sendRequest		CODE           	4468	0000	159
 		_arp_probe     		CODE           	1994	0000	717
-		_arp_setNewEntry		CODE           	2E5A	0000	381
+		_arp_setNewEntry		CODE           	2E54	0000	381
 		_arp_gratuitous		CODE           	2122	0000	581
 		_arp_parseFromRXBuffer		CODE           	0F72	0000	1019
-		_arp_init      		CODE           	4996	0000	117
+		_arp_init      		CODE           	4990	0000	117
 		_arp_send      		CODE           	1C60	0000	633
-		_arp_handleNewPacket		CODE           	2980	0000	431
-		_arp_getEntryFromTable		CODE           	53C0	0000	47
-		_arp_sendReply 		CODE           	3144	0000	365
+		_arp_handleNewPacket		CODE           	297A	0000	431
+		_arp_getEntryFromTable		CODE           	53BA	0000	47
+		_arp_sendReply 		CODE           	313E	0000	365
 
 src/stack/protocols/arp.c estimated size: 5014
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ltoa.c
-		_ltoa          		CODE           	4E68	0000	85
-		_ultoa         		CODE           	3C22	0000	255
+		_ltoa          		CODE           	4E62	0000	85
+		_ultoa         		CODE           	3C1C	0000	255
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ltoa.c estimated size: 340
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-		___lwdiv       		CODE           	4EBC	0000	85
+		___lwdiv       		CODE           	4EB6	0000	85
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c estimated size: 85
 
 src/eth/mac.c
-		_mac_isAllZero 		CODE           	5360	0000	49
-		_mac_cmp       		CODE           	511A	0000	67
-		_mac_setAllZero		CODE           	555C	0000	39
-		_mac_setToBroadcast		CODE           	5582	0000	39
+		_mac_isAllZero 		CODE           	535A	0000	49
+		_mac_cmp       		CODE           	5114	0000	67
+		_mac_setAllZero		CODE           	5556	0000	39
+		_mac_setToBroadcast		CODE           	557C	0000	39
 
 src/eth/mac.c estimated size: 194
 
 src/stack/backgroundTasks.c
-		_handleStackBackgroundTasks		CODE           	2366	0000	539
+		_handleStackBackgroundTasks		CODE           	2366	0000	533
 
-src/stack/backgroundTasks.c estimated size: 539
+src/stack/backgroundTasks.c estimated size: 533
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lldiv.c
-		___lldiv       		CODE           	46AE	0000	133
+		___lldiv       		CODE           	46A8	0000	133
 
 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lldiv.c estimated size: 133
 
 src/enc424j600/ENC424J600.c
-		_ethernetController_streamFromRXBuffer		CODE           	4D06	0000	95
-		_enc424j600_setERXDATAReadPointer		CODE           	5216	0000	61
-		_enc424j600_readSPI		CODE           	4BD0	0000	107
-		_enc424j600_clearInterruptFlag		CODE           	4624	0000	139
-		_ethernetController_getRSV		CODE           	4922	0000	117
-		_ethernetController_dropPacket		CODE           	519E	0000	61
-		_enc424j600_initSPI		CODE           	5656	0000	29
-		_ethernetController_updateNextPacketPointer		CODE           	4830	0000	123
-		_enc424j600_getNextPacketPointer		CODE           	578C	0000	11
-		_enc424j600_setNextPacketPointer		CODE           	5796	0000	11
-		_enc424j600_setTXStartAddress		CODE           	53EE	0000	43
-		_enc424j600_enableReception		CODE           	57A0	0000	9
-		_enc424j600_writeSingleByte		CODE           	56A6	0000	25
-		_ethernetController_writeEtherTypeFieldToBuffer		CODE           	4F62	0000	79
-		_enc424j600_getInterruptFlags		CODE           	4FFE	0000	77
-		_ethernetController_init		CODE           	43CE	0000	161
+		_ethernetController_streamFromRXBuffer		CODE           	4D00	0000	95
+		_enc424j600_setERXDATAReadPointer		CODE           	5210	0000	61
+		_enc424j600_readSPI		CODE           	4BCA	0000	107
+		_enc424j600_clearInterruptFlag		CODE           	461E	0000	139
+		_ethernetController_getRSV		CODE           	491C	0000	117
+		_ethernetController_dropPacket		CODE           	5198	0000	61
+		_enc424j600_initSPI		CODE           	5650	0000	29
+		_ethernetController_updateNextPacketPointer		CODE           	482A	0000	123
+		_enc424j600_getNextPacketPointer		CODE           	5786	0000	11
+		_enc424j600_setNextPacketPointer		CODE           	5790	0000	11
+		_enc424j600_setTXStartAddress		CODE           	53E8	0000	43
+		_enc424j600_enableReception		CODE           	579A	0000	9
+		_enc424j600_writeSingleByte		CODE           	56A0	0000	25
+		_ethernetController_writeEtherTypeFieldToBuffer		CODE           	4F5C	0000	79
+		_enc424j600_getInterruptFlags		CODE           	4FF8	0000	77
+		_ethernetController_init		CODE           	43C8	0000	161
 		_enc424j600_updateReceiveStatusVector		CODE           	136C	0000	797
-		_ethernetController_writeDestinationMACAddress		CODE           	4732	0000	129
-		_ethernetController_softReset		CODE           	3A10	0000	267
-		_enc424j600_readPHYRegister		CODE           	37D0	0000	291
-		_enc424j600_setGPDATAWritePointer		CODE           	51DA	0000	61
-		_enc424j600_readControlRegisterUnbanked		CODE           	52F8	0000	55
-		_ethernetController_getDeviceName		CODE           	55CC	0000	37
-		_enc424j600_setRXBufferStartAddress		CODE           	546C	0000	43
-		_ethernetController_setLEDConfig		CODE           	450C	0000	143
-		_enc424j600_writeSPI		CODE           	4CA2	0000	101
-		_ethernetController_newPacketAvailable		CODE           	56F8	0000	19
-		_enc424j600_getPacketCount		CODE           	568C	0000	27
-		_ethernetController_sendPacket		CODE           	54E6	0000	41
-		_enc424j600_writeControlRegisterUnbanked		CODE           	52C2	0000	55
-		_ethernetController_getEtherTypeField		CODE           	4AF0	0000	113
-		_enc424j600_setRXTailPointer		CODE           	5442	0000	43
-		_ethernetController_getSourceMACAddress		CODE           	4B60	0000	113
-		_ethernetController_streamToTransmitBuffer		CODE           	48AA	0000	121
-		_ethernetController_clearInterruptFlag		CODE           	575A	0000	15
-		_ethernetController_updateLinkStatus		CODE           	459A	0000	139
-		_ethernetController_checkDeviceId		CODE           	4FB0	0000	79
-		_ethernetController_pollInterruptFlags		CODE           	3414	0000	345
-		_ethernetController_getMacAddress		CODE           	4A0A	0000	117
-		_ethernetController_getNextPacketPointer		CODE           	574C	0000	15
-		_enc424j600_enableAutoMACInsertion		CODE           	550E	0000	41
-		_enc424j600_setTXLength		CODE           	5418	0000	43
+		_ethernetController_writeDestinationMACAddress		CODE           	472C	0000	129
+		_ethernetController_softReset		CODE           	3A0A	0000	267
+		_enc424j600_readPHYRegister		CODE           	37CA	0000	291
+		_enc424j600_setGPDATAWritePointer		CODE           	51D4	0000	61
+		_enc424j600_readControlRegisterUnbanked		CODE           	52F2	0000	55
+		_ethernetController_getDeviceName		CODE           	55C6	0000	37
+		_enc424j600_setRXBufferStartAddress		CODE           	5466	0000	43
+		_ethernetController_setLEDConfig		CODE           	4506	0000	143
+		_enc424j600_writeSPI		CODE           	4C9C	0000	101
+		_ethernetController_newPacketAvailable		CODE           	56F2	0000	19
+		_enc424j600_getPacketCount		CODE           	5686	0000	27
+		_ethernetController_sendPacket		CODE           	54E0	0000	41
+		_enc424j600_writeControlRegisterUnbanked		CODE           	52BC	0000	55
+		_ethernetController_getEtherTypeField		CODE           	4AEA	0000	113
+		_enc424j600_setRXTailPointer		CODE           	543C	0000	43
+		_ethernetController_getSourceMACAddress		CODE           	4B5A	0000	113
+		_ethernetController_streamToTransmitBuffer		CODE           	48A4	0000	121
+		_ethernetController_clearInterruptFlag		CODE           	5754	0000	15
+		_ethernetController_updateLinkStatus		CODE           	4594	0000	139
+		_ethernetController_checkDeviceId		CODE           	4FAA	0000	79
+		_ethernetController_pollInterruptFlags		CODE           	340E	0000	345
+		_ethernetController_getMacAddress		CODE           	4A04	0000	117
+		_ethernetController_getNextPacketPointer		CODE           	5746	0000	15
+		_enc424j600_enableAutoMACInsertion		CODE           	5508	0000	41
+		_enc424j600_setTXLength		CODE           	5412	0000	43
 
 src/enc424j600/ENC424J600.c estimated size: 4398
 

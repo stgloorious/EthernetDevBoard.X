@@ -5433,15 +5433,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 42: error_t err;
 [; ;backgroundTasksTypes.h: 53: uint8_t fPacketPending;
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
-[; ;stack.h: 52: typedef struct stack {
-[; ;stack.h: 53: backgroundTaskHandler_t background;
-[; ;stack.h: 56: ethernetConnection_t ethernet;
-[; ;stack.h: 60: uint32_t foo[3];
-[; ;stack.h: 62: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 63: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 64: ipv4_address_t source;
-[; ;stack.h: 65: } stack_t;
-[; ;stack.h: 72: error_t stack_init();
+[; ;stack.h: 44: typedef struct stack {
+[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 49: ethernetConnection_t ethernet;
+[; ;stack.h: 50: backgroundTaskHandler_t background;
+[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 57: ipv4_address_t source;
+[; ;stack.h: 69: } stack_t;
+[; ;stack.h: 76: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5526,13 +5525,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "53
 [v _index `uc ~T0 @X0 1 a ]
 "54
-[v F5941 `uc ~T0 @X0 1 s requestCounter ]
-[i F5941
+[v F5940 `uc ~T0 @X0 1 s requestCounter ]
+[i F5940
 -> -> 0 `i `uc
 ]
 "55
-[v F5942 `ul ~T0 @X0 1 s oldTime ]
-[i F5942
+[v F5941 `ul ~T0 @X0 1 s oldTime ]
+[i F5941
 -> -> -> 0 `i `l `ul
 ]
 [; ;ipv4.c: 53: uint8_t index;
@@ -5574,13 +5573,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _err 1 -> -> 0 `i `ui ]
 [; ;ipv4.c: 72: oldTime = 0;
 "72
-[e = F5942 -> -> -> 0 `i `l `ul ]
+[e = F5941 -> -> -> 0 `i `l `ul ]
 "73
 }
 [; ;ipv4.c: 73: } else if ((getMillis() - oldTime) > 1000u || oldTime == 0) {
 [e $U 624  ]
 [e :U 623 ]
-[e $ ! || > - ( _getMillis ..  F5942 -> -> 1000 `ui `ul == F5942 -> -> -> 0 `i `l `ul 625  ]
+[e $ ! || > - ( _getMillis ..  F5941 -> -> 1000 `ui `ul == F5941 -> -> -> 0 `i `l `ul 625  ]
 {
 [; ;ipv4.c: 74: UARTTransmitText("[IPv4]: Trying to resolve ");
 "74
@@ -5593,7 +5592,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _UARTTransmitText (1 :s 5C ]
 [; ;ipv4.c: 77: oldTime = getMillis();
 "77
-[e = F5942 ( _getMillis ..  ]
+[e = F5941 ( _getMillis ..  ]
 [; ;ipv4.c: 78: arp_sendRequest(ipPacket.ipv4Header.destination, ipPacket.ipv4Header.destination);
 "78
 [e ( _arp_sendRequest (2 , . . _ipPacket 0 12 . . _ipPacket 0 12 ]

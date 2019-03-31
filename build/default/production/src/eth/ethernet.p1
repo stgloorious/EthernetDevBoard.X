@@ -5432,15 +5432,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 42: error_t err;
 [; ;backgroundTasksTypes.h: 53: uint8_t fPacketPending;
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
-[; ;stack.h: 52: typedef struct stack {
-[; ;stack.h: 53: backgroundTaskHandler_t background;
-[; ;stack.h: 56: ethernetConnection_t ethernet;
-[; ;stack.h: 60: uint32_t foo[3];
-[; ;stack.h: 62: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 63: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 64: ipv4_address_t source;
-[; ;stack.h: 65: } stack_t;
-[; ;stack.h: 72: error_t stack_init();
+[; ;stack.h: 44: typedef struct stack {
+[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 49: ethernetConnection_t ethernet;
+[; ;stack.h: 50: backgroundTaskHandler_t background;
+[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 57: ipv4_address_t source;
+[; ;stack.h: 69: } stack_t;
+[; ;stack.h: 76: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5546,8 +5545,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _frame `*S5 ~T0 @X0 1 r1 ]
 [f ]
 "56
-[v F5984 `ul ~T0 @X0 1 s counter ]
-[i F5984
+[v F5983 `ul ~T0 @X0 1 s counter ]
+[i F5983
 -> -> -> 0 `i `l `ul
 ]
 "57
@@ -5606,7 +5605,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _UARTTransmitText (1 :s 1C ]
 [; ;ethernet.c: 80: UARTTransmitText(intToString(counter++));
 "80
-[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5984 -> -> -> 1 `i `l `ul `*Cuc ]
+[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5983 -> -> -> 1 `i `l `ul `*Cuc ]
 [; ;ethernet.c: 81: UARTTransmitText("]");
 "81
 [e ( _UARTTransmitText (1 :s 2C ]

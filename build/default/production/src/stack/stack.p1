@@ -5387,15 +5387,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 146: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 153: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
-[; ;stack.h: 52: typedef struct stack {
-[; ;stack.h: 53: backgroundTaskHandler_t background;
-[; ;stack.h: 56: ethernetConnection_t ethernet;
-[; ;stack.h: 60: uint32_t foo[3];
-[; ;stack.h: 62: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 63: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 64: ipv4_address_t source;
-[; ;stack.h: 65: } stack_t;
-[; ;stack.h: 72: error_t stack_init();
+[; ;stack.h: 44: typedef struct stack {
+[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 49: ethernetConnection_t ethernet;
+[; ;stack.h: 50: backgroundTaskHandler_t background;
+[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 57: ipv4_address_t source;
+[; ;stack.h: 69: } stack_t;
+[; ;stack.h: 76: error_t stack_init();
 "27 src/stack/stack.c
 [v _stack_init `(S6 ~T0 @X0 1 ef ]
 {

@@ -5391,15 +5391,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 146: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 153: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
-[; ;stack.h: 52: typedef struct stack {
-[; ;stack.h: 53: backgroundTaskHandler_t background;
-[; ;stack.h: 56: ethernetConnection_t ethernet;
-[; ;stack.h: 60: uint32_t foo[3];
-[; ;stack.h: 62: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 63: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 64: ipv4_address_t source;
-[; ;stack.h: 65: } stack_t;
-[; ;stack.h: 72: error_t stack_init();
+[; ;stack.h: 44: typedef struct stack {
+[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 49: ethernetConnection_t ethernet;
+[; ;stack.h: 50: backgroundTaskHandler_t background;
+[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 57: ipv4_address_t source;
+[; ;stack.h: 69: } stack_t;
+[; ;stack.h: 76: error_t stack_init();
 "47 src/system/../system/../system/sevenseg.h
 [v _sevenSegCharacters `uc ~T0 @X0 -> 12 `i e ]
 [i _sevenSegCharacters
@@ -5570,13 +5569,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _numberToDisplay `ui ~T0 @X0 1 r1 ]
 [f ]
 "43
-[v F5952 `uc ~T0 @X0 1 s digitPointer ]
-[i F5952
+[v F5951 `uc ~T0 @X0 1 s digitPointer ]
+[i F5951
 -> -> 0 `i `uc
 ]
 "44
-[v F5953 `uc ~T0 @X0 -> 3 `i s digitsToDisplay ]
-[i F5953
+[v F5952 `uc ~T0 @X0 -> 3 `i s digitsToDisplay ]
+[i F5952
 :U ..
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -5587,13 +5586,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 44: uint8_t static digitsToDisplay[3] = {0, 0, 0};
 [; ;sevenseg.c: 45: PORTC &= ~(unsigned)(1 << digitPointer);
 "45
-[e =& _PORTC -> ~ -> << -> 1 `i F5952 `ui `uc ]
+[e =& _PORTC -> ~ -> << -> 1 `i F5951 `ui `uc ]
 [; ;sevenseg.c: 46: PORTA = 0x00;
 "46
 [e = _PORTA -> -> 0 `i `uc ]
 [; ;sevenseg.c: 47: digitPointer = (unsigned)((digitPointer >= 2) ? 0 : digitPointer + 1);
 "47
-[e = F5952 -> -> ? >= -> F5952 `i -> 2 `i : -> 0 `i + -> F5952 `i -> 1 `i `ui `uc ]
+[e = F5951 -> -> ? >= -> F5951 `i -> 2 `i : -> 0 `i + -> F5951 `i -> 1 `i `ui `uc ]
 [; ;sevenseg.c: 49: if (numberToDisplay > 999) {
 "49
 [e $ ! > _numberToDisplay -> -> 999 `i `ui 623  ]
@@ -5616,7 +5615,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;sevenseg.c: 53: digitsToDisplay[i] = parseNumber(numberToDisplay, i);
 "53
-[e = *U + &U F5953 * -> _i `ux -> -> # *U &U F5953 `ui `ux ( _parseNumber (2 , _numberToDisplay _i ]
+[e = *U + &U F5952 * -> _i `ux -> -> # *U &U F5952 `ui `ux ( _parseNumber (2 , _numberToDisplay _i ]
 "54
 }
 "52
@@ -5628,10 +5627,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 54: }
 [; ;sevenseg.c: 55: PORTC |= (unsigned)(1 << digitPointer);
 "55
-[e =| _PORTC -> -> << -> 1 `i F5952 `ui `uc ]
+[e =| _PORTC -> -> << -> 1 `i F5951 `ui `uc ]
 [; ;sevenseg.c: 56: PORTA = (sevenSegCharacters[digitsToDisplay[digitPointer]]);
 "56
-[e = _PORTA *U + &U _sevenSegCharacters * -> *U + &U F5953 * -> F5952 `ux -> -> # *U &U F5953 `ui `ux `ux -> -> # *U &U _sevenSegCharacters `ui `ux ]
+[e = _PORTA *U + &U _sevenSegCharacters * -> *U + &U F5952 * -> F5951 `ux -> -> # *U &U F5952 `ui `ux `ux -> -> # *U &U _sevenSegCharacters `ui `ux ]
 [; ;sevenseg.c: 57: }
 "57
 [e :UE 622 ]

@@ -54,15 +54,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "70 src/stack/protocols/../../eth/mac.h
 [v _mac_isAllZero `(b ~T0 @X0 0 ef1`*S8 ]
 "104 src/stack/protocols/arp.c
-[c E5867 1 2 .. ]
-[n E5867 arp_operation ARP_REQUEST ARP_REPLY  ]
+[c E5866 1 2 .. ]
+[n E5866 arp_operation ARP_REQUEST ARP_REPLY  ]
 "43 src/stack/protocols/../../eth/mac.h
 [v _mac_cmp `(b ~T0 @X0 0 ef2`*S8`*S8 ]
 "123 src/stack/protocols/arp.c
-[c E5871 1 .. ]
-[n E5871 arp_htype ARP_HTYPE_ETHERNET  ]
-[c E5874 2048 .. ]
-[n E5874 arp_ptype ARP_PTYPE_IPv4  ]
+[c E5870 1 .. ]
+[n E5870 arp_htype ARP_HTYPE_ETHERNET  ]
+[c E5873 2048 .. ]
+[n E5873 arp_ptype ARP_PTYPE_IPv4  ]
 "124
 [c E175 401 403 404 405 406 499 .. ]
 [n E175 errors_arp ERROR_ARP_WAITING ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_IPv4_ADDRESS_CONFLICT ERROR_ARP_CONNECTION_FAILED ERROR_ARP_UNKNOWN  ]
@@ -396,15 +396,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 42: error_t err;
 [; ;backgroundTasksTypes.h: 53: uint8_t fPacketPending;
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
-[; ;stack.h: 52: typedef struct stack {
-[; ;stack.h: 53: backgroundTaskHandler_t background;
-[; ;stack.h: 56: ethernetConnection_t ethernet;
-[; ;stack.h: 60: uint32_t foo[3];
-[; ;stack.h: 62: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 63: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 64: ipv4_address_t source;
-[; ;stack.h: 65: } stack_t;
-[; ;stack.h: 72: error_t stack_init();
+[; ;stack.h: 44: typedef struct stack {
+[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 49: ethernetConnection_t ethernet;
+[; ;stack.h: 50: backgroundTaskHandler_t background;
+[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 57: ipv4_address_t source;
+[; ;stack.h: 69: } stack_t;
+[; ;stack.h: 76: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5714,7 +5713,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.c: 103: mac_isAllZero(&arp.targetMACAddress) &&
 [; ;arp.c: 104: arp.operation == ARP_REQUEST) {
 "104
-[e $ ! && && ( _ipv4_cmp (2 , &U . _arp 6 &U . _arp 8 ( _mac_isAllZero (1 &U . _arp 7 == . _arp 4 -> . `E5867 0 `ui 645  ]
+[e $ ! && && ( _ipv4_cmp (2 , &U . _arp 6 &U . _arp 8 ( _mac_isAllZero (1 &U . _arp 7 == . _arp 4 -> . `E5866 0 `ui 645  ]
 {
 [; ;arp.c: 105: arp.fIsGratuitous = 1;
 "105
@@ -5729,7 +5728,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.c: 109: mac_cmp(&arp.senderMACAddress, &arp.targetMACAddress) &&
 [; ;arp.c: 110: arp.operation == ARP_REPLY) {
 "110
-[e $ ! && && ( _ipv4_cmp (2 , &U . _arp 6 &U . _arp 8 ( _mac_cmp (2 , &U . _arp 5 &U . _arp 7 == . _arp 4 -> . `E5867 1 `ui 647  ]
+[e $ ! && && ( _ipv4_cmp (2 , &U . _arp 6 &U . _arp 8 ( _mac_cmp (2 , &U . _arp 5 &U . _arp 7 == . _arp 4 -> . `E5866 1 `ui 647  ]
 {
 [; ;arp.c: 111: arp.fIsGratuitous = 1;
 "111
@@ -5761,7 +5760,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.c: 122: (arp.hlen != 6u) ||
 [; ;arp.c: 123: (arp.plen != 4u)) {
 "123
-[e $ ! || || || || != . _arp 0 -> . `E5871 0 `ui != . _arp 1 -> . `E5874 0 `ui > . _arp 4 -> -> 2 `i `ui != -> . _arp 2 `ui -> 6 `ui != -> . _arp 3 `ui -> 4 `ui 649  ]
+[e $ ! || || || || != . _arp 0 -> . `E5870 0 `ui != . _arp 1 -> . `E5873 0 `ui > . _arp 4 -> -> 2 `i `ui != -> . _arp 2 `ui -> 6 `ui != -> . _arp 3 `ui -> 4 `ui 649  ]
 {
 [; ;arp.c: 124: arp.err.code = ERROR_ARP_INVALID_VALUES;
 "124
@@ -5977,13 +5976,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _request 3 -> -> 4 `ui `uc ]
 [; ;arp.c: 192: request.htype = ARP_HTYPE_ETHERNET;
 "192
-[e = . _request 0 -> . `E5871 0 `ui ]
+[e = . _request 0 -> . `E5870 0 `ui ]
 [; ;arp.c: 193: request.ptype = ARP_PTYPE_IPv4;
 "193
-[e = . _request 1 -> . `E5874 0 `ui ]
+[e = . _request 1 -> . `E5873 0 `ui ]
 [; ;arp.c: 194: request.operation = ARP_REQUEST;
 "194
-[e = . _request 4 -> . `E5867 0 `ui ]
+[e = . _request 4 -> . `E5866 0 `ui ]
 [; ;arp.c: 195: request.senderIPAddress = ipSender;
 "195
 [e = . _request 6 _ipSender ]
@@ -6012,7 +6011,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;arp.c: 204: if (request.operation != ARP_REQUEST)
 "204
-[e $ ! != . _request 4 -> . `E5867 0 `ui 671  ]
+[e $ ! != . _request 4 -> . `E5866 0 `ui 671  ]
 [; ;arp.c: 205: return;
 "205
 [e $UE 670  ]
@@ -6063,13 +6062,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _reply 3 -> -> 4 `ui `uc ]
 [; ;arp.c: 224: reply.htype = ARP_HTYPE_ETHERNET;
 "224
-[e = . _reply 0 -> . `E5871 0 `ui ]
+[e = . _reply 0 -> . `E5870 0 `ui ]
 [; ;arp.c: 225: reply.ptype = ARP_PTYPE_IPv4;
 "225
-[e = . _reply 1 -> . `E5874 0 `ui ]
+[e = . _reply 1 -> . `E5873 0 `ui ]
 [; ;arp.c: 226: reply.operation = ARP_REPLY;
 "226
-[e = . _reply 4 -> . `E5867 1 `ui ]
+[e = . _reply 4 -> . `E5866 1 `ui ]
 [; ;arp.c: 227: reply.senderIPAddress = senderIP;
 "227
 [e = . _reply 6 _senderIP ]
@@ -6119,19 +6118,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "245
 [v _ipSender `S12 ~T0 @X0 1 a ]
 "246
-[v F5971 `uc ~T0 @X0 1 s probeCounter ]
-[i F5971
+[v F5970 `uc ~T0 @X0 1 s probeCounter ]
+[i F5970
 -> -> 0 `i `uc
 ]
 "247
 [v _err `S5 ~T0 @X0 1 a ]
 "251
-[c E5973 0 1 2 3 .. ]
-[n E5973 states PREPARING_PROBE WAITING_TO_SEND SENDING_PROBE ARP_ENTRY_FOUND  ]
+[c E5972 0 1 2 3 .. ]
+[n E5972 states PREPARING_PROBE WAITING_TO_SEND SENDING_PROBE ARP_ENTRY_FOUND  ]
 "252
-[v F5978 `uc ~T0 @X0 1 s state ]
-[i F5978
--> . `E5973 0 `uc
+[v F5977 `uc ~T0 @X0 1 s state ]
+[i F5977
+-> . `E5972 0 `uc
 ]
 "253
 [v _index `uc ~T0 @X0 1 a ]
@@ -6154,10 +6153,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;arp.c: 257: state = PREPARING_PROBE;
 "257
-[e = F5978 -> . `E5973 0 `uc ]
+[e = F5977 -> . `E5972 0 `uc ]
 [; ;arp.c: 258: probeCounter = 0;
 "258
-[e = F5971 -> -> 0 `i `uc ]
+[e = F5970 -> -> 0 `i `uc ]
 [; ;arp.c: 259: err.code = ERROR_ARP_CONNECTION_FAILED;
 "259
 [e = . _err 1 -> . `E175 4 `ui ]
@@ -6175,7 +6174,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;arp.c: 264: state = ARP_ENTRY_FOUND;
 "264
-[e = F5978 -> . `E5973 3 `uc ]
+[e = F5977 -> . `E5972 3 `uc ]
 "265
 }
 [e :U 675 ]
@@ -6198,7 +6197,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _waitingTime -> % -> ( _rand ..  `ui -> 1000 `ui `ul ]
 [; ;arp.c: 272: state = WAITING_TO_SEND;
 "272
-[e = F5978 -> . `E5973 1 `uc ]
+[e = F5977 -> . `E5972 1 `uc ]
 [; ;arp.c: 273: err.code = ERROR_ARP_WAITING;
 "273
 [e = . _err 1 -> . `E175 0 `ui ]
@@ -6214,7 +6213,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;arp.c: 277: state = SENDING_PROBE;
 "277
-[e = F5978 -> . `E5973 2 `uc ]
+[e = F5977 -> . `E5972 2 `uc ]
 [; ;arp.c: 279: waitingTime = (rand() % (2000u - 1000u)) + 1000u;
 "279
 [e = _waitingTime -> + % -> ( _rand ..  `ui - -> 2000 `ui -> 1000 `ui -> 1000 `ui `ul ]
@@ -6233,14 +6232,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 681 ]
 [; ;arp.c: 284: if (probeCounter == 0 || (getMillis() - timeStart) > waitingTime) {
 "284
-[e $ ! || == -> F5971 `i -> 0 `i > - ( _getMillis ..  _timeStart _waitingTime 682  ]
+[e $ ! || == -> F5970 `i -> 0 `i > - ( _getMillis ..  _timeStart _waitingTime 682  ]
 {
 [; ;arp.c: 285: timeStart = getMillis();
 "285
 [e = _timeStart ( _getMillis ..  ]
 [; ;arp.c: 287: if (probeCounter < 3u) {
 "287
-[e $ ! < -> F5971 `ui -> 3 `ui 683  ]
+[e $ ! < -> F5970 `ui -> 3 `ui 683  ]
 {
 [; ;arp.c: 289: UARTTransmitText("[ARP]: Sending Probe for ");
 "289
@@ -6266,14 +6265,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.c: 296: }
 [; ;arp.c: 297: if (probeCounter >= 3u) {
 "297
-[e $ ! >= -> F5971 `ui -> 3 `ui 684  ]
+[e $ ! >= -> F5970 `ui -> 3 `ui 684  ]
 {
 [; ;arp.c: 298: probeCounter = 0;
 "298
-[e = F5971 -> -> 0 `i `uc ]
+[e = F5970 -> -> 0 `i `uc ]
 [; ;arp.c: 299: state = PREPARING_PROBE;
 "299
-[e = F5978 -> . `E5973 0 `uc ]
+[e = F5977 -> . `E5972 0 `uc ]
 [; ;arp.c: 300: err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED;
 "300
 [e = . _err 1 -> . `E175 1 `ui ]
@@ -6288,7 +6287,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _err 1 -> . `E175 0 `ui ]
 [; ;arp.c: 303: probeCounter++;
 "303
-[e ++ F5971 -> -> 1 `i `uc ]
+[e ++ F5970 -> -> 1 `i `uc ]
 "304
 }
 [e :U 685 ]
@@ -6305,10 +6304,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 686 ]
 [; ;arp.c: 308: probeCounter = 0;
 "308
-[e = F5971 -> -> 0 `i `uc ]
+[e = F5970 -> -> 0 `i `uc ]
 [; ;arp.c: 309: state = PREPARING_PROBE;
 "309
-[e = F5978 -> . `E5973 0 `uc ]
+[e = F5977 -> . `E5972 0 `uc ]
 [; ;arp.c: 310: err.code = ERROR_ARP_IPv4_ADDRESS_CONFLICT;
 "310
 [e = . _err 1 -> . `E175 3 `ui ]
@@ -6318,10 +6317,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 676  ]
 "267
 [e :U 677 ]
-[e [\ F5978 , $ -> . `E5973 0 `uc 678
- , $ -> . `E5973 1 `uc 679
- , $ -> . `E5973 2 `uc 681
- , $ -> . `E5973 3 `uc 686
+[e [\ F5977 , $ -> . `E5972 0 `uc 678
+ , $ -> . `E5972 1 `uc 679
+ , $ -> . `E5972 2 `uc 681
+ , $ -> . `E5972 3 `uc 686
  676 ]
 "311
 [e :U 676 ]
@@ -6342,18 +6341,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _link `E232 ~T0 @X0 1 r2 ]
 [f ]
 "316
-[v F5982 `uc ~T0 @X0 1 s announceCounter ]
-[i F5982
+[v F5981 `uc ~T0 @X0 1 s announceCounter ]
+[i F5981
 -> -> 0 `i `uc
 ]
 "317
-[v F5983 `uc ~T0 @X0 1 s state ]
-[i F5983
+[v F5982 `uc ~T0 @X0 1 s state ]
+[i F5982
 -> -> 0 `i `uc
 ]
 "318
-[v F5984 `ul ~T0 @X0 1 s timeStart ]
-[i F5984
+[v F5983 `ul ~T0 @X0 1 s timeStart ]
+[i F5983
 -> -> -> 0 `i `l `ul
 ]
 "319
@@ -6361,8 +6360,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "320
 [v _err `S5 ~T0 @X0 1 a ]
 "324
-[c E5987 0 1 2 3 .. ]
-[n E5987 states INIT WAIT_FOR_ANNOUNCE ANNOUNCING ENTRY_FOUND  ]
+[c E5986 0 1 2 3 .. ]
+[n E5986 states INIT WAIT_FOR_ANNOUNCE ANNOUNCING ENTRY_FOUND  ]
 [; ;arp.c: 316: uint8_t static announceCounter = 0;
 [; ;arp.c: 317: uint8_t static state = 0;
 [; ;arp.c: 318: time_t static timeStart = 0;
@@ -6383,10 +6382,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;arp.c: 329: announceCounter = 0;
 "329
-[e = F5982 -> -> 0 `i `uc ]
+[e = F5981 -> -> 0 `i `uc ]
 [; ;arp.c: 330: state = INIT;
 "330
-[e = F5983 -> . `E5987 0 `uc ]
+[e = F5982 -> . `E5986 0 `uc ]
 [; ;arp.c: 331: err.code = ERROR_ARP_CONNECTION_FAILED;
 "331
 [e = . _err 1 -> . `E175 4 `ui ]
@@ -6404,7 +6403,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;arp.c: 336: state = ENTRY_FOUND;
 "336
-[e = F5983 -> . `E5987 3 `uc ]
+[e = F5982 -> . `E5986 3 `uc ]
 "337
 }
 [e :U 689 ]
@@ -6421,10 +6420,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _err 1 -> . `E175 0 `ui ]
 [; ;arp.c: 342: timeStart = getMillis();
 "342
-[e = F5984 ( _getMillis ..  ]
+[e = F5983 ( _getMillis ..  ]
 [; ;arp.c: 343: state = WAIT_FOR_ANNOUNCE;
 "343
-[e = F5983 -> . `E5987 1 `uc ]
+[e = F5982 -> . `E5986 1 `uc ]
 [; ;arp.c: 344: break;
 "344
 [e $U 690  ]
@@ -6436,14 +6435,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _err 1 -> . `E175 0 `ui ]
 [; ;arp.c: 347: if ((getMillis() - timeStart) > 2000u) {
 "347
-[e $ ! > - ( _getMillis ..  F5984 -> -> 2000 `ui `ul 694  ]
+[e $ ! > - ( _getMillis ..  F5983 -> -> 2000 `ui `ul 694  ]
 {
 [; ;arp.c: 348: state = ANNOUNCING;
 "348
-[e = F5983 -> . `E5987 2 `uc ]
+[e = F5982 -> . `E5986 2 `uc ]
 [; ;arp.c: 349: announceCounter = 0;
 "349
-[e = F5982 -> -> 0 `i `uc ]
+[e = F5981 -> -> 0 `i `uc ]
 "350
 }
 [e :U 694 ]
@@ -6459,7 +6458,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _err 1 -> . `E175 0 `ui ]
 [; ;arp.c: 354: if ((announceCounter == 0) || (getMillis() - timeStart) > 2000u) {
 "354
-[e $ ! || == -> F5982 `i -> 0 `i > - ( _getMillis ..  F5984 -> -> 2000 `ui `ul 696  ]
+[e $ ! || == -> F5981 `i -> 0 `i > - ( _getMillis ..  F5983 -> -> 2000 `ui `ul 696  ]
 {
 [; ;arp.c: 356: UARTTransmitText("[ARP]: Sending Gratuitous ARP request for ");
 "356
@@ -6472,27 +6471,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _UARTTransmitText (1 :s 16C ]
 [; ;arp.c: 360: timeStart = getMillis();
 "360
-[e = F5984 ( _getMillis ..  ]
+[e = F5983 ( _getMillis ..  ]
 [; ;arp.c: 361: arp_sendRequest(ip, ip);
 "361
 [e ( _arp_sendRequest (2 , _ip _ip ]
 [; ;arp.c: 362: announceCounter++;
 "362
-[e ++ F5982 -> -> 1 `i `uc ]
+[e ++ F5981 -> -> 1 `i `uc ]
 "363
 }
 [e :U 696 ]
 [; ;arp.c: 363: }
 [; ;arp.c: 364: if (announceCounter >= 2u) {
 "364
-[e $ ! >= -> F5982 `ui -> 2 `ui 697  ]
+[e $ ! >= -> F5981 `ui -> 2 `ui 697  ]
 {
 [; ;arp.c: 366: announceCounter = 0;
 "366
-[e = F5982 -> -> 0 `i `uc ]
+[e = F5981 -> -> 0 `i `uc ]
 [; ;arp.c: 367: state = INIT;
 "367
-[e = F5983 -> . `E5987 0 `uc ]
+[e = F5982 -> . `E5986 0 `uc ]
 [; ;arp.c: 368: err.code = (uint16_t)0;
 "368
 [e = . _err 1 -> -> 0 `i `ui ]
@@ -6508,10 +6507,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 698 ]
 [; ;arp.c: 372: announceCounter = 0;
 "372
-[e = F5982 -> -> 0 `i `uc ]
+[e = F5981 -> -> 0 `i `uc ]
 [; ;arp.c: 373: state = INIT;
 "373
-[e = F5983 -> . `E5987 0 `uc ]
+[e = F5982 -> . `E5986 0 `uc ]
 [; ;arp.c: 374: err.code = ERROR_ARP_IPv4_ADDRESS_CONFLICT;
 "374
 [e = . _err 1 -> . `E175 3 `ui ]
@@ -6524,10 +6523,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 690  ]
 "339
 [e :U 691 ]
-[e [\ F5983 , $ -> . `E5987 0 `uc 692
- , $ -> . `E5987 1 `uc 693
- , $ -> . `E5987 2 `uc 695
- , $ -> . `E5987 3 `uc 698
+[e [\ F5982 , $ -> . `E5986 0 `uc 692
+ , $ -> . `E5986 1 `uc 693
+ , $ -> . `E5986 2 `uc 695
+ , $ -> . `E5986 3 `uc 698
  690 ]
 "377
 [e :U 690 ]
@@ -6547,23 +6546,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _link `E232 ~T0 @X0 1 r1 ]
 [f ]
 "384
-[v F5994 `S5 ~T0 @X0 1 s err ]
+[v F5993 `S5 ~T0 @X0 1 s err ]
 "385
 [v _errProbe `S5 ~T0 @X0 1 a ]
 "386
 [v _errAnnounce `S5 ~T0 @X0 1 a ]
 "387
-[v F5997 `b ~T0 @X0 1 s fAnnounce ]
-[i F5997
+[v F5996 `b ~T0 @X0 1 s fAnnounce ]
+[i F5996
 -> 0 `i
 ]
 "388
-[v F5998 `c ~T0 @X0 1 s state ]
-[i F5998
+[v F5997 `c ~T0 @X0 1 s state ]
+[i F5997
 -> -> 0 `i `c
 ]
 "389
-[v F5999 `S12 ~T0 @X0 1 s ipPreliminary ]
+[v F5998 `S12 ~T0 @X0 1 s ipPreliminary ]
 [; ;arp.c: 384: error_t static err;
 [; ;arp.c: 385: error_t errProbe;
 [; ;arp.c: 386: error_t errAnnounce;
@@ -6572,10 +6571,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.c: 389: ipv4_address_t static ipPreliminary;
 [; ;arp.c: 390: err.code = ERROR_ARP_WAITING;
 "390
-[e = . F5994 1 -> . `E175 0 `ui ]
+[e = . F5993 1 -> . `E175 0 `ui ]
 [; ;arp.c: 391: err.module = ERROR_MODULE_ARP;
 "391
-[e = . F5994 0 . `E151 3 ]
+[e = . F5993 0 . `E151 3 ]
 [; ;arp.c: 393: switch (state) {
 "393
 [e $U 701  ]
@@ -6585,14 +6584,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 702 ]
 [; ;arp.c: 397: ipPreliminary = ipv4_getPreliminaryIPSourceAddress();
 "397
-[e = F5999 ( _ipv4_getPreliminaryIPSourceAddress ..  ]
+[e = F5998 ( _ipv4_getPreliminaryIPSourceAddress ..  ]
 [; ;arp.c: 398: if (ipv4_SrcAddrChanged(&err)) {
 "398
-[e $ ! ( _ipv4_SrcAddrChanged (1 &U F5994 703  ]
+[e $ ! ( _ipv4_SrcAddrChanged (1 &U F5993 703  ]
 {
 [; ;arp.c: 399: errProbe.code = arp_probe(ipPreliminary, link).code;
 "399
-[e = . _errProbe 1 . ( _arp_probe (2 , F5999 _link 1 ]
+[e = . _errProbe 1 . ( _arp_probe (2 , F5998 _link 1 ]
 [; ;arp.c: 400: switch (errProbe.code) {
 "400
 [e $U 705  ]
@@ -6614,7 +6613,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _UARTTransmitText (1 :s 18C ]
 [; ;arp.c: 410: state = 1;
 "410
-[e = F5998 -> -> 1 `i `c ]
+[e = F5997 -> -> 1 `i `c ]
 [; ;arp.c: 411: break;
 "411
 [e $U 704  ]
@@ -6658,7 +6657,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.c: 424: }
 [; ;arp.c: 425: err.code = errProbe.code;
 "425
-[e = . F5994 1 . _errProbe 1 ]
+[e = . F5993 1 . _errProbe 1 ]
 [; ;arp.c: 427: break;
 "427
 [e $U 700  ]
@@ -6667,20 +6666,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 711 ]
 [; ;arp.c: 430: errAnnounce = arp_gratuitous(ipPreliminary, link);
 "430
-[e = _errAnnounce ( _arp_gratuitous (2 , F5999 _link ]
+[e = _errAnnounce ( _arp_gratuitous (2 , F5998 _link ]
 [; ;arp.c: 431: err.code = errAnnounce.code;
 "431
-[e = . F5994 1 . _errAnnounce 1 ]
+[e = . F5993 1 . _errAnnounce 1 ]
 [; ;arp.c: 432: if (err.code == ERROR_ARP_IPv4_ADDRESS_CONFLICT) {
 "432
-[e $ ! == . F5994 1 -> . `E175 3 `ui 712  ]
+[e $ ! == . F5993 1 -> . `E175 3 `ui 712  ]
 {
 [; ;arp.c: 434: UARTTransmitText("[ARP]: Conflict during announcement.\n\r");
 "434
 [e ( _UARTTransmitText (1 :s 21C ]
 [; ;arp.c: 436: state = 0;
 "436
-[e = F5998 -> -> 0 `i `c ]
+[e = F5997 -> -> 0 `i `c ]
 "437
 }
 [e :U 712 ]
@@ -6695,7 +6694,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _UARTTransmitText (1 :s 22C ]
 [; ;arp.c: 443: state = 0;
 "443
-[e = F5998 -> -> 0 `i `c ]
+[e = F5997 -> -> 0 `i `c ]
 "444
 }
 [e :U 713 ]
@@ -6709,14 +6708,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 700  ]
 "393
 [e :U 701 ]
-[e [\ F5998 , $ -> -> 0 `i `c 702
+[e [\ F5997 , $ -> -> 0 `i `c 702
  , $ -> -> 1 `i `c 711
  700 ]
 "446
 [e :U 700 ]
 [; ;arp.c: 448: return err;
 "448
-[e ) F5994 ]
+[e ) F5993 ]
 [e $UE 699  ]
 [; ;arp.c: 449: }
 "449
