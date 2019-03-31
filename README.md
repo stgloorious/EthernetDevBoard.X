@@ -1,11 +1,11 @@
 # EthernetDevBoard.X
 
-**Hard- and software platform with its own TCP/IP stack on a PIC18F microcontroller**\n
+**Hard- and software platform with its own TCP/IP stack on a PIC18F microcontroller**  
 **More documentation can be found here:**
 
-[Doxygen](https://stgloorious.github.io/EthernetDevBoard.X/)\n
-[CircuitMaker Project](https://circuitmaker.com/Projects/Details/Stefan-Gloor/Ethernet-Development-Board)\n
-[Github](https://github.com/stgloorious/EthernetDevBoard.x)\n
+[Doxygen](https://stgloorious.github.io/EthernetDevBoard.X/)  
+[CircuitMaker Project](https://circuitmaker.com/Projects/Details/Stefan-Gloor/Ethernet-Development-Board)  
+[Github](https://github.com/stgloorious/EthernetDevBoard.x)  
 
 ## Introduction
 
@@ -21,6 +21,8 @@ to add 100Base-TX Ethernet functionalities to it.
 To really understand what's going on I wanted to create as much as possible from scratch.
 
 ## General overview
-[](https://github.com/stgloorious/EthernetDevBoard.X/tree/master/docs/images/basic_overview.svg)
+![](https://github.com/stgloorious/EthernetDevBoard.X/tree/master/docs/images/basic_overview.svg)
+
+Test test
 
 

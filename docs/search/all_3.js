@@ -5,6 +5,7 @@ var searchData=
   ['debug_5fmsg',['DEBUG_MSG',['../uart_8h.html#a8cd465006ed73cab2e273a815e264014',1,'uart.h']]],
   ['destination',['destination',['../structethernet_frame.html#a93751f769ad8a61045bf9ed5c00501d6',1,'ethernetFrame::destination()'],['../structethernet_connection.html#a93751f769ad8a61045bf9ed5c00501d6',1,'ethernetConnection::destination()'],['../structipv4__header.html#af22742f606b58c8db77e85c968629914',1,'ipv4_header::destination()']]],
   ['device_5fname',['DEVICE_NAME',['../group__enc424j600__module.html#ga5f5a2c9450ebc584b4fe743c6b1a280b',1,'ENC424J600.h']]],
+  ['device_20functions',['Device Functions',['../group__devicefunc.html',1,'']]],
   ['disablerx',['DISABLERX',['../group__single__byte.html#ga71b0c6c4ecdcb0051588c13101e9b282',1,'ENC424J600.h']]],
   ['dmacksum',['DMACKSUM',['../group__single__byte.html#ga129e533bb06e3aa1641c9172edb56494',1,'ENC424J600.h']]],
   ['dmacksums',['DMACKSUMS',['../group__single__byte.html#ga4c98f8a75ecaf7988fd864f65ee89c00',1,'ENC424J600.h']]],

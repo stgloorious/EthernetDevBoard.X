@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EthernetDevBoard: Bug List</title>
+<title>EthernetDevBoard: eth Directory Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,19 +62,16 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_4fef79e7177ba769987a8da36c892c5f.html">build</a></li><li class="navelem"><a class="el" href="dir_3caa40b8b06107d1692d1682cae226a5.html">default</a></li><li class="navelem"><a class="el" href="dir_7e8dc67bb2ce0390d13f9572fe7ee1f2.html">production</a></li><li class="navelem"><a class="el" href="dir_e89ef7df7cf176360de62e0a9e27d923.html">src</a></li><li class="navelem"><a class="el" href="dir_1588d08f6534133a788da6ffc086b452.html">eth</a></li>  </ul>
+</div>
 </div><!-- top -->
-<div class="PageDoc"><div class="header">
+<div class="header">
   <div class="headertitle">
-<div class="title">Bug List </div>  </div>
+<div class="title">eth Directory Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><dl class="reflist">
-<dt>Global <a class="el" href="group__background.html#gaf6bebfbbcd06181803783d2504fe318e">handleStackBackgroundTasks</a>  (stack_t *stack)</dt>
-<dd><a class="anchor" id="_bug000001"></a>(Kind of) Unsolved problem: If <a class="el" href="group__interrupts.html#ggaf692e993b72f242633eee1b443276547aecae98f658eb2390e4b15d4090cfeeca">PKTIF</a> is checked before <a class="el" href="group__interrupts.html#ggaf692e993b72f242633eee1b443276547a5ab1928649db29845f7a4babb4ac77f7">LINKIF</a> without calling <a class="el" href="group__devicefunc.html#ga5cdd5a8c6a5ceab1292643f291137bd1">ethernetController_pollInterruptFlags</a> again LINKIF seems to be set without no reason ?? It seems the problem does not occur if checked in this order or if <a class="el" href="group__devicefunc.html#ga5cdd5a8c6a5ceab1292643f291137bd1">ethernetController_pollInterruptFlags</a> is called multiple times.  </dd>
-<dt>Global <a class="el" href="structstack.html#a0bcc7cc2fbfd1d172115db60fd1b2682">stack::foo</a>  [3]</dt>
-<dd><a class="anchor" id="_bug000002"></a>Pointer (?) error: If there is no foo element which uses at least 4 bytes, the next member of the stack structure (background) will be corrupted </dd>
-</dl>
-</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
