@@ -21,7 +21,7 @@ to add 100Base-TX Ethernet functionalities to it.
 To really understand what's going on I wanted to create as much as possible from scratch.
 
 ## General overview
-![](https://github.com/stgloorious/EthernetDevBoard.X/tree/master/docs/images/basic_overview.svg)
+![](docs/images/basic_overview.svg)
 
 Test test
 
