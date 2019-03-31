@@ -212,16 +212,16 @@ ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 # 96
 enum errors_arp {
 ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
-ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
-ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
-ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
+ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
+ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
 ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
 };
 
-# 107
+# 108
 enum errors_ipv4 {
 ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
 ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
@@ -444,7 +444,7 @@ void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryF
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
 # 232
-void ethernetController_dropPacket(ethernetFrame_t *frame);
+void ethernetController_dropPacket();
 
 # 238
 void ethernetController_updateNextPacketPointer();
@@ -567,25 +567,30 @@ ipv4_address_t ipSource;
 # 37 "src/stack/protocols/../protocols/../../stack/backgroundTasksTypes.h"
 typedef struct backgroundTaskHandler {
 
-# 41
+# 42
 error_t err;
 
-# 46
-interruptFlags_t interruptFlags;
-
-# 52
+# 53
 uint8_t fPacketPending;
+
 } backgroundTaskHandler_t;
 
-# 42 "src/stack/protocols/../protocols/../stack.h"
+# 52 "src/stack/protocols/../protocols/../stack.h"
 typedef struct stack {
+backgroundTaskHandler_t background;
+
+
 ethernetConnection_t ethernet;
-backgroundTaskHandler_t volatile background;
+
+# 60
+uint32_t foo[3];
+
 ethernetFrame_t newReceivedFrame;
 ipv4_packet_t pendingPacketToSend;
+ipv4_address_t source;
 } stack_t;
 
-# 54
+# 72
 error_t stack_init();
 
 # 46 "src/stack/protocols/../protocols/ipv4.h"
@@ -622,7 +627,7 @@ ipv4_address_t ipv4_getPreliminaryIPSourceAddress();
 void ipv4_setIPSourceAddress(ipv4_address_t ip);
 
 # 118
-error_t ipv4_background();
+error_t ipv4_background(linkState_t link);
 
 # 126
 bool_t ipv4_SrcAddrChanged(error_t *err);
@@ -7351,27 +7356,27 @@ void static arp_sendReply(arp_message_t request);
 void static arp_send(arp_message_t arp);
 
 # 82
-void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+void arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
 
-# 95
-error_t static arp_probe(ipv4_address_t ipTarget);
+# 96
+error_t static arp_probe(ipv4_address_t ipTarget, linkState_t link);
 
-# 106
-error_t static arp_gratuitous(ipv4_address_t ip);
+# 108
+error_t static arp_gratuitous(ipv4_address_t ip, linkState_t link);
 
-# 113
-error_t arp_background();
+# 116
+error_t arp_background(linkState_t link);
 
-# 121
-uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+# 124
+uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
 
-# 129
-macaddress_t static arp_getEntryFromTable(uint8_t index);
+# 132
+macaddress_t arp_getEntryFromTable(uint8_t index);
 
-# 137
+# 140
 void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
-# 143
+# 146
 void printArpTable();
 
 # 29 "src/stack/protocols/arp.c"
@@ -7520,7 +7525,6 @@ for (uint8_t i = 0; i < arp.plen; i++)
 ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field);
 for (uint8_t i = 0; i < arp.hlen; i++)
 ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field);
-
 for (uint8_t i = 0; i < arp.plen; i++)
 ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field);
 
@@ -7528,14 +7532,12 @@ ethernetController_sendPacket(ethFrame.memory);
 }
 
 
-void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget) {
+void arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget) {
 arp_message_t request;
 macaddress_t senderMAC;
 macaddress_t targetMAC;
 
 senderMAC = ethernetController_getMacAddress();
-
-ipSender = ipv4_getIPSourceAddress();
 mac_setAllZero(&targetMAC);
 
 request.hlen = 6u;
@@ -7590,7 +7592,7 @@ UARTTransmitText("]");
 }
 
 
-error_t static arp_probe(ipv4_address_t ipTarget) {
+error_t static arp_probe(ipv4_address_t ipTarget, linkState_t link) {
 time_t timeStart;
 time_t waitingTime;
 ipv4_address_t ipSender;
@@ -7603,6 +7605,13 @@ PREPARING_PROBE, WAITING_TO_SEND, SENDING_PROBE, ARP_ENTRY_FOUND
 uint8_t static state = PREPARING_PROBE;
 uint8_t index;
 err.module = ERROR_MODULE_ARP;
+
+if (link == NO_LINK) {
+state = PREPARING_PROBE;
+probeCounter = 0;
+err.code = ERROR_ARP_CONNECTION_FAILED;
+return err;
+}
 
 if (arp_checkForEntry(ipTarget, &index)) {
 state = ARP_ENTRY_FOUND;
@@ -7629,6 +7638,13 @@ if (probeCounter == 0 || (getMillis() - timeStart) > waitingTime) {
 timeStart = getMillis();
 
 if (probeCounter < 3u) {
+
+UARTTransmitText("[ARP]: Sending Probe for ");
+UARTTransmitText(ipAdressToString(ipTarget));
+UARTTransmitText(" (reply to ");
+UARTTransmitText(ipAdressToString(ipSender));
+UARTTransmitText(")\n\r");
+
 arp_sendRequest(ipSender, ipTarget);
 }
 if (probeCounter >= 3u) {
@@ -7649,27 +7665,51 @@ err.code = ERROR_ARP_IPv4_ADDRESS_CONFLICT;
 return err;
 }
 
-error_t static arp_gratuitous(ipv4_address_t ip) {
+error_t static arp_gratuitous(ipv4_address_t ip, linkState_t link) {
 uint8_t static announceCounter = 0;
 uint8_t static state = 0;
 time_t static timeStart = 0;
+uint8_t index;
 error_t err;
+
+enum states {
+INIT, WAIT_FOR_ANNOUNCE, ANNOUNCING, ENTRY_FOUND
+};
 err.module = ERROR_MODULE_ARP;
 err.code = ERROR_ARP_WAITING;
 
+if (link == NO_LINK) {
+announceCounter = 0;
+state = INIT;
+err.code = ERROR_ARP_CONNECTION_FAILED;
+return err;
+}
+
+if (arp_checkForEntry(ip, &index)) {
+state = ENTRY_FOUND;
+}
+
 switch (state) {
-case 0:
+case INIT:
+err.code = ERROR_ARP_WAITING;
 timeStart = getMillis();
-state = 1;
+state = WAIT_FOR_ANNOUNCE;
 break;
-case 1:
+case WAIT_FOR_ANNOUNCE:
+err.code = ERROR_ARP_WAITING;
 if ((getMillis() - timeStart) > 2000u) {
-state = 2;
+state = ANNOUNCING;
 announceCounter = 0;
 }
 break;
-case 2:
+case ANNOUNCING:
+err.code = ERROR_ARP_WAITING;
 if ((announceCounter == 0) || (getMillis() - timeStart) > 2000u) {
+
+UARTTransmitText("[ARP]: Sending Gratuitous ARP request for ");
+UARTTransmitText(ipAdressToString(ip));
+UARTTransmitText("\n\r");
+
 timeStart = getMillis();
 arp_sendRequest(ip, ip);
 announceCounter++;
@@ -7677,64 +7717,98 @@ announceCounter++;
 if (announceCounter >= 2u) {
 
 announceCounter = 0;
-state = 0;
+state = INIT;
 err.code = (uint16_t)0;
 }
 break;
+case ENTRY_FOUND:
+announceCounter = 0;
+state = INIT;
+err.code = ERROR_ARP_IPv4_ADDRESS_CONFLICT;
+break;
+
 }
 return err;
 }
 
 
 
-error_t arp_background() {
+error_t arp_background(linkState_t link) {
 error_t static err;
+error_t errProbe;
 error_t errAnnounce;
 bool_t static fAnnounce = 0;
-err.code = (uint16_t)0xffff;
+int8_t static state = 0;
+ipv4_address_t static ipPreliminary;
+err.code = ERROR_ARP_WAITING;
 err.module = ERROR_MODULE_ARP;
 
+switch (state) {
+case 0:
 
-ipv4_address_t ipPreliminary = ipv4_getPreliminaryIPSourceAddress();
 
+ipPreliminary = ipv4_getPreliminaryIPSourceAddress();
 if (ipv4_SrcAddrChanged(&err)) {
-
-err.code = arp_probe(ipPreliminary).code;
-
-switch (err.code) {
+errProbe.code = arp_probe(ipPreliminary, link).code;
+switch (errProbe.code) {
 case ERROR_ARP_IPv4_ADDRESS_CONFLICT:
-UARTTransmitText("ARP: IPv4 address already in use!\n\r");
+
+UARTTransmitText("[ARP]: Conflict during probing.\n\r");
+
 break;
 case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
-UARTTransmitText("ARP: Nobody answered.\n\r");
-fAnnounce = 1;
+
+UARTTransmitText("[ARP]: Nobody answered to probes.\n\r");
+
+state = 1;
 break;
 case ERROR_ARP_WAITING:
 break;
+case ERROR_ARP_CONNECTION_FAILED:
+
+UARTTransmitText("[ARP]: Operation was interrupted because link was lost.\n\r");
+
+break;
 default:
-UARTTransmitText("ARP: An unknown error occured.\n\r");
+
+UARTTransmitText("[ARP]: An unknown error occured.\n\r");
+
 }
 }
-if (fAnnounce) {
-errAnnounce = arp_gratuitous(ipPreliminary);
+err.code = errProbe.code;
+
+break;
+
+case 1:
+errAnnounce = arp_gratuitous(ipPreliminary, link);
+err.code = errAnnounce.code;
+if (err.code == ERROR_ARP_IPv4_ADDRESS_CONFLICT) {
+
+UARTTransmitText("[ARP]: Conflict during announcement.\n\r");
+
+state = 0;
+}
 if (errAnnounce.module == ERROR_MODULE_ARP &&
 errAnnounce.code == (uint16_t)0) {
-UARTTransmitText("ARP: All Announcements sent.\n\r");
-fAnnounce = 0;
+
+UARTTransmitText("[ARP]: All announcements sent.\n\r");
+
+state = 0;
 }
+break;
 }
+
 return err;
 }
 
 
 
-uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t * index) {
+uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t * index) {
 for (uint8_t i = 0; i < 8u; i++) {
 if (ipv4_cmp(&arp_table[i].ip, &ip)) {
 if (getMillis() - arp_table[i].timeCreated < 30000u) {
 
 *index = i;
-
 return 1;
 }
 }
@@ -7742,17 +7816,16 @@ return 1;
 return 0;
 }
 
-macaddress_t static arp_getEntryFromTable(uint8_t index) {
+macaddress_t arp_getEntryFromTable(uint8_t index) {
 return arp_table[index].mac;
 }
 
-void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp) {
-uint32_t maxSeconds = 0;
+void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, time_t timestamp) {
+time_t maxSeconds = 0;
 uint8_t oldestIndex = 0;
 
 for (uint8_t i = 0; i < 8u; i++) {
 if (arp_table[i].timeCreated > maxSeconds) {
-
 maxSeconds = arp_table[i].timeCreated;
 oldestIndex = i;
 }
@@ -7761,6 +7834,15 @@ oldestIndex = i;
 arp_table[oldestIndex].ip = ip;
 arp_table[oldestIndex].mac = mac;
 arp_table[oldestIndex].timeCreated = timestamp;
+
+if (!((mac_isAllZero(&mac)) && ipv4_isAllZero(&ip))) {
+UARTTransmitText("[ARP]: New entry created for ");
+UARTTransmitText(ipAdressToString(ip));
+UARTTransmitText(" (");
+UARTTransmitText(macToString(mac));
+UARTTransmitText(") ");
+}
+
 }
 
 void arp_init() {
@@ -7771,6 +7853,10 @@ ipv4_setToAllZero(&ip);
 
 for (uint8_t i = 0; i < 8u; i++)
 arp_setNewEntry(mac, ip, 0xffffffff);
+
+
+UARTTransmitText("[ARP]: Table was reset successfully.\n\r");
+
 }
 
 void printArpTable() {

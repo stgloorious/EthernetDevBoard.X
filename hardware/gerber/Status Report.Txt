@@ -1,0 +1,19 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [Ethernet Development Board.PrjPcb]
+   Generated File[ethernetDevBoard.GTL]
+   Generated File[ethernetDevBoard.GBL]
+   Generated File[ethernetDevBoard.GTO]
+   Generated File[ethernetDevBoard.GTS]
+   Generated File[ethernetDevBoard.GBS]
+   Generated File[ethernetDevBoard.GBO]
+   Generated File[ethernetDevBoard.Outline]
+   Generated File[ethernetDevBoard.RUL]
+   Generated File[ethernetDevBoard.EXTREP]
+   Generated File[ethernetDevBoard.REP]
+
+
+Files Generated   : 10
+Documents Printed : 0
+
+Finished Output Generation At 13:11:24 On 27.12.2018

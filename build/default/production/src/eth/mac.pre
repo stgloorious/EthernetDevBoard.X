@@ -198,6 +198,9 @@ speed_t speed;
 duplexState_t duplex;
 macaddress_t source;
 macaddress_t destination;
+
+# 115
+uint32_t foo[3];
 } ethernetConnection_t;
 
 # 43 "src/eth/mac.h"

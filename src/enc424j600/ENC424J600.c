@@ -36,11 +36,11 @@ error_t ethernetController_init() {
     enc424j600_initSPI();
     err = ethernetController_softReset();
     if (err.code != ERROR_CODE_SUCCESSFUL) {
-        //return err; //abort
+        return err; //abort
     }
     err = ethernetController_checkDeviceId();
     if (err.code != ERROR_CODE_SUCCESSFUL) {
-        //return err; //abort
+        return err; //abort
     }
 
     /* From the datasheet:
@@ -376,7 +376,7 @@ uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAd
     return 0; //never reached (or when an invalid startEnd is passed)
 }
 
-void ethernetController_dropPacket(ethernetFrame_t *frame) {
+void ethernetController_dropPacket() {
     //free up memory
     if (ethernetController_getNextPacketPointer() == RX_DATA_START_ADDRESS) {//wrap around 
         enc424j600_setRXTailPointer(END_OF_MEMORY_ADDRESS - 1); //-1 because we need the last *even* memory address

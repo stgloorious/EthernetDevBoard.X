@@ -115,7 +115,7 @@ void ipv4_setIPSourceAddress(ipv4_address_t ip);
  * \details Does various stuff that takes some time to wait, e.g. handling ARP when setting a new ip address
  * \return Errors that occurred during operation
  */
-error_t ipv4_background();
+error_t ipv4_background(linkState_t link);
 
 /**
  * \brief Returns the \ref fSrcAddrChanged flag located in \ref ipv4.c

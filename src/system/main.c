@@ -109,26 +109,23 @@ void main() {
 
     uint8_t oldState;
 
-    ipv4_address_t ipSrc;
-    ipSrc.address[0] = 192;
-    ipSrc.address[1] = 168;
-    ipSrc.address[2] = 0;
-    ipSrc.address[3] = 1;
+    stack.source.address[0] = 192;
+    stack.source.address[1] = 168;
+    stack.source.address[2] = 0;
+    stack.source.address[3] = 1;
 
     ipv4_address_t ipDst;
     ipDst.address[0] = 192;
     ipDst.address[1] = 168;
     ipDst.address[2] = 0;
-    ipDst.address[3] = 4;
+    ipDst.address[3] = 10;
 
     //Now everything's set up, allow interrupts
     INTCONbits.GIE = 1; //global interrupt enable
     INTCONbits.PEIE = 1;
 
-
-
     srand(ethernetController_getMacAddress().address[5]);
-    ipv4_setIPSourceAddress(ipSrc);
+    UARTTransmitText(intToString(rand() % 100));
 
     while (1) {
         CLRWDT(); //clear watch doggy
@@ -136,20 +133,23 @@ void main() {
         handleStackBackgroundTasks(&stack);
 
         printEthernetState(stack.ethernet);
-        numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : ethernetController_getCurrentPacketCount();
+        //numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : ethernetController_getCurrentPacketCount();
+        numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : stack.source.address[3];
 
         if (buttonState) {
             buttonState = 0;
 
-            ipv4_setIPSourceAddress(ipSrc);
+            UARTTransmitText("My Address is ");
+            UARTTransmitText(ipAdressToString(ipv4_getIPSourceAddress()));
+            UARTTransmitText("\n\r");
 
 
-            /*if (stack.ethernet.link == LINK_ESTABLISHED) {
+            if (stack.ethernet.link == LINK_ESTABLISHED) {
 
                 //////////////////////////////////////////////
                 uint8_t headerBuf[32];
-                stack.pendingPacketToSend.ipv4Header.destination = IPdestination;
-                stack.pendingPacketToSend.ipv4Header.source = IPsource;
+                stack.pendingPacketToSend.ipv4Header.destination = ipDst;
+                stack.pendingPacketToSend.ipv4Header.source = ipv4_getIPSourceAddress();
                 stack.pendingPacketToSend.ipv4Header.totalLength = 120;
                 stack.pendingPacketToSend.ipv4Header.timeToLive = 255;
                 stack.pendingPacketToSend.ipv4Header.version = 4;
@@ -164,14 +164,14 @@ void main() {
                     } else
                         ipv4_streamToTransmissionBuffer(0, stack.pendingPacketToSend);
                 }
+                UARTTransmitText("[IPv4]: A packet was prepared (");
+                UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.source)); 
+                UARTTransmitText(" -> ");
+                UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.destination)); 
+                UARTTransmitText(")\n\r");
                 //////////////////////////////////////////////      
                 stack.background.fPacketPending = 1;
-
-                UARTTransmitText(hexToString(stack.pendingPacketToSend.memory.start));
-                UARTTransmitText(", ");
-                UARTTransmitText(hexToString(stack.pendingPacketToSend.memory.end));
-                UARTTransmitText("\n\r");
-            }*/
+            }
         }
     }
 }
@@ -247,7 +247,7 @@ void buttonHandler(uint8_t volatile *state) {
     uint8_t static newState = 0;
     uint32_t static debounceCounter = 0;
     const uint32_t debounceValue = 0x1f;
-    const uint32_t resetValue = 0xfff;
+    const uint32_t resetValue = 0x3ff;
     if (BUTTON_STATE) {
         debounceCounter++;
     } else {

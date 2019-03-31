@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Ethernet Development Board.PrjPcb]
+   Generated File[ethernetDevBoard.TXT]
+   Generated File[ethernetDevBoard.LDP]
+   Generated File[ethernetDevBoard.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 13:13:32 On 27.12.2018

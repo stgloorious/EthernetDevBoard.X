@@ -141,14 +141,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 91: };
 [; ;error.h: 96: enum errors_arp {
 [; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
-[; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
-[; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
-[; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
-[; ;error.h: 101: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
-[; ;error.h: 102: };
-[; ;error.h: 107: enum errors_ipv4 {
-[; ;error.h: 108: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-[; ;error.h: 109: ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
+[; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
+[; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
+[; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
+[; ;error.h: 101: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
+[; ;error.h: 102: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 103: };
+[; ;error.h: 108: enum errors_ipv4 {
+[; ;error.h: 109: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
 [; ;error.h: 110: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 [; ;error.h: 111: };
 [; ;error.h: 118: typedef struct error {
@@ -180,10 +180,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt.h: 67: MODEXIF = 14
 [; ;interrupt.h: 68: } interruptFlagName_t;
 [; ;backgroundTasksTypes.h: 37: typedef struct backgroundTaskHandler {
-[; ;backgroundTasksTypes.h: 41: error_t err;
-[; ;backgroundTasksTypes.h: 46: interruptFlags_t interruptFlags;
-[; ;backgroundTasksTypes.h: 52: uint8_t fPacketPending;
-[; ;backgroundTasksTypes.h: 53: } backgroundTaskHandler_t;
+[; ;backgroundTasksTypes.h: 42: error_t err;
+[; ;backgroundTasksTypes.h: 53: uint8_t fPacketPending;
+[; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
 [; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
@@ -242,7 +241,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetController.h: 198: void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
 [; ;ethernetController.h: 205: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 [; ;ethernetController.h: 212: void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
-[; ;ethernetController.h: 232: void ethernetController_dropPacket(ethernetFrame_t *frame);
+[; ;ethernetController.h: 232: void ethernetController_dropPacket();
 [; ;ethernetController.h: 238: void ethernetController_updateNextPacketPointer();
 [; ;ethernetController.h: 252: uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
 [; ;ethernetController.h: 259: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
@@ -5363,14 +5362,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;arp.h: 63: arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame);
 [; ;arp.h: 69: void static arp_sendReply(arp_message_t request);
 [; ;arp.h: 75: void static arp_send(arp_message_t arp);
-[; ;arp.h: 82: void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
-[; ;arp.h: 95: error_t static arp_probe(ipv4_address_t ipTarget);
-[; ;arp.h: 106: error_t static arp_gratuitous(ipv4_address_t ip);
-[; ;arp.h: 113: error_t arp_background();
-[; ;arp.h: 121: uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
-[; ;arp.h: 129: macaddress_t static arp_getEntryFromTable(uint8_t index);
-[; ;arp.h: 137: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
-[; ;arp.h: 143: void printArpTable();
+[; ;arp.h: 82: void arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+[; ;arp.h: 96: error_t static arp_probe(ipv4_address_t ipTarget, linkState_t link);
+[; ;arp.h: 108: error_t static arp_gratuitous(ipv4_address_t ip, linkState_t link);
+[; ;arp.h: 116: error_t arp_background(linkState_t link);
+[; ;arp.h: 124: uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+[; ;arp.h: 132: macaddress_t arp_getEntryFromTable(uint8_t index);
+[; ;arp.h: 140: void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
+[; ;arp.h: 146: void printArpTable();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5382,19 +5381,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 100: ipv4_address_t ipv4_getIPSourceAddress();
 [; ;ipv4.h: 105: ipv4_address_t ipv4_getPreliminaryIPSourceAddress();
 [; ;ipv4.h: 111: void ipv4_setIPSourceAddress(ipv4_address_t ip);
-[; ;ipv4.h: 118: error_t ipv4_background();
+[; ;ipv4.h: 118: error_t ipv4_background(linkState_t link);
 [; ;ipv4.h: 126: bool_t ipv4_SrcAddrChanged(error_t *err);
 [; ;ipv4.h: 131: void ipv4_init();
 [; ;ipv4.h: 146: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 153: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
-[; ;stack.h: 42: typedef struct stack {
-[; ;stack.h: 43: ethernetConnection_t ethernet;
-[; ;stack.h: 44: backgroundTaskHandler_t volatile background;
-[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 46: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 47: } stack_t;
-[; ;stack.h: 54: error_t stack_init();
+[; ;stack.h: 52: typedef struct stack {
+[; ;stack.h: 53: backgroundTaskHandler_t background;
+[; ;stack.h: 56: ethernetConnection_t ethernet;
+[; ;stack.h: 60: uint32_t foo[3];
+[; ;stack.h: 62: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 63: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 64: ipv4_address_t source;
+[; ;stack.h: 65: } stack_t;
+[; ;stack.h: 72: error_t stack_init();
 "27 src/stack/stack.c
 [v _stack_init `(S6 ~T0 @X0 1 ef ]
 {

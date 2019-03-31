@@ -95,9 +95,10 @@ enum errors_ethernetController {
  */
 enum errors_arp {
     ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1, ///< Is currently sending probes or waits for a reply
-    ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2, ///< The maximum number of probes were sent
-    ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3, ///< A received message contained illegal values
-    ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4, ///< There is a duplicate address on the network
+    ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3, ///< The maximum number of probes were sent
+    ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4, ///< A received message contained illegal values
+    ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5, ///< There is a duplicate address on the network
+    ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6, ///< Ethernet Link was lost during operation
     ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99 ///< Something else is wrong with ARP; don't use
 };
 
@@ -106,7 +107,6 @@ enum errors_arp {
  */
 enum errors_ipv4 {
     ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-    ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
     ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
@@ -120,7 +120,7 @@ typedef struct error {
      * \brief Tells you where the error is coming from
      */
     error_module_t module;
-    
+
     /**
      * \brief Tells you what the error is
      * \see Use the codes defined for individual modules in \ref error

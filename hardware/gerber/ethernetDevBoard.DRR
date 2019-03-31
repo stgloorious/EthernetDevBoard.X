@@ -1,0 +1,22 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: ethernetDevBoard.CMPcbDoc   27.12.2018  13:13:32
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : ethernetDevBoard.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        11.81mil (0.29997mm)     Round          252              29.67 Inch (753.54 mm)
+T2        28mil (0.7112mm)         Round          32               8.75 Inch (222.19 mm)
+T3        31.5mil (0.8001mm)       Round          30               3.23 Inch (82.04 mm)
+T4        35mil (0.889mm)          Round          80               11.11 Inch (282.07 mm)
+T5        35.04mil (0.89002mm)     Round          16               2.01 Inch (50.94 mm)
+T6        40.16mil (1.02006mm)     Round          13               3.03 Inch (76.98 mm)
+T7        62.2mil (1.57988mm)      Round          4                1.38 Inch (35.15 mm)
+T8        125.98mil (3.19989mm)    Round          4                7.09 Inch (180.08 mm)
+T9        128.35mil (3.26009mm)    Round          4         NPTH   1.22 Inch (30.99 mm)
+---------------------------------------------------------------------------
+Totals                                            435              67.48 Inch (1713.98 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

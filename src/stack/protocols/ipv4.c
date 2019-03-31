@@ -49,38 +49,34 @@ void ipv4_txFrameRequest(ipv4_packet_t *packet) {
 error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
     error_t err;
     err.module = ERROR_MODULE_ARP;
+    err.code = ERROR_ARP_WAITING;
     uint8_t index;
     uint8_t static requestCounter = 0;
     time_t static oldTime = 0;
 
     //First let's check the ARP table for a valid entry
-    /* if (ARP_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
-         //There is a non-expired entry of the IP address
-         ipPacket.ethernet.destination = ARP_getEntryFromTable(index);
-         //The source address is always stored in the Ethernet controller:
-         ipPacket.ethernet.source = ethernetController_getMacAddress();
-         //Fill the new information in memory and send the packet
-         ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipPacket.ethernet.memory);
-         ethernetController_sendPacket(ipPacket.ethernet.memory);
-         err.code = ERROR_CODE_SUCCESSFUL;
-         return err;
-     } else {
-         //There was no valid entry in the ARP table, we have to send some requests
-         if (getMillis() - oldTime >= ANNOUNCE_WAIT) {//Wait between two requests
-             oldTime = getMillis();
-             if (requestCounter < PROBE_NUM) {//Send only a limited number of requests and then give up
-                 requestCounter++;
-                 ARP_sendRequest(ipv4_getIPSourceAddress(), ipPacket.ipv4Header.destination);
-             } else {
-                 //We got no answer to our requests
-                 requestCounter = 0;
-                 err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED;
-                 return err;
-             }
-         }
-     }*/
-
-    err.code = ERROR_ARP_WAITING;
+    if (arp_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
+        //There is a non-expired entry of the IP address
+        ipPacket.ethernet.destination = arp_getEntryFromTable(index);
+        UARTTransmitText("[IPv4]: ");
+        UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
+        UARTTransmitText(" is at ");
+        UARTTransmitText(macToString(ipPacket.ethernet.destination));
+        UARTTransmitText("\n\r");
+        //The source address is always stored in the Ethernet controller:
+        ipPacket.ethernet.source = ethernetController_getMacAddress();
+        //Fill the new information in memory and send the packet
+        ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipPacket.ethernet.memory);
+        ethernetController_sendPacket(ipPacket.ethernet.memory);
+        err.code = ERROR_CODE_SUCCESSFUL;
+        oldTime = 0;
+    } else if ((getMillis() - oldTime) > 1000u || oldTime == 0) {
+        UARTTransmitText("[IPv4]: Trying to resolve ");
+        UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
+        UARTTransmitText("\n\r");
+        oldTime = getMillis();
+        arp_sendRequest(ipPacket.ipv4Header.destination, ipPacket.ipv4Header.destination);
+    }
     return err;
 }
 
@@ -237,50 +233,44 @@ ipv4_address_t ipv4_getPreliminaryIPSourceAddress() {
 }
 
 void ipv4_setIPSourceAddress(ipv4_address_t ip) {
-    UARTTransmitText("IPv4: Request for new IP source address (");
-    UARTTransmitText(ipAdressToString(ip));
-    UARTTransmitText(").\n\r");
     ipPreliminarySource = ip;
     fSrcAddrChanged = true; //used as an indicator when to check for collisions
 }
 
 /* =======================  Background work ======================= */
 
-error_t ipv4_background() {
+error_t ipv4_background(linkState_t link) {
     error_t err;
     err.module = ERROR_MODULE_IPv4;
     err.code = ERROR_CODE_SUCCESSFUL;
     if ((*arpStatus).module == ERROR_MODULE_ARP && fSrcAddrChanged) {
         switch ((*arpStatus).code) {
-            case ERROR_CODE_SUCCESSFUL:
+            case ERROR_CODE_SUCCESSFUL: //ARP process completed successfully
                 err = (*arpStatus);
-                return err;
-            case ERROR_ARP_WAITING:
-                err = (*arpStatus);
-                //UARTTransmitText("IPv4: ARP is waiting for reply.\n\r");
-                return err;
-            case ERROR_ARP_IPv4_ADDRESS_CONFLICT:
-                UARTTransmitText("IPv4: Address is already in use.\n\r");
-                fSrcAddrChanged = false;
-                UARTTransmitText("IPv4: Flag was reset because address change was unsuccessful.\n\r");
-                return err;
-            case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
-                err.code = ERROR_CODE_SUCCESSFUL;
-                UARTTransmitText("IPv4: ARP sent maximum number of requests.\n\r");
-                UARTTransmitText("IPv4: ARP returned success.\n\r");
-                UARTTransmitText("IPv4: Old IP Src Addr ");
-                UARTTransmitText(ipAdressToString(ipSource));
+                UARTTransmitText("[IPv4]: ARP process completed.\n\r");
                 ipSource = ipPreliminarySource;
-                UARTTransmitText(" was set to the preliminary address (");
-                UARTTransmitText(ipAdressToString(ipSource));
-                UARTTransmitText(").\n\r");
                 fSrcAddrChanged = false;
-                UARTTransmitText("IPv4: Flag was reset because address change is complete.\n\r");
+                return err;
+            case ERROR_ARP_WAITING: //Not all probes/announcement have been sent yet
+                err = (*arpStatus);
+                return err;
+            case ERROR_ARP_IPv4_ADDRESS_CONFLICT: //There is someone on the network with the same address
+                err.code = ERROR_IPv4_ADDRESS_ALREADY_IN_USE;
+                UARTTransmitText("[IPv4]: Address conflict\n\r");
+                fSrcAddrChanged = false;
+                return err;
+            case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED: //Nobody answered ARP probes
+                //this state indicates that ARP probing has been finished
+                //probing is started after that automatically by arp
+                return err;
+            case ERROR_ARP_CONNECTION_FAILED://link disconnected during arp operation
+                err = (*arpStatus);
+                fSrcAddrChanged = false;
                 return err;
             default:
             case ERROR_ARP_UNKNOWN:
+                fSrcAddrChanged = false;
                 err = (*arpStatus);
-                UARTTransmitText("IPv4: ARP returned an unknown error.\n\r");
                 return err;
         }
     } else
@@ -313,7 +303,7 @@ bool_t ipv4_isAllZero(ipv4_address_t * ip) {
 
 void ipv4_setToAllZero(ipv4_address_t * ip) {
     for (uint8_t i = 0; i < 4; i++) {
-        ip->address[0] = 0x00;
+        ip->address[i] = 0x00;
     }
 }
 

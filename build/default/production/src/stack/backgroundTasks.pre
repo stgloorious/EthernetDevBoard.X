@@ -135,16 +135,16 @@ ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 # 96
 enum errors_arp {
 ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
-ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
-ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
-ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
+ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
+ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
 ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
 };
 
-# 107
+# 108
 enum errors_ipv4 {
 ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
 ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
@@ -367,7 +367,7 @@ void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryF
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
 # 232
-void ethernetController_dropPacket(ethernetFrame_t *frame);
+void ethernetController_dropPacket();
 
 # 238
 void ethernetController_updateNextPacketPointer();
@@ -7276,51 +7276,56 @@ void static arp_sendReply(arp_message_t request);
 void static arp_send(arp_message_t arp);
 
 # 82
-void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+void arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
 
-# 95
-error_t static arp_probe(ipv4_address_t ipTarget);
+# 96
+error_t static arp_probe(ipv4_address_t ipTarget, linkState_t link);
 
-# 106
-error_t static arp_gratuitous(ipv4_address_t ip);
+# 108
+error_t static arp_gratuitous(ipv4_address_t ip, linkState_t link);
 
-# 113
-error_t arp_background();
+# 116
+error_t arp_background(linkState_t link);
 
-# 121
-uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+# 124
+uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
 
-# 129
-macaddress_t static arp_getEntryFromTable(uint8_t index);
+# 132
+macaddress_t arp_getEntryFromTable(uint8_t index);
 
-# 137
+# 140
 void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
-# 143
+# 146
 void printArpTable();
 
 # 37 "src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h"
 typedef struct backgroundTaskHandler {
 
-# 41
+# 42
 error_t err;
 
-# 46
-interruptFlags_t interruptFlags;
-
-# 52
+# 53
 uint8_t fPacketPending;
+
 } backgroundTaskHandler_t;
 
-# 42 "src/stack/../stack/../stack/protocols/../stack.h"
+# 52 "src/stack/../stack/../stack/protocols/../stack.h"
 typedef struct stack {
+backgroundTaskHandler_t background;
+
+
 ethernetConnection_t ethernet;
-backgroundTaskHandler_t volatile background;
+
+# 60
+uint32_t foo[3];
+
 ethernetFrame_t newReceivedFrame;
 ipv4_packet_t pendingPacketToSend;
+ipv4_address_t source;
 } stack_t;
 
-# 54
+# 72
 error_t stack_init();
 
 # 46 "src/stack/../stack/../stack/protocols/ipv4.h"
@@ -7357,7 +7362,7 @@ ipv4_address_t ipv4_getPreliminaryIPSourceAddress();
 void ipv4_setIPSourceAddress(ipv4_address_t ip);
 
 # 118
-error_t ipv4_background();
+error_t ipv4_background(linkState_t link);
 
 # 126
 bool_t ipv4_SrcAddrChanged(error_t *err);
@@ -7461,40 +7466,58 @@ RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
 # 36 "src/stack/backgroundTasks.c"
 void handleStackBackgroundTasks(stack_t* stack) {
 unsigned char foo[10];
+error_t errArp;
+error_t errIPv4;
+interruptFlags_t intf;
 
-stack->background.interruptFlags = ethernetController_pollInterruptFlags();
-
-
-if (stack->background.interruptFlags.LINKIF) {
+intf = ethernetController_pollInterruptFlags();
+if (intf.LINKIF) {
 
 ethernetController_updateLinkStatus(&(stack->ethernet));
 
 if (stack->ethernet.link == LINK_ESTABLISHED) {
 ethernetController_setLEDConfig(LEDA, LED_ON);
 ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS);
+ipv4_setIPSourceAddress(stack->source);
 } else {
 ethernetController_setLEDConfig(LEDA, LED_OFF);
 ethernetController_setLEDConfig(LEDB, LED_OFF);
+arp_init();
 }
-
-ipv4_setIPSourceAddress(ipv4_getIPSourceAddress());
-
 ethernetController_clearInterruptFlag(LINKIF);
 }
-
-if (stack->background.interruptFlags.PKTIF) {
+if (intf.PKTIF) {
 
 if (ethernetController_newPacketAvailable()) {
-stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
+
+ethernet_rxGetNewFrame(&stack->ethernet);
 }
 }
 
-# 69
-if (stack->background.fPacketPending) {
+# 71
+if (stack->background.fPacketPending == 1) {
 
-# 89
+
+UARTTransmitText(".");
+if (ipv4_sendFrame(stack->pendingPacketToSend).code == (uint16_t)0) {
+UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
+stack->background.fPacketPending=0;
+}
 }
 
-arp_background();
-ipv4_background();
+
+errArp = arp_background(stack->ethernet.link);
+errIPv4 = ipv4_background(stack->ethernet.link);
+
+if (errIPv4.module == ERROR_MODULE_IPv4 &&
+errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
+UARTTransmitText("[IPv4]: Address conflict detected. \n\r");
+stack->source.address[3]++;
+UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
+UARTTransmitText(ipAdressToString(stack->source));
+UARTTransmitText("\n\r");
+ipv4_setIPSourceAddress(stack->source);
+}
+
+
 }

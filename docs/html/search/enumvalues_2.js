@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['error_5farp_5fconnection_5ffailed',['ERROR_ARP_CONNECTION_FAILED',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037baec2090aae07a55d183cbcb6b6b88fb70',1,'error.h']]],
   ['error_5farp_5finvalid_5fvalues',['ERROR_ARP_INVALID_VALUES',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba9b91278de8312021b894a38f98265320',1,'error.h']]],
   ['error_5farp_5fipv4_5faddress_5fconflict',['ERROR_ARP_IPv4_ADDRESS_CONFLICT',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba883dd6985ba1ccb1d3abcc2c02f9668c',1,'error.h']]],
   ['error_5farp_5fmaximum_5fnumber_5fof_5fprobes_5freached',['ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba48c1e250436823c5d6182e59e4f664bc',1,'error.h']]],

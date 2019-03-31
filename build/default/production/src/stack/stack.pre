@@ -244,16 +244,16 @@ ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 # 96
 enum errors_arp {
 ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
-ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 2,
-ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 3,
-ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
+ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
+ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
 ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
 };
 
-# 107
+# 108
 enum errors_ipv4 {
 ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-ERROR_IPv4_ADDRESS_CONFLICT_DETECTED = ERROR_IPv4_OFFSET + 2,
 ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
@@ -300,14 +300,12 @@ MODEXIF = 14
 # 37 "src/stack/../stack/../stack/backgroundTasksTypes.h"
 typedef struct backgroundTaskHandler {
 
-# 41
+# 42
 error_t err;
 
-# 46
-interruptFlags_t interruptFlags;
-
-# 52
+# 53
 uint8_t fPacketPending;
+
 } backgroundTaskHandler_t;
 
 # 40 "src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h"
@@ -447,7 +445,7 @@ void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryF
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
 # 232
-void ethernetController_dropPacket(ethernetFrame_t *frame);
+void ethernetController_dropPacket();
 
 # 238
 void ethernetController_updateNextPacketPointer();
@@ -7289,27 +7287,27 @@ void static arp_sendReply(arp_message_t request);
 void static arp_send(arp_message_t arp);
 
 # 82
-void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+void arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
 
-# 95
-error_t static arp_probe(ipv4_address_t ipTarget);
+# 96
+error_t static arp_probe(ipv4_address_t ipTarget, linkState_t link);
 
-# 106
-error_t static arp_gratuitous(ipv4_address_t ip);
+# 108
+error_t static arp_gratuitous(ipv4_address_t ip, linkState_t link);
 
-# 113
-error_t arp_background();
+# 116
+error_t arp_background(linkState_t link);
 
-# 121
-uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+# 124
+uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
 
-# 129
-macaddress_t static arp_getEntryFromTable(uint8_t index);
+# 132
+macaddress_t arp_getEntryFromTable(uint8_t index);
 
-# 137
+# 140
 void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp);
 
-# 143
+# 146
 void printArpTable();
 
 # 46 "src/stack/../stack/../stack/protocols/ipv4.h"
@@ -7346,7 +7344,7 @@ ipv4_address_t ipv4_getPreliminaryIPSourceAddress();
 void ipv4_setIPSourceAddress(ipv4_address_t ip);
 
 # 118
-error_t ipv4_background();
+error_t ipv4_background(linkState_t link);
 
 # 126
 bool_t ipv4_SrcAddrChanged(error_t *err);
@@ -7363,15 +7361,22 @@ bool_t ipv4_isAllZero(ipv4_address_t *ip);
 # 159
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
-# 42 "src/stack/../stack/stack.h"
+# 52 "src/stack/../stack/stack.h"
 typedef struct stack {
+backgroundTaskHandler_t background;
+
+
 ethernetConnection_t ethernet;
-backgroundTaskHandler_t volatile background;
+
+# 60
+uint32_t foo[3];
+
 ethernetFrame_t newReceivedFrame;
 ipv4_packet_t pendingPacketToSend;
+ipv4_address_t source;
 } stack_t;
 
-# 54
+# 72
 error_t stack_init();
 
 # 27 "src/stack/stack.c"

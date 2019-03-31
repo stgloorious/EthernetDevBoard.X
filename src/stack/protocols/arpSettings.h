@@ -47,6 +47,8 @@
 #define ARP_TABLE_ENTRY_TTL     30000u   ///< Time to live for an ARP Entry in milliseconds
 #define ARP_TIMEOUT             2u       ///< How long to wait after request for a reply in seconds
 
+#define ARP_DEBUG_MESSAGES      true
+
 /**
  * \brief Replies are sent using a link-level broadcast and not unicast
  * \details Enabling this option leads to a quicker conflict detection, but does also increase traffic.

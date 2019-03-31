@@ -31,6 +31,8 @@
 #include "../stack/backgroundTasksTypes.h"
 #include "../stack/protocols/ipv4.h"
 
+
+
 /**
  * \defgroup stack Stack
  * \{
@@ -40,10 +42,18 @@
  * \brief Top-level structure of the entire stack.
  */
 typedef struct stack {
+    backgroundTaskHandler_t background; ///< Stuff that happens in the background, like sending ARP requests
+
+
     ethernetConnection_t ethernet; ///< The ethernet connection that uses the stack
-    backgroundTaskHandler_t volatile background; ///< Stuff that happens in the background, like sending ARP requests
+    /**
+     * \bug Pointer (?) error: If there is no foo element which uses at least 4 bytes, the next member of the stack structure (background) will be corrupted 
+     */
+    uint32_t foo[3];
+
     ethernetFrame_t newReceivedFrame; ///< A newly received frame that is next being processed
     ipv4_packet_t pendingPacketToSend; ///< The packet that is currently being prepared for transmission
+    ipv4_address_t source; ///< The IPv4 address of the stack
 } stack_t;
 
 /**

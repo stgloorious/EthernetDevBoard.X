@@ -87,7 +87,7 @@ error_t ethernetController_init();
 
 /* =======================  Device Functions  ======================= */
 /**
- * \addtogroup init Initialisation
+ * \addtogroup devicefunc Device Functions
  * \ingroup ethernetController
  * \{
  */
@@ -227,9 +227,9 @@ void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryFiel
  * \details This updates the Tail pointer in Ethernet Controller's memory and decrements the packet counter using \ref SETPKTDEC .
  * \note Not only is this function called if a packet should be ignored, it is called after *every* packet
  * that has been completely processed, so the memory occupied by this packet can be freed up.
- * \param [in] *frame Pointer to the Packet that should be dropped
+ * \todo document this better
  */
-void ethernetController_dropPacket(ethernetFrame_t *frame);
+void ethernetController_dropPacket();
 
 /**
  * \brief Reads the nextPacketPointer from the current packet and stores it.

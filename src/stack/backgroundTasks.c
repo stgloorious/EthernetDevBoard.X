@@ -35,59 +35,62 @@
  */
 void handleStackBackgroundTasks(stack_t* stack) {
     unsigned char foo[10];
+    error_t errArp;
+    error_t errIPv4;
+    interruptFlags_t intf;
 
-    stack->background.interruptFlags = ethernetController_pollInterruptFlags();
-
-    //stack->background.interruptFlags = ethernetController_pollInterruptFlags();
-    if (stack->background.interruptFlags.LINKIF) {//link status change
+    intf = ethernetController_pollInterruptFlags();
+    if (intf.LINKIF) {//link status change
         //if (enc424j600_getInterruptFlags()&(1 << LINKIF)) {
         ethernetController_updateLinkStatus(&(stack->ethernet)); //save current status
         //Set up the LEDs manually at every link change because of hardware mistake (LEDs are wired up inverted)
         if (stack->ethernet.link == LINK_ESTABLISHED) {//is another ethernet partner present?
             ethernetController_setLEDConfig(LEDA, LED_ON); //LED A indicates the link
             ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS); //LED B is switched off when a packet is on the wire
+            ipv4_setIPSourceAddress(stack->source);
         } else {
             ethernetController_setLEDConfig(LEDA, LED_OFF); //LED A indicates the link
             ethernetController_setLEDConfig(LEDB, LED_OFF); //Turn LED B off, indicating there are no packets
+            arp_init(); //Delete the table if connection is disconnected
         }
-        
-        ipv4_setIPSourceAddress(ipv4_getIPSourceAddress());
-        
         ethernetController_clearInterruptFlag(LINKIF);
     }
-
-    if (stack->background.interruptFlags.PKTIF) {//indicating a new packet
+    if (intf.PKTIF) {//indicating a new packet
         //Check anyway if there is something new
         if (ethernetController_newPacketAvailable()) {
-            stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
+            //stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
+            ethernet_rxGetNewFrame(&stack->ethernet);
         }
     }
     /**
      * \todo check other relevant interrupt flags and return errors
      * 
      */
-    if (stack->background.fPacketPending) {
+
+    //if (stack->foofoo.test == 1) {
+        if (stack->background.fPacketPending == 1) {
+        //if (stack->test == 1) {
         //There is a packet awaiting transmission
-
-        /*  stack->background.err = ipv4_sendFrame(stack->pendingPacketToSend);
-          if (stack->background.err.code == ERROR_ARP_WAITING) {
-
-          }
-          if (stack->background.err.module == ERROR_MODULE_ARP &&
-                  stack->background.err.code == ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED) {
-              UARTTransmitText("Could not resolve ");
-              UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
-              UARTTransmitText("\n\r");
-              stack->background.fPacketPending = false;
-          }
-          if (stack->background.err.module == ERROR_MODULE_ARP &&
-                  stack->background.err.code == ERROR_CODE_SUCCESSFUL) {
-              UARTTransmitText("IP packet sent.\n\r");
-              //address resolution is completed
-              stack->background.fPacketPending = false;
-          }*/
+        UARTTransmitText(".");
+        if (ipv4_sendFrame(stack->pendingPacketToSend).code == ERROR_CODE_SUCCESSFUL) {
+            UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
+            stack->background.fPacketPending=0;
+        }
     }
 
-    arp_background();
-    ipv4_background();
+
+    errArp = arp_background(stack->ethernet.link);
+    errIPv4 = ipv4_background(stack->ethernet.link);
+
+    if (errIPv4.module == ERROR_MODULE_IPv4 &&
+            errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
+        UARTTransmitText("[IPv4]: Address conflict detected. \n\r");
+        stack->source.address[3]++;
+        UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
+        UARTTransmitText(ipAdressToString(stack->source));
+        UARTTransmitText("\n\r");
+        ipv4_setIPSourceAddress(stack->source);
+    }
+
+
 }

@@ -172,7 +172,6 @@ void static arp_send(arp_message_t arp) {
         ethernetController_streamToTransmitBuffer(arp.senderIPAddress.address[i], field);
     for (uint8_t i = 0; i < arp.hlen; i++)
         ethernetController_streamToTransmitBuffer(arp.targetMACAddress.address[i], field);
-
     for (uint8_t i = 0; i < arp.plen; i++)
         ethernetController_streamToTransmitBuffer(arp.targetIPAddress.address[i], field);
 
@@ -180,14 +179,12 @@ void static arp_send(arp_message_t arp) {
 }
 
 /* =======================  Messages  ======================= */
-void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget) {
+void arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget) {
     arp_message_t request;
     macaddress_t senderMAC;
     macaddress_t targetMAC;
 
     senderMAC = ethernetController_getMacAddress();
-    //mac_setToBroadcast(&targetMAC);
-    ipSender = ipv4_getIPSourceAddress();
     mac_setAllZero(&targetMAC);
 
     request.hlen = ARP_ETHERNET_HLEN;
@@ -242,7 +239,7 @@ void static arp_sendReply(arp_message_t request) {
 }
 
 /* =======================  Collision Check  ======================= */
-error_t static arp_probe(ipv4_address_t ipTarget) {
+error_t static arp_probe(ipv4_address_t ipTarget, linkState_t link) {
     time_t timeStart; // Used to calculate the time passed
     time_t waitingTime; // Specifies the number of milliseconds which have to pass before doing something
     ipv4_address_t ipSender;
@@ -255,6 +252,13 @@ error_t static arp_probe(ipv4_address_t ipTarget) {
     uint8_t static state = PREPARING_PROBE;
     uint8_t index;
     err.module = ERROR_MODULE_ARP;
+
+    if (link == NO_LINK) {
+        state = PREPARING_PROBE;
+        probeCounter = 0;
+        err.code = ERROR_ARP_CONNECTION_FAILED;
+        return err; //don't bother to continue
+    }
 
     if (arp_checkForEntry(ipTarget, &index)) {
         state = ARP_ENTRY_FOUND;
@@ -281,6 +285,13 @@ error_t static arp_probe(ipv4_address_t ipTarget) {
                 timeStart = getMillis(); //remember time the last packet was sent
 
                 if (probeCounter < ARP_PROBE_NUM) {
+#if ARP_DEBUG_MESSAGES==true
+                    UARTTransmitText("[ARP]: Sending Probe for ");
+                    UARTTransmitText(ipAdressToString(ipTarget));
+                    UARTTransmitText(" (reply to ");
+                    UARTTransmitText(ipAdressToString(ipSender));
+                    UARTTransmitText(")\n\r");
+#endif
                     arp_sendRequest(ipSender, ipTarget);
                 }
                 if (probeCounter >= ARP_PROBE_NUM) {//RFC suggests to wait *after* the transmission
@@ -298,95 +309,153 @@ error_t static arp_probe(ipv4_address_t ipTarget) {
             state = PREPARING_PROBE;
             err.code = ERROR_ARP_IPv4_ADDRESS_CONFLICT;
     }
-    return err;
+    return err; //Is reached as long as link is connected
 }
 
-error_t static arp_gratuitous(ipv4_address_t ip) {
+error_t static arp_gratuitous(ipv4_address_t ip, linkState_t link) {
     uint8_t static announceCounter = 0;
     uint8_t static state = 0;
     time_t static timeStart = 0;
+    uint8_t index;
     error_t err;
+
+    enum states {
+        INIT, WAIT_FOR_ANNOUNCE, ANNOUNCING, ENTRY_FOUND
+    };
     err.module = ERROR_MODULE_ARP;
-    err.code = ERROR_ARP_WAITING;//default state is waiting
+    err.code = ERROR_ARP_WAITING;
+
+    if (link == NO_LINK) {
+        announceCounter = 0;
+        state = INIT;
+        err.code = ERROR_ARP_CONNECTION_FAILED;
+        return err;
+    }
+
+    if (arp_checkForEntry(ip, &index)) {
+        state = ENTRY_FOUND;
+    }
 
     switch (state) {//state machine
-        case 0://used to determine the start time
+        case INIT://used to determine the start time
+            err.code = ERROR_ARP_WAITING;
             timeStart = getMillis();
-            state = 1;
+            state = WAIT_FOR_ANNOUNCE;
             break;
-        case 1://waiting ANNOUNCE_WAIT
+        case WAIT_FOR_ANNOUNCE://waiting ANNOUNCE_WAIT
+            err.code = ERROR_ARP_WAITING;
             if ((getMillis() - timeStart) > ARP_ANNOUNCE_WAIT) {
-                state = 2;//done waiting
+                state = ANNOUNCING; //done waiting
                 announceCounter = 0;
             }
             break;
-        case 2://Ready to announce
+        case ANNOUNCING://Ready to announce
+            err.code = ERROR_ARP_WAITING;
             if ((announceCounter == 0) || (getMillis() - timeStart) > ARP_ANNOUNCE_INTERVAL) {//Wait ANNOUNCE_INTERVAL between announcements
-                timeStart = getMillis();//memorise time when the last announcement was sent
+#if ARP_DEBUG_MESSAGES==true
+                UARTTransmitText("[ARP]: Sending Gratuitous ARP request for ");
+                UARTTransmitText(ipAdressToString(ip));
+                UARTTransmitText("\n\r");
+#endif
+                timeStart = getMillis(); //memorise time when the last announcement was sent
                 arp_sendRequest(ip, ip); //Sender and target IP are the newly selected address
                 announceCounter++;
             }
             if (announceCounter >= ARP_ANNOUNCE_NUM) {
                 //reset everything
                 announceCounter = 0;
-                state = 0;
+                state = INIT;
                 err.code = ERROR_CODE_SUCCESSFUL;
             }
             break;
+        case ENTRY_FOUND:
+            announceCounter = 0;
+            state = INIT;
+            err.code = ERROR_ARP_IPv4_ADDRESS_CONFLICT;
+            break;
+
     }
     return err;
 }
 
 /* =======================  Background work ======================= */
 
-error_t arp_background() {
+error_t arp_background(linkState_t link) {
     error_t static err;
+    error_t errProbe;
     error_t errAnnounce;
     bool_t static fAnnounce = false;
-    err.code = ERROR_CODE_UNDEFINED;
+    int8_t static state = 0;
+    ipv4_address_t static ipPreliminary;
+    err.code = ERROR_ARP_WAITING;
     err.module = ERROR_MODULE_ARP;
 
+    switch (state) {
+        case 0:
 
-    ipv4_address_t ipPreliminary = ipv4_getPreliminaryIPSourceAddress();
 
-    if (ipv4_SrcAddrChanged(&err)) {//The IPv4 module wants to use a different source address than before
+            ipPreliminary = ipv4_getPreliminaryIPSourceAddress();
+            if (ipv4_SrcAddrChanged(&err)) {//The IPv4 module wants to use a different source address than before
+                errProbe.code = arp_probe(ipPreliminary, link).code;
+                switch (errProbe.code) {
+                    case ERROR_ARP_IPv4_ADDRESS_CONFLICT:
+#if ARP_DEBUG_MESSAGES==true
+                        UARTTransmitText("[ARP]: Conflict during probing.\n\r");
+#endif
+                        break;
+                    case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
+#if ARP_DEBUG_MESSAGES==true
+                        UARTTransmitText("[ARP]: Nobody answered to probes.\n\r");
+#endif
+                        state = 1;
+                        break;
+                    case ERROR_ARP_WAITING:
+                        break;
+                    case ERROR_ARP_CONNECTION_FAILED:
+#if ARP_DEBUG_MESSAGES==true
+                        UARTTransmitText("[ARP]: Operation was interrupted because link was lost.\n\r");
+#endif
+                        break;
+                    default:
+#if ARP_DEBUG_MESSAGES==true
+                        UARTTransmitText("[ARP]: An unknown error occured.\n\r");
+#endif
+                }
+            }
+            err.code = errProbe.code;
 
-        err.code = arp_probe(ipPreliminary).code;
+            break;
 
-        switch (err.code) {
-            case ERROR_ARP_IPv4_ADDRESS_CONFLICT:
-                UARTTransmitText("ARP: IPv4 address already in use!\n\r");
-                break;
-            case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
-                UARTTransmitText("ARP: Nobody answered.\n\r");
-                fAnnounce = true;
-                break;
-            case ERROR_ARP_WAITING:
-                break;
-            default:
-                UARTTransmitText("ARP: An unknown error occured.\n\r");
-        }
+        case 1:
+            errAnnounce = arp_gratuitous(ipPreliminary, link);
+            err.code = errAnnounce.code;
+            if (err.code == ERROR_ARP_IPv4_ADDRESS_CONFLICT) {
+#if ARP_DEBUG_MESSAGES==true
+                UARTTransmitText("[ARP]: Conflict during announcement.\n\r");
+#endif
+                state = 0;
+            }
+            if (errAnnounce.module == ERROR_MODULE_ARP &&
+                    errAnnounce.code == ERROR_CODE_SUCCESSFUL) {
+#if ARP_DEBUG_MESSAGES==true
+                UARTTransmitText("[ARP]: All announcements sent.\n\r");
+#endif
+                state = 0;
+            }
+            break;
     }
-    if (fAnnounce) {
-        errAnnounce = arp_gratuitous(ipPreliminary);
-        if (errAnnounce.module == ERROR_MODULE_ARP &&
-                errAnnounce.code == ERROR_CODE_SUCCESSFUL) {
-            UARTTransmitText("ARP: All Announcements sent.\n\r");
-            fAnnounce = false;
-        }
-    }
+
     return err;
 }
 
 /* =======================  Table  ======================= */
 
-uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t * index) {
+uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t * index) {
     for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++) {
         if (ipv4_cmp(&arp_table[i].ip, &ip)) {
             if (getMillis() - arp_table[i].timeCreated < ARP_TABLE_ENTRY_TTL) {//not expired?
                 //if an entry is expired it is just ignored; old entries are overwritten anyways when writing new ones.
                 *index = i; //save where the entry is
-
                 return 1; //don't check further
             }
         }
@@ -394,17 +463,16 @@ uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t * index) {
     return 0;
 }
 
-macaddress_t static arp_getEntryFromTable(uint8_t index) {
+macaddress_t arp_getEntryFromTable(uint8_t index) {
     return arp_table[index].mac;
 }
 
-void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timestamp) {
-    uint32_t maxSeconds = 0;
+void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, time_t timestamp) {
+    time_t maxSeconds = 0;
     uint8_t oldestIndex = 0;
     //Loop through table to find oldest entry
     for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++) {
         if (arp_table[i].timeCreated > maxSeconds) {
-
             maxSeconds = arp_table[i].timeCreated;
             oldestIndex = i;
         }
@@ -413,6 +481,15 @@ void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, uint32_t timest
     arp_table[oldestIndex].ip = ip;
     arp_table[oldestIndex].mac = mac;
     arp_table[oldestIndex].timeCreated = timestamp;
+#if ARP_DEBUG_MESSAGES==true
+    if (!((mac_isAllZero(&mac)) && ipv4_isAllZero(&ip))) {
+        UARTTransmitText("[ARP]: New entry created for ");
+        UARTTransmitText(ipAdressToString(ip));
+        UARTTransmitText(" (");
+        UARTTransmitText(macToString(mac));
+        UARTTransmitText(") ");
+    }
+#endif
 }
 
 void arp_init() {
@@ -423,6 +500,10 @@ void arp_init() {
 
     for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++)
         arp_setNewEntry(mac, ip, 0xffffffff); //timestamp is set to maximum
+
+#if ARP_DEBUG_MESSAGES==true
+    UARTTransmitText("[ARP]: Table was reset successfully.\n\r");
+#endif
 }
 
 void printArpTable() {

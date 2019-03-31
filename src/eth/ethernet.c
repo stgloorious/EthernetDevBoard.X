@@ -128,7 +128,7 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     UARTTransmitText(intToString(frame->memory.length));
     UARTTransmitText(")]");
 
-    ethernetController_dropPacket(frame);
+    ethernetController_dropPacket();
 
     UARTTransmitText("\n\r");
 

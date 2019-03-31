@@ -79,7 +79,7 @@ void static arp_send(arp_message_t arp);
  * \param ipSender
  * \param ipTarget
  */
-void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
+void arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
 
 /**
  * \brief Sends probes to check for address conflicts
@@ -88,11 +88,12 @@ void static arp_sendRequest(ipv4_address_t ipSender, ipv4_address_t ipTarget);
  * there is a valid ARP entry (to detect if there was a reply).
  * \note This function has to be called repeatedly until it returns an error code different than #ERROR_ARP_WAITING .
  * \param ipTarget The IPv4 address being probed for
+ * \param link Current link status of the Ethernet connection so the state machine can be reset if it disconnects
  * \return #ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED if there was no answer\n
  * #ERROR_ARP_WAITING if probing process is not done yet\n
  * #ERROR_ARP_IPv4_ADDRESS_CONFLICT if there was an ARP message with the requested IP address\n
  */
-error_t static arp_probe(ipv4_address_t ipTarget);
+error_t static arp_probe(ipv4_address_t ipTarget, linkState_t link);
 
 /**
  * \brief Announces the usage of an ip address (Gratuitous ARP)
@@ -100,17 +101,19 @@ error_t static arp_probe(ipv4_address_t ipTarget);
  * According to RFC 5227, a gratuitous ARP announce MUST be performed after the probing of an address
  * \see RFC 5227, Section 2.3, Page 12
  * \param ip IP address
+ * \param link Current link status of the Ethernet connection so the state machine can be reset if it disconnects
  * \return #ERROR_ARP_WAITING if there are more announcements to make \n
  * #ERROR_CODE_SUCCESSFUL if everything's done
  */
-error_t static arp_gratuitous(ipv4_address_t ip);
+error_t static arp_gratuitous(ipv4_address_t ip, linkState_t link);
 
 /**
  * \brief To be called periodically in the background task handler
  * \details Does various stuff that takes some time to wait, e.g. waiting for an ARP reply
+ * \param link Current link status of the Ethernet connection so running ARP processes can be cancelled if the it disconnects
  * \return Errors that occurred during operation
  */
-error_t arp_background();
+error_t arp_background(linkState_t link);
 
 /**
  * \brief Checks for an entry in the ARP table
@@ -118,7 +121,7 @@ error_t arp_background();
  * \param [out] *index Index of the entry if one was found
  * \return Whether or not there is a valid (non-expired) entry in the table
  */
-uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
+uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
 
 /**
  * \brief Gets an entry from the ARP table if there is one (check prior to calling this function)
@@ -126,7 +129,7 @@ uint8_t static arp_checkForEntry(ipv4_address_t ip, uint8_t *index);
  * \note Find the index using \ref arp_checkForEntry()
  * \return MAC address of the desired entry
  */
-macaddress_t static arp_getEntryFromTable(uint8_t index);
+macaddress_t arp_getEntryFromTable(uint8_t index);
 
 /**
  * \brief Creates a new entry in the ARP table
