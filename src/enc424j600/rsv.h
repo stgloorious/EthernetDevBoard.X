@@ -29,6 +29,8 @@
 
 /**
  * \brief This structure represents the Receive Status Vector in a nice way.
+ * \details The RSV gets appendend to every received Ethernet packet automatically by the Ethernet Controller.
+ * \see Datasheet ENC424J600
  * \ingroup rsv
  */
 typedef struct RSV {

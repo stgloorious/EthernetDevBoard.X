@@ -94,14 +94,14 @@ typedef uint16_t uintptr_t;
 # 32 "src/eth/../stack/bool.h"
 typedef bit bool_t;
 
-# 34 "src/eth/../enc424j600/rsv.h"
+# 36 "src/eth/../enc424j600/rsv.h"
 typedef struct RSV {
 
-# 40
+# 42
 uint16_t length;
 uint8_t packetPreviouslyIgnored : 1;
 
-# 48
+# 50
 uint8_t carrierEventPreviouslySeen : 1;
 uint8_t CRCError : 1;
 uint8_t lengthCheckError : 1;

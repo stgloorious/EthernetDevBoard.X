@@ -136,36 +136,37 @@ ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 enum errors_arp {
 ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
-ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
-ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
+ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
 ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
 };
 
-# 108
+# 109
 enum errors_ipv4 {
 ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
 ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
-# 118
+# 119
 typedef struct error {
 
-# 122
+# 123
 error_module_t module;
 
-# 128
+# 129
 uint16_t code;
 } error_t;
 
-# 34 "src/stack/../stack/../eth/../eth/../enc424j600/rsv.h"
+# 36 "src/stack/../stack/../eth/../eth/../enc424j600/rsv.h"
 typedef struct RSV {
 
-# 40
+# 42
 uint16_t length;
 uint8_t packetPreviouslyIgnored : 1;
 
-# 48
+# 50
 uint8_t carrierEventPreviouslySeen : 1;
 uint8_t CRCError : 1;
 uint8_t lengthCheckError : 1;
@@ -7313,23 +7314,13 @@ uint8_t fPacketPending;
 # 44 "src/stack/../stack/../stack/protocols/../stack.h"
 typedef struct stack {
 ethernetFrame_t newReceivedFrame;
-
-
-
 ethernetConnection_t ethernet;
 backgroundTaskHandler_t background;
-
 ipv4_packet_t pendingPacketToSend;
-
-
-
-
 ipv4_address_t source;
-
-# 69
 } stack_t;
 
-# 76
+# 57
 error_t stack_init();
 
 # 46 "src/stack/../stack/../stack/protocols/ipv4.h"
@@ -7467,7 +7458,7 @@ void static enc424j600_clearInterruptFlag(uint8_t flag);
 # 319
 RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
 
-# 36 "src/stack/backgroundTasks.c"
+# 39 "src/stack/backgroundTasks.c"
 void handleStackBackgroundTasks(stack_t* stack) {
 unsigned char foo[10];
 error_t errArp;
@@ -7498,14 +7489,33 @@ ethernet_rxGetNewFrame(&stack->newReceivedFrame);
 }
 }
 
-# 71
+# 74
 if (stack->background.fPacketPending == 1) {
 
+errIPv4 = ipv4_sendFrame(stack->pendingPacketToSend);
+if (errIPv4.module == ERROR_MODULE_ARP) {
+switch (errIPv4.code) {
+case ERROR_ARP_WAITING:
+break;
+case (uint16_t)0:
 
-UARTTransmitText(".");
-if (ipv4_sendFrame(stack->pendingPacketToSend).code == (uint16_t)0) {
 UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
-stack->background.fPacketPending=0;
+
+stack->background.fPacketPending = 0;
+break;
+case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
+
+UARTTransmitText("[IPv4]: Failed to resolve ");
+UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
+UARTTransmitText("\n\r");
+
+stack->background.fPacketPending = 0;
+break;
+default:
+break;
+}
+} else {
+
 }
 }
 
@@ -7515,11 +7525,15 @@ errIPv4 = ipv4_background(stack->ethernet.link);
 
 if (errIPv4.module == ERROR_MODULE_IPv4 &&
 errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
-UARTTransmitText("[IPv4]: Address conflict detected. \n\r");
+
+UARTTransmitText("[IPv4]: Address conflict detected.\n\r");
+
 stack->source.address[3]++;
+
 UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
 UARTTransmitText(ipAdressToString(stack->source));
 UARTTransmitText("\n\r");
+
 ipv4_setIPSourceAddress(stack->source);
 }
 

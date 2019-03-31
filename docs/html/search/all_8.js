@@ -24,6 +24,8 @@ var searchData=
   ['ipv4_5fcalculateheaderchecksum',['ipv4_calculateHeaderChecksum',['../group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38',1,'ipv4_calculateHeaderChecksum(ipv4_header_t *header):&#160;ipv4.c'],['../group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38',1,'ipv4_calculateHeaderChecksum(ipv4_header_t *header):&#160;ipv4.c']]],
   ['ipv4_5fcheckheaderchecksum',['ipv4_checkHeaderChecksum',['../group__ipv4.html#gad9a7186073296a195e3f053d01468922',1,'ipv4.h']]],
   ['ipv4_5fcmp',['ipv4_cmp',['../group__ip__operations.html#gad9c08409a635759d19d5118a29baec3d',1,'ipv4_cmp(ipv4_address_t *a, ipv4_address_t *b):&#160;ipv4.c'],['../group__ip__operations.html#gad9c08409a635759d19d5118a29baec3d',1,'ipv4_cmp(ipv4_address_t *a, ipv4_address_t *b):&#160;ipv4.c']]],
+  ['ipv4_5fdebug_5fhigh_5fpriority',['IPv4_DEBUG_HIGH_PRIORITY',['../group__ipv4_settings.html#ga5adaaf4b4f123a8e761d59d36acd2c96',1,'ipv4Settings.h']]],
+  ['ipv4_5fdebug_5fmessages',['IPv4_DEBUG_MESSAGES',['../group__ipv4_settings.html#ga61621079e70961b9b5afe848a6c10fe8',1,'ipv4Settings.h']]],
   ['ipv4_5fgetipsourceaddress',['ipv4_getIPSourceAddress',['../group__ipv4.html#gaace46bc098160cc06288e80390dc855a',1,'ipv4_getIPSourceAddress():&#160;ipv4.c'],['../group__ipv4.html#gaace46bc098160cc06288e80390dc855a',1,'ipv4_getIPSourceAddress():&#160;ipv4.c']]],
   ['ipv4_5fgetpreliminaryipsourceaddress',['ipv4_getPreliminaryIPSourceAddress',['../group__ipv4.html#ga7b8457cc3cc3500070d4b29b473596ab',1,'ipv4_getPreliminaryIPSourceAddress():&#160;ipv4.c'],['../group__ipv4.html#ga7b8457cc3cc3500070d4b29b473596ab',1,'ipv4_getPreliminaryIPSourceAddress():&#160;ipv4.c']]],
   ['ipv4_5fhandlenewpacket',['ipv4_handleNewPacket',['../group__ipv4.html#ga7f96d526bafe55783b675597634d87ae',1,'ipv4_handleNewPacket(ethernetFrame_t *frame):&#160;ipv4.c'],['../group__ipv4.html#ga7f96d526bafe55783b675597634d87ae',1,'ipv4_handleNewPacket(ethernetFrame_t *frame):&#160;ipv4.c']]],
@@ -47,6 +49,7 @@ var searchData=
   ['ipv4_5ftxframerequest',['ipv4_txFrameRequest',['../group__ipv4.html#ga1bf24e45bf60a70b43ea1f1738c9a4c5',1,'ipv4_txFrameRequest(ipv4_packet_t *packet):&#160;ipv4.c'],['../group__ipv4.html#ga1bf24e45bf60a70b43ea1f1738c9a4c5',1,'ipv4_txFrameRequest(ipv4_packet_t *packet):&#160;ipv4.c']]],
   ['ipv4_5fwriteheaderintobuffer',['ipv4_writeHeaderIntoBuffer',['../group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d',1,'ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t *ptr):&#160;ipv4.c'],['../group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d',1,'ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t *ptr):&#160;ipv4.c']]],
   ['ipv4header',['ipv4Header',['../structipv4__packet.html#a085146dbd62b99710f898b189350d50c',1,'ipv4_packet']]],
+  ['ipv4settings_2eh',['ipv4Settings.h',['../ipv4_settings_8h.html',1,'']]],
   ['ipv4types_2eh',['ipv4Types.h',['../ipv4_types_8h.html',1,'']]],
   ['isonlyoneassigned',['isOnlyOneAssigned',['../group__memory.html#ga519e42e36c3689f6bc1606081743c1b8',1,'memoryController.h']]]
 ];

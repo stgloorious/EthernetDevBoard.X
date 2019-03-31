@@ -25,6 +25,7 @@
 #include "ipv4.h"
 #include "arpSettings.h"
 #include "../bool.h"
+#include "ipv4Settings.h"
 
 ipv4_address_t static ipSource; ///< Source IP address of the stack
 ipv4_address_t static ipPreliminarySource; ///< Future source IP address of the stack (needs to be verified by collision detection first)
@@ -51,18 +52,20 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
     err.module = ERROR_MODULE_ARP;
     err.code = ERROR_ARP_WAITING;
     uint8_t index;
-    uint8_t static requestCounter = 0;
+    uint8_t static failedResolveCounter = 0;
     time_t static oldTime = 0;
 
     //First let's check the ARP table for a valid entry
     if (arp_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
         //There is a non-expired entry of the IP address
         ipPacket.ethernet.destination = arp_getEntryFromTable(index);
+#if IPv4_DEBUG_MESSAGES==true
         UARTTransmitText("[IPv4]: ");
         UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
         UARTTransmitText(" is at ");
         UARTTransmitText(macToString(ipPacket.ethernet.destination));
         UARTTransmitText("\n\r");
+#endif
         //The source address is always stored in the Ethernet controller:
         ipPacket.ethernet.source = ethernetController_getMacAddress();
         //Fill the new information in memory and send the packet
@@ -70,12 +73,19 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
         ethernetController_sendPacket(ipPacket.ethernet.memory);
         err.code = ERROR_CODE_SUCCESSFUL;
         oldTime = 0;
-    } else if ((getMillis() - oldTime) > 1000u || oldTime == 0) {
+    } else if ((getMillis() - oldTime) > ARP_REQUEST_WAIT || oldTime == 0) {
+        failedResolveCounter++;
+#if IPv4_DEBUG_MESSAGES==true
         UARTTransmitText("[IPv4]: Trying to resolve ");
         UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
         UARTTransmitText("\n\r");
+#endif
         oldTime = getMillis();
-        arp_sendRequest(ipPacket.ipv4Header.destination, ipPacket.ipv4Header.destination);
+        arp_sendRequest(ipPacket.ipv4Header.source, ipPacket.ipv4Header.destination);
+        if (failedResolveCounter >= ARP_REQUEST_NUM) {
+            failedResolveCounter = 0;
+            err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED;
+        }
     }
     return err;
 }
@@ -186,11 +196,13 @@ bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header) {
     if (testHeader.checksum == header->checksum) {
         return true;
     }
+#if IPv4_DEBUG_MESSAGES==true
     UARTTransmitText("[Expected ");
     UARTTransmitText(hexToString(testHeader.checksum));
     UARTTransmitText(", got ");
     UARTTransmitText(hexToString(header->checksum));
     UARTTransmitText("]");
+#endif
     return false;
 }
 
@@ -207,6 +219,7 @@ void ipv4_handleNewPacket(ethernetFrame_t *frame) {
     headerField.start = frame->memory.start + 22; //skip NextPacketPointer (2 Bytes), RSV (6 Bytes), 2 MAC addresses (12 Bytes) and EtherType (2 Bytes)
 
     ip = ipv4_parseHeader(&headerField);
+#if IPv4_DEBUG_MESSAGES==true
     UARTTransmitText("[");
     UARTTransmitText(ipAdressToString(ip.source));
     UARTTransmitText(" -> ");
@@ -222,6 +235,7 @@ void ipv4_handleNewPacket(ethernetFrame_t *frame) {
     UARTTransmitText("]");
     if (!ipv4_checkHeaderChecksum(&ip))
         UARTTransmitText("[INVALID CHECKSUM]");
+#endif
 }
 
 ipv4_address_t ipv4_getIPSourceAddress() {
@@ -247,7 +261,9 @@ error_t ipv4_background(linkState_t link) {
         switch ((*arpStatus).code) {
             case ERROR_CODE_SUCCESSFUL: //ARP process completed successfully
                 err = (*arpStatus);
+#if IPv4_DEBUG_MESSAGES==true
                 UARTTransmitText("[IPv4]: ARP process completed.\n\r");
+#endif
                 ipSource = ipPreliminarySource;
                 fSrcAddrChanged = false;
                 return err;
@@ -256,7 +272,6 @@ error_t ipv4_background(linkState_t link) {
                 return err;
             case ERROR_ARP_IPv4_ADDRESS_CONFLICT: //There is someone on the network with the same address
                 err.code = ERROR_IPv4_ADDRESS_ALREADY_IN_USE;
-                UARTTransmitText("[IPv4]: Address conflict\n\r");
                 fSrcAddrChanged = false;
                 return err;
             case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED: //Nobody answered ARP probes

@@ -5,42 +5,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 "58 src/stack/../stack/../eth/../eth/ethernetTypes.h
 [s S4 `uc -> 6 `i ]
 [n S4 macaddress address ]
-"36 src/stack/backgroundTasks.c
-[c E101 2048 2054 2114 34824 .. ]
-[n E101 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
+"39 src/stack/backgroundTasks.c
+[c E102 2048 2054 2114 34824 .. ]
+[n E102 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
 "35 src/stack/../stack/../eth/../eth/../mem/memoryTypes.h
 [s S3 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S3 memoryField start end length fIsAssigned fOutOfMemory index ]
-"34 src/stack/../stack/../eth/../eth/../enc424j600/rsv.h
+"36 src/stack/../stack/../eth/../eth/../enc424j600/rsv.h
 [s S2 `ui 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2 RSV length packetPreviouslyIgnored carrierEventPreviouslySeen CRCError lengthCheckError lengthOutOfRange receivedOk multicast broadcast dribbleNibble controlFrame pauseFrame unknownOpcode vlan runtFilter notMeFilter hashFilter magicFilter patternMatch unicast ]
 "86 src/stack/../stack/../eth/../eth/ethernetTypes.h
-[s S5 `ui 1 `S4 1 `S4 1 `E101 1 `S3 1 `S2 1 `ul 1 ]
+[s S5 `ui 1 `S4 1 `S4 1 `E102 1 `S3 1 `S2 1 `ul 1 ]
 [n S5 ethernetFrame length source destination ethertype memory receiveStatusVector tReceived ]
-"36 src/stack/backgroundTasks.c
-[c E110 0 1 .. ]
-[n E110 linkStates NO_LINK LINK_ESTABLISHED  ]
-[c E114 0 1 .. ]
-[n E114 speeds TEN_MBIT HUNDRED_MBIT  ]
-[c E118 0 1 .. ]
-[n E118 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
+"39 src/stack/backgroundTasks.c
+[c E111 0 1 .. ]
+[n E111 linkStates NO_LINK LINK_ESTABLISHED  ]
+[c E115 0 1 .. ]
+[n E115 speeds TEN_MBIT HUNDRED_MBIT  ]
+[c E119 0 1 .. ]
+[n E119 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
 "106 src/stack/../stack/../eth/../eth/ethernetTypes.h
-[s S6 `E110 1 `E114 1 `E118 1 `S4 1 `S4 1 ]
+[s S6 `E111 1 `E115 1 `E119 1 `S4 1 `S4 1 ]
 [n S6 ethernetConnection link speed duplex source destination ]
-"36 src/stack/backgroundTasks.c
+"39 src/stack/backgroundTasks.c
 [c E29 0 1 2 3 4 .. ]
 [n E29 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
-"118 src/stack/../stack/../eth/../stack/error.h
+"119 src/stack/../stack/../eth/../stack/error.h
 [s S1 `E29 1 `ui 1 ]
 [n S1 error module code ]
 "37 src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h
 [s S619 `S1 1 `uc 1 ]
 [n S619 backgroundTaskHandler err fPacketPending ]
-"36 src/stack/backgroundTasks.c
-[c E221 1 6 17 .. ]
-[n E221 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
+"39 src/stack/backgroundTasks.c
+[c E222 1 6 17 .. ]
+[n E222 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
 "67 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h
-[s S9 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `uc 1 `E221 1 `ui 1 `S8 1 `S8 1 ]
+[s S9 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `uc 1 `E222 1 `ui 1 `S8 1 `S8 1 ]
 [n S9 ipv4_header version headerLength dscp ecn totalLength identification flags fragmentOffset timeToLive protocol checksum source destination ]
 "146
 [s S10 `S9 1 `S3 1 `S5 1 ]
@@ -55,39 +55,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ethernetController_pollInterruptFlags `(S7 ~T0 @X0 0 ef ]
 "152
 [v _ethernetController_updateLinkStatus `(v ~T0 @X0 0 ef1`*S6 ]
-"48 src/stack/backgroundTasks.c
-[c E162 0 1 .. ]
-[n E162 LEDs LEDA LEDB  ]
-[c E166 0 1 2 .. ]
-[n E166 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
+"51 src/stack/backgroundTasks.c
+[c E163 0 1 .. ]
+[n E163 LEDs LEDA LEDB  ]
+[c E167 0 1 2 .. ]
+[n E167 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
 "325 src/stack/../stack/../eth/ethernetController.h
-[v _ethernetController_setLEDConfig `(v ~T0 @X0 0 ef2`E162`E166 ]
+[v _ethernetController_setLEDConfig `(v ~T0 @X0 0 ef2`E163`E167 ]
 "111 src/stack/../stack/../stack/protocols/ipv4.h
 [v _ipv4_setIPSourceAddress `(v ~T0 @X0 0 ef1`S8 ]
 "49 src/stack/../stack/../stack/protocols/../protocols/arp.h
 [v _arp_init `(v ~T0 @X0 0 ef ]
 "172 src/stack/../stack/../eth/ethernetController.h
 [v _ethernetController_clearInterruptFlag `(v ~T0 @X0 0 ef1`uc ]
-"56 src/stack/backgroundTasks.c
-[c E150 0 1 2 3 5 6 11 12 13 14 .. ]
-[n E150 interruptFlagsNames PCFULIF RXABTIF TXABTIF TXDIF DMAIF PKTIF LINKIF AESIF HASHIF MODEXIF  ]
+"59 src/stack/backgroundTasks.c
+[c E151 0 1 2 3 5 6 11 12 13 14 .. ]
+[n E151 interruptFlagsNames PCFULIF RXABTIF TXABTIF TXDIF DMAIF PKTIF LINKIF AESIF HASHIF MODEXIF  ]
 "285 src/stack/../stack/../eth/ethernetController.h
 [v _ethernetController_newPacketAvailable `(uc ~T0 @X0 0 ef ]
 "65 src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernet.h
 [v _ethernet_rxGetNewFrame `(S1 ~T0 @X0 0 ef1`*S5 ]
-"43 src/stack/../stack/../stack/protocols/../protocols/../../system/uart.h
-[v _UARTTransmitText `(v ~T0 @X0 0 ef1`*Cuc ]
 "80 src/stack/../stack/../stack/protocols/ipv4.h
 [v _ipv4_sendFrame `(S1 ~T0 @X0 0 ef1`S10 ]
-"116 src/stack/../stack/../stack/protocols/../protocols/arp.h
-[v _arp_background `(S1 ~T0 @X0 0 ef1`E110 ]
-"118 src/stack/../stack/../stack/protocols/ipv4.h
-[v _ipv4_background `(S1 ~T0 @X0 0 ef1`E110 ]
-"86 src/stack/backgroundTasks.c
-[c E60 501 599 .. ]
-[n E60 errors_ipv4 ERROR_IPv4_ADDRESS_ALREADY_IN_USE ERROR_IPv4_UNKNOWN  ]
-"97 src/stack/../stack/../stack/protocols/../protocols/../../system/uart.h
+"43 src/stack/../stack/../stack/protocols/../protocols/../../system/uart.h
+[v _UARTTransmitText `(v ~T0 @X0 0 ef1`*Cuc ]
+"97
 [v _ipAdressToString `(*uc ~T0 @X0 0 ef1`S8 ]
+"78 src/stack/backgroundTasks.c
+[c E53 401 403 404 405 406 407 499 .. ]
+[n E53 errors_arp ERROR_ARP_WAITING ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED ERROR_ARP_INVALID_VALUES ERROR_ARP_IPv4_ADDRESS_CONFLICT ERROR_ARP_CONNECTION_FAILED ERROR_ARP_UNKNOWN  ]
+"116 src/stack/../stack/../stack/protocols/../protocols/arp.h
+[v _arp_background `(S1 ~T0 @X0 0 ef1`E111 ]
+"118 src/stack/../stack/../stack/protocols/ipv4.h
+[v _ipv4_background `(S1 ~T0 @X0 0 ef1`E111 ]
+"108 src/stack/backgroundTasks.c
+[c E61 501 599 .. ]
+[n E61 errors_ipv4 ERROR_IPv4_ADDRESS_ALREADY_IN_USE ERROR_IPv4_UNKNOWN  ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -147,41 +150,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 96: enum errors_arp {
 [; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 [; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-[; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
-[; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
-[; ;error.h: 101: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
-[; ;error.h: 102: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
-[; ;error.h: 103: };
-[; ;error.h: 108: enum errors_ipv4 {
-[; ;error.h: 109: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-[; ;error.h: 110: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
-[; ;error.h: 111: };
-[; ;error.h: 118: typedef struct error {
-[; ;error.h: 122: error_module_t module;
-[; ;error.h: 128: uint16_t code;
-[; ;error.h: 129: } error_t;
-[; ;rsv.h: 34: typedef struct RSV {
-[; ;rsv.h: 40: uint16_t length;
-[; ;rsv.h: 41: uint8_t packetPreviouslyIgnored : 1;
-[; ;rsv.h: 48: uint8_t carrierEventPreviouslySeen : 1;
-[; ;rsv.h: 49: uint8_t CRCError : 1;
-[; ;rsv.h: 50: uint8_t lengthCheckError : 1;
-[; ;rsv.h: 51: uint8_t lengthOutOfRange : 1;
-[; ;rsv.h: 52: uint8_t receivedOk : 1;
-[; ;rsv.h: 53: uint8_t multicast : 1;
-[; ;rsv.h: 54: uint8_t broadcast : 1;
-[; ;rsv.h: 55: uint8_t dribbleNibble : 1;
-[; ;rsv.h: 56: uint8_t controlFrame : 1;
-[; ;rsv.h: 57: uint8_t pauseFrame : 1;
-[; ;rsv.h: 58: uint8_t unknownOpcode : 1;
-[; ;rsv.h: 59: uint8_t vlan : 1;
-[; ;rsv.h: 60: uint8_t runtFilter : 1;
-[; ;rsv.h: 61: uint8_t notMeFilter : 1;
-[; ;rsv.h: 62: uint8_t hashFilter : 1;
-[; ;rsv.h: 63: uint8_t magicFilter : 1;
-[; ;rsv.h: 64: uint8_t patternMatch : 1;
-[; ;rsv.h: 65: uint8_t unicast : 1;
-[; ;rsv.h: 66: } RSV_t;
+[; ;error.h: 99: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+[; ;error.h: 100: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+[; ;error.h: 101: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+[; ;error.h: 102: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
+[; ;error.h: 103: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 104: };
+[; ;error.h: 109: enum errors_ipv4 {
+[; ;error.h: 110: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 111: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 112: };
+[; ;error.h: 119: typedef struct error {
+[; ;error.h: 123: error_module_t module;
+[; ;error.h: 129: uint16_t code;
+[; ;error.h: 130: } error_t;
+[; ;rsv.h: 36: typedef struct RSV {
+[; ;rsv.h: 42: uint16_t length;
+[; ;rsv.h: 43: uint8_t packetPreviouslyIgnored : 1;
+[; ;rsv.h: 50: uint8_t carrierEventPreviouslySeen : 1;
+[; ;rsv.h: 51: uint8_t CRCError : 1;
+[; ;rsv.h: 52: uint8_t lengthCheckError : 1;
+[; ;rsv.h: 53: uint8_t lengthOutOfRange : 1;
+[; ;rsv.h: 54: uint8_t receivedOk : 1;
+[; ;rsv.h: 55: uint8_t multicast : 1;
+[; ;rsv.h: 56: uint8_t broadcast : 1;
+[; ;rsv.h: 57: uint8_t dribbleNibble : 1;
+[; ;rsv.h: 58: uint8_t controlFrame : 1;
+[; ;rsv.h: 59: uint8_t pauseFrame : 1;
+[; ;rsv.h: 60: uint8_t unknownOpcode : 1;
+[; ;rsv.h: 61: uint8_t vlan : 1;
+[; ;rsv.h: 62: uint8_t runtFilter : 1;
+[; ;rsv.h: 63: uint8_t notMeFilter : 1;
+[; ;rsv.h: 64: uint8_t hashFilter : 1;
+[; ;rsv.h: 65: uint8_t magicFilter : 1;
+[; ;rsv.h: 66: uint8_t patternMatch : 1;
+[; ;rsv.h: 67: uint8_t unicast : 1;
+[; ;rsv.h: 68: } RSV_t;
 [; ;bool.h: 32: typedef bit bool_t;
 [; ;memoryTypes.h: 35: typedef struct memoryField {
 [; ;memoryTypes.h: 42: uint16_t start;
@@ -5448,12 +5452,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
 [; ;stack.h: 44: typedef struct stack {
 [; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 49: ethernetConnection_t ethernet;
-[; ;stack.h: 50: backgroundTaskHandler_t background;
-[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 57: ipv4_address_t source;
-[; ;stack.h: 69: } stack_t;
-[; ;stack.h: 76: error_t stack_init();
+[; ;stack.h: 46: ethernetConnection_t ethernet;
+[; ;stack.h: 47: backgroundTaskHandler_t background;
+[; ;stack.h: 48: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 49: ipv4_address_t source;
+[; ;stack.h: 50: } stack_t;
+[; ;stack.h: 57: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5499,157 +5503,216 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.h: 294: uint16_t enc424j600_getInterruptFlags();
 [; ;ENC424J600.h: 302: void static enc424j600_clearInterruptFlag(uint8_t flag);
 [; ;ENC424J600.h: 319: RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
-"36 src/stack/backgroundTasks.c
+"39 src/stack/backgroundTasks.c
 [v _handleStackBackgroundTasks `(v ~T0 @X0 1 ef1`*S620 ]
 {
-[; ;backgroundTasks.c: 36: void handleStackBackgroundTasks(stack_t* stack) {
+[; ;backgroundTasks.c: 39: void handleStackBackgroundTasks(stack_t* stack) {
 [e :U _handleStackBackgroundTasks ]
 [v _stack `*S620 ~T0 @X0 1 r1 ]
 [f ]
-"37
-[v _foo `uc ~T0 @X0 -> 10 `i a ]
-"38
-[v _errArp `S1 ~T0 @X0 1 a ]
-"39
-[v _errIPv4 `S1 ~T0 @X0 1 a ]
 "40
-[v _intf `S7 ~T0 @X0 1 a ]
-[; ;backgroundTasks.c: 37: unsigned char foo[10];
-[; ;backgroundTasks.c: 38: error_t errArp;
-[; ;backgroundTasks.c: 39: error_t errIPv4;
-[; ;backgroundTasks.c: 40: interruptFlags_t intf;
-[; ;backgroundTasks.c: 42: intf = ethernetController_pollInterruptFlags();
+[v _foo `uc ~T0 @X0 -> 10 `i a ]
+"41
+[v _errArp `S1 ~T0 @X0 1 a ]
 "42
-[e = _intf ( _ethernetController_pollInterruptFlags ..  ]
-[; ;backgroundTasks.c: 43: if (intf.LINKIF) {
+[v _errIPv4 `S1 ~T0 @X0 1 a ]
 "43
+[v _intf `S7 ~T0 @X0 1 a ]
+[; ;backgroundTasks.c: 40: unsigned char foo[10];
+[; ;backgroundTasks.c: 41: error_t errArp;
+[; ;backgroundTasks.c: 42: error_t errIPv4;
+[; ;backgroundTasks.c: 43: interruptFlags_t intf;
+[; ;backgroundTasks.c: 45: intf = ethernetController_pollInterruptFlags();
+"45
+[e = _intf ( _ethernetController_pollInterruptFlags ..  ]
+[; ;backgroundTasks.c: 46: if (intf.LINKIF) {
+"46
 [e $ ! != -> . _intf 3 `i -> -> -> 0 `i `uc `i 622  ]
 {
-[; ;backgroundTasks.c: 45: ethernetController_updateLinkStatus(&(stack->ethernet));
-"45
-[e ( _ethernetController_updateLinkStatus (1 &U . *U _stack 1 ]
-[; ;backgroundTasks.c: 47: if (stack->ethernet.link == LINK_ESTABLISHED) {
-"47
-[e $ ! == -> . . *U _stack 1 0 `i -> . `E110 1 `i 623  ]
-{
-[; ;backgroundTasks.c: 48: ethernetController_setLEDConfig(LEDA, LED_ON);
+[; ;backgroundTasks.c: 48: ethernetController_updateLinkStatus(&(stack->ethernet));
 "48
-[e ( _ethernetController_setLEDConfig (2 , . `E162 0 . `E166 0 ]
-[; ;backgroundTasks.c: 49: ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS);
-"49
-[e ( _ethernetController_setLEDConfig (2 , . `E162 1 . `E166 2 ]
-[; ;backgroundTasks.c: 50: ipv4_setIPSourceAddress(stack->source);
+[e ( _ethernetController_updateLinkStatus (1 &U . *U _stack 1 ]
+[; ;backgroundTasks.c: 50: if (stack->ethernet.link == LINK_ESTABLISHED) {
 "50
-[e ( _ipv4_setIPSourceAddress (1 . *U _stack 4 ]
+[e $ ! == -> . . *U _stack 1 0 `i -> . `E111 1 `i 623  ]
+{
+[; ;backgroundTasks.c: 51: ethernetController_setLEDConfig(LEDA, LED_ON);
 "51
+[e ( _ethernetController_setLEDConfig (2 , . `E163 0 . `E167 0 ]
+[; ;backgroundTasks.c: 52: ethernetController_setLEDConfig(LEDB, LED_TRANSMIT_RECEIVE_EVENTS);
+"52
+[e ( _ethernetController_setLEDConfig (2 , . `E163 1 . `E167 2 ]
+[; ;backgroundTasks.c: 53: ipv4_setIPSourceAddress(stack->source);
+"53
+[e ( _ipv4_setIPSourceAddress (1 . *U _stack 4 ]
+"54
 }
-[; ;backgroundTasks.c: 51: } else {
+[; ;backgroundTasks.c: 54: } else {
 [e $U 624  ]
 [e :U 623 ]
 {
-[; ;backgroundTasks.c: 52: ethernetController_setLEDConfig(LEDA, LED_OFF);
-"52
-[e ( _ethernetController_setLEDConfig (2 , . `E162 0 . `E166 1 ]
-[; ;backgroundTasks.c: 53: ethernetController_setLEDConfig(LEDB, LED_OFF);
-"53
-[e ( _ethernetController_setLEDConfig (2 , . `E162 1 . `E166 1 ]
-[; ;backgroundTasks.c: 54: arp_init();
-"54
-[e ( _arp_init ..  ]
+[; ;backgroundTasks.c: 55: ethernetController_setLEDConfig(LEDA, LED_OFF);
 "55
+[e ( _ethernetController_setLEDConfig (2 , . `E163 0 . `E167 1 ]
+[; ;backgroundTasks.c: 56: ethernetController_setLEDConfig(LEDB, LED_OFF);
+"56
+[e ( _ethernetController_setLEDConfig (2 , . `E163 1 . `E167 1 ]
+[; ;backgroundTasks.c: 57: arp_init();
+"57
+[e ( _arp_init ..  ]
+"58
 }
 [e :U 624 ]
-[; ;backgroundTasks.c: 55: }
-[; ;backgroundTasks.c: 56: ethernetController_clearInterruptFlag(LINKIF);
-"56
-[e ( _ethernetController_clearInterruptFlag (1 -> . `E150 6 `uc ]
-"57
+[; ;backgroundTasks.c: 58: }
+[; ;backgroundTasks.c: 59: ethernetController_clearInterruptFlag(LINKIF);
+"59
+[e ( _ethernetController_clearInterruptFlag (1 -> . `E151 6 `uc ]
+"60
 }
 [e :U 622 ]
-[; ;backgroundTasks.c: 57: }
-[; ;backgroundTasks.c: 58: if (intf.PKTIF) {
-"58
+[; ;backgroundTasks.c: 60: }
+[; ;backgroundTasks.c: 61: if (intf.PKTIF) {
+"61
 [e $ ! != -> . _intf 4 `i -> -> -> 0 `i `uc `i 625  ]
 {
-[; ;backgroundTasks.c: 60: if (ethernetController_newPacketAvailable()) {
-"60
+[; ;backgroundTasks.c: 63: if (ethernetController_newPacketAvailable()) {
+"63
 [e $ ! != -> ( _ethernetController_newPacketAvailable ..  `i -> -> -> 0 `i `uc `i 626  ]
 {
-[; ;backgroundTasks.c: 62: ethernet_rxGetNewFrame(&stack->newReceivedFrame);
-"62
+[; ;backgroundTasks.c: 65: ethernet_rxGetNewFrame(&stack->newReceivedFrame);
+"65
 [e ( _ethernet_rxGetNewFrame (1 &U . *U _stack 0 ]
-"63
+"66
 }
 [e :U 626 ]
-"64
+"67
 }
 [e :U 625 ]
-[; ;backgroundTasks.c: 63: }
-[; ;backgroundTasks.c: 64: }
-[; ;backgroundTasks.c: 71: if (stack->background.fPacketPending == 1) {
-"71
+[; ;backgroundTasks.c: 66: }
+[; ;backgroundTasks.c: 67: }
+[; ;backgroundTasks.c: 74: if (stack->background.fPacketPending == 1) {
+"74
 [e $ ! == -> . . *U _stack 2 1 `i -> 1 `i 627  ]
 {
-[; ;backgroundTasks.c: 74: UARTTransmitText(".");
-"74
-[e ( _UARTTransmitText (1 :s 1C ]
-[; ;backgroundTasks.c: 75: if (ipv4_sendFrame(stack->pendingPacketToSend).code == (uint16_t)0) {
-"75
-[e $ ! == . ( _ipv4_sendFrame (1 . *U _stack 3 1 -> -> 0 `i `ui 628  ]
-{
-[; ;backgroundTasks.c: 76: UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
+[; ;backgroundTasks.c: 76: errIPv4 = ipv4_sendFrame(stack->pendingPacketToSend);
 "76
-[e ( _UARTTransmitText (1 :s 2C ]
-[; ;backgroundTasks.c: 77: stack->background.fPacketPending=0;
+[e = _errIPv4 ( _ipv4_sendFrame (1 . *U _stack 3 ]
+[; ;backgroundTasks.c: 77: if (errIPv4.module == ERROR_MODULE_ARP) {
 "77
-[e = . . *U _stack 2 1 -> -> 0 `i `uc ]
-"78
-}
-[e :U 628 ]
-"79
-}
-[e :U 627 ]
-[; ;backgroundTasks.c: 78: }
-[; ;backgroundTasks.c: 79: }
-[; ;backgroundTasks.c: 82: errArp = arp_background(stack->ethernet.link);
-"82
-[e = _errArp ( _arp_background (1 . . *U _stack 1 0 ]
-[; ;backgroundTasks.c: 83: errIPv4 = ipv4_background(stack->ethernet.link);
-"83
-[e = _errIPv4 ( _ipv4_background (1 . . *U _stack 1 0 ]
-[; ;backgroundTasks.c: 85: if (errIPv4.module == ERROR_MODULE_IPv4 &&
-[; ;backgroundTasks.c: 86: errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
-"86
-[e $ ! && == -> . _errIPv4 0 `i -> . `E29 4 `i == . _errIPv4 1 -> . `E60 0 `ui 629  ]
+[e $ ! == -> . _errIPv4 0 `i -> . `E29 3 `i 628  ]
 {
-[; ;backgroundTasks.c: 87: UARTTransmitText("[IPv4]: Address conflict detected. \n\r");
+[; ;backgroundTasks.c: 78: switch (errIPv4.code) {
+"78
+[e $U 630  ]
+{
+[; ;backgroundTasks.c: 79: case ERROR_ARP_WAITING:
+"79
+[e :U 631 ]
+[; ;backgroundTasks.c: 80: break;
+"80
+[e $U 629  ]
+[; ;backgroundTasks.c: 81: case (uint16_t)0:
+"81
+[e :U 632 ]
+[; ;backgroundTasks.c: 83: UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
+"83
+[e ( _UARTTransmitText (1 :s 1C ]
+[; ;backgroundTasks.c: 85: stack->background.fPacketPending = 0;
+"85
+[e = . . *U _stack 2 1 -> -> 0 `i `uc ]
+[; ;backgroundTasks.c: 86: break;
+"86
+[e $U 629  ]
+[; ;backgroundTasks.c: 87: case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
 "87
-[e ( _UARTTransmitText (1 :s 3C ]
-[; ;backgroundTasks.c: 88: stack->source.address[3]++;
-"88
-[e ++ *U + &U . . *U _stack 4 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . *U _stack 4 0 `ui `ux -> -> 1 `i `uc ]
-[; ;backgroundTasks.c: 89: UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
+[e :U 633 ]
+[; ;backgroundTasks.c: 89: UARTTransmitText("[IPv4]: Failed to resolve ");
 "89
-[e ( _UARTTransmitText (1 :s 4C ]
-[; ;backgroundTasks.c: 90: UARTTransmitText(ipAdressToString(stack->source));
+[e ( _UARTTransmitText (1 :s 2C ]
+[; ;backgroundTasks.c: 90: UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
 "90
-[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . *U _stack 4 `*Cuc ]
+[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . . . *U _stack 3 0 12 `*Cuc ]
 [; ;backgroundTasks.c: 91: UARTTransmitText("\n\r");
 "91
-[e ( _UARTTransmitText (1 :s 5C ]
-[; ;backgroundTasks.c: 92: ipv4_setIPSourceAddress(stack->source);
-"92
-[e ( _ipv4_setIPSourceAddress (1 . *U _stack 4 ]
+[e ( _UARTTransmitText (1 :s 3C ]
+[; ;backgroundTasks.c: 93: stack->background.fPacketPending = 0;
 "93
-}
-[e :U 629 ]
-[; ;backgroundTasks.c: 93: }
-[; ;backgroundTasks.c: 96: }
+[e = . . *U _stack 2 1 -> -> 0 `i `uc ]
+[; ;backgroundTasks.c: 94: break;
+"94
+[e $U 629  ]
+[; ;backgroundTasks.c: 95: default:
+"95
+[e :U 634 ]
+[; ;backgroundTasks.c: 96: break;
 "96
+[e $U 629  ]
+"97
+}
+[; ;backgroundTasks.c: 97: }
+[e $U 629  ]
+"78
+[e :U 630 ]
+[e [\ . _errIPv4 1 , $ -> . `E53 0 `ui 631
+ , $ -> -> 0 `i `ui 632
+ , $ -> . `E53 2 `ui 633
+ 634 ]
+"97
+[e :U 629 ]
+"98
+}
+[; ;backgroundTasks.c: 98: } else {
+[e $U 635  ]
+[e :U 628 ]
+{
+"100
+}
+[e :U 635 ]
+"101
+}
+[e :U 627 ]
+[; ;backgroundTasks.c: 100: }
+[; ;backgroundTasks.c: 101: }
+[; ;backgroundTasks.c: 104: errArp = arp_background(stack->ethernet.link);
+"104
+[e = _errArp ( _arp_background (1 . . *U _stack 1 0 ]
+[; ;backgroundTasks.c: 105: errIPv4 = ipv4_background(stack->ethernet.link);
+"105
+[e = _errIPv4 ( _ipv4_background (1 . . *U _stack 1 0 ]
+[; ;backgroundTasks.c: 107: if (errIPv4.module == ERROR_MODULE_IPv4 &&
+[; ;backgroundTasks.c: 108: errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
+"108
+[e $ ! && == -> . _errIPv4 0 `i -> . `E29 4 `i == . _errIPv4 1 -> . `E61 0 `ui 636  ]
+{
+[; ;backgroundTasks.c: 110: UARTTransmitText("[IPv4]: Address conflict detected.\n\r");
+"110
+[e ( _UARTTransmitText (1 :s 4C ]
+[; ;backgroundTasks.c: 112: stack->source.address[3]++;
+"112
+[e ++ *U + &U . . *U _stack 4 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . *U _stack 4 0 `ui `ux -> -> 1 `i `uc ]
+[; ;backgroundTasks.c: 114: UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
+"114
+[e ( _UARTTransmitText (1 :s 5C ]
+[; ;backgroundTasks.c: 115: UARTTransmitText(ipAdressToString(stack->source));
+"115
+[e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . *U _stack 4 `*Cuc ]
+[; ;backgroundTasks.c: 116: UARTTransmitText("\n\r");
+"116
+[e ( _UARTTransmitText (1 :s 6C ]
+[; ;backgroundTasks.c: 118: ipv4_setIPSourceAddress(stack->source);
+"118
+[e ( _ipv4_setIPSourceAddress (1 . *U _stack 4 ]
+"119
+}
+[e :U 636 ]
+[; ;backgroundTasks.c: 119: }
+[; ;backgroundTasks.c: 122: }
+"122
 [e :UE 621 ]
 }
-[a 1C 46 0 ]
-[a 4C 91 73 80 118 52 93 58 32 83 101 116 116 105 110 103 32 73 80 118 52 32 83 114 99 32 65 100 100 114 101 115 115 32 116 111 32 0 ]
-[a 2C 91 73 80 118 52 93 58 32 80 97 99 107 101 116 32 119 97 115 32 115 101 110 116 32 115 117 99 99 101 115 115 102 117 108 108 121 46 10 13 0 ]
-[a 3C 91 73 80 118 52 93 58 32 65 100 100 114 101 115 115 32 99 111 110 102 108 105 99 116 32 100 101 116 101 99 116 101 100 46 32 10 13 0 ]
-[a 5C 10 13 0 ]
+[a 5C 91 73 80 118 52 93 58 32 83 101 116 116 105 110 103 32 73 80 118 52 32 83 114 99 32 65 100 100 114 101 115 115 32 116 111 32 0 ]
+[a 2C 91 73 80 118 52 93 58 32 70 97 105 108 101 100 32 116 111 32 114 101 115 111 108 118 101 32 0 ]
+[a 1C 91 73 80 118 52 93 58 32 80 97 99 107 101 116 32 119 97 115 32 115 101 110 116 32 115 117 99 99 101 115 115 102 117 108 108 121 46 10 13 0 ]
+[a 4C 91 73 80 118 52 93 58 32 65 100 100 114 101 115 115 32 99 111 110 102 108 105 99 116 32 100 101 116 101 99 116 101 100 46 10 13 0 ]
+[a 3C 10 13 0 ]
+[a 6C 10 13 0 ]

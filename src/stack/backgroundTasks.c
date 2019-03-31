@@ -24,6 +24,7 @@
 #include "../stack/backgroundTasks.h"
 #include "protocols/ipv4Types.h"
 #include "../enc424j600/ENC424J600.h"
+#include "protocols/ipv4Settings.h"
 
 #include <stdlib.h>
 
@@ -32,6 +33,8 @@
  * calling \ref ethernetController_pollInterruptFlags again LINKIF seems to be set without no reason ??
  * It seems the problem does not occur if checked in this order or if \ref ethernetController_pollInterruptFlags is called
  * multiple times.
+ * 
+ * Edit: This was likely fixed; Check this.
  */
 void handleStackBackgroundTasks(stack_t* stack) {
     unsigned char foo[10];
@@ -67,14 +70,33 @@ void handleStackBackgroundTasks(stack_t* stack) {
      * 
      */
 
-    //if (stack->foofoo.test == 1) {
-        if (stack->background.fPacketPending == 1) {
-        //if (stack->test == 1) {
+
+    if (stack->background.fPacketPending == 1) {
         //There is a packet awaiting transmission
-        UARTTransmitText(".");
-        if (ipv4_sendFrame(stack->pendingPacketToSend).code == ERROR_CODE_SUCCESSFUL) {
-            UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
-            stack->background.fPacketPending=0;
+        errIPv4 = ipv4_sendFrame(stack->pendingPacketToSend);
+        if (errIPv4.module == ERROR_MODULE_ARP) {
+            switch (errIPv4.code) {
+                case ERROR_ARP_WAITING:
+                    break;
+                case ERROR_CODE_SUCCESSFUL:
+#if IPv4_DEBUG_MESSAGES==true
+                    UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
+#endif
+                    stack->background.fPacketPending = 0;
+                    break;
+                case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
+#if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
+                    UARTTransmitText("[IPv4]: Failed to resolve ");
+                    UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
+                    UARTTransmitText("\n\r");
+#endif
+                    stack->background.fPacketPending = 0;
+                    break;
+                default:
+                    break;
+            }
+        } else {
+
         }
     }
 
@@ -84,11 +106,15 @@ void handleStackBackgroundTasks(stack_t* stack) {
 
     if (errIPv4.module == ERROR_MODULE_IPv4 &&
             errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
-        UARTTransmitText("[IPv4]: Address conflict detected. \n\r");
+#if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
+        UARTTransmitText("[IPv4]: Address conflict detected.\n\r");
+#endif
         stack->source.address[3]++;
+#if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
         UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
         UARTTransmitText(ipAdressToString(stack->source));
         UARTTransmitText("\n\r");
+#endif
         ipv4_setIPSourceAddress(stack->source);
     }
 

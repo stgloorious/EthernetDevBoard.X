@@ -6765,14 +6765,14 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 34 "src/system/../system/../stack/protocols/../../eth/../enc424j600/rsv.h"
+# 36 "src/system/../system/../stack/protocols/../../eth/../enc424j600/rsv.h"
 typedef struct RSV {
 
-# 40
+# 42
 uint16_t length;
 uint8_t packetPreviouslyIgnored : 1;
 
-# 48
+# 50
 uint8_t carrierEventPreviouslySeen : 1;
 uint8_t CRCError : 1;
 uint8_t lengthCheckError : 1;
@@ -6986,25 +6986,26 @@ ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 enum errors_arp {
 ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
-ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
-ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
+ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
 ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
 };
 
-# 108
+# 109
 enum errors_ipv4 {
 ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
 ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
-# 118
+# 119
 typedef struct error {
 
-# 122
+# 123
 error_module_t module;
 
-# 128
+# 129
 uint16_t code;
 } error_t;
 
@@ -7280,23 +7281,13 @@ uint8_t fPacketPending;
 # 44 "src/system/../system/../stack/protocols/../stack.h"
 typedef struct stack {
 ethernetFrame_t newReceivedFrame;
-
-
-
 ethernetConnection_t ethernet;
 backgroundTaskHandler_t background;
-
 ipv4_packet_t pendingPacketToSend;
-
-
-
-
 ipv4_address_t source;
-
-# 69
 } stack_t;
 
-# 76
+# 57
 error_t stack_init();
 
 # 46 "src/system/../system/../stack/protocols/ipv4.h"

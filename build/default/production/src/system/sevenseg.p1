@@ -5073,41 +5073,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 96: enum errors_arp {
 [; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 [; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-[; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
-[; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
-[; ;error.h: 101: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
-[; ;error.h: 102: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
-[; ;error.h: 103: };
-[; ;error.h: 108: enum errors_ipv4 {
-[; ;error.h: 109: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-[; ;error.h: 110: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
-[; ;error.h: 111: };
-[; ;error.h: 118: typedef struct error {
-[; ;error.h: 122: error_module_t module;
-[; ;error.h: 128: uint16_t code;
-[; ;error.h: 129: } error_t;
-[; ;rsv.h: 34: typedef struct RSV {
-[; ;rsv.h: 40: uint16_t length;
-[; ;rsv.h: 41: uint8_t packetPreviouslyIgnored : 1;
-[; ;rsv.h: 48: uint8_t carrierEventPreviouslySeen : 1;
-[; ;rsv.h: 49: uint8_t CRCError : 1;
-[; ;rsv.h: 50: uint8_t lengthCheckError : 1;
-[; ;rsv.h: 51: uint8_t lengthOutOfRange : 1;
-[; ;rsv.h: 52: uint8_t receivedOk : 1;
-[; ;rsv.h: 53: uint8_t multicast : 1;
-[; ;rsv.h: 54: uint8_t broadcast : 1;
-[; ;rsv.h: 55: uint8_t dribbleNibble : 1;
-[; ;rsv.h: 56: uint8_t controlFrame : 1;
-[; ;rsv.h: 57: uint8_t pauseFrame : 1;
-[; ;rsv.h: 58: uint8_t unknownOpcode : 1;
-[; ;rsv.h: 59: uint8_t vlan : 1;
-[; ;rsv.h: 60: uint8_t runtFilter : 1;
-[; ;rsv.h: 61: uint8_t notMeFilter : 1;
-[; ;rsv.h: 62: uint8_t hashFilter : 1;
-[; ;rsv.h: 63: uint8_t magicFilter : 1;
-[; ;rsv.h: 64: uint8_t patternMatch : 1;
-[; ;rsv.h: 65: uint8_t unicast : 1;
-[; ;rsv.h: 66: } RSV_t;
+[; ;error.h: 99: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+[; ;error.h: 100: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+[; ;error.h: 101: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+[; ;error.h: 102: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
+[; ;error.h: 103: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 104: };
+[; ;error.h: 109: enum errors_ipv4 {
+[; ;error.h: 110: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 111: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 112: };
+[; ;error.h: 119: typedef struct error {
+[; ;error.h: 123: error_module_t module;
+[; ;error.h: 129: uint16_t code;
+[; ;error.h: 130: } error_t;
+[; ;rsv.h: 36: typedef struct RSV {
+[; ;rsv.h: 42: uint16_t length;
+[; ;rsv.h: 43: uint8_t packetPreviouslyIgnored : 1;
+[; ;rsv.h: 50: uint8_t carrierEventPreviouslySeen : 1;
+[; ;rsv.h: 51: uint8_t CRCError : 1;
+[; ;rsv.h: 52: uint8_t lengthCheckError : 1;
+[; ;rsv.h: 53: uint8_t lengthOutOfRange : 1;
+[; ;rsv.h: 54: uint8_t receivedOk : 1;
+[; ;rsv.h: 55: uint8_t multicast : 1;
+[; ;rsv.h: 56: uint8_t broadcast : 1;
+[; ;rsv.h: 57: uint8_t dribbleNibble : 1;
+[; ;rsv.h: 58: uint8_t controlFrame : 1;
+[; ;rsv.h: 59: uint8_t pauseFrame : 1;
+[; ;rsv.h: 60: uint8_t unknownOpcode : 1;
+[; ;rsv.h: 61: uint8_t vlan : 1;
+[; ;rsv.h: 62: uint8_t runtFilter : 1;
+[; ;rsv.h: 63: uint8_t notMeFilter : 1;
+[; ;rsv.h: 64: uint8_t hashFilter : 1;
+[; ;rsv.h: 65: uint8_t magicFilter : 1;
+[; ;rsv.h: 66: uint8_t patternMatch : 1;
+[; ;rsv.h: 67: uint8_t unicast : 1;
+[; ;rsv.h: 68: } RSV_t;
 [; ;bool.h: 32: typedef bit bool_t;
 [; ;memoryTypes.h: 35: typedef struct memoryField {
 [; ;memoryTypes.h: 42: uint16_t start;
@@ -5393,12 +5394,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
 [; ;stack.h: 44: typedef struct stack {
 [; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 49: ethernetConnection_t ethernet;
-[; ;stack.h: 50: backgroundTaskHandler_t background;
-[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 57: ipv4_address_t source;
-[; ;stack.h: 69: } stack_t;
-[; ;stack.h: 76: error_t stack_init();
+[; ;stack.h: 46: ethernetConnection_t ethernet;
+[; ;stack.h: 47: backgroundTaskHandler_t background;
+[; ;stack.h: 48: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 49: ipv4_address_t source;
+[; ;stack.h: 50: } stack_t;
+[; ;stack.h: 57: error_t stack_init();
 "47 src/system/../system/../system/sevenseg.h
 [v _sevenSegCharacters `uc ~T0 @X0 -> 12 `i e ]
 [i _sevenSegCharacters
@@ -5569,13 +5570,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _numberToDisplay `ui ~T0 @X0 1 r1 ]
 [f ]
 "43
-[v F5951 `uc ~T0 @X0 1 s digitPointer ]
-[i F5951
+[v F5952 `uc ~T0 @X0 1 s digitPointer ]
+[i F5952
 -> -> 0 `i `uc
 ]
 "44
-[v F5952 `uc ~T0 @X0 -> 3 `i s digitsToDisplay ]
-[i F5952
+[v F5953 `uc ~T0 @X0 -> 3 `i s digitsToDisplay ]
+[i F5953
 :U ..
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -5586,13 +5587,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 44: uint8_t static digitsToDisplay[3] = {0, 0, 0};
 [; ;sevenseg.c: 45: PORTC &= ~(unsigned)(1 << digitPointer);
 "45
-[e =& _PORTC -> ~ -> << -> 1 `i F5951 `ui `uc ]
+[e =& _PORTC -> ~ -> << -> 1 `i F5952 `ui `uc ]
 [; ;sevenseg.c: 46: PORTA = 0x00;
 "46
 [e = _PORTA -> -> 0 `i `uc ]
 [; ;sevenseg.c: 47: digitPointer = (unsigned)((digitPointer >= 2) ? 0 : digitPointer + 1);
 "47
-[e = F5951 -> -> ? >= -> F5951 `i -> 2 `i : -> 0 `i + -> F5951 `i -> 1 `i `ui `uc ]
+[e = F5952 -> -> ? >= -> F5952 `i -> 2 `i : -> 0 `i + -> F5952 `i -> 1 `i `ui `uc ]
 [; ;sevenseg.c: 49: if (numberToDisplay > 999) {
 "49
 [e $ ! > _numberToDisplay -> -> 999 `i `ui 623  ]
@@ -5615,7 +5616,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;sevenseg.c: 53: digitsToDisplay[i] = parseNumber(numberToDisplay, i);
 "53
-[e = *U + &U F5952 * -> _i `ux -> -> # *U &U F5952 `ui `ux ( _parseNumber (2 , _numberToDisplay _i ]
+[e = *U + &U F5953 * -> _i `ux -> -> # *U &U F5953 `ui `ux ( _parseNumber (2 , _numberToDisplay _i ]
 "54
 }
 "52
@@ -5627,10 +5628,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sevenseg.c: 54: }
 [; ;sevenseg.c: 55: PORTC |= (unsigned)(1 << digitPointer);
 "55
-[e =| _PORTC -> -> << -> 1 `i F5951 `ui `uc ]
+[e =| _PORTC -> -> << -> 1 `i F5952 `ui `uc ]
 [; ;sevenseg.c: 56: PORTA = (sevenSegCharacters[digitsToDisplay[digitPointer]]);
 "56
-[e = _PORTA *U + &U _sevenSegCharacters * -> *U + &U F5952 * -> F5951 `ux -> -> # *U &U F5952 `ui `ux `ux -> -> # *U &U _sevenSegCharacters `ui `ux ]
+[e = _PORTA *U + &U _sevenSegCharacters * -> *U + &U F5953 * -> F5952 `ux -> -> # *U &U F5953 `ui `ux `ux -> -> # *U &U _sevenSegCharacters `ui `ux ]
 [; ;sevenseg.c: 57: }
 "57
 [e :UE 622 ]

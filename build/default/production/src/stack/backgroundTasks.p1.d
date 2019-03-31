@@ -2,6 +2,7 @@
  build/default/production/src/stack/backgroundTasks.p1:  \
  src/stack/backgroundTasks.c  \
 src/stack/../stack/../stack/protocols/../bool.h  \
+src/stack/protocols/../bool.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernet.h  \
 src/stack/../stack/../eth/ethernet.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/../mem/memoryController.h  \
@@ -10,6 +11,7 @@ src/stack/../stack/../stack/protocols/../protocols/../../system/../eth/mac.h  \
 src/stack/../stack/../stack/protocols/../protocols/../protocols/ipv4.h  \
 src/stack/../stack/../eth/../eth/../stack/time.h  \
 src/stack/../enc424j600/ENC424J600.h  \
+src/stack/protocols/ipv4Settings.h  \
 src/stack/../stack/../stack/protocols/../../stack/../stack/error.h  \
 src/stack/../stack/../stack/error.h  \
 src/stack/../stack/../stack/protocols/../../stack/backgroundTasksTypes.h  \

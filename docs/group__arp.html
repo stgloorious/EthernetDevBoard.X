@@ -65,6 +65,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
@@ -75,6 +76,11 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__arp_settings"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp_settings.html">Settings</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
 <tr class="memitem:arp_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arp_8c.html">arp.c</a></td></tr>
@@ -179,93 +185,8 @@ Functions</h2></td></tr>
 <tr class="memitem:gad629320d0e251b055167216baa76aff3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gad629320d0e251b055167216baa76aff3">printArpTable</a> ()</td></tr>
 <tr class="memdesc:gad629320d0e251b055167216baa76aff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for debugging. Prints out ARP table via UART.  <a href="#gad629320d0e251b055167216baa76aff3">More...</a><br /></td></tr>
 <tr class="separator:gad629320d0e251b055167216baa76aff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac96280c80e881be01b3e9d1f60393ec1"><td class="memItemLeft" align="right" valign="top"><a id="gac96280c80e881be01b3e9d1f60393ec1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gac96280c80e881be01b3e9d1f60393ec1">ARP_PROBE_WAIT</a>&#160;&#160;&#160;1000u</td></tr>
-<tr class="memdesc:gac96280c80e881be01b3e9d1f60393ec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial random delay. <br /></td></tr>
-<tr class="separator:gac96280c80e881be01b3e9d1f60393ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8eb07db5d3c608c7ac64533cc944386a"><td class="memItemLeft" align="right" valign="top"><a id="ga8eb07db5d3c608c7ac64533cc944386a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga8eb07db5d3c608c7ac64533cc944386a">ARP_PROBE_NUM</a>&#160;&#160;&#160;3u</td></tr>
-<tr class="memdesc:ga8eb07db5d3c608c7ac64533cc944386a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of probe packets. <br /></td></tr>
-<tr class="separator:ga8eb07db5d3c608c7ac64533cc944386a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga11da20f96d2c452852ab6b019aeb2750"><td class="memItemLeft" align="right" valign="top"><a id="ga11da20f96d2c452852ab6b019aeb2750"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga11da20f96d2c452852ab6b019aeb2750">ARP_PROBE_MIN</a>&#160;&#160;&#160;1000u</td></tr>
-<tr class="memdesc:ga11da20f96d2c452852ab6b019aeb2750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum delay until repeated probe. <br /></td></tr>
-<tr class="separator:ga11da20f96d2c452852ab6b019aeb2750"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1000d5f6834f862aa1b726d36fe9a453"><td class="memItemLeft" align="right" valign="top"><a id="ga1000d5f6834f862aa1b726d36fe9a453"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga1000d5f6834f862aa1b726d36fe9a453">ARP_PROBE_MAX</a>&#160;&#160;&#160;2000u</td></tr>
-<tr class="memdesc:ga1000d5f6834f862aa1b726d36fe9a453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum delay until repeated probe. <br /></td></tr>
-<tr class="separator:ga1000d5f6834f862aa1b726d36fe9a453"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1b0ed33beac5624287d8a23ced6f20a"><td class="memItemLeft" align="right" valign="top"><a id="gaa1b0ed33beac5624287d8a23ced6f20a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gaa1b0ed33beac5624287d8a23ced6f20a">ARP_ANNOUNCE_WAIT</a>&#160;&#160;&#160;2000u</td></tr>
-<tr class="memdesc:gaa1b0ed33beac5624287d8a23ced6f20a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delay before announcing. <br /></td></tr>
-<tr class="separator:gaa1b0ed33beac5624287d8a23ced6f20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga32506e1d3fe1480bf8dc22693ede9f8b"><td class="memItemLeft" align="right" valign="top"><a id="ga32506e1d3fe1480bf8dc22693ede9f8b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga32506e1d3fe1480bf8dc22693ede9f8b">ARP_ANNOUNCE_NUM</a>&#160;&#160;&#160;2u</td></tr>
-<tr class="memdesc:ga32506e1d3fe1480bf8dc22693ede9f8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of announcement packets. <br /></td></tr>
-<tr class="separator:ga32506e1d3fe1480bf8dc22693ede9f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga70db0ad7d5bca87715000a402f6f204b"><td class="memItemLeft" align="right" valign="top"><a id="ga70db0ad7d5bca87715000a402f6f204b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga70db0ad7d5bca87715000a402f6f204b">ARP_ANNOUNCE_INTERVAL</a>&#160;&#160;&#160;2000u</td></tr>
-<tr class="memdesc:ga70db0ad7d5bca87715000a402f6f204b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time between announcement packets. <br /></td></tr>
-<tr class="separator:ga70db0ad7d5bca87715000a402f6f204b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga087d04cd4255427f7de3f26286cecaa0"><td class="memItemLeft" align="right" valign="top"><a id="ga087d04cd4255427f7de3f26286cecaa0"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga087d04cd4255427f7de3f26286cecaa0">ARP_MAX_CONFLICTS</a>&#160;&#160;&#160;10u</td></tr>
-<tr class="memdesc:ga087d04cd4255427f7de3f26286cecaa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max conflicts before rate-limit. <br /></td></tr>
-<tr class="separator:ga087d04cd4255427f7de3f26286cecaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa93c9c3c250dfeff4a6d933ab65bbf83"><td class="memItemLeft" align="right" valign="top"><a id="gaa93c9c3c250dfeff4a6d933ab65bbf83"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gaa93c9c3c250dfeff4a6d933ab65bbf83">ARP_RATE_LIMIT_INTERVAL</a>&#160;&#160;&#160;60000u</td></tr>
-<tr class="memdesc:gaa93c9c3c250dfeff4a6d933ab65bbf83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delay between successive attempts. <br /></td></tr>
-<tr class="separator:gaa93c9c3c250dfeff4a6d933ab65bbf83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadfabbfb7efee8f25a8f0de97a513dd06"><td class="memItemLeft" align="right" valign="top"><a id="gadfabbfb7efee8f25a8f0de97a513dd06"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gadfabbfb7efee8f25a8f0de97a513dd06">ARP_DEFEND_INTERVAL</a>&#160;&#160;&#160;10000u</td></tr>
-<tr class="memdesc:gadfabbfb7efee8f25a8f0de97a513dd06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum interval between defensive ARPs. <br /></td></tr>
-<tr class="separator:gadfabbfb7efee8f25a8f0de97a513dd06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="memItemLeft" align="right" valign="top"><a id="gad4abd9ee89fa8a8ba4231b6d914b5e83"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gad4abd9ee89fa8a8ba4231b6d914b5e83">ARP_TABLE_LENGTH</a>&#160;&#160;&#160;8u</td></tr>
-<tr class="memdesc:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of entries in the ARP table. <br /></td></tr>
-<tr class="separator:gad4abd9ee89fa8a8ba4231b6d914b5e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="memItemLeft" align="right" valign="top"><a id="ga9b6d09f1eb065d812b3cdb5f6cc2f68d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga9b6d09f1eb065d812b3cdb5f6cc2f68d">ARP_TABLE_ENTRY_TTL</a>&#160;&#160;&#160;30000u</td></tr>
-<tr class="memdesc:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time to live for an ARP Entry in milliseconds. <br /></td></tr>
-<tr class="separator:ga9b6d09f1eb065d812b3cdb5f6cc2f68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacadcd25bea19657185a5fcb4f65a7669"><td class="memItemLeft" align="right" valign="top"><a id="gacadcd25bea19657185a5fcb4f65a7669"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gacadcd25bea19657185a5fcb4f65a7669">ARP_TIMEOUT</a>&#160;&#160;&#160;2u</td></tr>
-<tr class="memdesc:gacadcd25bea19657185a5fcb4f65a7669"><td class="mdescLeft">&#160;</td><td class="mdescRight">How long to wait after request for a reply in seconds. <br /></td></tr>
-<tr class="separator:gacadcd25bea19657185a5fcb4f65a7669"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5cf9f6839b3a25fd45fbbcf314460490"><td class="memItemLeft" align="right" valign="top"><a id="ga5cf9f6839b3a25fd45fbbcf314460490"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ARP_DEBUG_MESSAGES</b>&#160;&#160;&#160;true</td></tr>
-<tr class="separator:ga5cf9f6839b3a25fd45fbbcf314460490"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga08623b5b50ba65a653a460cac113c572"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga08623b5b50ba65a653a460cac113c572">ARP_LINK_BROADCAST</a>&#160;&#160;&#160;true</td></tr>
-<tr class="memdesc:ga08623b5b50ba65a653a460cac113c572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replies are sent using a link-level broadcast and not unicast.  <a href="#ga08623b5b50ba65a653a460cac113c572">More...</a><br /></td></tr>
-<tr class="separator:ga08623b5b50ba65a653a460cac113c572"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf171df407fe6f40b73e3d6d7407a994f"><td class="memItemLeft" align="right" valign="top"><a id="gaf171df407fe6f40b73e3d6d7407a994f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#gaf171df407fe6f40b73e3d6d7407a994f">ARP_IPv4_PLEN</a>&#160;&#160;&#160;4u</td></tr>
-<tr class="memdesc:gaf171df407fe6f40b73e3d6d7407a994f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes in an IPv4 address. <br /></td></tr>
-<tr class="separator:gaf171df407fe6f40b73e3d6d7407a994f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2fda3c8f5c96e205a993efb5cfb4f297"><td class="memItemLeft" align="right" valign="top"><a id="ga2fda3c8f5c96e205a993efb5cfb4f297"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arp.html#ga2fda3c8f5c96e205a993efb5cfb4f297">ARP_ETHERNET_HLEN</a>&#160;&#160;&#160;6u</td></tr>
-<tr class="memdesc:ga2fda3c8f5c96e205a993efb5cfb4f297"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes in a MAC address. <br /></td></tr>
-<tr class="separator:ga2fda3c8f5c96e205a993efb5cfb4f297"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ga08623b5b50ba65a653a460cac113c572"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga08623b5b50ba65a653a460cac113c572">&#9670;&nbsp;</a></span>ARP_LINK_BROADCAST</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARP_LINK_BROADCAST&#160;&#160;&#160;true</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Replies are sent using a link-level broadcast and not unicast. </p>
-<p>Enabling this option leads to a quicker conflict detection, but does also increase traffic. </p><dl class="section warning"><dt>Warning</dt><dd>NOT RECOMMENDED for general use, but other specification may choose to use broadcast for ARP replies if appropriate. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>RFC 5227, Section 2.6, Page 14f. </dd></dl>
-
-</div>
-</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="gaf31247445ba37025bc6b49b24fad1b35"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf31247445ba37025bc6b49b24fad1b35">&#9670;&nbsp;</a></span>arp_ptype</h2>
@@ -548,7 +469,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sends probes to check for address conflicts. </p>
-<p>Sends out <a class="el" href="group__arp.html#ga8eb07db5d3c608c7ac64533cc944386a" title="Number of probe packets.">ARP_PROBE_NUM</a> probes, with an initial random delay (<a class="el" href="group__arp.html#gac96280c80e881be01b3e9d1f60393ec1" title="Initial random delay.">ARP_PROBE_WAIT</a>) and a random delay between <a class="el" href="group__arp.html#ga11da20f96d2c452852ab6b019aeb2750" title="Minimum delay until repeated probe.">ARP_PROBE_MIN</a> and <a class="el" href="group__arp.html#ga1000d5f6834f862aa1b726d36fe9a453" title="Maximum delay until repeated probe.">ARP_PROBE_MAX</a> after each probe. It will check each time if there is a valid ARP entry (to detect if there was a reply). </p><dl class="section note"><dt>Note</dt><dd>This function has to be called repeatedly until it returns an error code different than <a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba1b17baebf35c23eca74d6b2bbee01504" title="Is currently sending probes or waits for a reply.">ERROR_ARP_WAITING</a> . </dd></dl>
+<p>Sends out <a class="el" href="group__arp_timing.html#ga8eb07db5d3c608c7ac64533cc944386a" title="Number of probe packets.">ARP_PROBE_NUM</a> probes, with an initial random delay (<a class="el" href="group__arp_timing.html#gac96280c80e881be01b3e9d1f60393ec1" title="Initial random delay.">ARP_PROBE_WAIT</a>) and a random delay between <a class="el" href="group__arp_timing.html#ga11da20f96d2c452852ab6b019aeb2750" title="Minimum delay until repeated probe.">ARP_PROBE_MIN</a> and <a class="el" href="group__arp_timing.html#ga1000d5f6834f862aa1b726d36fe9a453" title="Maximum delay until repeated probe.">ARP_PROBE_MAX</a> after each probe. It will check each time if there is a valid ARP entry (to detect if there was a reply). </p><dl class="section note"><dt>Note</dt><dd>This function has to be called repeatedly until it returns an error code different than <a class="el" href="group__error.html#ggadc6f7acf887618df05bc50c50fee037ba1b17baebf35c23eca74d6b2bbee01504" title="Is currently sending probes or waits for a reply.">ERROR_ARP_WAITING</a> . </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ipTarget</td><td>The IPv4 address being probed for </td></tr>

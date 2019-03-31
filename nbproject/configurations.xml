@@ -28,6 +28,7 @@
       <itemPath>src/stack/bool.h</itemPath>
       <itemPath>src/stack/protocols/arpSettings.h</itemPath>
       <itemPath>src/stack/time.h</itemPath>
+      <itemPath>src/stack/protocols/ipv4Settings.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

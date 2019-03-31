@@ -125,7 +125,6 @@ void main() {
     INTCONbits.PEIE = 1;
 
     srand(ethernetController_getMacAddress().address[5]);
-    UARTTransmitText(intToString(rand() % 100));
 
     while (1) {
         CLRWDT(); //clear watch doggy

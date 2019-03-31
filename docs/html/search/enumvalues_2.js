@@ -4,6 +4,7 @@ var searchData=
   ['error_5farp_5finvalid_5fvalues',['ERROR_ARP_INVALID_VALUES',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba9b91278de8312021b894a38f98265320',1,'error.h']]],
   ['error_5farp_5fipv4_5faddress_5fconflict',['ERROR_ARP_IPv4_ADDRESS_CONFLICT',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba883dd6985ba1ccb1d3abcc2c02f9668c',1,'error.h']]],
   ['error_5farp_5fmaximum_5fnumber_5fof_5fprobes_5freached',['ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba48c1e250436823c5d6182e59e4f664bc',1,'error.h']]],
+  ['error_5farp_5fmaximum_5fnumber_5fof_5frequests_5freached',['ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba1de61ce85d3e162bfa397bdbe9919114',1,'error.h']]],
   ['error_5farp_5funknown',['ERROR_ARP_UNKNOWN',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba5dd3e6a0d4e9b3d21e5490346bf79865',1,'error.h']]],
   ['error_5farp_5fwaiting',['ERROR_ARP_WAITING',['../group__error.html#ggadc6f7acf887618df05bc50c50fee037ba1b17baebf35c23eca74d6b2bbee01504',1,'error.h']]],
   ['error_5fethernet_5fcontroller_5fpacket_5fcounter_5foverflow',['ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW',['../group__error.html#ggae82d87a039b0b080f43f6d790fe642e9a70b6f3c0286930f7f579bf81515bab6f',1,'error.h']]],

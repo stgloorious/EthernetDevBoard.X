@@ -6,21 +6,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S4 `uc -> 6 `i ]
 [n S4 macaddress address ]
 "30 src/eth/ethernet.c
-[c E101 2048 2054 2114 34824 .. ]
-[n E101 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
+[c E102 2048 2054 2114 34824 .. ]
+[n E102 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
 "35 src/eth/../eth/../eth/../eth/../mem/memoryTypes.h
 [s S3 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S3 memoryField start end length fIsAssigned fOutOfMemory index ]
-"34 src/eth/../eth/../eth/../eth/../enc424j600/rsv.h
+"36 src/eth/../eth/../eth/../eth/../enc424j600/rsv.h
 [s S2 `ui 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2 RSV length packetPreviouslyIgnored carrierEventPreviouslySeen CRCError lengthCheckError lengthOutOfRange receivedOk multicast broadcast dribbleNibble controlFrame pauseFrame unknownOpcode vlan runtFilter notMeFilter hashFilter magicFilter patternMatch unicast ]
 "86 src/eth/../eth/../eth/../eth/ethernetTypes.h
-[s S5 `ui 1 `S4 1 `S4 1 `E101 1 `S3 1 `S2 1 `ul 1 ]
+[s S5 `ui 1 `S4 1 `S4 1 `E102 1 `S3 1 `S2 1 `ul 1 ]
 [n S5 ethernetFrame length source destination ethertype memory receiveStatusVector tReceived ]
 "30 src/eth/ethernet.c
 [c E29 0 1 2 3 4 .. ]
 [n E29 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
-"118 src/eth/../eth/../eth/../stack/error.h
+"119 src/eth/../eth/../eth/../stack/error.h
 [s S1 `E29 1 `ui 1 ]
 [n S1 error module code ]
 "62 src/eth/../eth/../mem/memoryController.h
@@ -31,7 +31,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "212 src/eth/../eth/../eth/ethernetController.h
 [v _ethernetController_writeDestinationMACAddress `(v ~T0 @X0 0 ef2`S4`S3 ]
 "205
-[v _ethernetController_writeEtherTypeFieldToBuffer `(v ~T0 @X0 0 ef2`E101`S3 ]
+[v _ethernetController_writeEtherTypeFieldToBuffer `(v ~T0 @X0 0 ef2`E102`S3 ]
 "48 src/eth/../eth/../eth/../eth/../stack/time.h
 [v _getMillis `(ul ~T0 @X0 0 ef ]
 "297 src/eth/../eth/../eth/ethernetController.h
@@ -41,7 +41,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "279
 [v _ethernetController_getRSV `(S2 ~T0 @X0 0 ef1`ui ]
 "273
-[v _ethernetController_getEtherTypeField `(E101 ~T0 @X0 0 ef1`S3 ]
+[v _ethernetController_getEtherTypeField `(E102 ~T0 @X0 0 ef1`S3 ]
 "43 src/eth/../system/uart.h
 [v _UARTTransmitText `(v ~T0 @X0 0 ef1`*Cuc ]
 "62
@@ -53,7 +53,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "76 src/eth/../system/uart.h
 [v _macToString `(*uc ~T0 @X0 0 ef1`S4 ]
 "83
-[v _etherTypeToString `(*uc ~T0 @X0 0 ef1`E101 ]
+[v _etherTypeToString `(*uc ~T0 @X0 0 ef1`E102 ]
 "55
 [v _UARTTransmitInt `(v ~T0 @X0 0 ef1`ul ]
 "232 src/eth/../eth/../eth/ethernetController.h
@@ -117,41 +117,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 96: enum errors_arp {
 [; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 [; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-[; ;error.h: 99: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
-[; ;error.h: 100: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
-[; ;error.h: 101: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
-[; ;error.h: 102: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
-[; ;error.h: 103: };
-[; ;error.h: 108: enum errors_ipv4 {
-[; ;error.h: 109: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-[; ;error.h: 110: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
-[; ;error.h: 111: };
-[; ;error.h: 118: typedef struct error {
-[; ;error.h: 122: error_module_t module;
-[; ;error.h: 128: uint16_t code;
-[; ;error.h: 129: } error_t;
-[; ;rsv.h: 34: typedef struct RSV {
-[; ;rsv.h: 40: uint16_t length;
-[; ;rsv.h: 41: uint8_t packetPreviouslyIgnored : 1;
-[; ;rsv.h: 48: uint8_t carrierEventPreviouslySeen : 1;
-[; ;rsv.h: 49: uint8_t CRCError : 1;
-[; ;rsv.h: 50: uint8_t lengthCheckError : 1;
-[; ;rsv.h: 51: uint8_t lengthOutOfRange : 1;
-[; ;rsv.h: 52: uint8_t receivedOk : 1;
-[; ;rsv.h: 53: uint8_t multicast : 1;
-[; ;rsv.h: 54: uint8_t broadcast : 1;
-[; ;rsv.h: 55: uint8_t dribbleNibble : 1;
-[; ;rsv.h: 56: uint8_t controlFrame : 1;
-[; ;rsv.h: 57: uint8_t pauseFrame : 1;
-[; ;rsv.h: 58: uint8_t unknownOpcode : 1;
-[; ;rsv.h: 59: uint8_t vlan : 1;
-[; ;rsv.h: 60: uint8_t runtFilter : 1;
-[; ;rsv.h: 61: uint8_t notMeFilter : 1;
-[; ;rsv.h: 62: uint8_t hashFilter : 1;
-[; ;rsv.h: 63: uint8_t magicFilter : 1;
-[; ;rsv.h: 64: uint8_t patternMatch : 1;
-[; ;rsv.h: 65: uint8_t unicast : 1;
-[; ;rsv.h: 66: } RSV_t;
+[; ;error.h: 99: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+[; ;error.h: 100: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+[; ;error.h: 101: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+[; ;error.h: 102: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
+[; ;error.h: 103: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 104: };
+[; ;error.h: 109: enum errors_ipv4 {
+[; ;error.h: 110: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 111: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 112: };
+[; ;error.h: 119: typedef struct error {
+[; ;error.h: 123: error_module_t module;
+[; ;error.h: 129: uint16_t code;
+[; ;error.h: 130: } error_t;
+[; ;rsv.h: 36: typedef struct RSV {
+[; ;rsv.h: 42: uint16_t length;
+[; ;rsv.h: 43: uint8_t packetPreviouslyIgnored : 1;
+[; ;rsv.h: 50: uint8_t carrierEventPreviouslySeen : 1;
+[; ;rsv.h: 51: uint8_t CRCError : 1;
+[; ;rsv.h: 52: uint8_t lengthCheckError : 1;
+[; ;rsv.h: 53: uint8_t lengthOutOfRange : 1;
+[; ;rsv.h: 54: uint8_t receivedOk : 1;
+[; ;rsv.h: 55: uint8_t multicast : 1;
+[; ;rsv.h: 56: uint8_t broadcast : 1;
+[; ;rsv.h: 57: uint8_t dribbleNibble : 1;
+[; ;rsv.h: 58: uint8_t controlFrame : 1;
+[; ;rsv.h: 59: uint8_t pauseFrame : 1;
+[; ;rsv.h: 60: uint8_t unknownOpcode : 1;
+[; ;rsv.h: 61: uint8_t vlan : 1;
+[; ;rsv.h: 62: uint8_t runtFilter : 1;
+[; ;rsv.h: 63: uint8_t notMeFilter : 1;
+[; ;rsv.h: 64: uint8_t hashFilter : 1;
+[; ;rsv.h: 65: uint8_t magicFilter : 1;
+[; ;rsv.h: 66: uint8_t patternMatch : 1;
+[; ;rsv.h: 67: uint8_t unicast : 1;
+[; ;rsv.h: 68: } RSV_t;
 [; ;bool.h: 32: typedef bit bool_t;
 [; ;memoryTypes.h: 35: typedef struct memoryField {
 [; ;memoryTypes.h: 42: uint16_t start;
@@ -5434,12 +5435,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
 [; ;stack.h: 44: typedef struct stack {
 [; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 49: ethernetConnection_t ethernet;
-[; ;stack.h: 50: backgroundTaskHandler_t background;
-[; ;stack.h: 52: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 57: ipv4_address_t source;
-[; ;stack.h: 69: } stack_t;
-[; ;stack.h: 76: error_t stack_init();
+[; ;stack.h: 46: ethernetConnection_t ethernet;
+[; ;stack.h: 47: backgroundTaskHandler_t background;
+[; ;stack.h: 48: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 49: ipv4_address_t source;
+[; ;stack.h: 50: } stack_t;
+[; ;stack.h: 57: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5545,8 +5546,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _frame `*S5 ~T0 @X0 1 r1 ]
 [f ]
 "56
-[v F5983 `ul ~T0 @X0 1 s counter ]
-[i F5983
+[v F5984 `ul ~T0 @X0 1 s counter ]
+[i F5984
 -> -> -> 0 `i `l `ul
 ]
 "57
@@ -5605,7 +5606,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _UARTTransmitText (1 :s 1C ]
 [; ;ethernet.c: 80: UARTTransmitText(intToString(counter++));
 "80
-[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5983 -> -> -> 1 `i `l `ul `*Cuc ]
+[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5984 -> -> -> 1 `i `l `ul `*Cuc ]
 [; ;ethernet.c: 81: UARTTransmitText("]");
 "81
 [e ( _UARTTransmitText (1 :s 2C ]
@@ -5709,8 +5710,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 630  ]
 "99
 [e :U 631 ]
-[e [\ . *U _frame 3 , $ . `E101 1 632
- , $ . `E101 0 633
+[e [\ . *U _frame 3 , $ . `E102 1 632
+ , $ . `E102 0 633
  634 ]
 "120
 [e :U 630 ]

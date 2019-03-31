@@ -94,14 +94,14 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 34 "src/stack/protocols/../../eth/../enc424j600/rsv.h"
+# 36 "src/stack/protocols/../../eth/../enc424j600/rsv.h"
 typedef struct RSV {
 
-# 40
+# 42
 uint16_t length;
 uint8_t packetPreviouslyIgnored : 1;
 
-# 48
+# 50
 uint8_t carrierEventPreviouslySeen : 1;
 uint8_t CRCError : 1;
 uint8_t lengthCheckError : 1;
@@ -312,25 +312,26 @@ ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 enum errors_arp {
 ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 4,
-ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 5,
-ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 6,
+ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
 ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
 };
 
-# 108
+# 109
 enum errors_ipv4 {
 ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
 ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
-# 118
+# 119
 typedef struct error {
 
-# 122
+# 123
 error_module_t module;
 
-# 128
+# 129
 uint16_t code;
 } error_t;
 
@@ -7313,23 +7314,13 @@ uint8_t fPacketPending;
 # 44 "src/stack/protocols/../stack.h"
 typedef struct stack {
 ethernetFrame_t newReceivedFrame;
-
-
-
 ethernetConnection_t ethernet;
 backgroundTaskHandler_t background;
-
 ipv4_packet_t pendingPacketToSend;
-
-
-
-
 ipv4_address_t source;
-
-# 69
 } stack_t;
 
-# 76
+# 57
 error_t stack_init();
 
 # 46 "src/stack/protocols/ipv4.h"
@@ -7383,7 +7374,7 @@ bool_t ipv4_isAllZero(ipv4_address_t *ip);
 # 159
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
-# 29 "src/stack/protocols/ipv4.c"
+# 30 "src/stack/protocols/ipv4.c"
 ipv4_address_t static ipSource;
 ipv4_address_t static ipPreliminarySource;
 bool_t static fSrcAddrChanged;
@@ -7409,18 +7400,20 @@ error_t err;
 err.module = ERROR_MODULE_ARP;
 err.code = ERROR_ARP_WAITING;
 uint8_t index;
-uint8_t static requestCounter = 0;
+uint8_t static failedResolveCounter = 0;
 time_t static oldTime = 0;
 
 
 if (arp_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
 
 ipPacket.ethernet.destination = arp_getEntryFromTable(index);
+
 UARTTransmitText("[IPv4]: ");
 UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
 UARTTransmitText(" is at ");
 UARTTransmitText(macToString(ipPacket.ethernet.destination));
 UARTTransmitText("\n\r");
+
 
 ipPacket.ethernet.source = ethernetController_getMacAddress();
 
@@ -7428,12 +7421,19 @@ ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipP
 ethernetController_sendPacket(ipPacket.ethernet.memory);
 err.code = (uint16_t)0;
 oldTime = 0;
-} else if ((getMillis() - oldTime) > 1000u || oldTime == 0) {
+} else if ((getMillis() - oldTime) > 2000u || oldTime == 0) {
+failedResolveCounter++;
+
 UARTTransmitText("[IPv4]: Trying to resolve ");
 UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
 UARTTransmitText("\n\r");
+
 oldTime = getMillis();
-arp_sendRequest(ipPacket.ipv4Header.destination, ipPacket.ipv4Header.destination);
+arp_sendRequest(ipPacket.ipv4Header.source, ipPacket.ipv4Header.destination);
+if (failedResolveCounter >= 3u) {
+failedResolveCounter = 0;
+err.code = ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED;
+}
 }
 return err;
 }
@@ -7544,11 +7544,13 @@ ipv4_calculateHeaderChecksum(&testHeader);
 if (testHeader.checksum == header->checksum) {
 return 1;
 }
+
 UARTTransmitText("[Expected ");
 UARTTransmitText(hexToString(testHeader.checksum));
 UARTTransmitText(", got ");
 UARTTransmitText(hexToString(header->checksum));
 UARTTransmitText("]");
+
 return 0;
 }
 
@@ -7565,6 +7567,7 @@ headerField = frame->memory;
 headerField.start = frame->memory.start + 22;
 
 ip = ipv4_parseHeader(&headerField);
+
 UARTTransmitText("[");
 UARTTransmitText(ipAdressToString(ip.source));
 UARTTransmitText(" -> ");
@@ -7580,6 +7583,7 @@ UARTTransmitText(intToString(ip.headerLength));
 UARTTransmitText("]");
 if (!ipv4_checkHeaderChecksum(&ip))
 UARTTransmitText("[INVALID CHECKSUM]");
+
 }
 
 ipv4_address_t ipv4_getIPSourceAddress() {
@@ -7605,7 +7609,9 @@ if ((*arpStatus).module == ERROR_MODULE_ARP && fSrcAddrChanged) {
 switch ((*arpStatus).code) {
 case (uint16_t)0:
 err = (*arpStatus);
+
 UARTTransmitText("[IPv4]: ARP process completed.\n\r");
+
 ipSource = ipPreliminarySource;
 fSrcAddrChanged = 0;
 return err;
@@ -7614,7 +7620,6 @@ err = (*arpStatus);
 return err;
 case ERROR_ARP_IPv4_ADDRESS_CONFLICT:
 err.code = ERROR_IPv4_ADDRESS_ALREADY_IN_USE;
-UARTTransmitText("[IPv4]: Address conflict\n\r");
 fSrcAddrChanged = 0;
 return err;
 case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:

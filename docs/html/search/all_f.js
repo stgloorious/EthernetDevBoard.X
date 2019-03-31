@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['settings',['Settings',['../group__arp_settings.html',1,'']]],
+  ['settings',['Settings',['../group__ipv4_settings.html',1,'']]],
   ['senderipaddress',['senderIPAddress',['../structarp__message.html#a9532eb4e3dafc35df5f0cbd0598e6064',1,'arp_message']]],
   ['sendermacaddress',['senderMACAddress',['../structarp__message.html#a493c6c0fac00d24d97c5dd27e448d192',1,'arp_message']]],
   ['seteie',['SETEIE',['../group__single__byte.html#ga18fb24806c923f20700c651f0db72a57',1,'ENC424J600.h']]],

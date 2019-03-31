@@ -7,6 +7,7 @@ src/stack/protocols/../protocols/../../eth/../mem/memoryController.h  \
 src/stack/protocols/../protocols/../../system/../eth/mac.h  \
 src/stack/protocols/../protocols/../protocols/ipv4.h  \
 src/stack/protocols/../../eth/../stack/time.h  \
+src/stack/protocols/ipv4Settings.h  \
 src/stack/protocols/../../stack/../stack/error.h  \
 src/stack/protocols/../../stack/backgroundTasksTypes.h  \
 src/stack/protocols/../protocols/../../system/../stack/protocols/arpTypes.h  \

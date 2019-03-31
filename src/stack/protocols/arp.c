@@ -58,7 +58,9 @@ void arp_handleNewPacket(ethernetFrame_t *frame) {
         UARTTransmitText("[IsGratuitous]");
 
     arp_sendReply(arp);
-    arp_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
+    if (!ipv4_isAllZero(arp.senderIPAddress)) {//Don't allow entries with 0.0.0.0
+        arp_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
+    }
 }
 
 arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame) {

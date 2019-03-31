@@ -28,10 +28,18 @@
 #ifndef ARPSETTINGS_H
 #define	ARPSETTINGS_H
 
-/** \ingroup arp
+/** \addtogroup arpSettings Settings
+ *  \ingroup arp
+ *  \details These settings allow detailed configuration of
+ *  how the ARP operates.
  * \{
  */
 
+/** \addtogroup arpTiming Timing settings
+ *  \see Mostly taken from RFC 5227
+ *  \ingroup arpSettings
+ * \{
+ */
 #define ARP_PROBE_WAIT          1000u    ///< Initial random delay
 #define ARP_PROBE_NUM           3u       ///< Number of probe packets
 #define ARP_PROBE_MIN           1000u    ///< Minimum delay until repeated probe
@@ -42,12 +50,22 @@
 #define ARP_MAX_CONFLICTS       10u      ///< Max conflicts before rate-limit
 #define ARP_RATE_LIMIT_INTERVAL 60000u   ///< Delay between successive attempts
 #define ARP_DEFEND_INTERVAL     10000u   ///< Minimum interval between defensive ARPs
-
+#define ARP_REQUEST_NUM         3u       ///< Maximum number of requests that are sent trying to resolve an address
+#define ARP_REQUEST_WAIT        2000u    ///< Delay after a request has been sent
 #define ARP_TABLE_LENGTH        8u       ///< Number of entries in the ARP table
 #define ARP_TABLE_ENTRY_TTL     30000u   ///< Time to live for an ARP Entry in milliseconds
-#define ARP_TIMEOUT             2u       ///< How long to wait after request for a reply in seconds
 
-#define ARP_DEBUG_MESSAGES      true
+#if ARP_TABLE_LENGTH > 255
+#error "ARP_TABLE_LENGTH too large"
+#endif
+
+/**
+ * \}
+ */
+
+#ifndef ARP_DEBUG_MESSAGES
+#define ARP_DEBUG_MESSAGES      true    ///< This enables ALL debug messages related to the ARP
+#endif
 
 /**
  * \brief Replies are sent using a link-level broadcast and not unicast
@@ -57,12 +75,8 @@
  */
 #define ARP_LINK_BROADCAST      true     
 
-#define ARP_IPv4_PLEN           4u       ///< Number of bytes in an IPv4 address
-#define ARP_ETHERNET_HLEN       6u       ///< Number of bytes in a MAC address
-
-#if ARP_TABLE_LENGTH > 255
-#error "ARP_TABLE_LENGTH too large"
-#endif
+#define ARP_IPv4_PLEN           4u       ///< Number of bytes in an IPv4 address; Not made to be changed.
+#define ARP_ETHERNET_HLEN       6u       ///< Number of bytes in a MAC address; Not made to be changed.
 
 /**\}*/
 
