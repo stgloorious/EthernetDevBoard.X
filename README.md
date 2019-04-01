@@ -10,9 +10,7 @@
 
 ## Introduction
 
-Due to the increased market demand of internet-enabled devices it
-has become a preferable skill for engineers to be familiar with the basic
-principles of a network. I created this Ethernet Development Board
+I created this Ethernet Development Board
 as a learning platform for myself to develop network-enabled hardware
 and software. It offers a stand-alone solution with an 100Base-TX Ethernet Controller (ENC424J600) 
 which can be used in conjuction with the on-board microcontroller (PIC18F25K50). 
