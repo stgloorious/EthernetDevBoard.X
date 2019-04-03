@@ -26,6 +26,5 @@ var searchData=
   ['stack_5finit',['stack_init',['../group__stack.html#ga7e5b90321d20106f3f69e6c06c7f41b3',1,'stack_init():&#160;stack.c'],['../group__stack.html#ga7e5b90321d20106f3f69e6c06c7f41b3',1,'stack_init():&#160;stack.c']]],
   ['stack_5ft',['stack_t',['../group__stack.html#ga575defe06cb6cd9e4b02d90a916721b3',1,'stack.h']]],
   ['start',['start',['../structmemory_field.html#a171a2b5d11b1a5891c38a98ac731a161',1,'memoryField']]],
-  ['system',['System',['../group__system.html',1,'']]],
   ['system_2eh',['system.h',['../system_8h.html',1,'']]]
 ];

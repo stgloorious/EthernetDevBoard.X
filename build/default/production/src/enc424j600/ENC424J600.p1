@@ -5598,9 +5598,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 118: error_t ipv4_background(linkState_t link);
 [; ;ipv4.h: 126: bool_t ipv4_SrcAddrChanged(error_t *err);
 [; ;ipv4.h: 131: void ipv4_init();
-[; ;ipv4.h: 146: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
-[; ;ipv4.h: 153: bool_t ipv4_isAllZero(ipv4_address_t *ip);
-[; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 137: ipv4_address_t ipv4_generateAutoIP();
+[; ;ipv4.h: 152: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
+[; ;ipv4.h: 159: bool_t ipv4_isAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 165: void ipv4_setToAllZero(ipv4_address_t *ip);
 [; ;uart.h: 37: void UARTInit(void);
 [; ;uart.h: 43: void UARTTransmitText(const char *str);
 [; ;uart.h: 49: void DEBUG_MSG(char *text);
@@ -5699,8 +5700,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _comFailCount `uc ~T0 @X0 1 a ]
 [; ;ENC424J600.c: 93: uint8_t comFailCount = 0;
 [e = _comFailCount -> -> 0 `i `uc ]
-[v F5987 `uc ~T0 @X0 -> 2 `i s ]
-[i F5987
+[v F5988 `uc ~T0 @X0 -> 2 `i s ]
+[i F5988
 :U ..
 "94
 -> -> 18 `i `uc
@@ -5709,9 +5710,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _dataToSend `uc ~T0 @X0 -> 2 `i a ]
 [; ;ENC424J600.c: 94: uint8_t dataToSend[2] = {0x12, 0x34};
-[e = _dataToSend F5987 ]
-[v F5989 `uc ~T0 @X0 -> 2 `i s ]
-[i F5989
+[e = _dataToSend F5988 ]
+[v F5990 `uc ~T0 @X0 -> 2 `i s ]
+[i F5990
 :U ..
 "95
 -> -> 0 `i `uc
@@ -5720,7 +5721,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _receivedData `uc ~T0 @X0 -> 2 `i a ]
 [; ;ENC424J600.c: 95: uint8_t receivedData[2] = {0, 0};
-[e = _receivedData F5989 ]
+[e = _receivedData F5990 ]
 "96
 [v _err `S603 ~T0 @X0 1 a ]
 [; ;ENC424J600.c: 96: error_t err;
@@ -5872,8 +5873,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 145: char *ethernetController_getDeviceName() {
 [e :U _ethernetController_getDeviceName ]
 [f ]
-[v F5999 `Cuc ~T0 @X0 -> 0 `x s ]
-[i F5999
+[v F6000 `Cuc ~T0 @X0 -> 0 `x s ]
+[i F6000
 :U ..
 -> 69 `c
 -> 78 `c
@@ -5891,7 +5892,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "146
 [v _string `Cuc ~T0 @X0 11  a ]
 [; ;ENC424J600.c: 146: const char string [] = "ENC424J600";
-[e = _string F5999 ]
+[e = _string F6000 ]
 [; ;ENC424J600.c: 147: return (char*) string;
 "147
 [e ) -> &U _string `*uc ]
@@ -6092,15 +6093,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "209
 [v _opcode `uc ~T0 @X0 1 a ]
 "210
-[v F6008 `ui ~T0 @X0 1 s pointer ]
-[i F6008
+[v F6009 `ui ~T0 @X0 1 s pointer ]
+[i F6009
 -> -> 0 `i `ui
 ]
 [; ;ENC424J600.c: 209: uint8_t opcode;
 [; ;ENC424J600.c: 210: uint16_t static pointer = 0;
 [; ;ENC424J600.c: 211: if (pointer == 0) {
 "211
-[e $ ! == F6008 -> -> 0 `i `ui 645  ]
+[e $ ! == F6009 -> -> 0 `i `ui 645  ]
 {
 [; ;ENC424J600.c: 212: enc424j600_setGPDATAWritePointer(field.start);
 "212
@@ -6123,14 +6124,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeSPI (1 &U _data ]
 [; ;ENC424J600.c: 220: if (pointer == field.length - 1) {
 "220
-[e $ ! == F6008 - . _field 2 -> -> 1 `i `ui 646  ]
+[e $ ! == F6009 - . _field 2 -> -> 1 `i `ui 646  ]
 {
 [; ;ENC424J600.c: 221: PORTBbits.RB4=1;
 "221
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 222: pointer = 0;
 "222
-[e = F6008 -> -> 0 `i `ui ]
+[e = F6009 -> -> 0 `i `ui ]
 "223
 }
 [; ;ENC424J600.c: 223: } else {
@@ -6139,7 +6140,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;ENC424J600.c: 224: pointer++;
 "224
-[e ++ F6008 -> -> 1 `i `ui ]
+[e ++ F6009 -> -> 1 `i `ui ]
 "225
 }
 [e :U 647 ]
@@ -6435,7 +6436,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _address `ui ~T0 @X0 1 r1 ]
 [f ]
 "300
-[v F6037 `uc ~T0 @X0 -> 6 `i s temp ]
+[v F6038 `uc ~T0 @X0 -> 6 `i s temp ]
 [; ;ENC424J600.c: 300: uint8_t static temp[6];
 [; ;ENC424J600.c: 301: enc424j600_setERXDATAReadPointer(address + 2);
 "301
@@ -6461,7 +6462,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;ENC424J600.c: 306: enc424j600_readSPI(&temp[i]);
 "306
-[e ( _enc424j600_readSPI (1 &U *U + &U F6037 * -> _i `ux -> -> # *U &U F6037 `ui `ux ]
+[e ( _enc424j600_readSPI (1 &U *U + &U F6038 * -> _i `ux -> -> # *U &U F6038 `ui `ux ]
 "307
 }
 "305
@@ -6476,7 +6477,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 309: return enc424j600_updateReceiveStatusVector(&temp[0]);
 "309
-[e ) ( _enc424j600_updateReceiveStatusVector (1 &U *U + &U F6037 * -> -> -> 0 `i `ui `ux -> -> # *U &U F6037 `ui `ux ]
+[e ) ( _enc424j600_updateReceiveStatusVector (1 &U *U + &U F6038 * -> -> -> 0 `i `ui `ux -> -> # *U &U F6038 `ui `ux ]
 [e $UE 665  ]
 [; ;ENC424J600.c: 310: }
 "310

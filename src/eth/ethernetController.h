@@ -35,9 +35,6 @@
 #include "../mem/memoryTypes.h"
 #include "../enc424j600/interrupt.h"
 
-/**
- * \defgroup system System
- */
 
 /**
  * \brief Status LEDs in the RJ45 Receptacle. Usually they show Link/Unlinked Status and activity.

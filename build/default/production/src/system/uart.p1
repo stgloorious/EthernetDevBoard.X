@@ -5449,9 +5449,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 118: error_t ipv4_background(linkState_t link);
 [; ;ipv4.h: 126: bool_t ipv4_SrcAddrChanged(error_t *err);
 [; ;ipv4.h: 131: void ipv4_init();
-[; ;ipv4.h: 146: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
-[; ;ipv4.h: 153: bool_t ipv4_isAllZero(ipv4_address_t *ip);
-[; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 137: ipv4_address_t ipv4_generateAutoIP();
+[; ;ipv4.h: 152: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
+[; ;ipv4.h: 159: bool_t ipv4_isAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 165: void ipv4_setToAllZero(ipv4_address_t *ip);
 [; ;uart.h: 37: void UARTInit(void);
 [; ;uart.h: 43: void UARTTransmitText(const char *str);
 [; ;uart.h: 49: void DEBUG_MSG(char *text);
@@ -5546,14 +5547,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _val `ul ~T0 @X0 1 r1 ]
 [f ]
 "76
-[v F5938 `uc ~T0 @X0 -> 10 `i s number ]
+[v F5939 `uc ~T0 @X0 -> 10 `i s number ]
 [; ;uart.c: 76: char static number [10];
 [; ;uart.c: 77: ltoa(&number[0], (long) val, 10);
 "77
-[e ( _ltoa (3 , , &U *U + &U F5938 * -> -> -> 0 `i `ui `ux -> -> # *U &U F5938 `ui `ux -> _val `l -> 10 `i ]
+[e ( _ltoa (3 , , &U *U + &U F5939 * -> -> -> 0 `i `ui `ux -> -> # *U &U F5939 `ui `ux -> _val `l -> 10 `i ]
 [; ;uart.c: 81: return number;
 "81
-[e ) &U F5938 ]
+[e ) &U F5939 ]
 [e $UE 630  ]
 [; ;uart.c: 82: }
 "82
@@ -5606,7 +5607,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _val `ul ~T0 @X0 1 r1 ]
 [f ]
 "94
-[v F5943 `uc ~T0 @X0 -> 10 `i s number ]
+[v F5944 `uc ~T0 @X0 -> 10 `i s number ]
 "95
 [v _pointer `uc ~T0 @X0 1 a ]
 [; ;uart.c: 94: char static number [10];
@@ -5618,26 +5619,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 97: number[pointer++] = hexToChar((val >> 12) & 0xf);
 "97
-[e = *U + &U F5943 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5943 `ui `ux ( _hexToChar (1 -> & >> _val -> 12 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux ( _hexToChar (1 -> & >> _val -> 12 `i -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 98: number[pointer++] = hexToChar((val >> 8) & 0xf);
 "98
-[e = *U + &U F5943 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5943 `ui `ux ( _hexToChar (1 -> & >> _val -> 8 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux ( _hexToChar (1 -> & >> _val -> 8 `i -> -> -> 15 `i `l `ul `uc ]
 "99
 }
 [e :U 636 ]
 [; ;uart.c: 99: }
 [; ;uart.c: 100: number[pointer++] = hexToChar((val >> 4) & 0xf);
 "100
-[e = *U + &U F5943 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5943 `ui `ux ( _hexToChar (1 -> & >> _val -> 4 `i -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux ( _hexToChar (1 -> & >> _val -> 4 `i -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 101: number[pointer++] = hexToChar(val & 0xf);
 "101
-[e = *U + &U F5943 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5943 `ui `ux ( _hexToChar (1 -> & _val -> -> -> 15 `i `l `ul `uc ]
+[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux ( _hexToChar (1 -> & _val -> -> -> 15 `i `l `ul `uc ]
 [; ;uart.c: 103: number[pointer++] = '\0';
 "103
-[e = *U + &U F5943 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5943 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 104: return number;
 "104
-[e ) &U F5943 ]
+[e ) &U F5944 ]
 [e $UE 635  ]
 [; ;uart.c: 105: }
 "105
@@ -5650,8 +5651,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _macToString ]
 [v _addr `S609 ~T0 @X0 1 r1 ]
 [f ]
-[v F5947 `uc ~T0 @X0 -> 0 `x s ]
-[i F5947
+[v F5948 `uc ~T0 @X0 -> 0 `x s ]
+[i F5948
 :U ..
 -> 63 `c
 -> 63 `c
@@ -5676,7 +5677,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "108
 [v _address `uc ~T0 @X0 18  a ]
 [; ;uart.c: 108: char address[] = "??:??:??:??:??:??";
-[e = _address F5947 ]
+[e = _address F5948 ]
 "109
 [v _j `uc ~T0 @X0 1 a ]
 [; ;uart.c: 109: uint8_t j = 0;
@@ -5886,8 +5887,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ip `S612 ~T0 @X0 1 r1 ]
 [f ]
 "163
-[v F5955 `uc ~T0 @X0 -> 0 `x s address ]
-[i F5955
+[v F5956 `uc ~T0 @X0 -> 0 `x s address ]
+[i F5956
 :U ..
 -> 63 `c
 -> 63 `c
@@ -5944,24 +5945,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! > -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 0 `i 663  ]
 [; ;uart.c: 176: address[pointer++] = hundreds[i] + 0x30;
 "176
-[e = *U + &U F5955 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5955 `ui `ux -> + -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5956 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5956 `ui `ux -> + -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 48 `i `uc ]
 [e :U 663 ]
 [; ;uart.c: 177: if ((tens[i] > 0) || hundreds[i] > 0)
 "177
 [e $ ! || > -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 0 `i > -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 0 `i 664  ]
 [; ;uart.c: 178: address[pointer++] = tens[i] + 0x30;
 "178
-[e = *U + &U F5955 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5955 `ui `ux -> + -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5956 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5956 `ui `ux -> + -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 48 `i `uc ]
 [e :U 664 ]
 [; ;uart.c: 179: address[pointer++] = ones[i] + 0x30;
 "179
-[e = *U + &U F5955 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5955 `ui `ux -> + -> *U + &U _ones * -> _i `ux -> -> # *U &U _ones `ui `ux `i -> 48 `i `uc ]
+[e = *U + &U F5956 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5956 `ui `ux -> + -> *U + &U _ones * -> _i `ux -> -> # *U &U _ones `ui `ux `i -> 48 `i `uc ]
 [; ;uart.c: 180: if (i != 3)
 "180
 [e $ ! != -> _i `i -> 3 `i 665  ]
 [; ;uart.c: 181: address[pointer++] = '.';
 "181
-[e = *U + &U F5955 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5955 `ui `ux -> -> 46 `ui `uc ]
+[e = *U + &U F5956 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5956 `ui `ux -> -> 46 `ui `uc ]
 [e :U 665 ]
 "182
 }
@@ -5974,10 +5975,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.c: 182: }
 [; ;uart.c: 183: address[pointer] = '\0';
 "183
-[e = *U + &U F5955 * -> _pointer `ux -> -> # *U &U F5955 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5956 * -> _pointer `ux -> -> # *U &U F5956 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 184: return address;
 "184
-[e ) &U F5955 ]
+[e ) &U F5956 ]
 [e $UE 659  ]
 [; ;uart.c: 185: }
 "185
@@ -5991,7 +5992,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _table `S617 ~T0 @X0 1 r1 ]
 [f ]
 "188
-[v F5962 `uc ~T0 @X0 -> 50 `i s string ]
+[v F5963 `uc ~T0 @X0 -> 50 `i s string ]
 "189
 [v _pointer `uc ~T0 @X0 1 a ]
 [; ;uart.c: 188: char static string [50];
@@ -6009,14 +6010,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 668 ]
 [; ;uart.c: 194: string[pointer++] = *(tempAddr++);
 "194
-[e = *U + &U F5962 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5962 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 667 ]
 "193
 [e $ != -> *U _tempAddr `ui -> 0 `ui 668  ]
 [e :U 669 ]
 [; ;uart.c: 196: string[pointer++] = ' ';
 "196
-[e = *U + &U F5962 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5962 `ui `ux -> -> 32 `ui `uc ]
+[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux -> -> 32 `ui `uc ]
 [; ;uart.c: 198: tempAddr = macToString(table.mac);
 "198
 [e = _tempAddr ( _macToString (1 . _table 1 ]
@@ -6026,14 +6027,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 671 ]
 [; ;uart.c: 200: string[pointer++] = *(tempAddr++);
 "200
-[e = *U + &U F5962 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5962 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 670 ]
 "199
 [e $ != -> *U _tempAddr `ui -> 0 `ui 671  ]
 [e :U 672 ]
 [; ;uart.c: 202: string[pointer++] = ' ';
 "202
-[e = *U + &U F5962 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5962 `ui `ux -> -> 32 `ui `uc ]
+[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux -> -> 32 `ui `uc ]
 [; ;uart.c: 204: tempAddr = intToString(table.timeCreated % 0xffff);
 "204
 [e = _tempAddr ( _intToString (1 % . _table 2 -> -> 65535 `ui `ul ]
@@ -6043,17 +6044,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 674 ]
 [; ;uart.c: 206: string[pointer++] = *(tempAddr++);
 "206
-[e = *U + &U F5962 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5962 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 673 ]
 "205
 [e $ != -> *U _tempAddr `ui -> 0 `ui 674  ]
 [e :U 675 ]
 [; ;uart.c: 208: string[pointer] = '\0';
 "208
-[e = *U + &U F5962 * -> _pointer `ux -> -> # *U &U F5962 `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U F5963 * -> _pointer `ux -> -> # *U &U F5963 `ui `ux -> -> 0 `ui `uc ]
 [; ;uart.c: 210: return string;
 "210
-[e ) &U F5962 ]
+[e ) &U F5963 ]
 [e $UE 666  ]
 [; ;uart.c: 211: }
 "211

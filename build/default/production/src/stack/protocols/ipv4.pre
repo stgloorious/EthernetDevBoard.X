@@ -7365,13 +7365,16 @@ bool_t ipv4_SrcAddrChanged(error_t *err);
 # 131
 void ipv4_init();
 
-# 146
+# 137
+ipv4_address_t ipv4_generateAutoIP();
+
+# 152
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 
-# 153
+# 159
 bool_t ipv4_isAllZero(ipv4_address_t *ip);
 
-# 159
+# 165
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
 # 30 "src/stack/protocols/ipv4.c"
@@ -7421,6 +7424,7 @@ ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipP
 ethernetController_sendPacket(ipPacket.ethernet.memory);
 err.code = (uint16_t)0;
 oldTime = 0;
+failedResolveCounter = 0;
 } else if ((getMillis() - oldTime) > 2000u || oldTime == 0) {
 failedResolveCounter++;
 
@@ -7673,4 +7677,16 @@ ip->address[i] = 0x00;
 
 void ipv4_init() {
 fSrcAddrChanged = 0;
+ipv4_setToAllZero(&ipSource);
+ipv4_setToAllZero(&ipPreliminarySource);
+}
+
+ipv4_address_t ipv4_generateAutoIP() {
+ipv4_address_t ip;
+
+ip.address[0] = 169;
+ip.address[1] = 254;
+ip.address[2] = (rand() % 253) + 1;
+ip.address[3] = (rand() % 256);
+return ip;
 }

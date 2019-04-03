@@ -23,7 +23,7 @@ To really understand what's going on I wanted to create as much as possible from
 Currently I'm working on the microcontroller part, the FPGA functionality is unused.
 
 ## General overview
-![](docs/images/basic_overview.svg)
+![](docs/images/basic_overview.png)
 
 This block diagram shows the basic theory of operation of this board. The Ethernet controller takes care of the access 
 of the media as well as basic MAC functions (e.g. address insertion, CRC checksum check) in hardware. It also offers an integrated memory which

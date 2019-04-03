@@ -7353,13 +7353,16 @@ bool_t ipv4_SrcAddrChanged(error_t *err);
 # 131
 void ipv4_init();
 
-# 146
+# 137
+ipv4_address_t ipv4_generateAutoIP();
+
+# 152
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 
-# 153
+# 159
 bool_t ipv4_isAllZero(ipv4_address_t *ip);
 
-# 159
+# 165
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
 # 44 "src/system/../system/../stack/stack.h"
@@ -7614,7 +7617,7 @@ UARTTransmitText("------------------------------------------------\n\r");
 UARTTransmitText("FIRMWARE BUILD DATE IS ");
 UARTTransmitText("Mar 31 2019");
 UARTTransmitText(" ");
-UARTTransmitText("22:00:36");
+UARTTransmitText("22:51:44");
 UARTTransmitText(".\n\r");
 error_t err;
 err = ethernetController_init();
@@ -7647,22 +7650,18 @@ TRISB |= (1<<5);
 
 uint8_t oldState;
 
-stack.source.address[0] = 192;
-stack.source.address[1] = 168;
-stack.source.address[2] = 0;
-stack.source.address[3] = 1;
-
 ipv4_address_t ipDst;
-ipDst.address[0] = 192;
-ipDst.address[1] = 168;
-ipDst.address[2] = 0;
-ipDst.address[3] = 10;
+ipDst.address[0] = 169;
+ipDst.address[1] = 254;
+ipDst.address[2] = 108;
+ipDst.address[3] = 135;
 
 
 INTCONbits.GIE = 1;
 INTCONbits.PEIE = 1;
 
 srand(ethernetController_getMacAddress().address[5]);
+stack.source = ipv4_generateAutoIP();
 
 while (1) {
 asm(" clrwdt");
@@ -7822,7 +7821,7 @@ buttonHandler(&buttonState);
 if (INTCON3bits.INT2IF) {
 INTCON3bits.INT2IF = 0;
 
-# 292
+# 288
 }
 if (RCIF) {
 

@@ -91,6 +91,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "108 src/stack/backgroundTasks.c
 [c E61 501 599 .. ]
 [n E61 errors_ipv4 ERROR_IPv4_ADDRESS_ALREADY_IN_USE ERROR_IPv4_UNKNOWN  ]
+"137 src/stack/../stack/../stack/protocols/ipv4.h
+[v _ipv4_generateAutoIP `(S8 ~T0 @X0 0 ef ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -5472,9 +5474,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 118: error_t ipv4_background(linkState_t link);
 [; ;ipv4.h: 126: bool_t ipv4_SrcAddrChanged(error_t *err);
 [; ;ipv4.h: 131: void ipv4_init();
-[; ;ipv4.h: 146: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
-[; ;ipv4.h: 153: bool_t ipv4_isAllZero(ipv4_address_t *ip);
-[; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 137: ipv4_address_t ipv4_generateAutoIP();
+[; ;ipv4.h: 152: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
+[; ;ipv4.h: 159: bool_t ipv4_isAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 165: void ipv4_setToAllZero(ipv4_address_t *ip);
 [; ;backgroundTasks.h: 41: void handleStackBackgroundTasks (stack_t *stack);
 [; ;ENC424J600.h: 71: void static enc424j600_initSPI();
 [; ;ENC424J600.h: 85: void static enc424j600_writeSPI(uint8_t *data);
@@ -5687,9 +5690,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasks.c: 110: UARTTransmitText("[IPv4]: Address conflict detected.\n\r");
 "110
 [e ( _UARTTransmitText (1 :s 4C ]
-[; ;backgroundTasks.c: 112: stack->source.address[3]++;
+[; ;backgroundTasks.c: 112: stack->source = ipv4_generateAutoIP();
 "112
-[e ++ *U + &U . . *U _stack 4 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . *U _stack 4 0 `ui `ux -> -> 1 `i `uc ]
+[e = . *U _stack 4 ( _ipv4_generateAutoIP ..  ]
 [; ;backgroundTasks.c: 114: UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
 "114
 [e ( _UARTTransmitText (1 :s 5C ]

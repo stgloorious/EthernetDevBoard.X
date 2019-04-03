@@ -40,9 +40,12 @@ void arp_handleNewPacket(ethernetFrame_t *frame) {
     arp = arp_parseFromRXBuffer(frame);
     if (arp.err.code != ERROR_CODE_SUCCESSFUL) {
         ethernetController_dropPacket(frame);
+#if ARP_DEBUG_MESSAGES==true
         UARTTransmitText("[Invalid ARP Message was discarded.]\r\n");
+#endif
         return;
     }
+#if ARP_DEBUG_MESSAGES==true
     UARTTransmitText("[");
     UARTTransmitText(macToString(arp.senderMACAddress));
     UARTTransmitText(", ");
@@ -56,9 +59,9 @@ void arp_handleNewPacket(ethernetFrame_t *frame) {
         UARTTransmitText("[IsProbe]");
     if (arp.fIsGratuitous)
         UARTTransmitText("[IsGratuitous]");
-
+#endif 
     arp_sendReply(arp);
-    if (!ipv4_isAllZero(arp.senderIPAddress)) {//Don't allow entries with 0.0.0.0
+    if (!ipv4_isAllZero(&arp.senderIPAddress)) {//Don't allow entries with 0.0.0.0
         arp_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
     }
 }
@@ -232,12 +235,13 @@ void static arp_sendReply(arp_message_t request) {
     reply.targetMACAddress = targetMAC;
 
     arp_send(reply);
-
+#if ARP_DEBUG_MESSAGES==true
     UARTTransmitText("[Reply sent to ");
     UARTTransmitText(macToString(reply.targetMACAddress));
     UARTTransmitText(", ");
     UARTTransmitText(ipAdressToString(reply.targetIPAddress));
     UARTTransmitText("]");
+#endif
 }
 
 /* =======================  Collision Check  ======================= */
@@ -422,6 +426,7 @@ error_t arp_background(linkState_t link) {
 #if ARP_DEBUG_MESSAGES==true
                         UARTTransmitText("[ARP]: An unknown error occured.\n\r");
 #endif
+                        break;
                 }
             }
             err.code = errProbe.code;

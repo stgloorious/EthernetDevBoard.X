@@ -630,13 +630,16 @@ bool_t ipv4_SrcAddrChanged(error_t *err);
 # 131
 void ipv4_init();
 
-# 146
+# 137
+ipv4_address_t ipv4_generateAutoIP();
+
+# 152
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 
-# 153
+# 159
 bool_t ipv4_isAllZero(ipv4_address_t *ip);
 
-# 159
+# 165
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
 # 62 "src/stack/protocols/../../eth/../mem/memoryController.h"
@@ -7389,9 +7392,12 @@ return;
 arp = arp_parseFromRXBuffer(frame);
 if (arp.err.code != (uint16_t)0) {
 ethernetController_dropPacket(frame);
+
 UARTTransmitText("[Invalid ARP Message was discarded.]\r\n");
+
 return;
 }
+
 UARTTransmitText("[");
 UARTTransmitText(macToString(arp.senderMACAddress));
 UARTTransmitText(", ");
@@ -7407,7 +7413,9 @@ if (arp.fIsGratuitous)
 UARTTransmitText("[IsGratuitous]");
 
 arp_sendReply(arp);
+if (!ipv4_isAllZero(&arp.senderIPAddress)) {
 arp_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
+}
 }
 
 arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame) {
@@ -7491,7 +7499,7 @@ macaddress_t destination;
 mac_setToBroadcast(&destination);
 ethFrame.destination = destination;
 
-# 147
+# 152
 ethFrame.length = 36;
 ethFrame.source = ethernetController_getSourceMACAddress(field);
 ethFrame.ethertype = ETHERTYPE_ARP;
@@ -7584,6 +7592,7 @@ UARTTransmitText(macToString(reply.targetMACAddress));
 UARTTransmitText(", ");
 UARTTransmitText(ipAdressToString(reply.targetIPAddress));
 UARTTransmitText("]");
+
 }
 
 
@@ -7768,6 +7777,7 @@ default:
 
 UARTTransmitText("[ARP]: An unknown error occured.\n\r");
 
+break;
 }
 }
 err.code = errProbe.code;

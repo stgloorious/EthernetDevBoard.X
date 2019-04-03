@@ -130,6 +130,12 @@ bool_t ipv4_SrcAddrChanged(error_t *err);
  */
 void ipv4_init();
 
+/**
+ * 
+ * @return 
+ */
+ipv4_address_t ipv4_generateAutoIP();
+
 /**\}*/
 
 /** \addtogroup ip_operations IPv4 Address operations

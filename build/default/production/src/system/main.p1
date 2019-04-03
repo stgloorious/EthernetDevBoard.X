@@ -232,6 +232,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "61 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
 [v _srand `(v ~T0 @X0 0 ef1`ui ]
+"137 src/system/../system/../stack/../stack/protocols/ipv4.h
+[v _ipv4_generateAutoIP `(S615 ~T0 @X0 0 ef ]
 "41 src/system/../system/../stack/backgroundTasks.h
 [v _handleStackBackgroundTasks `(v ~T0 @X0 0 ef1`*S620 ]
 "61 src/system/../system/main.h
@@ -248,7 +250,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ipv4_txFrameRequest `(v ~T0 @X0 0 ef1`*S617 ]
 "73
 [v _ipv4_streamToTransmissionBuffer `(v ~T0 @X0 0 ef2`uc`S617 ]
-"224 src/system/main.c
+"220 src/system/main.c
 [c E5575 301 302 303 399 .. ]
 [n E5575 errors_ethernetController ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW ERROR_ETHERNET_CONTROLLER_UNKNOWN  ]
 [c E5580 401 403 404 405 406 407 499 .. ]
@@ -5664,9 +5666,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 118: error_t ipv4_background(linkState_t link);
 [; ;ipv4.h: 126: bool_t ipv4_SrcAddrChanged(error_t *err);
 [; ;ipv4.h: 131: void ipv4_init();
-[; ;ipv4.h: 146: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
-[; ;ipv4.h: 153: bool_t ipv4_isAllZero(ipv4_address_t *ip);
-[; ;ipv4.h: 159: void ipv4_setToAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 137: ipv4_address_t ipv4_generateAutoIP();
+[; ;ipv4.h: 152: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
+[; ;ipv4.h: 159: bool_t ipv4_isAllZero(ipv4_address_t *ip);
+[; ;ipv4.h: 165: void ipv4_setToAllZero(ipv4_address_t *ip);
 [; ;stack.h: 44: typedef struct stack {
 [; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
 [; ;stack.h: 46: ethernetConnection_t ethernet;
@@ -5956,7 +5959,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 78: UARTTransmitText(" ");
 "78
 [e ( _UARTTransmitText (1 :s 7C ]
-[; ;main.c: 79: UARTTransmitText("22:00:36");
+[; ;main.c: 79: UARTTransmitText("22:51:44");
 "79
 [e ( _UARTTransmitText (1 :s 8C ]
 [; ;main.c: 80: UARTTransmitText(".\n\r");
@@ -6034,343 +6037,334 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =| _TRISB -> << -> 1 `i -> 5 `i `uc ]
 "110
 [v _oldState `uc ~T0 @X0 1 a ]
-[; ;main.c: 110: uint8_t oldState;
-[; ;main.c: 112: stack.source.address[0] = 192;
 "112
-[e = *U + &U . . _stack 4 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . _stack 4 0 `ui `ux -> -> 192 `i `uc ]
-[; ;main.c: 113: stack.source.address[1] = 168;
-"113
-[e = *U + &U . . _stack 4 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . _stack 4 0 `ui `ux -> -> 168 `i `uc ]
-[; ;main.c: 114: stack.source.address[2] = 0;
-"114
-[e = *U + &U . . _stack 4 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . . _stack 4 0 `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 115: stack.source.address[3] = 1;
-"115
-[e = *U + &U . . _stack 4 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . _stack 4 0 `ui `ux -> -> 1 `i `uc ]
-"117
 [v _ipDst `S615 ~T0 @X0 1 a ]
-[; ;main.c: 117: ipv4_address_t ipDst;
-[; ;main.c: 118: ipDst.address[0] = 192;
-"118
-[e = *U + &U . _ipDst 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _ipDst 0 `ui `ux -> -> 192 `i `uc ]
-[; ;main.c: 119: ipDst.address[1] = 168;
+[; ;main.c: 110: uint8_t oldState;
+[; ;main.c: 112: ipv4_address_t ipDst;
+[; ;main.c: 113: ipDst.address[0] = 169;
+"113
+[e = *U + &U . _ipDst 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _ipDst 0 `ui `ux -> -> 169 `i `uc ]
+[; ;main.c: 114: ipDst.address[1] = 254;
+"114
+[e = *U + &U . _ipDst 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _ipDst 0 `ui `ux -> -> 254 `i `uc ]
+[; ;main.c: 115: ipDst.address[2] = 108;
+"115
+[e = *U + &U . _ipDst 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _ipDst 0 `ui `ux -> -> 108 `i `uc ]
+[; ;main.c: 116: ipDst.address[3] = 135;
+"116
+[e = *U + &U . _ipDst 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _ipDst 0 `ui `ux -> -> 135 `i `uc ]
+[; ;main.c: 119: INTCONbits.GIE = 1;
 "119
-[e = *U + &U . _ipDst 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _ipDst 0 `ui `ux -> -> 168 `i `uc ]
-[; ;main.c: 120: ipDst.address[2] = 0;
-"120
-[e = *U + &U . _ipDst 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _ipDst 0 `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 121: ipDst.address[3] = 10;
-"121
-[e = *U + &U . _ipDst 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _ipDst 0 `ui `ux -> -> 10 `i `uc ]
-[; ;main.c: 124: INTCONbits.GIE = 1;
-"124
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 125: INTCONbits.PEIE = 1;
-"125
+[; ;main.c: 120: INTCONbits.PEIE = 1;
+"120
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 127: srand(ethernetController_getMacAddress().address[5]);
-"127
+[; ;main.c: 122: srand(ethernetController_getMacAddress().address[5]);
+"122
 [e ( _srand (1 -> *U + &U . ( _ethernetController_getMacAddress ..  0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . ( _ethernetController_getMacAddress ..  0 `ui `ux `ui ]
-[; ;main.c: 129: while (1) {
-"129
+[; ;main.c: 123: stack.source = ipv4_generateAutoIP();
+"123
+[e = . _stack 4 ( _ipv4_generateAutoIP ..  ]
+[; ;main.c: 125: while (1) {
+"125
 [e :U 626 ]
 {
-[; ;main.c: 130: asm(" clrwdt");
-"130
+[; ;main.c: 126: asm(" clrwdt");
+"126
 [; <"  clrwdt ;# ">
-[; ;main.c: 132: handleStackBackgroundTasks(&stack);
-"132
+[; ;main.c: 128: handleStackBackgroundTasks(&stack);
+"128
 [e ( _handleStackBackgroundTasks (1 &U _stack ]
-[; ;main.c: 134: printEthernetState(stack.ethernet);
-"134
+[; ;main.c: 130: printEthernetState(stack.ethernet);
+"130
 [e ( _printEthernetState (1 . _stack 1 ]
-[; ;main.c: 136: numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : stack.source.address[3];
-"136
+[; ;main.c: 132: numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : stack.source.address[3];
+"132
 [e = _numberToDisplay -> -> ? == -> . . _stack 1 0 `i -> . `E5638 0 `i : -> 1000 `i -> *U + &U . . _stack 4 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . . _stack 4 0 `ui `ux `i `l `ul ]
-[; ;main.c: 138: if (buttonState) {
-"138
+[; ;main.c: 134: if (buttonState) {
+"134
 [e $ ! != -> _buttonState `i -> -> -> 0 `i `Vuc `i 628  ]
 {
-[; ;main.c: 139: buttonState = 0;
-"139
+[; ;main.c: 135: buttonState = 0;
+"135
 [e = _buttonState -> -> 0 `i `uc ]
-[; ;main.c: 141: UARTTransmitText("My Address is ");
-"141
+[; ;main.c: 137: UARTTransmitText("My Address is ");
+"137
 [e ( _UARTTransmitText (1 :s 14C ]
-[; ;main.c: 142: UARTTransmitText(ipAdressToString(ipv4_getIPSourceAddress()));
-"142
+[; ;main.c: 138: UARTTransmitText(ipAdressToString(ipv4_getIPSourceAddress()));
+"138
 [e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 ( _ipv4_getIPSourceAddress ..  `*Cuc ]
-[; ;main.c: 143: UARTTransmitText("\n\r");
-"143
+[; ;main.c: 139: UARTTransmitText("\n\r");
+"139
 [e ( _UARTTransmitText (1 :s 15C ]
-[; ;main.c: 146: if (stack.ethernet.link == LINK_ESTABLISHED) {
-"146
+[; ;main.c: 142: if (stack.ethernet.link == LINK_ESTABLISHED) {
+"142
 [e $ ! == -> . . _stack 1 0 `i -> . `E5638 1 `i 629  ]
 {
-"149
+"145
 [v _headerBuf `uc ~T0 @X0 -> 32 `i a ]
-[; ;main.c: 149: uint8_t headerBuf[32];
-[; ;main.c: 150: stack.pendingPacketToSend.ipv4Header.destination = ipDst;
-"150
+[; ;main.c: 145: uint8_t headerBuf[32];
+[; ;main.c: 146: stack.pendingPacketToSend.ipv4Header.destination = ipDst;
+"146
 [e = . . . _stack 3 0 12 _ipDst ]
-[; ;main.c: 151: stack.pendingPacketToSend.ipv4Header.source = ipv4_getIPSourceAddress();
-"151
+[; ;main.c: 147: stack.pendingPacketToSend.ipv4Header.source = ipv4_getIPSourceAddress();
+"147
 [e = . . . _stack 3 0 11 ( _ipv4_getIPSourceAddress ..  ]
-[; ;main.c: 152: stack.pendingPacketToSend.ipv4Header.totalLength = 120;
-"152
+[; ;main.c: 148: stack.pendingPacketToSend.ipv4Header.totalLength = 120;
+"148
 [e = . . . _stack 3 0 4 -> -> 120 `i `ui ]
-[; ;main.c: 153: stack.pendingPacketToSend.ipv4Header.timeToLive = 255;
-"153
+[; ;main.c: 149: stack.pendingPacketToSend.ipv4Header.timeToLive = 255;
+"149
 [e = . . . _stack 3 0 8 -> -> 255 `i `uc ]
-[; ;main.c: 154: stack.pendingPacketToSend.ipv4Header.version = 4;
-"154
+[; ;main.c: 150: stack.pendingPacketToSend.ipv4Header.version = 4;
+"150
 [e = . . . _stack 3 0 0 -> -> 4 `i `uc ]
-[; ;main.c: 155: ipv4_calculateHeaderChecksum(&stack.pendingPacketToSend.ipv4Header);
-"155
+[; ;main.c: 151: ipv4_calculateHeaderChecksum(&stack.pendingPacketToSend.ipv4Header);
+"151
 [e ( _ipv4_calculateHeaderChecksum (1 &U . . _stack 3 0 ]
-[; ;main.c: 156: ipv4_writeHeaderIntoBuffer(stack.pendingPacketToSend.ipv4Header, headerBuf);
-"156
+[; ;main.c: 152: ipv4_writeHeaderIntoBuffer(stack.pendingPacketToSend.ipv4Header, headerBuf);
+"152
 [e ( _ipv4_writeHeaderIntoBuffer (2 , . . _stack 3 0 &U _headerBuf ]
-[; ;main.c: 158: ipv4_txFrameRequest(&stack.pendingPacketToSend);
-"158
+[; ;main.c: 154: ipv4_txFrameRequest(&stack.pendingPacketToSend);
+"154
 [e ( _ipv4_txFrameRequest (1 &U . _stack 3 ]
-[; ;main.c: 160: for (uint8_t i = 0; i < stack.pendingPacketToSend.ipv4Header.totalLength; i++) {
-"160
+[; ;main.c: 156: for (uint8_t i = 0; i < stack.pendingPacketToSend.ipv4Header.totalLength; i++) {
+"156
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 633  ]
 [e :U 630 ]
 {
-[; ;main.c: 161: if (i < stack.pendingPacketToSend.ipv4Header.headerLength * 4) {
-"161
+[; ;main.c: 157: if (i < stack.pendingPacketToSend.ipv4Header.headerLength * 4) {
+"157
 [e $ ! < -> _i `i * -> . . . _stack 3 0 1 `i -> 4 `i 634  ]
 {
-[; ;main.c: 162: ipv4_streamToTransmissionBuffer(headerBuf[i], stack.pendingPacketToSend);
-"162
+[; ;main.c: 158: ipv4_streamToTransmissionBuffer(headerBuf[i], stack.pendingPacketToSend);
+"158
 [e ( _ipv4_streamToTransmissionBuffer (2 , *U + &U _headerBuf * -> _i `ux -> -> # *U &U _headerBuf `ui `ux . _stack 3 ]
-"163
+"159
 }
-[; ;main.c: 163: } else
+[; ;main.c: 159: } else
 [e $U 635  ]
 [e :U 634 ]
-[; ;main.c: 164: ipv4_streamToTransmissionBuffer(0, stack.pendingPacketToSend);
-"164
+[; ;main.c: 160: ipv4_streamToTransmissionBuffer(0, stack.pendingPacketToSend);
+"160
 [e ( _ipv4_streamToTransmissionBuffer (2 , -> -> 0 `i `uc . _stack 3 ]
 [e :U 635 ]
-"165
+"161
 }
-"160
+"156
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 633 ]
 [e $ < -> _i `ui . . . _stack 3 0 4 630  ]
 [e :U 631 ]
-"165
+"161
 }
-[; ;main.c: 165: }
-[; ;main.c: 166: UARTTransmitText("[IPv4]: A packet was prepared (");
-"166
+[; ;main.c: 161: }
+[; ;main.c: 162: UARTTransmitText("[IPv4]: A packet was prepared (");
+"162
 [e ( _UARTTransmitText (1 :s 16C ]
-[; ;main.c: 167: UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.source));
-"167
+[; ;main.c: 163: UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.source));
+"163
 [e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . . . _stack 3 0 11 `*Cuc ]
-[; ;main.c: 168: UARTTransmitText(" -> ");
-"168
+[; ;main.c: 164: UARTTransmitText(" -> ");
+"164
 [e ( _UARTTransmitText (1 :s 17C ]
-[; ;main.c: 169: UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.destination));
-"169
+[; ;main.c: 165: UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.destination));
+"165
 [e ( _UARTTransmitText (1 -> ( _ipAdressToString (1 . . . _stack 3 0 12 `*Cuc ]
-[; ;main.c: 170: UARTTransmitText(")\n\r");
-"170
+[; ;main.c: 166: UARTTransmitText(")\n\r");
+"166
 [e ( _UARTTransmitText (1 :s 18C ]
-[; ;main.c: 172: stack.background.fPacketPending = 1;
-"172
+[; ;main.c: 168: stack.background.fPacketPending = 1;
+"168
 [e = . . _stack 2 1 -> -> 1 `i `uc ]
-"173
+"169
 }
 [e :U 629 ]
-"174
+"170
 }
 [e :U 628 ]
-"175
+"171
 }
 [e :U 625 ]
-"129
+"125
 [e $U 626  ]
 [e :U 627 ]
-[; ;main.c: 173: }
-[; ;main.c: 174: }
-[; ;main.c: 175: }
-[; ;main.c: 176: }
-"176
+[; ;main.c: 169: }
+[; ;main.c: 170: }
+[; ;main.c: 171: }
+[; ;main.c: 172: }
+"172
 [e :UE 621 ]
 }
-"178
+"174
 [v _printEthernetState `(v ~T0 @X0 1 ef1`S612 ]
 {
-[; ;main.c: 178: void printEthernetState(ethernetConnection_t state) {
+[; ;main.c: 174: void printEthernetState(ethernetConnection_t state) {
 [e :U _printEthernetState ]
 [v _state `S612 ~T0 @X0 1 r1 ]
 [f ]
-"179
-[v F6012 `S612 ~T0 @X0 1 s oldState ]
-[; ;main.c: 179: static ethernetConnection_t oldState;
-[; ;main.c: 180: if (state.link != oldState.link) {
-"180
-[e $ ! != -> . _state 0 `i -> . F6012 0 `i 637  ]
+"175
+[v F6013 `S612 ~T0 @X0 1 s oldState ]
+[; ;main.c: 175: static ethernetConnection_t oldState;
+[; ;main.c: 176: if (state.link != oldState.link) {
+"176
+[e $ ! != -> . _state 0 `i -> . F6013 0 `i 637  ]
 {
-[; ;main.c: 181: if (state.link == NO_LINK) {
-"181
+[; ;main.c: 177: if (state.link == NO_LINK) {
+"177
 [e $ ! == -> . _state 0 `i -> . `E5638 0 `i 638  ]
 {
-[; ;main.c: 182: UARTTransmitText("Link lost.\n\r");
-"182
+[; ;main.c: 178: UARTTransmitText("Link lost.\n\r");
+"178
 [e ( _UARTTransmitText (1 :s 19C ]
-"183
+"179
 }
-[; ;main.c: 183: } else if (state.link == LINK_ESTABLISHED) {
+[; ;main.c: 179: } else if (state.link == LINK_ESTABLISHED) {
 [e $U 639  ]
 [e :U 638 ]
 [e $ ! == -> . _state 0 `i -> . `E5638 1 `i 640  ]
 {
-[; ;main.c: 184: UARTTransmitText("Link established. ");
-"184
+[; ;main.c: 180: UARTTransmitText("Link established. ");
+"180
 [e ( _UARTTransmitText (1 :s 20C ]
-"185
+"181
 }
 [e :U 640 ]
-"187
+"183
 [e :U 639 ]
-[; ;main.c: 185: }
-[; ;main.c: 187: if (state.link == LINK_ESTABLISHED) {
+[; ;main.c: 181: }
+[; ;main.c: 183: if (state.link == LINK_ESTABLISHED) {
 [e $ ! == -> . _state 0 `i -> . `E5638 1 `i 641  ]
 {
-[; ;main.c: 188: if (state.speed == TEN_MBIT) {
-"188
+[; ;main.c: 184: if (state.speed == TEN_MBIT) {
+"184
 [e $ ! == -> . _state 1 `i -> . `E5642 0 `i 642  ]
 {
-[; ;main.c: 189: UARTTransmitText("Speed is 10 Mbps, ");
-"189
+[; ;main.c: 185: UARTTransmitText("Speed is 10 Mbps, ");
+"185
 [e ( _UARTTransmitText (1 :s 21C ]
-"190
+"186
 }
-[; ;main.c: 190: } else if (state.speed == HUNDRED_MBIT) {
+[; ;main.c: 186: } else if (state.speed == HUNDRED_MBIT) {
 [e $U 643  ]
 [e :U 642 ]
 [e $ ! == -> . _state 1 `i -> . `E5642 1 `i 644  ]
 {
-[; ;main.c: 191: UARTTransmitText("Speed is 100 Mbps, ");
-"191
+[; ;main.c: 187: UARTTransmitText("Speed is 100 Mbps, ");
+"187
 [e ( _UARTTransmitText (1 :s 22C ]
-"192
+"188
 }
 [e :U 644 ]
-"193
+"189
 [e :U 643 ]
-[; ;main.c: 192: }
-[; ;main.c: 193: if (state.duplex == HALF_DUPLEX) {
+[; ;main.c: 188: }
+[; ;main.c: 189: if (state.duplex == HALF_DUPLEX) {
 [e $ ! == -> . _state 2 `i -> . `E5646 0 `i 645  ]
 {
-[; ;main.c: 194: UARTTransmitText("connection is Half Duplex.\n\r");
-"194
+[; ;main.c: 190: UARTTransmitText("connection is Half Duplex.\n\r");
+"190
 [e ( _UARTTransmitText (1 :s 23C ]
-"195
+"191
 }
-[; ;main.c: 195: } else if (state.duplex == FULL_DUPLEX) {
+[; ;main.c: 191: } else if (state.duplex == FULL_DUPLEX) {
 [e $U 646  ]
 [e :U 645 ]
 [e $ ! == -> . _state 2 `i -> . `E5646 1 `i 647  ]
 {
-[; ;main.c: 197: UARTTransmitText("connection is Full Duplex.\n\r");
-"197
+[; ;main.c: 193: UARTTransmitText("connection is Full Duplex.\n\r");
+"193
 [e ( _UARTTransmitText (1 :s 24C ]
-"198
+"194
 }
 [e :U 647 ]
-"199
+"195
 [e :U 646 ]
 }
 [e :U 641 ]
-"200
+"196
 }
 [e :U 637 ]
+[; ;main.c: 194: }
+[; ;main.c: 195: }
+[; ;main.c: 196: }
+[; ;main.c: 197: oldState = state;
+"197
+[e = F6013 _state ]
 [; ;main.c: 198: }
-[; ;main.c: 199: }
-[; ;main.c: 200: }
-[; ;main.c: 201: oldState = state;
-"201
-[e = F6012 _state ]
-[; ;main.c: 202: }
-"202
+"198
 [e :UE 636 ]
 }
-"204
+"200
 [v _printErrorMessage `(v ~T0 @X0 1 ef1`S607 ]
 {
-[; ;main.c: 204: void printErrorMessage(error_t err) {
+[; ;main.c: 200: void printErrorMessage(error_t err) {
 [e :U _printErrorMessage ]
 [v _err `S607 ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 205: UARTTransmitText("[ERROR]");
-"205
+[; ;main.c: 201: UARTTransmitText("[ERROR]");
+"201
 [e ( _UARTTransmitText (1 :s 25C ]
-[; ;main.c: 206: switch (err.module) {
-"206
+[; ;main.c: 202: switch (err.module) {
+"202
 [e $U 650  ]
 {
-[; ;main.c: 207: case ERROR_MODULE_MEMORY:
-"207
+[; ;main.c: 203: case ERROR_MODULE_MEMORY:
+"203
 [e :U 651 ]
-[; ;main.c: 208: UARTTransmitText(" MEMORY MODULE: ");
-"208
+[; ;main.c: 204: UARTTransmitText(" MEMORY MODULE: ");
+"204
 [e ( _UARTTransmitText (1 :s 26C ]
-[; ;main.c: 209: break;
-"209
+[; ;main.c: 205: break;
+"205
 [e $U 649  ]
-[; ;main.c: 210: case ERROR_MODULE_ETHERNET_CONTROLLER:
-"210
+[; ;main.c: 206: case ERROR_MODULE_ETHERNET_CONTROLLER:
+"206
 [e :U 652 ]
-[; ;main.c: 211: UARTTransmitText(" ETHERNET CONTROLLER MODULE: ");
-"211
+[; ;main.c: 207: UARTTransmitText(" ETHERNET CONTROLLER MODULE: ");
+"207
 [e ( _UARTTransmitText (1 :s 27C ]
-[; ;main.c: 212: break;
-"212
+[; ;main.c: 208: break;
+"208
 [e $U 649  ]
-[; ;main.c: 213: case ERROR_MODULE_ETHERNET:
-"213
+[; ;main.c: 209: case ERROR_MODULE_ETHERNET:
+"209
 [e :U 653 ]
-[; ;main.c: 214: UARTTransmitText(" ETHERNET MODULE: ");
-"214
+[; ;main.c: 210: UARTTransmitText(" ETHERNET MODULE: ");
+"210
 [e ( _UARTTransmitText (1 :s 28C ]
-[; ;main.c: 215: break;
-"215
+[; ;main.c: 211: break;
+"211
 [e $U 649  ]
-[; ;main.c: 216: case ERROR_MODULE_ARP:
-"216
+[; ;main.c: 212: case ERROR_MODULE_ARP:
+"212
 [e :U 654 ]
-[; ;main.c: 217: UARTTransmitText(" ARP MODULE: ");
-"217
+[; ;main.c: 213: UARTTransmitText(" ARP MODULE: ");
+"213
 [e ( _UARTTransmitText (1 :s 29C ]
+[; ;main.c: 214: break;
+"214
+[e $U 649  ]
+[; ;main.c: 215: case ERROR_MODULE_IPv4:
+"215
+[e :U 655 ]
+[; ;main.c: 216: UARTTransmitText(" IPv4 MODULE: ");
+"216
+[e ( _UARTTransmitText (1 :s 30C ]
+[; ;main.c: 217: default:
+"217
+[e :U 656 ]
 [; ;main.c: 218: break;
 "218
 [e $U 649  ]
-[; ;main.c: 219: case ERROR_MODULE_IPv4:
 "219
-[e :U 655 ]
-[; ;main.c: 220: UARTTransmitText(" IPv4 MODULE: ");
-"220
-[e ( _UARTTransmitText (1 :s 30C ]
-[; ;main.c: 221: default:
-"221
-[e :U 656 ]
-[; ;main.c: 222: break;
-"222
-[e $U 649  ]
-"223
 }
-[; ;main.c: 223: }
+[; ;main.c: 219: }
 [e $U 649  ]
-"206
+"202
 [e :U 650 ]
 [e [\ . _err 0 , $ . `E5556 0 651
  , $ . `E5556 1 652
@@ -6378,235 +6372,235 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E5556 3 654
  , $ . `E5556 4 655
  656 ]
-"223
+"219
 [e :U 649 ]
-[; ;main.c: 224: switch (err.code) {
-"224
+[; ;main.c: 220: switch (err.code) {
+"220
 [e $U 658  ]
 {
-[; ;main.c: 225: case ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE:
-"225
+[; ;main.c: 221: case ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE:
+"221
 [e :U 659 ]
-[; ;main.c: 226: UARTTransmitText("Ethernet controller is unresponsive.");
-"226
+[; ;main.c: 222: UARTTransmitText("Ethernet controller is unresponsive.");
+"222
 [e ( _UARTTransmitText (1 :s 31C ]
-[; ;main.c: 227: break;
-"227
+[; ;main.c: 223: break;
+"223
 [e $U 657  ]
-[; ;main.c: 228: case ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID:
-"228
-[e :U 660 ]
-[; ;main.c: 229: UARTTransmitText("Ethernet controller has returned an unknown device ID.");
-"229
-[e ( _UARTTransmitText (1 :s 32C ]
-[; ;main.c: 230: break;
-"230
-[e $U 657  ]
-[; ;main.c: 231: case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
-"231
-[e :U 661 ]
-[; ;main.c: 232: UARTTransmitText("IP address could not be resolved.");
-"232
-[e ( _UARTTransmitText (1 :s 33C ]
-[; ;main.c: 233: default:
-"233
-[e :U 662 ]
-[; ;main.c: 234: case ERROR_ETHERNET_CONTROLLER_UNKNOWN:
-"234
-[e :U 663 ]
-[; ;main.c: 235: UARTTransmitText("An unknown error has occured.");
-"235
-[e ( _UARTTransmitText (1 :s 34C ]
-[; ;main.c: 236: break;
-"236
-[e $U 657  ]
-"237
-}
-[; ;main.c: 237: }
-[e $U 657  ]
+[; ;main.c: 224: case ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID:
 "224
+[e :U 660 ]
+[; ;main.c: 225: UARTTransmitText("Ethernet controller has returned an unknown device ID.");
+"225
+[e ( _UARTTransmitText (1 :s 32C ]
+[; ;main.c: 226: break;
+"226
+[e $U 657  ]
+[; ;main.c: 227: case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
+"227
+[e :U 661 ]
+[; ;main.c: 228: UARTTransmitText("IP address could not be resolved.");
+"228
+[e ( _UARTTransmitText (1 :s 33C ]
+[; ;main.c: 229: default:
+"229
+[e :U 662 ]
+[; ;main.c: 230: case ERROR_ETHERNET_CONTROLLER_UNKNOWN:
+"230
+[e :U 663 ]
+[; ;main.c: 231: UARTTransmitText("An unknown error has occured.");
+"231
+[e ( _UARTTransmitText (1 :s 34C ]
+[; ;main.c: 232: break;
+"232
+[e $U 657  ]
+"233
+}
+[; ;main.c: 233: }
+[e $U 657  ]
+"220
 [e :U 658 ]
 [e [\ . _err 1 , $ -> . `E5575 1 `ui 659
  , $ -> . `E5575 0 `ui 660
  , $ -> . `E5580 1 `ui 661
  , $ -> . `E5575 3 `ui 663
  662 ]
-"237
+"233
 [e :U 657 ]
-[; ;main.c: 239: UARTTransmitText(" (Code: ");
-"239
+[; ;main.c: 235: UARTTransmitText(" (Code: ");
+"235
 [e ( _UARTTransmitText (1 :s 35C ]
-[; ;main.c: 240: UARTTransmitText(intToString(err.code));
-"240
+[; ;main.c: 236: UARTTransmitText(intToString(err.code));
+"236
 [e ( _UARTTransmitText (1 -> ( _intToString (1 -> . _err 1 `ul `*Cuc ]
-[; ;main.c: 241: UARTTransmitText(").\n\r");
-"241
+[; ;main.c: 237: UARTTransmitText(").\n\r");
+"237
 [e ( _UARTTransmitText (1 :s 36C ]
-[; ;main.c: 242: }
-"242
+[; ;main.c: 238: }
+"238
 [e :UE 648 ]
 }
-"244
+"240
 [v _buttonHandler `(v ~T0 @X0 1 ef1`*Vuc ]
 {
-[; ;main.c: 244: void buttonHandler(uint8_t volatile *state) {
+[; ;main.c: 240: void buttonHandler(uint8_t volatile *state) {
 [e :U _buttonHandler ]
 [v _state `*Vuc ~T0 @X0 1 r1 ]
 [f ]
-"245
-[v F6015 `uc ~T0 @X0 1 s oldState ]
-[i F6015
--> -> 0 `i `uc
-]
-"246
-[v F6016 `uc ~T0 @X0 1 s newState ]
+"241
+[v F6016 `uc ~T0 @X0 1 s oldState ]
 [i F6016
 -> -> 0 `i `uc
 ]
-"247
-[v F6017 `ul ~T0 @X0 1 s debounceCounter ]
+"242
+[v F6017 `uc ~T0 @X0 1 s newState ]
 [i F6017
+-> -> 0 `i `uc
+]
+"243
+[v F6018 `ul ~T0 @X0 1 s debounceCounter ]
+[i F6018
 -> -> -> 0 `i `l `ul
 ]
-"248
+"244
 [v _debounceValue `Cul ~T0 @X0 1 a ]
-[; ;main.c: 245: uint8_t static oldState = 0;
-[; ;main.c: 246: uint8_t static newState = 0;
-[; ;main.c: 247: uint32_t static debounceCounter = 0;
-[; ;main.c: 248: const uint32_t debounceValue = 0x1f;
+[; ;main.c: 241: uint8_t static oldState = 0;
+[; ;main.c: 242: uint8_t static newState = 0;
+[; ;main.c: 243: uint32_t static debounceCounter = 0;
+[; ;main.c: 244: const uint32_t debounceValue = 0x1f;
 [e = _debounceValue -> -> -> 31 `i `l `ul ]
-"249
+"245
 [v _resetValue `Cul ~T0 @X0 1 a ]
-[; ;main.c: 249: const uint32_t resetValue = 0x3ff;
+[; ;main.c: 245: const uint32_t resetValue = 0x3ff;
 [e = _resetValue -> -> -> 1023 `i `l `ul ]
-[; ;main.c: 250: if ((unsigned)(!(PORTB & (1<<5)))) {
-"250
+[; ;main.c: 246: if ((unsigned)(!(PORTB & (1<<5)))) {
+"246
 [e $ ! != -> -> ! != & -> _PORTB `i << -> 1 `i -> 5 `i -> 0 `i `i `ui -> -> 0 `i `ui 665  ]
 {
-[; ;main.c: 251: debounceCounter++;
-"251
-[e ++ F6017 -> -> -> 1 `i `l `ul ]
-"252
+[; ;main.c: 247: debounceCounter++;
+"247
+[e ++ F6018 -> -> -> 1 `i `l `ul ]
+"248
 }
-[; ;main.c: 252: } else {
+[; ;main.c: 248: } else {
 [e $U 666  ]
 [e :U 665 ]
 {
-[; ;main.c: 253: debounceCounter = 0;
-"253
-[e = F6017 -> -> -> 0 `i `l `ul ]
-"254
+[; ;main.c: 249: debounceCounter = 0;
+"249
+[e = F6018 -> -> -> 0 `i `l `ul ]
+"250
 }
 [e :U 666 ]
-[; ;main.c: 254: }
-[; ;main.c: 255: newState = (unsigned) ((debounceCounter >= debounceValue) ? 1 : 0);
-"255
-[e = F6016 -> -> ? >= F6017 _debounceValue : -> 1 `i -> 0 `i `ui `uc ]
-[; ;main.c: 256: if (newState && !oldState) {
-"256
-[e $ ! && != -> F6016 `i -> -> -> 0 `i `uc `i ! != -> F6015 `i -> -> -> 0 `i `uc `i 667  ]
+[; ;main.c: 250: }
+[; ;main.c: 251: newState = (unsigned) ((debounceCounter >= debounceValue) ? 1 : 0);
+"251
+[e = F6017 -> -> ? >= F6018 _debounceValue : -> 1 `i -> 0 `i `ui `uc ]
+[; ;main.c: 252: if (newState && !oldState) {
+"252
+[e $ ! && != -> F6017 `i -> -> -> 0 `i `uc `i ! != -> F6016 `i -> -> -> 0 `i `uc `i 667  ]
 {
-[; ;main.c: 257: debounceCounter = debounceValue;
-"257
-[e = F6017 _debounceValue ]
-[; ;main.c: 258: *state = 1;
-"258
+[; ;main.c: 253: debounceCounter = debounceValue;
+"253
+[e = F6018 _debounceValue ]
+[; ;main.c: 254: *state = 1;
+"254
 [e = *U _state -> -> 1 `i `uc ]
-"259
+"255
 }
-[; ;main.c: 259: } else {
+[; ;main.c: 255: } else {
 [e $U 668  ]
 [e :U 667 ]
 {
-[; ;main.c: 260: *state = 0;
-"260
+[; ;main.c: 256: *state = 0;
+"256
 [e = *U _state -> -> 0 `i `uc ]
-"261
+"257
 }
 [e :U 668 ]
-[; ;main.c: 261: }
-[; ;main.c: 262: if (debounceCounter > resetValue)
-"262
-[e $ ! > F6017 _resetValue 669  ]
-[; ;main.c: 263: asm("reset");
-"263
+[; ;main.c: 257: }
+[; ;main.c: 258: if (debounceCounter > resetValue)
+"258
+[e $ ! > F6018 _resetValue 669  ]
+[; ;main.c: 259: asm("reset");
+"259
 [; <" reset ;# ">
 [e :U 669 ]
-[; ;main.c: 265: oldState = newState;
-"265
-[e = F6015 F6016 ]
-[; ;main.c: 266: }
-"266
+[; ;main.c: 261: oldState = newState;
+"261
+[e = F6016 F6017 ]
+[; ;main.c: 262: }
+"262
 [e :UE 664 ]
 }
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F6024 `(v ~T0 @X0 1 tf ]
-"268
-[v _ISR `IF6024 ~T0 @X0 1 e ]
+[v F6025 `(v ~T0 @X0 1 tf ]
+"264
+[v _ISR `IF6025 ~T0 @X0 1 e ]
 {
-[; ;main.c: 268: void interrupt ISR(void) {
+[; ;main.c: 264: void interrupt ISR(void) {
 [e :U _ISR ]
 [f ]
-[; ;main.c: 270: if (PIR1bits.CCP1IF) {
-"270
+[; ;main.c: 266: if (PIR1bits.CCP1IF) {
+"266
 [e $ ! != -> . . _PIR1bits 0 2 `i -> -> -> 0 `i `Vuc `i 671  ]
 {
-[; ;main.c: 271: PIR1bits.CCP1IF = 0;
-"271
+[; ;main.c: 267: PIR1bits.CCP1IF = 0;
+"267
 [e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 272: PORTBbits.RB6 = ~PORTBbits.RB6;
-"272
+[; ;main.c: 268: PORTBbits.RB6 = ~PORTBbits.RB6;
+"268
 [e = . . _PORTBbits 0 6 -> ~ -> . . _PORTBbits 0 6 `i `uc ]
-[; ;main.c: 273: updateTime();
-"273
+[; ;main.c: 269: updateTime();
+"269
 [e ( _updateTime ..  ]
-"274
+"270
 }
 [e :U 671 ]
-[; ;main.c: 274: }
-[; ;main.c: 276: if (INTCONbits.TMR0IF) {
-"276
+[; ;main.c: 270: }
+[; ;main.c: 272: if (INTCONbits.TMR0IF) {
+"272
 [e $ ! != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i 672  ]
 {
-[; ;main.c: 277: INTCONbits.TMR0IF = 0;
-"277
+[; ;main.c: 273: INTCONbits.TMR0IF = 0;
+"273
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 278: sevenSegmentUpdate(numberToDisplay);
-"278
+[; ;main.c: 274: sevenSegmentUpdate(numberToDisplay);
+"274
 [e ( _sevenSegmentUpdate (1 -> _numberToDisplay `ui ]
-[; ;main.c: 279: buttonHandler(&buttonState);
-"279
+[; ;main.c: 275: buttonHandler(&buttonState);
+"275
 [e ( _buttonHandler (1 &U _buttonState ]
-"282
+"278
 }
 [e :U 672 ]
-[; ;main.c: 282: }
-[; ;main.c: 284: if (INTCON3bits.INT2IF) {
-"284
+[; ;main.c: 278: }
+[; ;main.c: 280: if (INTCON3bits.INT2IF) {
+"280
 [e $ ! != -> . . _INTCON3bits 0 1 `i -> -> -> 0 `i `Vuc `i 673  ]
 {
-[; ;main.c: 285: INTCON3bits.INT2IF = 0;
-"285
+[; ;main.c: 281: INTCON3bits.INT2IF = 0;
+"281
 [e = . . _INTCON3bits 0 1 -> -> 0 `i `uc ]
-"292
+"288
 }
 [e :U 673 ]
-[; ;main.c: 292: }
-[; ;main.c: 293: if (RCIF) {
-"293
+[; ;main.c: 288: }
+[; ;main.c: 289: if (RCIF) {
+"289
 [e $ ! _RCIF 674  ]
 {
-"296
+"292
 }
 [e :U 674 ]
-[; ;main.c: 296: }
-[; ;main.c: 297: }
-"297
+[; ;main.c: 292: }
+[; ;main.c: 293: }
+"293
 [e :UE 670 ]
 }
 [a 25C 91 69 82 82 79 82 93 0 ]
 [a 6C 77 97 114 32 51 49 32 50 48 49 57 0 ]
-[a 8C 50 50 58 48 48 58 51 54 0 ]
+[a 8C 50 50 58 53 49 58 52 52 0 ]
 [a 31C 69 116 104 101 114 110 101 116 32 99 111 110 116 114 111 108 108 101 114 32 105 115 32 117 110 114 101 115 112 111 110 115 105 118 101 46 0 ]
 [a 33C 73 80 32 97 100 100 114 101 115 115 32 99 111 117 108 100 32 110 111 116 32 98 101 32 114 101 115 111 108 118 101 100 46 0 ]
 [a 34C 65 110 32 117 110 107 110 111 119 110 32 101 114 114 111 114 32 104 97 115 32 111 99 99 117 114 101 100 46 0 ]

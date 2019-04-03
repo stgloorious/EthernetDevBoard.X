@@ -109,22 +109,18 @@ void main() {
 
     uint8_t oldState;
 
-    stack.source.address[0] = 192;
-    stack.source.address[1] = 168;
-    stack.source.address[2] = 0;
-    stack.source.address[3] = 1;
-
     ipv4_address_t ipDst;
-    ipDst.address[0] = 192;
-    ipDst.address[1] = 168;
-    ipDst.address[2] = 0;
-    ipDst.address[3] = 10;
+    ipDst.address[0] = 169;
+    ipDst.address[1] = 254;
+    ipDst.address[2] = 108;
+    ipDst.address[3] = 135;
 
     //Now everything's set up, allow interrupts
     INTCONbits.GIE = 1; //global interrupt enable
     INTCONbits.PEIE = 1;
 
     srand(ethernetController_getMacAddress().address[5]);
+    stack.source = ipv4_generateAutoIP();
 
     while (1) {
         CLRWDT(); //clear watch doggy

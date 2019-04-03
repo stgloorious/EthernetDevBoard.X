@@ -73,6 +73,7 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
         ethernetController_sendPacket(ipPacket.ethernet.memory);
         err.code = ERROR_CODE_SUCCESSFUL;
         oldTime = 0;
+        failedResolveCounter = 0;
     } else if ((getMillis() - oldTime) > ARP_REQUEST_WAIT || oldTime == 0) {
         failedResolveCounter++;
 #if IPv4_DEBUG_MESSAGES==true
@@ -325,4 +326,16 @@ void ipv4_setToAllZero(ipv4_address_t * ip) {
 /* ======================= Init ======================= */
 void ipv4_init() {
     fSrcAddrChanged = false;
+    ipv4_setToAllZero(&ipSource);
+    ipv4_setToAllZero(&ipPreliminarySource);
+}
+
+ipv4_address_t ipv4_generateAutoIP() {
+    ipv4_address_t ip;
+    //Find a random address between 169.254.1.0 and 169.254.254.255
+    ip.address[0] = 169;
+    ip.address[1] = 254;
+    ip.address[2] = (rand() % 253) + 1;
+    ip.address[3] = (rand() % 256);
+    return ip;
 }

@@ -109,7 +109,7 @@ void handleStackBackgroundTasks(stack_t* stack) {
 #if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
         UARTTransmitText("[IPv4]: Address conflict detected.\n\r");
 #endif
-        stack->source.address[3]++;
+        stack->source = ipv4_generateAutoIP();
 #if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
         UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
         UARTTransmitText(ipAdressToString(stack->source));

@@ -7353,13 +7353,16 @@ bool_t ipv4_SrcAddrChanged(error_t *err);
 # 131
 void ipv4_init();
 
-# 146
+# 137
+ipv4_address_t ipv4_generateAutoIP();
+
+# 152
 bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 
-# 153
+# 159
 bool_t ipv4_isAllZero(ipv4_address_t *ip);
 
-# 159
+# 165
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
 # 44 "src/system/../system/../stack/stack.h"
