@@ -23,6 +23,7 @@
  */
 
 #include "../mem/memoryController.h"
+#include "../system/uart.h"
 
 memoryField_t static occupiedMemory[NUMBER_OF_MEMORY_FIELDS];
 uint8_t static numberOfOccupiedFields = 0;

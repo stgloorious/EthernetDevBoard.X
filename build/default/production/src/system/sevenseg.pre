@@ -6900,112 +6900,112 @@ HASHIF = 13,
 MODEXIF = 14
 } interruptFlagName_t;
 
-# 52 "src/system/../system/../eth/ethernetController.h"
+# 49 "src/system/../system/../eth/ethernetController.h"
 typedef enum LEDs {
 LEDA, LEDB
 } LEDs_t;
 
-# 60
+# 57
 typedef enum LEDStates {
 LED_ON,
 LED_OFF,
 LED_TRANSMIT_RECEIVE_EVENTS
 } LEDStates_t;
 
-# 84
+# 81
 error_t ethernetController_init();
 
-# 97
+# 94
 void ethernetController_enableEthernet();
 
-# 102
+# 99
 void ethernetController_disableEthernet();
 
-# 107
+# 104
 void ethernetController_enableTransmission();
 
-# 112
+# 109
 void ethernetController_disableTransmission();
 
-# 117
+# 114
 void ethernetController_enableReception();
 
-# 122
+# 119
 void ethernetController_disableReception();
 
-# 128
+# 125
 error_t ethernetController_softReset();
 
-# 134
+# 131
 error_t ethernetController_checkDeviceId();
 
-# 140
+# 137
 uint8_t ethernetController_getSiliconRevision();
 
-# 146
+# 143
 uint8_t *ethernetController_getDeviceName();
 
-# 152
+# 149
 void ethernetController_updateLinkStatus(ethernetConnection_t *state);
 
-# 158
+# 155
 uint16_t ethernetController_getMTU();
 
-# 166
+# 163
 interruptFlags_t ethernetController_pollInterruptFlags();
 
-# 172
+# 169
 void ethernetController_clearInterruptFlag(uint8_t flag);
 
-# 186
+# 183
 void ethernetController_sendPacket(memoryField_t field);
 
-# 198
+# 195
 void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
 
-# 205
+# 202
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 
-# 212
+# 209
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
-# 232
+# 229
 void ethernetController_dropPacket();
 
-# 238
+# 235
 void ethernetController_updateNextPacketPointer();
 
-# 252
+# 249
 uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
 
-# 259
+# 256
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 266
+# 263
 macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 273
+# 270
 etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 279
+# 276
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 285
+# 282
 uint8_t ethernetController_newPacketAvailable();
 
-# 291
+# 288
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 297
+# 294
 uint16_t ethernetController_getNextPacketPointer();
 
-# 303
+# 300
 macaddress_t ethernetController_getMacAddress();
 
-# 309
+# 306
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 325
+# 322
 void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 
 # 62 "src/system/../system/../mem/memoryController.h"
@@ -7092,16 +7092,16 @@ ipv4_address_t destination;
 
 } ipv4_header_t;
 
-# 146
+# 149
 typedef struct ipv4_packet {
 
-# 150
+# 153
 ipv4_header_t ipv4Header;
 
-# 154
+# 157
 memoryField_t memory;
 
-# 158
+# 161
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 

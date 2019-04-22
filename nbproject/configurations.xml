@@ -49,6 +49,9 @@
       <itemPath>src/stack/protocols/arp.c</itemPath>
       <itemPath>src/stack/protocols/ipv4.c</itemPath>
       <itemPath>src/stack/time.c</itemPath>
+      <itemPath>src/stack/protocols/icmp.c</itemPath>
+      <itemPath>src/stack/protocols/icmp.h</itemPath>
+      <itemPath>src/stack/protocols/icmpTypes.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

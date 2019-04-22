@@ -140,6 +140,9 @@ typedef struct ipv4_header {
 
 } ipv4_header_t;
 
+#define IPv4_FLAG_DONT_FRAGMENT     0b010
+#define IPv4_FLAG_MORE_FRAGMENTS    0b001
+
 /**
  * \brief Represantation of an IPv4 packet
  */

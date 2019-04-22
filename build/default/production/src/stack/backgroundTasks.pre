@@ -298,112 +298,112 @@ HASHIF = 13,
 MODEXIF = 14
 } interruptFlagName_t;
 
-# 52 "src/stack/../stack/../eth/ethernetController.h"
+# 49 "src/stack/../stack/../eth/ethernetController.h"
 typedef enum LEDs {
 LEDA, LEDB
 } LEDs_t;
 
-# 60
+# 57
 typedef enum LEDStates {
 LED_ON,
 LED_OFF,
 LED_TRANSMIT_RECEIVE_EVENTS
 } LEDStates_t;
 
-# 84
+# 81
 error_t ethernetController_init();
 
-# 97
+# 94
 void ethernetController_enableEthernet();
 
-# 102
+# 99
 void ethernetController_disableEthernet();
 
-# 107
+# 104
 void ethernetController_enableTransmission();
 
-# 112
+# 109
 void ethernetController_disableTransmission();
 
-# 117
+# 114
 void ethernetController_enableReception();
 
-# 122
+# 119
 void ethernetController_disableReception();
 
-# 128
+# 125
 error_t ethernetController_softReset();
 
-# 134
+# 131
 error_t ethernetController_checkDeviceId();
 
-# 140
+# 137
 uint8_t ethernetController_getSiliconRevision();
 
-# 146
+# 143
 uint8_t *ethernetController_getDeviceName();
 
-# 152
+# 149
 void ethernetController_updateLinkStatus(ethernetConnection_t *state);
 
-# 158
+# 155
 uint16_t ethernetController_getMTU();
 
-# 166
+# 163
 interruptFlags_t ethernetController_pollInterruptFlags();
 
-# 172
+# 169
 void ethernetController_clearInterruptFlag(uint8_t flag);
 
-# 186
+# 183
 void ethernetController_sendPacket(memoryField_t field);
 
-# 198
+# 195
 void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
 
-# 205
+# 202
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 
-# 212
+# 209
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
-# 232
+# 229
 void ethernetController_dropPacket();
 
-# 238
+# 235
 void ethernetController_updateNextPacketPointer();
 
-# 252
+# 249
 uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
 
-# 259
+# 256
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 266
+# 263
 macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 273
+# 270
 etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 279
+# 276
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 285
+# 282
 uint8_t ethernetController_newPacketAvailable();
 
-# 291
+# 288
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 297
+# 294
 uint16_t ethernetController_getNextPacketPointer();
 
-# 303
+# 300
 macaddress_t ethernetController_getMacAddress();
 
-# 309
+# 306
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 325
+# 322
 void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 
 # 40 "src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h"
@@ -458,16 +458,16 @@ ipv4_address_t destination;
 
 } ipv4_header_t;
 
-# 146
+# 149
 typedef struct ipv4_packet {
 
-# 150
+# 153
 ipv4_header_t ipv4Header;
 
-# 154
+# 157
 memoryField_t memory;
 
-# 158
+# 161
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
@@ -7461,7 +7461,7 @@ void static enc424j600_clearInterruptFlag(uint8_t flag);
 # 319
 RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
 
-# 39 "src/stack/backgroundTasks.c"
+# 40 "src/stack/backgroundTasks.c"
 void handleStackBackgroundTasks(stack_t* stack) {
 unsigned char foo[10];
 error_t errArp;
@@ -7469,6 +7469,8 @@ error_t errIPv4;
 interruptFlags_t intf;
 
 intf = ethernetController_pollInterruptFlags();
+
+
 if (intf.LINKIF) {
 
 ethernetController_updateLinkStatus(&(stack->ethernet));
@@ -7484,6 +7486,8 @@ arp_init();
 }
 ethernetController_clearInterruptFlag(LINKIF);
 }
+
+
 if (intf.PKTIF) {
 
 if (ethernetController_newPacketAvailable()) {
@@ -7492,25 +7496,93 @@ ethernet_rxGetNewFrame(&stack->newReceivedFrame);
 }
 }
 
-# 74
+
+if (intf.PCFULIF) {
+UARTTransmitText("\033[41;10;10m");
+UARTTransmitText("\a");
+UARTTransmitText("\n\r---------------------------------------------------------\n\r");
+UARTTransmitText("*** CRITICAL ERROR: RX BUF OVFL CAUSED SYSTEM RESET ***\n\r");
+UARTTransmitText("---------------------------------------------------------");
+UARTTransmitText("\033[0m");
+UARTTransmitText("\n\r");
+ethernetController_disableEthernet();
+ethernetController_init();
+asm("reset");
+}
+
+# 93
 if (stack->background.fPacketPending == 1) {
 
+
+enum states {
+INIT, PREPARE_FRAGMENTING, SEND_FRAME
+};
+uint8_t static state;
+ipv4_packet_t static currentPacket;
+uint8_t static remainingLength = 0;
+uint8_t static numberOfPacketsSent = 0;
+uint16_t static lastEndAddress = 0;
+
+switch (state) {
+case INIT:
+if (stack->pendingPacketToSend.ipv4Header.totalLength > ethernetController_getMTU()) {
+
+# 117
+state = PREPARE_FRAGMENTING;
+} else {
+state = SEND_FRAME;
+currentPacket = stack->pendingPacketToSend;
+}
+break;
+case PREPARE_FRAGMENTING:
+currentPacket = stack->pendingPacketToSend;
+if (numberOfPacketsSent == 0) {
+
+currentPacket.ethernet.memory.length = ethernetController_getMTU();
+currentPacket.ethernet.memory.end = currentPacket.ethernet.memory.start + currentPacket.ethernet.memory.length;
+remainingLength = currentPacket.ipv4Header.totalLength - currentPacket.ethernet.memory.length;
+lastEndAddress = currentPacket.ethernet.memory.end;
+} else {
+if (remainingLength >= ethernetController_getMTU())
+currentPacket.ethernet.memory.length = ethernetController_getMTU();
+else
+currentPacket.ethernet.memory.length = remainingLength;
+currentPacket.ethernet.memory.end = currentPacket.ethernet.memory.start + currentPacket.ethernet.memory.length;
+remainingLength = currentPacket.ipv4Header.totalLength - currentPacket.ethernet.memory.length;
+lastEndAddress = currentPacket.ethernet.memory.end;
+}
+UARTTransmitText(intToString(currentPacket.ethernet.memory.start));
+UARTTransmitText(" -> ");
+UARTTransmitText(intToString(currentPacket.ethernet.memory.end));
+UARTTransmitText(" (");
+UARTTransmitText(intToString(currentPacket.ethernet.memory.length));
+UARTTransmitText(") ");
+UARTTransmitText("Remaining Length is ");
+UARTTransmitText(intToString(remainingLength));
+UARTTransmitText("\n\r");
+state = SEND_FRAME;
+break;
+case SEND_FRAME:
 errIPv4 = ipv4_sendFrame(stack->pendingPacketToSend);
+numberOfPacketsSent++;
 if (errIPv4.module == ERROR_MODULE_ARP) {
 switch (errIPv4.code) {
 case ERROR_ARP_WAITING:
 break;
 case (uint16_t)0:
 
-UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
-
+# 162
 stack->background.fPacketPending = 0;
+state = INIT;
 break;
 case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
 
+UARTTransmitText("\033[41;10;10m");
 UARTTransmitText("[IPv4]: Failed to resolve ");
 UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
+UARTTransmitText("\033[0m");
 UARTTransmitText("\n\r");
+
 
 stack->background.fPacketPending = 0;
 break;
@@ -7520,6 +7592,10 @@ break;
 } else {
 
 }
+break;
+}
+
+
 }
 
 
@@ -7529,13 +7605,17 @@ errIPv4 = ipv4_background(stack->ethernet.link);
 if (errIPv4.module == ERROR_MODULE_IPv4 &&
 errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
 
+UARTTransmitText("\033[41;10;10m");
 UARTTransmitText("[IPv4]: Address conflict detected.\n\r");
+UARTTransmitText("\033[0m");
 
 stack->source = ipv4_generateAutoIP();
 
+UARTTransmitText("\033[41;10;10m");
 UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
 UARTTransmitText(ipAdressToString(stack->source));
 UARTTransmitText("\n\r");
+UARTTransmitText("\033[0m");
 
 ipv4_setIPSourceAddress(stack->source);
 }

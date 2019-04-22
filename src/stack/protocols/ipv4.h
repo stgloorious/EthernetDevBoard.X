@@ -88,7 +88,7 @@ void ipv4_handleNewPacket(ethernetFrame_t *frame);
 
 /**
  * \brief Reads a field in memory where an ip header lies and puts the information in a nice structure
- * \param [in] field Memory field where the header is
+ * \param [in] field Memory field where the header is; Only \ref memoryField_t.start has to be accurate.
  * \return ip header
  */
 ipv4_header_t static ipv4_parseHeader(memoryField_t *field);

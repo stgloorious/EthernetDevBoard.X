@@ -78,6 +78,34 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
+# 30 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double) ;
+extern double cos(double) ;
+extern double tan(double) ;
+extern double asin(double) ;
+extern double acos(double) ;
+extern double atan(double);
+extern double atan2(double, double) ;
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double) ;
+extern double exp(double) ;
+extern double sinh(double) ;
+extern double cosh(double) ;
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
+
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -6972,112 +7000,112 @@ HASHIF = 13,
 MODEXIF = 14
 } interruptFlagName_t;
 
-# 52 "src/system/../system/../eth/ethernetController.h"
+# 49 "src/system/../system/../eth/ethernetController.h"
 typedef enum LEDs {
 LEDA, LEDB
 } LEDs_t;
 
-# 60
+# 57
 typedef enum LEDStates {
 LED_ON,
 LED_OFF,
 LED_TRANSMIT_RECEIVE_EVENTS
 } LEDStates_t;
 
-# 84
+# 81
 error_t ethernetController_init();
 
-# 97
+# 94
 void ethernetController_enableEthernet();
 
-# 102
+# 99
 void ethernetController_disableEthernet();
 
-# 107
+# 104
 void ethernetController_enableTransmission();
 
-# 112
+# 109
 void ethernetController_disableTransmission();
 
-# 117
+# 114
 void ethernetController_enableReception();
 
-# 122
+# 119
 void ethernetController_disableReception();
 
-# 128
+# 125
 error_t ethernetController_softReset();
 
-# 134
+# 131
 error_t ethernetController_checkDeviceId();
 
-# 140
+# 137
 uint8_t ethernetController_getSiliconRevision();
 
-# 146
+# 143
 uint8_t *ethernetController_getDeviceName();
 
-# 152
+# 149
 void ethernetController_updateLinkStatus(ethernetConnection_t *state);
 
-# 158
+# 155
 uint16_t ethernetController_getMTU();
 
-# 166
+# 163
 interruptFlags_t ethernetController_pollInterruptFlags();
 
-# 172
+# 169
 void ethernetController_clearInterruptFlag(uint8_t flag);
 
-# 186
+# 183
 void ethernetController_sendPacket(memoryField_t field);
 
-# 198
+# 195
 void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
 
-# 205
+# 202
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 
-# 212
+# 209
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
-# 232
+# 229
 void ethernetController_dropPacket();
 
-# 238
+# 235
 void ethernetController_updateNextPacketPointer();
 
-# 252
+# 249
 uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
 
-# 259
+# 256
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 266
+# 263
 macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 273
+# 270
 etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 279
+# 276
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 285
+# 282
 uint8_t ethernetController_newPacketAvailable();
 
-# 291
+# 288
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 297
+# 294
 uint16_t ethernetController_getNextPacketPointer();
 
-# 303
+# 300
 macaddress_t ethernetController_getMacAddress();
 
-# 309
+# 306
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 325
+# 322
 void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 
 # 62 "src/system/../system/../mem/memoryController.h"
@@ -7164,16 +7192,16 @@ ipv4_address_t destination;
 
 } ipv4_header_t;
 
-# 146
+# 149
 typedef struct ipv4_packet {
 
-# 150
+# 153
 ipv4_header_t ipv4Header;
 
-# 154
+# 157
 memoryField_t memory;
 
-# 158
+# 161
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
@@ -7565,11 +7593,11 @@ void static enc424j600_clearInterruptFlag(uint8_t flag);
 # 319
 RSV_t static enc424j600_updateReceiveStatusVector(uint8_t *rsv);
 
-# 28 "src/system/main.c"
+# 29 "src/system/main.c"
 uint32_t volatile numberToDisplay = 0;
 uint8_t volatile buttonState = 0;
 
-stack_t static stack;
+stack_t stack;
 
 void main() {
 
@@ -7610,14 +7638,17 @@ sevenSegmentInit();
 _delay((unsigned long)((10)*(32000000UL/4000.0)));
 UARTTransmitText("\x12");
 if (!RCONbits.TO) {
-UARTTransmitText("------------------------------------------------\n\r");
-UARTTransmitText("\a*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
-UARTTransmitText("------------------------------------------------\n\r");
+UARTTransmitText("\033[41;10;10m");
+UARTTransmitText("\a");
+UARTTransmitText("\n\r------------------------------------------------\n\r");
+UARTTransmitText("*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
+UARTTransmitText("------------------------------------------------");
+UARTTransmitText("\033[0m");
 }
-UARTTransmitText("FIRMWARE BUILD DATE IS ");
-UARTTransmitText("Mar 31 2019");
+UARTTransmitText("\n\rFIRMWARE BUILD DATE IS ");
+UARTTransmitText("Apr 22 2019");
 UARTTransmitText(" ");
-UARTTransmitText("22:51:44");
+UARTTransmitText("16:55:27");
 UARTTransmitText(".\n\r");
 error_t err;
 err = ethernetController_init();
@@ -7663,51 +7694,49 @@ INTCONbits.PEIE = 1;
 srand(ethernetController_getMacAddress().address[5]);
 stack.source = ipv4_generateAutoIP();
 
+bool_t static spamming = 0;
+bool_t static unlocked = 0;
+
 while (1) {
 asm(" clrwdt");
 
 handleStackBackgroundTasks(&stack);
 
 printEthernetState(stack.ethernet);
+numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : ethernetController_getCurrentPacketCount();
 
-numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : stack.source.address[3];
 
 if (buttonState) {
 buttonState = 0;
 
-UARTTransmitText("My Address is ");
-UARTTransmitText(ipAdressToString(ipv4_getIPSourceAddress()));
-UARTTransmitText("\n\r");
-
-
+# 159
 if (stack.ethernet.link == LINK_ESTABLISHED) {
 
 
 uint8_t headerBuf[32];
+stack.pendingPacketToSend.ipv4Header.headerLength = 5;
+stack.pendingPacketToSend.ipv4Header.protocol = IPv4_PROTOCOL_UDP;
 stack.pendingPacketToSend.ipv4Header.destination = ipDst;
 stack.pendingPacketToSend.ipv4Header.source = ipv4_getIPSourceAddress();
-stack.pendingPacketToSend.ipv4Header.totalLength = 120;
+stack.pendingPacketToSend.ipv4Header.totalLength = 1500;
 stack.pendingPacketToSend.ipv4Header.timeToLive = 255;
 stack.pendingPacketToSend.ipv4Header.version = 4;
+
 ipv4_calculateHeaderChecksum(&stack.pendingPacketToSend.ipv4Header);
-ipv4_writeHeaderIntoBuffer(stack.pendingPacketToSend.ipv4Header, headerBuf);
+ipv4_writeHeaderIntoBuffer(stack.pendingPacketToSend.ipv4Header, &headerBuf);
 
 ipv4_txFrameRequest(&stack.pendingPacketToSend);
-
-for (uint8_t i = 0; i < stack.pendingPacketToSend.ipv4Header.totalLength; i++) {
+for (uint16_t i = 0; i < stack.pendingPacketToSend.ipv4Header.totalLength; i++) {
 if (i < stack.pendingPacketToSend.ipv4Header.headerLength * 4) {
 ipv4_streamToTransmissionBuffer(headerBuf[i], stack.pendingPacketToSend);
 } else
-ipv4_streamToTransmissionBuffer(0, stack.pendingPacketToSend);
+ipv4_streamToTransmissionBuffer(i - 20, stack.pendingPacketToSend);
 }
-UARTTransmitText("[IPv4]: A packet was prepared (");
-UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.source));
-UARTTransmitText(" -> ");
-UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.destination));
-UARTTransmitText(")\n\r");
 
+# 190
 stack.background.fPacketPending = 1;
 }
+
 }
 }
 }
@@ -7821,7 +7850,7 @@ buttonHandler(&buttonState);
 if (INTCON3bits.INT2IF) {
 INTCON3bits.INT2IF = 0;
 
-# 288
+# 311
 }
 if (RCIF) {
 

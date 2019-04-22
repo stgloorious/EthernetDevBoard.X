@@ -68,6 +68,7 @@ $(function() {
 <a href="#groups">Modules</a> &#124;
 <a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
@@ -102,6 +103,15 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represantation of an IPv4 packet.  <a href="structipv4__packet.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga249202cfd4beca187c7689f09f9a5b9e"><td class="memItemLeft" align="right" valign="top"><a id="ga249202cfd4beca187c7689f09f9a5b9e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IPv4_FLAG_DONT_FRAGMENT</b>&#160;&#160;&#160;0b010</td></tr>
+<tr class="separator:ga249202cfd4beca187c7689f09f9a5b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3889660518b71f65dd02ada6cee90d7f"><td class="memItemLeft" align="right" valign="top"><a id="ga3889660518b71f65dd02ada6cee90d7f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IPv4_FLAG_MORE_FRAGMENTS</b>&#160;&#160;&#160;0b001</td></tr>
+<tr class="separator:ga3889660518b71f65dd02ada6cee90d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:gab04cc76a064d21f3a4d7b28a8f3af1a9"><td class="memItemLeft" align="right" valign="top"><a id="gab04cc76a064d21f3a4d7b28a8f3af1a9"></a>
@@ -134,9 +144,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1bf24e45bf60a70b43ea1f1738c9a4c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga1bf24e45bf60a70b43ea1f1738c9a4c5">ipv4_txFrameRequest</a> (<a class="el" href="group__ipv4.html#ga68ea36d252d9332fd5e37d9aaedd06af">ipv4_packet_t</a> *packet)</td></tr>
 <tr class="memdesc:ga1bf24e45bf60a70b43ea1f1738c9a4c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests a memory field and prepares the transmission of an IPv4 Packet.  <a href="#ga1bf24e45bf60a70b43ea1f1738c9a4c5">More...</a><br /></td></tr>
 <tr class="separator:ga1bf24e45bf60a70b43ea1f1738c9a4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabf86b43adee57be777cf22f4cddc0b38"><td class="memItemLeft" align="right" valign="top"><a id="gabf86b43adee57be777cf22f4cddc0b38"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
-<tr class="memdesc:gabf86b43adee57be777cf22f4cddc0b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function after everything in the header has been filled in. <br /></td></tr>
+<tr class="memitem:gabf86b43adee57be777cf22f4cddc0b38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
+<tr class="memdesc:gabf86b43adee57be777cf22f4cddc0b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function after everything in the header has been filled in.  <a href="#gabf86b43adee57be777cf22f4cddc0b38">More...</a><br /></td></tr>
 <tr class="separator:gabf86b43adee57be777cf22f4cddc0b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9a7186073296a195e3f053d01468922"><td class="memItemLeft" align="right" valign="top">static bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gad9a7186073296a195e3f053d01468922">ipv4_checkHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
 <tr class="memdesc:gad9a7186073296a195e3f053d01468922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the received checksum is correct using <a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum()</a>  <a href="#gad9a7186073296a195e3f053d01468922">More...</a><br /></td></tr>
@@ -242,6 +251,27 @@ Variables</h2></td></tr>
 
 <p>To be called periodically in the background task handler. </p>
 <p>Does various stuff that takes some time to wait, e.g. handling ARP when setting a new ip address </p><dl class="section return"><dt>Returns</dt><dd>Errors that occurred during operation </dd></dl>
+
+</div>
+</div>
+<a id="gabf86b43adee57be777cf22f4cddc0b38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabf86b43adee57be777cf22f4cddc0b38">&#9670;&nbsp;</a></span>ipv4_calculateHeaderChecksum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ipv4_calculateHeaderChecksum </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *&#160;</td>
+          <td class="paramname"><em>header</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call this function after everything in the header has been filled in. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>make it look less ugly </dd></dl>
 
 </div>
 </div>
@@ -404,7 +434,7 @@ Variables</h2></td></tr>
 <p>Reads a field in memory where an ip header lies and puts the information in a nice structure. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">field</td><td>Memory field where the header is </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">field</td><td>Memory field where the header is; Only <a class="el" href="structmemory_field.html#a171a2b5d11b1a5891c38a98ac731a161">memoryField_t::start</a> has to be accurate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -525,7 +555,6 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Fragmenting </dd></dl>
 
 </div>
 </div>

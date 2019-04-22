@@ -33,17 +33,20 @@
  * calling \ref ethernetController_pollInterruptFlags again LINKIF seems to be set without no reason ??
  * It seems the problem does not occur if checked in this order or if \ref ethernetController_pollInterruptFlags is called
  * multiple times.
- * 
  * Edit: This was likely fixed; Check this.
+ * 
+ * \todo Fragmenting!!
  */
 void handleStackBackgroundTasks(stack_t* stack) {
     unsigned char foo[10];
     error_t errArp;
     error_t errIPv4;
     interruptFlags_t intf;
-
+    /* =======================  Poll Interrupt Flags  ======================= */
     intf = ethernetController_pollInterruptFlags();
-    if (intf.LINKIF) {//link status change
+    /* ==== Link Status Change ==== */
+    /* Ethernet cable was newly disconnected/connected */
+    if (intf.LINKIF) {
         //if (enc424j600_getInterruptFlags()&(1 << LINKIF)) {
         ethernetController_updateLinkStatus(&(stack->ethernet)); //save current status
         //Set up the LEDs manually at every link change because of hardware mistake (LEDs are wired up inverted)
@@ -58,46 +61,128 @@ void handleStackBackgroundTasks(stack_t* stack) {
         }
         ethernetController_clearInterruptFlag(LINKIF);
     }
-    if (intf.PKTIF) {//indicating a new packet
+    /* ==== New Packet available ==== */
+    /* there are unprocessed packets in the receive buffer */
+    if (intf.PKTIF) {
         //Check anyway if there is something new
         if (ethernetController_newPacketAvailable()) {
             //stack->background.err = ethernet_rxGetNewFrame(&stack->ethernet);
             ethernet_rxGetNewFrame(&stack->newReceivedFrame);
         }
     }
+    /* ==== Packet counter overflow ==== */
+    /* The number of unprocessed packets in the receive buffer exceeded 255 */
+    if (intf.PCFULIF) {
+        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+        UARTTransmitText("\a"); //Alert
+        UARTTransmitText("\n\r---------------------------------------------------------\n\r");
+        UARTTransmitText("*** CRITICAL ERROR: RX BUF OVFL CAUSED SYSTEM RESET ***\n\r");
+        UARTTransmitText("---------------------------------------------------------");
+        UARTTransmitText("\033[0m");
+        UARTTransmitText("\n\r");
+        ethernetController_disableEthernet();
+        ethernetController_init();
+        RESET();
+    }
     /**
      * \todo check other relevant interrupt flags and return errors
      * 
      */
 
-
+    /* =======================  Packet Transmission ======================= */
     if (stack->background.fPacketPending == 1) {
         //There is a packet awaiting transmission
-        errIPv4 = ipv4_sendFrame(stack->pendingPacketToSend);
-        if (errIPv4.module == ERROR_MODULE_ARP) {
-            switch (errIPv4.code) {
-                case ERROR_ARP_WAITING:
-                    break;
-                case ERROR_CODE_SUCCESSFUL:
-#if IPv4_DEBUG_MESSAGES==true
-                    UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
-#endif
-                    stack->background.fPacketPending = 0;
-                    break;
-                case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
-#if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
-                    UARTTransmitText("[IPv4]: Failed to resolve ");
-                    UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
-                    UARTTransmitText("\n\r");
-#endif
-                    stack->background.fPacketPending = 0;
-                    break;
-                default:
-                    break;
-            }
-        } else {
 
+        enum states {
+            INIT, PREPARE_FRAGMENTING, SEND_FRAME
+        };
+        uint8_t static state;
+        ipv4_packet_t static currentPacket;
+        uint8_t static remainingLength = 0;
+        uint8_t static numberOfPacketsSent = 0;
+        uint16_t static lastEndAddress = 0;
+
+        switch (state) {
+            case INIT:
+                if (stack->pendingPacketToSend.ipv4Header.totalLength > ethernetController_getMTU()) {
+#if IPv4_DEBUG_MESSAGES==true
+                    UARTTransmitText("[IPv4]: Packet will be fragmented.\n\r");
+                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.start));
+                    UARTTransmitText(" -> ");
+                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.end));
+                    UARTTransmitText(" (");
+                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.length));
+                    UARTTransmitText(")\n\r");
+#endif
+                    state = PREPARE_FRAGMENTING;
+                } else {
+                    state = SEND_FRAME;
+                    currentPacket = stack->pendingPacketToSend;
+                }
+                break;
+            case PREPARE_FRAGMENTING:
+                currentPacket = stack->pendingPacketToSend;
+                if (numberOfPacketsSent == 0) {
+                    //First packet
+                    currentPacket.ethernet.memory.length = ethernetController_getMTU();
+                    currentPacket.ethernet.memory.end = currentPacket.ethernet.memory.start + currentPacket.ethernet.memory.length;
+                    remainingLength = currentPacket.ipv4Header.totalLength - currentPacket.ethernet.memory.length;
+                    lastEndAddress = currentPacket.ethernet.memory.end;
+                } else {
+                    if (remainingLength >= ethernetController_getMTU())
+                        currentPacket.ethernet.memory.length = ethernetController_getMTU();
+                    else
+                        currentPacket.ethernet.memory.length = remainingLength;
+                    currentPacket.ethernet.memory.end = currentPacket.ethernet.memory.start + currentPacket.ethernet.memory.length;
+                    remainingLength = currentPacket.ipv4Header.totalLength - currentPacket.ethernet.memory.length;
+                    lastEndAddress = currentPacket.ethernet.memory.end;
+                }
+                UARTTransmitText(intToString(currentPacket.ethernet.memory.start));
+                UARTTransmitText(" -> ");
+                UARTTransmitText(intToString(currentPacket.ethernet.memory.end));
+                UARTTransmitText(" (");
+                UARTTransmitText(intToString(currentPacket.ethernet.memory.length));
+                UARTTransmitText(") ");
+                UARTTransmitText("Remaining Length is ");
+                UARTTransmitText(intToString(remainingLength));
+                UARTTransmitText("\n\r");
+                state = SEND_FRAME;
+                break;
+            case SEND_FRAME:
+                errIPv4 = ipv4_sendFrame(stack->pendingPacketToSend);
+                numberOfPacketsSent++;
+                if (errIPv4.module == ERROR_MODULE_ARP) {
+                    switch (errIPv4.code) {
+                        case ERROR_ARP_WAITING:
+                            break;
+                        case ERROR_CODE_SUCCESSFUL:
+#if IPv4_DEBUG_MESSAGES==true
+                            UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
+#endif
+                            stack->background.fPacketPending = 0;
+                            state = INIT;
+                            break;
+                        case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
+#if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
+                            UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+                            UARTTransmitText("[IPv4]: Failed to resolve ");
+                            UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
+                            UARTTransmitText("\033[0m");
+                            UARTTransmitText("\n\r");
+
+#endif
+                            stack->background.fPacketPending = 0;
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+
+                }
+                break;
         }
+
+
     }
 
 
@@ -107,13 +192,17 @@ void handleStackBackgroundTasks(stack_t* stack) {
     if (errIPv4.module == ERROR_MODULE_IPv4 &&
             errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
 #if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
+        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
         UARTTransmitText("[IPv4]: Address conflict detected.\n\r");
+        UARTTransmitText("\033[0m");
 #endif
         stack->source = ipv4_generateAutoIP();
 #if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
+        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
         UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
         UARTTransmitText(ipAdressToString(stack->source));
         UARTTransmitText("\n\r");
+        UARTTransmitText("\033[0m");
 #endif
         ipv4_setIPSourceAddress(stack->source);
     }

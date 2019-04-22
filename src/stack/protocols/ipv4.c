@@ -22,10 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.   
  */
 
+#include "../../system/system.h"
+
 #include "ipv4.h"
 #include "arpSettings.h"
 #include "../bool.h"
 #include "ipv4Settings.h"
+#include "icmp.h"
 
 ipv4_address_t static ipSource; ///< Source IP address of the stack
 ipv4_address_t static ipPreliminarySource; ///< Future source IP address of the stack (needs to be verified by collision detection first)
@@ -55,6 +58,7 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
     uint8_t static failedResolveCounter = 0;
     time_t static oldTime = 0;
 
+    /* ========  Resolve address ======== */
     //First let's check the ARP table for a valid entry
     if (arp_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
         //There is a non-expired entry of the IP address
@@ -92,11 +96,6 @@ error_t ipv4_sendFrame(ipv4_packet_t ipPacket) {
 }
 
 void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet) {
-    uint16_t ethernetPacketLength = packet.ipv4Header.totalLength;
-    uint16_t remainingLength;
-
-    /**\todo Fragmenting */
-
     ethernetController_streamToTransmitBuffer(data, packet.memory);
 }
 
@@ -126,20 +125,59 @@ void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
 }
 
 void ipv4_calculateHeaderChecksum(ipv4_header_t * header) {
+    /**
+     * \todo make it look less ugly
+     */
     //Sum up all 16-Bit words of the header:
     uint32_t sum = 0;
+    uint8_t carry = 0;
     sum = ((header->version << 12) | (header->headerLength << 8) | (header->dscp << 2) | (header->ecn))&0xffff; //Word 0
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
     sum += header->totalLength; //Word 1
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
     sum += header->identification; //Word 2
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
     sum += ((header->flags << 13) | (header->fragmentOffset))&0xffff; //Word 3
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
     sum += ((header->timeToLive << 8) | (header->protocol))&0xffff; //Word 4
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
     //header checksum is zero for calculation
     sum += ((header->source.address[1] | (header->source.address[0] << 8)))&0xffff; // Word 5
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
     sum += ((header->source.address[3] | (header->source.address[2] << 8)))&0xffff; // Word 6
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
     sum += ((header->destination.address[1] | (header->destination.address[0] << 8)))&0xffff; // Word 7
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
     sum += ((header->destination.address[3] | (header->destination.address[2] << 8)))&0xffff; // Word 8
-
-    sum = (sum & 0x0ffff)+((sum & 0xf0000) >> 16);
+    if (sum > 0xffff) {//If there is a carry bit, add it to the sum (to keep it within 16 bits)
+        sum = sum & 0xffff;
+        sum++;
+    }
+    sum = (sum & 0xffff);
     sum = ~sum; //invert all bits
 
     header->checksum = sum;
@@ -166,7 +204,7 @@ ipv4_header_t static ipv4_parseHeader(memoryField_t *field) {
     ip.identification |= ethernetController_streamFromRXBuffer(1, field->start);
     //BYTE 6
     temp = ethernetController_streamFromRXBuffer(1, field->start);
-    ip.flags = ((temp & 0xC0) >> 6);
+    ip.flags = ((temp & 0xE0) >> 5);
     ip.fragmentOffset = ((temp & 0x1f) << 8);
     //BYTE 7
     ip.fragmentOffset |= ethernetController_streamFromRXBuffer(1, field->start);
@@ -210,32 +248,144 @@ bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header) {
 /* =======================  Reception ======================= */
 
 void ipv4_handleNewPacket(ethernetFrame_t *frame) {
-    ipv4_header_t ip;
+    ipv4_header_t header;
     memoryField_t headerField;
+    memoryField_t payloadField;
+    /* ========  Error check ======== */
     if (frame->ethertype != ETHERTYPE_IPv4) {
         ethernetController_dropPacket(frame);
         return;
     }
-    headerField = frame->memory;
+    /* ========  Get header info ======== */
+    headerField = frame->memory; //Copy memory information
     headerField.start = frame->memory.start + 22; //skip NextPacketPointer (2 Bytes), RSV (6 Bytes), 2 MAC addresses (12 Bytes) and EtherType (2 Bytes)
+    //Only headerField.start is needed for parsing
+    header = ipv4_parseHeader(&headerField);
+    //After parsing, the end address + length can be filled out
+    headerField.length = header.headerLength * 4;
+    if (headerField.start + headerField.length > END_OF_MEMORY_ADDRESS) {//Wrap around
+        headerField.end = headerField.length - (END_OF_MEMORY_ADDRESS - headerField.start) - 1;
+    } else
+        headerField.end = headerField.start + headerField.length - 1;
 
-    ip = ipv4_parseHeader(&headerField);
+    payloadField.start = headerField.end + 1; //the payload starts where the header ends
+    payloadField.end = frame->memory.end; //the payload ends where the packet ends
+    //Calculate field length, considering wrap around
+    payloadField.length = (payloadField.start < payloadField.end) ? (payloadField.end - payloadField.start) : ((END_OF_MEMORY_ADDRESS - payloadField.start) + payloadField.end);
+    
+   /* UARTTransmitText("\n\rEthernet Frame: ");
+    UARTTransmitText(intToString(frame->memory.start));
+    UARTTransmitText(" -> ");
+    UARTTransmitText(intToString(frame->memory.end));
+    UARTTransmitText(" (");
+    UARTTransmitText(intToString(frame->memory.length));
+    UARTTransmitText(")\n\r");
+
+    UARTTransmitText("IP Header: ");
+    UARTTransmitText(intToString(headerField.start));
+    UARTTransmitText(" -> ");
+    UARTTransmitText(intToString(headerField.end));
+    UARTTransmitText(" (");
+    UARTTransmitText(intToString(headerField.length));
+    UARTTransmitText(")\n\r");
+
+    UARTTransmitText("IP payload: ");
+    UARTTransmitText(intToString(payloadField.start));
+    UARTTransmitText(" -> ");
+    UARTTransmitText(intToString(payloadField.end));
+    UARTTransmitText(" (");
+    UARTTransmitText(intToString(payloadField.length));
+    UARTTransmitText(")\n\r");*/
+
+    /* ========  Check header ======== */
+    if (!ipv4_checkHeaderChecksum(&header)) {
+#if IPv4_DEBUG_MESSAGES==true
+        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+        UARTTransmitText("[Invalid checksum]");
+        UARTTransmitText("\033[0m");
+#endif
+        ethernetController_dropPacket(frame);
+    }
+    if (header.version != 4) {
+        ethernetController_dropPacket(frame);
+#if IPv4_DEBUG_MESSAGES==true
+        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+        UARTTransmitText("[Bogus version]");
+        UARTTransmitText("\033[0m");
+#endif
+    }
+    if (header.timeToLive == 0) {
+        ethernetController_dropPacket(frame);
+#if IPv4_DEBUG_MESSAGES==true
+        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+        UARTTransmitText("[TTL=0]");
+        UARTTransmitText("\033[0m");
+#endif
+    }
+    if (header.totalLength == 0) {
+        ethernetController_dropPacket(frame);
+#if IPv4_DEBUG_MESSAGES==true
+        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+        UARTTransmitText("[Length=0]");
+        UARTTransmitText("\033[0m");
+#endif
+    }
+#if IPv4_DEBUG_MESSAGES==true
+    if (header.flags & IPv4_FLAG_DONT_FRAGMENT) {
+        UARTTransmitText("[DF]");
+    }
+    if (header.flags & IPv4_FLAG_MORE_FRAGMENTS) {
+        UARTTransmitText("[MF]");
+    }
+#endif
+
+    /* ========  Give to higher protocol ======== */
+    switch (header.protocol) {
+        case IPv4_PROTOCOL_ICMP:
+#if IPv4_DEBUG_MESSAGES==true
+            UARTTransmitText("\033[103;30;10m"); //bright yellow color, black foreground,  Primary font
+            UARTTransmitText("[");
+            UARTTransmitText((ipProtocolToString(header.protocol)));
+            UARTTransmitText("]");
+            UARTTransmitText("\033[0m");
+#endif
+            icmp_handleNewPacket(header, payloadField);
+            break;
+        case IPv4_PROTOCOL_TCP:
+#if IPv4_DEBUG_MESSAGES==true
+            UARTTransmitText("\033[42;30;10m"); //green color, black foreground,  Primary font
+            UARTTransmitText("[");
+            UARTTransmitText((ipProtocolToString(header.protocol)));
+            UARTTransmitText("]");
+            UARTTransmitText("\033[0m");
+#endif
+            break;
+        case IPv4_PROTOCOL_UDP:
+#if IPv4_DEBUG_MESSAGES==true
+            UARTTransmitText("\033[46;30;10m"); //cyan color, black foreground,  Primary font
+            UARTTransmitText("[");
+            UARTTransmitText((ipProtocolToString(header.protocol)));
+            UARTTransmitText("]");
+            UARTTransmitText("\033[0m");
+#endif
+            break;
+        default:
+#if IPv4_DEBUG_MESSAGES==true
+            UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+            UARTTransmitText("[Unknown Protocol]");
+            UARTTransmitText("\033[0m");
+
+#endif
+            break;
+    }
+    ethernetController_dropPacket(frame);
+
 #if IPv4_DEBUG_MESSAGES==true
     UARTTransmitText("[");
-    UARTTransmitText(ipAdressToString(ip.source));
+    UARTTransmitText(ipAdressToString(header.source));
     UARTTransmitText(" -> ");
-    UARTTransmitText(ipAdressToString(ip.destination));
-    UARTTransmitText("][");
-    UARTTransmitText((ipProtocolToString(ip.protocol)));
-    UARTTransmitText("][");
-    UARTTransmitText(intToString(ip.totalLength));
-    UARTTransmitText("][");
-    UARTTransmitText(intToString(ip.version));
-    UARTTransmitText(", ");
-    UARTTransmitText(intToString(ip.headerLength));
+    UARTTransmitText(ipAdressToString(header.destination));
     UARTTransmitText("]");
-    if (!ipv4_checkHeaderChecksum(&ip))
-        UARTTransmitText("[INVALID CHECKSUM]");
 #endif
 }
 

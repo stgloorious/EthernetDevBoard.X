@@ -22,13 +22,14 @@
  */
 
 #include <stdlib.h>
+#include <math.h>
 #include "../system/main.h"
 #include "../enc424j600/ENC424J600.h"
 
 uint32_t volatile numberToDisplay = 0; //global because interrupt
 uint8_t volatile buttonState = 0;
 
-stack_t static stack;
+stack_t stack;
 
 void main() {
 
@@ -69,11 +70,14 @@ void main() {
     __delay_ms(10);
     UARTTransmitText("\x12"); //form feed
     if (!RCONbits.TO) {
-        UARTTransmitText("------------------------------------------------\n\r");
-        UARTTransmitText("\a*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
-        UARTTransmitText("------------------------------------------------\n\r");
+        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+        UARTTransmitText("\a"); //Alert
+        UARTTransmitText("\n\r------------------------------------------------\n\r");
+        UARTTransmitText("*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
+        UARTTransmitText("------------------------------------------------");
+        UARTTransmitText("\033[0m");
     }
-    UARTTransmitText("FIRMWARE BUILD DATE IS ");
+    UARTTransmitText("\n\rFIRMWARE BUILD DATE IS ");
     UARTTransmitText(__DATE__);
     UARTTransmitText(" ");
     UARTTransmitText(__TIME__);
@@ -122,51 +126,70 @@ void main() {
     srand(ethernetController_getMacAddress().address[5]);
     stack.source = ipv4_generateAutoIP();
 
+    bool_t static spamming = false;
+    bool_t static unlocked = false;
+
     while (1) {
         CLRWDT(); //clear watch doggy
 
         handleStackBackgroundTasks(&stack);
 
         printEthernetState(stack.ethernet);
-        //numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : ethernetController_getCurrentPacketCount();
-        numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : stack.source.address[3];
+        numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : ethernetController_getCurrentPacketCount();
+        //numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : stack.source.address[3];
 
         if (buttonState) {
             buttonState = 0;
+        /*    if (unlocked) {
+                spamming = false;
+                unlocked = false;
+            } else {
+                spamming = true;
+                unlocked = true;
+            }
 
-            UARTTransmitText("My Address is ");
-            UARTTransmitText(ipAdressToString(ipv4_getIPSourceAddress()));
-            UARTTransmitText("\n\r");
+        }
+
+        if (stack.ethernet.link == LINK_ESTABLISHED && spamming == false && unlocked && !stack.background.fPacketPending)
+            spamming = true;
 
 
+        if (spamming && unlocked) {
+            spamming = false;*/
             if (stack.ethernet.link == LINK_ESTABLISHED) {
 
                 //////////////////////////////////////////////
                 uint8_t headerBuf[32];
+                stack.pendingPacketToSend.ipv4Header.headerLength = 5;
+                stack.pendingPacketToSend.ipv4Header.protocol = IPv4_PROTOCOL_UDP;
                 stack.pendingPacketToSend.ipv4Header.destination = ipDst;
                 stack.pendingPacketToSend.ipv4Header.source = ipv4_getIPSourceAddress();
-                stack.pendingPacketToSend.ipv4Header.totalLength = 120;
+                stack.pendingPacketToSend.ipv4Header.totalLength = 1500;
                 stack.pendingPacketToSend.ipv4Header.timeToLive = 255;
                 stack.pendingPacketToSend.ipv4Header.version = 4;
+
                 ipv4_calculateHeaderChecksum(&stack.pendingPacketToSend.ipv4Header);
-                ipv4_writeHeaderIntoBuffer(stack.pendingPacketToSend.ipv4Header, headerBuf);
+                ipv4_writeHeaderIntoBuffer(stack.pendingPacketToSend.ipv4Header, &headerBuf);
 
                 ipv4_txFrameRequest(&stack.pendingPacketToSend);
-
-                for (uint8_t i = 0; i < stack.pendingPacketToSend.ipv4Header.totalLength; i++) {
+                for (uint16_t i = 0; i < stack.pendingPacketToSend.ipv4Header.totalLength; i++) {
                     if (i < stack.pendingPacketToSend.ipv4Header.headerLength * 4) {
                         ipv4_streamToTransmissionBuffer(headerBuf[i], stack.pendingPacketToSend);
                     } else
-                        ipv4_streamToTransmissionBuffer(0, stack.pendingPacketToSend);
+                        ipv4_streamToTransmissionBuffer(i - 20, stack.pendingPacketToSend);
                 }
+#if IPv4_DEBUG_MESSAGES == true
                 UARTTransmitText("[IPv4]: A packet was prepared (");
-                UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.source)); 
+                UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.source));
                 UARTTransmitText(" -> ");
-                UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.destination)); 
+                UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.destination));
                 UARTTransmitText(")\n\r");
+#endif 
+
                 //////////////////////////////////////////////      
                 stack.background.fPacketPending = 1;
             }
+
         }
     }
 }

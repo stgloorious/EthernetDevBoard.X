@@ -55,15 +55,18 @@ void arp_handleNewPacket(ethernetFrame_t *frame) {
     UARTTransmitText(", ");
     UARTTransmitText(ipAdressToString(arp.targetIPAddress));
     UARTTransmitText("]");
+    UARTTransmitText("\033[94;4;10m");
     if (arp.fIsProbe)
         UARTTransmitText("[IsProbe]");
     if (arp.fIsGratuitous)
         UARTTransmitText("[IsGratuitous]");
+    UARTTransmitText("\033[0m");
 #endif 
     arp_sendReply(arp);
     if (!ipv4_isAllZero(&arp.senderIPAddress)) {//Don't allow entries with 0.0.0.0
         arp_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
     }
+    ethernetController_dropPacket();
 }
 
 arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame) {
@@ -236,11 +239,13 @@ void static arp_sendReply(arp_message_t request) {
 
     arp_send(reply);
 #if ARP_DEBUG_MESSAGES==true
+    UARTTransmitText("\033[44;10;10m"); //blue color, Primary font
     UARTTransmitText("[Reply sent to ");
     UARTTransmitText(macToString(reply.targetMACAddress));
     UARTTransmitText(", ");
     UARTTransmitText(ipAdressToString(reply.targetIPAddress));
     UARTTransmitText("]");
+    UARTTransmitText("\033[0m");
 #endif
 }
 
@@ -490,11 +495,13 @@ void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, time_t timestam
     arp_table[oldestIndex].timeCreated = timestamp;
 #if ARP_DEBUG_MESSAGES==true
     if (!((mac_isAllZero(&mac)) && ipv4_isAllZero(&ip))) {
+        UARTTransmitText("\033[44;10;10m"); //blue color, Primary font
         UARTTransmitText("[ARP]: New entry created for ");
         UARTTransmitText(ipAdressToString(ip));
         UARTTransmitText(" (");
         UARTTransmitText(macToString(mac));
         UARTTransmitText(") ");
+        UARTTransmitText("\033[0m");
     }
 #endif
 }

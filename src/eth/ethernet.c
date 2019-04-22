@@ -79,33 +79,38 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     UARTTransmitText("[");
     UARTTransmitText(intToString(counter++));
     UARTTransmitText("]");
+   
 
     /* =======================  Processing the FLags from the Receive Status Vector  ======================= */
     if (frame->receiveStatusVector.broadcast)
         UARTTransmitText("[Broadcast]");
     if (frame->receiveStatusVector.unicast)
         UARTTransmitText("[Unicast]");
-    if (!frame->receiveStatusVector.receivedOk)
+    if (!frame->receiveStatusVector.receivedOk) {
+        UARTTransmitText("\033[41;1;10m"); //Red color
         UARTTransmitText("[Symbol Errors]");
-
-    UARTTransmitText("[");
-    UARTTransmitText(intToString(frame->tReceived));
-    UARTTransmitText("]");
-
+        UARTTransmitText("\033[0m");
+    }
 
 
     /* ======================= Distributing the packet to the responsible protocol  ======================= */
 
     switch (frame->ethertype) {
         case ETHERTYPE_ARP:
+            UARTTransmitText("\033[44;10;10m");
             UARTTransmitText("[ARP]");
+            UARTTransmitText("\033[0m");
             arp_handleNewPacket(frame);
+
             break;
         case ETHERTYPE_IPv4:
+            UARTTransmitText("\033[45;10;10m");
             UARTTransmitText("[IPv4]");
+            UARTTransmitText("\033[0m");
             ipv4_handleNewPacket(frame);
             break;
         default:
+            UARTTransmitText("\033[41;1;10m");
             UARTTransmitText("[Unknown EtherType]");
             UARTTransmitText("[");
             UARTTransmitText(macToString(frame->source));
@@ -116,19 +121,21 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
             UARTTransmitText("][L=");
             UARTTransmitInt(frame->length);
             UARTTransmitText("] ");
+            UARTTransmitText("\033[0m");
+            ethernetController_dropPacket();
             break;
     }
 
 
-    UARTTransmitText("[");
+  /*  UARTTransmitText("[");
     UARTTransmitText(intToString(frame->memory.start));
     UARTTransmitText(" to ");
     UARTTransmitText(intToString(frame->memory.end));
     UARTTransmitText(" (");
     UARTTransmitText(intToString(frame->memory.length));
-    UARTTransmitText(")]");
+    UARTTransmitText(")]");*/
 
-    ethernetController_dropPacket();
+
 
     UARTTransmitText("\n\r");
 

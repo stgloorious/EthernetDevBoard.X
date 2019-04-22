@@ -33,12 +33,14 @@
  */
 
 #ifndef IPv4_DEBUG_MESSAGES
-#define IPv4_DEBUG_MESSAGES             true  ///< This enables ALL debug messages related to IPv4
+#define IPv4_DEBUG_MESSAGES             false  ///< This enables ALL debug messages related to IPv4
 #endif 
 
 #ifndef IPv4_DEBUG_HIGH_PRIORITY
 #define IPv4_DEBUG_HIGH_PRIORITY        true  ///< This enables debug messages related to IPv4 that are marked as "high priority"; This setting is useless if \ref IPv4_DEBUG_MESSAGES is true. 
 #endif
+
+#define IPv4_ENABLE_FRAGMENTING         true ///< TX Packets larger than the MTU will be fragmented
 
 /**\}*/
 

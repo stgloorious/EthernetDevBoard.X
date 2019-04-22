@@ -252,16 +252,16 @@ ipv4_address_t destination;
 
 } ipv4_header_t;
 
-# 146
+# 149
 typedef struct ipv4_packet {
 
-# 150
+# 153
 ipv4_header_t ipv4Header;
 
-# 154
+# 157
 memoryField_t memory;
 
-# 158
+# 161
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
@@ -365,112 +365,112 @@ HASHIF = 13,
 MODEXIF = 14
 } interruptFlagName_t;
 
-# 52 "src/stack/protocols/../protocols/../../eth/ethernetController.h"
+# 49 "src/stack/protocols/../protocols/../../eth/ethernetController.h"
 typedef enum LEDs {
 LEDA, LEDB
 } LEDs_t;
 
-# 60
+# 57
 typedef enum LEDStates {
 LED_ON,
 LED_OFF,
 LED_TRANSMIT_RECEIVE_EVENTS
 } LEDStates_t;
 
-# 84
+# 81
 error_t ethernetController_init();
 
-# 97
+# 94
 void ethernetController_enableEthernet();
 
-# 102
+# 99
 void ethernetController_disableEthernet();
 
-# 107
+# 104
 void ethernetController_enableTransmission();
 
-# 112
+# 109
 void ethernetController_disableTransmission();
 
-# 117
+# 114
 void ethernetController_enableReception();
 
-# 122
+# 119
 void ethernetController_disableReception();
 
-# 128
+# 125
 error_t ethernetController_softReset();
 
-# 134
+# 131
 error_t ethernetController_checkDeviceId();
 
-# 140
+# 137
 uint8_t ethernetController_getSiliconRevision();
 
-# 146
+# 143
 uint8_t *ethernetController_getDeviceName();
 
-# 152
+# 149
 void ethernetController_updateLinkStatus(ethernetConnection_t *state);
 
-# 158
+# 155
 uint16_t ethernetController_getMTU();
 
-# 166
+# 163
 interruptFlags_t ethernetController_pollInterruptFlags();
 
-# 172
+# 169
 void ethernetController_clearInterruptFlag(uint8_t flag);
 
-# 186
+# 183
 void ethernetController_sendPacket(memoryField_t field);
 
-# 198
+# 195
 void ethernetController_streamToTransmitBuffer(uint8_t data, memoryField_t field);
 
-# 205
+# 202
 void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t f);
 
-# 212
+# 209
 void ethernetController_writeDestinationMACAddress(macaddress_t addr, memoryField_t f);
 
-# 232
+# 229
 void ethernetController_dropPacket();
 
-# 238
+# 235
 void ethernetController_updateNextPacketPointer();
 
-# 252
+# 249
 uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAddress);
 
-# 259
+# 256
 macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field);
 
-# 266
+# 263
 macaddress_t ethernetController_getSourceMACAddress(memoryField_t field);
 
-# 273
+# 270
 etherType_t ethernetController_getEtherTypeField(memoryField_t field);
 
-# 279
+# 276
 RSV_t ethernetController_getRSV(uint16_t address);
 
-# 285
+# 282
 uint8_t ethernetController_newPacketAvailable();
 
-# 291
+# 288
 uint8_t ethernetController_getCurrentPacketCount();
 
-# 297
+# 294
 uint16_t ethernetController_getNextPacketPointer();
 
-# 303
+# 300
 macaddress_t ethernetController_getMacAddress();
 
-# 309
+# 306
 void ethernetController_setMacAddress(macaddress_t mac);
 
-# 325
+# 322
 void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf);
 
 # 43 "src/stack/protocols/../protocols/../../eth/mac.h"
@@ -7377,7 +7377,62 @@ bool_t ipv4_isAllZero(ipv4_address_t *ip);
 # 165
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
-# 30 "src/stack/protocols/ipv4.c"
+# 30 "src/stack/protocols/icmpTypes.h"
+typedef struct icmpHeader {
+uint8_t typeOfMessage;
+uint8_t code;
+uint16_t checksum;
+uint32_t headerData;
+} icmpHeader_t;
+
+typedef enum icmpMessage {
+ICMP_ECHO_REPLY = 0,
+ICMP_DESTINATION_UNREACHABLE = 3,
+ICMP_SOURCE_QUENCH = 4,
+ICMP_REDIRECT_MESSAGE = 5,
+ICMP_ECHO_REQUEST = 8,
+ICMP_ROUTER_ADVERTISEMENT = 9,
+ICMP_ROUTER_SOLICITATION = 10,
+ICMP_TIME_EXCEEDED = 11,
+ICMP_PARAM_PROBLEM_BAD_HEADER = 12,
+ICMP_TIMESTAMP = 13,
+ICMP_TIMESTAMP_REPLY = 14
+} icmpMessage_t;
+
+const char *icmpTxtMessages[] = {
+"ECHO REPLY",
+"",
+"",
+"DESTINATION UNREACHABLE",
+"SOURCE QUENCH",
+"REDIRECT MESSAGE",
+"",
+"",
+"ECHO REQUEST",
+"ROUTER ADVERTISEMENT",
+"ROUTER SOLICITATION",
+"TIME EXCEEDED",
+"PARAM PROBLEM: BAD HEADER",
+"TIMESTAMP",
+"TIMESTAMP REPLY"
+};
+
+# 40 "src/stack/protocols/icmp.h"
+error_t icmp_handleNewPacket(ipv4_header_t ipHeader, memoryField_t ipPayload);
+
+# 48
+error_t icmp_parseHeader(memoryField_t ipPayload, icmpHeader_t *ipHeader);
+
+# 52
+uint16_t static icmp_calculateChecksum(memoryField_t ipPayload);
+
+void icmp_sendEchoReply(ipv4_header_t ipHeader, icmpHeader_t icmpHeader, memoryField_t ipPayload);
+
+void icmp_writeHeaderIntoBuffer(uint8_t *buf, icmpHeader_t header);
+
+uint16_t static icmp_calculateChecksumBuf(uint8_t *buf, uint16_t ipPayloadLength);
+
+# 33 "src/stack/protocols/ipv4.c"
 ipv4_address_t static ipSource;
 ipv4_address_t static ipPreliminarySource;
 bool_t static fSrcAddrChanged;
@@ -7407,17 +7462,12 @@ uint8_t static failedResolveCounter = 0;
 time_t static oldTime = 0;
 
 
+
 if (arp_checkForEntry(ipPacket.ipv4Header.destination, &index)) {
 
 ipPacket.ethernet.destination = arp_getEntryFromTable(index);
 
-UARTTransmitText("[IPv4]: ");
-UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
-UARTTransmitText(" is at ");
-UARTTransmitText(macToString(ipPacket.ethernet.destination));
-UARTTransmitText("\n\r");
-
-
+# 74
 ipPacket.ethernet.source = ethernetController_getMacAddress();
 
 ethernetController_writeDestinationMACAddress(ipPacket.ethernet.destination, ipPacket.ethernet.memory);
@@ -7428,10 +7478,7 @@ failedResolveCounter = 0;
 } else if ((getMillis() - oldTime) > 2000u || oldTime == 0) {
 failedResolveCounter++;
 
-UARTTransmitText("[IPv4]: Trying to resolve ");
-UARTTransmitText(ipAdressToString(ipPacket.ipv4Header.destination));
-UARTTransmitText("\n\r");
-
+# 88
 oldTime = getMillis();
 arp_sendRequest(ipPacket.ipv4Header.source, ipPacket.ipv4Header.destination);
 if (failedResolveCounter >= 3u) {
@@ -7443,11 +7490,6 @@ return err;
 }
 
 void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet) {
-uint16_t ethernetPacketLength = packet.ipv4Header.totalLength;
-uint16_t remainingLength;
-
-
-
 ethernetController_streamToTransmitBuffer(data, packet.memory);
 }
 
@@ -7478,19 +7520,56 @@ void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr) {
 
 void ipv4_calculateHeaderChecksum(ipv4_header_t * header) {
 
+# 132
 uint32_t sum = 0;
+uint8_t carry = 0;
 sum = ((header->version << 12) | (header->headerLength << 8) | (header->dscp << 2) | (header->ecn))&0xffff;
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
 sum += header->totalLength;
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
 sum += header->identification;
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
 sum += ((header->flags << 13) | (header->fragmentOffset))&0xffff;
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
 sum += ((header->timeToLive << 8) | (header->protocol))&0xffff;
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
 
 sum += ((header->source.address[1] | (header->source.address[0] << 8)))&0xffff;
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
 sum += ((header->source.address[3] | (header->source.address[2] << 8)))&0xffff;
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
 sum += ((header->destination.address[1] | (header->destination.address[0] << 8)))&0xffff;
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
 sum += ((header->destination.address[3] | (header->destination.address[2] << 8)))&0xffff;
-
-sum = (sum & 0x0ffff)+((sum & 0xf0000) >> 16);
+if (sum > 0xffff) {
+sum = sum & 0xffff;
+sum++;
+}
+sum = (sum & 0xffff);
 sum = ~sum;
 
 header->checksum = sum;
@@ -7517,7 +7596,7 @@ ip.identification = (ethernetController_streamFromRXBuffer(1, field->start) << 8
 ip.identification |= ethernetController_streamFromRXBuffer(1, field->start);
 
 temp = ethernetController_streamFromRXBuffer(1, field->start);
-ip.flags = ((temp & 0xC0) >> 6);
+ip.flags = ((temp & 0xE0) >> 5);
 ip.fragmentOffset = ((temp & 0x1f) << 8);
 
 ip.fragmentOffset |= ethernetController_streamFromRXBuffer(1, field->start);
@@ -7549,45 +7628,83 @@ if (testHeader.checksum == header->checksum) {
 return 1;
 }
 
-UARTTransmitText("[Expected ");
-UARTTransmitText(hexToString(testHeader.checksum));
-UARTTransmitText(", got ");
-UARTTransmitText(hexToString(header->checksum));
-UARTTransmitText("]");
-
+# 245
 return 0;
 }
 
 
 
 void ipv4_handleNewPacket(ethernetFrame_t *frame) {
-ipv4_header_t ip;
+ipv4_header_t header;
 memoryField_t headerField;
+memoryField_t payloadField;
+
 if (frame->ethertype != ETHERTYPE_IPv4) {
 ethernetController_dropPacket(frame);
 return;
 }
+
 headerField = frame->memory;
 headerField.start = frame->memory.start + 22;
 
-ip = ipv4_parseHeader(&headerField);
+header = ipv4_parseHeader(&headerField);
 
-UARTTransmitText("[");
-UARTTransmitText(ipAdressToString(ip.source));
-UARTTransmitText(" -> ");
-UARTTransmitText(ipAdressToString(ip.destination));
-UARTTransmitText("][");
-UARTTransmitText((ipProtocolToString(ip.protocol)));
-UARTTransmitText("][");
-UARTTransmitText(intToString(ip.totalLength));
-UARTTransmitText("][");
-UARTTransmitText(intToString(ip.version));
-UARTTransmitText(", ");
-UARTTransmitText(intToString(ip.headerLength));
-UARTTransmitText("]");
-if (!ipv4_checkHeaderChecksum(&ip))
-UARTTransmitText("[INVALID CHECKSUM]");
+headerField.length = header.headerLength * 4;
+if (headerField.start + headerField.length > 0x5FFF) {
+headerField.end = headerField.length - (0x5FFF - headerField.start) - 1;
+} else
+headerField.end = headerField.start + headerField.length - 1;
 
+payloadField.start = headerField.end + 1;
+payloadField.end = frame->memory.end;
+
+payloadField.length = (payloadField.start < payloadField.end) ? (payloadField.end - payloadField.start) : ((0x5FFF - payloadField.start) + payloadField.end);
+
+# 301
+if (!ipv4_checkHeaderChecksum(&header)) {
+
+# 307
+ethernetController_dropPacket(frame);
+}
+if (header.version != 4) {
+ethernetController_dropPacket(frame);
+
+# 316
+}
+if (header.timeToLive == 0) {
+ethernetController_dropPacket(frame);
+
+# 324
+}
+if (header.totalLength == 0) {
+ethernetController_dropPacket(frame);
+
+# 332
+}
+
+# 343
+switch (header.protocol) {
+case IPv4_PROTOCOL_ICMP:
+
+# 352
+icmp_handleNewPacket(header, payloadField);
+break;
+case IPv4_PROTOCOL_TCP:
+
+# 362
+break;
+case IPv4_PROTOCOL_UDP:
+
+# 371
+break;
+default:
+
+# 379
+break;
+}
+ethernetController_dropPacket(frame);
+
+# 390
 }
 
 ipv4_address_t ipv4_getIPSourceAddress() {
@@ -7614,8 +7731,7 @@ switch ((*arpStatus).code) {
 case (uint16_t)0:
 err = (*arpStatus);
 
-UARTTransmitText("[IPv4]: ARP process completed.\n\r");
-
+# 418
 ipSource = ipPreliminarySource;
 fSrcAddrChanged = 0;
 return err;
