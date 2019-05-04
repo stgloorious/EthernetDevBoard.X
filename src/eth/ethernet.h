@@ -29,6 +29,7 @@
 #include "../eth/ethernetController.h"
 #include "../stack/error.h"
 #include "../eth/ethernetTypes.h"
+#include "ethernetSettings.h"
 #include "../mem/memoryController.h"
 
 /**

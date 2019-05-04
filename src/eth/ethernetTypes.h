@@ -50,7 +50,9 @@ typedef enum etherTypes {
     ETHERTYPE_IPv4 = 0x0800, ///< Internet Protocol Version 4
     ETHERTYPE_ARP = 0x0806, ///< Address Resolution Protocol
     ETHERTYPE_WOL = 0x0842, ///< Wake-On-LAN
-    ETHERTYPE_FLOW_CONTROL = 0x8808///< FLow control
+    ETHERTYPE_FLOW_CONTROL = 0x8808, ///< FLow control
+
+    ETHERTYPE_UNKNOWN = 0xffff ///< Placeholder for invalid EtherType
 } etherType_t;
 
 /**

@@ -27,32 +27,61 @@
 
 stack_t extern stack;
 
-error_t icmp_handleNewPacket(ipv4_header_t ipHeader, memoryField_t ipPayload) {
-    icmpHeader_t icmpHeader;
-    icmp_parseHeader(ipPayload, &icmpHeader);
+uint16_t static sequence = 0;
+uint16_t static id = 1;
 
+error_t icmp_handleNewPacket(ipv4_header_t ipHeader, memoryField_t ipPayload) {
+    error_t err;
+    icmpHeader_t icmpHeader;
+
+    err.module = ERROR_MODULE_ICMP;
+    err.code = ERROR_CODE_UNDEFINED;
+
+    if (ipPayload.length > ICMP_MAX_LENGTH) {
+        err.module = ERROR_ICMP_MESSAGE_TOO_LONG;
+        return err;
+    }
+
+    /* =======================  Header ======================= */
+    icmp_parseHeader(ipPayload, &icmpHeader);
+#if ICMP_DEBUG_MESSAGES==true
     UARTTransmitText("\033[40;33;10m"); //bright yellow color foreground, black blackground,  Primary font
     UARTTransmitText("[");
     UARTTransmitText(icmpTxtMessages[icmpHeader.typeOfMessage]);
     UARTTransmitText("]");
-    UARTTransmitText("\033[0m");
+    UART_resetFormat();
+#endif
 
-    if (icmp_calculateChecksum(ipPayload) != icmpHeader.checksum) {
-        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
-        UARTTransmitText("[BAD CHECKSUM]");
-        UARTTransmitText("\033[0m");
+    /* ==========  Read header data from memory ========== */
+    uint8_t foo[ICMP_MAX_LENGTH];
+    ethernetController_streamFromRXBuffer(0, ipPayload.start); //Open stream
+    for (uint16_t i = 0; i < ipPayload.length + 4; i++) {
+        foo[i] = ethernetController_streamFromRXBuffer(1, ipPayload.start);
     }
+    ethernetController_streamFromRXBuffer(2, ipPayload.start); //end stream
 
+    if (icmp_calculateChecksumBuf(&foo[0], ipPayload.length) != icmpHeader.checksum) {
+#if ICMP_DEBUG_MESSAGES==true
+        UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
+        UARTTransmitText("[Bad checksum]");
+        UART_resetFormat();
+#endif
+    }
+    /* =======================  Reply to echos ======================= */
     if (icmpHeader.typeOfMessage == ICMP_ECHO_REQUEST) {
+#if ICMP_DEBUG_MESSAGES==true
         UARTTransmitText("[id=");
-        UARTTransmitText(intToString((icmpHeader.headerData & 0xffff0000) >> 16));
+        UARTTransmitText(intToString((icmpHeader.headerData & 0xffff0000) >> 16, 10));
         UARTTransmitText("][seq=");
-        UARTTransmitText(intToString(icmpHeader.headerData & 0x0000ffff));
+        UARTTransmitText(intToString(icmpHeader.headerData & 0x0000ffff, 10));
         UARTTransmitText("]");
+#endif
 
         icmp_sendEchoReply(ipHeader, icmpHeader, ipPayload);
     }
-
+    
+    err.code == ERROR_CODE_SUCCESSFUL;
+    return err;
 }
 
 error_t icmp_parseHeader(memoryField_t ipPayload, icmpHeader_t *icmpHeader) {
@@ -68,33 +97,6 @@ error_t icmp_parseHeader(memoryField_t ipPayload, icmpHeader_t *icmpHeader) {
     icmpHeader->headerData |= ethernetController_streamFromRXBuffer(1, ipPayload.start);
 
     ethernetController_streamFromRXBuffer(2, ipPayload.start); //end stream
-}
-
-uint16_t static icmp_calculateChecksum(memoryField_t ipPayload) {
-    ipPayload.length += 4; //bodge fix for some other error
-    uint32_t sum = 0;
-
-    ethernetController_streamFromRXBuffer(0, ipPayload.start); //Open stream
-    for (uint16_t i = 0; i < ipPayload.length / 2; i++) {
-        uint16_t foo = 0;
-        foo = ((uint16_t) ethernetController_streamFromRXBuffer(1, ipPayload.start) << 8);
-        foo |= ethernetController_streamFromRXBuffer(1, ipPayload.start);
-        if (i == 1) {
-            foo = 0x0000; //replace the checksum field with 0x0000 for calculation
-        }
-        sum += foo;
-    }
-    ethernetController_streamFromRXBuffer(2, ipPayload.start); //end stream
-
-    uint8_t carry = (sum & 0xffff0000) >> 16;
-    sum &= 0xffff;
-    sum += carry;
-    if (sum > 0xffff) {
-        sum += ((sum & 0xffff0000) >> 16);
-        sum &= 0xffff;
-    }
-
-    return ~sum;
 }
 
 uint16_t static icmp_calculateChecksumBuf(uint8_t *buf, uint16_t ipPayloadLength) {
@@ -157,6 +159,7 @@ void icmp_sendEchoReply(ipv4_header_t ipHeader, icmpHeader_t icmpRequestHeader, 
     ethernetController_streamFromRXBuffer(2, ipPayload.start + 8);
 
     uint16_t checksum = icmp_calculateChecksumBuf(&icmpMessage[0], ipPayload.length);
+
     icmpMessage [2] = (checksum & 0xff00) >> 8;
     icmpMessage [3] = checksum & 0x00ff;
 
@@ -169,14 +172,73 @@ void icmp_sendEchoReply(ipv4_header_t ipHeader, icmpHeader_t icmpRequestHeader, 
             ipv4_streamToTransmissionBuffer(icmpMessage[i - (ipReply.ipv4Header.headerLength * 4)], ipReply);
         }
     }
-
+#if ICMP_DEBUG_MESSAGES==true
     UARTTransmitText("\033[40;33;10m"); //bright yellow color foreground, black blackground,  Primary font
     UARTTransmitText("[ECHO REPLY SENT TO ");
     UARTTransmitText(ipAdressToString(ipHeader.source));
     UARTTransmitText("]");
-    UARTTransmitText("\033[0m");
+    UART_resetFormat();
+#endif
 
     stack.pendingPacketToSend = ipReply;
+    stack.background.fPacketPending = true;
+}
+
+void icmp_sendEchoRequest(ipv4_address_t ipAddr) {
+    ipv4_packet_t ipRequest;
+    icmpHeader_t icmpHeader;
+
+    uint8_t headerBuf[32];
+    ipRequest.ipv4Header.headerLength = 5;
+    ipRequest.ipv4Header.dscp = 0x00;
+    ipRequest.ipv4Header.ecn = 0x00;
+    ipRequest.ipv4Header.flags = 0x00;
+    ipRequest.ipv4Header.fragmentOffset = 0x0000;
+    ipRequest.ipv4Header.protocol = IPv4_PROTOCOL_ICMP;
+    ipRequest.ipv4Header.destination = ipAddr;
+    ipRequest.ipv4Header.source = ipv4_getIPSourceAddress();
+    ipRequest.ipv4Header.totalLength = 60;
+    ipRequest.ipv4Header.timeToLive = 255;
+    ipRequest.ipv4Header.version = 4;
+
+    ipv4_calculateHeaderChecksum(&ipRequest.ipv4Header);
+    ipv4_writeHeaderIntoBuffer(ipRequest.ipv4Header, &headerBuf);
+
+    icmpHeader.typeOfMessage = ICMP_ECHO_REQUEST;
+    icmpHeader.code = 0x00;
+    icmpHeader.headerData = ((uint32_t) id << 16) | sequence;
+    sequence++;
+
+    uint8_t icmpMessage[64];
+    icmp_writeHeaderIntoBuffer(&icmpMessage[0], icmpHeader);
+
+    for (uint8_t i = 8; i < 64; i++) {//Don't know why to do this... copied from win10 pings
+        icmpMessage[i] = ((i - 8) % 0x17) + 0x61;
+    }
+
+    uint16_t checksum = icmp_calculateChecksumBuf(&icmpMessage[0], 36);
+    icmpMessage [2] = (checksum & 0xff00) >> 8;
+    icmpMessage [3] = checksum & 0x00ff;
+
+    ipv4_txFrameRequest(&ipRequest);
+
+    for (uint16_t i = 0; i < ipRequest.ipv4Header.totalLength; i++) {
+        if (i < ipRequest.ipv4Header.headerLength * 4) {
+            ipv4_streamToTransmissionBuffer(headerBuf[i], ipRequest);
+        } else {
+            ipv4_streamToTransmissionBuffer(icmpMessage[i - (ipRequest.ipv4Header.headerLength * 4)], ipRequest);
+        }
+    }
+
+#if ICMP_DEBUG_MESSAGES==true
+    UARTTransmitText("\033[40;33;10m"); //bright yellow color foreground, black blackground,  Primary font
+    UARTTransmitText("[ICMP]: An echo request was sent to ");
+    UARTTransmitText(ipAdressToString(ipAddr));
+    UARTTransmitText("]");
+    UART_resetFormat();
+#endif
+
+    stack.pendingPacketToSend = ipRequest;
     stack.background.fPacketPending = true;
 }
 

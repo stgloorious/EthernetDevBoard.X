@@ -219,6 +219,9 @@ $(function() {
 <li>ERROR_MODULE_ETHERNET_CONTROLLER
 : <a class="el" href="group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca4d8fe7644a01433cb7e74049ff61a0be">error.h</a>
 </li>
+<li>ERROR_MODULE_ICMP
+: <a class="el" href="group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca8e3fc1a92c555401627189da5ab9ca78">error.h</a>
+</li>
 <li>ERROR_MODULE_IPv4
 : <a class="el" href="group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca5a3ae39ad1e6d703df19baff7e84be22">error.h</a>
 </li>
@@ -247,8 +250,8 @@ $(function() {
 : <a class="el" href="group__error.html#ga4d2300fd6df4ff42db6d34ca3bd63ea2">error.h</a>
 </li>
 <li>ethernet_rxGetNewFrame()
-: <a class="el" href="group__ethernet.html#ga70be1735d8cd38033d7162e7d94d1eeb">ethernet.c</a>
-, <a class="el" href="group__ethernet.html#ga70be1735d8cd38033d7162e7d94d1eeb">ethernet.h</a>
+: <a class="el" href="group__ethernet.html#ga70be1735d8cd38033d7162e7d94d1eeb">ethernet.h</a>
+, <a class="el" href="group__ethernet.html#ga70be1735d8cd38033d7162e7d94d1eeb">ethernet.c</a>
 </li>
 <li>ethernet_txFrameRequest()
 : <a class="el" href="group__ethernet.html#ga65c7184e84b9d43ceb53481b6b3dedae">ethernet.c</a>
@@ -270,8 +273,8 @@ $(function() {
 , <a class="el" href="group__devicefunc.html#gaadd13e81fe0097411b3aae2f6810bbe1">ethernetController.h</a>
 </li>
 <li>ethernetController_disableReception()
-: <a class="el" href="group__devicefunc.html#ga9cb4657907d3985ecf5b867f7a8a9304">ENC424J600.c</a>
-, <a class="el" href="group__devicefunc.html#ga9cb4657907d3985ecf5b867f7a8a9304">ethernetController.h</a>
+: <a class="el" href="group__devicefunc.html#ga9cb4657907d3985ecf5b867f7a8a9304">ethernetController.h</a>
+, <a class="el" href="group__devicefunc.html#ga9cb4657907d3985ecf5b867f7a8a9304">ENC424J600.c</a>
 </li>
 <li>ethernetController_disableTransmission()
 : <a class="el" href="group__devicefunc.html#ga7cb7d48ac9c1a7bd6393c95e6e07dcee">ethernetController.h</a>
@@ -281,8 +284,8 @@ $(function() {
 , <a class="el" href="group__data__reception.html#ga2f3c10c9f6db78ae6e422031bd105b87">ethernetController.h</a>
 </li>
 <li>ethernetController_enableEthernet()
-: <a class="el" href="group__devicefunc.html#ga06ef512fd11e36bbefaad96993875d2b">ENC424J600.c</a>
-, <a class="el" href="group__devicefunc.html#ga06ef512fd11e36bbefaad96993875d2b">ethernetController.h</a>
+: <a class="el" href="group__devicefunc.html#ga06ef512fd11e36bbefaad96993875d2b">ethernetController.h</a>
+, <a class="el" href="group__devicefunc.html#ga06ef512fd11e36bbefaad96993875d2b">ENC424J600.c</a>
 </li>
 <li>ethernetController_enableReception()
 : <a class="el" href="group__devicefunc.html#ga203eb473ea1d221ffe97839b16e74565">ENC424J600.c</a>
@@ -297,8 +300,7 @@ $(function() {
 , <a class="el" href="group__data__reception.html#ga0ab2398cb48efd9a8943a5c5b2872b0c">ethernetController.h</a>
 </li>
 <li>ethernetController_getDestinationMACAddress()
-: <a class="el" href="group__data__reception.html#ga29e5c29891e62206ceed99a6b15749a0">ENC424J600.c</a>
-, <a class="el" href="group__data__reception.html#ga29e5c29891e62206ceed99a6b15749a0">ethernetController.h</a>
+: <a class="el" href="group__data__reception.html#ga29e5c29891e62206ceed99a6b15749a0">ethernetController.h</a>
 </li>
 <li>ethernetController_getDeviceName()
 : <a class="el" href="group__devicefunc.html#gae396f51c0fdba634e4e84b5f2b5d9416">ENC424J600.c</a>
@@ -313,8 +315,8 @@ $(function() {
 , <a class="el" href="group__data__reception.html#gae3335ee23b52ab5086b95f83127b755c">ethernetController.h</a>
 </li>
 <li>ethernetController_getMTU()
-: <a class="el" href="group__devicefunc.html#gabb37702e7cfbd10dc932ca6502fd7bae">ethernetController.h</a>
-, <a class="el" href="group__devicefunc.html#gabb37702e7cfbd10dc932ca6502fd7bae">ENC424J600.c</a>
+: <a class="el" href="group__devicefunc.html#gabb37702e7cfbd10dc932ca6502fd7bae">ENC424J600.c</a>
+, <a class="el" href="group__devicefunc.html#gabb37702e7cfbd10dc932ca6502fd7bae">ethernetController.h</a>
 </li>
 <li>ethernetController_getNextPacketPointer()
 : <a class="el" href="group__data__reception.html#ga6155805a8511681932051b00a0032f9f">ENC424J600.c</a>
@@ -345,36 +347,36 @@ $(function() {
 , <a class="el" href="group__devicefunc.html#ga5cdd5a8c6a5ceab1292643f291137bd1">ENC424J600.c</a>
 </li>
 <li>ethernetController_sendPacket()
-: <a class="el" href="group__data__transmission.html#gacab51e5c9afa0f0b90e6694bcfc7d936">ENC424J600.c</a>
-, <a class="el" href="group__data__transmission.html#gacab51e5c9afa0f0b90e6694bcfc7d936">ethernetController.h</a>
+: <a class="el" href="group__data__transmission.html#gacab51e5c9afa0f0b90e6694bcfc7d936">ethernetController.h</a>
+, <a class="el" href="group__data__transmission.html#gacab51e5c9afa0f0b90e6694bcfc7d936">ENC424J600.c</a>
 </li>
 <li>ethernetController_setLEDConfig()
-: <a class="el" href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">ethernetController.h</a>
-, <a class="el" href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">ENC424J600.c</a>
+: <a class="el" href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">ENC424J600.c</a>
+, <a class="el" href="group__leds.html#ga6b4fefc44ec4a3491276c943388fe0a9">ethernetController.h</a>
 </li>
 <li>ethernetController_setMacAddress()
-: <a class="el" href="group__data__reception.html#ga4856965b47df99d3532a7d1cbb494e02">ethernetController.h</a>
-, <a class="el" href="group__data__reception.html#ga4856965b47df99d3532a7d1cbb494e02">ENC424J600.c</a>
+: <a class="el" href="group__data__reception.html#ga4856965b47df99d3532a7d1cbb494e02">ENC424J600.c</a>
+, <a class="el" href="group__data__reception.html#ga4856965b47df99d3532a7d1cbb494e02">ethernetController.h</a>
 </li>
 <li>ethernetController_softReset()
 : <a class="el" href="group__devicefunc.html#ga6a772ec407e60e921bad4db7a2be2676">ethernetController.h</a>
 , <a class="el" href="group__devicefunc.html#ga6a772ec407e60e921bad4db7a2be2676">ENC424J600.c</a>
 </li>
 <li>ethernetController_streamFromRXBuffer()
-: <a class="el" href="group__data__reception.html#ga152b0e0b0d3ed72affb7feac14035b6e">ethernetController.h</a>
-, <a class="el" href="group__data__reception.html#ga152b0e0b0d3ed72affb7feac14035b6e">ENC424J600.c</a>
+: <a class="el" href="group__data__reception.html#ga152b0e0b0d3ed72affb7feac14035b6e">ENC424J600.c</a>
+, <a class="el" href="group__data__reception.html#ga152b0e0b0d3ed72affb7feac14035b6e">ethernetController.h</a>
 </li>
 <li>ethernetController_streamToTransmitBuffer()
 : <a class="el" href="group__data__transmission.html#gafbd607d1cd5a22cb0cacf7a4fe698bac">ethernetController.h</a>
 , <a class="el" href="group__data__transmission.html#gafbd607d1cd5a22cb0cacf7a4fe698bac">ENC424J600.c</a>
 </li>
 <li>ethernetController_updateLinkStatus()
-: <a class="el" href="group__devicefunc.html#gab294a8fbc5b11d40a5da5e769110f6ca">ENC424J600.c</a>
-, <a class="el" href="group__devicefunc.html#gab294a8fbc5b11d40a5da5e769110f6ca">ethernetController.h</a>
+: <a class="el" href="group__devicefunc.html#gab294a8fbc5b11d40a5da5e769110f6ca">ethernetController.h</a>
+, <a class="el" href="group__devicefunc.html#gab294a8fbc5b11d40a5da5e769110f6ca">ENC424J600.c</a>
 </li>
 <li>ethernetController_updateNextPacketPointer()
-: <a class="el" href="group__data__reception.html#ga9d6d9257b64641f2120cb99f31d66a0e">ENC424J600.c</a>
-, <a class="el" href="group__data__reception.html#ga9d6d9257b64641f2120cb99f31d66a0e">ethernetController.h</a>
+: <a class="el" href="group__data__reception.html#ga9d6d9257b64641f2120cb99f31d66a0e">ethernetController.h</a>
+, <a class="el" href="group__data__reception.html#ga9d6d9257b64641f2120cb99f31d66a0e">ENC424J600.c</a>
 </li>
 <li>ethernetController_writeDestinationMACAddress()
 : <a class="el" href="group__data__transmission.html#ga858fd557b9ef00b3fd8166381e415bec">ENC424J600.c</a>
@@ -395,6 +397,9 @@ $(function() {
 </li>
 <li>ETHERTYPE_IPv4
 : <a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbab2b889adbcd85458d549249e8f1d3bcd">ethernetTypes.h</a>
+</li>
+<li>ETHERTYPE_UNKNOWN
+: <a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbaa5a12f96c9c39d35096c114c899f95d8">ethernetTypes.h</a>
 </li>
 <li>ETHERTYPE_WOL
 : <a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cba421e1f3ba7f0c80d1e22742b7ab7dc56">ethernetTypes.h</a>

@@ -55,12 +55,12 @@ void arp_handleNewPacket(ethernetFrame_t *frame) {
     UARTTransmitText(", ");
     UARTTransmitText(ipAdressToString(arp.targetIPAddress));
     UARTTransmitText("]");
-    UARTTransmitText("\033[94;4;10m");
+    UART_setFormat(UART_COLOR_FG_BLUE);
     if (arp.fIsProbe)
         UARTTransmitText("[IsProbe]");
     if (arp.fIsGratuitous)
         UARTTransmitText("[IsGratuitous]");
-    UARTTransmitText("\033[0m");
+    UART_resetFormat();
 #endif 
     arp_sendReply(arp);
     if (!ipv4_isAllZero(&arp.senderIPAddress)) {//Don't allow entries with 0.0.0.0
@@ -239,13 +239,13 @@ void static arp_sendReply(arp_message_t request) {
 
     arp_send(reply);
 #if ARP_DEBUG_MESSAGES==true
-    UARTTransmitText("\033[44;10;10m"); //blue color, Primary font
+    UART_setFormat(UART_COLOR_BG_BLUE); //blue color, Primary font
     UARTTransmitText("[Reply sent to ");
     UARTTransmitText(macToString(reply.targetMACAddress));
     UARTTransmitText(", ");
     UARTTransmitText(ipAdressToString(reply.targetIPAddress));
     UARTTransmitText("]");
-    UARTTransmitText("\033[0m");
+    UART_resetFormat();
 #endif
 }
 
@@ -465,7 +465,7 @@ error_t arp_background(linkState_t link) {
 uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t * index) {
     for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++) {
         if (ipv4_cmp(&arp_table[i].ip, &ip)) {
-            if (getMillis() - arp_table[i].timeCreated < ARP_TABLE_ENTRY_TTL) {//not expired?
+            if ((getMillis() - arp_table[i].timeCreated) < ARP_TABLE_ENTRY_TTL) {//not expired?
                 //if an entry is expired it is just ignored; old entries are overwritten anyways when writing new ones.
                 *index = i; //save where the entry is
                 return 1; //don't check further
@@ -480,13 +480,18 @@ macaddress_t arp_getEntryFromTable(uint8_t index) {
 }
 
 void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, time_t timestamp) {
-    time_t maxSeconds = 0;
+    time_t minSeconds = 0xffffffff; //max value
     uint8_t oldestIndex = 0;
     //Loop through table to find oldest entry
     for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++) {
-        if (arp_table[i].timeCreated > maxSeconds) {
-            maxSeconds = arp_table[i].timeCreated;
+        if (arp_table[i].timeCreated <= minSeconds) {
+            minSeconds = arp_table[i].timeCreated;
             oldestIndex = i;
+        }
+        if (mac_cmp(&arp_table[i].mac, &mac) && ipv4_cmp(&arp_table[i].ip, &ip)) {
+            //If there is already an entry with this MAC&IP combination, stop checking and overwrite it
+            oldestIndex = i;
+            break;
         }
     }
     //Create new entry, replacing the oldest one
@@ -495,26 +500,29 @@ void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, time_t timestam
     arp_table[oldestIndex].timeCreated = timestamp;
 #if ARP_DEBUG_MESSAGES==true
     if (!((mac_isAllZero(&mac)) && ipv4_isAllZero(&ip))) {
-        UARTTransmitText("\033[44;10;10m"); //blue color, Primary font
+        UART_setFormat(UART_COLOR_BG_BLUE); //blue color, Primary font
         UARTTransmitText("[ARP]: New entry created for ");
         UARTTransmitText(ipAdressToString(ip));
         UARTTransmitText(" (");
         UARTTransmitText(macToString(mac));
-        UARTTransmitText(") ");
-        UARTTransmitText("\033[0m");
+        UARTTransmitText(")(");
+        UARTTransmitText(intToString(oldestIndex,10));
+        UARTTransmitText(")");
+        UART_resetFormat();
     }
 #endif
 }
 
 void arp_init() {
-    macaddress_t mac;
     ipv4_address_t ip;
-    mac_setAllZero(&mac);
+    macaddress_t mac;
     ipv4_setToAllZero(&ip);
-
-    for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++)
-        arp_setNewEntry(mac, ip, 0xffffffff); //timestamp is set to maximum
-
+    mac_setAllZero(&mac);
+    for (uint8_t i = 0; i < ARP_TABLE_LENGTH; i++) {
+        arp_table[i].ip = ip;
+        arp_table[i].mac = mac;
+        arp_table[i].timeCreated = 0;
+    }
 #if ARP_DEBUG_MESSAGES==true
     UARTTransmitText("[ARP]: Table was reset successfully.\n\r");
 #endif

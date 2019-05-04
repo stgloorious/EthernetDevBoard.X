@@ -31,6 +31,22 @@
 #include "../eth/mac.h"
 #include "../stack/protocols/ipv4.h"
 
+typedef enum UART_colors {
+    UART_COLOR_BG_RED,
+    UART_COLOR_BG_GREEN,
+    UART_COLOR_BG_BLUE,
+    UART_COLOR_BG_YELLOW,
+    UART_COLOR_BG_MAGENTA,
+    UART_COLOR_BG_CYAN,
+
+    UART_COLOR_FG_YELLOW,
+    UART_COLOR_FG_BLUE
+} UART_colors_t;
+
+enum UART_specials {
+    UART_LINE_SEPARATOR
+};
+
 /**
  * \brief Initialises the UART module and sets up baud rate and other settings
  */
@@ -43,30 +59,32 @@ void UARTInit(void);
 void UARTTransmitText(const char *str);
 
 /**
- * \brief Intended to be used for debug messages only, calls UART text function
- * \param text Char String
+ * \brief Returns a special string, given an input code
+ * \details Used to save program memory: With this e.g. a line separator needs to be saved only once.
+ * \param code UART_specials
+ * \return string
  */
-void DEBUG_MSG(char *text);
+char *UART_special(uint8_t code);
 
 /**
- * \brief Transmits a four-digit numerical value
- * \param val Number to be transmitted
+ * Sets a color using ANSI formatting
+ * @param color from UART_colors
  */
-void UARTTransmitInt(uint32_t val);
+void UART_setFormat(uint8_t color);
 
 /**
- * \brief Converts a decimal numerical value into a string
+ * \brief Resets the current ANSI formatting
+ */
+void UART_resetFormat();
+
+/**
+ * \brief Converts a numerical value into a string
+ * \details This function calls itoa() (non-standard)
  * \param val
+ * \param b Base (10=decimal, 16=hex etc.)
  * \return char string
  */
-char *intToString(uint32_t val);
-
-/**
- * \brief Converts a hexadecimal numerical value into a string
- * \param val
- * \return char string
- */
-char *hexToString(uint32_t val);
+char *intToString(uint32_t val, uint8_t b);
 
 /**
  * \brief Takes a MAC address and translates it to a human-readable char string

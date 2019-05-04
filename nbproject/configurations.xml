@@ -29,6 +29,15 @@
       <itemPath>src/stack/protocols/arpSettings.h</itemPath>
       <itemPath>src/stack/time.h</itemPath>
       <itemPath>src/stack/protocols/ipv4Settings.h</itemPath>
+      <itemPath>src/stack/protocols/icmpTypes.h</itemPath>
+      <itemPath>src/stack/protocols/icmp.h</itemPath>
+      <itemPath>src/stack/protocols/icmpSettings.h</itemPath>
+      <itemPath>src/eth/ethernetSettings.h</itemPath>
+      <itemPath>src/stack/protocols/tcp.h</itemPath>
+      <itemPath>src/stack/protocols/tcpTypes.h</itemPath>
+      <itemPath>src/stack/protocols/tcpSettings.h</itemPath>
+      <itemPath>src/stack/protocols/udp.h</itemPath>
+      <itemPath>src/stack/protocols/udpTypes.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -50,8 +59,8 @@
       <itemPath>src/stack/protocols/ipv4.c</itemPath>
       <itemPath>src/stack/time.c</itemPath>
       <itemPath>src/stack/protocols/icmp.c</itemPath>
-      <itemPath>src/stack/protocols/icmp.h</itemPath>
-      <itemPath>src/stack/protocols/icmpTypes.h</itemPath>
+      <itemPath>src/stack/protocols/tcp.c</itemPath>
+      <itemPath>src/stack/protocols/udp.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -117,7 +126,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories" value=""/>
-        <property key="favor-optimization-for" value="-speed,+space"/>
+        <property key="favor-optimization-for" value="+speed,-space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
         <property key="identifier-length" value="255"/>
@@ -130,7 +139,7 @@
         <property key="optimization-invariant-enable" value="false"/>
         <property key="optimization-invariant-value" value="16"/>
         <property key="optimization-level" value="-O1"/>
-        <property key="optimization-speed" value="false"/>
+        <property key="optimization-speed" value="true"/>
         <property key="optimization-stable-enable" value="false"/>
         <property key="pack-struct" value="true"/>
         <property key="preprocess-assembler" value="true"/>

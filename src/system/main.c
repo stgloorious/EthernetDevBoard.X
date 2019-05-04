@@ -25,9 +25,14 @@
 #include <math.h>
 #include "../system/main.h"
 #include "../enc424j600/ENC424J600.h"
+#include "../stack/protocols/icmp.h"
+#include "../stack/protocols/udp.h"
 
 uint32_t volatile numberToDisplay = 0; //global because interrupt
 uint8_t volatile buttonState = 0;
+bool_t unlocked = false;
+uint8_t foo = 0;
+
 
 stack_t stack;
 
@@ -70,12 +75,12 @@ void main() {
     __delay_ms(10);
     UARTTransmitText("\x12"); //form feed
     if (!RCONbits.TO) {
-        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
-        UARTTransmitText("\a"); //Alert
-        UARTTransmitText("\n\r------------------------------------------------\n\r");
-        UARTTransmitText("*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
-        UARTTransmitText("------------------------------------------------");
-        UARTTransmitText("\033[0m");
+        UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
+        UARTTransmitText("\a\n\r"); //Alert
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UARTTransmitText("\n\r*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UART_resetFormat();
     }
     UARTTransmitText("\n\rFIRMWARE BUILD DATE IS ");
     UARTTransmitText(__DATE__);
@@ -91,10 +96,13 @@ void main() {
         UARTTransmitText(ethernetController_getDeviceName());
         UARTTransmitText(" detected. ");
     }
-    UARTTransmitText("Source MAC address is ");
-    UARTTransmitText(macToString(ethernetController_getMacAddress()));
-    UARTTransmitText(".\n\r");
-    UARTTransmitText("------------------------------------------------\n\r");
+    /*  UARTTransmitText("Source MAC address is ");
+      UARTTransmitText(macToString(ethernetController_getMacAddress()));
+      UARTTransmitText(".\n\r");*/
+
+
+    UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+    UARTTransmitText("\n\r");
 
     stack_init();
 
@@ -126,8 +134,18 @@ void main() {
     srand(ethernetController_getMacAddress().address[5]);
     stack.source = ipv4_generateAutoIP();
 
-    bool_t static spamming = false;
-    bool_t static unlocked = false;
+    tcp_connection_t connection;
+    connection.srcPort = 1;
+    connection.seqNumber = (unsigned) rand();
+    tcp_listen(&connection);
+
+    udpHeader_t udp;
+    udp.srcPort = 1;
+    udp.dstPort = 49666;
+    udp.length = 100 + 8;
+
+
+
 
     while (1) {
         CLRWDT(); //clear watch doggy
@@ -135,61 +153,23 @@ void main() {
         handleStackBackgroundTasks(&stack);
 
         printEthernetState(stack.ethernet);
-        numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : ethernetController_getCurrentPacketCount();
+        numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000u : foo;
+        //numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000u : ethernetController_getCurrentPacketCount();
         //numberToDisplay = (stack.ethernet.link == NO_LINK) ? 1000 : stack.source.address[3];
+
+        if (unlocked) {
+            if (stack.ethernet.link == LINK_ESTABLISHED && !stack.background.fPacketPending) {
+                foo++;
+                udp_sendPacket(udp, ipDst);
+            }
+        }
+
 
         if (buttonState) {
             buttonState = 0;
-        /*    if (unlocked) {
-                spamming = false;
-                unlocked = false;
-            } else {
-                spamming = true;
-                unlocked = true;
-            }
-
-        }
-
-        if (stack.ethernet.link == LINK_ESTABLISHED && spamming == false && unlocked && !stack.background.fPacketPending)
-            spamming = true;
-
-
-        if (spamming && unlocked) {
-            spamming = false;*/
-            if (stack.ethernet.link == LINK_ESTABLISHED) {
-
-                //////////////////////////////////////////////
-                uint8_t headerBuf[32];
-                stack.pendingPacketToSend.ipv4Header.headerLength = 5;
-                stack.pendingPacketToSend.ipv4Header.protocol = IPv4_PROTOCOL_UDP;
-                stack.pendingPacketToSend.ipv4Header.destination = ipDst;
-                stack.pendingPacketToSend.ipv4Header.source = ipv4_getIPSourceAddress();
-                stack.pendingPacketToSend.ipv4Header.totalLength = 1500;
-                stack.pendingPacketToSend.ipv4Header.timeToLive = 255;
-                stack.pendingPacketToSend.ipv4Header.version = 4;
-
-                ipv4_calculateHeaderChecksum(&stack.pendingPacketToSend.ipv4Header);
-                ipv4_writeHeaderIntoBuffer(stack.pendingPacketToSend.ipv4Header, &headerBuf);
-
-                ipv4_txFrameRequest(&stack.pendingPacketToSend);
-                for (uint16_t i = 0; i < stack.pendingPacketToSend.ipv4Header.totalLength; i++) {
-                    if (i < stack.pendingPacketToSend.ipv4Header.headerLength * 4) {
-                        ipv4_streamToTransmissionBuffer(headerBuf[i], stack.pendingPacketToSend);
-                    } else
-                        ipv4_streamToTransmissionBuffer(i - 20, stack.pendingPacketToSend);
-                }
-#if IPv4_DEBUG_MESSAGES == true
-                UARTTransmitText("[IPv4]: A packet was prepared (");
-                UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.source));
-                UARTTransmitText(" -> ");
-                UARTTransmitText(ipAdressToString(stack.pendingPacketToSend.ipv4Header.destination));
-                UARTTransmitText(")\n\r");
-#endif 
-
-                //////////////////////////////////////////////      
-                stack.background.fPacketPending = 1;
-            }
-
+            foo = 0;
+            unlocked = !unlocked;
+            //icmp_sendEchoRequest(ipDst);
         }
     }
 }
@@ -197,31 +177,32 @@ void main() {
 void printEthernetState(ethernetConnection_t state) {
     static ethernetConnection_t oldState;
     if (state.link != oldState.link) {
+        UARTTransmitText("[ETH]: ");
         if (state.link == NO_LINK) {
             UARTTransmitText("Link lost.\n\r");
         } else if (state.link == LINK_ESTABLISHED) {
             UARTTransmitText("Link established. ");
         }
 
-        if (state.link == LINK_ESTABLISHED) {//Display other info only if there's a link
-            if (state.speed == TEN_MBIT) {
-                UARTTransmitText("Speed is 10 Mbps, ");
-            } else if (state.speed == HUNDRED_MBIT) {
-                UARTTransmitText("Speed is 100 Mbps, ");
-            }
-            if (state.duplex == HALF_DUPLEX) {
-                UARTTransmitText("connection is Half Duplex.\n\r");
-            } else if (state.duplex == FULL_DUPLEX) {
+        /*  if (state.link == LINK_ESTABLISHED) {//Display other info only if there's a link
+              if (state.speed == TEN_MBIT) {
+                  UARTTransmitText("(10Mbps)");
+              } else if (state.speed == HUNDRED_MBIT) {
+                  UARTTransmitText("(100Mbps)");
+              }
+              if (state.duplex == HALF_DUPLEX) {
+                  UARTTransmitText("connection is Half Duplex.\n\r");
+              } else if (state.duplex == FULL_DUPLEX) {
 
-                UARTTransmitText("connection is Full Duplex.\n\r");
-            }
-        }
+                  UARTTransmitText("connection is Full Duplex.\n\r");
+              }
+          }*/
     }
     oldState = state;
 }
 
 void printErrorMessage(error_t err) {
-    UARTTransmitText("[ERROR]");
+    /*UARTTransmitText("[ERROR]");
     switch (err.module) {
         case ERROR_MODULE_MEMORY:
             UARTTransmitText(" MEMORY MODULE: ");
@@ -256,8 +237,8 @@ void printErrorMessage(error_t err) {
     }
 
     UARTTransmitText(" (Code: ");
-    UARTTransmitText(intToString(err.code));
-    UARTTransmitText(").\n\r");
+    UARTTransmitText(intToString(err.code, 10));
+    UARTTransmitText(").\n\r");*/
 }
 
 void buttonHandler(uint8_t volatile *state) {
@@ -288,7 +269,7 @@ void interrupt ISR(void) {
 
     if (PIR1bits.CCP1IF) {
         PIR1bits.CCP1IF = 0;
-        PORTBbits.RB6 = ~PORTBbits.RB6;
+        //PORTBbits.RB6 = ~PORTBbits.RB6;
         updateTime();
     }
 

@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['fin',['FIN',['../structtcp__flags.html#aba96c5726f5124bc0b1a6ebece254722',1,'tcp_flags']]],
+  ['fipvalid',['fipValid',['../structstack.html#a794361c43fdd4ef409cc22b3d10959a3',1,'stack']]],
   ['fisassigned',['fIsAssigned',['../structmemory_field.html#a36ed4d8e7e2e5f308044e7b422a80028',1,'memoryField']]],
   ['fisgratuitous',['fIsGratuitous',['../structarp__message.html#a10f6f518105e71039413d95c27db5a5d',1,'arp_message']]],
   ['fisprobe',['fIsProbe',['../structarp__message.html#ad84934498bc8cb014f7ccfd3df0eaaab',1,'arp_message']]],

@@ -108,10 +108,14 @@ Functions</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#ga828c657a62d97cb7339451fc46589c6e">MAX_FRAME_LENGTH_WITH_VLAN</a>&#160;&#160;&#160;<a class="el" href="group__ethernet.html#gaecae779890dfc6b313fe2854369e5497">MAX_FRAME_LENGTH</a>+4</td></tr>
 <tr class="memdesc:ga828c657a62d97cb7339451fc46589c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional 4 Bytes for VLAN: <br /></td></tr>
 <tr class="separator:ga828c657a62d97cb7339451fc46589c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae9b220b061a72fe29cc1e3913a1f73cb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gae9b220b061a72fe29cc1e3913a1f73cb">etherTypes</a> { <a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbab2b889adbcd85458d549249e8f1d3bcd">ETHERTYPE_IPv4</a> = 0x0800, 
+<tr class="memitem:gae9b220b061a72fe29cc1e3913a1f73cb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gae9b220b061a72fe29cc1e3913a1f73cb">etherTypes</a> { <br />
+&#160;&#160;<a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbab2b889adbcd85458d549249e8f1d3bcd">ETHERTYPE_IPv4</a> = 0x0800, 
 <a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbab78454b9340abb34bd92a17f01a8060d">ETHERTYPE_ARP</a> = 0x0806, 
 <a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cba421e1f3ba7f0c80d1e22742b7ab7dc56">ETHERTYPE_WOL</a> = 0x0842, 
-<a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cba2a2f46cbbd4ecefb4d852d7ca0579f19">ETHERTYPE_FLOW_CONTROL</a> = 0x8808
+<a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cba2a2f46cbbd4ecefb4d852d7ca0579f19">ETHERTYPE_FLOW_CONTROL</a> = 0x8808, 
+<br />
+&#160;&#160;<a class="el" href="group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbaa5a12f96c9c39d35096c114c899f95d8">ETHERTYPE_UNKNOWN</a> = 0xffff
+<br />
  }</td></tr>
 <tr class="separator:gae9b220b061a72fe29cc1e3913a1f73cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad146c3b2a237ecd80026880aef2cbb7e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ethernet.html#gad146c3b2a237ecd80026880aef2cbb7e">linkStates</a> { <a class="el" href="group__ethernet.html#gad146c3b2a237ecd80026880aef2cbb7eaba43fad8ee5185f12ea31f7dcb843709">NO_LINK</a>, 
@@ -244,6 +248,8 @@ typedef struct <a class="el" href="structethernet_connection.html">ethernetConne
 <tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cba421e1f3ba7f0c80d1e22742b7ab7dc56"></a>ETHERTYPE_WOL&#160;</td><td class="fielddoc"><p>Wake-On-LAN. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cba2a2f46cbbd4ecefb4d852d7ca0579f19"></a>ETHERTYPE_FLOW_CONTROL&#160;</td><td class="fielddoc"><p>FLow control. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae9b220b061a72fe29cc1e3913a1f73cbaa5a12f96c9c39d35096c114c899f95d8"></a>ETHERTYPE_UNKNOWN&#160;</td><td class="fielddoc"><p>Placeholder for invalid EtherType. </p>
 </td></tr>
 </table>
 

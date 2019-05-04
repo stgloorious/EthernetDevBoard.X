@@ -17,10 +17,12 @@ var searchData=
   ['error_5fmodule_5farp',['ERROR_MODULE_ARP',['../group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca4fdef38b73a058c8d9f8ce55bad1883a',1,'error.h']]],
   ['error_5fmodule_5fethernet',['ERROR_MODULE_ETHERNET',['../group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7cadf89fcb92dd25f9bb6df61655f6b0579',1,'error.h']]],
   ['error_5fmodule_5fethernet_5fcontroller',['ERROR_MODULE_ETHERNET_CONTROLLER',['../group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca4d8fe7644a01433cb7e74049ff61a0be',1,'error.h']]],
+  ['error_5fmodule_5ficmp',['ERROR_MODULE_ICMP',['../group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca8e3fc1a92c555401627189da5ab9ca78',1,'error.h']]],
   ['error_5fmodule_5fipv4',['ERROR_MODULE_IPv4',['../group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca5a3ae39ad1e6d703df19baff7e84be22',1,'error.h']]],
   ['error_5fmodule_5fmemory',['ERROR_MODULE_MEMORY',['../group__error.html#gga8a4a6940eb9ce245840c7e0af23a8b7ca504b049962309efd98dee14dda54f9f4',1,'error.h']]],
   ['ethertype_5farp',['ETHERTYPE_ARP',['../group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbab78454b9340abb34bd92a17f01a8060d',1,'ethernetTypes.h']]],
   ['ethertype_5fflow_5fcontrol',['ETHERTYPE_FLOW_CONTROL',['../group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cba2a2f46cbbd4ecefb4d852d7ca0579f19',1,'ethernetTypes.h']]],
   ['ethertype_5fipv4',['ETHERTYPE_IPv4',['../group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbab2b889adbcd85458d549249e8f1d3bcd',1,'ethernetTypes.h']]],
+  ['ethertype_5funknown',['ETHERTYPE_UNKNOWN',['../group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cbaa5a12f96c9c39d35096c114c899f95d8',1,'ethernetTypes.h']]],
   ['ethertype_5fwol',['ETHERTYPE_WOL',['../group__ethernet.html#ggae9b220b061a72fe29cc1e3913a1f73cba421e1f3ba7f0c80d1e22742b7ab7dc56',1,'ethernetTypes.h']]]
 ];

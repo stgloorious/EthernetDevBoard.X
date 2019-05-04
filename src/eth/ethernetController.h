@@ -74,7 +74,7 @@ typedef enum LEDStates {
 /**
  * \brief Initialises the ethernet controller
  * \details Does a soft reset and checks the device ID. 
- * Then, various things are initialised and the pointer are set up.
+ * Then, various things are initialised and the pointers are set up.
  * \note To be called after power up
  * \return Error state of the initialisation process
  */

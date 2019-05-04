@@ -4,6 +4,8 @@ var searchData=
   ['fcdisable',['FCDISABLE',['../group__single__byte.html#ga1acab7510b4236c7e4376439a8ffe154',1,'ENC424J600.h']]],
   ['fcmultiple',['FCMULTIPLE',['../group__single__byte.html#gac545b2d639c3967af4c1150334952fb4',1,'ENC424J600.h']]],
   ['fcsingle',['FCSINGLE',['../group__single__byte.html#ga2d69e97099b83953d2e87b73f1b892cd',1,'ENC424J600.h']]],
+  ['fin',['FIN',['../structtcp__flags.html#aba96c5726f5124bc0b1a6ebece254722',1,'tcp_flags']]],
+  ['fipvalid',['fipValid',['../structstack.html#a794361c43fdd4ef409cc22b3d10959a3',1,'stack']]],
   ['fisassigned',['fIsAssigned',['../structmemory_field.html#a36ed4d8e7e2e5f308044e7b422a80028',1,'memoryField']]],
   ['fisgratuitous',['fIsGratuitous',['../structarp__message.html#a10f6f518105e71039413d95c27db5a5d',1,'arp_message']]],
   ['fisprobe',['fIsProbe',['../structarp__message.html#ad84934498bc8cb014f7ccfd3df0eaaab',1,'arp_message']]],

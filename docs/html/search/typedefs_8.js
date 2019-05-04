@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['speed_5ft',['speed_t',['../group__ethernet.html#gaf44917bbf64327b78826bc2f74266af8',1,'ethernetTypes.h']]],
-  ['stack_5ft',['stack_t',['../group__stack.html#ga575defe06cb6cd9e4b02d90a916721b3',1,'stack.h']]]
+  ['tcp_5fflags_5ft',['tcp_flags_t',['../tcp_types_8h.html#ace5ec853d260acb6c3760e953d82b9be',1,'tcpTypes.h']]]
 ];

@@ -2,11 +2,13 @@
  build/default/production/src/enc424j600/ENC424J600.p1:  \
  src/enc424j600/ENC424J600.c  \
 src/enc424j600/../system/../stack/protocols/../bool.h  \
+src/enc424j600/../system/../stack/protocols/../protocols/tcpSettings.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../../eth/ethernet.h  \
 src/enc424j600/../enc424j600/../mem/memoryController.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../../eth/../mem/memoryController.h  \
 src/enc424j600/../system/uart.h  \
 src/enc424j600/../system/../eth/mac.h  \
+src/enc424j600/../system/../stack/protocols/../protocols/../../eth/ethernetSettings.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../protocols/ipv4.h  \
 src/enc424j600/../enc424j600/../eth/../eth/../stack/time.h  \
 src/enc424j600/../enc424j600/ENC424J600.h  \
@@ -15,6 +17,7 @@ src/enc424j600/../system/../stack/protocols/../../stack/backgroundTasksTypes.h  
 src/enc424j600/../system/../stack/protocols/arpTypes.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/enc424j600/../system/../stack/protocols/../error.h  \
+src/enc424j600/../system/../stack/protocols/../protocols/../error.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/arpSettings.h  \
 src/enc424j600/../system/../stack/protocols/../time.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h  \
@@ -24,6 +27,7 @@ src/enc424j600/../enc424j600/../stack/error.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../../eth/../stack/error.h  \
 src/enc424j600/../system/../stack/protocols/ipv4.h  \
 src/enc424j600/../system/../stack/protocols/../../stack/protocols/ipv4.h  \
+src/enc424j600/../system/../stack/protocols/../protocols/tcpTypes.h  \
 src/enc424j600/../enc424j600/../eth/../eth/../enc424j600/rsv.h  \
 src/enc424j600/../enc424j600/../enc424j600/rsv.h  \
 src/enc424j600/../system/../stack/protocols/../stack.h  \
@@ -47,4 +51,5 @@ src/enc424j600/../system/../stack/protocols/../../stack/../enc424j600/interrupt.
 src/enc424j600/../enc424j600/interrupt.h  \
 src/enc424j600/../system/../stack/protocols/../protocols/../../eth/mac.h  \
 src/enc424j600/../system/../eth/../stack/bool.h  \
-src/enc424j600/../system/../stack/protocols/../protocols/arp.h 
+src/enc424j600/../system/../stack/protocols/../protocols/arp.h  \
+src/enc424j600/../system/../stack/protocols/../protocols/tcp.h 

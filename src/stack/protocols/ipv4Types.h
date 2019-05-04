@@ -40,7 +40,9 @@
 typedef enum ipv4_protocols {
     IPv4_PROTOCOL_ICMP = 1, ///< Internet Control Message Protocol
     IPv4_PROTOCOL_TCP = 6, ///< Transmission Control Protocol
-    IPv4_PROTOCOL_UDP = 17///< User Datagram Protocol
+    IPv4_PROTOCOL_UDP = 17, ///< User Datagram Protocol
+
+    IPv4_PROTOCOL_UNKNOWN = 255 ///< Placeholder for invalid protocols
 
 } ipv4_protocol_t;
 

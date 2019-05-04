@@ -134,7 +134,8 @@ typedef struct <a class="el" href="structipv4__packet.html">ipv4_packet</a>&#160
 Enumerations</h2></td></tr>
 <tr class="memitem:gacbfe55abe1d01bf1da8b66868f8135aa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">ipv4_protocols</a> { <a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa9190ff825ad5c7929c62ed0ce199fc19">IPv4_PROTOCOL_ICMP</a> = 1, 
 <a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa37d4986151ba77ba46990335720292a8">IPv4_PROTOCOL_TCP</a> = 6, 
-<a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa30bfead257188a4e50767a41e4af353b">IPv4_PROTOCOL_UDP</a> = 17
+<a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa30bfead257188a4e50767a41e4af353b">IPv4_PROTOCOL_UDP</a> = 17, 
+<a class="el" href="group__ipv4.html#ggacbfe55abe1d01bf1da8b66868f8135aaa183939547240144af1f43c745ef11817">IPv4_PROTOCOL_UNKNOWN</a> = 255
  }</td></tr>
 <tr class="memdesc:gacbfe55abe1d01bf1da8b66868f8135aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currrently supported protocols embedded in IPv4.  <a href="group__ipv4.html#gacbfe55abe1d01bf1da8b66868f8135aa">More...</a><br /></td></tr>
 <tr class="separator:gacbfe55abe1d01bf1da8b66868f8135aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,8 +145,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1bf24e45bf60a70b43ea1f1738c9a4c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#ga1bf24e45bf60a70b43ea1f1738c9a4c5">ipv4_txFrameRequest</a> (<a class="el" href="group__ipv4.html#ga68ea36d252d9332fd5e37d9aaedd06af">ipv4_packet_t</a> *packet)</td></tr>
 <tr class="memdesc:ga1bf24e45bf60a70b43ea1f1738c9a4c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests a memory field and prepares the transmission of an IPv4 Packet.  <a href="#ga1bf24e45bf60a70b43ea1f1738c9a4c5">More...</a><br /></td></tr>
 <tr class="separator:ga1bf24e45bf60a70b43ea1f1738c9a4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabf86b43adee57be777cf22f4cddc0b38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
-<tr class="memdesc:gabf86b43adee57be777cf22f4cddc0b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function after everything in the header has been filled in.  <a href="#gabf86b43adee57be777cf22f4cddc0b38">More...</a><br /></td></tr>
+<tr class="memitem:gabf86b43adee57be777cf22f4cddc0b38"><td class="memItemLeft" align="right" valign="top"><a id="gabf86b43adee57be777cf22f4cddc0b38"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
+<tr class="memdesc:gabf86b43adee57be777cf22f4cddc0b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function after everything in the header has been filled in. <br /></td></tr>
 <tr class="separator:gabf86b43adee57be777cf22f4cddc0b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9a7186073296a195e3f053d01468922"><td class="memItemLeft" align="right" valign="top">static bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gad9a7186073296a195e3f053d01468922">ipv4_checkHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
 <tr class="memdesc:gad9a7186073296a195e3f053d01468922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the received checksum is correct using <a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum()</a>  <a href="#gad9a7186073296a195e3f053d01468922">More...</a><br /></td></tr>
@@ -228,6 +230,8 @@ Variables</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ggacbfe55abe1d01bf1da8b66868f8135aaa30bfead257188a4e50767a41e4af353b"></a>IPv4_PROTOCOL_UDP&#160;</td><td class="fielddoc"><p>User Datagram Protocol. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ggacbfe55abe1d01bf1da8b66868f8135aaa183939547240144af1f43c745ef11817"></a>IPv4_PROTOCOL_UNKNOWN&#160;</td><td class="fielddoc"><p>Placeholder for invalid protocols. </p>
+</td></tr>
 </table>
 
 </div>
@@ -251,27 +255,6 @@ Variables</h2></td></tr>
 
 <p>To be called periodically in the background task handler. </p>
 <p>Does various stuff that takes some time to wait, e.g. handling ARP when setting a new ip address </p><dl class="section return"><dt>Returns</dt><dd>Errors that occurred during operation </dd></dl>
-
-</div>
-</div>
-<a id="gabf86b43adee57be777cf22f4cddc0b38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabf86b43adee57be777cf22f4cddc0b38">&#9670;&nbsp;</a></span>ipv4_calculateHeaderChecksum()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ipv4_calculateHeaderChecksum </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *&#160;</td>
-          <td class="paramname"><em>header</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Call this function after everything in the header has been filled in. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>make it look less ugly </dd></dl>
 
 </div>
 </div>

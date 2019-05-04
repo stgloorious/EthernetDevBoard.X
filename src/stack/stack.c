@@ -25,6 +25,13 @@
 #include "../stack/stack.h"
 
 error_t stack_init() {
+    error_t err;
     arp_init();
     ipv4_init();
+    tcp_init();
+    return err;
+}
+
+void stack_setPacketPending() {
+
 }

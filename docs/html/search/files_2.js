@@ -6,5 +6,6 @@ var searchData=
   ['ethernet_2ec',['ethernet.c',['../ethernet_8c.html',1,'']]],
   ['ethernet_2eh',['ethernet.h',['../ethernet_8h.html',1,'']]],
   ['ethernetcontroller_2eh',['ethernetController.h',['../ethernet_controller_8h.html',1,'']]],
+  ['ethernetsettings_2eh',['ethernetSettings.h',['../ethernet_settings_8h.html',1,'']]],
   ['ethernettypes_2eh',['ethernetTypes.h',['../ethernet_types_8h.html',1,'']]]
 ];

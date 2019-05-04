@@ -174,31 +174,33 @@ ERROR_MODULE_MEMORY,
 ERROR_MODULE_ETHERNET_CONTROLLER,
 ERROR_MODULE_ETHERNET,
 ERROR_MODULE_ARP,
-ERROR_MODULE_IPv4
+ERROR_MODULE_IPv4,
+ERROR_MODULE_ICMP
 } error_module_t;
 
-# 56
+# 57
 enum module_offsets {
 ERROR_MEMORY_OFFSET = 100,
 ERROR_ETHERNET_OFFSET = 200,
 ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
 ERROR_ARP_OFFSET = 400,
-ERROR_IPv4_OFFSET = 500
+ERROR_IPv4_OFFSET = 500,
+ERROR_ICMP_OFFSET = 600
 };
 
-# 67
+# 69
 enum errors_memory {
 ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
 ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
 };
 
-# 75
+# 77
 enum error_ethernet {
 ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
 ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
 };
 
-# 83
+# 85
 enum errors_ethernetController {
 
 ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
@@ -209,7 +211,7 @@ ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OF
 ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 };
 
-# 96
+# 98
 enum errors_arp {
 ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
@@ -220,19 +222,23 @@ ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
 ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
 };
 
-# 109
+# 111
 enum errors_ipv4 {
 ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
 ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
-# 119
+enum errors_icmp {
+ERROR_ICMP_MESSAGE_TOO_LONG = ERROR_ICMP_OFFSET + 1,
+};
+
+# 125
 typedef struct error {
 
-# 123
+# 129
 error_module_t module;
 
-# 129
+# 135
 uint16_t code;
 } error_t;
 
@@ -295,33 +301,35 @@ typedef enum etherTypes {
 ETHERTYPE_IPv4 = 0x0800,
 ETHERTYPE_ARP = 0x0806,
 ETHERTYPE_WOL = 0x0842,
-ETHERTYPE_FLOW_CONTROL = 0x8808
+ETHERTYPE_FLOW_CONTROL = 0x8808,
+
+ETHERTYPE_UNKNOWN = 0xffff
 } etherType_t;
 
-# 58
+# 60
 typedef struct macaddress {
 uint8_t address[6];
 } macaddress_t;
 
-# 64
+# 66
 typedef enum linkStates {
 NO_LINK,
 LINK_ESTABLISHED
 } linkState_t;
 
-# 71
+# 73
 typedef enum speeds {
 TEN_MBIT,
 HUNDRED_MBIT
 } speed_t;
 
-# 78
+# 80
 typedef enum duplexStates {
 HALF_DUPLEX,
 FULL_DUPLEX
 } duplexState_t;
 
-# 86
+# 88
 typedef struct ethernetFrame {
 uint16_t length;
 macaddress_t source;
@@ -329,14 +337,14 @@ macaddress_t destination;
 etherType_t ethertype;
 memoryField_t memory;
 
-# 96
+# 98
 RSV_t receiveStatusVector;
 
-# 100
+# 102
 time_t tReceived;
 } ethernetFrame_t;
 
-# 106
+# 108
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -502,64 +510,66 @@ bool_t mac_isAllZero(macaddress_t *mac);
 typedef enum ipv4_protocols {
 IPv4_PROTOCOL_ICMP = 1,
 IPv4_PROTOCOL_TCP = 6,
-IPv4_PROTOCOL_UDP = 17
+IPv4_PROTOCOL_UDP = 17,
+
+IPv4_PROTOCOL_UNKNOWN = 255
 
 } ipv4_protocol_t;
 
-# 60
+# 62
 typedef struct ipv4_address {
 uint8_t address[4];
 } ipv4_address_t;
 
-# 67
+# 69
 typedef struct ipv4_header {
 
-# 72
+# 74
 uint8_t version;
 uint8_t headerLength;
 
-# 80
+# 82
 uint8_t dscp;
 uint8_t ecn;
 
-# 88
+# 90
 uint16_t totalLength;
 
-# 95
+# 97
 uint16_t identification;
 
-# 102
+# 104
 uint8_t flags;
 uint16_t fragmentOffset;
 
-# 110
+# 112
 uint8_t timeToLive;
 
-# 117
+# 119
 ipv4_protocol_t protocol;
 
-# 124
+# 126
 uint16_t checksum;
 
-# 131
+# 133
 ipv4_address_t source;
 
-# 138
+# 140
 ipv4_address_t destination;
 
 
 } ipv4_header_t;
 
-# 149
+# 151
 typedef struct ipv4_packet {
 
-# 153
+# 155
 ipv4_header_t ipv4Header;
 
-# 157
+# 159
 memoryField_t memory;
 
-# 161
+# 163
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
@@ -576,98 +586,53 @@ uint8_t fPacketPending;
 
 } backgroundTaskHandler_t;
 
-# 44 "src/stack/protocols/../protocols/../stack.h"
-typedef struct stack {
-ethernetFrame_t newReceivedFrame;
-ethernetConnection_t ethernet;
-backgroundTaskHandler_t background;
-ipv4_packet_t pendingPacketToSend;
-ipv4_address_t source;
-} stack_t;
+# 35 "src/stack/protocols/../protocols/../protocols/tcpTypes.h"
+typedef struct tcp_flags {
+uint8_t NS : 1;
+uint8_t CWR : 1;
+uint8_t ECE : 1;
+uint8_t URG : 1;
+uint8_t ACK : 1;
+uint8_t PSH : 1;
+uint8_t RST : 1;
+uint8_t SYN : 1;
+uint8_t FIN : 1;
+} tcp_flags_t;
 
-# 57
-error_t stack_init();
+typedef struct tcp_header {
+uint16_t srcPort;
+uint16_t dstPort;
+uint32_t seqNumber;
+uint32_t ackNumber;
+uint8_t dataOffset;
+tcp_flags_t flags;
+uint16_t windowSize;
+uint16_t checksum;
+uint16_t urgentPointer;
+} tcp_header_t;
 
-# 46 "src/stack/protocols/../protocols/ipv4.h"
-void ipv4_txFrameRequest(ipv4_packet_t *packet);
+typedef struct tcp_connection {
+ipv4_address_t ipServer;
+ipv4_address_t ipClient;
+uint16_t srcPort;
+uint16_t dstPort;
+uint32_t seqNumber;
+uint8_t state;
+} tcp_connection_t;
 
-# 51
-void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
-
-# 58
-bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
-
-# 66
-void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
-
-# 73
-void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
-
-# 80
-error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
-
-# 87
-void ipv4_handleNewPacket(ethernetFrame_t *frame);
-
-# 94
-ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
-
-# 100
-ipv4_address_t ipv4_getIPSourceAddress();
-
-# 105
-ipv4_address_t ipv4_getPreliminaryIPSourceAddress();
-
-# 111
-void ipv4_setIPSourceAddress(ipv4_address_t ip);
-
-# 118
-error_t ipv4_background(linkState_t link);
-
-# 126
-bool_t ipv4_SrcAddrChanged(error_t *err);
-
-# 131
-void ipv4_init();
-
-# 137
-ipv4_address_t ipv4_generateAutoIP();
-
-# 152
-bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
-
-# 159
-bool_t ipv4_isAllZero(ipv4_address_t *ip);
-
-# 165
-void ipv4_setToAllZero(ipv4_address_t *ip);
-
-# 62 "src/stack/protocols/../../eth/../mem/memoryController.h"
-memoryField_t memory_txFrameRequest(uint16_t length);
-
-# 68
-void memory_txFrameClear(uint8_t index);
-
-# 76
-bool_t static checkForOverlap(memoryField_t a, memoryField_t b);
-
-# 85
-bool_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b);
-
-# 91
-bool_t static entireMemoryEmpty();
-
-# 97
-bool_t static entireMemoryFull();
-
-# 104
-bool_t static isOnlyOneAssigned(uint8_t index);
-
-# 54 "src/stack/protocols/../../eth/ethernet.h"
-error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
-
-# 65
-error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
+typedef enum tcp_state {
+TCP_STATE_LISTEN,
+TCP_STATE_SYN_SENT,
+TCP_STATE_SYN_RECEIVED,
+TCP_STATE_ESTABLISHED,
+TCP_STATE_FIN_WAIT1,
+TCP_STATE_FIN_WAIT2,
+TCP_STATE_CLOSE_WAIT,
+TCP_STATE_CLOSING,
+TCP_STATE_LAST_ACK,
+TCP_STATE_TIME_WAIT,
+TCP_STATE_CLOSED
+} tcp_state_t;
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -7266,7 +7231,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 39 "src/stack/protocols/../../system/../stack/protocols/arpTypes.h"
+# 39 "src/stack/protocols/../protocols/../protocols/../../system/../stack/protocols/arpTypes.h"
 typedef struct arp_message {
 uint16_t htype;
 uint16_t ptype;
@@ -7305,38 +7270,164 @@ macaddress_t mac;
 time_t timeCreated;
 } arp_tableEntry_t;
 
-# 37 "src/stack/protocols/../../system/uart.h"
+# 34 "src/stack/protocols/../protocols/../protocols/../../system/uart.h"
+typedef enum UART_colors {
+UART_COLOR_BG_RED,
+UART_COLOR_BG_GREEN,
+UART_COLOR_BG_BLUE,
+UART_COLOR_BG_YELLOW,
+UART_COLOR_BG_MAGENTA,
+UART_COLOR_BG_CYAN,
+
+UART_COLOR_FG_YELLOW,
+UART_COLOR_FG_BLUE
+} UART_colors_t;
+
+enum UART_specials {
+UART_LINE_SEPARATOR
+};
+
+# 53
 void UARTInit(void);
 
-# 43
+# 59
 void UARTTransmitText(const char *str);
 
-# 49
-void DEBUG_MSG(char *text);
+# 67
+char *UART_special(uint8_t code);
 
-# 55
-void UARTTransmitInt(uint32_t val);
+# 73
+void UART_setFormat(uint8_t color);
 
-# 62
-char *intToString(uint32_t val);
+# 78
+void UART_resetFormat();
 
-# 69
-char *hexToString(uint32_t val);
+# 87
+char *intToString(uint32_t val, uint8_t b);
 
-# 76
+# 94
 char *macToString(macaddress_t addr);
 
-# 83
+# 101
 char *etherTypeToString(etherType_t ethertype);
 
-# 90
+# 108
 char *ipProtocolToString(ipv4_protocol_t protocol);
 
-# 97
+# 115
 char *ipAdressToString(ipv4_address_t ip);
 
-# 104
+# 122
 char *arpEntryToString(arp_tableEntry_t table);
+
+# 34 "src/stack/protocols/../protocols/../protocols/tcp.h"
+error_t tcp_handleNewPacket(ipv4_header_t header, memoryField_t ipPayload);
+
+error_t tcp_parseHeader(memoryField_t ipPayload, tcp_header_t* header);
+
+error_t tcp_stateMachine(tcp_connection_t *connection, tcp_header_t *newHeader);
+
+error_t tcp_listen(tcp_connection_t *connection);
+
+error_t tcp_sendSYNACK(tcp_connection_t *connection, uint32_t seq);
+
+error_t static tcp_calculateHeaderChecksum(tcp_header_t *tcpHeader, ipv4_header_t ipv4Header);
+
+void tcp_init();
+
+# 45 "src/stack/protocols/../protocols/../stack.h"
+typedef struct stack {
+ethernetFrame_t newReceivedFrame;
+ethernetConnection_t ethernet;
+backgroundTaskHandler_t background;
+ipv4_packet_t pendingPacketToSend;
+ipv4_address_t source;
+uint8_t fipValid:1;
+} stack_t;
+
+# 59
+error_t stack_init();
+
+# 46 "src/stack/protocols/../protocols/ipv4.h"
+void ipv4_txFrameRequest(ipv4_packet_t *packet);
+
+# 51
+void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
+
+# 58
+bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
+
+# 66
+void ipv4_writeHeaderIntoBuffer(ipv4_header_t header, uint8_t* ptr);
+
+# 73
+void ipv4_streamToTransmissionBuffer(uint8_t data, ipv4_packet_t packet);
+
+# 80
+error_t ipv4_sendFrame(ipv4_packet_t ipPacket);
+
+# 87
+void ipv4_handleNewPacket(ethernetFrame_t *frame);
+
+# 94
+ipv4_header_t static ipv4_parseHeader(memoryField_t *field);
+
+# 100
+ipv4_address_t ipv4_getIPSourceAddress();
+
+# 105
+ipv4_address_t ipv4_getPreliminaryIPSourceAddress();
+
+# 111
+void ipv4_setIPSourceAddress(ipv4_address_t ip);
+
+# 118
+error_t ipv4_background(linkState_t link);
+
+# 126
+bool_t ipv4_SrcAddrChanged(error_t *err);
+
+# 131
+void ipv4_init();
+
+# 137
+ipv4_address_t ipv4_generateAutoIP();
+
+# 152
+bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
+
+# 159
+bool_t ipv4_isAllZero(ipv4_address_t *ip);
+
+# 165
+void ipv4_setToAllZero(ipv4_address_t *ip);
+
+# 62 "src/stack/protocols/../../eth/../mem/memoryController.h"
+memoryField_t memory_txFrameRequest(uint16_t length);
+
+# 68
+void memory_txFrameClear(uint8_t index);
+
+# 76
+bool_t static checkForOverlap(memoryField_t a, memoryField_t b);
+
+# 85
+bool_t static checkForOverlapSwitched(memoryField_t a, memoryField_t b);
+
+# 91
+bool_t static entireMemoryEmpty();
+
+# 97
+bool_t static entireMemoryFull();
+
+# 104
+bool_t static isOnlyOneAssigned(uint8_t index);
+
+# 55 "src/stack/protocols/../../eth/ethernet.h"
+error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
+
+# 66
+error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
 
 # 49 "src/stack/protocols/arp.h"
 void arp_init();
@@ -7393,27 +7484,11 @@ arp = arp_parseFromRXBuffer(frame);
 if (arp.err.code != (uint16_t)0) {
 ethernetController_dropPacket(frame);
 
-UARTTransmitText("[Invalid ARP Message was discarded.]\r\n");
-
+# 46
 return;
 }
 
-UARTTransmitText("[");
-UARTTransmitText(macToString(arp.senderMACAddress));
-UARTTransmitText(", ");
-UARTTransmitText(ipAdressToString(arp.senderIPAddress));
-UARTTransmitText("]->[");
-UARTTransmitText(macToString(arp.targetMACAddress));
-UARTTransmitText(", ");
-UARTTransmitText(ipAdressToString(arp.targetIPAddress));
-UARTTransmitText("]");
-UARTTransmitText("\033[94;4;10m");
-if (arp.fIsProbe)
-UARTTransmitText("[IsProbe]");
-if (arp.fIsGratuitous)
-UARTTransmitText("[IsGratuitous]");
-UARTTransmitText("\033[0m");
-
+# 65
 arp_sendReply(arp);
 if (!ipv4_isAllZero(&arp.senderIPAddress)) {
 arp_setNewEntry(arp.senderMACAddress, arp.senderIPAddress, getMillis());
@@ -7590,14 +7665,7 @@ reply.targetMACAddress = targetMAC;
 
 arp_send(reply);
 
-UARTTransmitText("\033[44;10;10m");
-UARTTransmitText("[Reply sent to ");
-UARTTransmitText(macToString(reply.targetMACAddress));
-UARTTransmitText(", ");
-UARTTransmitText(ipAdressToString(reply.targetIPAddress));
-UARTTransmitText("]");
-UARTTransmitText("\033[0m");
-
+# 250
 }
 
 
@@ -7648,12 +7716,7 @@ timeStart = getMillis();
 
 if (probeCounter < 3u) {
 
-UARTTransmitText("[ARP]: Sending Probe for ");
-UARTTransmitText(ipAdressToString(ipTarget));
-UARTTransmitText(" (reply to ");
-UARTTransmitText(ipAdressToString(ipSender));
-UARTTransmitText(")\n\r");
-
+# 306
 arp_sendRequest(ipSender, ipTarget);
 }
 if (probeCounter >= 3u) {
@@ -7715,10 +7778,7 @@ case ANNOUNCING:
 err.code = ERROR_ARP_WAITING;
 if ((announceCounter == 0) || (getMillis() - timeStart) > 2000u) {
 
-UARTTransmitText("[ARP]: Sending Gratuitous ARP request for ");
-UARTTransmitText(ipAdressToString(ip));
-UARTTransmitText("\n\r");
-
+# 371
 timeStart = getMillis();
 arp_sendRequest(ip, ip);
 announceCounter++;
@@ -7746,7 +7806,7 @@ error_t arp_background(linkState_t link) {
 error_t static err;
 error_t errProbe;
 error_t errAnnounce;
-bool_t static fAnnounce = 0;
+bool_t static fAnnounce = 0u;
 int8_t static state = 0;
 ipv4_address_t static ipPreliminary;
 err.code = ERROR_ARP_WAITING;
@@ -7762,26 +7822,22 @@ errProbe.code = arp_probe(ipPreliminary, link).code;
 switch (errProbe.code) {
 case ERROR_ARP_IPv4_ADDRESS_CONFLICT:
 
-UARTTransmitText("[ARP]: Conflict during probing.\n\r");
-
+# 416
 break;
 case ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED:
 
-UARTTransmitText("[ARP]: Nobody answered to probes.\n\r");
-
+# 421
 state = 1;
 break;
 case ERROR_ARP_WAITING:
 break;
 case ERROR_ARP_CONNECTION_FAILED:
 
-UARTTransmitText("[ARP]: Operation was interrupted because link was lost.\n\r");
-
+# 429
 break;
 default:
 
-UARTTransmitText("[ARP]: An unknown error occured.\n\r");
-
+# 434
 break;
 }
 }
@@ -7794,15 +7850,13 @@ errAnnounce = arp_gratuitous(ipPreliminary, link);
 err.code = errAnnounce.code;
 if (err.code == ERROR_ARP_IPv4_ADDRESS_CONFLICT) {
 
-UARTTransmitText("[ARP]: Conflict during announcement.\n\r");
-
+# 448
 state = 0;
 }
 if (errAnnounce.module == ERROR_MODULE_ARP &&
 errAnnounce.code == (uint16_t)0) {
 
-UARTTransmitText("[ARP]: All announcements sent.\n\r");
-
+# 455
 state = 0;
 }
 break;
@@ -7816,7 +7870,7 @@ return err;
 uint8_t arp_checkForEntry(ipv4_address_t ip, uint8_t * index) {
 for (uint8_t i = 0; i < 8u; i++) {
 if (ipv4_cmp(&arp_table[i].ip, &ip)) {
-if (getMillis() - arp_table[i].timeCreated < 30000u) {
+if ((getMillis() - arp_table[i].timeCreated) < 30000u) {
 
 *index = i;
 return 1;
@@ -7831,13 +7885,18 @@ return arp_table[index].mac;
 }
 
 void static arp_setNewEntry(macaddress_t mac, ipv4_address_t ip, time_t timestamp) {
-time_t maxSeconds = 0;
+time_t minSeconds = 0xffffffff;
 uint8_t oldestIndex = 0;
 
 for (uint8_t i = 0; i < 8u; i++) {
-if (arp_table[i].timeCreated > maxSeconds) {
-maxSeconds = arp_table[i].timeCreated;
+if (arp_table[i].timeCreated <= minSeconds) {
+minSeconds = arp_table[i].timeCreated;
 oldestIndex = i;
+}
+if (mac_cmp(&arp_table[i].mac, &mac) && ipv4_cmp(&arp_table[i].ip, &ip)) {
+
+oldestIndex = i;
+break;
 }
 }
 
@@ -7845,30 +7904,21 @@ arp_table[oldestIndex].ip = ip;
 arp_table[oldestIndex].mac = mac;
 arp_table[oldestIndex].timeCreated = timestamp;
 
-if (!((mac_isAllZero(&mac)) && ipv4_isAllZero(&ip))) {
-UARTTransmitText("\033[44;10;10m");
-UARTTransmitText("[ARP]: New entry created for ");
-UARTTransmitText(ipAdressToString(ip));
-UARTTransmitText(" (");
-UARTTransmitText(macToString(mac));
-UARTTransmitText(") ");
-UARTTransmitText("\033[0m");
-}
-
+# 514
 }
 
 void arp_init() {
-macaddress_t mac;
 ipv4_address_t ip;
-mac_setAllZero(&mac);
+macaddress_t mac;
 ipv4_setToAllZero(&ip);
+mac_setAllZero(&mac);
+for (uint8_t i = 0; i < 8u; i++) {
+arp_table[i].ip = ip;
+arp_table[i].mac = mac;
+arp_table[i].timeCreated = 0;
+}
 
-for (uint8_t i = 0; i < 8u; i++)
-arp_setNewEntry(mac, ip, 0xffffffff);
-
-
-UARTTransmitText("[ARP]: Table was reset successfully.\n\r");
-
+# 529
 }
 
 void printArpTable() {

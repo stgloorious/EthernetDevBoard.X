@@ -250,7 +250,7 @@ void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryF
     CS_PIN_HIGH;
 }
 
-macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
+/*macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
     macaddress_t destinationAddress;
     enc424j600_setERXDATAReadPointer(field.start + 8); //Fixed offset: 2 Bytes NextPacketPointer, 6 Bytes RSV
     uint8_t opcode = 0x2C; //ERXDATA Read opcode
@@ -263,7 +263,7 @@ macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
     }
     CS_PIN_HIGH; //End the read operation
     return destinationAddress;
-}
+}*/
 
 macaddress_t ethernetController_getSourceMACAddress(memoryField_t field) {
     macaddress_t sourceAddress;

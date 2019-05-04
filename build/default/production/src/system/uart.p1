@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"60 src/system/../system/../stack/protocols/../protocols/ipv4Types.h
+"62 src/system/../system/../stack/protocols/../protocols/ipv4Types.h
 [s S612 `uc -> 4 `i ]
 [n S612 ipv4_address address ]
 "6457 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f25k50.h
@@ -63,19 +63,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
 "14648
 [v _TRMT `Vb ~T0 @X0 0 e@32097 ]
-"62 src/system/../system/uart.h
-[v _intToString `(*uc ~T0 @X0 0 ef1`ul ]
+"48 src/system/uart.c
+[c E5981 0 1 2 3 4 5 6 7 .. ]
+[n E5981 UART_colors UART_COLOR_BG_RED UART_COLOR_BG_GREEN UART_COLOR_BG_BLUE UART_COLOR_BG_YELLOW UART_COLOR_BG_MAGENTA UART_COLOR_BG_CYAN UART_COLOR_FG_YELLOW UART_COLOR_FG_BLUE  ]
+"76
+[c E5991 0 .. ]
+[n E5991 UART_specials UART_LINE_SEPARATOR  ]
 "101 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
 [v _ltoa `(*uc ~T0 @X0 0 ef3`*uc`l`i ]
-"58 src/system/../system/../stack/protocols/../../eth/ethernetTypes.h
+"60 src/system/../system/../stack/protocols/../../eth/ethernetTypes.h
 [s S609 `uc -> 6 `i ]
 [n S609 macaddress address ]
-"138 src/system/uart.c
-[c E5590 2048 2054 2114 34824 .. ]
-[n E5590 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
-"149
-[c E5627 1 6 17 .. ]
-[n E5627 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP  ]
+"95 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
+[v _itoa `(*uc ~T0 @X0 0 ef3`*uc`i`i ]
+"108 src/system/uart.c
+[c E5590 2048 2054 2114 34824 65535 .. ]
+[n E5590 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL ETHERTYPE_UNKNOWN  ]
+"119
+[c E5628 1 6 17 255 .. ]
+[n E5628 ipv4_protocols IPv4_PROTOCOL_ICMP IPv4_PROTOCOL_TCP IPv4_PROTOCOL_UDP IPv4_PROTOCOL_UNKNOWN  ]
 "83 src/system/../system/../stack/protocols/arpTypes.h
 [s S617 `S612 1 `S609 1 `ul 1 ]
 [n S617 arp_tableEntry ip mac timeCreated ]
@@ -5194,115 +5200,122 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 50: ETHERTYPE_IPv4 = 0x0800,
 [; ;ethernetTypes.h: 51: ETHERTYPE_ARP = 0x0806,
 [; ;ethernetTypes.h: 52: ETHERTYPE_WOL = 0x0842,
-[; ;ethernetTypes.h: 53: ETHERTYPE_FLOW_CONTROL = 0x8808
-[; ;ethernetTypes.h: 54: } etherType_t;
-[; ;ethernetTypes.h: 58: typedef struct macaddress {
-[; ;ethernetTypes.h: 59: uint8_t address[6];
-[; ;ethernetTypes.h: 60: } macaddress_t;
-[; ;ethernetTypes.h: 64: typedef enum linkStates {
-[; ;ethernetTypes.h: 65: NO_LINK,
-[; ;ethernetTypes.h: 66: LINK_ESTABLISHED
-[; ;ethernetTypes.h: 67: } linkState_t;
-[; ;ethernetTypes.h: 71: typedef enum speeds {
-[; ;ethernetTypes.h: 72: TEN_MBIT,
-[; ;ethernetTypes.h: 73: HUNDRED_MBIT
-[; ;ethernetTypes.h: 74: } speed_t;
-[; ;ethernetTypes.h: 78: typedef enum duplexStates {
-[; ;ethernetTypes.h: 79: HALF_DUPLEX,
-[; ;ethernetTypes.h: 80: FULL_DUPLEX
-[; ;ethernetTypes.h: 81: } duplexState_t;
-[; ;ethernetTypes.h: 86: typedef struct ethernetFrame {
-[; ;ethernetTypes.h: 87: uint16_t length;
-[; ;ethernetTypes.h: 88: macaddress_t source;
-[; ;ethernetTypes.h: 89: macaddress_t destination;
-[; ;ethernetTypes.h: 90: etherType_t ethertype;
-[; ;ethernetTypes.h: 91: memoryField_t memory;
-[; ;ethernetTypes.h: 96: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 100: time_t tReceived;
-[; ;ethernetTypes.h: 101: } ethernetFrame_t;
-[; ;ethernetTypes.h: 106: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 107: linkState_t link;
-[; ;ethernetTypes.h: 108: speed_t speed;
-[; ;ethernetTypes.h: 109: duplexState_t duplex;
-[; ;ethernetTypes.h: 110: macaddress_t source;
-[; ;ethernetTypes.h: 111: macaddress_t destination;
-[; ;ethernetTypes.h: 112: } ethernetConnection_t;
+[; ;ethernetTypes.h: 53: ETHERTYPE_FLOW_CONTROL = 0x8808,
+[; ;ethernetTypes.h: 55: ETHERTYPE_UNKNOWN = 0xffff
+[; ;ethernetTypes.h: 56: } etherType_t;
+[; ;ethernetTypes.h: 60: typedef struct macaddress {
+[; ;ethernetTypes.h: 61: uint8_t address[6];
+[; ;ethernetTypes.h: 62: } macaddress_t;
+[; ;ethernetTypes.h: 66: typedef enum linkStates {
+[; ;ethernetTypes.h: 67: NO_LINK,
+[; ;ethernetTypes.h: 68: LINK_ESTABLISHED
+[; ;ethernetTypes.h: 69: } linkState_t;
+[; ;ethernetTypes.h: 73: typedef enum speeds {
+[; ;ethernetTypes.h: 74: TEN_MBIT,
+[; ;ethernetTypes.h: 75: HUNDRED_MBIT
+[; ;ethernetTypes.h: 76: } speed_t;
+[; ;ethernetTypes.h: 80: typedef enum duplexStates {
+[; ;ethernetTypes.h: 81: HALF_DUPLEX,
+[; ;ethernetTypes.h: 82: FULL_DUPLEX
+[; ;ethernetTypes.h: 83: } duplexState_t;
+[; ;ethernetTypes.h: 88: typedef struct ethernetFrame {
+[; ;ethernetTypes.h: 89: uint16_t length;
+[; ;ethernetTypes.h: 90: macaddress_t source;
+[; ;ethernetTypes.h: 91: macaddress_t destination;
+[; ;ethernetTypes.h: 92: etherType_t ethertype;
+[; ;ethernetTypes.h: 93: memoryField_t memory;
+[; ;ethernetTypes.h: 98: RSV_t receiveStatusVector;
+[; ;ethernetTypes.h: 102: time_t tReceived;
+[; ;ethernetTypes.h: 103: } ethernetFrame_t;
+[; ;ethernetTypes.h: 108: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 109: linkState_t link;
+[; ;ethernetTypes.h: 110: speed_t speed;
+[; ;ethernetTypes.h: 111: duplexState_t duplex;
+[; ;ethernetTypes.h: 112: macaddress_t source;
+[; ;ethernetTypes.h: 113: macaddress_t destination;
+[; ;ethernetTypes.h: 114: } ethernetConnection_t;
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
 [; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
-[; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17
-[; ;ipv4Types.h: 45: } ipv4_protocol_t;
-[; ;ipv4Types.h: 60: typedef struct ipv4_address {
-[; ;ipv4Types.h: 61: uint8_t address[4];
-[; ;ipv4Types.h: 62: } ipv4_address_t;
-[; ;ipv4Types.h: 67: typedef struct ipv4_header {
-[; ;ipv4Types.h: 72: uint8_t version;
-[; ;ipv4Types.h: 73: uint8_t headerLength;
-[; ;ipv4Types.h: 80: uint8_t dscp;
-[; ;ipv4Types.h: 81: uint8_t ecn;
-[; ;ipv4Types.h: 88: uint16_t totalLength;
-[; ;ipv4Types.h: 95: uint16_t identification;
-[; ;ipv4Types.h: 102: uint8_t flags;
-[; ;ipv4Types.h: 103: uint16_t fragmentOffset;
-[; ;ipv4Types.h: 110: uint8_t timeToLive;
-[; ;ipv4Types.h: 117: ipv4_protocol_t protocol;
-[; ;ipv4Types.h: 124: uint16_t checksum;
-[; ;ipv4Types.h: 131: ipv4_address_t source;
-[; ;ipv4Types.h: 138: ipv4_address_t destination;
-[; ;ipv4Types.h: 141: } ipv4_header_t;
-[; ;ipv4Types.h: 149: typedef struct ipv4_packet {
-[; ;ipv4Types.h: 153: ipv4_header_t ipv4Header;
-[; ;ipv4Types.h: 157: memoryField_t memory;
-[; ;ipv4Types.h: 161: ethernetFrame_t ethernet;
-[; ;ipv4Types.h: 162: } ipv4_packet_t;
-"164 src/system/../system/../stack/protocols/../protocols/ipv4Types.h
+[; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17,
+[; ;ipv4Types.h: 45: IPv4_PROTOCOL_UNKNOWN = 255
+[; ;ipv4Types.h: 47: } ipv4_protocol_t;
+[; ;ipv4Types.h: 62: typedef struct ipv4_address {
+[; ;ipv4Types.h: 63: uint8_t address[4];
+[; ;ipv4Types.h: 64: } ipv4_address_t;
+[; ;ipv4Types.h: 69: typedef struct ipv4_header {
+[; ;ipv4Types.h: 74: uint8_t version;
+[; ;ipv4Types.h: 75: uint8_t headerLength;
+[; ;ipv4Types.h: 82: uint8_t dscp;
+[; ;ipv4Types.h: 83: uint8_t ecn;
+[; ;ipv4Types.h: 90: uint16_t totalLength;
+[; ;ipv4Types.h: 97: uint16_t identification;
+[; ;ipv4Types.h: 104: uint8_t flags;
+[; ;ipv4Types.h: 105: uint16_t fragmentOffset;
+[; ;ipv4Types.h: 112: uint8_t timeToLive;
+[; ;ipv4Types.h: 119: ipv4_protocol_t protocol;
+[; ;ipv4Types.h: 126: uint16_t checksum;
+[; ;ipv4Types.h: 133: ipv4_address_t source;
+[; ;ipv4Types.h: 140: ipv4_address_t destination;
+[; ;ipv4Types.h: 143: } ipv4_header_t;
+[; ;ipv4Types.h: 151: typedef struct ipv4_packet {
+[; ;ipv4Types.h: 155: ipv4_header_t ipv4Header;
+[; ;ipv4Types.h: 159: memoryField_t memory;
+[; ;ipv4Types.h: 163: ethernetFrame_t ethernet;
+[; ;ipv4Types.h: 164: } ipv4_packet_t;
+"166 src/system/../system/../stack/protocols/../protocols/ipv4Types.h
 [v _ipSource `S612 ~T0 @X0 1 e ]
-[; ;ipv4Types.h: 164: ipv4_address_t ipSource;
+[; ;ipv4Types.h: 166: ipv4_address_t ipSource;
 [; ;error.h: 45: typedef enum error_modules {
 [; ;error.h: 46: ERROR_MODULE_MEMORY,
 [; ;error.h: 47: ERROR_MODULE_ETHERNET_CONTROLLER,
 [; ;error.h: 48: ERROR_MODULE_ETHERNET,
 [; ;error.h: 49: ERROR_MODULE_ARP,
-[; ;error.h: 50: ERROR_MODULE_IPv4
-[; ;error.h: 51: } error_module_t;
-[; ;error.h: 56: enum module_offsets {
-[; ;error.h: 57: ERROR_MEMORY_OFFSET = 100,
-[; ;error.h: 58: ERROR_ETHERNET_OFFSET = 200,
-[; ;error.h: 59: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
-[; ;error.h: 60: ERROR_ARP_OFFSET = 400,
-[; ;error.h: 61: ERROR_IPv4_OFFSET = 500
-[; ;error.h: 62: };
-[; ;error.h: 67: enum errors_memory {
-[; ;error.h: 68: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
-[; ;error.h: 69: ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
-[; ;error.h: 70: };
-[; ;error.h: 75: enum error_ethernet {
-[; ;error.h: 76: ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
-[; ;error.h: 77: ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
-[; ;error.h: 78: };
-[; ;error.h: 83: enum errors_ethernetController {
-[; ;error.h: 85: ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
-[; ;error.h: 86: ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE = ERROR_ETHERNET_CONTROLLER_OFFSET + 2,
-[; ;error.h: 88: ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OFFSET + 3,
-[; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
-[; ;error.h: 91: };
-[; ;error.h: 96: enum errors_arp {
-[; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
-[; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-[; ;error.h: 99: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
-[; ;error.h: 100: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
-[; ;error.h: 101: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
-[; ;error.h: 102: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
-[; ;error.h: 103: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
-[; ;error.h: 104: };
-[; ;error.h: 109: enum errors_ipv4 {
-[; ;error.h: 110: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-[; ;error.h: 111: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
-[; ;error.h: 112: };
-[; ;error.h: 119: typedef struct error {
-[; ;error.h: 123: error_module_t module;
-[; ;error.h: 129: uint16_t code;
-[; ;error.h: 130: } error_t;
+[; ;error.h: 50: ERROR_MODULE_IPv4,
+[; ;error.h: 51: ERROR_MODULE_ICMP
+[; ;error.h: 52: } error_module_t;
+[; ;error.h: 57: enum module_offsets {
+[; ;error.h: 58: ERROR_MEMORY_OFFSET = 100,
+[; ;error.h: 59: ERROR_ETHERNET_OFFSET = 200,
+[; ;error.h: 60: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
+[; ;error.h: 61: ERROR_ARP_OFFSET = 400,
+[; ;error.h: 62: ERROR_IPv4_OFFSET = 500,
+[; ;error.h: 63: ERROR_ICMP_OFFSET = 600
+[; ;error.h: 64: };
+[; ;error.h: 69: enum errors_memory {
+[; ;error.h: 70: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
+[; ;error.h: 71: ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
+[; ;error.h: 72: };
+[; ;error.h: 77: enum error_ethernet {
+[; ;error.h: 78: ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
+[; ;error.h: 79: ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
+[; ;error.h: 80: };
+[; ;error.h: 85: enum errors_ethernetController {
+[; ;error.h: 87: ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
+[; ;error.h: 88: ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE = ERROR_ETHERNET_CONTROLLER_OFFSET + 2,
+[; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OFFSET + 3,
+[; ;error.h: 92: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
+[; ;error.h: 93: };
+[; ;error.h: 98: enum errors_arp {
+[; ;error.h: 99: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
+[; ;error.h: 100: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
+[; ;error.h: 101: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+[; ;error.h: 102: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+[; ;error.h: 103: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+[; ;error.h: 104: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
+[; ;error.h: 105: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 106: };
+[; ;error.h: 111: enum errors_ipv4 {
+[; ;error.h: 112: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 113: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 114: };
+[; ;error.h: 116: enum errors_icmp {
+[; ;error.h: 117: ERROR_ICMP_MESSAGE_TOO_LONG = ERROR_ICMP_OFFSET + 1,
+[; ;error.h: 118: };
+[; ;error.h: 125: typedef struct error {
+[; ;error.h: 129: error_module_t module;
+[; ;error.h: 135: uint16_t code;
+[; ;error.h: 136: } error_t;
 [; ;arpTypes.h: 39: typedef struct arp_message {
 [; ;arpTypes.h: 40: uint16_t htype;
 [; ;arpTypes.h: 41: uint16_t ptype;
@@ -5408,8 +5421,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memoryController.h: 91: bool_t static entireMemoryEmpty();
 [; ;memoryController.h: 97: bool_t static entireMemoryFull();
 [; ;memoryController.h: 104: bool_t static isOnlyOneAssigned(uint8_t index);
-[; ;ethernet.h: 54: error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
-[; ;ethernet.h: 65: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
+[; ;ethernet.h: 55: error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
+[; ;ethernet.h: 66: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
 [; ;arp.h: 49: void arp_init();
 [; ;arp.h: 56: void arp_handleNewPacket(ethernetFrame_t *frame);
 [; ;arp.h: 63: arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame);
@@ -5427,14 +5440,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 42: error_t err;
 [; ;backgroundTasksTypes.h: 53: uint8_t fPacketPending;
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
-[; ;stack.h: 44: typedef struct stack {
-[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 46: ethernetConnection_t ethernet;
-[; ;stack.h: 47: backgroundTaskHandler_t background;
-[; ;stack.h: 48: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 49: ipv4_address_t source;
-[; ;stack.h: 50: } stack_t;
-[; ;stack.h: 57: error_t stack_init();
+[; ;tcpTypes.h: 35: typedef struct tcp_flags {
+[; ;tcpTypes.h: 36: uint8_t NS : 1;
+[; ;tcpTypes.h: 37: uint8_t CWR : 1;
+[; ;tcpTypes.h: 38: uint8_t ECE : 1;
+[; ;tcpTypes.h: 39: uint8_t URG : 1;
+[; ;tcpTypes.h: 40: uint8_t ACK : 1;
+[; ;tcpTypes.h: 41: uint8_t PSH : 1;
+[; ;tcpTypes.h: 42: uint8_t RST : 1;
+[; ;tcpTypes.h: 43: uint8_t SYN : 1;
+[; ;tcpTypes.h: 44: uint8_t FIN : 1;
+[; ;tcpTypes.h: 45: } tcp_flags_t;
+[; ;tcpTypes.h: 47: typedef struct tcp_header {
+[; ;tcpTypes.h: 48: uint16_t srcPort;
+[; ;tcpTypes.h: 49: uint16_t dstPort;
+[; ;tcpTypes.h: 50: uint32_t seqNumber;
+[; ;tcpTypes.h: 51: uint32_t ackNumber;
+[; ;tcpTypes.h: 52: uint8_t dataOffset;
+[; ;tcpTypes.h: 53: tcp_flags_t flags;
+[; ;tcpTypes.h: 54: uint16_t windowSize;
+[; ;tcpTypes.h: 55: uint16_t checksum;
+[; ;tcpTypes.h: 56: uint16_t urgentPointer;
+[; ;tcpTypes.h: 57: } tcp_header_t;
+[; ;tcpTypes.h: 59: typedef struct tcp_connection {
+[; ;tcpTypes.h: 60: ipv4_address_t ipServer;
+[; ;tcpTypes.h: 61: ipv4_address_t ipClient;
+[; ;tcpTypes.h: 62: uint16_t srcPort;
+[; ;tcpTypes.h: 63: uint16_t dstPort;
+[; ;tcpTypes.h: 64: uint32_t seqNumber;
+[; ;tcpTypes.h: 65: uint8_t state;
+[; ;tcpTypes.h: 66: } tcp_connection_t;
+[; ;tcpTypes.h: 68: typedef enum tcp_state {
+[; ;tcpTypes.h: 69: TCP_STATE_LISTEN,
+[; ;tcpTypes.h: 70: TCP_STATE_SYN_SENT,
+[; ;tcpTypes.h: 71: TCP_STATE_SYN_RECEIVED,
+[; ;tcpTypes.h: 72: TCP_STATE_ESTABLISHED,
+[; ;tcpTypes.h: 73: TCP_STATE_FIN_WAIT1,
+[; ;tcpTypes.h: 74: TCP_STATE_FIN_WAIT2,
+[; ;tcpTypes.h: 75: TCP_STATE_CLOSE_WAIT,
+[; ;tcpTypes.h: 76: TCP_STATE_CLOSING,
+[; ;tcpTypes.h: 77: TCP_STATE_LAST_ACK,
+[; ;tcpTypes.h: 78: TCP_STATE_TIME_WAIT,
+[; ;tcpTypes.h: 79: TCP_STATE_CLOSED
+[; ;tcpTypes.h: 80: } tcp_state_t;
+[; ;tcp.h: 34: error_t tcp_handleNewPacket(ipv4_header_t header, memoryField_t ipPayload);
+[; ;tcp.h: 36: error_t tcp_parseHeader(memoryField_t ipPayload, tcp_header_t* header);
+[; ;tcp.h: 38: error_t tcp_stateMachine(tcp_connection_t *connection, tcp_header_t *newHeader);
+[; ;tcp.h: 40: error_t tcp_listen(tcp_connection_t *connection);
+[; ;tcp.h: 42: error_t tcp_sendSYNACK(tcp_connection_t *connection, uint32_t seq);
+[; ;tcp.h: 44: error_t static tcp_calculateHeaderChecksum(tcp_header_t *tcpHeader, ipv4_header_t ipv4Header);
+[; ;tcp.h: 46: void tcp_init();
+[; ;stack.h: 45: typedef struct stack {
+[; ;stack.h: 46: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 47: ethernetConnection_t ethernet;
+[; ;stack.h: 48: backgroundTaskHandler_t background;
+[; ;stack.h: 49: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 50: ipv4_address_t source;
+[; ;stack.h: 51: uint8_t fipValid:1;
+[; ;stack.h: 52: } stack_t;
+[; ;stack.h: 59: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5453,17 +5517,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 152: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 159: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 165: void ipv4_setToAllZero(ipv4_address_t *ip);
-[; ;uart.h: 37: void UARTInit(void);
-[; ;uart.h: 43: void UARTTransmitText(const char *str);
-[; ;uart.h: 49: void DEBUG_MSG(char *text);
-[; ;uart.h: 55: void UARTTransmitInt(uint32_t val);
-[; ;uart.h: 62: char *intToString(uint32_t val);
-[; ;uart.h: 69: char *hexToString(uint32_t val);
-[; ;uart.h: 76: char *macToString(macaddress_t addr);
-[; ;uart.h: 83: char *etherTypeToString(etherType_t ethertype);
-[; ;uart.h: 90: char *ipProtocolToString(ipv4_protocol_t protocol);
-[; ;uart.h: 97: char *ipAdressToString(ipv4_address_t ip);
-[; ;uart.h: 104: char *arpEntryToString(arp_tableEntry_t table);
+[; ;uart.h: 34: typedef enum UART_colors {
+[; ;uart.h: 35: UART_COLOR_BG_RED,
+[; ;uart.h: 36: UART_COLOR_BG_GREEN,
+[; ;uart.h: 37: UART_COLOR_BG_BLUE,
+[; ;uart.h: 38: UART_COLOR_BG_YELLOW,
+[; ;uart.h: 39: UART_COLOR_BG_MAGENTA,
+[; ;uart.h: 40: UART_COLOR_BG_CYAN,
+[; ;uart.h: 42: UART_COLOR_FG_YELLOW,
+[; ;uart.h: 43: UART_COLOR_FG_BLUE
+[; ;uart.h: 44: } UART_colors_t;
+[; ;uart.h: 46: enum UART_specials {
+[; ;uart.h: 47: UART_LINE_SEPARATOR
+[; ;uart.h: 48: };
+[; ;uart.h: 53: void UARTInit(void);
+[; ;uart.h: 59: void UARTTransmitText(const char *str);
+[; ;uart.h: 67: char *UART_special(uint8_t code);
+[; ;uart.h: 73: void UART_setFormat(uint8_t color);
+[; ;uart.h: 78: void UART_resetFormat();
+[; ;uart.h: 87: char *intToString(uint32_t val, uint8_t b);
+[; ;uart.h: 94: char *macToString(macaddress_t addr);
+[; ;uart.h: 101: char *etherTypeToString(etherType_t ethertype);
+[; ;uart.h: 108: char *ipProtocolToString(ipv4_protocol_t protocol);
+[; ;uart.h: 115: char *ipAdressToString(ipv4_address_t ip);
+[; ;uart.h: 122: char *arpEntryToString(arp_tableEntry_t table);
 "26 src/system/uart.c
 [v _UARTInit `(v ~T0 @X0 1 ef ]
 {
@@ -5490,7 +5567,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _SPBRG -> -> 3 `i `uc ]
 [; ;uart.c: 34: }
 "34
-[e :UE 621 ]
+[e :UE 624 ]
 }
 "36
 [v _UARTTransmitText `(v ~T0 @X0 1 ef1`*Cuc ]
@@ -5501,569 +5578,531 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;uart.c: 37: while (*str) {
 "37
-[e $U 623  ]
-[e :U 624 ]
+[e $U 626  ]
+[e :U 627 ]
 {
 [; ;uart.c: 38: TXREG1 = *str++;
 "38
 [e = _TXREG1 *U ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
 [; ;uart.c: 39: while (TRMT == 0);
 "39
-[e $U 626  ]
-[e :U 627 ]
-[e :U 626 ]
-[e $ == -> _TRMT `i -> 0 `i 627  ]
-[e :U 628 ]
+[e $U 629  ]
+[e :U 630 ]
+[e :U 629 ]
+[e $ == -> _TRMT `i -> 0 `i 630  ]
+[e :U 631 ]
 "40
 }
-[e :U 623 ]
+[e :U 626 ]
 "37
-[e $ != -> *U _str `i -> -> -> 0 `i `Cuc `i 624  ]
-[e :U 625 ]
+[e $ != -> *U _str `i -> -> -> 0 `i `Cuc `i 627  ]
+[e :U 628 ]
 [; ;uart.c: 40: }
 [; ;uart.c: 41: }
 "41
-[e :UE 622 ]
+[e :UE 625 ]
 }
 "43
-[v _UARTTransmitInt `(v ~T0 @X0 1 ef1`ul ]
+[v _UART_resetFormat `(v ~T0 @X0 1 ef ]
 {
-[; ;uart.c: 43: void UARTTransmitInt(uint32_t val) {
-[e :U _UARTTransmitInt ]
-[v _val `ul ~T0 @X0 1 r1 ]
+[; ;uart.c: 43: void UART_resetFormat() {
+[e :U _UART_resetFormat ]
 [f ]
-[; ;uart.c: 44: UARTTransmitText(intToString(val));
+[; ;uart.c: 44: UARTTransmitText("\033[0m");
 "44
-[e ( _UARTTransmitText (1 -> ( _intToString (1 _val `*Cuc ]
+[e ( _UARTTransmitText (1 :s 1C ]
+[; ;uart.c: 45: }
+"45
+[e :UE 632 ]
+}
+"47
+[v _UART_setFormat `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;uart.c: 47: void UART_setFormat(uint8_t color) {
+[e :U _UART_setFormat ]
+[v _color `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;uart.c: 48: switch (color) {
+"48
+[e $U 635  ]
+{
+[; ;uart.c: 49: case UART_COLOR_BG_RED:
+"49
+[e :U 636 ]
+[; ;uart.c: 50: UARTTransmitText("\033[41;10;10m");
+"50
+[e ( _UARTTransmitText (1 :s 2C ]
+[; ;uart.c: 51: break;
+"51
+[e $U 634  ]
+[; ;uart.c: 52: case UART_COLOR_BG_GREEN:
+"52
+[e :U 637 ]
+[; ;uart.c: 53: UARTTransmitText("\033[42;30;10m");
+"53
+[e ( _UARTTransmitText (1 :s 3C ]
+[; ;uart.c: 54: break;
+"54
+[e $U 634  ]
+[; ;uart.c: 55: case UART_COLOR_BG_BLUE:
+"55
+[e :U 638 ]
+[; ;uart.c: 56: UARTTransmitText("\033[44;10;10m");
+"56
+[e ( _UARTTransmitText (1 :s 4C ]
+[; ;uart.c: 57: break;
+"57
+[e $U 634  ]
+[; ;uart.c: 58: case UART_COLOR_BG_MAGENTA:
+"58
+[e :U 639 ]
+[; ;uart.c: 59: UARTTransmitText("\033[45;10;10m");
+"59
+[e ( _UARTTransmitText (1 :s 5C ]
+[; ;uart.c: 60: break;
+"60
+[e $U 634  ]
+[; ;uart.c: 61: case UART_COLOR_BG_CYAN:
+"61
+[e :U 640 ]
+[; ;uart.c: 62: UARTTransmitText("\033[46;30;10m");
+"62
+[e ( _UARTTransmitText (1 :s 6C ]
+[; ;uart.c: 63: break;
+"63
+[e $U 634  ]
+[; ;uart.c: 64: case UART_COLOR_BG_YELLOW:
+"64
+[e :U 641 ]
+[; ;uart.c: 65: UARTTransmitText("\033[103;30;10m");
+"65
+[e ( _UARTTransmitText (1 :s 7C ]
+[; ;uart.c: 66: break;
+"66
+[e $U 634  ]
+[; ;uart.c: 67: case UART_COLOR_FG_YELLOW:
+"67
+[e :U 642 ]
+[; ;uart.c: 68: break;
+"68
+[e $U 634  ]
+[; ;uart.c: 69: case UART_COLOR_FG_BLUE:
+"69
+[e :U 643 ]
+[; ;uart.c: 70: UARTTransmitText("\033[94;4;10m");
+"70
+[e ( _UARTTransmitText (1 :s 8C ]
+[; ;uart.c: 71: break;
+"71
+[e $U 634  ]
+"72
+}
+[; ;uart.c: 72: }
+[e $U 634  ]
+"48
+[e :U 635 ]
+[e [\ _color , $ -> . `E5981 0 `uc 636
+ , $ -> . `E5981 1 `uc 637
+ , $ -> . `E5981 2 `uc 638
+ , $ -> . `E5981 4 `uc 639
+ , $ -> . `E5981 5 `uc 640
+ , $ -> . `E5981 3 `uc 641
+ , $ -> . `E5981 6 `uc 642
+ , $ -> . `E5981 7 `uc 643
+ 634 ]
+"72
+[e :U 634 ]
 [; ;uart.c: 73: }
 "73
-[e :UE 629 ]
+[e :UE 633 ]
 }
 "75
-[v _intToString `(*uc ~T0 @X0 1 ef1`ul ]
+[v _UART_special `(*uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;uart.c: 75: char *intToString(uint32_t val) {
+[; ;uart.c: 75: char *UART_special(uint8_t code) {
+[e :U _UART_special ]
+[v _code `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;uart.c: 76: switch (code) {
+"76
+[e $U 646  ]
+{
+[; ;uart.c: 77: case UART_LINE_SEPARATOR:
+"77
+[e :U 647 ]
+[; ;uart.c: 78: return (const char*)"-------------------------------------------------";
+"78
+[e ) -> :s 9C `*uc ]
+[e $UE 644  ]
+"79
+}
+[; ;uart.c: 79: }
+[e $U 645  ]
+"76
+[e :U 646 ]
+[e [\ _code , $ -> . `E5991 0 `uc 647
+ 645 ]
+"79
+[e :U 645 ]
+[; ;uart.c: 80: }
+"80
+[e :UE 644 ]
+}
+"82
+[v _intToString `(*uc ~T0 @X0 1 ef2`ul`uc ]
+{
+[; ;uart.c: 82: char *intToString(uint32_t val, uint8_t b) {
 [e :U _intToString ]
 [v _val `ul ~T0 @X0 1 r1 ]
+[v _b `uc ~T0 @X0 1 r2 ]
 [f ]
-"76
-[v F5939 `uc ~T0 @X0 -> 10 `i s number ]
-[; ;uart.c: 76: char static number [10];
-[; ;uart.c: 77: ltoa(&number[0], (long) val, 10);
-"77
-[e ( _ltoa (3 , , &U *U + &U F5939 * -> -> -> 0 `i `ui `ux -> -> # *U &U F5939 `ui `ux -> _val `l -> 10 `i ]
-[; ;uart.c: 81: return number;
-"81
-[e ) &U F5939 ]
-[e $UE 630  ]
-[; ;uart.c: 82: }
-"82
-[e :UE 630 ]
-}
+"83
+[v F6022 `uc ~T0 @X0 -> 10 `i s number ]
+[; ;uart.c: 83: char static number [10];
+[; ;uart.c: 84: ltoa(&number[0], (long) val, b);
 "84
-[v _hexToChar `(uc ~T0 @X0 1 ef1`uc ]
-{
-[; ;uart.c: 84: char hexToChar(uint8_t val) {
-[e :U _hexToChar ]
-[v _val `uc ~T0 @X0 1 r1 ]
-[f ]
-[; ;uart.c: 85: if (val < 10) {
-"85
-[e $ ! < -> _val `i -> 10 `i 632  ]
-{
-[; ;uart.c: 86: return val + 0x30u;
-"86
-[e ) -> + -> _val `ui -> 48 `ui `uc ]
-[e $UE 631  ]
-"87
-}
-[; ;uart.c: 87: } else if (val < 16) {
-[e $U 633  ]
-[e :U 632 ]
-[e $ ! < -> _val `i -> 16 `i 634  ]
-{
-[; ;uart.c: 88: return val + 0x41u - 10;
+[e ( _ltoa (3 , , &U *U + &U F6022 * -> -> -> 0 `i `ui `ux -> -> # *U &U F6022 `ui `ux -> _val `l -> _b `i ]
+[; ;uart.c: 88: return number;
 "88
-[e ) -> - + -> _val `ui -> 65 `ui -> -> 10 `i `ui `uc ]
-[e $UE 631  ]
-"89
-}
-[e :U 634 ]
-"90
-[e :U 633 ]
+[e ) &U F6022 ]
+[e $UE 648  ]
 [; ;uart.c: 89: }
-[; ;uart.c: 90: return 0;
-[e ) -> -> 0 `i `uc ]
-[e $UE 631  ]
-[; ;uart.c: 91: }
+"89
+[e :UE 648 ]
+}
 "91
-[e :UE 631 ]
-}
-"93
-[v _hexToString `(*uc ~T0 @X0 1 ef1`ul ]
-{
-[; ;uart.c: 93: char *hexToString(uint32_t val) {
-[e :U _hexToString ]
-[v _val `ul ~T0 @X0 1 r1 ]
-[f ]
-"94
-[v F5944 `uc ~T0 @X0 -> 10 `i s number ]
-"95
-[v _pointer `uc ~T0 @X0 1 a ]
-[; ;uart.c: 94: char static number [10];
-[; ;uart.c: 95: uint8_t pointer = 0;
-[e = _pointer -> -> 0 `i `uc ]
-[; ;uart.c: 96: if (val > 0xff) {
-"96
-[e $ ! > _val -> -> -> 255 `i `l `ul 636  ]
-{
-[; ;uart.c: 97: number[pointer++] = hexToChar((val >> 12) & 0xf);
-"97
-[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux ( _hexToChar (1 -> & >> _val -> 12 `i -> -> -> 15 `i `l `ul `uc ]
-[; ;uart.c: 98: number[pointer++] = hexToChar((val >> 8) & 0xf);
-"98
-[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux ( _hexToChar (1 -> & >> _val -> 8 `i -> -> -> 15 `i `l `ul `uc ]
-"99
-}
-[e :U 636 ]
-[; ;uart.c: 99: }
-[; ;uart.c: 100: number[pointer++] = hexToChar((val >> 4) & 0xf);
-"100
-[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux ( _hexToChar (1 -> & >> _val -> 4 `i -> -> -> 15 `i `l `ul `uc ]
-[; ;uart.c: 101: number[pointer++] = hexToChar(val & 0xf);
-"101
-[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux ( _hexToChar (1 -> & _val -> -> -> 15 `i `l `ul `uc ]
-[; ;uart.c: 103: number[pointer++] = '\0';
-"103
-[e = *U + &U F5944 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5944 `ui `ux -> -> 0 `ui `uc ]
-[; ;uart.c: 104: return number;
-"104
-[e ) &U F5944 ]
-[e $UE 635  ]
-[; ;uart.c: 105: }
-"105
-[e :UE 635 ]
-}
-"107
 [v _macToString `(*uc ~T0 @X0 1 ef1`S609 ]
 {
-[; ;uart.c: 107: char *macToString(macaddress_t addr) {
+[; ;uart.c: 91: char *macToString(macaddress_t addr) {
 [e :U _macToString ]
 [v _addr `S609 ~T0 @X0 1 r1 ]
 [f ]
-[v F5948 `uc ~T0 @X0 -> 0 `x s ]
-[i F5948
-:U ..
--> 63 `c
--> 63 `c
--> 58 `c
--> 63 `c
--> 63 `c
--> 58 `c
--> 63 `c
--> 63 `c
--> 58 `c
--> 63 `c
--> 63 `c
--> 58 `c
--> 63 `c
--> 63 `c
--> 58 `c
--> 63 `c
--> 63 `c
--> 0 `c
-..
-]
-"108
-[v _address `uc ~T0 @X0 18  a ]
-[; ;uart.c: 108: char address[] = "??:??:??:??:??:??";
-[e = _address F5948 ]
-"109
+"92
+[v F6025 `uc ~T0 @X0 -> 20 `i s address ]
+"93
+[v F6026 `uc ~T0 @X0 -> 3 `i s number ]
+"95
 [v _j `uc ~T0 @X0 1 a ]
-[; ;uart.c: 109: uint8_t j = 0;
+[; ;uart.c: 92: char static address[20];
+[; ;uart.c: 93: char static number[3];
+[; ;uart.c: 95: uint8_t j = 0;
 [e = _j -> -> 0 `i `uc ]
-"110
-[v _firstDigit `uc ~T0 @X0 1 a ]
-"111
-[v _secondDigit `uc ~T0 @X0 1 a ]
-[; ;uart.c: 110: uint8_t firstDigit;
-[; ;uart.c: 111: uint8_t secondDigit;
-[; ;uart.c: 113: for (int i = 0; i < 6; i++) {
-"113
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 6 `i 638  ]
-[e $U 639  ]
-[e :U 638 ]
-{
-[; ;uart.c: 114: firstDigit = ((addr.address[i] & 0xF0) >> 4)&0x0F;
-"114
-[e = _firstDigit -> & >> & -> *U + &U . _addr 0 * -> -> _i `ui `ux -> -> # *U &U . _addr 0 `ui `ux `i -> 240 `i -> 4 `i -> 15 `i `uc ]
-[; ;uart.c: 115: secondDigit = addr.address[i] & 0x0F;
-"115
-[e = _secondDigit -> & -> *U + &U . _addr 0 * -> -> _i `ui `ux -> -> # *U &U . _addr 0 `ui `ux `i -> 15 `i `uc ]
-[; ;uart.c: 117: firstDigit += 0x30;
-"117
-[e =+ _firstDigit -> -> 48 `i `uc ]
-[; ;uart.c: 118: secondDigit += 0x30;
-"118
-[e =+ _secondDigit -> -> 48 `i `uc ]
-[; ;uart.c: 120: if (firstDigit > '9') {
-"120
-[e $ ! > -> _firstDigit `ui -> 57 `ui 641  ]
-{
-[; ;uart.c: 121: address[j++] = firstDigit + 7;
-"121
-[e = *U + &U _address * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _address `ui `ux -> + -> _firstDigit `i -> 7 `i `uc ]
-"122
-}
-[; ;uart.c: 122: } else {
-[e $U 642  ]
-[e :U 641 ]
-{
-[; ;uart.c: 123: address[j++] = firstDigit;
-"123
-[e = *U + &U _address * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _address `ui `ux _firstDigit ]
-"124
-}
-[e :U 642 ]
-[; ;uart.c: 124: }
-[; ;uart.c: 125: if (secondDigit > '9') {
-"125
-[e $ ! > -> _secondDigit `ui -> 57 `ui 643  ]
-{
-[; ;uart.c: 126: address[j++] = secondDigit + 7;
-"126
-[e = *U + &U _address * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _address `ui `ux -> + -> _secondDigit `i -> 7 `i `uc ]
-"127
-}
-[; ;uart.c: 127: } else {
-[e $U 644  ]
-[e :U 643 ]
-{
-[; ;uart.c: 128: address[j++] = secondDigit;
-"128
-[e = *U + &U _address * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _address `ui `ux _secondDigit ]
-"129
-}
-[e :U 644 ]
-[; ;uart.c: 129: }
-[; ;uart.c: 131: if (i < 5) {
-"131
-[e $ ! < _i -> 5 `i 645  ]
-{
-[; ;uart.c: 132: address[j++] = ':';
-"132
-[e = *U + &U _address * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _address `ui `ux -> -> 58 `ui `uc ]
-"133
-}
-[e :U 645 ]
-"134
-}
-"113
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 6 `i 638  ]
-[e :U 639 ]
-"134
-}
-[; ;uart.c: 133: }
-[; ;uart.c: 134: }
-[; ;uart.c: 135: return address;
-"135
-[e ) &U _address ]
-[e $UE 637  ]
-[; ;uart.c: 136: }
-"136
-[e :UE 637 ]
-}
-"138
-[v _etherTypeToString `(*uc ~T0 @X0 1 ef1`E5590 ]
-{
-[; ;uart.c: 138: char *etherTypeToString(etherType_t ethertype) {
-[e :U _etherTypeToString ]
-[v _ethertype `E5590 ~T0 @X0 1 r1 ]
-[f ]
-[; ;uart.c: 139: switch (ethertype) {
-"139
-[e $U 648  ]
-{
-[; ;uart.c: 140: case ETHERTYPE_IPv4:
-"140
-[e :U 649 ]
-[; ;uart.c: 141: return "IPv4";
-"141
-[e ) -> :s 1C `*uc ]
-[e $UE 646  ]
-[; ;uart.c: 142: case ETHERTYPE_ARP:
-"142
-[e :U 650 ]
-[; ;uart.c: 143: return "ARP";
-"143
-[e ) -> :s 2C `*uc ]
-[e $UE 646  ]
-[; ;uart.c: 144: default:
-"144
-[e :U 651 ]
-[; ;uart.c: 145: return "Unknown EtherType";
-"145
-[e ) -> :s 3C `*uc ]
-[e $UE 646  ]
-"146
-}
-[; ;uart.c: 146: }
-[e $U 647  ]
-"139
-[e :U 648 ]
-[e [\ _ethertype , $ . `E5590 0 649
- , $ . `E5590 1 650
- 651 ]
-"146
-[e :U 647 ]
-[; ;uart.c: 147: }
-"147
-[e :UE 646 ]
-}
-"149
-[v _ipProtocolToString `(*uc ~T0 @X0 1 ef1`E5627 ]
-{
-[; ;uart.c: 149: char *ipProtocolToString(ipv4_protocol_t protocol) {
-[e :U _ipProtocolToString ]
-[v _protocol `E5627 ~T0 @X0 1 r1 ]
-[f ]
-[; ;uart.c: 150: switch (protocol) {
-"150
-[e $U 654  ]
-{
-[; ;uart.c: 151: case IPv4_PROTOCOL_ICMP:
-"151
-[e :U 655 ]
-[; ;uart.c: 152: return "ICMP";
-"152
-[e ) -> :s 4C `*uc ]
-[e $UE 652  ]
-[; ;uart.c: 153: case IPv4_PROTOCOL_TCP:
-"153
-[e :U 656 ]
-[; ;uart.c: 154: return "TCP";
-"154
-[e ) -> :s 5C `*uc ]
-[e $UE 652  ]
-[; ;uart.c: 155: case IPv4_PROTOCOL_UDP:
-"155
-[e :U 657 ]
-[; ;uart.c: 156: return "UDP";
-"156
-[e ) -> :s 6C `*uc ]
-[e $UE 652  ]
-[; ;uart.c: 157: default:
-"157
-[e :U 658 ]
-[; ;uart.c: 158: return "Unknown Protocol";
-"158
-[e ) -> :s 7C `*uc ]
-[e $UE 652  ]
-"159
-}
-[; ;uart.c: 159: }
-[e $U 653  ]
-"150
-[e :U 654 ]
-[e [\ _protocol , $ . `E5627 0 655
- , $ . `E5627 1 656
- , $ . `E5627 2 657
- 658 ]
-"159
-[e :U 653 ]
-[; ;uart.c: 160: }
-"160
-[e :UE 652 ]
-}
-"162
-[v _ipAdressToString `(*uc ~T0 @X0 1 ef1`S612 ]
-{
-[; ;uart.c: 162: char *ipAdressToString(ipv4_address_t ip) {
-[e :U _ipAdressToString ]
-[v _ip `S612 ~T0 @X0 1 r1 ]
-[f ]
-"163
-[v F5956 `uc ~T0 @X0 -> 0 `x s address ]
-[i F5956
-:U ..
--> 63 `c
--> 63 `c
--> 63 `c
--> 46 `c
--> 63 `c
--> 63 `c
--> 63 `c
--> 46 `c
--> 63 `c
--> 63 `c
--> 63 `c
--> 46 `c
--> 63 `c
--> 63 `c
--> 63 `c
--> 0 `c
-..
-]
-"164
-[v _hundreds `uc ~T0 @X0 -> 4 `i a ]
-"165
-[v _tens `uc ~T0 @X0 -> 4 `i a ]
-"166
-[v _ones `uc ~T0 @X0 -> 4 `i a ]
-"167
-[v _pointer `uc ~T0 @X0 1 a ]
-[; ;uart.c: 163: char static address [] = "???.???.???.???";
-[; ;uart.c: 164: uint8_t hundreds[4];
-[; ;uart.c: 165: uint8_t tens[4];
-[; ;uart.c: 166: uint8_t ones[4];
-[; ;uart.c: 167: uint8_t pointer = 0;
-[e = _pointer -> -> 0 `i `uc ]
-[; ;uart.c: 169: for (uint8_t i = 0; i < 4; i++) {
-"169
+[; ;uart.c: 96: for (uint8_t i = 0; i < 6; i++) {
+"96
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 660  ]
-[e $U 661  ]
-[e :U 660 ]
+[e $ < -> _i `i -> 6 `i 650  ]
+[e $U 651  ]
+[e :U 650 ]
 {
-[; ;uart.c: 171: hundreds[i] = ip.address[i] / 100u;
-"171
-[e = *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux -> / -> *U + &U . _ip 0 * -> _i `ux -> -> # *U &U . _ip 0 `ui `ux `ui -> 100 `ui `uc ]
-[; ;uart.c: 172: tens[i] = (ip.address[i] - hundreds[i]*100u) / 10u;
-"172
-[e = *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux -> / - -> *U + &U . _ip 0 * -> _i `ux -> -> # *U &U . _ip 0 `ui `ux `ui * -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `ui -> 100 `ui -> 10 `ui `uc ]
-[; ;uart.c: 173: ones[i] = ip.address[i] % 10u;
-"173
-[e = *U + &U _ones * -> _i `ux -> -> # *U &U _ones `ui `ux -> % -> *U + &U . _ip 0 * -> _i `ux -> -> # *U &U . _ip 0 `ui `ux `ui -> 10 `ui `uc ]
-[; ;uart.c: 175: if (hundreds[i] > 0)
-"175
-[e $ ! > -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 0 `i 663  ]
-[; ;uart.c: 176: address[pointer++] = hundreds[i] + 0x30;
-"176
-[e = *U + &U F5956 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5956 `ui `ux -> + -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 48 `i `uc ]
-[e :U 663 ]
-[; ;uart.c: 177: if ((tens[i] > 0) || hundreds[i] > 0)
-"177
-[e $ ! || > -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 0 `i > -> *U + &U _hundreds * -> _i `ux -> -> # *U &U _hundreds `ui `ux `i -> 0 `i 664  ]
-[; ;uart.c: 178: address[pointer++] = tens[i] + 0x30;
-"178
-[e = *U + &U F5956 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5956 `ui `ux -> + -> *U + &U _tens * -> _i `ux -> -> # *U &U _tens `ui `ux `i -> 48 `i `uc ]
-[e :U 664 ]
-[; ;uart.c: 179: address[pointer++] = ones[i] + 0x30;
-"179
-[e = *U + &U F5956 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5956 `ui `ux -> + -> *U + &U _ones * -> _i `ux -> -> # *U &U _ones `ui `ux `i -> 48 `i `uc ]
-[; ;uart.c: 180: if (i != 3)
-"180
-[e $ ! != -> _i `i -> 3 `i 665  ]
-[; ;uart.c: 181: address[pointer++] = '.';
-"181
-[e = *U + &U F5956 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5956 `ui `ux -> -> 46 `ui `uc ]
-[e :U 665 ]
-"182
+[; ;uart.c: 97: itoa(&number[0], (int) addr.address[i], 16);
+"97
+[e ( _itoa (3 , , &U *U + &U F6026 * -> -> -> 0 `i `ui `ux -> -> # *U &U F6026 `ui `ux -> *U + &U . _addr 0 * -> _i `ux -> -> # *U &U . _addr 0 `ui `ux `i -> 16 `i ]
+[; ;uart.c: 98: address[j++] = number[0];
+"98
+[e = *U + &U F6025 * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U F6025 `ui `ux *U + &U F6026 * -> -> -> 0 `i `ui `ux -> -> # *U &U F6026 `ui `ux ]
+[; ;uart.c: 99: address[j++] = number[1];
+"99
+[e = *U + &U F6025 * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U F6025 `ui `ux *U + &U F6026 * -> -> -> 1 `i `ui `ux -> -> # *U &U F6026 `ui `ux ]
+[; ;uart.c: 100: if (i < 5)
+"100
+[e $ ! < -> _i `i -> 5 `i 653  ]
+[; ;uart.c: 101: address[j++] = ':';
+"101
+[e = *U + &U F6025 * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U F6025 `ui `ux -> -> 58 `ui `uc ]
+[e :U 653 ]
+"102
 }
-"169
+"96
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 660  ]
+[e $ < -> _i `i -> 6 `i 650  ]
+[e :U 651 ]
+"102
+}
+[; ;uart.c: 102: }
+[; ;uart.c: 103: address[j] = '\0';
+"103
+[e = *U + &U F6025 * -> _j `ux -> -> # *U &U F6025 `ui `ux -> -> 0 `ui `uc ]
+[; ;uart.c: 105: return address;
+"105
+[e ) &U F6025 ]
+[e $UE 649  ]
+[; ;uart.c: 106: }
+"106
+[e :UE 649 ]
+}
+"108
+[v _etherTypeToString `(*uc ~T0 @X0 1 ef1`E5590 ]
+{
+[; ;uart.c: 108: char *etherTypeToString(etherType_t ethertype) {
+[e :U _etherTypeToString ]
+[v _ethertype `E5590 ~T0 @X0 1 r1 ]
+[f ]
+[; ;uart.c: 109: switch (ethertype) {
+"109
+[e $U 656  ]
+{
+[; ;uart.c: 110: case ETHERTYPE_IPv4:
+"110
+[e :U 657 ]
+[; ;uart.c: 111: return "IPv4";
+"111
+[e ) -> :s 10C `*uc ]
+[e $UE 654  ]
+[; ;uart.c: 112: case ETHERTYPE_ARP:
+"112
+[e :U 658 ]
+[; ;uart.c: 113: return "ARP";
+"113
+[e ) -> :s 11C `*uc ]
+[e $UE 654  ]
+[; ;uart.c: 114: default:
+"114
+[e :U 659 ]
+[; ;uart.c: 115: return "Unknown EtherType";
+"115
+[e ) -> :s 12C `*uc ]
+[e $UE 654  ]
+"116
+}
+[; ;uart.c: 116: }
+[e $U 655  ]
+"109
+[e :U 656 ]
+[e [\ _ethertype , $ . `E5590 0 657
+ , $ . `E5590 1 658
+ 659 ]
+"116
+[e :U 655 ]
+[; ;uart.c: 117: }
+"117
+[e :UE 654 ]
+}
+"119
+[v _ipProtocolToString `(*uc ~T0 @X0 1 ef1`E5628 ]
+{
+[; ;uart.c: 119: char *ipProtocolToString(ipv4_protocol_t protocol) {
+[e :U _ipProtocolToString ]
+[v _protocol `E5628 ~T0 @X0 1 r1 ]
+[f ]
+[; ;uart.c: 120: switch (protocol) {
+"120
+[e $U 662  ]
+{
+[; ;uart.c: 121: case IPv4_PROTOCOL_ICMP:
+"121
+[e :U 663 ]
+[; ;uart.c: 122: return "ICMP";
+"122
+[e ) -> :s 13C `*uc ]
+[e $UE 660  ]
+[; ;uart.c: 123: case IPv4_PROTOCOL_TCP:
+"123
+[e :U 664 ]
+[; ;uart.c: 124: return "TCP";
+"124
+[e ) -> :s 14C `*uc ]
+[e $UE 660  ]
+[; ;uart.c: 125: case IPv4_PROTOCOL_UDP:
+"125
+[e :U 665 ]
+[; ;uart.c: 126: return "UDP";
+"126
+[e ) -> :s 15C `*uc ]
+[e $UE 660  ]
+[; ;uart.c: 127: default:
+"127
+[e :U 666 ]
+[; ;uart.c: 128: return "Unknown Protocol";
+"128
+[e ) -> :s 16C `*uc ]
+[e $UE 660  ]
+"129
+}
+[; ;uart.c: 129: }
+[e $U 661  ]
+"120
+[e :U 662 ]
+[e [\ _protocol , $ . `E5628 0 663
+ , $ . `E5628 1 664
+ , $ . `E5628 2 665
+ 666 ]
+"129
 [e :U 661 ]
-"182
+[; ;uart.c: 130: }
+"130
+[e :UE 660 ]
 }
-[; ;uart.c: 182: }
-[; ;uart.c: 183: address[pointer] = '\0';
-"183
-[e = *U + &U F5956 * -> _pointer `ux -> -> # *U &U F5956 `ui `ux -> -> 0 `ui `uc ]
-[; ;uart.c: 184: return address;
-"184
-[e ) &U F5956 ]
-[e $UE 659  ]
-[; ;uart.c: 185: }
-"185
-[e :UE 659 ]
+"132
+[v _ipAdressToString `(*uc ~T0 @X0 1 ef1`S612 ]
+{
+[; ;uart.c: 132: char *ipAdressToString(ipv4_address_t ip) {
+[e :U _ipAdressToString ]
+[v _ip `S612 ~T0 @X0 1 r1 ]
+[f ]
+"133
+[v F6033 `uc ~T0 @X0 -> 20 `i s address ]
+"134
+[v F6034 `uc ~T0 @X0 -> 4 `i s number ]
+"135
+[v _pointer `uc ~T0 @X0 1 a ]
+[; ;uart.c: 133: char static address [20];
+[; ;uart.c: 134: char static number[4];
+[; ;uart.c: 135: uint8_t pointer = 0;
+[e = _pointer -> -> 0 `i `uc ]
+"136
+[v _j `uc ~T0 @X0 1 a ]
+[; ;uart.c: 136: uint8_t j = 0;
+[e = _j -> -> 0 `i `uc ]
+[; ;uart.c: 138: for (uint8_t i = 0; i < 4; i++) {
+"138
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 668  ]
+[e $U 669  ]
+[e :U 668 ]
+{
+[; ;uart.c: 139: itoa(&number[0], (int) ip.address[i], 10);
+"139
+[e ( _itoa (3 , , &U *U + &U F6034 * -> -> -> 0 `i `ui `ux -> -> # *U &U F6034 `ui `ux -> *U + &U . _ip 0 * -> _i `ux -> -> # *U &U . _ip 0 `ui `ux `i -> 10 `i ]
+[; ;uart.c: 140: if (ip.address[i] >= 100)
+"140
+[e $ ! >= -> *U + &U . _ip 0 * -> _i `ux -> -> # *U &U . _ip 0 `ui `ux `i -> 100 `i 671  ]
+[; ;uart.c: 141: address[pointer++] = number[j++];
+"141
+[e = *U + &U F6033 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6033 `ui `ux *U + &U F6034 * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U F6034 `ui `ux ]
+[e :U 671 ]
+[; ;uart.c: 142: if (ip.address[i] >= 10)
+"142
+[e $ ! >= -> *U + &U . _ip 0 * -> _i `ux -> -> # *U &U . _ip 0 `ui `ux `i -> 10 `i 672  ]
+[; ;uart.c: 143: address[pointer++] = number[j++];
+"143
+[e = *U + &U F6033 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6033 `ui `ux *U + &U F6034 * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U F6034 `ui `ux ]
+[e :U 672 ]
+[; ;uart.c: 144: address[pointer++] = number[j++];
+"144
+[e = *U + &U F6033 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6033 `ui `ux *U + &U F6034 * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U F6034 `ui `ux ]
+[; ;uart.c: 145: j = 0;
+"145
+[e = _j -> -> 0 `i `uc ]
+[; ;uart.c: 146: if (i < 3)
+"146
+[e $ ! < -> _i `i -> 3 `i 673  ]
+[; ;uart.c: 147: address[pointer++] = '.';
+"147
+[e = *U + &U F6033 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6033 `ui `ux -> -> 46 `ui `uc ]
+[e :U 673 ]
+"148
 }
-"187
+"138
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 668  ]
+[e :U 669 ]
+"148
+}
+[; ;uart.c: 148: }
+[; ;uart.c: 149: address[pointer] = '\0';
+"149
+[e = *U + &U F6033 * -> _pointer `ux -> -> # *U &U F6033 `ui `ux -> -> 0 `ui `uc ]
+[; ;uart.c: 150: return address;
+"150
+[e ) &U F6033 ]
+[e $UE 667  ]
+[; ;uart.c: 151: }
+"151
+[e :UE 667 ]
+}
+"153
 [v _arpEntryToString `(*uc ~T0 @X0 1 ef1`S617 ]
 {
-[; ;uart.c: 187: char *arpEntryToString(arp_tableEntry_t table) {
+[; ;uart.c: 153: char *arpEntryToString(arp_tableEntry_t table) {
 [e :U _arpEntryToString ]
 [v _table `S617 ~T0 @X0 1 r1 ]
 [f ]
-"188
-[v F5963 `uc ~T0 @X0 -> 50 `i s string ]
-"189
+"154
+[v F6040 `uc ~T0 @X0 -> 50 `i s string ]
+"155
 [v _pointer `uc ~T0 @X0 1 a ]
-[; ;uart.c: 188: char static string [50];
-[; ;uart.c: 189: uint8_t pointer = 0;
+[; ;uart.c: 154: char static string [50];
+[; ;uart.c: 155: uint8_t pointer = 0;
 [e = _pointer -> -> 0 `i `uc ]
-"190
+"156
 [v _tempAddr `*uc ~T0 @X0 1 a ]
-[; ;uart.c: 190: char *tempAddr;
-[; ;uart.c: 192: tempAddr = ipAdressToString(table.ip);
-"192
+[; ;uart.c: 156: char *tempAddr;
+[; ;uart.c: 158: tempAddr = ipAdressToString(table.ip);
+"158
 [e = _tempAddr ( _ipAdressToString (1 . _table 0 ]
-[; ;uart.c: 193: while (*tempAddr != '\0')
-"193
-[e $U 667  ]
-[e :U 668 ]
-[; ;uart.c: 194: string[pointer++] = *(tempAddr++);
-"194
-[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
-[e :U 667 ]
-"193
-[e $ != -> *U _tempAddr `ui -> 0 `ui 668  ]
-[e :U 669 ]
-[; ;uart.c: 196: string[pointer++] = ' ';
-"196
-[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux -> -> 32 `ui `uc ]
-[; ;uart.c: 198: tempAddr = macToString(table.mac);
-"198
-[e = _tempAddr ( _macToString (1 . _table 1 ]
-[; ;uart.c: 199: while (*tempAddr != '\0')
-"199
-[e $U 670  ]
-[e :U 671 ]
-[; ;uart.c: 200: string[pointer++] = *(tempAddr++);
-"200
-[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
-[e :U 670 ]
-"199
-[e $ != -> *U _tempAddr `ui -> 0 `ui 671  ]
-[e :U 672 ]
-[; ;uart.c: 202: string[pointer++] = ' ';
-"202
-[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux -> -> 32 `ui `uc ]
-[; ;uart.c: 204: tempAddr = intToString(table.timeCreated % 0xffff);
-"204
-[e = _tempAddr ( _intToString (1 % . _table 2 -> -> 65535 `ui `ul ]
-[; ;uart.c: 205: while (*tempAddr != '\0')
-"205
-[e $U 673  ]
-[e :U 674 ]
-[; ;uart.c: 206: string[pointer++] = *(tempAddr++);
-"206
-[e = *U + &U F5963 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F5963 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
-[e :U 673 ]
-"205
-[e $ != -> *U _tempAddr `ui -> 0 `ui 674  ]
+[; ;uart.c: 159: while (*tempAddr != '\0')
+"159
+[e $U 675  ]
+[e :U 676 ]
+[; ;uart.c: 160: string[pointer++] = *(tempAddr++);
+"160
+[e = *U + &U F6040 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6040 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
 [e :U 675 ]
-[; ;uart.c: 208: string[pointer] = '\0';
-"208
-[e = *U + &U F5963 * -> _pointer `ux -> -> # *U &U F5963 `ui `ux -> -> 0 `ui `uc ]
-[; ;uart.c: 210: return string;
-"210
-[e ) &U F5963 ]
-[e $UE 666  ]
-[; ;uart.c: 211: }
-"211
-[e :UE 666 ]
+"159
+[e $ != -> *U _tempAddr `ui -> 0 `ui 676  ]
+[e :U 677 ]
+[; ;uart.c: 162: string[pointer++] = ' ';
+"162
+[e = *U + &U F6040 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6040 `ui `ux -> -> 32 `ui `uc ]
+[; ;uart.c: 164: tempAddr = macToString(table.mac);
+"164
+[e = _tempAddr ( _macToString (1 . _table 1 ]
+[; ;uart.c: 165: while (*tempAddr != '\0')
+"165
+[e $U 678  ]
+[e :U 679 ]
+[; ;uart.c: 166: string[pointer++] = *(tempAddr++);
+"166
+[e = *U + &U F6040 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6040 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e :U 678 ]
+"165
+[e $ != -> *U _tempAddr `ui -> 0 `ui 679  ]
+[e :U 680 ]
+[; ;uart.c: 168: string[pointer++] = ' ';
+"168
+[e = *U + &U F6040 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6040 `ui `ux -> -> 32 `ui `uc ]
+[; ;uart.c: 170: tempAddr = intToString(table.timeCreated, 10);
+"170
+[e = _tempAddr ( _intToString (2 , . _table 2 -> -> 10 `i `uc ]
+[; ;uart.c: 171: while (*tempAddr != '\0')
+"171
+[e $U 681  ]
+[e :U 682 ]
+[; ;uart.c: 172: string[pointer++] = *(tempAddr++);
+"172
+[e = *U + &U F6040 * -> ++ _pointer -> -> 1 `i `uc `ux -> -> # *U &U F6040 `ui `ux *U ++ _tempAddr * -> -> 1 `i `x -> -> # *U _tempAddr `i `x ]
+[e :U 681 ]
+"171
+[e $ != -> *U _tempAddr `ui -> 0 `ui 682  ]
+[e :U 683 ]
+[; ;uart.c: 174: string[pointer] = '\0';
+"174
+[e = *U + &U F6040 * -> _pointer `ux -> -> # *U &U F6040 `ui `ux -> -> 0 `ui `uc ]
+[; ;uart.c: 176: return string;
+"176
+[e ) &U F6040 ]
+[e $UE 674  ]
+[; ;uart.c: 177: }
+"177
+[e :UE 674 ]
 }
-[a 7C 85 110 107 110 111 119 110 32 80 114 111 116 111 99 111 108 0 ]
-[a 3C 85 110 107 110 111 119 110 32 69 116 104 101 114 84 121 112 101 0 ]
-[a 2C 65 82 80 0 ]
-[a 4C 73 67 77 80 0 ]
-[a 6C 85 68 80 0 ]
-[a 5C 84 67 80 0 ]
-[a 1C 73 80 118 52 0 ]
+[a 1C 27 91 48 109 0 ]
+[a 8C 27 91 57 52 59 52 59 49 48 109 0 ]
+[a 6C 27 91 52 54 59 51 48 59 49 48 109 0 ]
+[a 7C 27 91 49 48 51 59 51 48 59 49 48 109 0 ]
+[a 3C 27 91 52 50 59 51 48 59 49 48 109 0 ]
+[a 5C 27 91 52 53 59 49 48 59 49 48 109 0 ]
+[a 4C 27 91 52 52 59 49 48 59 49 48 109 0 ]
+[a 2C 27 91 52 49 59 49 48 59 49 48 109 0 ]
+[a 16C 85 110 107 110 111 119 110 32 80 114 111 116 111 99 111 108 0 ]
+[a 12C 85 110 107 110 111 119 110 32 69 116 104 101 114 84 121 112 101 0 ]
+[a 11C 65 82 80 0 ]
+[a 13C 73 67 77 80 0 ]
+[a 15C 85 68 80 0 ]
+[a 14C 84 67 80 0 ]
+[a 10C 73 80 118 52 0 ]
+[a 9C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 0 ]

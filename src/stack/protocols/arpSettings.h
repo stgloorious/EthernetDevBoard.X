@@ -64,7 +64,7 @@
  */
 
 #ifndef ARP_DEBUG_MESSAGES
-#define ARP_DEBUG_MESSAGES      true    ///< This enables ALL debug messages related to the ARP
+#define ARP_DEBUG_MESSAGES      false    ///< This enables ALL debug messages related to the ARP
 #endif   
 
 /**

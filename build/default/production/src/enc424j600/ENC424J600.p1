@@ -1,11 +1,11 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"60 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h
+"62 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h
 [s S614 `uc -> 4 `i ]
 [n S614 ipv4_address address ]
 "34 src/enc424j600/ENC424J600.c
-[c E5436 0 1 2 3 4 .. ]
-[n E5436 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
-"119 src/enc424j600/../enc424j600/../eth/../stack/error.h
+[c E5436 0 1 2 3 4 5 .. ]
+[n E5436 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4 ERROR_MODULE_ICMP  ]
+"125 src/enc424j600/../enc424j600/../eth/../stack/error.h
 [s S603 `E5436 1 `ui 1 ]
 [n S603 error module code ]
 "71 src/enc424j600/../enc424j600/ENC424J600.h
@@ -35,9 +35,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v __delay `JF5401 ~T0 @X0 0 e ]
 [p i __delay ]
 "120 src/enc424j600/ENC424J600.c
-[c E5455 301 302 303 399 .. ]
-[n E5455 errors_ethernetController ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW ERROR_ETHERNET_CONTROLLER_UNKNOWN  ]
-"58 src/enc424j600/../enc424j600/../eth/../eth/ethernetTypes.h
+[c E5457 301 302 303 399 .. ]
+[n E5457 errors_ethernetController ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW ERROR_ETHERNET_CONTROLLER_UNKNOWN  ]
+"60 src/enc424j600/../enc424j600/../eth/../eth/ethernetTypes.h
 [s S606 `uc -> 6 `i ]
 [n S606 macaddress address ]
 "267 src/enc424j600/../enc424j600/ENC424J600.h
@@ -70,8 +70,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "85 src/enc424j600/../enc424j600/ENC424J600.h
 [v _enc424j600_writeSPI `(v ~T0 @X0 0 sf1`*uc ]
 "241 src/enc424j600/ENC424J600.c
-[c E5509 2048 2054 2114 34824 .. ]
-[n E5509 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
+[c E5513 2048 2054 2114 34824 65535 .. ]
+[n E5513 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL ETHERTYPE_UNKNOWN  ]
 "220 src/enc424j600/../enc424j600/ENC424J600.h
 [v _enc424j600_setERXDATAReadPointer `(v ~T0 @X0 0 sf1`ui ]
 "91
@@ -87,8 +87,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "294 src/enc424j600/../enc424j600/ENC424J600.h
 [v _enc424j600_getInterruptFlags `(ui ~T0 @X0 0 ef ]
 "315 src/enc424j600/ENC424J600.c
-[c E5558 0 1 2 3 5 6 11 12 13 14 .. ]
-[n E5558 interruptFlagsNames PCFULIF RXABTIF TXABTIF TXDIF DMAIF PKTIF LINKIF AESIF HASHIF MODEXIF  ]
+[c E5563 0 1 2 3 5 6 11 12 13 14 .. ]
+[n E5563 interruptFlagsNames PCFULIF RXABTIF TXABTIF TXDIF DMAIF PKTIF LINKIF AESIF HASHIF MODEXIF  ]
 "14708 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f25k50.h
 [v _TXIF `Vb ~T0 @X0 0 e@31988 ]
 "302 src/enc424j600/../enc424j600/ENC424J600.h
@@ -100,22 +100,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 "178 src/enc424j600/../enc424j600/ENC424J600.h
 [v _enc424j600_getPacketCount `(uc ~T0 @X0 0 ef ]
 "394 src/enc424j600/ENC424J600.c
-[c E5518 0 1 .. ]
-[n E5518 linkStates NO_LINK LINK_ESTABLISHED  ]
-[c E5522 0 1 .. ]
-[n E5522 speeds TEN_MBIT HUNDRED_MBIT  ]
-[c E5526 0 1 .. ]
-[n E5526 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
-"106 src/enc424j600/../enc424j600/../eth/../eth/ethernetTypes.h
-[s S608 `E5518 1 `E5522 1 `E5526 1 `S606 1 `S606 1 ]
+[c E5523 0 1 .. ]
+[n E5523 linkStates NO_LINK LINK_ESTABLISHED  ]
+[c E5527 0 1 .. ]
+[n E5527 speeds TEN_MBIT HUNDRED_MBIT  ]
+[c E5531 0 1 .. ]
+[n E5531 duplexStates HALF_DUPLEX FULL_DUPLEX  ]
+"108 src/enc424j600/../enc424j600/../eth/../eth/ethernetTypes.h
+[s S608 `E5523 1 `E5527 1 `E5531 1 `S606 1 `S606 1 ]
 [n S608 ethernetConnection link speed duplex source destination ]
 "133 src/enc424j600/../enc424j600/ENC424J600.h
 [v _enc424j600_readPHYRegister `(v ~T0 @X0 0 sf2`uc`*ui ]
 "419 src/enc424j600/ENC424J600.c
-[c E5570 0 1 .. ]
-[n E5570 LEDs LEDA LEDB  ]
-[c E5574 0 1 2 .. ]
-[n E5574 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
+[c E5575 0 1 .. ]
+[n E5575 LEDs LEDA LEDB  ]
+[c E5579 0 1 2 .. ]
+[n E5579 LEDStates LED_ON LED_OFF LED_TRANSMIT_RECEIVE_EVENTS  ]
 "9442 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f25k50.h
 [s S421 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S421 . SSPM CKP SSPEN SSPOV WCOL ]
@@ -5232,46 +5232,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 47: ERROR_MODULE_ETHERNET_CONTROLLER,
 [; ;error.h: 48: ERROR_MODULE_ETHERNET,
 [; ;error.h: 49: ERROR_MODULE_ARP,
-[; ;error.h: 50: ERROR_MODULE_IPv4
-[; ;error.h: 51: } error_module_t;
-[; ;error.h: 56: enum module_offsets {
-[; ;error.h: 57: ERROR_MEMORY_OFFSET = 100,
-[; ;error.h: 58: ERROR_ETHERNET_OFFSET = 200,
-[; ;error.h: 59: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
-[; ;error.h: 60: ERROR_ARP_OFFSET = 400,
-[; ;error.h: 61: ERROR_IPv4_OFFSET = 500
-[; ;error.h: 62: };
-[; ;error.h: 67: enum errors_memory {
-[; ;error.h: 68: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
-[; ;error.h: 69: ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
-[; ;error.h: 70: };
-[; ;error.h: 75: enum error_ethernet {
-[; ;error.h: 76: ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
-[; ;error.h: 77: ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
-[; ;error.h: 78: };
-[; ;error.h: 83: enum errors_ethernetController {
-[; ;error.h: 85: ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
-[; ;error.h: 86: ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE = ERROR_ETHERNET_CONTROLLER_OFFSET + 2,
-[; ;error.h: 88: ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OFFSET + 3,
-[; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
-[; ;error.h: 91: };
-[; ;error.h: 96: enum errors_arp {
-[; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
-[; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-[; ;error.h: 99: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
-[; ;error.h: 100: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
-[; ;error.h: 101: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
-[; ;error.h: 102: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
-[; ;error.h: 103: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
-[; ;error.h: 104: };
-[; ;error.h: 109: enum errors_ipv4 {
-[; ;error.h: 110: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-[; ;error.h: 111: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
-[; ;error.h: 112: };
-[; ;error.h: 119: typedef struct error {
-[; ;error.h: 123: error_module_t module;
-[; ;error.h: 129: uint16_t code;
-[; ;error.h: 130: } error_t;
+[; ;error.h: 50: ERROR_MODULE_IPv4,
+[; ;error.h: 51: ERROR_MODULE_ICMP
+[; ;error.h: 52: } error_module_t;
+[; ;error.h: 57: enum module_offsets {
+[; ;error.h: 58: ERROR_MEMORY_OFFSET = 100,
+[; ;error.h: 59: ERROR_ETHERNET_OFFSET = 200,
+[; ;error.h: 60: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
+[; ;error.h: 61: ERROR_ARP_OFFSET = 400,
+[; ;error.h: 62: ERROR_IPv4_OFFSET = 500,
+[; ;error.h: 63: ERROR_ICMP_OFFSET = 600
+[; ;error.h: 64: };
+[; ;error.h: 69: enum errors_memory {
+[; ;error.h: 70: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
+[; ;error.h: 71: ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
+[; ;error.h: 72: };
+[; ;error.h: 77: enum error_ethernet {
+[; ;error.h: 78: ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
+[; ;error.h: 79: ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
+[; ;error.h: 80: };
+[; ;error.h: 85: enum errors_ethernetController {
+[; ;error.h: 87: ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
+[; ;error.h: 88: ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE = ERROR_ETHERNET_CONTROLLER_OFFSET + 2,
+[; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OFFSET + 3,
+[; ;error.h: 92: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
+[; ;error.h: 93: };
+[; ;error.h: 98: enum errors_arp {
+[; ;error.h: 99: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
+[; ;error.h: 100: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
+[; ;error.h: 101: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+[; ;error.h: 102: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+[; ;error.h: 103: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+[; ;error.h: 104: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
+[; ;error.h: 105: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 106: };
+[; ;error.h: 111: enum errors_ipv4 {
+[; ;error.h: 112: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 113: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 114: };
+[; ;error.h: 116: enum errors_icmp {
+[; ;error.h: 117: ERROR_ICMP_MESSAGE_TOO_LONG = ERROR_ICMP_OFFSET + 1,
+[; ;error.h: 118: };
+[; ;error.h: 125: typedef struct error {
+[; ;error.h: 129: error_module_t module;
+[; ;error.h: 135: uint16_t code;
+[; ;error.h: 136: } error_t;
 [; ;rsv.h: 36: typedef struct RSV {
 [; ;rsv.h: 42: uint16_t length;
 [; ;rsv.h: 43: uint8_t packetPreviouslyIgnored : 1;
@@ -5310,39 +5315,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 50: ETHERTYPE_IPv4 = 0x0800,
 [; ;ethernetTypes.h: 51: ETHERTYPE_ARP = 0x0806,
 [; ;ethernetTypes.h: 52: ETHERTYPE_WOL = 0x0842,
-[; ;ethernetTypes.h: 53: ETHERTYPE_FLOW_CONTROL = 0x8808
-[; ;ethernetTypes.h: 54: } etherType_t;
-[; ;ethernetTypes.h: 58: typedef struct macaddress {
-[; ;ethernetTypes.h: 59: uint8_t address[6];
-[; ;ethernetTypes.h: 60: } macaddress_t;
-[; ;ethernetTypes.h: 64: typedef enum linkStates {
-[; ;ethernetTypes.h: 65: NO_LINK,
-[; ;ethernetTypes.h: 66: LINK_ESTABLISHED
-[; ;ethernetTypes.h: 67: } linkState_t;
-[; ;ethernetTypes.h: 71: typedef enum speeds {
-[; ;ethernetTypes.h: 72: TEN_MBIT,
-[; ;ethernetTypes.h: 73: HUNDRED_MBIT
-[; ;ethernetTypes.h: 74: } speed_t;
-[; ;ethernetTypes.h: 78: typedef enum duplexStates {
-[; ;ethernetTypes.h: 79: HALF_DUPLEX,
-[; ;ethernetTypes.h: 80: FULL_DUPLEX
-[; ;ethernetTypes.h: 81: } duplexState_t;
-[; ;ethernetTypes.h: 86: typedef struct ethernetFrame {
-[; ;ethernetTypes.h: 87: uint16_t length;
-[; ;ethernetTypes.h: 88: macaddress_t source;
-[; ;ethernetTypes.h: 89: macaddress_t destination;
-[; ;ethernetTypes.h: 90: etherType_t ethertype;
-[; ;ethernetTypes.h: 91: memoryField_t memory;
-[; ;ethernetTypes.h: 96: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 100: time_t tReceived;
-[; ;ethernetTypes.h: 101: } ethernetFrame_t;
-[; ;ethernetTypes.h: 106: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 107: linkState_t link;
-[; ;ethernetTypes.h: 108: speed_t speed;
-[; ;ethernetTypes.h: 109: duplexState_t duplex;
-[; ;ethernetTypes.h: 110: macaddress_t source;
-[; ;ethernetTypes.h: 111: macaddress_t destination;
-[; ;ethernetTypes.h: 112: } ethernetConnection_t;
+[; ;ethernetTypes.h: 53: ETHERTYPE_FLOW_CONTROL = 0x8808,
+[; ;ethernetTypes.h: 55: ETHERTYPE_UNKNOWN = 0xffff
+[; ;ethernetTypes.h: 56: } etherType_t;
+[; ;ethernetTypes.h: 60: typedef struct macaddress {
+[; ;ethernetTypes.h: 61: uint8_t address[6];
+[; ;ethernetTypes.h: 62: } macaddress_t;
+[; ;ethernetTypes.h: 66: typedef enum linkStates {
+[; ;ethernetTypes.h: 67: NO_LINK,
+[; ;ethernetTypes.h: 68: LINK_ESTABLISHED
+[; ;ethernetTypes.h: 69: } linkState_t;
+[; ;ethernetTypes.h: 73: typedef enum speeds {
+[; ;ethernetTypes.h: 74: TEN_MBIT,
+[; ;ethernetTypes.h: 75: HUNDRED_MBIT
+[; ;ethernetTypes.h: 76: } speed_t;
+[; ;ethernetTypes.h: 80: typedef enum duplexStates {
+[; ;ethernetTypes.h: 81: HALF_DUPLEX,
+[; ;ethernetTypes.h: 82: FULL_DUPLEX
+[; ;ethernetTypes.h: 83: } duplexState_t;
+[; ;ethernetTypes.h: 88: typedef struct ethernetFrame {
+[; ;ethernetTypes.h: 89: uint16_t length;
+[; ;ethernetTypes.h: 90: macaddress_t source;
+[; ;ethernetTypes.h: 91: macaddress_t destination;
+[; ;ethernetTypes.h: 92: etherType_t ethertype;
+[; ;ethernetTypes.h: 93: memoryField_t memory;
+[; ;ethernetTypes.h: 98: RSV_t receiveStatusVector;
+[; ;ethernetTypes.h: 102: time_t tReceived;
+[; ;ethernetTypes.h: 103: } ethernetFrame_t;
+[; ;ethernetTypes.h: 108: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 109: linkState_t link;
+[; ;ethernetTypes.h: 110: speed_t speed;
+[; ;ethernetTypes.h: 111: duplexState_t duplex;
+[; ;ethernetTypes.h: 112: macaddress_t source;
+[; ;ethernetTypes.h: 113: macaddress_t destination;
+[; ;ethernetTypes.h: 114: } ethernetConnection_t;
 [; ;interrupt.h: 35: typedef struct interruptFlags {
 [; ;interrupt.h: 36: uint8_t MODEXIF : 1;
 [; ;interrupt.h: 37: uint8_t HASHIF : 1;
@@ -5495,34 +5501,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
 [; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
-[; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17
-[; ;ipv4Types.h: 45: } ipv4_protocol_t;
-[; ;ipv4Types.h: 60: typedef struct ipv4_address {
-[; ;ipv4Types.h: 61: uint8_t address[4];
-[; ;ipv4Types.h: 62: } ipv4_address_t;
-[; ;ipv4Types.h: 67: typedef struct ipv4_header {
-[; ;ipv4Types.h: 72: uint8_t version;
-[; ;ipv4Types.h: 73: uint8_t headerLength;
-[; ;ipv4Types.h: 80: uint8_t dscp;
-[; ;ipv4Types.h: 81: uint8_t ecn;
-[; ;ipv4Types.h: 88: uint16_t totalLength;
-[; ;ipv4Types.h: 95: uint16_t identification;
-[; ;ipv4Types.h: 102: uint8_t flags;
-[; ;ipv4Types.h: 103: uint16_t fragmentOffset;
-[; ;ipv4Types.h: 110: uint8_t timeToLive;
-[; ;ipv4Types.h: 117: ipv4_protocol_t protocol;
-[; ;ipv4Types.h: 124: uint16_t checksum;
-[; ;ipv4Types.h: 131: ipv4_address_t source;
-[; ;ipv4Types.h: 138: ipv4_address_t destination;
-[; ;ipv4Types.h: 141: } ipv4_header_t;
-[; ;ipv4Types.h: 149: typedef struct ipv4_packet {
-[; ;ipv4Types.h: 153: ipv4_header_t ipv4Header;
-[; ;ipv4Types.h: 157: memoryField_t memory;
-[; ;ipv4Types.h: 161: ethernetFrame_t ethernet;
-[; ;ipv4Types.h: 162: } ipv4_packet_t;
-"164 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h
+[; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17,
+[; ;ipv4Types.h: 45: IPv4_PROTOCOL_UNKNOWN = 255
+[; ;ipv4Types.h: 47: } ipv4_protocol_t;
+[; ;ipv4Types.h: 62: typedef struct ipv4_address {
+[; ;ipv4Types.h: 63: uint8_t address[4];
+[; ;ipv4Types.h: 64: } ipv4_address_t;
+[; ;ipv4Types.h: 69: typedef struct ipv4_header {
+[; ;ipv4Types.h: 74: uint8_t version;
+[; ;ipv4Types.h: 75: uint8_t headerLength;
+[; ;ipv4Types.h: 82: uint8_t dscp;
+[; ;ipv4Types.h: 83: uint8_t ecn;
+[; ;ipv4Types.h: 90: uint16_t totalLength;
+[; ;ipv4Types.h: 97: uint16_t identification;
+[; ;ipv4Types.h: 104: uint8_t flags;
+[; ;ipv4Types.h: 105: uint16_t fragmentOffset;
+[; ;ipv4Types.h: 112: uint8_t timeToLive;
+[; ;ipv4Types.h: 119: ipv4_protocol_t protocol;
+[; ;ipv4Types.h: 126: uint16_t checksum;
+[; ;ipv4Types.h: 133: ipv4_address_t source;
+[; ;ipv4Types.h: 140: ipv4_address_t destination;
+[; ;ipv4Types.h: 143: } ipv4_header_t;
+[; ;ipv4Types.h: 151: typedef struct ipv4_packet {
+[; ;ipv4Types.h: 155: ipv4_header_t ipv4Header;
+[; ;ipv4Types.h: 159: memoryField_t memory;
+[; ;ipv4Types.h: 163: ethernetFrame_t ethernet;
+[; ;ipv4Types.h: 164: } ipv4_packet_t;
+"166 src/enc424j600/../system/../stack/protocols/../protocols/ipv4Types.h
 [v _ipSource `S614 ~T0 @X0 1 e ]
-[; ;ipv4Types.h: 164: ipv4_address_t ipSource;
+[; ;ipv4Types.h: 166: ipv4_address_t ipSource;
 [; ;arpTypes.h: 39: typedef struct arp_message {
 [; ;arpTypes.h: 40: uint16_t htype;
 [; ;arpTypes.h: 41: uint16_t ptype;
@@ -5557,8 +5564,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mac.h: 56: bool_t mac_isBroadcast(macaddress_t *mac);
 [; ;mac.h: 62: void mac_setAllZero(macaddress_t *mac);
 [; ;mac.h: 70: bool_t mac_isAllZero(macaddress_t *mac);
-[; ;ethernet.h: 54: error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
-[; ;ethernet.h: 65: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
+[; ;ethernet.h: 55: error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
+[; ;ethernet.h: 66: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
 [; ;arp.h: 49: void arp_init();
 [; ;arp.h: 56: void arp_handleNewPacket(ethernetFrame_t *frame);
 [; ;arp.h: 63: arp_message_t static arp_parseFromRXBuffer(ethernetFrame_t *frame);
@@ -5576,14 +5583,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 42: error_t err;
 [; ;backgroundTasksTypes.h: 53: uint8_t fPacketPending;
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
-[; ;stack.h: 44: typedef struct stack {
-[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 46: ethernetConnection_t ethernet;
-[; ;stack.h: 47: backgroundTaskHandler_t background;
-[; ;stack.h: 48: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 49: ipv4_address_t source;
-[; ;stack.h: 50: } stack_t;
-[; ;stack.h: 57: error_t stack_init();
+[; ;tcpTypes.h: 35: typedef struct tcp_flags {
+[; ;tcpTypes.h: 36: uint8_t NS : 1;
+[; ;tcpTypes.h: 37: uint8_t CWR : 1;
+[; ;tcpTypes.h: 38: uint8_t ECE : 1;
+[; ;tcpTypes.h: 39: uint8_t URG : 1;
+[; ;tcpTypes.h: 40: uint8_t ACK : 1;
+[; ;tcpTypes.h: 41: uint8_t PSH : 1;
+[; ;tcpTypes.h: 42: uint8_t RST : 1;
+[; ;tcpTypes.h: 43: uint8_t SYN : 1;
+[; ;tcpTypes.h: 44: uint8_t FIN : 1;
+[; ;tcpTypes.h: 45: } tcp_flags_t;
+[; ;tcpTypes.h: 47: typedef struct tcp_header {
+[; ;tcpTypes.h: 48: uint16_t srcPort;
+[; ;tcpTypes.h: 49: uint16_t dstPort;
+[; ;tcpTypes.h: 50: uint32_t seqNumber;
+[; ;tcpTypes.h: 51: uint32_t ackNumber;
+[; ;tcpTypes.h: 52: uint8_t dataOffset;
+[; ;tcpTypes.h: 53: tcp_flags_t flags;
+[; ;tcpTypes.h: 54: uint16_t windowSize;
+[; ;tcpTypes.h: 55: uint16_t checksum;
+[; ;tcpTypes.h: 56: uint16_t urgentPointer;
+[; ;tcpTypes.h: 57: } tcp_header_t;
+[; ;tcpTypes.h: 59: typedef struct tcp_connection {
+[; ;tcpTypes.h: 60: ipv4_address_t ipServer;
+[; ;tcpTypes.h: 61: ipv4_address_t ipClient;
+[; ;tcpTypes.h: 62: uint16_t srcPort;
+[; ;tcpTypes.h: 63: uint16_t dstPort;
+[; ;tcpTypes.h: 64: uint32_t seqNumber;
+[; ;tcpTypes.h: 65: uint8_t state;
+[; ;tcpTypes.h: 66: } tcp_connection_t;
+[; ;tcpTypes.h: 68: typedef enum tcp_state {
+[; ;tcpTypes.h: 69: TCP_STATE_LISTEN,
+[; ;tcpTypes.h: 70: TCP_STATE_SYN_SENT,
+[; ;tcpTypes.h: 71: TCP_STATE_SYN_RECEIVED,
+[; ;tcpTypes.h: 72: TCP_STATE_ESTABLISHED,
+[; ;tcpTypes.h: 73: TCP_STATE_FIN_WAIT1,
+[; ;tcpTypes.h: 74: TCP_STATE_FIN_WAIT2,
+[; ;tcpTypes.h: 75: TCP_STATE_CLOSE_WAIT,
+[; ;tcpTypes.h: 76: TCP_STATE_CLOSING,
+[; ;tcpTypes.h: 77: TCP_STATE_LAST_ACK,
+[; ;tcpTypes.h: 78: TCP_STATE_TIME_WAIT,
+[; ;tcpTypes.h: 79: TCP_STATE_CLOSED
+[; ;tcpTypes.h: 80: } tcp_state_t;
+[; ;tcp.h: 34: error_t tcp_handleNewPacket(ipv4_header_t header, memoryField_t ipPayload);
+[; ;tcp.h: 36: error_t tcp_parseHeader(memoryField_t ipPayload, tcp_header_t* header);
+[; ;tcp.h: 38: error_t tcp_stateMachine(tcp_connection_t *connection, tcp_header_t *newHeader);
+[; ;tcp.h: 40: error_t tcp_listen(tcp_connection_t *connection);
+[; ;tcp.h: 42: error_t tcp_sendSYNACK(tcp_connection_t *connection, uint32_t seq);
+[; ;tcp.h: 44: error_t static tcp_calculateHeaderChecksum(tcp_header_t *tcpHeader, ipv4_header_t ipv4Header);
+[; ;tcp.h: 46: void tcp_init();
+[; ;stack.h: 45: typedef struct stack {
+[; ;stack.h: 46: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 47: ethernetConnection_t ethernet;
+[; ;stack.h: 48: backgroundTaskHandler_t background;
+[; ;stack.h: 49: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 50: ipv4_address_t source;
+[; ;stack.h: 51: uint8_t fipValid:1;
+[; ;stack.h: 52: } stack_t;
+[; ;stack.h: 59: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5602,17 +5660,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 152: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 159: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 165: void ipv4_setToAllZero(ipv4_address_t *ip);
-[; ;uart.h: 37: void UARTInit(void);
-[; ;uart.h: 43: void UARTTransmitText(const char *str);
-[; ;uart.h: 49: void DEBUG_MSG(char *text);
-[; ;uart.h: 55: void UARTTransmitInt(uint32_t val);
-[; ;uart.h: 62: char *intToString(uint32_t val);
-[; ;uart.h: 69: char *hexToString(uint32_t val);
-[; ;uart.h: 76: char *macToString(macaddress_t addr);
-[; ;uart.h: 83: char *etherTypeToString(etherType_t ethertype);
-[; ;uart.h: 90: char *ipProtocolToString(ipv4_protocol_t protocol);
-[; ;uart.h: 97: char *ipAdressToString(ipv4_address_t ip);
-[; ;uart.h: 104: char *arpEntryToString(arp_tableEntry_t table);
+[; ;uart.h: 34: typedef enum UART_colors {
+[; ;uart.h: 35: UART_COLOR_BG_RED,
+[; ;uart.h: 36: UART_COLOR_BG_GREEN,
+[; ;uart.h: 37: UART_COLOR_BG_BLUE,
+[; ;uart.h: 38: UART_COLOR_BG_YELLOW,
+[; ;uart.h: 39: UART_COLOR_BG_MAGENTA,
+[; ;uart.h: 40: UART_COLOR_BG_CYAN,
+[; ;uart.h: 42: UART_COLOR_FG_YELLOW,
+[; ;uart.h: 43: UART_COLOR_FG_BLUE
+[; ;uart.h: 44: } UART_colors_t;
+[; ;uart.h: 46: enum UART_specials {
+[; ;uart.h: 47: UART_LINE_SEPARATOR
+[; ;uart.h: 48: };
+[; ;uart.h: 53: void UARTInit(void);
+[; ;uart.h: 59: void UARTTransmitText(const char *str);
+[; ;uart.h: 67: char *UART_special(uint8_t code);
+[; ;uart.h: 73: void UART_setFormat(uint8_t color);
+[; ;uart.h: 78: void UART_resetFormat();
+[; ;uart.h: 87: char *intToString(uint32_t val, uint8_t b);
+[; ;uart.h: 94: char *macToString(macaddress_t addr);
+[; ;uart.h: 101: char *etherTypeToString(etherType_t ethertype);
+[; ;uart.h: 108: char *ipProtocolToString(ipv4_protocol_t protocol);
+[; ;uart.h: 115: char *ipAdressToString(ipv4_address_t ip);
+[; ;uart.h: 122: char *arpEntryToString(arp_tableEntry_t table);
 "30 src/enc424j600/ENC424J600.c
 [v _nextPacketPointer `ui ~T0 @X0 1 s ]
 [i _nextPacketPointer
@@ -5636,30 +5707,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _err ( _ethernetController_softReset ..  ]
 [; ;ENC424J600.c: 38: if (err.code != (uint16_t)0) {
 "38
-[e $ ! != . _err 1 -> -> 0 `i `ui 622  ]
+[e $ ! != . _err 1 -> -> 0 `i `ui 625  ]
 {
 [; ;ENC424J600.c: 39: return err;
 "39
 [e ) _err ]
-[e $UE 621  ]
+[e $UE 624  ]
 "40
 }
-[e :U 622 ]
+[e :U 625 ]
 [; ;ENC424J600.c: 40: }
 [; ;ENC424J600.c: 41: err = ethernetController_checkDeviceId();
 "41
 [e = _err ( _ethernetController_checkDeviceId ..  ]
 [; ;ENC424J600.c: 42: if (err.code != (uint16_t)0) {
 "42
-[e $ ! != . _err 1 -> -> 0 `i `ui 623  ]
+[e $ ! != . _err 1 -> -> 0 `i `ui 626  ]
 {
 [; ;ENC424J600.c: 43: return err;
 "43
 [e ) _err ]
-[e $UE 621  ]
+[e $UE 624  ]
 "44
 }
-[e :U 623 ]
+[e :U 626 ]
 [; ;ENC424J600.c: 44: }
 [; ;ENC424J600.c: 63: enc424j600_setRXBufferStartAddress(0x3000);
 "63
@@ -5685,10 +5756,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 72: return err;
 "72
 [e ) _err ]
-[e $UE 621  ]
+[e $UE 624  ]
 [; ;ENC424J600.c: 73: }
 "73
-[e :UE 621 ]
+[e :UE 624 ]
 }
 "75
 [v _ethernetController_softReset `(S603 ~T0 @X0 1 ef ]
@@ -5700,8 +5771,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _comFailCount `uc ~T0 @X0 1 a ]
 [; ;ENC424J600.c: 93: uint8_t comFailCount = 0;
 [e = _comFailCount -> -> 0 `i `uc ]
-[v F5988 `uc ~T0 @X0 -> 2 `i s ]
-[i F5988
+[v F6068 `uc ~T0 @X0 -> 2 `i s ]
+[i F6068
 :U ..
 "94
 -> -> 18 `i `uc
@@ -5710,9 +5781,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _dataToSend `uc ~T0 @X0 -> 2 `i a ]
 [; ;ENC424J600.c: 94: uint8_t dataToSend[2] = {0x12, 0x34};
-[e = _dataToSend F5988 ]
-[v F5990 `uc ~T0 @X0 -> 2 `i s ]
-[i F5990
+[e = _dataToSend F6068 ]
+[v F6070 `uc ~T0 @X0 -> 2 `i s ]
+[i F6070
 :U ..
 "95
 -> -> 0 `i `uc
@@ -5721,7 +5792,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _receivedData `uc ~T0 @X0 -> 2 `i a ]
 [; ;ENC424J600.c: 95: uint8_t receivedData[2] = {0, 0};
-[e = _receivedData F5990 ]
+[e = _receivedData F6070 ]
 "96
 [v _err `S603 ~T0 @X0 1 a ]
 [; ;ENC424J600.c: 96: error_t err;
@@ -5733,7 +5804,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _err 1 -> -> 0 `i `ui ]
 [; ;ENC424J600.c: 99: if (comFailCount < 5) {
 "99
-[e $ ! < -> _comFailCount `i -> 5 `i 625  ]
+[e $ ! < -> _comFailCount `i -> 5 `i 628  ]
 {
 [; ;ENC424J600.c: 101: enc424j600_writeControlRegisterUnbanked(0x16 + 0x00, &dataToSend[0]);
 "101
@@ -5749,7 +5820,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_readControlRegisterUnbanked (2 , -> + -> 23 `i -> 0 `i `uc &U *U + &U _receivedData * -> -> -> 1 `i `ui `ux -> -> # *U &U _receivedData `ui `ux ]
 [; ;ENC424J600.c: 107: if ((receivedData[0] == dataToSend[0]) && (receivedData[1] == dataToSend[1])) {
 "107
-[e $ ! && == -> *U + &U _receivedData * -> -> -> 0 `i `ui `ux -> -> # *U &U _receivedData `ui `ux `i -> *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux `i == -> *U + &U _receivedData * -> -> -> 1 `i `ui `ux -> -> # *U &U _receivedData `ui `ux `i -> *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux `i 626  ]
+[e $ ! && == -> *U + &U _receivedData * -> -> -> 0 `i `ui `ux -> -> # *U &U _receivedData `ui `ux `i -> *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux `i == -> *U + &U _receivedData * -> -> -> 1 `i `ui `ux -> -> # *U &U _receivedData `ui `ux `i -> *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux `i 629  ]
 {
 [; ;ENC424J600.c: 109: enc424j600_writeSingleByte(0b11001010);
 "109
@@ -5765,7 +5836,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_readControlRegisterUnbanked (2 , -> + -> 23 `i -> 0 `i `uc &U *U + &U _receivedData * -> -> -> 1 `i `ui `ux -> -> # *U &U _receivedData `ui `ux ]
 [; ;ENC424J600.c: 115: if (!receivedData[0] && !receivedData[1]) {
 "115
-[e $ ! && ! != -> *U + &U _receivedData * -> -> -> 0 `i `ui `ux -> -> # *U &U _receivedData `ui `ux `i -> -> -> 0 `i `uc `i ! != -> *U + &U _receivedData * -> -> -> 1 `i `ui `ux -> -> # *U &U _receivedData `ui `ux `i -> -> -> 0 `i `uc `i 627  ]
+[e $ ! && ! != -> *U + &U _receivedData * -> -> -> 0 `i `ui `ux -> -> # *U &U _receivedData `ui `ux `i -> -> -> 0 `i `uc `i ! != -> *U + &U _receivedData * -> -> -> 1 `i `ui `ux -> -> # *U &U _receivedData `ui `ux `i -> -> -> 0 `i `uc `i 630  ]
 {
 [; ;ENC424J600.c: 117: _delay((unsigned long)((256)*(32000000UL/4000000.0)));
 "117
@@ -5773,26 +5844,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 118: return err;
 "118
 [e ) _err ]
-[e $UE 624  ]
+[e $UE 627  ]
 "119
 }
 [; ;ENC424J600.c: 119: } else {
-[e $U 628  ]
-[e :U 627 ]
+[e $U 631  ]
+[e :U 630 ]
 {
 [; ;ENC424J600.c: 120: err.code = ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE;
 "120
-[e = . _err 1 -> . `E5455 1 `ui ]
+[e = . _err 1 -> . `E5457 1 `ui ]
 [; ;ENC424J600.c: 121: return err;
 "121
 [e ) _err ]
-[e $UE 624  ]
+[e $UE 627  ]
 "122
 }
-[e :U 628 ]
+[e :U 631 ]
 "123
 }
-[e :U 626 ]
+[e :U 629 ]
 [; ;ENC424J600.c: 122: }
 [; ;ENC424J600.c: 123: }
 [; ;ENC424J600.c: 124: comFailCount++;
@@ -5801,27 +5872,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 "125
 }
 [; ;ENC424J600.c: 125: } else {
-[e $U 629  ]
-[e :U 625 ]
+[e $U 632  ]
+[e :U 628 ]
 {
 [; ;ENC424J600.c: 126: err.code = ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE;
 "126
-[e = . _err 1 -> . `E5455 1 `ui ]
+[e = . _err 1 -> . `E5457 1 `ui ]
 [; ;ENC424J600.c: 127: return err;
 "127
 [e ) _err ]
-[e $UE 624  ]
+[e $UE 627  ]
 "128
 }
-[e :U 629 ]
+[e :U 632 ]
 [; ;ENC424J600.c: 128: }
 [; ;ENC424J600.c: 129: return err;
 "129
 [e ) _err ]
-[e $UE 624  ]
+[e $UE 627  ]
 [; ;ENC424J600.c: 130: }
 "130
-[e :UE 624 ]
+[e :UE 627 ]
 }
 "132
 [v _ethernetController_checkDeviceId `(S603 ~T0 @X0 1 ef ]
@@ -5847,25 +5918,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_readControlRegisterUnbanked (2 , -> + -> 20 `i -> 96 `i `uc &U _data ]
 [; ;ENC424J600.c: 138: if (((data >> 5)&0x07) == 0b001)
 "138
-[e $ ! == & >> -> _data `i -> 5 `i -> 7 `i -> 1 `i 631  ]
+[e $ ! == & >> -> _data `i -> 5 `i -> 7 `i -> 1 `i 634  ]
 [; ;ENC424J600.c: 139: err.code = (uint16_t)0;
 "139
 [e = . _err 1 -> -> 0 `i `ui ]
-[e $U 632  ]
+[e $U 635  ]
 "140
-[e :U 631 ]
+[e :U 634 ]
 [; ;ENC424J600.c: 140: else
 [; ;ENC424J600.c: 141: err.code = ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID;
 "141
-[e = . _err 1 -> . `E5455 0 `ui ]
-[e :U 632 ]
+[e = . _err 1 -> . `E5457 0 `ui ]
+[e :U 635 ]
 [; ;ENC424J600.c: 142: return err;
 "142
 [e ) _err ]
-[e $UE 630  ]
+[e $UE 633  ]
 [; ;ENC424J600.c: 143: }
 "143
-[e :UE 630 ]
+[e :UE 633 ]
 }
 "145
 [v _ethernetController_getDeviceName `(*uc ~T0 @X0 1 ef ]
@@ -5873,8 +5944,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 145: char *ethernetController_getDeviceName() {
 [e :U _ethernetController_getDeviceName ]
 [f ]
-[v F6000 `Cuc ~T0 @X0 -> 0 `x s ]
-[i F6000
+[v F6080 `Cuc ~T0 @X0 -> 0 `x s ]
+[i F6080
 :U ..
 -> 69 `c
 -> 78 `c
@@ -5892,14 +5963,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 "146
 [v _string `Cuc ~T0 @X0 11  a ]
 [; ;ENC424J600.c: 146: const char string [] = "ENC424J600";
-[e = _string F6000 ]
+[e = _string F6080 ]
 [; ;ENC424J600.c: 147: return (char*) string;
 "147
 [e ) -> &U _string `*uc ]
-[e $UE 633  ]
+[e $UE 636  ]
 [; ;ENC424J600.c: 148: }
 "148
-[e :UE 633 ]
+[e :UE 636 ]
 }
 "150
 [v _ethernetController_getSiliconRevision `(uc ~T0 @X0 1 ef ]
@@ -5920,10 +5991,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 154: return data;
 "154
 [e ) _data ]
-[e $UE 634  ]
+[e $UE 637  ]
 [; ;ENC424J600.c: 155: }
 "155
-[e :UE 634 ]
+[e :UE 637 ]
 }
 "157
 [v _ethernetController_getMacAddress `(S606 ~T0 @X0 1 ef ]
@@ -5955,10 +6026,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 165: return mac;
 "165
 [e ) _mac ]
-[e $UE 635  ]
+[e $UE 638  ]
 [; ;ENC424J600.c: 166: }
 "166
-[e :UE 635 ]
+[e :UE 638 ]
 }
 "168
 [v _ethernetController_getMTU `(ui ~T0 @X0 1 ef ]
@@ -5969,10 +6040,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 169: return 1500;
 "169
 [e ) -> -> 1500 `i `ui ]
-[e $UE 636  ]
+[e $UE 639  ]
 [; ;ENC424J600.c: 170: }
 "170
-[e :UE 636 ]
+[e :UE 639 ]
 }
 "172
 [v _ethernetController_setMacAddress `(v ~T0 @X0 1 ef1`S606 ]
@@ -6001,7 +6072,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 1 `i -> 96 `i `uc &U *U + &U . _mac 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _mac 0 `ui `ux ]
 [; ;ENC424J600.c: 179: }
 "179
-[e :UE 637 ]
+[e :UE 640 ]
 }
 "181
 [v _ethernetController_enableReception `(v ~T0 @X0 1 ef ]
@@ -6014,7 +6085,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_enableReception ..  ]
 [; ;ENC424J600.c: 183: }
 "183
-[e :UE 638 ]
+[e :UE 641 ]
 }
 "185
 [v _ethernetController_disableReception `(v ~T0 @X0 1 ef ]
@@ -6027,7 +6098,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_disableReception ..  ]
 [; ;ENC424J600.c: 187: }
 "187
-[e :UE 639 ]
+[e :UE 642 ]
 }
 "189
 [v _ethernetController_enableTransmission `(v ~T0 @X0 1 ef ]
@@ -6037,7 +6108,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;ENC424J600.c: 191: }
 "191
-[e :UE 640 ]
+[e :UE 643 ]
 }
 "193
 [v _ethernetController_enableEthernet `(v ~T0 @X0 1 ef ]
@@ -6047,7 +6118,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;ENC424J600.c: 195: }
 "195
-[e :UE 641 ]
+[e :UE 644 ]
 }
 "197
 [v _ethernetController_disableEthernet `(v ~T0 @X0 1 ef ]
@@ -6057,7 +6128,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;ENC424J600.c: 199: }
 "199
-[e :UE 642 ]
+[e :UE 645 ]
 }
 "201
 [v _ethernetController_sendPacket `(v ~T0 @X0 1 ef1`S605 ]
@@ -6080,7 +6151,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _memory_txFrameClear (1 . _field 5 ]
 [; ;ENC424J600.c: 206: }
 "206
-[e :UE 643 ]
+[e :UE 646 ]
 }
 "208
 [v _ethernetController_streamToTransmitBuffer `(v ~T0 @X0 1 ef2`uc`S605 ]
@@ -6093,15 +6164,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "209
 [v _opcode `uc ~T0 @X0 1 a ]
 "210
-[v F6009 `ui ~T0 @X0 1 s pointer ]
-[i F6009
+[v F6089 `ui ~T0 @X0 1 s pointer ]
+[i F6089
 -> -> 0 `i `ui
 ]
 [; ;ENC424J600.c: 209: uint8_t opcode;
 [; ;ENC424J600.c: 210: uint16_t static pointer = 0;
 [; ;ENC424J600.c: 211: if (pointer == 0) {
 "211
-[e $ ! == F6009 -> -> 0 `i `ui 645  ]
+[e $ ! == F6089 -> -> 0 `i `ui 648  ]
 {
 [; ;ENC424J600.c: 212: enc424j600_setGPDATAWritePointer(field.start);
 "212
@@ -6117,37 +6188,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeSPI (1 &U _opcode ]
 "216
 }
-[e :U 645 ]
+[e :U 648 ]
 [; ;ENC424J600.c: 216: }
 [; ;ENC424J600.c: 218: enc424j600_writeSPI(&data);
 "218
 [e ( _enc424j600_writeSPI (1 &U _data ]
 [; ;ENC424J600.c: 220: if (pointer == field.length - 1) {
 "220
-[e $ ! == F6009 - . _field 2 -> -> 1 `i `ui 646  ]
+[e $ ! == F6089 - . _field 2 -> -> 1 `i `ui 649  ]
 {
 [; ;ENC424J600.c: 221: PORTBbits.RB4=1;
 "221
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 222: pointer = 0;
 "222
-[e = F6009 -> -> 0 `i `ui ]
+[e = F6089 -> -> 0 `i `ui ]
 "223
 }
 [; ;ENC424J600.c: 223: } else {
-[e $U 647  ]
-[e :U 646 ]
+[e $U 650  ]
+[e :U 649 ]
 {
 [; ;ENC424J600.c: 224: pointer++;
 "224
-[e ++ F6009 -> -> 1 `i `ui ]
+[e ++ F6089 -> -> 1 `i `ui ]
 "225
 }
-[e :U 647 ]
+[e :U 650 ]
 [; ;ENC424J600.c: 225: }
 [; ;ENC424J600.c: 226: }
 "226
-[e :UE 644 ]
+[e :UE 647 ]
 }
 "228
 [v _ethernetController_writeDestinationMACAddress `(v ~T0 @X0 1 ef2`S606`S605 ]
@@ -6168,16 +6239,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 6 `i 649  ]
-[e $U 650  ]
+[e $ < -> _i `i -> 6 `i 652  ]
+[e $U 653  ]
 "232
-[e :U 649 ]
+[e :U 652 ]
 [; ;ENC424J600.c: 232: data[i] = addr.address[i];
 [e = *U + &U _data * -> _i `ux -> -> # *U &U _data `ui `ux *U + &U . _addr 0 * -> _i `ux -> -> # *U &U . _addr 0 `ui `ux ]
 "231
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 649  ]
-[e :U 650 ]
+[e $ < -> _i `i -> 6 `i 652  ]
+[e :U 653 ]
 "232
 }
 "233
@@ -6195,16 +6266,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 6 `i 652  ]
-[e $U 653  ]
+[e $ < -> _i `i -> 6 `i 655  ]
+[e $U 656  ]
 "237
-[e :U 652 ]
+[e :U 655 ]
 [; ;ENC424J600.c: 237: enc424j600_writeSPI(&data[i]);
 [e ( _enc424j600_writeSPI (1 &U *U + &U _data * -> _i `ux -> -> # *U &U _data `ui `ux ]
 "236
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 652  ]
-[e :U 653 ]
+[e $ < -> _i `i -> 6 `i 655  ]
+[e :U 656 ]
 "237
 }
 [; ;ENC424J600.c: 238: PORTBbits.RB4=1;
@@ -6212,14 +6283,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 239: }
 "239
-[e :UE 648 ]
+[e :UE 651 ]
 }
 "241
-[v _ethernetController_writeEtherTypeFieldToBuffer `(v ~T0 @X0 1 ef2`E5509`S605 ]
+[v _ethernetController_writeEtherTypeFieldToBuffer `(v ~T0 @X0 1 ef2`E5513`S605 ]
 {
 [; ;ENC424J600.c: 241: void ethernetController_writeEtherTypeFieldToBuffer(etherType_t ethtype, memoryField_t field) {
 [e :U _ethernetController_writeEtherTypeFieldToBuffer ]
-[v _ethtype `E5509 ~T0 @X0 1 r1 ]
+[v _ethtype `E5513 ~T0 @X0 1 r1 ]
 [v _field `S605 ~T0 @X0 1 r2 ]
 [f ]
 [; ;ENC424J600.c: 242: enc424j600_setGPDATAWritePointer(field.start + 0x0006);
@@ -6254,68 +6325,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 251: }
 "251
-[e :UE 655 ]
-}
-"253
-[v _ethernetController_getDestinationMACAddress `(S606 ~T0 @X0 1 ef1`S605 ]
-{
-[; ;ENC424J600.c: 253: macaddress_t ethernetController_getDestinationMACAddress(memoryField_t field) {
-[e :U _ethernetController_getDestinationMACAddress ]
-[v _field `S605 ~T0 @X0 1 r1 ]
-[f ]
-"254
-[v _destinationAddress `S606 ~T0 @X0 1 a ]
-[; ;ENC424J600.c: 254: macaddress_t destinationAddress;
-[; ;ENC424J600.c: 255: enc424j600_setERXDATAReadPointer(field.start + 8);
-"255
-[e ( _enc424j600_setERXDATAReadPointer (1 + . _field 0 -> -> 8 `i `ui ]
-"256
-[v _opcode `uc ~T0 @X0 1 a ]
-[; ;ENC424J600.c: 256: uint8_t opcode = 0x2C;
-[e = _opcode -> -> 44 `i `uc ]
-[; ;ENC424J600.c: 257: PORTBbits.RB4=0;
-"257
-[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
-[; ;ENC424J600.c: 258: enc424j600_writeSPI(&opcode);
-"258
-[e ( _enc424j600_writeSPI (1 &U _opcode ]
-[; ;ENC424J600.c: 259: for (uint8_t i = 0; i < 6; i++) {
-"259
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 6 `i 657  ]
-[e $U 658  ]
-[e :U 657 ]
-{
-"260
-[v _temp `uc ~T0 @X0 1 a ]
-[; ;ENC424J600.c: 260: uint8_t temp;
-[; ;ENC424J600.c: 261: enc424j600_readSPI(&temp);
-"261
-[e ( _enc424j600_readSPI (1 &U _temp ]
-[; ;ENC424J600.c: 262: destinationAddress.address[i] = temp;
-"262
-[e = *U + &U . _destinationAddress 0 * -> _i `ux -> -> # *U &U . _destinationAddress 0 `ui `ux _temp ]
-"263
-}
-"259
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 657  ]
-[e :U 658 ]
-"263
-}
-[; ;ENC424J600.c: 263: }
-[; ;ENC424J600.c: 264: PORTBbits.RB4=1;
-"264
-[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
-[; ;ENC424J600.c: 265: return destinationAddress;
-"265
-[e ) _destinationAddress ]
-[e $UE 656  ]
-[; ;ENC424J600.c: 266: }
-"266
-[e :UE 656 ]
+[e :UE 658 ]
 }
 "268
 [v _ethernetController_getSourceMACAddress `(S606 ~T0 @X0 1 ef1`S605 ]
@@ -6345,9 +6355,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 6 `i 661  ]
-[e $U 662  ]
-[e :U 661 ]
+[e $ < -> _i `i -> 6 `i 660  ]
+[e $U 661  ]
+[e :U 660 ]
 {
 "275
 [v _temp `uc ~T0 @X0 1 a ]
@@ -6362,8 +6372,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "274
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 661  ]
-[e :U 662 ]
+[e $ < -> _i `i -> 6 `i 660  ]
+[e :U 661 ]
 "278
 }
 [; ;ENC424J600.c: 278: }
@@ -6373,22 +6383,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 280: return sourceAddress;
 "280
 [e ) _sourceAddress ]
-[e $UE 660  ]
+[e $UE 659  ]
 [; ;ENC424J600.c: 281: }
 "281
-[e :UE 660 ]
+[e :UE 659 ]
 }
 "283
-[v _ethernetController_getEtherTypeField `(E5509 ~T0 @X0 1 ef1`S605 ]
+[v _ethernetController_getEtherTypeField `(E5513 ~T0 @X0 1 ef1`S605 ]
 {
 [; ;ENC424J600.c: 283: etherType_t ethernetController_getEtherTypeField(memoryField_t field) {
 [e :U _ethernetController_getEtherTypeField ]
 [v _field `S605 ~T0 @X0 1 r1 ]
 [f ]
 "284
-[v _ethertype `E5509 ~T0 @X0 1 a ]
+[v _ethertype `E5513 ~T0 @X0 1 a ]
 [; ;ENC424J600.c: 284: etherType_t ethertype = 0x0000;
-[e = _ethertype -> -> 0 `i `E5509 ]
+[e = _ethertype -> -> 0 `i `E5513 ]
 [; ;ENC424J600.c: 285: enc424j600_setERXDATAReadPointer(field.start + 20);
 "285
 [e ( _enc424j600_setERXDATAReadPointer (1 + . _field 0 -> -> 20 `i `ui ]
@@ -6416,17 +6426,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_readSPI (1 &U _lowByte ]
 [; ;ENC424J600.c: 294: ethertype = (uint16_t) (lowByte | (highByte << 8));
 "294
-[e = _ethertype -> -> | -> _lowByte `i << -> _highByte `i -> 8 `i `ui `E5509 ]
+[e = _ethertype -> -> | -> _lowByte `i << -> _highByte `i -> 8 `i `ui `E5513 ]
 [; ;ENC424J600.c: 295: PORTBbits.RB4=1;
 "295
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 296: return ethertype;
 "296
 [e ) _ethertype ]
-[e $UE 664  ]
+[e $UE 663  ]
 [; ;ENC424J600.c: 297: }
 "297
-[e :UE 664 ]
+[e :UE 663 ]
 }
 "299
 [v _ethernetController_getRSV `(S604 ~T0 @X0 1 ef1`ui ]
@@ -6436,7 +6446,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _address `ui ~T0 @X0 1 r1 ]
 [f ]
 "300
-[v F6038 `uc ~T0 @X0 -> 6 `i s temp ]
+[v F6113 `uc ~T0 @X0 -> 6 `i s temp ]
 [; ;ENC424J600.c: 300: uint8_t static temp[6];
 [; ;ENC424J600.c: 301: enc424j600_setERXDATAReadPointer(address + 2);
 "301
@@ -6456,19 +6466,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 6 `i 666  ]
-[e $U 667  ]
-[e :U 666 ]
+[e $ < -> _i `i -> 6 `i 665  ]
+[e $U 666  ]
+[e :U 665 ]
 {
 [; ;ENC424J600.c: 306: enc424j600_readSPI(&temp[i]);
 "306
-[e ( _enc424j600_readSPI (1 &U *U + &U F6038 * -> _i `ux -> -> # *U &U F6038 `ui `ux ]
+[e ( _enc424j600_readSPI (1 &U *U + &U F6113 * -> _i `ux -> -> # *U &U F6113 `ui `ux ]
 "307
 }
 "305
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 666  ]
-[e :U 667 ]
+[e $ < -> _i `i -> 6 `i 665  ]
+[e :U 666 ]
 "307
 }
 [; ;ENC424J600.c: 307: }
@@ -6477,11 +6487,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 309: return enc424j600_updateReceiveStatusVector(&temp[0]);
 "309
-[e ) ( _enc424j600_updateReceiveStatusVector (1 &U *U + &U F6038 * -> -> -> 0 `i `ui `ux -> -> # *U &U F6038 `ui `ux ]
-[e $UE 665  ]
+[e ) ( _enc424j600_updateReceiveStatusVector (1 &U *U + &U F6113 * -> -> -> 0 `i `ui `ux -> -> # *U &U F6113 `ui `ux ]
+[e $UE 664  ]
 [; ;ENC424J600.c: 310: }
 "310
-[e :UE 665 ]
+[e :UE 664 ]
 }
 "312
 [v _ethernetController_pollInterruptFlags `(S609 ~T0 @X0 1 ef ]
@@ -6496,43 +6506,43 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 313: interruptFlags_t flags;
 [; ;ENC424J600.c: 314: uint16_t reg = enc424j600_getInterruptFlags();
 [e = _reg ( _enc424j600_getInterruptFlags ..  ]
-[; ;ENC424J600.c: 315: flags.MODEXIF = (reg & (1 << MODEXIF)) != 0 ? 1 : 0;
+[; ;ENC424J600.c: 315: flags.MODEXIF = (reg & (1 << MODEXIF)) != 0 ? 1u : 0u;
 "315
-[e = . _flags 0 -> ? != & _reg -> << -> 1 `i . `E5558 9 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 316: flags.HASHIF = (reg & (1 << HASHIF)) != 0 ? 1 : 0;
+[e = . _flags 0 -> ? != & _reg -> << -> 1 `i . `E5563 9 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 316: flags.HASHIF = (reg & (1 << HASHIF)) != 0 ? 1u : 0u;
 "316
-[e = . _flags 1 -> ? != & _reg -> << -> 1 `i . `E5558 8 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 317: flags.AESIF = (reg & (1 << AESIF)) != 0 ? 1 : 0;
+[e = . _flags 1 -> ? != & _reg -> << -> 1 `i . `E5563 8 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 317: flags.AESIF = (reg & (1 << AESIF)) != 0 ? 1u : 0u;
 "317
-[e = . _flags 2 -> ? != & _reg -> << -> 1 `i . `E5558 7 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 318: flags.LINKIF = (reg & (1 << LINKIF)) != 0 ? 1 : 0;
+[e = . _flags 2 -> ? != & _reg -> << -> 1 `i . `E5563 7 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 318: flags.LINKIF = (reg & (1 << LINKIF)) != 0 ? 1u : 0u;
 "318
-[e = . _flags 3 -> ? != & _reg -> << -> 1 `i . `E5558 6 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 320: flags.PKTIF = (reg & (1 << PKTIF)) != 0 ? 1 : 0;
+[e = . _flags 3 -> ? != & _reg -> << -> 1 `i . `E5563 6 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 320: flags.PKTIF = (reg & (1 << PKTIF)) != 0 ? 1u : 0u;
 "320
-[e = . _flags 4 -> ? != & _reg -> << -> 1 `i . `E5558 5 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 321: flags.DMAIF = (reg & (1 << DMAIF)) != 0 ? 1 : 0;
+[e = . _flags 4 -> ? != & _reg -> << -> 1 `i . `E5563 5 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 321: flags.DMAIF = (reg & (1 << DMAIF)) != 0 ? 1u : 0u;
 "321
-[e = . _flags 5 -> ? != & _reg -> << -> 1 `i . `E5558 4 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 323: flags.TXIF = (reg & (1 << TXIF)) != 0 ? 1 : 0;
+[e = . _flags 5 -> ? != & _reg -> << -> 1 `i . `E5563 4 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 323: flags.TXIF = (reg & (1 << TXIF)) != 0 ? 1u : 0u;
 "323
-[e = . _flags 6 -> ? != & _reg -> << -> 1 `i -> _TXIF `i `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 324: flags.TXABTIF = (reg & (1 << TXABTIF)) != 0 ? 1 : 0;
+[e = . _flags 6 -> ? != & _reg -> << -> 1 `i -> _TXIF `i `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 324: flags.TXABTIF = (reg & (1 << TXABTIF)) != 0 ? 1u : 0u;
 "324
-[e = . _flags 7 -> ? != & _reg -> << -> 1 `i . `E5558 2 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 325: flags.RXABTIF = (reg & (1 << RXABTIF)) != 0 ? 1 : 0;
+[e = . _flags 7 -> ? != & _reg -> << -> 1 `i . `E5563 2 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 325: flags.RXABTIF = (reg & (1 << RXABTIF)) != 0 ? 1u : 0u;
 "325
-[e = . _flags 8 -> ? != & _reg -> << -> 1 `i . `E5558 1 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 326: flags.PCFULIF = (reg & (1 << PCFULIF)) != 0 ? 1 : 0;
+[e = . _flags 8 -> ? != & _reg -> << -> 1 `i . `E5563 1 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 326: flags.PCFULIF = (reg & (1 << PCFULIF)) != 0 ? 1u : 0u;
 "326
-[e = . _flags 9 -> ? != & _reg -> << -> 1 `i . `E5558 0 `ui -> -> 0 `i `ui : -> 1 `i -> 0 `i `uc ]
+[e = . _flags 9 -> ? != & _reg -> << -> 1 `i . `E5563 0 `ui -> -> 0 `i `ui : -> 1 `ui -> 0 `ui `uc ]
 [; ;ENC424J600.c: 327: return flags;
 "327
 [e ) _flags ]
-[e $UE 669  ]
+[e $UE 668  ]
 [; ;ENC424J600.c: 328: }
 "328
-[e :UE 669 ]
+[e :UE 668 ]
 }
 "330
 [v _ethernetController_clearInterruptFlag `(v ~T0 @X0 1 ef1`uc ]
@@ -6546,7 +6556,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_clearInterruptFlag (1 _flag ]
 [; ;ENC424J600.c: 332: }
 "332
-[e :UE 670 ]
+[e :UE 669 ]
 }
 "334
 [v _ethernetController_updateNextPacketPointer `(v ~T0 @X0 1 ef ]
@@ -6593,7 +6603,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_setNextPacketPointer (1 | & -> _newPointerL `ui -> -> 255 `i `ui & -> << -> _newPointerH `i -> 8 `i `ui -> 65280 `ui ]
 [; ;ENC424J600.c: 348: }
 "348
-[e :UE 671 ]
+[e :UE 670 ]
 }
 "350
 [v _ethernetController_streamFromRXBuffer `(uc ~T0 @X0 1 ef2`uc`ui ]
@@ -6611,11 +6621,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 352: uint8_t opcode;
 [; ;ENC424J600.c: 353: switch (startEnd) {
 "353
-[e $U 674  ]
+[e $U 673  ]
 {
 [; ;ENC424J600.c: 354: case 0:
 "354
-[e :U 675 ]
+[e :U 674 ]
 [; ;ENC424J600.c: 355: enc424j600_setERXDATAReadPointer(startAddress);
 "355
 [e ( _enc424j600_setERXDATAReadPointer (1 _startAddress ]
@@ -6631,46 +6641,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 359: return 0;
 "359
 [e ) -> -> 0 `i `uc ]
-[e $UE 672  ]
+[e $UE 671  ]
 [; ;ENC424J600.c: 360: case 1:
 "360
-[e :U 676 ]
+[e :U 675 ]
 [; ;ENC424J600.c: 361: enc424j600_readSPI(&temp);
 "361
 [e ( _enc424j600_readSPI (1 &U _temp ]
 [; ;ENC424J600.c: 362: return temp;
 "362
 [e ) _temp ]
-[e $UE 672  ]
+[e $UE 671  ]
 [; ;ENC424J600.c: 363: case 2:
 "363
-[e :U 677 ]
+[e :U 676 ]
 [; ;ENC424J600.c: 364: PORTBbits.RB4=1;
 "364
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 374: return 0;
 "374
 [e ) -> -> 0 `i `uc ]
-[e $UE 672  ]
+[e $UE 671  ]
 "375
 }
 [; ;ENC424J600.c: 375: }
-[e $U 673  ]
+[e $U 672  ]
 "353
-[e :U 674 ]
-[e [\ _startEnd , $ -> -> 0 `i `uc 675
- , $ -> -> 1 `i `uc 676
- , $ -> -> 2 `i `uc 677
- 673 ]
-"375
 [e :U 673 ]
+[e [\ _startEnd , $ -> -> 0 `i `uc 674
+ , $ -> -> 1 `i `uc 675
+ , $ -> -> 2 `i `uc 676
+ 672 ]
+"375
+[e :U 672 ]
 [; ;ENC424J600.c: 376: return 0;
 "376
 [e ) -> -> 0 `i `uc ]
-[e $UE 672  ]
+[e $UE 671  ]
 [; ;ENC424J600.c: 377: }
 "377
-[e :UE 672 ]
+[e :UE 671 ]
 }
 "379
 [v _ethernetController_dropPacket `(v ~T0 @X0 1 ef ]
@@ -6680,7 +6690,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;ENC424J600.c: 381: if (ethernetController_getNextPacketPointer() == 0x3000) {
 "381
-[e $ ! == ( _ethernetController_getNextPacketPointer ..  -> -> 12288 `i `ui 679  ]
+[e $ ! == ( _ethernetController_getNextPacketPointer ..  -> -> 12288 `i `ui 678  ]
 {
 [; ;ENC424J600.c: 382: enc424j600_setRXTailPointer(0x5FFF - 1);
 "382
@@ -6688,22 +6698,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 "383
 }
 [; ;ENC424J600.c: 383: } else {
-[e $U 680  ]
-[e :U 679 ]
+[e $U 679  ]
+[e :U 678 ]
 {
 [; ;ENC424J600.c: 384: enc424j600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
 "384
 [e ( _enc424j600_setRXTailPointer (1 - ( _ethernetController_getNextPacketPointer ..  -> -> 2 `i `ui ]
 "385
 }
-[e :U 680 ]
+[e :U 679 ]
 [; ;ENC424J600.c: 385: }
 [; ;ENC424J600.c: 387: enc424j600_writeSingleByte(0b11001100);
 "387
 [e ( _enc424j600_writeSingleByte (1 -> -> 204 `i `uc ]
 [; ;ENC424J600.c: 388: }
 "388
-[e :UE 678 ]
+[e :UE 677 ]
 }
 "390
 [v _ethernetController_newPacketAvailable `(uc ~T0 @X0 1 ef ]
@@ -6714,10 +6724,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 391: return (unsigned) (enc424j600_getPacketCount() != 0);
 "391
 [e ) -> -> -> != -> ( _enc424j600_getPacketCount ..  `i -> 0 `i `i `ui `uc ]
-[e $UE 681  ]
+[e $UE 680  ]
 [; ;ENC424J600.c: 392: }
 "392
-[e :UE 681 ]
+[e :UE 680 ]
 }
 "394
 [v _ethernetController_updateLinkStatus `(v ~T0 @X0 1 ef1`*S608 ]
@@ -6737,78 +6747,78 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_readControlRegisterUnbanked (2 , -> -> 27 `i `uc &U _temp ]
 [; ;ENC424J600.c: 398: if (temp & 0x01) {
 "398
-[e $ ! != & -> _temp `i -> 1 `i -> 0 `i 683  ]
+[e $ ! != & -> _temp `i -> 1 `i -> 0 `i 682  ]
 {
 [; ;ENC424J600.c: 399: state->link = LINK_ESTABLISHED;
 "399
-[e = . *U _state 0 . `E5518 1 ]
+[e = . *U _state 0 . `E5523 1 ]
 "400
 }
 [; ;ENC424J600.c: 400: } else {
-[e $U 684  ]
-[e :U 683 ]
+[e $U 683  ]
+[e :U 682 ]
 {
 [; ;ENC424J600.c: 401: state->link = NO_LINK;
 "401
-[e = . *U _state 0 . `E5518 0 ]
+[e = . *U _state 0 . `E5523 0 ]
 "402
 }
-[e :U 684 ]
+[e :U 683 ]
 [; ;ENC424J600.c: 402: }
 [; ;ENC424J600.c: 404: enc424j600_readPHYRegister(0x1F, &temp16);
 "404
 [e ( _enc424j600_readPHYRegister (2 , -> -> 31 `i `uc &U _temp16 ]
 [; ;ENC424J600.c: 406: if (temp16 & (1 << 3)) {
 "406
-[e $ ! != & _temp16 -> << -> 1 `i -> 3 `i `ui -> -> 0 `i `ui 685  ]
+[e $ ! != & _temp16 -> << -> 1 `i -> 3 `i `ui -> -> 0 `i `ui 684  ]
 {
 [; ;ENC424J600.c: 407: state->speed = HUNDRED_MBIT;
 "407
-[e = . *U _state 1 . `E5522 1 ]
+[e = . *U _state 1 . `E5527 1 ]
 "408
 }
 [; ;ENC424J600.c: 408: } else {
-[e $U 686  ]
-[e :U 685 ]
+[e $U 685  ]
+[e :U 684 ]
 {
 [; ;ENC424J600.c: 409: state->speed = TEN_MBIT;
 "409
-[e = . *U _state 1 . `E5522 0 ]
+[e = . *U _state 1 . `E5527 0 ]
 "410
 }
-[e :U 686 ]
+[e :U 685 ]
 [; ;ENC424J600.c: 410: }
 [; ;ENC424J600.c: 412: if (temp16 & (1 << 4)) {
 "412
-[e $ ! != & _temp16 -> << -> 1 `i -> 4 `i `ui -> -> 0 `i `ui 687  ]
+[e $ ! != & _temp16 -> << -> 1 `i -> 4 `i `ui -> -> 0 `i `ui 686  ]
 {
 [; ;ENC424J600.c: 413: state->duplex = FULL_DUPLEX;
 "413
-[e = . *U _state 2 . `E5526 1 ]
+[e = . *U _state 2 . `E5531 1 ]
 "414
 }
 [; ;ENC424J600.c: 414: } else {
-[e $U 688  ]
-[e :U 687 ]
+[e $U 687  ]
+[e :U 686 ]
 {
 [; ;ENC424J600.c: 415: state->duplex = HALF_DUPLEX;
 "415
-[e = . *U _state 2 . `E5526 0 ]
+[e = . *U _state 2 . `E5531 0 ]
 "416
 }
-[e :U 688 ]
+[e :U 687 ]
 [; ;ENC424J600.c: 416: }
 [; ;ENC424J600.c: 417: }
 "417
-[e :UE 682 ]
+[e :UE 681 ]
 }
 "419
-[v _ethernetController_setLEDConfig `(v ~T0 @X0 1 ef2`E5570`E5574 ]
+[v _ethernetController_setLEDConfig `(v ~T0 @X0 1 ef2`E5575`E5579 ]
 {
 [; ;ENC424J600.c: 419: void ethernetController_setLEDConfig(LEDs_t LED, LEDStates_t conf) {
 [e :U _ethernetController_setLEDConfig ]
-[v _LED `E5570 ~T0 @X0 1 r1 ]
-[v _conf `E5574 ~T0 @X0 1 r2 ]
+[v _LED `E5575 ~T0 @X0 1 r1 ]
+[v _conf `E5579 ~T0 @X0 1 r2 ]
 [f ]
 "420
 [v _data `uc ~T0 @X0 1 a ]
@@ -6818,18 +6828,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_readControlRegisterUnbanked (2 , -> + -> 21 `i -> 96 `i `uc &U _data ]
 [; ;ENC424J600.c: 422: if (LED == LEDB) {
 "422
-[e $ ! == -> _LED `i -> . `E5570 1 `i 690  ]
+[e $ ! == -> _LED `i -> . `E5575 1 `i 689  ]
 {
 [; ;ENC424J600.c: 424: switch (conf) {
 "424
-[e $U 692  ]
+[e $U 691  ]
 {
 [; ;ENC424J600.c: 425: default:
 "425
-[e :U 693 ]
+[e :U 692 ]
 [; ;ENC424J600.c: 426: case LED_OFF:
 "426
-[e :U 694 ]
+[e :U 693 ]
 [; ;ENC424J600.c: 427: data &= ~0x0f;
 "427
 [e =& _data -> ~ -> 15 `i `uc ]
@@ -6838,19 +6848,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =| _data -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 429: break;
 "429
-[e $U 691  ]
+[e $U 690  ]
 [; ;ENC424J600.c: 430: case LED_ON:
 "430
-[e :U 695 ]
+[e :U 694 ]
 [; ;ENC424J600.c: 431: data &= ~0x0f;
 "431
 [e =& _data -> ~ -> 15 `i `uc ]
 [; ;ENC424J600.c: 432: break;
 "432
-[e $U 691  ]
+[e $U 690  ]
 [; ;ENC424J600.c: 433: case LED_TRANSMIT_RECEIVE_EVENTS:
 "433
-[e :U 696 ]
+[e :U 695 ]
 [; ;ENC424J600.c: 434: data &= ~0x0f;
 "434
 [e =& _data -> ~ -> 15 `i `uc ]
@@ -6859,36 +6869,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =| _data -> -> 6 `i `uc ]
 [; ;ENC424J600.c: 436: break;
 "436
-[e $U 691  ]
+[e $U 690  ]
 "437
 }
 [; ;ENC424J600.c: 437: }
-[e $U 691  ]
+[e $U 690  ]
 "424
-[e :U 692 ]
-[e [\ _conf , $ . `E5574 1 694
- , $ . `E5574 0 695
- , $ . `E5574 2 696
- 693 ]
-"437
 [e :U 691 ]
+[e [\ _conf , $ . `E5579 1 693
+ , $ . `E5579 0 694
+ , $ . `E5579 2 695
+ 692 ]
+"437
+[e :U 690 ]
 "438
 }
 [; ;ENC424J600.c: 438: } else if (LED == LEDA) {
-[e $U 697  ]
-[e :U 690 ]
-[e $ ! == -> _LED `i -> . `E5570 0 `i 698  ]
+[e $U 696  ]
+[e :U 689 ]
+[e $ ! == -> _LED `i -> . `E5575 0 `i 697  ]
 {
 [; ;ENC424J600.c: 439: switch (conf) {
 "439
-[e $U 700  ]
+[e $U 699  ]
 {
 [; ;ENC424J600.c: 440: default:
 "440
-[e :U 701 ]
+[e :U 700 ]
 [; ;ENC424J600.c: 441: case LED_OFF:
 "441
-[e :U 702 ]
+[e :U 701 ]
 [; ;ENC424J600.c: 442: data &= ~(0x0f << 4);
 "442
 [e =& _data -> ~ << -> 15 `i -> 4 `i `uc ]
@@ -6897,19 +6907,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =| _data -> << -> 1 `i -> 4 `i `uc ]
 [; ;ENC424J600.c: 444: break;
 "444
-[e $U 699  ]
+[e $U 698  ]
 [; ;ENC424J600.c: 445: case LED_ON:
 "445
-[e :U 703 ]
+[e :U 702 ]
 [; ;ENC424J600.c: 446: data &= ~(0x0f << 4);
 "446
 [e =& _data -> ~ << -> 15 `i -> 4 `i `uc ]
 [; ;ENC424J600.c: 447: break;
 "447
-[e $U 699  ]
+[e $U 698  ]
 [; ;ENC424J600.c: 448: case LED_TRANSMIT_RECEIVE_EVENTS:
 "448
-[e :U 704 ]
+[e :U 703 ]
 [; ;ENC424J600.c: 449: data &= ~(0x0f << 4);
 "449
 [e =& _data -> ~ << -> 15 `i -> 4 `i `uc ]
@@ -6918,30 +6928,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =| _data -> << -> 6 `i -> 4 `i `uc ]
 [; ;ENC424J600.c: 451: break;
 "451
-[e $U 699  ]
+[e $U 698  ]
 "452
 }
 [; ;ENC424J600.c: 452: }
-[e $U 699  ]
+[e $U 698  ]
 "439
-[e :U 700 ]
-[e [\ _conf , $ . `E5574 1 702
- , $ . `E5574 0 703
- , $ . `E5574 2 704
- 701 ]
-"452
 [e :U 699 ]
+[e [\ _conf , $ . `E5579 1 701
+ , $ . `E5579 0 702
+ , $ . `E5579 2 703
+ 700 ]
+"452
+[e :U 698 ]
 "453
 }
-[e :U 698 ]
-"454
 [e :U 697 ]
+"454
+[e :U 696 ]
 [; ;ENC424J600.c: 453: }
 [; ;ENC424J600.c: 454: enc424j600_writeControlRegisterUnbanked(0x15 + 0x60, &data);
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 21 `i -> 96 `i `uc &U _data ]
 [; ;ENC424J600.c: 455: }
 "455
-[e :UE 689 ]
+[e :UE 688 ]
 }
 "457
 [v _ethernetController_getCurrentPacketCount `(uc ~T0 @X0 1 ef ]
@@ -6952,10 +6962,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 458: return enc424j600_getPacketCount();
 "458
 [e ) ( _enc424j600_getPacketCount ..  ]
-[e $UE 705  ]
+[e $UE 704  ]
 [; ;ENC424J600.c: 459: }
 "459
-[e :UE 705 ]
+[e :UE 704 ]
 }
 "461
 [v _ethernetController_getNextPacketPointer `(ui ~T0 @X0 1 ef ]
@@ -6966,10 +6976,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 462: return enc424j600_getNextPacketPointer();
 "462
 [e ) ( _enc424j600_getNextPacketPointer ..  ]
-[e $UE 706  ]
+[e $UE 705  ]
 [; ;ENC424J600.c: 463: }
 "463
-[e :UE 706 ]
+[e :UE 705 ]
 }
 "469
 [v _enc424j600_initSPI `(v ~T0 @X0 1 sf ]
@@ -7015,7 +7025,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _SSP1CON1bits 0 2 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 483: }
 "483
-[e :UE 707 ]
+[e :UE 706 ]
 }
 "487
 [v _enc424j600_writeSPI `(v ~T0 @X0 1 sf1`*uc ]
@@ -7033,14 +7043,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _SSP1BUF *U _data ]
 [; ;ENC424J600.c: 491: while ((!SSP1STATbits.BF) && (timeoutCounter++ < 0xfff));
 "491
-[e $U 709  ]
-[e :U 710 ]
+[e $U 708  ]
 [e :U 709 ]
-[e $ && ! != -> . . _SSP1STATbits 2 0 `i -> -> -> 0 `i `Vuc `i < ++ _timeoutCounter -> -> -> 1 `i `l `ul -> -> -> 4095 `i `l `ul 710  ]
-[e :U 711 ]
+[e :U 708 ]
+[e $ && ! != -> . . _SSP1STATbits 2 0 `i -> -> -> 0 `i `Vuc `i < ++ _timeoutCounter -> -> -> 1 `i `l `ul -> -> -> 4095 `i `l `ul 709  ]
+[e :U 710 ]
 [; ;ENC424J600.c: 492: if (timeoutCounter >= 0xfff) {
 "492
-[e $ ! >= _timeoutCounter -> -> -> 4095 `i `l `ul 712  ]
+[e $ ! >= _timeoutCounter -> -> -> 4095 `i `l `ul 711  ]
 {
 [; ;ENC424J600.c: 493: PORTBbits.RB4=1;
 "493
@@ -7050,14 +7060,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_initSPI ..  ]
 [; ;ENC424J600.c: 495: return;
 "495
-[e $UE 708  ]
+[e $UE 707  ]
 "496
 }
-[e :U 712 ]
+[e :U 711 ]
 [; ;ENC424J600.c: 496: }
 [; ;ENC424J600.c: 497: }
 "497
-[e :UE 708 ]
+[e :UE 707 ]
 }
 "499
 [v _enc424j600_readSPI `(v ~T0 @X0 1 sf1`*uc ]
@@ -7075,14 +7085,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _SSP1BUF -> -> 0 `i `uc ]
 [; ;ENC424J600.c: 503: while ((!SSP1STATbits.BF) && (timeoutCounter++ < 0xfff));
 "503
-[e $U 714  ]
-[e :U 715 ]
+[e $U 713  ]
 [e :U 714 ]
-[e $ && ! != -> . . _SSP1STATbits 2 0 `i -> -> -> 0 `i `Vuc `i < ++ _timeoutCounter -> -> -> 1 `i `l `ul -> -> -> 4095 `i `l `ul 715  ]
-[e :U 716 ]
+[e :U 713 ]
+[e $ && ! != -> . . _SSP1STATbits 2 0 `i -> -> -> 0 `i `Vuc `i < ++ _timeoutCounter -> -> -> 1 `i `l `ul -> -> -> 4095 `i `l `ul 714  ]
+[e :U 715 ]
 [; ;ENC424J600.c: 504: if (timeoutCounter >= 0xfff) {
 "504
-[e $ ! >= _timeoutCounter -> -> -> 4095 `i `l `ul 717  ]
+[e $ ! >= _timeoutCounter -> -> -> 4095 `i `l `ul 716  ]
 {
 [; ;ENC424J600.c: 505: PORTBbits.RB4=1;
 "505
@@ -7092,17 +7102,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_initSPI ..  ]
 [; ;ENC424J600.c: 507: return;
 "507
-[e $UE 713  ]
+[e $UE 712  ]
 "508
 }
-[e :U 717 ]
+[e :U 716 ]
 [; ;ENC424J600.c: 508: }
 [; ;ENC424J600.c: 509: *data = SSP1BUF;
 "509
 [e = *U _data _SSP1BUF ]
 [; ;ENC424J600.c: 510: }
 "510
-[e :UE 713 ]
+[e :UE 712 ]
 }
 "512
 [v _enc424j600_writeSingleByte `(v ~T0 @X0 1 sf1`uc ]
@@ -7122,7 +7132,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 516: }
 "516
-[e :UE 718 ]
+[e :UE 717 ]
 }
 "518
 [v _enc424j600_writeControlRegisterUnbanked `(v ~T0 @X0 1 sf2`uc`*uc ]
@@ -7153,7 +7163,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 525: }
 "525
-[e :UE 719 ]
+[e :UE 718 ]
 }
 "527
 [v _enc424j600_readControlRegisterUnbanked `(v ~T0 @X0 1 sf2`uc`*uc ]
@@ -7184,7 +7194,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 534: }
 "534
-[e :UE 720 ]
+[e :UE 719 ]
 }
 "538
 [v _enc424j600_readPHYRegister `(v ~T0 @X0 1 sf2`uc`*ui ]
@@ -7235,7 +7245,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 26 `i `d / -> -> 32000000 `ul `d .4000000.0 `ul ]
 [; ;ENC424J600.c: 557: do {
 "557
-[e :U 724 ]
+[e :U 723 ]
 {
 [; ;ENC424J600.c: 558: enc424j600_readControlRegisterUnbanked(0x0A + 0x60, &temp);
 "558
@@ -7246,15 +7256,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "560
 }
 [; ;ENC424J600.c: 560: } while ((temp & 0x01) && (timeoutCounter < 0xfff));
-[e $ && != & -> _temp `i -> 1 `i -> 0 `i < _timeoutCounter -> -> -> 4095 `i `l `ul 724  ]
-[e :U 723 ]
+[e $ && != & -> _temp `i -> 1 `i -> 0 `i < _timeoutCounter -> -> -> 4095 `i `l `ul 723  ]
+[e :U 722 ]
 [; ;ENC424J600.c: 561: if (timeoutCounter >= 0xfff)
 "561
-[e $ ! >= _timeoutCounter -> -> -> 4095 `i `l `ul 725  ]
+[e $ ! >= _timeoutCounter -> -> -> 4095 `i `l `ul 724  ]
 [; ;ENC424J600.c: 562: return;
 "562
-[e $UE 721  ]
-[e :U 725 ]
+[e $UE 720  ]
+[e :U 724 ]
 [; ;ENC424J600.c: 565: enc424j600_readControlRegisterUnbanked(0x12 + 0x40, &temp);
 "565
 [e ( _enc424j600_readControlRegisterUnbanked (2 , -> + -> 18 `i -> 64 `i `uc &U _temp ]
@@ -7275,7 +7285,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U _data | -> _lowByte `ui & -> << -> _highByte `i -> 8 `i `ui -> 65280 `ui ]
 [; ;ENC424J600.c: 573: }
 "573
-[e :UE 721 ]
+[e :UE 720 ]
 }
 "577
 [v _enc424j600_setTXLength `(v ~T0 @X0 1 sf1`ui ]
@@ -7300,7 +7310,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 3 `i -> 0 `i `uc &U _highByte ]
 [; ;ENC424J600.c: 582: }
 "582
-[e :UE 726 ]
+[e :UE 725 ]
 }
 "586
 [v _enc424j600_setNextPacketPointer `(v ~T0 @X0 1 sf1`ui ]
@@ -7314,7 +7324,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _nextPacketPointer _ptr ]
 [; ;ENC424J600.c: 588: }
 "588
-[e :UE 727 ]
+[e :UE 726 ]
 }
 "590
 [v _enc424j600_getNextPacketPointer `(ui ~T0 @X0 1 sf ]
@@ -7325,10 +7335,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 591: return nextPacketPointer;
 "591
 [e ) _nextPacketPointer ]
-[e $UE 728  ]
+[e $UE 727  ]
 [; ;ENC424J600.c: 592: }
 "592
-[e :UE 728 ]
+[e :UE 727 ]
 }
 "594
 [v _enc424j600_getPacketCount `(uc ~T0 @X0 1 ef ]
@@ -7346,10 +7356,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 597: return (uint32_t) lowByte;
 "597
 [e ) -> -> _lowByte `ul `uc ]
-[e $UE 729  ]
+[e $UE 728  ]
 [; ;ENC424J600.c: 598: }
 "598
-[e :UE 729 ]
+[e :UE 728 ]
 }
 "602
 [v _enc424j600_setTXStartAddress `(v ~T0 @X0 1 sf1`ui ]
@@ -7374,7 +7384,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 1 `i -> 0 `i `uc &U _highByte ]
 [; ;ENC424J600.c: 607: }
 "607
-[e :UE 730 ]
+[e :UE 729 ]
 }
 "609
 [v _enc424j600_setGPDATAWritePointer `(v ~T0 @X0 1 sf1`ui ]
@@ -7412,7 +7422,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 618: }
 "618
-[e :UE 731 ]
+[e :UE 730 ]
 }
 "620
 [v _enc424j600_setGPDATAReadPointer `(v ~T0 @X0 1 sf1`ui ]
@@ -7450,7 +7460,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 629: }
 "629
-[e :UE 732 ]
+[e :UE 731 ]
 }
 "631
 [v _enc424j600_setERXDATAReadPointer `(v ~T0 @X0 1 sf1`ui ]
@@ -7488,7 +7498,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 [; ;ENC424J600.c: 640: }
 "640
-[e :UE 733 ]
+[e :UE 732 ]
 }
 "642
 [v _enc424j600_setRXBufferStartAddress `(v ~T0 @X0 1 sf1`ui ]
@@ -7513,7 +7523,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 5 `i -> 0 `i `uc &U _highByte ]
 [; ;ENC424J600.c: 647: }
 "647
-[e :UE 734 ]
+[e :UE 733 ]
 }
 "649
 [v _enc424j600_setRXTailPointer `(v ~T0 @X0 1 sf1`ui ]
@@ -7538,7 +7548,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 7 `i -> 0 `i `uc &U _highByte ]
 [; ;ENC424J600.c: 654: }
 "654
-[e :UE 735 ]
+[e :UE 734 ]
 }
 "658
 [v _enc424j600_enableAutoMACInsertion `(v ~T0 @X0 1 sf ]
@@ -7561,7 +7571,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 15 `i -> 96 `i `uc &U _temp ]
 [; ;ENC424J600.c: 663: }
 "663
-[e :UE 736 ]
+[e :UE 735 ]
 }
 "665
 [v _enc424j600_disableAutoMACInsertion `(v ~T0 @X0 1 sf ]
@@ -7584,7 +7594,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 15 `i -> 96 `i `uc &U _temp ]
 [; ;ENC424J600.c: 670: }
 "670
-[e :UE 737 ]
+[e :UE 736 ]
 }
 "672
 [v _enc424j600_enableReception `(v ~T0 @X0 1 sf ]
@@ -7597,7 +7607,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeSingleByte (1 -> -> 232 `i `uc ]
 [; ;ENC424J600.c: 674: }
 "674
-[e :UE 738 ]
+[e :UE 737 ]
 }
 "676
 [v _enc424j600_disableReception `(v ~T0 @X0 1 sf ]
@@ -7610,7 +7620,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeSingleByte (1 -> -> 234 `i `uc ]
 [; ;ENC424J600.c: 678: }
 "678
-[e :UE 739 ]
+[e :UE 738 ]
 }
 "680
 [v _enc424j600_enable `(v ~T0 @X0 1 sf ]
@@ -7632,7 +7642,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 15 `i -> 96 `i `uc &U _temp ]
 [; ;ENC424J600.c: 685: }
 "685
-[e :UE 740 ]
+[e :UE 739 ]
 }
 "687
 [v _enc424j600_disable `(v ~T0 @X0 1 sf ]
@@ -7654,7 +7664,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 15 `i -> 96 `i `uc &U _temp ]
 [; ;ENC424J600.c: 692: }
 "692
-[e :UE 741 ]
+[e :UE 740 ]
 }
 "696
 [v _enc424j600_getInterruptFlags `(ui ~T0 @X0 1 ef ]
@@ -7675,10 +7685,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 700: return ( (((uint16_t) low)&0x00ff) | (((uint16_t) high << 8)&0xff00));
 "700
 [e ) | & -> _low `ui -> -> 255 `i `ui & << -> _high `ui -> 8 `i -> 65280 `ui ]
-[e $UE 742  ]
+[e $UE 741  ]
 [; ;ENC424J600.c: 701: }
 "701
-[e :UE 742 ]
+[e :UE 741 ]
 }
 "703
 [v _enc424j600_clearInterruptFlag `(v ~T0 @X0 1 sf1`uc ]
@@ -7692,7 +7702,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 704: uint8_t temp;
 [; ;ENC424J600.c: 705: if (flag < 8) {
 "705
-[e $ ! < -> _flag `i -> 8 `i 744  ]
+[e $ ! < -> _flag `i -> 8 `i 743  ]
 {
 [; ;ENC424J600.c: 706: enc424j600_readControlRegisterUnbanked(0x1C + 0x00, &temp);
 "706
@@ -7706,8 +7716,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "709
 }
 [; ;ENC424J600.c: 709: } else {
-[e $U 745  ]
-[e :U 744 ]
+[e $U 744  ]
+[e :U 743 ]
 {
 [; ;ENC424J600.c: 710: flag -= 8;
 "710
@@ -7723,11 +7733,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _enc424j600_writeControlRegisterUnbanked (2 , -> + -> 29 `i -> 0 `i `uc &U _temp ]
 "714
 }
-[e :U 745 ]
+[e :U 744 ]
 [; ;ENC424J600.c: 714: }
 [; ;ENC424J600.c: 715: }
 "715
-[e :UE 743 ]
+[e :UE 742 ]
 }
 "719
 [v _enc424j600_updateReceiveStatusVector `(S604 ~T0 @X0 1 sf1`*uc ]
@@ -7742,65 +7752,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ENC424J600.c: 723: receiveStatusVector.length = (uint16_t) ((*(rsv + 0)) | (uint16_t) (((*(rsv + 1)) << 8)&0xff00));
 "723
 [e = . _receiveStatusVector 0 | -> *U + _rsv * -> -> 0 `i `x -> -> # *U _rsv `i `x `ui & -> << -> *U + _rsv * -> -> 1 `i `x -> -> # *U _rsv `i `x `i -> 8 `i `ui -> 65280 `ui ]
-[; ;ENC424J600.c: 725: receiveStatusVector.packetPreviouslyIgnored = (uint8_t) (*(rsv + 2) & 0b00000001) != 0 ? 1 : 0;
+[; ;ENC424J600.c: 725: receiveStatusVector.packetPreviouslyIgnored = (uint8_t) (*(rsv + 2) & 0b00000001) != 0 ? 1u : 0u;
 "725
-[e = . _receiveStatusVector 1 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 1 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 726: receiveStatusVector.carrierEventPreviouslySeen = (uint8_t) (*(rsv + 2) & 0b00000100) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 1 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 1 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 726: receiveStatusVector.carrierEventPreviouslySeen = (uint8_t) (*(rsv + 2) & 0b00000100) != 0 ? 1u : 0u;
 "726
-[e = . _receiveStatusVector 2 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 4 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 727: receiveStatusVector.CRCError = (uint8_t) (*(rsv + 2) & 0b00010000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 2 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 4 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 727: receiveStatusVector.CRCError = (uint8_t) (*(rsv + 2) & 0b00010000) != 0 ? 1u : 0u;
 "727
-[e = . _receiveStatusVector 3 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 16 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 728: receiveStatusVector.lengthCheckError = (uint8_t) (*(rsv + 2) & 0b00100000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 3 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 16 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 728: receiveStatusVector.lengthCheckError = (uint8_t) (*(rsv + 2) & 0b00100000) != 0 ? 1u : 0u;
 "728
-[e = . _receiveStatusVector 4 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 32 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 729: receiveStatusVector.lengthOutOfRange = (uint8_t) (*(rsv + 2) & 0b01000000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 4 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 32 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 729: receiveStatusVector.lengthOutOfRange = (uint8_t) (*(rsv + 2) & 0b01000000) != 0 ? 1u : 0u;
 "729
-[e = . _receiveStatusVector 5 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 64 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 730: receiveStatusVector.receivedOk = (uint8_t) (*(rsv + 2) & 0b10000000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 5 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 64 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 730: receiveStatusVector.receivedOk = (uint8_t) (*(rsv + 2) & 0b10000000) != 0 ? 1u : 0u;
 "730
-[e = . _receiveStatusVector 6 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 128 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 732: receiveStatusVector.multicast = (uint8_t) (*(rsv + 3) & 0b00000001) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 6 -> ? != -> -> & -> *U + _rsv * -> -> 2 `i `x -> -> # *U _rsv `i `x `i -> 128 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 732: receiveStatusVector.multicast = (uint8_t) (*(rsv + 3) & 0b00000001) != 0 ? 1u : 0u;
 "732
-[e = . _receiveStatusVector 7 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 1 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 733: receiveStatusVector.broadcast = (uint8_t) (*(rsv + 3) & 0b00000010) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 7 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 1 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 733: receiveStatusVector.broadcast = (uint8_t) (*(rsv + 3) & 0b00000010) != 0 ? 1u : 0u;
 "733
-[e = . _receiveStatusVector 8 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 2 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 734: receiveStatusVector.controlFrame = (uint8_t) (*(rsv + 3) & 0b00001000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 8 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 2 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 734: receiveStatusVector.controlFrame = (uint8_t) (*(rsv + 3) & 0b00001000) != 0 ? 1u : 0u;
 "734
-[e = . _receiveStatusVector 10 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 8 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 735: receiveStatusVector.pauseFrame = (uint8_t) (*(rsv + 3) & 0b00010000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 10 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 8 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 735: receiveStatusVector.pauseFrame = (uint8_t) (*(rsv + 3) & 0b00010000) != 0 ? 1u : 0u;
 "735
-[e = . _receiveStatusVector 11 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 16 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 736: receiveStatusVector.unknownOpcode = (uint8_t) (*(rsv + 3) & 0b00100000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 11 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 16 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 736: receiveStatusVector.unknownOpcode = (uint8_t) (*(rsv + 3) & 0b00100000) != 0 ? 1u : 0u;
 "736
-[e = . _receiveStatusVector 12 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 32 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 737: receiveStatusVector.vlan = (uint8_t) (*(rsv + 3) & 0b01000000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 12 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 32 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 737: receiveStatusVector.vlan = (uint8_t) (*(rsv + 3) & 0b01000000) != 0 ? 1u : 0u;
 "737
-[e = . _receiveStatusVector 13 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 64 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 738: receiveStatusVector.runtFilter = (uint8_t) (*(rsv + 3) & 0b10000000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 13 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 64 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 738: receiveStatusVector.runtFilter = (uint8_t) (*(rsv + 3) & 0b10000000) != 0 ? 1u : 0u;
 "738
-[e = . _receiveStatusVector 14 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 128 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 740: receiveStatusVector.notMeFilter = (uint8_t) (*(rsv + 4) & 0b00000001) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 14 -> ? != -> -> & -> *U + _rsv * -> -> 3 `i `x -> -> # *U _rsv `i `x `i -> 128 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 740: receiveStatusVector.notMeFilter = (uint8_t) (*(rsv + 4) & 0b00000001) != 0 ? 1u : 0u;
 "740
-[e = . _receiveStatusVector 15 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 1 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 741: receiveStatusVector.hashFilter = (uint8_t) (*(rsv + 4) & 0b00000010) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 15 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 1 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 741: receiveStatusVector.hashFilter = (uint8_t) (*(rsv + 4) & 0b00000010) != 0 ? 1u : 0u;
 "741
-[e = . _receiveStatusVector 16 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 2 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 742: receiveStatusVector.magicFilter = (uint8_t) (*(rsv + 4) & 0b00000100) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 16 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 2 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 742: receiveStatusVector.magicFilter = (uint8_t) (*(rsv + 4) & 0b00000100) != 0 ? 1u : 0u;
 "742
-[e = . _receiveStatusVector 17 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 4 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 743: receiveStatusVector.patternMatch = (uint8_t) (*(rsv + 4) & 0b00001000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 17 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 4 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 743: receiveStatusVector.patternMatch = (uint8_t) (*(rsv + 4) & 0b00001000) != 0 ? 1u : 0u;
 "743
-[e = . _receiveStatusVector 18 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 8 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;ENC424J600.c: 744: receiveStatusVector.unicast = (uint8_t) (*(rsv + 4) & 0b00010000) != 0 ? 1 : 0;
+[e = . _receiveStatusVector 18 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 8 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
+[; ;ENC424J600.c: 744: receiveStatusVector.unicast = (uint8_t) (*(rsv + 4) & 0b00010000) != 0 ? 1u : 0u;
 "744
-[e = . _receiveStatusVector 19 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 16 `i `uc `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
+[e = . _receiveStatusVector 19 -> ? != -> -> & -> *U + _rsv * -> -> 4 `i `x -> -> # *U _rsv `i `x `i -> 16 `i `uc `i -> 0 `i : -> 1 `ui -> 0 `ui `uc ]
 [; ;ENC424J600.c: 746: return receiveStatusVector;
 "746
 [e ) _receiveStatusVector ]
-[e $UE 746  ]
+[e $UE 745  ]
 [; ;ENC424J600.c: 747: }
 "747
-[e :UE 746 ]
+[e :UE 745 ]
 }

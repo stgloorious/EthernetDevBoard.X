@@ -73,12 +73,12 @@ void handleStackBackgroundTasks(stack_t* stack) {
     /* ==== Packet counter overflow ==== */
     /* The number of unprocessed packets in the receive buffer exceeded 255 */
     if (intf.PCFULIF) {
-        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
-        UARTTransmitText("\a"); //Alert
-        UARTTransmitText("\n\r---------------------------------------------------------\n\r");
-        UARTTransmitText("*** CRITICAL ERROR: RX BUF OVFL CAUSED SYSTEM RESET ***\n\r");
-        UARTTransmitText("---------------------------------------------------------");
-        UARTTransmitText("\033[0m");
+        UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
+        UARTTransmitText("\a\n\r"); //Alert
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UARTTransmitText("\n\r*** CRITICAL ERROR: RX BUF OVFL CAUSED SYSTEM RESET ***\n\r");
+       UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UART_resetFormat();
         UARTTransmitText("\n\r");
         ethernetController_disableEthernet();
         ethernetController_init();
@@ -107,11 +107,11 @@ void handleStackBackgroundTasks(stack_t* stack) {
                 if (stack->pendingPacketToSend.ipv4Header.totalLength > ethernetController_getMTU()) {
 #if IPv4_DEBUG_MESSAGES==true
                     UARTTransmitText("[IPv4]: Packet will be fragmented.\n\r");
-                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.start));
+                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.start,10));
                     UARTTransmitText(" -> ");
-                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.end));
+                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.end,10));
                     UARTTransmitText(" (");
-                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.length));
+                    UARTTransmitText(intToString(stack->pendingPacketToSend.ethernet.memory.length,10));
                     UARTTransmitText(")\n\r");
 #endif
                     state = PREPARE_FRAGMENTING;
@@ -137,14 +137,14 @@ void handleStackBackgroundTasks(stack_t* stack) {
                     remainingLength = currentPacket.ipv4Header.totalLength - currentPacket.ethernet.memory.length;
                     lastEndAddress = currentPacket.ethernet.memory.end;
                 }
-                UARTTransmitText(intToString(currentPacket.ethernet.memory.start));
+                UARTTransmitText(intToString(currentPacket.ethernet.memory.start,10));
                 UARTTransmitText(" -> ");
-                UARTTransmitText(intToString(currentPacket.ethernet.memory.end));
+                UARTTransmitText(intToString(currentPacket.ethernet.memory.end,10));
                 UARTTransmitText(" (");
-                UARTTransmitText(intToString(currentPacket.ethernet.memory.length));
+                UARTTransmitText(intToString(currentPacket.ethernet.memory.length,10));
                 UARTTransmitText(") ");
                 UARTTransmitText("Remaining Length is ");
-                UARTTransmitText(intToString(remainingLength));
+                UARTTransmitText(intToString(remainingLength,10));
                 UARTTransmitText("\n\r");
                 state = SEND_FRAME;
                 break;
@@ -156,18 +156,15 @@ void handleStackBackgroundTasks(stack_t* stack) {
                         case ERROR_ARP_WAITING:
                             break;
                         case ERROR_CODE_SUCCESSFUL:
-#if IPv4_DEBUG_MESSAGES==true
-                            UARTTransmitText("[IPv4]: Packet was sent successfully.\n\r");
-#endif
                             stack->background.fPacketPending = 0;
                             state = INIT;
                             break;
                         case ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED:
 #if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
-                            UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+                            UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
                             UARTTransmitText("[IPv4]: Failed to resolve ");
                             UARTTransmitText(ipAdressToString(stack->pendingPacketToSend.ipv4Header.destination));
-                            UARTTransmitText("\033[0m");
+                            UART_resetFormat();
                             UARTTransmitText("\n\r");
 
 #endif
@@ -192,17 +189,17 @@ void handleStackBackgroundTasks(stack_t* stack) {
     if (errIPv4.module == ERROR_MODULE_IPv4 &&
             errIPv4.code == ERROR_IPv4_ADDRESS_ALREADY_IN_USE) {
 #if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
-        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+        UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
         UARTTransmitText("[IPv4]: Address conflict detected.\n\r");
-        UARTTransmitText("\033[0m");
+        UART_resetFormat();
 #endif
         stack->source = ipv4_generateAutoIP();
 #if IPv4_DEBUG_MESSAGES==true || IPv4_DEBUG_HIGH_PRIORITY==true
-        UARTTransmitText("\033[41;10;10m"); //Red color, Primary font
+        UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
         UARTTransmitText("[IPv4]: Setting IPv4 Src Address to ");
         UARTTransmitText(ipAdressToString(stack->source));
         UARTTransmitText("\n\r");
-        UARTTransmitText("\033[0m");
+        UART_resetFormat();
 #endif
         ipv4_setIPSourceAddress(stack->source);
     }

@@ -6699,31 +6699,33 @@ ERROR_MODULE_MEMORY,
 ERROR_MODULE_ETHERNET_CONTROLLER,
 ERROR_MODULE_ETHERNET,
 ERROR_MODULE_ARP,
-ERROR_MODULE_IPv4
+ERROR_MODULE_IPv4,
+ERROR_MODULE_ICMP
 } error_module_t;
 
-# 56
+# 57
 enum module_offsets {
 ERROR_MEMORY_OFFSET = 100,
 ERROR_ETHERNET_OFFSET = 200,
 ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
 ERROR_ARP_OFFSET = 400,
-ERROR_IPv4_OFFSET = 500
+ERROR_IPv4_OFFSET = 500,
+ERROR_ICMP_OFFSET = 600
 };
 
-# 67
+# 69
 enum errors_memory {
 ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
 ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
 };
 
-# 75
+# 77
 enum error_ethernet {
 ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
 ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
 };
 
-# 83
+# 85
 enum errors_ethernetController {
 
 ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
@@ -6734,7 +6736,7 @@ ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OF
 ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
 };
 
-# 96
+# 98
 enum errors_arp {
 ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
 ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
@@ -6745,19 +6747,23 @@ ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
 ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
 };
 
-# 109
+# 111
 enum errors_ipv4 {
 ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
 ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
 };
 
-# 119
+enum errors_icmp {
+ERROR_ICMP_MESSAGE_TOO_LONG = ERROR_ICMP_OFFSET + 1,
+};
+
+# 125
 typedef struct error {
 
-# 123
+# 129
 error_module_t module;
 
-# 129
+# 135
 uint16_t code;
 } error_t;
 
@@ -6820,33 +6826,35 @@ typedef enum etherTypes {
 ETHERTYPE_IPv4 = 0x0800,
 ETHERTYPE_ARP = 0x0806,
 ETHERTYPE_WOL = 0x0842,
-ETHERTYPE_FLOW_CONTROL = 0x8808
+ETHERTYPE_FLOW_CONTROL = 0x8808,
+
+ETHERTYPE_UNKNOWN = 0xffff
 } etherType_t;
 
-# 58
+# 60
 typedef struct macaddress {
 uint8_t address[6];
 } macaddress_t;
 
-# 64
+# 66
 typedef enum linkStates {
 NO_LINK,
 LINK_ESTABLISHED
 } linkState_t;
 
-# 71
+# 73
 typedef enum speeds {
 TEN_MBIT,
 HUNDRED_MBIT
 } speed_t;
 
-# 78
+# 80
 typedef enum duplexStates {
 HALF_DUPLEX,
 FULL_DUPLEX
 } duplexState_t;
 
-# 86
+# 88
 typedef struct ethernetFrame {
 uint16_t length;
 macaddress_t source;
@@ -6854,14 +6862,14 @@ macaddress_t destination;
 etherType_t ethertype;
 memoryField_t memory;
 
-# 96
+# 98
 RSV_t receiveStatusVector;
 
-# 100
+# 102
 time_t tReceived;
 } ethernetFrame_t;
 
-# 106
+# 108
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;
@@ -7044,64 +7052,66 @@ uint8_t fPacketPending;
 typedef enum ipv4_protocols {
 IPv4_PROTOCOL_ICMP = 1,
 IPv4_PROTOCOL_TCP = 6,
-IPv4_PROTOCOL_UDP = 17
+IPv4_PROTOCOL_UDP = 17,
+
+IPv4_PROTOCOL_UNKNOWN = 255
 
 } ipv4_protocol_t;
 
-# 60
+# 62
 typedef struct ipv4_address {
 uint8_t address[4];
 } ipv4_address_t;
 
-# 67
+# 69
 typedef struct ipv4_header {
 
-# 72
+# 74
 uint8_t version;
 uint8_t headerLength;
 
-# 80
+# 82
 uint8_t dscp;
 uint8_t ecn;
 
-# 88
+# 90
 uint16_t totalLength;
 
-# 95
+# 97
 uint16_t identification;
 
-# 102
+# 104
 uint8_t flags;
 uint16_t fragmentOffset;
 
-# 110
+# 112
 uint8_t timeToLive;
 
-# 117
+# 119
 ipv4_protocol_t protocol;
 
-# 124
+# 126
 uint16_t checksum;
 
-# 131
+# 133
 ipv4_address_t source;
 
-# 138
+# 140
 ipv4_address_t destination;
 
 
 } ipv4_header_t;
 
-# 149
+# 151
 typedef struct ipv4_packet {
 
-# 153
+# 155
 ipv4_header_t ipv4Header;
 
-# 157
+# 159
 memoryField_t memory;
 
-# 161
+# 163
 ethernetFrame_t ethernet;
 } ipv4_packet_t;
 
@@ -7122,10 +7132,10 @@ void mac_setAllZero(macaddress_t *mac);
 # 70
 bool_t mac_isAllZero(macaddress_t *mac);
 
-# 54 "src/system/../system/../stack/../stack/protocols/../protocols/../../eth/ethernet.h"
+# 55 "src/system/../system/../stack/../stack/protocols/../protocols/../../eth/ethernet.h"
 error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
 
-# 65
+# 66
 error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
@@ -7239,37 +7249,54 @@ macaddress_t mac;
 time_t timeCreated;
 } arp_tableEntry_t;
 
-# 37 "src/system/../system/../stack/../stack/protocols/../protocols/../../system/uart.h"
+# 34 "src/system/../system/../stack/../stack/protocols/../protocols/../../system/uart.h"
+typedef enum UART_colors {
+UART_COLOR_BG_RED,
+UART_COLOR_BG_GREEN,
+UART_COLOR_BG_BLUE,
+UART_COLOR_BG_YELLOW,
+UART_COLOR_BG_MAGENTA,
+UART_COLOR_BG_CYAN,
+
+UART_COLOR_FG_YELLOW,
+UART_COLOR_FG_BLUE
+} UART_colors_t;
+
+enum UART_specials {
+UART_LINE_SEPARATOR
+};
+
+# 53
 void UARTInit(void);
 
-# 43
+# 59
 void UARTTransmitText(const char *str);
 
-# 49
-void DEBUG_MSG(char *text);
+# 67
+char *UART_special(uint8_t code);
 
-# 55
-void UARTTransmitInt(uint32_t val);
+# 73
+void UART_setFormat(uint8_t color);
 
-# 62
-char *intToString(uint32_t val);
+# 78
+void UART_resetFormat();
 
-# 69
-char *hexToString(uint32_t val);
+# 87
+char *intToString(uint32_t val, uint8_t b);
 
-# 76
+# 94
 char *macToString(macaddress_t addr);
 
-# 83
+# 101
 char *etherTypeToString(etherType_t ethertype);
 
-# 90
+# 108
 char *ipProtocolToString(ipv4_protocol_t protocol);
 
-# 97
+# 115
 char *ipAdressToString(ipv4_address_t ip);
 
-# 104
+# 122
 char *arpEntryToString(arp_tableEntry_t table);
 
 # 49 "src/system/../system/../stack/../stack/protocols/../protocols/arp.h"
@@ -7365,16 +7392,80 @@ bool_t ipv4_isAllZero(ipv4_address_t *ip);
 # 165
 void ipv4_setToAllZero(ipv4_address_t *ip);
 
-# 44 "src/system/../system/../stack/stack.h"
+# 35 "src/system/../system/../stack/protocols/tcpTypes.h"
+typedef struct tcp_flags {
+uint8_t NS : 1;
+uint8_t CWR : 1;
+uint8_t ECE : 1;
+uint8_t URG : 1;
+uint8_t ACK : 1;
+uint8_t PSH : 1;
+uint8_t RST : 1;
+uint8_t SYN : 1;
+uint8_t FIN : 1;
+} tcp_flags_t;
+
+typedef struct tcp_header {
+uint16_t srcPort;
+uint16_t dstPort;
+uint32_t seqNumber;
+uint32_t ackNumber;
+uint8_t dataOffset;
+tcp_flags_t flags;
+uint16_t windowSize;
+uint16_t checksum;
+uint16_t urgentPointer;
+} tcp_header_t;
+
+typedef struct tcp_connection {
+ipv4_address_t ipServer;
+ipv4_address_t ipClient;
+uint16_t srcPort;
+uint16_t dstPort;
+uint32_t seqNumber;
+uint8_t state;
+} tcp_connection_t;
+
+typedef enum tcp_state {
+TCP_STATE_LISTEN,
+TCP_STATE_SYN_SENT,
+TCP_STATE_SYN_RECEIVED,
+TCP_STATE_ESTABLISHED,
+TCP_STATE_FIN_WAIT1,
+TCP_STATE_FIN_WAIT2,
+TCP_STATE_CLOSE_WAIT,
+TCP_STATE_CLOSING,
+TCP_STATE_LAST_ACK,
+TCP_STATE_TIME_WAIT,
+TCP_STATE_CLOSED
+} tcp_state_t;
+
+# 34 "src/system/../system/../stack/protocols/tcp.h"
+error_t tcp_handleNewPacket(ipv4_header_t header, memoryField_t ipPayload);
+
+error_t tcp_parseHeader(memoryField_t ipPayload, tcp_header_t* header);
+
+error_t tcp_stateMachine(tcp_connection_t *connection, tcp_header_t *newHeader);
+
+error_t tcp_listen(tcp_connection_t *connection);
+
+error_t tcp_sendSYNACK(tcp_connection_t *connection, uint32_t seq);
+
+error_t static tcp_calculateHeaderChecksum(tcp_header_t *tcpHeader, ipv4_header_t ipv4Header);
+
+void tcp_init();
+
+# 45 "src/system/../system/../stack/stack.h"
 typedef struct stack {
 ethernetFrame_t newReceivedFrame;
 ethernetConnection_t ethernet;
 backgroundTaskHandler_t background;
 ipv4_packet_t pendingPacketToSend;
 ipv4_address_t source;
+uint8_t fipValid:1;
 } stack_t;
 
-# 57
+# 59
 error_t stack_init();
 
 # 47 "src/system/../system/../system/sevenseg.h"

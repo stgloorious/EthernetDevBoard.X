@@ -2,10 +2,12 @@
  build/default/production/src/mem/memoryController.p1:  \
  src/mem/memoryController.c  \
 src/mem/../system/../stack/protocols/../bool.h  \
+src/mem/../system/../stack/protocols/../protocols/tcpSettings.h  \
 src/mem/../system/../stack/protocols/../protocols/../../eth/ethernet.h  \
 src/mem/../mem/memoryController.h  \
 src/mem/../system/../stack/protocols/../protocols/../../eth/../mem/memoryController.h  \
 src/mem/../system/../eth/mac.h  \
+src/mem/../system/../stack/protocols/../protocols/../../eth/ethernetSettings.h  \
 src/mem/../system/../stack/protocols/../protocols/../protocols/ipv4.h  \
 src/mem/../system/../stack/protocols/../../eth/../stack/time.h  \
 src/mem/../system/../stack/protocols/../../stack/../stack/error.h  \
@@ -13,6 +15,7 @@ src/mem/../system/../stack/protocols/../../stack/backgroundTasksTypes.h  \
 src/mem/../system/../stack/protocols/arpTypes.h  \
 src/mem/../system/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/mem/../system/../stack/protocols/../error.h  \
+src/mem/../system/../stack/protocols/../protocols/../error.h  \
 src/mem/../system/../stack/protocols/../protocols/arpSettings.h  \
 src/mem/../system/../stack/protocols/../time.h  \
 src/mem/../system/../stack/protocols/../protocols/ipv4Types.h  \
@@ -21,6 +24,7 @@ src/mem/../system/../stack/protocols/../protocols/../../eth/../stack/error.h  \
 src/mem/../system/uart.h  \
 src/mem/../system/../stack/protocols/ipv4.h  \
 src/mem/../system/../stack/protocols/../../stack/protocols/ipv4.h  \
+src/mem/../system/../stack/protocols/../protocols/tcpTypes.h  \
 src/mem/../system/../stack/protocols/../../eth/../enc424j600/rsv.h  \
 src/mem/../system/../stack/protocols/../stack.h  \
 src/mem/../system/../stack/protocols/../../eth/ethernetTypes.h  \
@@ -39,4 +43,5 @@ src/mem/../system/../stack/protocols/../protocols/../../eth/../enc424j600/interr
 src/mem/../system/../stack/protocols/../../stack/../enc424j600/interrupt.h  \
 src/mem/../system/../stack/protocols/../protocols/../../eth/mac.h  \
 src/mem/../system/../eth/../stack/bool.h  \
-src/mem/../system/../stack/protocols/../protocols/arp.h 
+src/mem/../system/../stack/protocols/../protocols/arp.h  \
+src/mem/../system/../stack/protocols/../protocols/tcp.h 

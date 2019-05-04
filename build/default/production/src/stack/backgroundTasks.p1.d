@@ -3,11 +3,13 @@
  src/stack/backgroundTasks.c  \
 src/stack/../stack/../stack/protocols/../bool.h  \
 src/stack/protocols/../bool.h  \
+src/stack/../stack/../stack/protocols/../protocols/tcpSettings.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernet.h  \
 src/stack/../stack/../eth/ethernet.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/../mem/memoryController.h  \
 src/stack/../enc424j600/../mem/memoryController.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../system/../eth/mac.h  \
+src/stack/../stack/../stack/protocols/../protocols/../../eth/ethernetSettings.h  \
 src/stack/../stack/../stack/protocols/../protocols/../protocols/ipv4.h  \
 src/stack/../stack/../eth/../eth/../stack/time.h  \
 src/stack/../enc424j600/ENC424J600.h  \
@@ -20,6 +22,7 @@ src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protoco
 src/stack/../stack/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../error.h  \
 src/stack/../stack/../stack/protocols/../error.h  \
+src/stack/../stack/../stack/protocols/../protocols/../error.h  \
 src/stack/../stack/../stack/protocols/../protocols/arpSettings.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/../time.h  \
 src/stack/../stack/../stack/protocols/../protocols/ipv4Types.h  \
@@ -33,6 +36,7 @@ src/stack/../enc424j600/../stack/error.h  \
 src/stack/../stack/../stack/protocols/ipv4.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../system/../stack/protocols/ipv4.h  \
 src/stack/../stack/../stack/protocols/../../stack/protocols/ipv4.h  \
+src/stack/../stack/../stack/protocols/../protocols/tcpTypes.h  \
 src/stack/../stack/../stack/stack.h  \
 src/stack/../stack/../eth/../eth/../enc424j600/rsv.h  \
 src/stack/../enc424j600/../enc424j600/rsv.h  \
@@ -57,4 +61,5 @@ src/stack/../stack/../eth/../enc424j600/interrupt.h  \
 src/stack/../stack/../stack/protocols/../../stack/../enc424j600/interrupt.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/mac.h  \
 src/stack/../stack/../stack/protocols/../protocols/../../eth/../stack/bool.h  \
-src/stack/../stack/../stack/protocols/../protocols/arp.h 
+src/stack/../stack/../stack/protocols/../protocols/arp.h  \
+src/stack/../stack/../stack/protocols/../protocols/tcp.h 

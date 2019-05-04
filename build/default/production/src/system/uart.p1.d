@@ -2,9 +2,11 @@
  build/default/production/src/system/uart.p1:  \
  src/system/uart.c  \
 src/system/../system/../stack/protocols/../bool.h  \
+src/system/../system/../stack/protocols/../protocols/tcpSettings.h  \
 src/system/../system/../stack/protocols/../protocols/../../eth/ethernet.h  \
 src/system/../system/../stack/protocols/../protocols/../../eth/../mem/memoryController.h  \
 src/system/../system/../eth/mac.h  \
+src/system/../system/../stack/protocols/../protocols/../../eth/ethernetSettings.h  \
 src/system/../system/../stack/protocols/../protocols/../protocols/ipv4.h  \
 src/system/../system/../stack/protocols/../../eth/../stack/time.h  \
 src/system/../system/../stack/protocols/../../stack/../stack/error.h  \
@@ -12,6 +14,7 @@ src/system/../system/../stack/protocols/../../stack/backgroundTasksTypes.h  \
 src/system/../system/../stack/protocols/arpTypes.h  \
 src/system/../system/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/system/../system/../stack/protocols/../error.h  \
+src/system/../system/../stack/protocols/../protocols/../error.h  \
 src/system/../system/../stack/protocols/../protocols/arpSettings.h  \
 src/system/../system/../stack/protocols/../time.h  \
 src/system/../system/../stack/protocols/../protocols/ipv4Types.h  \
@@ -20,6 +23,7 @@ src/system/../system/../stack/protocols/../protocols/../../eth/../stack/error.h 
 src/system/../system/uart.h  \
 src/system/../system/../stack/protocols/ipv4.h  \
 src/system/../system/../stack/protocols/../../stack/protocols/ipv4.h  \
+src/system/../system/../stack/protocols/../protocols/tcpTypes.h  \
 src/system/../system/../stack/protocols/../../eth/../enc424j600/rsv.h  \
 src/system/../system/../stack/protocols/../stack.h  \
 src/system/../system/../stack/protocols/../../eth/ethernetTypes.h  \
@@ -38,4 +42,5 @@ src/system/../system/../stack/protocols/../protocols/../../eth/../enc424j600/int
 src/system/../system/../stack/protocols/../../stack/../enc424j600/interrupt.h  \
 src/system/../system/../stack/protocols/../protocols/../../eth/mac.h  \
 src/system/../system/../eth/../stack/bool.h  \
-src/system/../system/../stack/protocols/../protocols/arp.h 
+src/system/../system/../stack/protocols/../protocols/arp.h  \
+src/system/../system/../stack/protocols/../protocols/tcp.h 

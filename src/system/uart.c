@@ -40,98 +40,68 @@ void UARTTransmitText(const char *str) {
     }
 }
 
-void UARTTransmitInt(uint32_t val) {
-    UARTTransmitText(intToString(val));
-    /*   uint8_t tenthousands = val / 10000;
-       uint8_t thousands = (val - tenthousands * 10000) / 1000;
-       uint8_t hundreds = (val - tenthousands * 10000 - thousands * 1000) / 100;
-       uint8_t tens = (val - tenthousands * 10000 - thousands * 1000 - hundreds * 100) / 10;
-       uint8_t ones = val % 10;
-
-       if (val > 9999) {
-           while (TRMT == 0);
-           TXREG1 = tenthousands + 0x30;
-       }
-
-       if (val > 999) {
-           while (TRMT == 0);
-           TXREG1 = thousands + 0x30;
-       }
-
-       if (val > 99) {
-           while (TRMT == 0);
-           TXREG1 = hundreds + 0x30;
-       }
-
-       if (val > 9) {
-           while (TRMT == 0);
-           TXREG1 = tens + 0x30;
-       }
-
-       while (TRMT == 0);
-       TXREG1 = ones + 0x30;*/
+void UART_resetFormat() {
+    UARTTransmitText("\033[0m");
 }
 
-char *intToString(uint32_t val) {
+void UART_setFormat(uint8_t color) {
+    switch (color) {
+        case UART_COLOR_BG_RED:
+            UARTTransmitText("\033[41;10;10m");
+            break;
+        case UART_COLOR_BG_GREEN:
+            UARTTransmitText("\033[42;30;10m");
+            break;
+        case UART_COLOR_BG_BLUE:
+            UARTTransmitText("\033[44;10;10m");
+            break;
+        case UART_COLOR_BG_MAGENTA:
+            UARTTransmitText("\033[45;10;10m");
+            break;
+        case UART_COLOR_BG_CYAN:
+            UARTTransmitText("\033[46;30;10m");
+            break;
+        case UART_COLOR_BG_YELLOW:
+            UARTTransmitText("\033[103;30;10m");
+            break;
+        case UART_COLOR_FG_YELLOW:
+            break;
+        case UART_COLOR_FG_BLUE:
+            UARTTransmitText("\033[94;4;10m");
+            break;
+    }
+}
+
+char *UART_special(uint8_t code) {
+    switch (code) {
+        case UART_LINE_SEPARATOR:
+            return (const char*)"-------------------------------------------------";
+    }
+}
+
+char *intToString(uint32_t val, uint8_t b) {
     char static number [10];
-    ltoa(&number[0], (long) val, 10);
+    ltoa(&number[0], (long) val, b);
 #ifndef __XC
 #warning "Check if ltoa() is compatible with used compiler"
 #endif
     return number;
 }
 
-char hexToChar(uint8_t val) {
-    if (val < 10) {
-        return val + 0x30u;
-    } else if (val < 16) {
-        return val + 0x41u - 10;
-    }
-    return 0;
-}
-
-char *hexToString(uint32_t val) {
-    char static number [10];
-    uint8_t pointer = 0;
-    if (val > 0xff) {
-        number[pointer++] = hexToChar((val >> 12) & 0xf);
-        number[pointer++] = hexToChar((val >> 8) & 0xf);
-    }
-    number[pointer++] = hexToChar((val >> 4) & 0xf);
-    number[pointer++] = hexToChar(val & 0xf);
-
-    number[pointer++] = '\0';
-    return number;
-}
-
 char *macToString(macaddress_t addr) {
-    char address[] = "??:??:??:??:??:??";
+    char static address[20];
+    char static number[3];
+
     uint8_t j = 0;
-    uint8_t firstDigit;
-    uint8_t secondDigit;
-
-    for (int i = 0; i < 6; i++) {
-        firstDigit = ((addr.address[i] & 0xF0) >> 4)&0x0F; //parse digits
-        secondDigit = addr.address[i] & 0x0F;
-
-        firstDigit += 0x30; //ASCII conversion
-        secondDigit += 0x30;
-
-        if (firstDigit > '9') {//is it a hexadecimal letter?
-            address[j++] = firstDigit + 7; //ASCII conversion (letters)
-        } else {
-            address[j++] = firstDigit; //it's a number
-        }
-        if (secondDigit > '9') {//is it a hexadecimal letter?
-            address[j++] = secondDigit + 7; //ASCII conversion (letters)
-        } else {
-            address[j++] = secondDigit; //it's a number
-        }
-
-        if (i < 5) {
+    for (uint8_t i = 0; i < 6; i++) {
+        itoa(&number[0], (int) addr.address[i], 16);
+        address[j++] = number[0];
+        address[j++] = number[1];
+        if (i < 5)
             address[j++] = ':';
-        }
     }
+    address[j] = '\0';
+
     return address;
 }
 
@@ -160,24 +130,20 @@ char *ipProtocolToString(ipv4_protocol_t protocol) {
 }
 
 char *ipAdressToString(ipv4_address_t ip) {
-    char static address [] = "???.???.???.???";
-    uint8_t hundreds[4];
-    uint8_t tens[4];
-    uint8_t ones[4];
+    char static address [20];
+    char static number[4];
     uint8_t pointer = 0;
+    uint8_t j = 0;
 
     for (uint8_t i = 0; i < 4; i++) {
-
-        hundreds[i] = ip.address[i] / 100u;
-        tens[i] = (ip.address[i] - hundreds[i]*100u) / 10u;
-        ones[i] = ip.address[i] % 10u;
-
-        if (hundreds[i] > 0)
-            address[pointer++] = hundreds[i] + 0x30;
-        if ((tens[i] > 0) || hundreds[i] > 0)
-            address[pointer++] = tens[i] + 0x30;
-        address[pointer++] = ones[i] + 0x30;
-        if (i != 3)
+        itoa(&number[0], (int) ip.address[i], 10);
+        if (ip.address[i] >= 100)
+            address[pointer++] = number[j++];
+        if (ip.address[i] >= 10)
+            address[pointer++] = number[j++];
+        address[pointer++] = number[j++];
+        j = 0;
+        if (i < 3)
             address[pointer++] = '.';
     }
     address[pointer] = '\0';
@@ -201,7 +167,7 @@ char *arpEntryToString(arp_tableEntry_t table) {
 
     string[pointer++] = ' ';
 
-    tempAddr = intToString(table.timeCreated % 0xffff);
+    tempAddr = intToString(table.timeCreated, 10);
     while (*tempAddr != '\0')
         string[pointer++] = *(tempAddr++);
 

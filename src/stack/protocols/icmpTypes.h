@@ -49,21 +49,21 @@ typedef enum icmpMessage {
 } icmpMessage_t;
 
 const char *icmpTxtMessages[] = {
-    "ECHO REPLY", //0
+    "Echo Reply", //0
     "", //Spaceholder so the indices match the enum icmpMessage
     "", //2
-    "DESTINATION UNREACHABLE", //3
-    "SOURCE QUENCH", //4
-    "REDIRECT MESSAGE", //5
+    "Destination unreachable", //3
+    "Source Quench", //4
+    "Redirect Message", //5
     "", //6
     "", //7
-    "ECHO REQUEST", //8
-    "ROUTER ADVERTISEMENT", //9
-    "ROUTER SOLICITATION", //10
-    "TIME EXCEEDED", //11
-    "PARAM PROBLEM: BAD HEADER", //12
-    "TIMESTAMP", //13
-    "TIMESTAMP REPLY"//14
+    "Echo Request", //8
+    "Router Advertisement", //9
+    "Router Solicitation", //10
+    "Time Exceeded", //11
+    "Param Problem: Bad Header", //12
+    "Timestamp", //13
+    "Timestamp Reply"//14
 };
 
 

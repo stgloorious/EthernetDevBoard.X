@@ -4,6 +4,7 @@ var searchData=
   ['settings',['Settings',['../group__ipv4_settings.html',1,'']]],
   ['senderipaddress',['senderIPAddress',['../structarp__message.html#a9532eb4e3dafc35df5f0cbd0598e6064',1,'arp_message']]],
   ['sendermacaddress',['senderMACAddress',['../structarp__message.html#a493c6c0fac00d24d97c5dd27e448d192',1,'arp_message']]],
+  ['seqnumber',['seqNumber',['../structtcp__connection.html#ae4d5a5811264277c4dbd1f3540465250',1,'tcp_connection']]],
   ['seteie',['SETEIE',['../group__single__byte.html#ga18fb24806c923f20700c651f0db72a57',1,'ENC424J600.h']]],
   ['setethrst',['SETETHRST',['../group__single__byte.html#ga8763648ea939c9f6494cca43828dcc0c',1,'ENC424J600.h']]],
   ['setpktdec',['SETPKTDEC',['../group__single__byte.html#gab4cdb8940073f2025cab184a4215510f',1,'ENC424J600.h']]],
@@ -20,11 +21,14 @@ var searchData=
   ['speed',['speed',['../structethernet_connection.html#abe17b4998b5f32ec626dfd11c84a2c07',1,'ethernetConnection']]],
   ['speed_5ft',['speed_t',['../group__ethernet.html#gaf44917bbf64327b78826bc2f74266af8',1,'ethernetTypes.h']]],
   ['speeds',['speeds',['../group__ethernet.html#gad51ff69ce00ee5c869723c572db0eefd',1,'ethernetTypes.h']]],
+  ['srcport',['srcPort',['../structtcp__connection.html#a26ebbf4f65c3f6fd9959d9cecef5c9d8',1,'tcp_connection']]],
   ['stack',['stack',['../structstack.html',1,'stack'],['../group__stack.html',1,'(Global Namespace)']]],
   ['stack_2ec',['stack.c',['../stack_8c.html',1,'']]],
   ['stack_2eh',['stack.h',['../stack_8h.html',1,'']]],
   ['stack_5finit',['stack_init',['../group__stack.html#ga7e5b90321d20106f3f69e6c06c7f41b3',1,'stack_init():&#160;stack.c'],['../group__stack.html#ga7e5b90321d20106f3f69e6c06c7f41b3',1,'stack_init():&#160;stack.c']]],
   ['stack_5ft',['stack_t',['../group__stack.html#ga575defe06cb6cd9e4b02d90a916721b3',1,'stack.h']]],
   ['start',['start',['../structmemory_field.html#a171a2b5d11b1a5891c38a98ac731a161',1,'memoryField']]],
+  ['state',['state',['../structtcp__connection.html#a0b57aa10271a66f3dc936bba1d2f3830',1,'tcp_connection']]],
+  ['syn',['SYN',['../structtcp__flags.html#ab8a10a6e67b6742349c79a0859499c75',1,'tcp_flags']]],
   ['system_2eh',['system.h',['../system_8h.html',1,'']]]
 ];

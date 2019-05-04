@@ -28,12 +28,12 @@
 memoryField_t static occupiedMemory[NUMBER_OF_MEMORY_FIELDS];
 uint8_t static numberOfOccupiedFields = 0;
 
-void initBuffer() {
+/*void initBuffer() {
     for (uint8_t i = 0; i < NUMBER_OF_MEMORY_FIELDS; i++) {
         occupiedMemory[i].fIsAssigned = 0;
         occupiedMemory[i].fOutOfMemory = 0;
     }
-}
+}*/
 
 bool_t static entireMemoryEmpty() {
     for (uint8_t i = 0; i < NUMBER_OF_MEMORY_FIELDS; i++) {
@@ -51,7 +51,7 @@ bool_t static entireMemoryFull() {
     return true;
 }
 
-bool_t static isOnlyOneAssigned(uint8_t index) {
+/*bool_t static isOnlyOneAssigned(uint8_t index) {
     for (uint8_t i = 0; i < NUMBER_OF_MEMORY_FIELDS; i++) {
         if (i == index)
             continue;
@@ -59,7 +59,7 @@ bool_t static isOnlyOneAssigned(uint8_t index) {
             return false;
     }
     return true;
-}
+}*/
 
 bool_t static checkForOverlap(memoryField_t a, memoryField_t b) {
     if ((a.start == b.start) ||
@@ -165,7 +165,7 @@ memoryField_t memory_txFrameRequest(uint16_t length) {
             //We have found a memory field that is not assigned
             //Let's get the end address of the previous field (notice it may be the 0th field, so we have to wrap around)
             //Put the start address of the current field next to the end address of the previous field
-            occupiedMemory[freeIndex].start = occupiedMemory[(freeIndex == 0) ? NUMBER_OF_MEMORY_FIELDS - 1 : freeIndex - 1].end + 1;
+            occupiedMemory[freeIndex].start = (unsigned)occupiedMemory[(freeIndex == 0) ? NUMBER_OF_MEMORY_FIELDS - 1 : freeIndex - 1].end + 1;
             if (occupiedMemory[freeIndex].start + length > RX_DATA_START_ADDRESS) {
                 if (freeIndex == NUMBER_OF_MEMORY_FIELDS - 1 && !occupiedMemory[0].fIsAssigned) {
                     occupiedMemory[freeIndex].length = length;

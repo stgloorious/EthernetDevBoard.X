@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getmillis',['getMillis',['../time_8c.html#ac3dfb63802bb70180628011a02da4854',1,'getMillis():&#160;time.c'],['../group__stack.html#gac3dfb63802bb70180628011a02da4854',1,'getMillis():&#160;time.c']]]
+  ['handlestackbackgroundtasks',['handleStackBackgroundTasks',['../group__background.html#gaf6bebfbbcd06181803783d2504fe318e',1,'handleStackBackgroundTasks(stack_t *stack):&#160;backgroundTasks.c'],['../group__background.html#gaf6bebfbbcd06181803783d2504fe318e',1,'handleStackBackgroundTasks(stack_t *stack):&#160;backgroundTasks.c']]]
 ];

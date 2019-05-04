@@ -1,37 +1,37 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"60 src/eth/../system/../stack/protocols/../protocols/ipv4Types.h
+"62 src/eth/../system/../stack/protocols/../protocols/ipv4Types.h
 [s S614 `uc -> 4 `i ]
 [n S614 ipv4_address address ]
-"58 src/eth/../eth/../eth/../eth/ethernetTypes.h
+"60 src/eth/../eth/../eth/../eth/ethernetTypes.h
 [s S4 `uc -> 6 `i ]
 [n S4 macaddress address ]
 "30 src/eth/ethernet.c
-[c E102 2048 2054 2114 34824 .. ]
-[n E102 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL  ]
+[c E106 2048 2054 2114 34824 65535 .. ]
+[n E106 etherTypes ETHERTYPE_IPv4 ETHERTYPE_ARP ETHERTYPE_WOL ETHERTYPE_FLOW_CONTROL ETHERTYPE_UNKNOWN  ]
 "35 src/eth/../eth/../eth/../eth/../mem/memoryTypes.h
 [s S3 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 ]
 [n S3 memoryField start end length fIsAssigned fOutOfMemory index ]
 "36 src/eth/../eth/../eth/../eth/../enc424j600/rsv.h
 [s S2 `ui 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2 RSV length packetPreviouslyIgnored carrierEventPreviouslySeen CRCError lengthCheckError lengthOutOfRange receivedOk multicast broadcast dribbleNibble controlFrame pauseFrame unknownOpcode vlan runtFilter notMeFilter hashFilter magicFilter patternMatch unicast ]
-"86 src/eth/../eth/../eth/../eth/ethernetTypes.h
-[s S5 `ui 1 `S4 1 `S4 1 `E102 1 `S3 1 `S2 1 `ul 1 ]
+"88 src/eth/../eth/../eth/../eth/ethernetTypes.h
+[s S5 `ui 1 `S4 1 `S4 1 `E106 1 `S3 1 `S2 1 `ul 1 ]
 [n S5 ethernetFrame length source destination ethertype memory receiveStatusVector tReceived ]
 "30 src/eth/ethernet.c
-[c E29 0 1 2 3 4 .. ]
-[n E29 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4  ]
-"119 src/eth/../eth/../eth/../stack/error.h
+[c E29 0 1 2 3 4 5 .. ]
+[n E29 error_modules ERROR_MODULE_MEMORY ERROR_MODULE_ETHERNET_CONTROLLER ERROR_MODULE_ETHERNET ERROR_MODULE_ARP ERROR_MODULE_IPv4 ERROR_MODULE_ICMP  ]
+"125 src/eth/../eth/../eth/../stack/error.h
 [s S1 `E29 1 `ui 1 ]
 [n S1 error module code ]
 "62 src/eth/../eth/../mem/memoryController.h
 [v _memory_txFrameRequest `(S3 ~T0 @X0 0 ef1`ui ]
 "40 src/eth/ethernet.c
-[c E42 101 199 .. ]
-[n E42 errors_memory ERROR_MEMORY_OUT_OF_MEMORY ERROR_MEMORY_UNKNOWN  ]
+[c E44 101 199 .. ]
+[n E44 errors_memory ERROR_MEMORY_OUT_OF_MEMORY ERROR_MEMORY_UNKNOWN  ]
 "209 src/eth/../eth/../eth/ethernetController.h
 [v _ethernetController_writeDestinationMACAddress `(v ~T0 @X0 0 ef2`S4`S3 ]
 "202
-[v _ethernetController_writeEtherTypeFieldToBuffer `(v ~T0 @X0 0 ef2`E102`S3 ]
+[v _ethernetController_writeEtherTypeFieldToBuffer `(v ~T0 @X0 0 ef2`E106`S3 ]
 "48 src/eth/../eth/../eth/../eth/../stack/time.h
 [v _getMillis `(ul ~T0 @X0 0 ef ]
 "294 src/eth/../eth/../eth/ethernetController.h
@@ -41,21 +41,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 "276
 [v _ethernetController_getRSV `(S2 ~T0 @X0 0 ef1`ui ]
 "270
-[v _ethernetController_getEtherTypeField `(E102 ~T0 @X0 0 ef1`S3 ]
-"43 src/eth/../system/uart.h
+[v _ethernetController_getEtherTypeField `(E106 ~T0 @X0 0 ef1`S3 ]
+"59 src/eth/../system/uart.h
 [v _UARTTransmitText `(v ~T0 @X0 0 ef1`*Cuc ]
-"62
-[v _intToString `(*uc ~T0 @X0 0 ef1`ul ]
+"87
+[v _intToString `(*uc ~T0 @X0 0 ef2`ul`uc ]
+"73
+[v _UART_setFormat `(v ~T0 @X0 0 ef1`uc ]
+"97 src/eth/ethernet.c
+[c E6027 0 1 2 3 4 5 6 7 .. ]
+[n E6027 UART_colors UART_COLOR_BG_RED UART_COLOR_BG_GREEN UART_COLOR_BG_BLUE UART_COLOR_BG_YELLOW UART_COLOR_BG_MAGENTA UART_COLOR_BG_CYAN UART_COLOR_FG_YELLOW UART_COLOR_FG_BLUE  ]
+"78 src/eth/../system/uart.h
+[v _UART_resetFormat `(v ~T0 @X0 0 ef ]
+"101
+[v _etherTypeToString `(*uc ~T0 @X0 0 ef1`E106 ]
 "56 src/eth/../system/../stack/protocols/../protocols/arp.h
 [v _arp_handleNewPacket `(v ~T0 @X0 0 ef1`*S5 ]
 "87 src/eth/../system/../stack/protocols/ipv4.h
 [v _ipv4_handleNewPacket `(v ~T0 @X0 0 ef1`*S5 ]
-"76 src/eth/../system/uart.h
+"94 src/eth/../system/uart.h
 [v _macToString `(*uc ~T0 @X0 0 ef1`S4 ]
-"83
-[v _etherTypeToString `(*uc ~T0 @X0 0 ef1`E102 ]
-"55
-[v _UARTTransmitInt `(v ~T0 @X0 0 ef1`ul ]
 "229 src/eth/../eth/../eth/ethernetController.h
 [v _ethernetController_dropPacket `(v ~T0 @X0 0 ef ]
 [; ;stdint.h: 13: typedef signed char int8_t;
@@ -91,46 +96,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;error.h: 47: ERROR_MODULE_ETHERNET_CONTROLLER,
 [; ;error.h: 48: ERROR_MODULE_ETHERNET,
 [; ;error.h: 49: ERROR_MODULE_ARP,
-[; ;error.h: 50: ERROR_MODULE_IPv4
-[; ;error.h: 51: } error_module_t;
-[; ;error.h: 56: enum module_offsets {
-[; ;error.h: 57: ERROR_MEMORY_OFFSET = 100,
-[; ;error.h: 58: ERROR_ETHERNET_OFFSET = 200,
-[; ;error.h: 59: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
-[; ;error.h: 60: ERROR_ARP_OFFSET = 400,
-[; ;error.h: 61: ERROR_IPv4_OFFSET = 500
-[; ;error.h: 62: };
-[; ;error.h: 67: enum errors_memory {
-[; ;error.h: 68: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
-[; ;error.h: 69: ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
-[; ;error.h: 70: };
-[; ;error.h: 75: enum error_ethernet {
-[; ;error.h: 76: ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
-[; ;error.h: 77: ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
-[; ;error.h: 78: };
-[; ;error.h: 83: enum errors_ethernetController {
-[; ;error.h: 85: ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
-[; ;error.h: 86: ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE = ERROR_ETHERNET_CONTROLLER_OFFSET + 2,
-[; ;error.h: 88: ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OFFSET + 3,
-[; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
-[; ;error.h: 91: };
-[; ;error.h: 96: enum errors_arp {
-[; ;error.h: 97: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
-[; ;error.h: 98: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
-[; ;error.h: 99: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
-[; ;error.h: 100: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
-[; ;error.h: 101: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
-[; ;error.h: 102: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
-[; ;error.h: 103: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
-[; ;error.h: 104: };
-[; ;error.h: 109: enum errors_ipv4 {
-[; ;error.h: 110: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
-[; ;error.h: 111: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
-[; ;error.h: 112: };
-[; ;error.h: 119: typedef struct error {
-[; ;error.h: 123: error_module_t module;
-[; ;error.h: 129: uint16_t code;
-[; ;error.h: 130: } error_t;
+[; ;error.h: 50: ERROR_MODULE_IPv4,
+[; ;error.h: 51: ERROR_MODULE_ICMP
+[; ;error.h: 52: } error_module_t;
+[; ;error.h: 57: enum module_offsets {
+[; ;error.h: 58: ERROR_MEMORY_OFFSET = 100,
+[; ;error.h: 59: ERROR_ETHERNET_OFFSET = 200,
+[; ;error.h: 60: ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
+[; ;error.h: 61: ERROR_ARP_OFFSET = 400,
+[; ;error.h: 62: ERROR_IPv4_OFFSET = 500,
+[; ;error.h: 63: ERROR_ICMP_OFFSET = 600
+[; ;error.h: 64: };
+[; ;error.h: 69: enum errors_memory {
+[; ;error.h: 70: ERROR_MEMORY_OUT_OF_MEMORY = ERROR_MEMORY_OFFSET + 1,
+[; ;error.h: 71: ERROR_MEMORY_UNKNOWN = ERROR_MEMORY_OFFSET + 99
+[; ;error.h: 72: };
+[; ;error.h: 77: enum error_ethernet {
+[; ;error.h: 78: ERROR_ETHERNET_SYMBOL_ERRORS = ERROR_ETHERNET_OFFSET + 1,
+[; ;error.h: 79: ERROR_ETHERNET_CRC_ERROR = ERROR_ETHERNET_OFFSET + 2
+[; ;error.h: 80: };
+[; ;error.h: 85: enum errors_ethernetController {
+[; ;error.h: 87: ERROR_ETHERNET_CONTROLLER_UNKNOWN_DEVICE_ID = ERROR_ETHERNET_CONTROLLER_OFFSET + 1,
+[; ;error.h: 88: ERROR_ETHERNET_CONTROLLER_UNRESPONSIVE = ERROR_ETHERNET_CONTROLLER_OFFSET + 2,
+[; ;error.h: 90: ERROR_ETHERNET_CONTROLLER_PACKET_COUNTER_OVERFLOW = ERROR_ETHERNET_CONTROLLER_OFFSET + 3,
+[; ;error.h: 92: ERROR_ETHERNET_CONTROLLER_UNKNOWN = ERROR_ETHERNET_CONTROLLER_OFFSET + 99
+[; ;error.h: 93: };
+[; ;error.h: 98: enum errors_arp {
+[; ;error.h: 99: ERROR_ARP_WAITING = ERROR_ARP_OFFSET + 1,
+[; ;error.h: 100: ERROR_ARP_MAXIMUM_NUMBER_OF_PROBES_REACHED = ERROR_ARP_OFFSET + 3,
+[; ;error.h: 101: ERROR_ARP_MAXIMUM_NUMBER_OF_REQUESTS_REACHED = ERROR_ARP_OFFSET + 4,
+[; ;error.h: 102: ERROR_ARP_INVALID_VALUES = ERROR_ARP_OFFSET + 5,
+[; ;error.h: 103: ERROR_ARP_IPv4_ADDRESS_CONFLICT = ERROR_ARP_OFFSET + 6,
+[; ;error.h: 104: ERROR_ARP_CONNECTION_FAILED = ERROR_ARP_OFFSET + 7,
+[; ;error.h: 105: ERROR_ARP_UNKNOWN = ERROR_ARP_OFFSET + 99
+[; ;error.h: 106: };
+[; ;error.h: 111: enum errors_ipv4 {
+[; ;error.h: 112: ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
+[; ;error.h: 113: ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+[; ;error.h: 114: };
+[; ;error.h: 116: enum errors_icmp {
+[; ;error.h: 117: ERROR_ICMP_MESSAGE_TOO_LONG = ERROR_ICMP_OFFSET + 1,
+[; ;error.h: 118: };
+[; ;error.h: 125: typedef struct error {
+[; ;error.h: 129: error_module_t module;
+[; ;error.h: 135: uint16_t code;
+[; ;error.h: 136: } error_t;
 [; ;rsv.h: 36: typedef struct RSV {
 [; ;rsv.h: 42: uint16_t length;
 [; ;rsv.h: 43: uint8_t packetPreviouslyIgnored : 1;
@@ -169,39 +179,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernetTypes.h: 50: ETHERTYPE_IPv4 = 0x0800,
 [; ;ethernetTypes.h: 51: ETHERTYPE_ARP = 0x0806,
 [; ;ethernetTypes.h: 52: ETHERTYPE_WOL = 0x0842,
-[; ;ethernetTypes.h: 53: ETHERTYPE_FLOW_CONTROL = 0x8808
-[; ;ethernetTypes.h: 54: } etherType_t;
-[; ;ethernetTypes.h: 58: typedef struct macaddress {
-[; ;ethernetTypes.h: 59: uint8_t address[6];
-[; ;ethernetTypes.h: 60: } macaddress_t;
-[; ;ethernetTypes.h: 64: typedef enum linkStates {
-[; ;ethernetTypes.h: 65: NO_LINK,
-[; ;ethernetTypes.h: 66: LINK_ESTABLISHED
-[; ;ethernetTypes.h: 67: } linkState_t;
-[; ;ethernetTypes.h: 71: typedef enum speeds {
-[; ;ethernetTypes.h: 72: TEN_MBIT,
-[; ;ethernetTypes.h: 73: HUNDRED_MBIT
-[; ;ethernetTypes.h: 74: } speed_t;
-[; ;ethernetTypes.h: 78: typedef enum duplexStates {
-[; ;ethernetTypes.h: 79: HALF_DUPLEX,
-[; ;ethernetTypes.h: 80: FULL_DUPLEX
-[; ;ethernetTypes.h: 81: } duplexState_t;
-[; ;ethernetTypes.h: 86: typedef struct ethernetFrame {
-[; ;ethernetTypes.h: 87: uint16_t length;
-[; ;ethernetTypes.h: 88: macaddress_t source;
-[; ;ethernetTypes.h: 89: macaddress_t destination;
-[; ;ethernetTypes.h: 90: etherType_t ethertype;
-[; ;ethernetTypes.h: 91: memoryField_t memory;
-[; ;ethernetTypes.h: 96: RSV_t receiveStatusVector;
-[; ;ethernetTypes.h: 100: time_t tReceived;
-[; ;ethernetTypes.h: 101: } ethernetFrame_t;
-[; ;ethernetTypes.h: 106: typedef struct ethernetConnection {
-[; ;ethernetTypes.h: 107: linkState_t link;
-[; ;ethernetTypes.h: 108: speed_t speed;
-[; ;ethernetTypes.h: 109: duplexState_t duplex;
-[; ;ethernetTypes.h: 110: macaddress_t source;
-[; ;ethernetTypes.h: 111: macaddress_t destination;
-[; ;ethernetTypes.h: 112: } ethernetConnection_t;
+[; ;ethernetTypes.h: 53: ETHERTYPE_FLOW_CONTROL = 0x8808,
+[; ;ethernetTypes.h: 55: ETHERTYPE_UNKNOWN = 0xffff
+[; ;ethernetTypes.h: 56: } etherType_t;
+[; ;ethernetTypes.h: 60: typedef struct macaddress {
+[; ;ethernetTypes.h: 61: uint8_t address[6];
+[; ;ethernetTypes.h: 62: } macaddress_t;
+[; ;ethernetTypes.h: 66: typedef enum linkStates {
+[; ;ethernetTypes.h: 67: NO_LINK,
+[; ;ethernetTypes.h: 68: LINK_ESTABLISHED
+[; ;ethernetTypes.h: 69: } linkState_t;
+[; ;ethernetTypes.h: 73: typedef enum speeds {
+[; ;ethernetTypes.h: 74: TEN_MBIT,
+[; ;ethernetTypes.h: 75: HUNDRED_MBIT
+[; ;ethernetTypes.h: 76: } speed_t;
+[; ;ethernetTypes.h: 80: typedef enum duplexStates {
+[; ;ethernetTypes.h: 81: HALF_DUPLEX,
+[; ;ethernetTypes.h: 82: FULL_DUPLEX
+[; ;ethernetTypes.h: 83: } duplexState_t;
+[; ;ethernetTypes.h: 88: typedef struct ethernetFrame {
+[; ;ethernetTypes.h: 89: uint16_t length;
+[; ;ethernetTypes.h: 90: macaddress_t source;
+[; ;ethernetTypes.h: 91: macaddress_t destination;
+[; ;ethernetTypes.h: 92: etherType_t ethertype;
+[; ;ethernetTypes.h: 93: memoryField_t memory;
+[; ;ethernetTypes.h: 98: RSV_t receiveStatusVector;
+[; ;ethernetTypes.h: 102: time_t tReceived;
+[; ;ethernetTypes.h: 103: } ethernetFrame_t;
+[; ;ethernetTypes.h: 108: typedef struct ethernetConnection {
+[; ;ethernetTypes.h: 109: linkState_t link;
+[; ;ethernetTypes.h: 110: speed_t speed;
+[; ;ethernetTypes.h: 111: duplexState_t duplex;
+[; ;ethernetTypes.h: 112: macaddress_t source;
+[; ;ethernetTypes.h: 113: macaddress_t destination;
+[; ;ethernetTypes.h: 114: } ethernetConnection_t;
 [; ;interrupt.h: 35: typedef struct interruptFlags {
 [; ;interrupt.h: 36: uint8_t MODEXIF : 1;
 [; ;interrupt.h: 37: uint8_t HASHIF : 1;
@@ -273,8 +284,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memoryController.h: 91: bool_t static entireMemoryEmpty();
 [; ;memoryController.h: 97: bool_t static entireMemoryFull();
 [; ;memoryController.h: 104: bool_t static isOnlyOneAssigned(uint8_t index);
-[; ;ethernet.h: 54: error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
-[; ;ethernet.h: 65: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
+[; ;ethernet.h: 55: error_t ethernet_txFrameRequest(ethernetFrame_t *frame);
+[; ;ethernet.h: 66: error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame);
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -5354,34 +5365,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4Types.h: 40: typedef enum ipv4_protocols {
 [; ;ipv4Types.h: 41: IPv4_PROTOCOL_ICMP = 1,
 [; ;ipv4Types.h: 42: IPv4_PROTOCOL_TCP = 6,
-[; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17
-[; ;ipv4Types.h: 45: } ipv4_protocol_t;
-[; ;ipv4Types.h: 60: typedef struct ipv4_address {
-[; ;ipv4Types.h: 61: uint8_t address[4];
-[; ;ipv4Types.h: 62: } ipv4_address_t;
-[; ;ipv4Types.h: 67: typedef struct ipv4_header {
-[; ;ipv4Types.h: 72: uint8_t version;
-[; ;ipv4Types.h: 73: uint8_t headerLength;
-[; ;ipv4Types.h: 80: uint8_t dscp;
-[; ;ipv4Types.h: 81: uint8_t ecn;
-[; ;ipv4Types.h: 88: uint16_t totalLength;
-[; ;ipv4Types.h: 95: uint16_t identification;
-[; ;ipv4Types.h: 102: uint8_t flags;
-[; ;ipv4Types.h: 103: uint16_t fragmentOffset;
-[; ;ipv4Types.h: 110: uint8_t timeToLive;
-[; ;ipv4Types.h: 117: ipv4_protocol_t protocol;
-[; ;ipv4Types.h: 124: uint16_t checksum;
-[; ;ipv4Types.h: 131: ipv4_address_t source;
-[; ;ipv4Types.h: 138: ipv4_address_t destination;
-[; ;ipv4Types.h: 141: } ipv4_header_t;
-[; ;ipv4Types.h: 149: typedef struct ipv4_packet {
-[; ;ipv4Types.h: 153: ipv4_header_t ipv4Header;
-[; ;ipv4Types.h: 157: memoryField_t memory;
-[; ;ipv4Types.h: 161: ethernetFrame_t ethernet;
-[; ;ipv4Types.h: 162: } ipv4_packet_t;
-"164 src/eth/../system/../stack/protocols/../protocols/ipv4Types.h
+[; ;ipv4Types.h: 43: IPv4_PROTOCOL_UDP = 17,
+[; ;ipv4Types.h: 45: IPv4_PROTOCOL_UNKNOWN = 255
+[; ;ipv4Types.h: 47: } ipv4_protocol_t;
+[; ;ipv4Types.h: 62: typedef struct ipv4_address {
+[; ;ipv4Types.h: 63: uint8_t address[4];
+[; ;ipv4Types.h: 64: } ipv4_address_t;
+[; ;ipv4Types.h: 69: typedef struct ipv4_header {
+[; ;ipv4Types.h: 74: uint8_t version;
+[; ;ipv4Types.h: 75: uint8_t headerLength;
+[; ;ipv4Types.h: 82: uint8_t dscp;
+[; ;ipv4Types.h: 83: uint8_t ecn;
+[; ;ipv4Types.h: 90: uint16_t totalLength;
+[; ;ipv4Types.h: 97: uint16_t identification;
+[; ;ipv4Types.h: 104: uint8_t flags;
+[; ;ipv4Types.h: 105: uint16_t fragmentOffset;
+[; ;ipv4Types.h: 112: uint8_t timeToLive;
+[; ;ipv4Types.h: 119: ipv4_protocol_t protocol;
+[; ;ipv4Types.h: 126: uint16_t checksum;
+[; ;ipv4Types.h: 133: ipv4_address_t source;
+[; ;ipv4Types.h: 140: ipv4_address_t destination;
+[; ;ipv4Types.h: 143: } ipv4_header_t;
+[; ;ipv4Types.h: 151: typedef struct ipv4_packet {
+[; ;ipv4Types.h: 155: ipv4_header_t ipv4Header;
+[; ;ipv4Types.h: 159: memoryField_t memory;
+[; ;ipv4Types.h: 163: ethernetFrame_t ethernet;
+[; ;ipv4Types.h: 164: } ipv4_packet_t;
+"166 src/eth/../system/../stack/protocols/../protocols/ipv4Types.h
 [v _ipSource `S614 ~T0 @X0 1 e ]
-[; ;ipv4Types.h: 164: ipv4_address_t ipSource;
+[; ;ipv4Types.h: 166: ipv4_address_t ipSource;
 [; ;arpTypes.h: 39: typedef struct arp_message {
 [; ;arpTypes.h: 40: uint16_t htype;
 [; ;arpTypes.h: 41: uint16_t ptype;
@@ -5433,14 +5445,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;backgroundTasksTypes.h: 42: error_t err;
 [; ;backgroundTasksTypes.h: 53: uint8_t fPacketPending;
 [; ;backgroundTasksTypes.h: 55: } backgroundTaskHandler_t;
-[; ;stack.h: 44: typedef struct stack {
-[; ;stack.h: 45: ethernetFrame_t newReceivedFrame;
-[; ;stack.h: 46: ethernetConnection_t ethernet;
-[; ;stack.h: 47: backgroundTaskHandler_t background;
-[; ;stack.h: 48: ipv4_packet_t pendingPacketToSend;
-[; ;stack.h: 49: ipv4_address_t source;
-[; ;stack.h: 50: } stack_t;
-[; ;stack.h: 57: error_t stack_init();
+[; ;tcpTypes.h: 35: typedef struct tcp_flags {
+[; ;tcpTypes.h: 36: uint8_t NS : 1;
+[; ;tcpTypes.h: 37: uint8_t CWR : 1;
+[; ;tcpTypes.h: 38: uint8_t ECE : 1;
+[; ;tcpTypes.h: 39: uint8_t URG : 1;
+[; ;tcpTypes.h: 40: uint8_t ACK : 1;
+[; ;tcpTypes.h: 41: uint8_t PSH : 1;
+[; ;tcpTypes.h: 42: uint8_t RST : 1;
+[; ;tcpTypes.h: 43: uint8_t SYN : 1;
+[; ;tcpTypes.h: 44: uint8_t FIN : 1;
+[; ;tcpTypes.h: 45: } tcp_flags_t;
+[; ;tcpTypes.h: 47: typedef struct tcp_header {
+[; ;tcpTypes.h: 48: uint16_t srcPort;
+[; ;tcpTypes.h: 49: uint16_t dstPort;
+[; ;tcpTypes.h: 50: uint32_t seqNumber;
+[; ;tcpTypes.h: 51: uint32_t ackNumber;
+[; ;tcpTypes.h: 52: uint8_t dataOffset;
+[; ;tcpTypes.h: 53: tcp_flags_t flags;
+[; ;tcpTypes.h: 54: uint16_t windowSize;
+[; ;tcpTypes.h: 55: uint16_t checksum;
+[; ;tcpTypes.h: 56: uint16_t urgentPointer;
+[; ;tcpTypes.h: 57: } tcp_header_t;
+[; ;tcpTypes.h: 59: typedef struct tcp_connection {
+[; ;tcpTypes.h: 60: ipv4_address_t ipServer;
+[; ;tcpTypes.h: 61: ipv4_address_t ipClient;
+[; ;tcpTypes.h: 62: uint16_t srcPort;
+[; ;tcpTypes.h: 63: uint16_t dstPort;
+[; ;tcpTypes.h: 64: uint32_t seqNumber;
+[; ;tcpTypes.h: 65: uint8_t state;
+[; ;tcpTypes.h: 66: } tcp_connection_t;
+[; ;tcpTypes.h: 68: typedef enum tcp_state {
+[; ;tcpTypes.h: 69: TCP_STATE_LISTEN,
+[; ;tcpTypes.h: 70: TCP_STATE_SYN_SENT,
+[; ;tcpTypes.h: 71: TCP_STATE_SYN_RECEIVED,
+[; ;tcpTypes.h: 72: TCP_STATE_ESTABLISHED,
+[; ;tcpTypes.h: 73: TCP_STATE_FIN_WAIT1,
+[; ;tcpTypes.h: 74: TCP_STATE_FIN_WAIT2,
+[; ;tcpTypes.h: 75: TCP_STATE_CLOSE_WAIT,
+[; ;tcpTypes.h: 76: TCP_STATE_CLOSING,
+[; ;tcpTypes.h: 77: TCP_STATE_LAST_ACK,
+[; ;tcpTypes.h: 78: TCP_STATE_TIME_WAIT,
+[; ;tcpTypes.h: 79: TCP_STATE_CLOSED
+[; ;tcpTypes.h: 80: } tcp_state_t;
+[; ;tcp.h: 34: error_t tcp_handleNewPacket(ipv4_header_t header, memoryField_t ipPayload);
+[; ;tcp.h: 36: error_t tcp_parseHeader(memoryField_t ipPayload, tcp_header_t* header);
+[; ;tcp.h: 38: error_t tcp_stateMachine(tcp_connection_t *connection, tcp_header_t *newHeader);
+[; ;tcp.h: 40: error_t tcp_listen(tcp_connection_t *connection);
+[; ;tcp.h: 42: error_t tcp_sendSYNACK(tcp_connection_t *connection, uint32_t seq);
+[; ;tcp.h: 44: error_t static tcp_calculateHeaderChecksum(tcp_header_t *tcpHeader, ipv4_header_t ipv4Header);
+[; ;tcp.h: 46: void tcp_init();
+[; ;stack.h: 45: typedef struct stack {
+[; ;stack.h: 46: ethernetFrame_t newReceivedFrame;
+[; ;stack.h: 47: ethernetConnection_t ethernet;
+[; ;stack.h: 48: backgroundTaskHandler_t background;
+[; ;stack.h: 49: ipv4_packet_t pendingPacketToSend;
+[; ;stack.h: 50: ipv4_address_t source;
+[; ;stack.h: 51: uint8_t fipValid:1;
+[; ;stack.h: 52: } stack_t;
+[; ;stack.h: 59: error_t stack_init();
 [; ;ipv4.h: 46: void ipv4_txFrameRequest(ipv4_packet_t *packet);
 [; ;ipv4.h: 51: void ipv4_calculateHeaderChecksum(ipv4_header_t *header);
 [; ;ipv4.h: 58: bool_t static ipv4_checkHeaderChecksum(ipv4_header_t *header);
@@ -5459,17 +5522,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ipv4.h: 152: bool_t ipv4_cmp(ipv4_address_t* a, ipv4_address_t *b);
 [; ;ipv4.h: 159: bool_t ipv4_isAllZero(ipv4_address_t *ip);
 [; ;ipv4.h: 165: void ipv4_setToAllZero(ipv4_address_t *ip);
-[; ;uart.h: 37: void UARTInit(void);
-[; ;uart.h: 43: void UARTTransmitText(const char *str);
-[; ;uart.h: 49: void DEBUG_MSG(char *text);
-[; ;uart.h: 55: void UARTTransmitInt(uint32_t val);
-[; ;uart.h: 62: char *intToString(uint32_t val);
-[; ;uart.h: 69: char *hexToString(uint32_t val);
-[; ;uart.h: 76: char *macToString(macaddress_t addr);
-[; ;uart.h: 83: char *etherTypeToString(etherType_t ethertype);
-[; ;uart.h: 90: char *ipProtocolToString(ipv4_protocol_t protocol);
-[; ;uart.h: 97: char *ipAdressToString(ipv4_address_t ip);
-[; ;uart.h: 104: char *arpEntryToString(arp_tableEntry_t table);
+[; ;uart.h: 34: typedef enum UART_colors {
+[; ;uart.h: 35: UART_COLOR_BG_RED,
+[; ;uart.h: 36: UART_COLOR_BG_GREEN,
+[; ;uart.h: 37: UART_COLOR_BG_BLUE,
+[; ;uart.h: 38: UART_COLOR_BG_YELLOW,
+[; ;uart.h: 39: UART_COLOR_BG_MAGENTA,
+[; ;uart.h: 40: UART_COLOR_BG_CYAN,
+[; ;uart.h: 42: UART_COLOR_FG_YELLOW,
+[; ;uart.h: 43: UART_COLOR_FG_BLUE
+[; ;uart.h: 44: } UART_colors_t;
+[; ;uart.h: 46: enum UART_specials {
+[; ;uart.h: 47: UART_LINE_SEPARATOR
+[; ;uart.h: 48: };
+[; ;uart.h: 53: void UARTInit(void);
+[; ;uart.h: 59: void UARTTransmitText(const char *str);
+[; ;uart.h: 67: char *UART_special(uint8_t code);
+[; ;uart.h: 73: void UART_setFormat(uint8_t color);
+[; ;uart.h: 78: void UART_resetFormat();
+[; ;uart.h: 87: char *intToString(uint32_t val, uint8_t b);
+[; ;uart.h: 94: char *macToString(macaddress_t addr);
+[; ;uart.h: 101: char *etherTypeToString(etherType_t ethertype);
+[; ;uart.h: 108: char *ipProtocolToString(ipv4_protocol_t protocol);
+[; ;uart.h: 115: char *ipAdressToString(ipv4_address_t ip);
+[; ;uart.h: 122: char *arpEntryToString(arp_tableEntry_t table);
 "30 src/eth/ethernet.c
 [v _ethernet_txFrameRequest `(S1 ~T0 @X0 1 ef1`*S5 ]
 {
@@ -5491,39 +5567,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _frame 4 ( _memory_txFrameRequest (1 . *U _frame 0 ]
 [; ;ethernet.c: 37: if (frame->memory.fOutOfMemory) {
 "37
-[e $ ! != -> . . *U _frame 4 4 `i -> -> -> 0 `i `uc `i 622  ]
+[e $ ! != -> . . *U _frame 4 4 `i -> -> -> 0 `i `uc `i 625  ]
 {
 [; ;ethernet.c: 39: err.module = ERROR_MODULE_MEMORY;
 "39
 [e = . _err 0 . `E29 0 ]
 [; ;ethernet.c: 40: err.code = ERROR_MEMORY_OUT_OF_MEMORY;
 "40
-[e = . _err 1 -> . `E42 0 `ui ]
+[e = . _err 1 -> . `E44 0 `ui ]
 [; ;ethernet.c: 41: return err;
 "41
 [e ) _err ]
-[e $UE 621  ]
+[e $UE 624  ]
 "42
 }
-[e :U 622 ]
+[e :U 625 ]
 [; ;ethernet.c: 42: }
 [; ;ethernet.c: 43: if (!frame->memory.fIsAssigned) {
 "43
-[e $ ! ! != -> . . *U _frame 4 3 `i -> -> -> 0 `i `uc `i 623  ]
+[e $ ! ! != -> . . *U _frame 4 3 `i -> -> -> 0 `i `uc `i 626  ]
 {
 [; ;ethernet.c: 45: err.module = ERROR_MODULE_MEMORY;
 "45
 [e = . _err 0 . `E29 0 ]
 [; ;ethernet.c: 46: err.code = ERROR_MEMORY_UNKNOWN;
 "46
-[e = . _err 1 -> . `E42 1 `ui ]
+[e = . _err 1 -> . `E44 1 `ui ]
 [; ;ethernet.c: 47: return err;
 "47
 [e ) _err ]
-[e $UE 621  ]
+[e $UE 624  ]
 "48
 }
-[e :U 623 ]
+[e :U 626 ]
 [; ;ethernet.c: 48: }
 [; ;ethernet.c: 50: ethernetController_writeDestinationMACAddress(frame->destination, frame->memory);
 "50
@@ -5534,10 +5610,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ethernet.c: 52: return err;
 "52
 [e ) _err ]
-[e $UE 621  ]
+[e $UE 624  ]
 [; ;ethernet.c: 53: }
 "53
-[e :UE 621 ]
+[e :UE 624 ]
 }
 "55
 [v _ethernet_rxGetNewFrame `(S1 ~T0 @X0 1 ef1`*S5 ]
@@ -5547,8 +5623,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _frame `*S5 ~T0 @X0 1 r1 ]
 [f ]
 "56
-[v F5985 `ul ~T0 @X0 1 s counter ]
-[i F5985
+[v F6065 `ul ~T0 @X0 1 s counter ]
+[i F6065
 -> -> -> 0 `i `l `ul
 ]
 "57
@@ -5581,7 +5657,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . *U _frame 4 2 . . *U _frame 5 0 ]
 [; ;ethernet.c: 71: if (frame->memory.start + frame->memory.length > 0x5FFF) {
 "71
-[e $ ! > + . . *U _frame 4 0 . . *U _frame 4 2 -> -> 24575 `i `ui 625  ]
+[e $ ! > + . . *U _frame 4 0 . . *U _frame 4 2 -> -> 24575 `i `ui 628  ]
 {
 [; ;ethernet.c: 73: frame->memory.end = frame->memory.length - ((0x5FFF - 0x3000) - frame->memory.start) + 0x3000;
 "73
@@ -5589,185 +5665,194 @@ Version 3.2 HI-TECH Software Intermediate Code
 "74
 }
 [; ;ethernet.c: 74: } else {
-[e $U 626  ]
-[e :U 625 ]
+[e $U 629  ]
+[e :U 628 ]
 {
 [; ;ethernet.c: 75: frame->memory.end = frame->memory.start + frame->memory.length;
 "75
 [e = . . *U _frame 4 1 + . . *U _frame 4 0 . . *U _frame 4 2 ]
 "76
 }
-[e :U 626 ]
+[e :U 629 ]
 [; ;ethernet.c: 76: }
 [; ;ethernet.c: 77: frame->ethertype = ethernetController_getEtherTypeField(frame->memory);
 "77
 [e = . *U _frame 3 ( _ethernetController_getEtherTypeField (1 . *U _frame 4 ]
-[; ;ethernet.c: 79: UARTTransmitText("[");
-"79
-[e ( _UARTTransmitText (1 :s 1C ]
-[; ;ethernet.c: 80: UARTTransmitText(intToString(counter++));
+[; ;ethernet.c: 80: UARTTransmitText("[");
 "80
-[e ( _UARTTransmitText (1 -> ( _intToString (1 ++ F5985 -> -> -> 1 `i `l `ul `*Cuc ]
-[; ;ethernet.c: 81: UARTTransmitText("]");
+[e ( _UARTTransmitText (1 :s 1C ]
+[; ;ethernet.c: 81: UARTTransmitText(intToString(counter++, 10));
 "81
+[e ( _UARTTransmitText (1 -> ( _intToString (2 , ++ F6065 -> -> -> 1 `i `l `ul -> -> 10 `i `uc `*Cuc ]
+[; ;ethernet.c: 82: UARTTransmitText("]");
+"82
 [e ( _UARTTransmitText (1 :s 2C ]
-[; ;ethernet.c: 85: if (frame->receiveStatusVector.broadcast)
-"85
-[e $ ! != -> . . *U _frame 5 8 `i -> -> -> 0 `i `uc `i 627  ]
-[; ;ethernet.c: 86: UARTTransmitText("[Broadcast]");
-"86
-[e ( _UARTTransmitText (1 :s 3C ]
-[e :U 627 ]
-[; ;ethernet.c: 87: if (frame->receiveStatusVector.unicast)
+[; ;ethernet.c: 87: if (frame->receiveStatusVector.broadcast)
 "87
-[e $ ! != -> . . *U _frame 5 19 `i -> -> -> 0 `i `uc `i 628  ]
-[; ;ethernet.c: 88: UARTTransmitText("[Unicast]");
-"88
-[e ( _UARTTransmitText (1 :s 4C ]
-[e :U 628 ]
-[; ;ethernet.c: 89: if (!frame->receiveStatusVector.receivedOk) {
+[e $ ! != -> . . *U _frame 5 8 `i -> -> -> 0 `i `uc `i 630  ]
+[; ;ethernet.c: 89: UARTTransmitText("[Broadcast]");
 "89
-[e $ ! ! != -> . . *U _frame 5 6 `i -> -> -> 0 `i `uc `i 629  ]
-{
-[; ;ethernet.c: 90: UARTTransmitText("\033[41;1;10m");
-"90
-[e ( _UARTTransmitText (1 :s 5C ]
-[; ;ethernet.c: 91: UARTTransmitText("[Symbol Errors]");
-"91
-[e ( _UARTTransmitText (1 :s 6C ]
-[; ;ethernet.c: 92: UARTTransmitText("\033[0m");
-"92
-[e ( _UARTTransmitText (1 :s 7C ]
-"93
-}
-[e :U 629 ]
-[; ;ethernet.c: 93: }
-[; ;ethernet.c: 98: switch (frame->ethertype) {
-"98
-[e $U 631  ]
-{
-[; ;ethernet.c: 99: case ETHERTYPE_ARP:
-"99
-[e :U 632 ]
-[; ;ethernet.c: 100: UARTTransmitText("\033[44;10;10m");
-"100
-[e ( _UARTTransmitText (1 :s 8C ]
-[; ;ethernet.c: 101: UARTTransmitText("[ARP]");
-"101
-[e ( _UARTTransmitText (1 :s 9C ]
-[; ;ethernet.c: 102: UARTTransmitText("\033[0m");
-"102
-[e ( _UARTTransmitText (1 :s 10C ]
-[; ;ethernet.c: 103: arp_handleNewPacket(frame);
-"103
-[e ( _arp_handleNewPacket (1 _frame ]
-[; ;ethernet.c: 105: break;
-"105
-[e $U 630  ]
-[; ;ethernet.c: 106: case ETHERTYPE_IPv4:
-"106
-[e :U 633 ]
-[; ;ethernet.c: 107: UARTTransmitText("\033[45;10;10m");
-"107
-[e ( _UARTTransmitText (1 :s 11C ]
-[; ;ethernet.c: 108: UARTTransmitText("[IPv4]");
-"108
-[e ( _UARTTransmitText (1 :s 12C ]
-[; ;ethernet.c: 109: UARTTransmitText("\033[0m");
-"109
-[e ( _UARTTransmitText (1 :s 13C ]
-[; ;ethernet.c: 110: ipv4_handleNewPacket(frame);
-"110
-[e ( _ipv4_handleNewPacket (1 _frame ]
-[; ;ethernet.c: 111: break;
-"111
-[e $U 630  ]
-[; ;ethernet.c: 112: default:
-"112
-[e :U 634 ]
-[; ;ethernet.c: 113: UARTTransmitText("\033[41;1;10m");
-"113
-[e ( _UARTTransmitText (1 :s 14C ]
-[; ;ethernet.c: 114: UARTTransmitText("[Unknown EtherType]");
-"114
-[e ( _UARTTransmitText (1 :s 15C ]
-[; ;ethernet.c: 115: UARTTransmitText("[");
-"115
-[e ( _UARTTransmitText (1 :s 16C ]
-[; ;ethernet.c: 116: UARTTransmitText(macToString(frame->source));
-"116
-[e ( _UARTTransmitText (1 -> ( _macToString (1 . *U _frame 1 `*Cuc ]
-[; ;ethernet.c: 117: UARTTransmitText("->");
-"117
-[e ( _UARTTransmitText (1 :s 17C ]
-[; ;ethernet.c: 118: UARTTransmitText(macToString(frame->destination));
-"118
-[e ( _UARTTransmitText (1 -> ( _macToString (1 . *U _frame 2 `*Cuc ]
-[; ;ethernet.c: 119: UARTTransmitText("][");
-"119
-[e ( _UARTTransmitText (1 :s 18C ]
-[; ;ethernet.c: 120: UARTTransmitText(etherTypeToString(frame->ethertype));
-"120
-[e ( _UARTTransmitText (1 -> ( _etherTypeToString (1 . *U _frame 3 `*Cuc ]
-[; ;ethernet.c: 121: UARTTransmitText("][L=");
-"121
-[e ( _UARTTransmitText (1 :s 19C ]
-[; ;ethernet.c: 122: UARTTransmitInt(frame->length);
-"122
-[e ( _UARTTransmitInt (1 -> . *U _frame 0 `ul ]
-[; ;ethernet.c: 123: UARTTransmitText("] ");
-"123
-[e ( _UARTTransmitText (1 :s 20C ]
-[; ;ethernet.c: 124: UARTTransmitText("\033[0m");
-"124
-[e ( _UARTTransmitText (1 :s 21C ]
-[; ;ethernet.c: 125: ethernetController_dropPacket();
-"125
-[e ( _ethernetController_dropPacket ..  ]
-[; ;ethernet.c: 126: break;
-"126
-[e $U 630  ]
-"127
-}
-[; ;ethernet.c: 127: }
-[e $U 630  ]
-"98
-[e :U 631 ]
-[e [\ . *U _frame 3 , $ . `E102 1 632
- , $ . `E102 0 633
- 634 ]
-"127
+[e ( _UARTTransmitText (1 :s 3C ]
 [e :U 630 ]
-[; ;ethernet.c: 140: UARTTransmitText("\n\r");
-"140
-[e ( _UARTTransmitText (1 :s 22C ]
-[; ;ethernet.c: 142: return err;
-"142
-[e ) _err ]
-[e $UE 624  ]
-[; ;ethernet.c: 143: }
-"143
-[e :UE 624 ]
+[; ;ethernet.c: 91: if (frame->receiveStatusVector.unicast)
+"91
+[e $ ! != -> . . *U _frame 5 19 `i -> -> -> 0 `i `uc `i 631  ]
+[; ;ethernet.c: 93: UARTTransmitText("[Unicast]");
+"93
+[e ( _UARTTransmitText (1 :s 4C ]
+[e :U 631 ]
+[; ;ethernet.c: 95: if (!frame->receiveStatusVector.receivedOk) {
+"95
+[e $ ! ! != -> . . *U _frame 5 6 `i -> -> -> 0 `i `uc `i 632  ]
+{
+[; ;ethernet.c: 97: UART_setFormat(UART_COLOR_BG_RED);
+"97
+[e ( _UART_setFormat (1 -> . `E6027 0 `uc ]
+[; ;ethernet.c: 98: UARTTransmitText("[Symbol Errors]");
+"98
+[e ( _UARTTransmitText (1 :s 5C ]
+[; ;ethernet.c: 99: UART_resetFormat();
+"99
+[e ( _UART_resetFormat ..  ]
+"101
 }
-[a 7C 27 91 48 109 0 ]
-[a 10C 27 91 48 109 0 ]
-[a 13C 27 91 48 109 0 ]
-[a 21C 27 91 48 109 0 ]
-[a 5C 27 91 52 49 59 49 59 49 48 109 0 ]
-[a 14C 27 91 52 49 59 49 59 49 48 109 0 ]
-[a 11C 27 91 52 53 59 49 48 59 49 48 109 0 ]
-[a 8C 27 91 52 52 59 49 48 59 49 48 109 0 ]
+[e :U 632 ]
+[; ;ethernet.c: 101: }
+[; ;ethernet.c: 106: switch (frame->ethertype) {
+"106
+[e $U 634  ]
+{
+[; ;ethernet.c: 107: case ETHERTYPE_ARP:
+"107
+[e :U 635 ]
+[; ;ethernet.c: 109: UART_setFormat(UART_COLOR_BG_BLUE);
+"109
+[e ( _UART_setFormat (1 -> . `E6027 2 `uc ]
+[; ;ethernet.c: 110: UARTTransmitText("[");
+"110
+[e ( _UARTTransmitText (1 :s 6C ]
+[; ;ethernet.c: 111: UARTTransmitText(etherTypeToString(ETHERTYPE_ARP));
+"111
+[e ( _UARTTransmitText (1 -> ( _etherTypeToString (1 . `E106 1 `*Cuc ]
+[; ;ethernet.c: 112: UARTTransmitText("]");
+"112
+[e ( _UARTTransmitText (1 :s 7C ]
+[; ;ethernet.c: 113: UART_resetFormat();
+"113
+[e ( _UART_resetFormat ..  ]
+[; ;ethernet.c: 115: arp_handleNewPacket(frame);
+"115
+[e ( _arp_handleNewPacket (1 _frame ]
+[; ;ethernet.c: 117: break;
+"117
+[e $U 633  ]
+[; ;ethernet.c: 118: case ETHERTYPE_IPv4:
+"118
+[e :U 636 ]
+[; ;ethernet.c: 120: UART_setFormat(UART_COLOR_BG_MAGENTA);
+"120
+[e ( _UART_setFormat (1 -> . `E6027 4 `uc ]
+[; ;ethernet.c: 121: UARTTransmitText("[");
+"121
+[e ( _UARTTransmitText (1 :s 8C ]
+[; ;ethernet.c: 122: UARTTransmitText(etherTypeToString(ETHERTYPE_IPv4));
+"122
+[e ( _UARTTransmitText (1 -> ( _etherTypeToString (1 . `E106 0 `*Cuc ]
+[; ;ethernet.c: 123: UARTTransmitText("]");
+"123
+[e ( _UARTTransmitText (1 :s 9C ]
+[; ;ethernet.c: 124: UART_resetFormat();
+"124
+[e ( _UART_resetFormat ..  ]
+[; ;ethernet.c: 126: ipv4_handleNewPacket(frame);
+"126
+[e ( _ipv4_handleNewPacket (1 _frame ]
+[; ;ethernet.c: 127: break;
+"127
+[e $U 633  ]
+[; ;ethernet.c: 128: default:
+"128
+[e :U 637 ]
+[; ;ethernet.c: 130: UART_setFormat(UART_COLOR_BG_RED);
+"130
+[e ( _UART_setFormat (1 -> . `E6027 0 `uc ]
+[; ;ethernet.c: 131: UARTTransmitText("[");
+"131
+[e ( _UARTTransmitText (1 :s 10C ]
+[; ;ethernet.c: 132: UARTTransmitText(etherTypeToString(ETHERTYPE_UNKNOWN));
+"132
+[e ( _UARTTransmitText (1 -> ( _etherTypeToString (1 . `E106 4 `*Cuc ]
+[; ;ethernet.c: 133: UARTTransmitText("][");
+"133
+[e ( _UARTTransmitText (1 :s 11C ]
+[; ;ethernet.c: 134: UARTTransmitText(macToString(frame->source));
+"134
+[e ( _UARTTransmitText (1 -> ( _macToString (1 . *U _frame 1 `*Cuc ]
+[; ;ethernet.c: 135: UARTTransmitText("->");
+"135
+[e ( _UARTTransmitText (1 :s 12C ]
+[; ;ethernet.c: 136: UARTTransmitText(macToString(frame->destination));
+"136
+[e ( _UARTTransmitText (1 -> ( _macToString (1 . *U _frame 2 `*Cuc ]
+[; ;ethernet.c: 137: UARTTransmitText("][");
+"137
+[e ( _UARTTransmitText (1 :s 13C ]
+[; ;ethernet.c: 138: UARTTransmitText(etherTypeToString(frame->ethertype));
+"138
+[e ( _UARTTransmitText (1 -> ( _etherTypeToString (1 . *U _frame 3 `*Cuc ]
+[; ;ethernet.c: 139: UARTTransmitText("][L=");
+"139
+[e ( _UARTTransmitText (1 :s 14C ]
+[; ;ethernet.c: 140: UARTTransmitText(intToString(frame->length, 10));
+"140
+[e ( _UARTTransmitText (1 -> ( _intToString (2 , -> . *U _frame 0 `ul -> -> 10 `i `uc `*Cuc ]
+[; ;ethernet.c: 141: UARTTransmitText("] ");
+"141
+[e ( _UARTTransmitText (1 :s 15C ]
+[; ;ethernet.c: 142: UART_resetFormat();
+"142
+[e ( _UART_resetFormat ..  ]
+[; ;ethernet.c: 144: ethernetController_dropPacket();
+"144
+[e ( _ethernetController_dropPacket ..  ]
+[; ;ethernet.c: 145: break;
+"145
+[e $U 633  ]
+"146
+}
+[; ;ethernet.c: 146: }
+[e $U 633  ]
+"106
+[e :U 634 ]
+[e [\ . *U _frame 3 , $ . `E106 1 635
+ , $ . `E106 0 636
+ 637 ]
+"146
+[e :U 633 ]
+[; ;ethernet.c: 159: UARTTransmitText("\n\r");
+"159
+[e ( _UARTTransmitText (1 :s 16C ]
+[; ;ethernet.c: 161: return err;
+"161
+[e ) _err ]
+[e $UE 627  ]
+[; ;ethernet.c: 162: }
+"162
+[e :UE 627 ]
+}
 [a 4C 91 85 110 105 99 97 115 116 93 0 ]
 [a 3C 91 66 114 111 97 100 99 97 115 116 93 0 ]
-[a 6C 91 83 121 109 98 111 108 32 69 114 114 111 114 115 93 0 ]
-[a 15C 91 85 110 107 110 111 119 110 32 69 116 104 101 114 84 121 112 101 93 0 ]
-[a 9C 91 65 82 80 93 0 ]
-[a 12C 91 73 80 118 52 93 0 ]
+[a 5C 91 83 121 109 98 111 108 32 69 114 114 111 114 115 93 0 ]
 [a 2C 93 0 ]
-[a 18C 93 91 0 ]
+[a 7C 93 0 ]
+[a 9C 93 0 ]
+[a 11C 93 91 0 ]
+[a 13C 93 91 0 ]
 [a 1C 91 0 ]
-[a 16C 91 0 ]
-[a 17C 45 62 0 ]
-[a 19C 93 91 76 61 0 ]
-[a 20C 93 32 0 ]
-[a 22C 10 13 0 ]
+[a 6C 91 0 ]
+[a 8C 91 0 ]
+[a 10C 91 0 ]
+[a 12C 45 62 0 ]
+[a 14C 93 91 76 61 0 ]
+[a 15C 93 32 0 ]
+[a 16C 10 13 0 ]

@@ -2,12 +2,14 @@
  build/default/production/src/eth/ethernet.p1:  \
  src/eth/ethernet.c  \
 src/eth/../system/../stack/protocols/../bool.h  \
+src/eth/../system/../stack/protocols/../protocols/tcpSettings.h  \
 src/eth/../eth/ethernet.h  \
 src/eth/../system/../stack/protocols/../protocols/../../eth/ethernet.h  \
 src/eth/../eth/../mem/memoryController.h  \
 src/eth/../enc424j600/../mem/memoryController.h  \
 src/eth/../system/uart.h  \
 src/eth/../system/../eth/mac.h  \
+src/eth/../eth/ethernetSettings.h  \
 src/eth/../system/../stack/protocols/../protocols/../protocols/ipv4.h  \
 src/eth/../eth/../eth/../eth/../stack/time.h  \
 src/eth/../stack/time.h  \
@@ -17,6 +19,7 @@ src/eth/../system/../stack/protocols/../../stack/backgroundTasksTypes.h  \
 src/eth/../system/../stack/protocols/arpTypes.h  \
 src/eth/../system/../stack/protocols/../protocols/../protocols/arpTypes.h  \
 src/eth/../system/../stack/protocols/../error.h  \
+src/eth/../system/../stack/protocols/../protocols/../error.h  \
 src/eth/../system/../stack/protocols/../protocols/arpSettings.h  \
 src/eth/../system/../stack/protocols/../time.h  \
 src/eth/../system/../stack/protocols/../protocols/ipv4Types.h  \
@@ -26,6 +29,7 @@ src/eth/../eth/../stack/error.h  \
 src/eth/../enc424j600/../stack/error.h  \
 src/eth/../system/../stack/protocols/ipv4.h  \
 src/eth/../system/../stack/protocols/../../stack/protocols/ipv4.h  \
+src/eth/../system/../stack/protocols/../protocols/tcpTypes.h  \
 src/eth/../eth/../eth/../eth/../enc424j600/rsv.h  \
 src/eth/../enc424j600/../enc424j600/rsv.h  \
 src/eth/../system/../stack/protocols/../stack.h  \
@@ -48,4 +52,5 @@ src/eth/../eth/../eth/../enc424j600/interrupt.h  \
 src/eth/../system/../stack/protocols/../../stack/../enc424j600/interrupt.h  \
 src/eth/../system/../stack/protocols/../protocols/../../eth/mac.h  \
 src/eth/../system/../eth/../stack/bool.h  \
-src/eth/../system/../stack/protocols/../protocols/arp.h 
+src/eth/../system/../stack/protocols/../protocols/arp.h  \
+src/eth/../system/../stack/protocols/../protocols/tcp.h 

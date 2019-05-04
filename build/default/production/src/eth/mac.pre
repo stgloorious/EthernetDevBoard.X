@@ -150,33 +150,35 @@ typedef enum etherTypes {
 ETHERTYPE_IPv4 = 0x0800,
 ETHERTYPE_ARP = 0x0806,
 ETHERTYPE_WOL = 0x0842,
-ETHERTYPE_FLOW_CONTROL = 0x8808
+ETHERTYPE_FLOW_CONTROL = 0x8808,
+
+ETHERTYPE_UNKNOWN = 0xffff
 } etherType_t;
 
-# 58
+# 60
 typedef struct macaddress {
 uint8_t address[6];
 } macaddress_t;
 
-# 64
+# 66
 typedef enum linkStates {
 NO_LINK,
 LINK_ESTABLISHED
 } linkState_t;
 
-# 71
+# 73
 typedef enum speeds {
 TEN_MBIT,
 HUNDRED_MBIT
 } speed_t;
 
-# 78
+# 80
 typedef enum duplexStates {
 HALF_DUPLEX,
 FULL_DUPLEX
 } duplexState_t;
 
-# 86
+# 88
 typedef struct ethernetFrame {
 uint16_t length;
 macaddress_t source;
@@ -184,14 +186,14 @@ macaddress_t destination;
 etherType_t ethertype;
 memoryField_t memory;
 
-# 96
+# 98
 RSV_t receiveStatusVector;
 
-# 100
+# 102
 time_t tReceived;
 } ethernetFrame_t;
 
-# 106
+# 108
 typedef struct ethernetConnection {
 linkState_t link;
 speed_t speed;

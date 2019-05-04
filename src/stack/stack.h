@@ -30,6 +30,7 @@
 #include "../eth/ethernetTypes.h"
 #include "../stack/backgroundTasksTypes.h"
 #include "../stack/protocols/ipv4.h"
+#include "protocols/tcp.h"
 
 
 
@@ -47,6 +48,7 @@ typedef struct stack {
     backgroundTaskHandler_t background; ///< Stuff that happens in the background, like sending ARP requests
     ipv4_packet_t pendingPacketToSend; ///< The packet that is currently being prepared for transmission
     ipv4_address_t source; ///< The IPv4 address of the stack
+    uint8_t fipValid:1; ///< if the ip address can be used
 } stack_t;
 
 /**

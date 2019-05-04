@@ -83,7 +83,7 @@ typedef enum arp_ptype {
 typedef struct arp_tableEntry {
     ipv4_address_t ip; ///< Protocol address
     macaddress_t mac; ///< Corresponding hardware address
-    time_t timeCreated; ///< Number of seconds that have elapsed since power up when this entry was created
+    time_t timeCreated; ///< Number of milliseconds that have elapsed since power up when this entry was created
 } arp_tableEntry_t;
 
 

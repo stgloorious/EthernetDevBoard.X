@@ -78,6 +78,7 @@ $(function() {
 <p>Function definitions used for Internet control message protocol.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="icmp_types_8h_source.html">icmpTypes.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="icmp_settings_8h_source.html">icmpSettings.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="memory_types_8h_source.html">../../mem/memoryTypes.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ipv4_types_8h_source.html">ipv4Types.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="error_8h_source.html">../error.h</a>&quot;</code><br />
@@ -102,6 +103,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>icmp_writeHeaderIntoB
 <tr class="memitem:a08d4f29c48336bd87d99241e86372bbf"><td class="memItemLeft" align="right" valign="top"><a id="a08d4f29c48336bd87d99241e86372bbf"></a>
 static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>icmp_calculateChecksumBuf</b> (uint8_t *buf, uint16_t ipPayloadLength)</td></tr>
 <tr class="separator:a08d4f29c48336bd87d99241e86372bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a183254166df1033cd39e61a85824c3b3"><td class="memItemLeft" align="right" valign="top"><a id="a183254166df1033cd39e61a85824c3b3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>icmp_sendEchoRequest</b> (<a class="el" href="group__ipv4.html#gad9df0882950e70d0587a4b423beb261a">ipv4_address_t</a> ipAddr)</td></tr>
+<tr class="separator:a183254166df1033cd39e61a85824c3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function definitions used for Internet control message protocol. </p>

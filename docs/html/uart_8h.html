@@ -69,6 +69,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">uart.h File Reference</div>  </div>
@@ -86,6 +88,31 @@ $(function() {
 </div>
 <p><a href="uart_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a3bfe6787f59db5cf1d540d6a5a375b3d"><td class="memItemLeft" align="right" valign="top"><a id="a3bfe6787f59db5cf1d540d6a5a375b3d"></a>
+typedef enum UART_colors&#160;</td><td class="memItemRight" valign="bottom"><b>UART_colors_t</b></td></tr>
+<tr class="separator:a3bfe6787f59db5cf1d540d6a5a375b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a9b407e6269e01d20780e04cd8d566ecd"><td class="memItemLeft" align="right" valign="top"><a id="a9b407e6269e01d20780e04cd8d566ecd"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>UART_colors</b> { <br />
+&#160;&#160;<b>UART_COLOR_BG_RED</b>, 
+<b>UART_COLOR_BG_GREEN</b>, 
+<b>UART_COLOR_BG_BLUE</b>, 
+<b>UART_COLOR_BG_YELLOW</b>, 
+<br />
+&#160;&#160;<b>UART_COLOR_BG_MAGENTA</b>, 
+<b>UART_COLOR_BG_CYAN</b>, 
+<b>UART_COLOR_FG_YELLOW</b>, 
+<b>UART_COLOR_FG_BLUE</b>
+<br />
+ }</td></tr>
+<tr class="separator:a9b407e6269e01d20780e04cd8d566ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cf5263317628aea179c58a490db4a67"><td class="memItemLeft" align="right" valign="top"><a id="a4cf5263317628aea179c58a490db4a67"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>UART_specials</b> { <b>UART_LINE_SEPARATOR</b>
+ }</td></tr>
+<tr class="separator:a4cf5263317628aea179c58a490db4a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2208c97c21ded3ef393bd94a27509b69"><td class="memItemLeft" align="right" valign="top"><a id="a2208c97c21ded3ef393bd94a27509b69"></a>
@@ -95,18 +122,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart
 <tr class="memitem:aededddacce8a1f56d58e40654babcc83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#aededddacce8a1f56d58e40654babcc83">UARTTransmitText</a> (const char *str)</td></tr>
 <tr class="memdesc:aededddacce8a1f56d58e40654babcc83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmits a char string over the UART interface.  <a href="#aededddacce8a1f56d58e40654babcc83">More...</a><br /></td></tr>
 <tr class="separator:aededddacce8a1f56d58e40654babcc83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cd465006ed73cab2e273a815e264014"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a8cd465006ed73cab2e273a815e264014">DEBUG_MSG</a> (char *text)</td></tr>
-<tr class="memdesc:a8cd465006ed73cab2e273a815e264014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intended to be used for debug messages only, calls UART text function.  <a href="#a8cd465006ed73cab2e273a815e264014">More...</a><br /></td></tr>
-<tr class="separator:a8cd465006ed73cab2e273a815e264014"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a038b093e8e3fbeac77a3da95231e86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a4a038b093e8e3fbeac77a3da95231e86">UARTTransmitInt</a> (uint32_t val)</td></tr>
-<tr class="memdesc:a4a038b093e8e3fbeac77a3da95231e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmits a four-digit numerical value.  <a href="#a4a038b093e8e3fbeac77a3da95231e86">More...</a><br /></td></tr>
-<tr class="separator:a4a038b093e8e3fbeac77a3da95231e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abddf1626904c824d00f2be6b130500d3"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#abddf1626904c824d00f2be6b130500d3">intToString</a> (uint32_t val)</td></tr>
-<tr class="memdesc:abddf1626904c824d00f2be6b130500d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a decimal numerical value into a string.  <a href="#abddf1626904c824d00f2be6b130500d3">More...</a><br /></td></tr>
-<tr class="separator:abddf1626904c824d00f2be6b130500d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b5ab32a5e424cca95e98f0034678c46"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a2b5ab32a5e424cca95e98f0034678c46">hexToString</a> (uint32_t val)</td></tr>
-<tr class="memdesc:a2b5ab32a5e424cca95e98f0034678c46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal numerical value into a string.  <a href="#a2b5ab32a5e424cca95e98f0034678c46">More...</a><br /></td></tr>
-<tr class="separator:a2b5ab32a5e424cca95e98f0034678c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae35531f993b59de2622518873663fd97"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#ae35531f993b59de2622518873663fd97">UART_special</a> (uint8_t code)</td></tr>
+<tr class="memdesc:ae35531f993b59de2622518873663fd97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a special string, given an input code.  <a href="#ae35531f993b59de2622518873663fd97">More...</a><br /></td></tr>
+<tr class="separator:ae35531f993b59de2622518873663fd97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b4e502e191086b2e9ea91a0a30322fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a8b4e502e191086b2e9ea91a0a30322fa">UART_setFormat</a> (uint8_t color)</td></tr>
+<tr class="separator:a8b4e502e191086b2e9ea91a0a30322fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a819fa6fe57d811666b3dc70d1f5a4a16"><td class="memItemLeft" align="right" valign="top"><a id="a819fa6fe57d811666b3dc70d1f5a4a16"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a819fa6fe57d811666b3dc70d1f5a4a16">UART_resetFormat</a> ()</td></tr>
+<tr class="memdesc:a819fa6fe57d811666b3dc70d1f5a4a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the current ANSI formatting. <br /></td></tr>
+<tr class="separator:a819fa6fe57d811666b3dc70d1f5a4a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7d9765c0fc4296783698e936e51d51"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#add7d9765c0fc4296783698e936e51d51">intToString</a> (uint32_t val, uint8_t b)</td></tr>
+<tr class="memdesc:add7d9765c0fc4296783698e936e51d51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a numerical value into a string.  <a href="#add7d9765c0fc4296783698e936e51d51">More...</a><br /></td></tr>
+<tr class="separator:add7d9765c0fc4296783698e936e51d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1acf079e1ab6ae38ac7a05338a535cdd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a1acf079e1ab6ae38ac7a05338a535cdd">macToString</a> (<a class="el" href="group__ethernet.html#gacb865bcbf50a6c8cef05581bfabff373">macaddress_t</a> addr)</td></tr>
 <tr class="memdesc:a1acf079e1ab6ae38ac7a05338a535cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a MAC address and translates it to a human-readable char string.  <a href="#a1acf079e1ab6ae38ac7a05338a535cdd">More...</a><br /></td></tr>
 <tr class="separator:a1acf079e1ab6ae38ac7a05338a535cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,32 +188,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart
 
 </div>
 </div>
-<a id="a8cd465006ed73cab2e273a815e264014"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cd465006ed73cab2e273a815e264014">&#9670;&nbsp;</a></span>DEBUG_MSG()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DEBUG_MSG </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>text</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Intended to be used for debug messages only, calls UART text function. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">text</td><td>Char String </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="af851eb2e51e81a23a50eb733ae02dc4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af851eb2e51e81a23a50eb733ae02dc4e">&#9670;&nbsp;</a></span>etherTypeToString()</h2>
 
@@ -214,35 +215,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart
 
 </div>
 </div>
-<a id="a2b5ab32a5e424cca95e98f0034678c46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b5ab32a5e424cca95e98f0034678c46">&#9670;&nbsp;</a></span>hexToString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* hexToString </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>val</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converts a hexadecimal numerical value into a string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">val</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>char string </dd></dl>
-
-</div>
-</div>
-<a id="abddf1626904c824d00f2be6b130500d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abddf1626904c824d00f2be6b130500d3">&#9670;&nbsp;</a></span>intToString()</h2>
+<a id="add7d9765c0fc4296783698e936e51d51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add7d9765c0fc4296783698e936e51d51">&#9670;&nbsp;</a></span>intToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,16 +225,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart
           <td class="memname">char* intToString </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>val</em></td><td>)</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Converts a decimal numerical value into a string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Converts a numerical value into a string. </p>
+<p>This function calls itoa() (non-standard) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">val</td><td></td></tr>
+    <tr><td class="paramname">b</td><td>Base (10=decimal, 16=hex etc.) </td></tr>
   </table>
   </dd>
 </dl>
@@ -349,29 +334,54 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart
 
 </div>
 </div>
-<a id="a4a038b093e8e3fbeac77a3da95231e86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a038b093e8e3fbeac77a3da95231e86">&#9670;&nbsp;</a></span>UARTTransmitInt()</h2>
+<a id="a8b4e502e191086b2e9ea91a0a30322fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b4e502e191086b2e9ea91a0a30322fa">&#9670;&nbsp;</a></span>UART_setFormat()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void UARTTransmitInt </td>
+          <td class="memname">void UART_setFormat </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>val</em></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets a color using ANSI formatting </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>from UART_colors </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae35531f993b59de2622518873663fd97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae35531f993b59de2622518873663fd97">&#9670;&nbsp;</a></span>UART_special()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* UART_special </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Transmits a four-digit numerical value. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Returns a special string, given an input code. </p>
+<p>Used to save program memory: With this e.g. a line separator needs to be saved only once. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">val</td><td>Number to be transmitted </td></tr>
+    <tr><td class="paramname">code</td><td>UART_specials </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>string </dd></dl>
 
 </div>
 </div>

@@ -35,7 +35,7 @@ typedef bit bool_t;
 typedef unsigned char bool_t;
 #endif
 
-#define true    1 
-#define false   0
+#define true    1u 
+#define false   0u
 
 #endif	/* BOOL_H */

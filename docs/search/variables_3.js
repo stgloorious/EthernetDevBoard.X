@@ -4,5 +4,6 @@ var searchData=
   ['dmaif',['DMAIF',['../structinterrupt_flags.html#ac03ab9621d33c1e860f64dbcf0fa2a3e',1,'interruptFlags']]],
   ['dribblenibble',['dribbleNibble',['../struct_r_s_v.html#a907e981c9915dc72df656689b5ff1f62',1,'RSV']]],
   ['dscp',['dscp',['../structipv4__header.html#af6c1c78d408e91d2916add663a491623',1,'ipv4_header']]],
+  ['dstport',['dstPort',['../structtcp__connection.html#ac01766720e5781a418710ebf1ba5379e',1,'tcp_connection']]],
   ['duplex',['duplex',['../structethernet_connection.html#a752e08675335172de04d33b15511d236',1,'ethernetConnection']]]
 ];

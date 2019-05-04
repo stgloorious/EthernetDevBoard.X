@@ -26,6 +26,7 @@
 #define	ICMP_H
 
 #include "icmpTypes.h"
+#include "icmpSettings.h"
 #include "../../mem/memoryTypes.h"
 #include "ipv4Types.h"
 #include "../error.h"
@@ -56,6 +57,8 @@ void icmp_sendEchoReply(ipv4_header_t ipHeader, icmpHeader_t icmpHeader, memoryF
 void icmp_writeHeaderIntoBuffer(uint8_t *buf, icmpHeader_t header);
 
 uint16_t static icmp_calculateChecksumBuf(uint8_t *buf, uint16_t ipPayloadLength);
+
+void icmp_sendEchoRequest(ipv4_address_t ipAddr);
 
 
 #endif	/* ICMP_H */

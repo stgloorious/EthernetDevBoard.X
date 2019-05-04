@@ -84,6 +84,7 @@ $(function() {
 <code>#include &quot;<a class="el" href="bool_8h_source.html">../bool.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ipv4_settings_8h_source.html">ipv4Settings.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="icmp_8h_source.html">icmp.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tcp_8h_source.html">tcp.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -99,8 +100,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gacfb15ed3a5d68caffefbb0605e94b61d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d">ipv4_writeHeaderIntoBuffer</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> header, uint8_t *ptr)</td></tr>
 <tr class="memdesc:gacfb15ed3a5d68caffefbb0605e94b61d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the IPv4 Header and writes it into a buffer.  <a href="group__ipv4.html#gacfb15ed3a5d68caffefbb0605e94b61d">More...</a><br /></td></tr>
 <tr class="separator:gacfb15ed3a5d68caffefbb0605e94b61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabf86b43adee57be777cf22f4cddc0b38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
-<tr class="memdesc:gabf86b43adee57be777cf22f4cddc0b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function after everything in the header has been filled in.  <a href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">More...</a><br /></td></tr>
+<tr class="memitem:gabf86b43adee57be777cf22f4cddc0b38"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ipv4.html#gabf86b43adee57be777cf22f4cddc0b38">ipv4_calculateHeaderChecksum</a> (<a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a> *header)</td></tr>
+<tr class="memdesc:gabf86b43adee57be777cf22f4cddc0b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this function after everything in the header has been filled in. <br /></td></tr>
 <tr class="separator:gabf86b43adee57be777cf22f4cddc0b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a1f9b0d289740294afb5bd277283088"><td class="memItemLeft" align="right" valign="top"><a id="a7a1f9b0d289740294afb5bd277283088"></a>
 static <a class="el" href="group__ipv4.html#gaf4f2c6743b9fb1ea3c69734612ce41de">ipv4_header_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ipv4_parseHeader</b> (<a class="el" href="group__memory.html#ga1d04d80fae40964f55d2df46b5d64785">memoryField_t</a> *field)</td></tr>

@@ -76,20 +76,28 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
     }
     frame->ethertype = ethernetController_getEtherTypeField(frame->memory);
 
+#if ETHERNET_SHOW_INCOMING_PACKET_DEBUG_MESSAGES==true
     UARTTransmitText("[");
-    UARTTransmitText(intToString(counter++));
+    UARTTransmitText(intToString(counter++, 10));
     UARTTransmitText("]");
-   
+#endif
+
 
     /* =======================  Processing the FLags from the Receive Status Vector  ======================= */
     if (frame->receiveStatusVector.broadcast)
+#if ETHERNET_SHOW_INCOMING_PACKET_DEBUG_MESSAGES==true
         UARTTransmitText("[Broadcast]");
+#endif
     if (frame->receiveStatusVector.unicast)
+#if ETHERNET_SHOW_INCOMING_PACKET_DEBUG_MESSAGES==true
         UARTTransmitText("[Unicast]");
+#endif
     if (!frame->receiveStatusVector.receivedOk) {
-        UARTTransmitText("\033[41;1;10m"); //Red color
+#if ETHERNET_SHOW_INCOMING_PACKET_DEBUG_MESSAGES==true
+        UART_setFormat(UART_COLOR_BG_RED); //Red color
         UARTTransmitText("[Symbol Errors]");
-        UARTTransmitText("\033[0m");
+        UART_resetFormat();
+#endif
     }
 
 
@@ -97,47 +105,58 @@ error_t ethernet_rxGetNewFrame(ethernetFrame_t *frame) {
 
     switch (frame->ethertype) {
         case ETHERTYPE_ARP:
-            UARTTransmitText("\033[44;10;10m");
-            UARTTransmitText("[ARP]");
-            UARTTransmitText("\033[0m");
+#if ETHERNET_SHOW_INCOMING_PACKET_DEBUG_MESSAGES==true
+            UART_setFormat(UART_COLOR_BG_BLUE);
+            UARTTransmitText("[");
+            UARTTransmitText(etherTypeToString(ETHERTYPE_ARP));
+            UARTTransmitText("]");
+            UART_resetFormat();
+#endif
             arp_handleNewPacket(frame);
 
             break;
         case ETHERTYPE_IPv4:
-            UARTTransmitText("\033[45;10;10m");
-            UARTTransmitText("[IPv4]");
-            UARTTransmitText("\033[0m");
+#if ETHERNET_SHOW_INCOMING_PACKET_DEBUG_MESSAGES==true
+            UART_setFormat(UART_COLOR_BG_MAGENTA);
+            UARTTransmitText("[");
+            UARTTransmitText(etherTypeToString(ETHERTYPE_IPv4));
+            UARTTransmitText("]");
+            UART_resetFormat();
+#endif
             ipv4_handleNewPacket(frame);
             break;
         default:
-            UARTTransmitText("\033[41;1;10m");
-            UARTTransmitText("[Unknown EtherType]");
+#if ETHERNET_SHOW_INCOMING_PACKET_DEBUG_MESSAGES==true
+            UART_setFormat(UART_COLOR_BG_RED);
             UARTTransmitText("[");
+            UARTTransmitText(etherTypeToString(ETHERTYPE_UNKNOWN));
+            UARTTransmitText("][");
             UARTTransmitText(macToString(frame->source));
             UARTTransmitText("->");
             UARTTransmitText(macToString(frame->destination));
             UARTTransmitText("][");
             UARTTransmitText(etherTypeToString(frame->ethertype));
             UARTTransmitText("][L=");
-            UARTTransmitInt(frame->length);
+            UARTTransmitText(intToString(frame->length, 10));
             UARTTransmitText("] ");
-            UARTTransmitText("\033[0m");
+            UART_resetFormat();
+#endif
             ethernetController_dropPacket();
             break;
     }
 
 
-  /*  UARTTransmitText("[");
-    UARTTransmitText(intToString(frame->memory.start));
-    UARTTransmitText(" to ");
-    UARTTransmitText(intToString(frame->memory.end));
-    UARTTransmitText(" (");
-    UARTTransmitText(intToString(frame->memory.length));
-    UARTTransmitText(")]");*/
+    /*  UARTTransmitText("[");
+      UARTTransmitText(intToString(frame->memory.start,10));
+      UARTTransmitText(" to ");
+      UARTTransmitText(intToString(frame->memory.end,10));
+      UARTTransmitText(" (");
+      UARTTransmitText(intToString(frame->memory.length,10));
+      UARTTransmitText(")]");*/
 
 
-
+#if ETHERNET_SHOW_INCOMING_PACKET_DEBUG_MESSAGES==true
     UARTTransmitText("\n\r");
-
+#endif
     return err;
 }

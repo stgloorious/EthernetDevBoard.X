@@ -47,7 +47,8 @@ typedef enum error_modules {
     ERROR_MODULE_ETHERNET_CONTROLLER, ///< Physical Ethernet controller chip
     ERROR_MODULE_ETHERNET, ///< Higher level ethernet stuff than the controller
     ERROR_MODULE_ARP, ///< IP Address resolving
-    ERROR_MODULE_IPv4///< IP stuff
+    ERROR_MODULE_IPv4,///< IP stuff
+    ERROR_MODULE_ICMP ///< Control messages
 } error_module_t;
 
 /**
@@ -58,7 +59,8 @@ enum module_offsets {
     ERROR_ETHERNET_OFFSET = 200,
     ERROR_ETHERNET_CONTROLLER_OFFSET = 300,
     ERROR_ARP_OFFSET = 400,
-    ERROR_IPv4_OFFSET = 500
+    ERROR_IPv4_OFFSET = 500,
+    ERROR_ICMP_OFFSET = 600
 };
 
 /**
@@ -109,6 +111,10 @@ enum errors_arp {
 enum errors_ipv4 {
     ERROR_IPv4_ADDRESS_ALREADY_IN_USE = ERROR_IPv4_OFFSET + 1,
     ERROR_IPv4_UNKNOWN = ERROR_IPv4_OFFSET + 99
+};
+
+enum errors_icmp {
+    ERROR_ICMP_MESSAGE_TOO_LONG = ERROR_ICMP_OFFSET + 1,
 };
 
 /**
