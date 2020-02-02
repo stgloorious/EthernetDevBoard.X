@@ -3,15 +3,15 @@
   <executable name="dist/default/production\EthernetDevBoard.X.production.hex">
     <memory name="program">
       <units>bytes</units>
-      <length>32768</length>
-      <used>29268</used>
-      <free>3500</free>
+      <length>131072</length>
+      <used>31840</used>
+      <free>99232</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
-      <length>2048</length>
-      <used>1499</used>
-      <free>549</free>
+      <length>8192</length>
+      <used>1490</used>
+      <free>6702</free>
     </memory>
   </executable>
 </project>

@@ -24,19 +24,25 @@
 #include "../system/uart.h"
 
 void UARTInit(void) {
-    TXSTA1bits.TXEN = 1;
-    TXSTA1bits.SYNC = 0;
-    RCSTA1bits.SPEN = 1;
-    TXSTA1bits.TX9 = 1;
-    TXSTA1bits.TX9D = 1;
-    SPBRG = 3; /* BAUDRATE IS 125000 */
+    /*  TXSTA1bits.TXEN = 1;
+      TXSTA1bits.SYNC = 0;
+      RCSTA1bits.SPEN = 1;
+      TXSTA1bits.TX9 = 1;
+      TXSTA1bits.TX9D = 1;
+      SPBRG = 3; // BAUDRATE IS 125000
+    */
+
+    U1CON0bits.TXEN = 1;
+    U1CON0bits.MODE = 0b0000; //8 bit mode
+    U1CON1bits.ON = 1;
+    U1BRG = 3; // BAUDRATE IS 125000
 
 }
 
 void UARTTransmitText(const char *str) {
     while (*str) {
-        TXREG1 = *str++;
-        while (TRMT == 0);
+        U1TXB = *str++;
+        while (U1FIFObits.TXBF == 1);
     }
 }
 
@@ -75,7 +81,7 @@ void UART_setFormat(uint8_t color) {
 char *UART_special(uint8_t code) {
     switch (code) {
         case UART_LINE_SEPARATOR:
-            return (const char*)"-------------------------------------------------";
+            return (const char*) "-------------------------------------------------";
     }
 }
 

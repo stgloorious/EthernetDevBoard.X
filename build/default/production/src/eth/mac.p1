@@ -30,7 +30,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;bool.h: 32: typedef bit bool_t;
+[; ;bool.h: 41: typedef unsigned char bool_t;
 [; ;rsv.h: 36: typedef struct RSV {
 [; ;rsv.h: 42: uint16_t length;
 [; ;rsv.h: 43: uint8_t packetPreviouslyIgnored : 1;
@@ -136,7 +136,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 6 ]
 }
 "31
-[v _mac_isAllZero `(b ~T0 @X0 1 ef1`*S3 ]
+[v _mac_isAllZero `(uc ~T0 @X0 1 ef1`*S3 ]
 {
 [; ;mac.c: 31: bool_t mac_isAllZero(macaddress_t* mac) {
 [e :U _mac_isAllZero ]
@@ -156,7 +156,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! != -> *U + &U . *U _mac 0 * -> _i `ux -> -> # *U &U . *U _mac 0 `ui `ux `i -> 0 `i 14  ]
 [; ;mac.c: 34: return 0;
 "34
-[e ) -> -> 0 `i `b ]
+[e ) -> -> 0 `i `uc ]
 [e $UE 10  ]
 [e :U 14 ]
 "35
@@ -170,14 +170,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mac.c: 35: }
 [; ;mac.c: 36: return 1;
 "36
-[e ) -> -> 1 `i `b ]
+[e ) -> -> 1 `i `uc ]
 [e $UE 10  ]
 [; ;mac.c: 37: }
 "37
 [e :UE 10 ]
 }
 "39
-[v _mac_cmp `(b ~T0 @X0 1 ef2`*S3`*S3 ]
+[v _mac_cmp `(uc ~T0 @X0 1 ef2`*S3`*S3 ]
 {
 [; ;mac.c: 39: bool_t mac_cmp(macaddress_t* a, macaddress_t* b) {
 [e :U _mac_cmp ]
@@ -198,7 +198,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! != -> *U + &U . *U _a 0 * -> _i `ux -> -> # *U &U . *U _a 0 `ui `ux `i -> *U + &U . *U _b 0 * -> _i `ux -> -> # *U &U . *U _b 0 `ui `ux `i 19  ]
 [; ;mac.c: 42: return 0;
 "42
-[e ) -> -> 0 `i `b ]
+[e ) -> -> 0 `i `uc ]
 [e $UE 15  ]
 [e :U 19 ]
 "43
@@ -212,7 +212,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mac.c: 43: }
 [; ;mac.c: 44: return 1;
 "44
-[e ) -> -> 1 `i `b ]
+[e ) -> -> 1 `i `uc ]
 [e $UE 15  ]
 [; ;mac.c: 45: }
 "45

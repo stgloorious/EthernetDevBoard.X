@@ -39,46 +39,73 @@ stack_t stack;
 void main() {
 
     /* OSCILLATOR */
-    OSCCONbits.SCS = 0b00; //primary oscillator
-    OSCCONbits.IRCF = 0b1110; //8 MHz oscillator
-    OSCCON2bits.PLLEN = 0b1; //enable 4x PLL
+    /*  OSCCONbits.SCS = 0b00; //primary oscillator
+      OSCCONbits.IRCF = 0b1110; //8 MHz oscillator
+      OSCCON2bits.PLLEN = 0b1; //enable 4x PLL
+     * */
+    OSCFRQbits.FRQ = 0b0110; //32 MHz
+    OSCENbits.HFOEN = 1; //Explicitly enable HFINTOSC
 
     /* Interrupt config */
-    INTCONbits.GIE = 0;
-    INTCONbits.TMR0IE = 1;
-    INTCON3bits.INT2IE = 1;
-    RCIP = 0; // Set UART Receive IRQ Priority Low
-    RCIE = 1; // Enable UART Reveive IRQ
-    INTCONbits.PEIE = 1; //enable peripheral interrupts
+    INTCON0bits.GIE = 0;
+    PIE3bits.TMR0IE = 1;
+    // INTCON3bits.INT2IE = 1;
+    PIE3bits.U1RXIE = 1; // Enable UART Reveive IRQ
+    IPR3bits.U1RXIP = 0; //Low priority
+    //INTCONbits.PEIE = 1; //enable peripheral interrupts
 
 
     /* TIMER 0 */
-    T0CONbits.TMR0ON = 1;
-    T0CONbits.T08BIT = 1; //8 bit
-    T0CONbits.T0CS = 0; //Source is internal clock
-    T0CONbits.PSA = 0; // prescaler is assigned
-    T0CONbits.T0PS = 0b101;
+    T0CON0bits.EN = 1;
+    T0CON0bits.MD16 = 0; //8 bit
+    T0CON1bits.CS = 0b011; //Source is internal clock HFINTOSC
+    T0CON1bits.CKPS = 0b0000; // prescaler is assigned
+    T0CON0bits.OUTPS = 0b101;
 
 
     /* TIMER 1 */
     T1CONbits.TMR1ON = 1;
-    CCP1CONbits.CCP1M = 0b1011;
+    CCP1CONbits.CCP1MODE = 0b1011;
     CCPR1 = 8000; //32 MHz Fosc; (Fosc/4)/1 kHz, so an interrupt every 1 ms
-    PIE1bits.CCP1IE = 1;
-    INTCONbits.PEIE = 1; //enable peripheral interrupts
+    PIE4bits.CCP1IE = 1;
+    //INTCONbits.PEIE = 1; //enable peripheral interrupts
 
-    TRISBbits.RB6 = 0;
+    TRISBbits.TRISB6 = 0;
 
 
     UARTInit();
     sevenSegmentInit();
     __delay_ms(10);
     UARTTransmitText("\x12"); //form feed
-    if (!RCONbits.TO) {
+    if (!PCON0bits.RWDT) {
         UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
         UARTTransmitText("\a\n\r"); //Alert
         UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
         UARTTransmitText("\n\r*** CRITICAL ERROR: WATCHDOG CAUSED RESET ***\n\r");
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UART_resetFormat();
+    }
+    if (!PCON0bits.BOR) {
+        UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
+        UARTTransmitText("\a\n\r"); //Alert
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UARTTransmitText("\n\r*** CRITICAL ERROR: BROWN-OUT CAUSED RESET ***\n\r");
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UART_resetFormat();
+    }
+    if (!PCON0bits.STKOVF) {
+        UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
+        UARTTransmitText("\a\n\r"); //Alert
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UARTTransmitText("\n\r*** CRITICAL ERROR: STACK OVRFL CAUSED RESET ***\n\r");
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UART_resetFormat();
+    }
+    if (!PCON0bits.STKUNF) {
+        UART_setFormat(UART_COLOR_BG_RED); //Red color, Primary font
+        UARTTransmitText("\a\n\r"); //Alert
+        UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
+        UARTTransmitText("\n\r*** CRITICAL ERROR: STACK UNDRFL CAUSED RESET ***\n\r");
         UARTTransmitText(UART_special(UART_LINE_SEPARATOR));
         UART_resetFormat();
     }
@@ -128,8 +155,8 @@ void main() {
     ipDst.address[3] = 135;
 
     //Now everything's set up, allow interrupts
-    INTCONbits.GIE = 1; //global interrupt enable
-    INTCONbits.PEIE = 1;
+    INTCON0bits.GIE = 1;
+    //INTCONbits.PEIE = 1;
 
     srand(ethernetController_getMacAddress().address[5]);
     stack.source = ipv4_generateAutoIP();
@@ -265,33 +292,37 @@ void buttonHandler(uint8_t volatile *state) {
     oldState = newState;
 }
 
-void interrupt ISR(void) {
+__interrupt(irq(CCP1), high_priority) void ccp1Int(void) {
 
-    if (PIR1bits.CCP1IF) {
-        PIR1bits.CCP1IF = 0;
+    if (CCP1IE && CCP1IF) {
+        CCP1IF = 0;
         //PORTBbits.RB6 = ~PORTBbits.RB6;
         updateTime();
     }
+}
 
-    if (INTCONbits.TMR0IF) {//Timer 0 Overflow interrupt
-        INTCONbits.TMR0IF = 0;
+__interrupt(irq(TMR0), high_priority) void tmr0Int(void) {
+
+    if (TMR0IE && TMR0IF) {//Timer 0 Overflow interrupt
+        TMR0IF = 0;
         sevenSegmentUpdate(numberToDisplay);
         buttonHandler(&buttonState);
-
-
     }
 
-    if (INTCON3bits.INT2IF) {
-        INTCON3bits.INT2IF = 0;
-        /* IMPORTANT: 
-         * This interrupt is not cleared (so it won't re-trigger) until
-         * every bit in the EIR register of the ENC424J600 is cleared.
-         * Note that the RX Packet Pending Flag cannot be cleared by software directly, 
-         * it must be cleared by setting the packet count to zero! 
-         */
-    }
-    if (RCIF) { //UART data received
+    /*  if (INTCON3bits.INT2IF) {
+         INTCON3bits.INT2IF = 0;*/
+    /* IMPORTANT: 
+     * This interrupt is not cleared (so it won't re-trigger) until
+     * every bit in the EIR register of the ENC424J600 is cleared.
+     * Note that the RX Packet Pending Flag cannot be cleared by software directly, 
+     * it must be cleared by setting the packet count to zero! 
+     */
+    //}
+    /*if (RCIF) { //UART data received
         // interrupt flag cleared when buffer is read
         //UARTReceptionHandler();
-    }
+    }*/
+
+
+
 }

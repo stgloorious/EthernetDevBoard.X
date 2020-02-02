@@ -91,8 +91,8 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 32 "src/eth/../stack/bool.h"
-typedef bit bool_t;
+# 41 "src/eth/../stack/bool.h"
+typedef unsigned char bool_t;
 
 # 36 "src/eth/../enc424j600/rsv.h"
 typedef struct RSV {

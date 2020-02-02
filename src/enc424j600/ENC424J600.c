@@ -362,15 +362,15 @@ uint8_t ethernetController_streamFromRXBuffer(uint8_t startEnd, uint16_t startAd
             return temp;
         case 2:
             CS_PIN_HIGH; //End the read operation
-           /* //free up memory by updating the tail pointer to the point where the data has already been processed
-            if (ethernetController_getNextPacketPointer() == RX_DATA_START_ADDRESS) {//wrap around 
-                enc424j600_setRXTailPointer(0x55FE);
-            } else {
-                enc424j600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
-            }
+            /* //free up memory by updating the tail pointer to the point where the data has already been processed
+             if (ethernetController_getNextPacketPointer() == RX_DATA_START_ADDRESS) {//wrap around 
+                 enc424j600_setRXTailPointer(0x55FE);
+             } else {
+                 enc424j600_setRXTailPointer(ethernetController_getNextPacketPointer() - 2);
+             }
 
-            //Set PKTDEC bit so the PKTCNT gets decremented
-            enc424j600_writeSingleByte(SETPKTDEC);*/
+             //Set PKTDEC bit so the PKTCNT gets decremented
+             enc424j600_writeSingleByte(SETPKTDEC);*/
             return 0;
     }
     return 0; //never reached (or when an invalid startEnd is passed)
@@ -467,6 +467,7 @@ uint16_t ethernetController_getNextPacketPointer() {
 /* =======================  Initialisation  ======================= */
 
 void static enc424j600_initSPI() {
+    /*
     SSP1CON1bits.SSPEN = 0; //disable serial port
     SSP1STATbits.CKE = 1; //clock transition polarity
     //SPI Master mode, clock = Fosc/4 is selected by POR
@@ -480,6 +481,23 @@ void static enc424j600_initSPI() {
     ANSELBbits.ANSB4 = 0;
     CS_PIN_HIGH;
     SSP1CON1bits.SSPEN = 1; //Enable serial port
+     */
+
+    SPI1CON0bits.EN = 0;
+    SPI1CON0bits.MST = 1; //Master mode
+    SPI1CON1bits.CKE = 1; //Clock edge
+    SPI1CLKbits.CLKSEL = 0b0000; //FOSC
+    TRISBbits.TRISB0 = 1; //MISO
+    ANSELBbits.ANSELB0 = 0;
+    TRISBbits.TRISB1 = 0; //SCK
+    ANSELBbits.ANSELB1 = 0;
+    TRISBbits.TRISB3 = 0; //MOSI
+    ANSELBbits.ANSELB3 = 0;
+    TRISBbits.TRISB4 = 0; //SS
+    ANSELBbits.ANSELB4 = 0;
+    CS_PIN_HIGH;
+    SPI1CON0bits.EN = 1;
+
 }
 
 /* =======================  READ/WRITE REGISTERS  ======================= */
@@ -487,8 +505,8 @@ void static enc424j600_initSPI() {
 void static enc424j600_writeSPI(uint8_t *data) {
 #define SPI_TIMEOUT		0xfff //max cycle count to wait for transmission of one byte
     uint32_t timeoutCounter = 0;
-    SSP1BUF = *data; //writing to buffer starts transmission
-    while ((!SSP1STATbits.BF) && (timeoutCounter++ < SPI_TIMEOUT)); //wait for completion of transmission
+    SPI1TXB = *data; //writing to buffer starts transmission
+    while ((!SPI1STATUSbits.TXBE) && (timeoutCounter++ < SPI_TIMEOUT)); //wait for completion of transmission
     if (timeoutCounter >= SPI_TIMEOUT) {//if timeout reached, return
         CS_PIN_HIGH; //abort transmission
         enc424j600_initSPI(); //reset module
@@ -499,14 +517,14 @@ void static enc424j600_writeSPI(uint8_t *data) {
 void static enc424j600_readSPI(uint8_t *data) {
 #define SPI_TIMEOUT		0xfff//max cycle count to wait for transmission of one byte
     uint32_t timeoutCounter = 0;
-    SSP1BUF = 0x00; //dummy
-    while ((!SSP1STATbits.BF) && (timeoutCounter++ < SPI_TIMEOUT)); //wait for completion of transmission
+    SPI1TXB = 0x00; //dummy
+    while ((!SPI1STATUSbits.TXBE) && (timeoutCounter++ < SPI_TIMEOUT)); //wait for completion of transmission
     if (timeoutCounter >= SPI_TIMEOUT) {//if timeout reached, return
         CS_PIN_HIGH; //abort transmission
         enc424j600_initSPI(); //reset module
         return;
     }
-    *data = SSP1BUF;
+    *data = SPI1RXB;
 }
 
 void static enc424j600_writeSingleByte(uint8_t opcode) {

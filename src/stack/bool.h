@@ -26,7 +26,7 @@
 
 #ifndef BOOL_H
 #define	BOOL_H
-
+/*
 #ifdef __XC
 #advisory "Existence of bit variable is assumed because Microchip XC compiler is in use."
 typedef bit bool_t;
@@ -34,8 +34,10 @@ typedef bit bool_t;
 #advisory "Existence of bit variable is not assumed."
 typedef unsigned char bool_t;
 #endif
-
+*/
 #define true    1u 
 #define false   0u
+
+typedef unsigned char bool_t;
 
 #endif	/* BOOL_H */
