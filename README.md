@@ -8,6 +8,8 @@
 [Github](https://github.com/stgloorious/EthernetDevBoard.x)  
 [Theory of Operation](https://github.com/stgloorious/EthernetDevBoard.X/raw/master/docs/theory/theoryOfOperation.pdf)
 
+![Photo](https://github.com/stgloorious/EthernetDevBoard.X/blob/master/hardware/photos/2.jpg)
+
 ## Introduction
 
 I created this Ethernet Development Board
